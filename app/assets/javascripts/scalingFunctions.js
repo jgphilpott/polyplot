@@ -1,23 +1,37 @@
-//Creating a scale function for the radius.
-function radiusScale(maxData, minData) {
+//Creating a scale function for the circle radius.
+function radiusScale(maxData, minData, radiusMax, radiusMin) {
   return d3.scaleLinear()
            .domain([minData, maxData])
-           .range([10, 100]);
+           .range([radiusMin, radiusMax]);
 };//End of radius scale function.
+
+//Creating a scale function for the circle X.
+function xCircleScale(maxData, minData, windowWidth, rightMargin, leftMargin, radiusMax) {
+  return d3.scaleLinear()
+           .domain([minData, maxData])
+           .range([0, ((windowWidth - rightMargin - leftMargin) - (radiusMax * 2))]);
+};//End of X circle scale function.
+
+//Creating a scale function for the circle Y.
+function yCircleScale(maxData, minData, windowHeight, topMargin, bottomMargin, radiusMax) {
+  return d3.scaleLinear()
+           .domain([minData, maxData])
+           .range([((windowHeight - topMargin - bottomMargin) - (radiusMax * 2)), 0]);
+};//End of Y circle scale function.
 
 //Creating a scale function for the X Axis.
 function xAxisScale(maxData, minData, windowWidth, rightMargin, leftMargin) {
   return d3.scaleLinear()
            .domain([minData, maxData])
            .range([0, (windowWidth - rightMargin - leftMargin)]);
-};//End of X scale function.
+};//End of X axis scale function.
 
 //Creating a scale function for the Y Axis.
 function yAxisScale(maxData, minData, windowHeight, topMargin, bottomMargin) {
   return d3.scaleLinear()
            .domain([minData, maxData])
            .range([(windowHeight - topMargin - bottomMargin), 0]);
-};//End of Y scale function.
+};//End of Y axis scale function.
 
 //This function will return the first value of a 'Country Object' that is not and empty string...
 //ELSE it returns the string ‘No Data’...
@@ -118,7 +132,7 @@ function CheckMinMax(minORmax, data, firstYear, lastYear) {
 
 //A function to scale, compile and reformat the selected datasets...
 //Within a specified date range.
-function scaleAllData(rData, xData, yData, rScale, xScale, yScale, firstYear, lastYear) {
+function scaleAllData(rData, xData, yData, rScale, xCircleS, yCircleS, firstYear, lastYear) {
 
   //Array for storing the new ‘Country Objects’ to be created.
   var newData = [];
@@ -136,8 +150,8 @@ function scaleAllData(rData, xData, yData, rScale, xScale, yScale, firstYear, la
         "name": rData[i]["Country Name"],
         "code": rData[i]["Country Code"],
         "r": rScale(rData[i][y]),
-        "x": xScale(xData[i][y]),
-        "y": yScale(yData[i][y])
+        "x": xCircleS(xData[i][y]),
+        "y": yCircleS(yData[i][y])
       });
 
     };//End of year loop.

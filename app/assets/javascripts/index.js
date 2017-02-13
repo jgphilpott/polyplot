@@ -32,6 +32,10 @@ $(document).on('ready', function() {
     var max = "MAX";
     var min = "MIN";
 
+    //Temporarily hard coded variables for radius range.
+    var radiusMax = 25;
+    var radiusMin = 5;
+
     //Finding the Min and Max Values for the selected R, X and Y datasets...
     //To be passed to the scaling functions.
     var rDataMax = CheckMinMax(max, rData, firstYear, lastYear);
@@ -42,19 +46,21 @@ $(document).on('ready', function() {
     var yDataMin = CheckMinMax(min, yData, firstYear, lastYear);
 
     //Saving the return value of the Scaling Functions.
-    var rScale = radiusScale(rDataMax, rDataMin);
+    var rScale = radiusScale(rDataMax, rDataMin, radiusMax, radiusMin);
+    var xCircleS = xCircleScale(xDataMax, xDataMin, windowWidth, rightMargin, leftMargin, radiusMax);
+    var yCircleS = yCircleScale(yDataMax, yDataMin, windowHeight, topMargin, bottomMargin, radiusMax);
     var xScale = xAxisScale(xDataMax, xDataMin, windowWidth, rightMargin, leftMargin);
     var yScale = yAxisScale(yDataMax, yDataMin, windowHeight, topMargin, bottomMargin);
 
     //A function to scale, compile and reformat the selected datasets...
     //Within a specified date range.
-    var drawData = scaleAllData(rData, xData, yData, rScale, xScale, yScale, firstYear, lastYear);
+    var drawData = scaleAllData(rData, xData, yData, rScale, xCircleS, yCircleS, firstYear, lastYear);
 
     //Calling the function that draws the chart.
     drawChart(svg, windowWidth, windowHeight, topMargin, rightMargin, bottomMargin, leftMargin, xScale, yScale);
 
     //Draw circles based on selected datasets.
-    drawCircles(svg, drawData, currentYear);
+    drawCircles(svg, drawData, radiusMax, currentYear, topMargin, leftMargin);
 
     //Adding Event Listener for Mouse Move...
     //This is to create Mouse Guidelines and Tooltips.

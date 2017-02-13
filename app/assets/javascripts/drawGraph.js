@@ -36,8 +36,23 @@ function drawChart(svg, windowWidth, windowHeight, topMargin, rightMargin, botto
 };//End of draw chart function.
 
 //A function that defines how to draw the circles.
-function drawCircles(svg, circleData, year) {
+function drawCircles(svg, circleData, radiusMax, theYear, topMargin, leftMargin) {
 
-  //Coming Soon!
+  //Looping through the array of 'Country Objects' provided.
+  for (var i = 0; i < circleData.length; i++) {
+
+    //If the year for this (i) 'Country Object' is equal to the current year and no data is missing from the object...
+    //Append the 'Country Object' as a circle onto the chart.
+    if (circleData[i].year === theYear && (circleData[i].x !== "" && circleData[i].y !== "" && circleData[i].r !== "")) {
+      svg.append("circle")
+         .attr("class", "countryCircle")
+         .attr("id", circleData[i].name)
+         .attr("cx", (leftMargin + radiusMax + (circleData[i].x)))
+         .attr("cy", (topMargin + radiusMax + (circleData[i].y)))
+         .attr("r", circleData[i].r)
+         .attr("fill", "red");
+    };
+
+  };//End of data loop.
 
 };//End of draw circles function.
