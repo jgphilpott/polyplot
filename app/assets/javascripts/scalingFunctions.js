@@ -1,16 +1,23 @@
+//Creating a scale function for the radius.
+function radiusScale(maxData, minData) {
+  return d3.scaleLinear()
+           .domain([minData, maxData])
+           .range([10, 100]);
+};//End of radius scale function.
+
 //Creating a scale function for the X Axis.
 function xAxisScale(maxData, minData, windowWidth, rightMargin, leftMargin) {
   return d3.scaleLinear()
            .domain([minData, maxData])
            .range([0, (windowWidth - rightMargin - leftMargin)]);
-};
+};//End of X scale function.
 
 //Creating a scale function for the Y Axis.
 function yAxisScale(maxData, minData, windowHeight, topMargin, bottomMargin) {
   return d3.scaleLinear()
            .domain([minData, maxData])
            .range([(windowHeight - topMargin - bottomMargin), 0]);
-};
+};//End of Y scale function.
 
 //This function will return the first value of a 'Country Object' that is not and empty string...
 //ELSE it returns the string ‘No Data’...
@@ -24,11 +31,11 @@ function firstValidData(country, firstYear, lastYear) {
 
     //Because the first year was not valid...
     //We now loop through the remainder of the date range.
-    for (var i = firstYear + 1; i <= lastYear; i++) {
+    for (var y = firstYear + 1; y <= lastYear; y++) {
 
       //Return the first valid data value.
-      if (country[i] !== "") {
-        return country[i];
+      if (country[y] !== "") {
+        return country[y];
       };
 
     };//End of date loop.
@@ -36,19 +43,20 @@ function firstValidData(country, firstYear, lastYear) {
     //Return ‘No Data’ if no valid data was found within the specified date range.
     return "No Data"
 
-  };
-};//End of First Valid Data Function.
+  };//End of valid data check.
+};//End of 'First Valid Data' function.
 
 //Finding the min/max data value of all countries from the given dataset...
 //Within a specified date range.
 function CheckMinMax(minORmax, data, firstYear, lastYear) {
 
-  //An array of the min/max values from each ‘Country Object’.
+  //An array for storing the min/max values from each ‘Country Object’.
   var countryValuesArray = [];
 
+  //Looping over the given array of ‘Country Objects’.
   for (var i = 0; i < data.length; i++) {
 
-    //Assigning the Country Value variable to the first valid data value for this (i) 'Country Object'.
+    //Assigning the 'Country Value' variable to the first valid data value for this (i) 'Country Object'.
     var countryValue = firstValidData(data[i], firstYear, lastYear);
 
     //Only execute the following block if there is data available for this (i) 'Country Object'.
@@ -60,8 +68,8 @@ function CheckMinMax(minORmax, data, firstYear, lastYear) {
         //Checking if this is a MAX call.
         if (minORmax === "MAX") {
 
-          //IF the value of the current year (y) is greater than the Country Value variable...
-          //Reassign the Country Value variable to the value of the current year.
+          //IF the value of the current year (y) is greater than the 'Country Value' variable...
+          //Reassign the 'Country Value' variable to the value of the current year.
           if (data[i][y] > countryValue && data[i][y] !== "") {
             countryValue = data[i][y]
           };
@@ -69,20 +77,19 @@ function CheckMinMax(minORmax, data, firstYear, lastYear) {
         //Checking if this is a MIN call.
         } else if (minORmax === "MIN") {
 
-          //IF the value of the current year (y) is less than the Country Value variable...
-          //Reassign the Country Value variable to the value of the current year.
+          //IF the value of the current year (y) is less than the 'Country Value' variable...
+          //Reassign the 'Country Value' variable to the value of the current year.
           if (data[i][y] < countryValue && data[i][y] !== "") {
             countryValue = data[i][y]
           };
 
         } else {
           console.log("Error in min/max variables!");
-        };
-
+        };//End of 'Country Value' variable assignment.
       };//End of date loop.
     };//End of ‘No Data’ Check.
 
-    //Pushing Country Value variable into Country Values Array...
+    //Pushing 'Country Value' variable into 'Country Values Array'...
     //IF data is available for this (i) ‘Country Object’.
     if (countryValue !== "No Data") {
       countryValuesArray.push(countryValue);
@@ -90,7 +97,7 @@ function CheckMinMax(minORmax, data, firstYear, lastYear) {
 
   };//End of country loop.
 
-  //Assigning the Result variable to the least or greatest value in the ‘Country Values Array’...
+  //Assigning the 'Result' variable to the least or greatest value in the ‘Country Values Array’...
   //Checking if this is a MAX call.
   if (minORmax === "MAX") {
 
@@ -103,8 +110,39 @@ function CheckMinMax(minORmax, data, firstYear, lastYear) {
 
   } else {
     console.log("Error in min/max variables!");
-  };
+  };//End of 'Result' variable assignment.
 
   return result;
 
-};//End of min/max check function.
+};//End of 'Check Min/Max' function.
+
+//A function to scale, compile and reformat the selected datasets...
+//Within a specified date range.
+function scaleAllData(rData, xData, yData, rScale, xScale, yScale, firstYear, lastYear) {
+
+  //Array for storing the new ‘Country Objects’ to be created.
+  var newData = [];
+
+  //Looping over the existing array of ‘Country Objects’.
+  for (var i = 0; i < rData.length; i++) {
+
+    //Looping over the full date range for each ‘Country Object’.
+    for (var y = firstYear; y <= lastYear; y++) {
+
+      //Creating a new ‘Country Object’ with scaled data from each dataset...
+      //Pushing it onto the ‘New Data’ array.
+      newData.push({
+        "year": y,
+        "name": rData[i]["Country Name"],
+        "code": rData[i]["Country Code"],
+        "r": rScale(rData[i][y]),
+        "x": xScale(xData[i][y]),
+        "y": yScale(yData[i][y])
+      });
+
+    };//End of year loop.
+  };//End of country loop.
+
+  return newData;
+
+};//End of 'Scale All Data' function.

@@ -34,3 +34,10 @@ function drawChart(svg, windowWidth, windowHeight, topMargin, rightMargin, botto
              .ticks(10));
 
 };//End of draw chart function.
+
+//A function that defines how to draw the circles.
+function drawCircles(svg, circleData, year) {
+
+  //Coming Soon!
+
+};//End of draw circles function.

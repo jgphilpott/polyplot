@@ -8,6 +8,9 @@ $(document).on('ready', function() {
     var windowWidth = windowW();
     var windowHeight = windowH() - 3.51;//The Minus 3.51 Removes the Scroll Bars (any number greater than 3.5 works).
 
+    //Appending SVG Container equal to Window Width and Height.
+    var svg = d3.select("body").append("svg").attr("width", windowWidth).attr("height", (windowHeight));
+
     //Saving Margin Variables.
     var topMargin = topM();
     var rightMargin = rightM();
@@ -20,31 +23,38 @@ $(document).on('ready', function() {
     var currentYear = 2014;
 
     //Setting the Default Datasets.
+    var rData = populationData;
     var xData = lifeExpectancyData;
     var yData = fertilityData;
-    var rData = populationData;
 
     //These basic string variables are assigned for the purpose of the 'Check Min/Max' function call...
     //This helps keep code DRY by eliminating the need for two essentially identical functions ('Check Min' and 'Check Max').
     var max = "MAX";
     var min = "MIN";
 
-    //Finding the Min and Max Values for the selected X and Y Datasets...
+    //Finding the Min and Max Values for the selected R, X and Y datasets...
     //To be passed to the scaling functions.
+    var rDataMax = CheckMinMax(max, rData, firstYear, lastYear);
+    var rDataMin = CheckMinMax(min, rData, firstYear, lastYear);
     var xDataMax = CheckMinMax(max, xData, firstYear, lastYear);
     var xDataMin = CheckMinMax(min, xData, firstYear, lastYear);
     var yDataMax = CheckMinMax(max, yData, firstYear, lastYear);
     var yDataMin = CheckMinMax(min, yData, firstYear, lastYear);
 
     //Saving the return value of the Scaling Functions.
+    var rScale = radiusScale(rDataMax, rDataMin);
     var xScale = xAxisScale(xDataMax, xDataMin, windowWidth, rightMargin, leftMargin);
     var yScale = yAxisScale(yDataMax, yDataMin, windowHeight, topMargin, bottomMargin);
 
-    //Appending SVG Container equal to Window Width and Height.
-    var svg = d3.select("body").append("svg").attr("width", windowWidth).attr("height", (windowHeight));
+    //A function to scale, compile and reformat the selected datasets...
+    //Within a specified date range.
+    var drawData = scaleAllData(rData, xData, yData, rScale, xScale, yScale, firstYear, lastYear);
 
     //Calling the function that draws the chart.
     drawChart(svg, windowWidth, windowHeight, topMargin, rightMargin, bottomMargin, leftMargin, xScale, yScale);
+
+    //Draw circles based on selected datasets.
+    drawCircles(svg, drawData, currentYear);
 
     //Adding Event Listener for Mouse Move...
     //This is to create Mouse Guidelines and Tooltips.
