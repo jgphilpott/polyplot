@@ -7,49 +7,25 @@ $(document).on('ready', function() {
   //Main JS Function
   function mainFunction() {
 
-    //Getting Window Width
-    var windowW = function() {
-      var w = $(window).width();
-      return w;
-    };
-
-    //Getting Window Height
-    var windowH = function() {
-      var h = $(window).height();
-      return h;
-    };
-
     //Saving Width and Height
     var windowWidth = windowW();
     var windowHeight = windowH() - 3.51;//The Minus 3.51 Removes the Scroll Bars (any number greater than 3.5 works)
 
+    //Saving Margin Variables
+    var topMargin = topM();
+    var rightMargin = rightM();
+    var bottomMargin = bottomM();
+    var leftMargin = leftM();
+
+    //Saving Scaling Functions as Variables
+    var xScale = xAxisScale(data, windowWidth, rightMargin, leftMargin);
+    var yScale = yAxisScale(data, windowHeight, topMargin, bottomMargin);
+
     //Appending SVG Container equal to Window Width and Height
     var svg = d3.select("body").append("svg").attr("width", windowWidth).attr("height", (windowHeight));
 
-    //Creating a scale function for the X Axis
-    var xAxisScale = d3.scaleLinear()
-                       .domain([0, d3.max(data, function(d) { return d; })])
-                       .range([0, (windowWidth - rightMargin - leftMargin)]);
-
-    //Creating a scale function for the Y Axis
-    var yAxisScale = d3.scaleLinear()
-                       .domain([0, d3.max(data, function(d) { return d; })])
-                       .range([(windowHeight - topMargin - bottomMargin), 0]);
-
-     //Creating function for X axis Gridlines
-     function xGridlines() {
-       return d3.axisBottom(xAxisScale)
-                .ticks(5);
-     };
-
-     //Creating function for Y axis Gridlines
-     function yGridlines() {
-       return d3.axisLeft(yAxisScale)
-                .ticks(5);
-     };
-
     //Calling the Function that Draws the Chart
-    drawChart(svg, topMargin, rightMargin, bottomMargin, leftMargin, xAxisScale, yAxisScale, windowWidth, windowHeight, xGridlines, yGridlines);
+    drawChart(svg, windowWidth, windowHeight, topMargin, rightMargin, bottomMargin, leftMargin, xScale, yScale);
 
     //Adding Event Listener for Mouse Move
     //This is to create Mouse Guidelines and Tooltips

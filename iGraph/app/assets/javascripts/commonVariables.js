@@ -1,3 +1,15 @@
+//Getting Window Width
+var windowW = function() {
+  var w = $(window).width();
+  return w;
+};
+
+//Getting Window Height
+var windowH = function() {
+  var h = $(window).height();
+  return h;
+};
+
 //Defining Top Margin
 function topM() {
   return 50;
@@ -17,9 +29,3 @@ function bottomM() {
 function leftM() {
   return 50;
 };
-
-//Saving Margin Variables
-var topMargin = topM();
-var rightMargin = rightM();
-var bottomMargin = bottomM();
-var leftMargin = leftM();

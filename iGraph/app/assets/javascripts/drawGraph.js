@@ -1,21 +1,23 @@
-function drawChart(svg, topMargin, rightMargin, bottomMargin, leftMargin, xAxisScale, yAxisScale, windowWidth, windowHeight, xGridlines, yGridlines) {
+function drawChart(svg, windowWidth, windowHeight, topMargin, rightMargin, bottomMargin, leftMargin, xAxisScale, yAxisScale) {
 
   //Appending the X Gridlines
   svg.append("g")
      .attr("class", "grid")
      .attr("transform", "translate("+ leftMargin +"," + (windowHeight - bottomMargin) + ")")
-     .call(xGridlines()
-     .tickSize( -(windowHeight - topMargin - bottomMargin) )
-     .tickFormat(""));
+     .call(d3.axisBottom(xAxisScale)
+             .tickSize( -(windowHeight - topMargin - bottomMargin) )
+             .tickFormat("")
+             .ticks(5));
 
   //Appending the Y Gridlines
   svg.append("g")
      .attr("class", "grid")
      .attr("transform", "translate("+ leftMargin +", "+ topMargin +")")
-     .call(yGridlines()
-     .tickSize( -(windowWidth - leftMargin - rightMargin) )
-     .tickFormat(""));
-     
+     .call(d3.axisLeft(yAxisScale)
+             .tickSize( -(windowWidth - leftMargin - rightMargin) )
+             .tickFormat("")
+             .ticks(5));
+
   //Appending the X Axis
   svg.append("g")
      .attr("class", "axis")
