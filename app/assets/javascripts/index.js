@@ -20,7 +20,7 @@ $(document).on('ready', function() {
     //Setting the Default Date Range.
     var firstYear = 1960;
     var lastYear = 2014;
-    var currentYear = 2014;
+    var currentYear = 1960;
 
     //Setting the Default Datasets.
     var rData = populationData;
@@ -102,6 +102,8 @@ $(document).on('ready', function() {
       };//End of Mouse Location Check.
 
     });//End of Mouse Move Event Listener.
+
+    animate(currentYear, lastYear);
 
   };//End of Main Function.
 

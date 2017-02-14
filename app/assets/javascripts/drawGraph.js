@@ -41,9 +41,9 @@ function drawCircles(svg, circleData, radiusMax, theYear, topMargin, leftMargin)
   //Looping through the array of 'Country Objects' provided.
   for (var i = 0; i < circleData.length; i++) {
 
-    //If the year for this (i) 'Country Object' is equal to the current year and no data is missing from the object...
+    //If the year for this (i) 'Country Object' is equal to the current year...
     //Append the 'Country Object' as a circle onto the chart.
-    if (circleData[i].year === theYear && (circleData[i].x !== "" && circleData[i].y !== "" && circleData[i].r !== "")) {
+    if (circleData[i].year === theYear) {
       svg.append("circle")
          .attr("class", "countryCircle")
          .attr("id", circleData[i].name)
@@ -51,8 +51,6 @@ function drawCircles(svg, circleData, radiusMax, theYear, topMargin, leftMargin)
          .attr("cy", (topMargin + radiusMax + (circleData[i].y)))
          .attr("r", circleData[i].r)
          .attr("fill", "red");
-    };
-
+    };//End of year check.
   };//End of data loop.
-
 };//End of draw circles function.

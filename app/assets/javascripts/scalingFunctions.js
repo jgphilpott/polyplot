@@ -143,17 +143,19 @@ function scaleAllData(rData, xData, yData, rScale, xCircleS, yCircleS, firstYear
     //Looping over the full date range for each ‘Country Object’.
     for (var y = firstYear; y <= lastYear; y++) {
 
-      //Creating a new ‘Country Object’ with scaled data from each dataset...
-      //Pushing it onto the ‘New Data’ array.
-      newData.push({
-        "year": y,
-        "name": rData[i]["Country Name"],
-        "code": rData[i]["Country Code"],
-        "r": rScale(rData[i][y]),
-        "x": xCircleS(xData[i][y]),
-        "y": yCircleS(yData[i][y])
-      });
-
+      //Only add this (i) ‘Country Object’ to the New Data Array IF there are no missing data values.
+      if ((rData[i][y] !== "" && xData[i][y] !== "" && yData[i][y] !== "")) {
+        //Creating a new ‘Country Object’ with scaled data from each dataset...
+        //Pushing it onto the ‘New Data’ array.
+        newData.push({
+          "year": y,
+          "name": rData[i]["Country Name"],
+          "code": rData[i]["Country Code"],
+          "r": rScale(rData[i][y]),
+          "x": xCircleS(xData[i][y]),
+          "y": yCircleS(yData[i][y])
+        });//End of push.
+      };//End of missing data check.
     };//End of year loop.
   };//End of country loop.
 
