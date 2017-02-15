@@ -1,4 +1,4 @@
-var populationData = [
+[
   {
     "1960": 54208,
     "1961": 55435,
@@ -16895,4 +16895,4 @@ var populationData = [
     "Indicator Code": "SP.POP.TOTL",
     "": ""
   }
-];
+]

@@ -1,4 +1,4 @@
-var lifeExpectancyData = [
+[
   {
     "1960": 65.5693658536586,
     "1961": 65.9880243902439,
@@ -16895,4 +16895,4 @@ var lifeExpectancyData = [
     "Indicator Code": "SP.DYN.LE00.IN",
     "": ""
   }
-];
+]

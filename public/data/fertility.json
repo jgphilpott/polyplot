@@ -1,4 +1,4 @@
-var fertilityData = [
+[
   {
     "1960": 4.82,
     "1961": 4.655,
@@ -16895,4 +16895,4 @@ var fertilityData = [
     "Indicator Code": "SP.DYN.TFRT.IN",
     "": ""
   }
-];
+]
