@@ -1,3 +1,92 @@
+function dataFilter(startingArray ) {
+
+  newArray = [];
+
+  for (var i = 0; i < startingArray.length; i++) {
+
+    var match = false;
+
+    for (var j = 0; j < EuropeAndCentralAsia.length; j++) {
+      if (startingArray[i]["Country Code"] === EuropeAndCentralAsia[j]) {
+        startingArray[i]["Colour"] = "red";
+        newArray.push(startingArray[i]);
+        match = true;
+        break;
+      };
+    };
+
+    if (match) { continue; }
+
+    for (var j = 0; j < SubSaharanAfrica.length; j++) {
+      if (startingArray[i]["Country Code"] === SubSaharanAfrica[j]) {
+        startingArray[i]["Colour"] = "red";
+        newArray.push(startingArray[i]);
+        match = true;
+        break;
+      };
+    };
+
+    if (match) { continue; }
+
+    for (var j = 0; j < LatinAmericaAndCaribbean.length; j++) {
+      if (startingArray[i]["Country Code"] === LatinAmericaAndCaribbean[j]) {
+        startingArray[i]["Colour"] = "red";
+        newArray.push(startingArray[i]);
+        match = true;
+        break;
+      };
+    };
+
+    if (match) { continue; }
+
+    for (var j = 0; j < EastAsiaAndPacific.length; j++) {
+      if (startingArray[i]["Country Code"] === EastAsiaAndPacific[j]) {
+        startingArray[i]["Colour"] = "red";
+        newArray.push(startingArray[i]);
+        match = true;
+        break;
+      };
+    };
+
+    if (match) { continue; }
+
+    for (var j = 0; j < MidleEastAndNorthAfrica.length; j++) {
+      if (startingArray[i]["Country Code"] === MidleEastAndNorthAfrica[j]) {
+        startingArray[i]["Colour"] = "red";
+        newArray.push(startingArray[i]);
+        match = true;
+        break;
+      };
+    };
+
+    if (match) { continue; }
+
+    for (var j = 0; j < SouthAsia.length; j++) {
+      if (startingArray[i]["Country Code"] === SouthAsia[j]) {
+        startingArray[i]["Colour"] = "red";
+        newArray.push(startingArray[i]);
+        match = true;
+        break;
+      };
+    };
+
+    if (match) { continue; }
+
+    for (var j = 0; j < NorthAmerica.length; j++) {
+      if (startingArray[i]["Country Code"] === NorthAmerica[j]) {
+        startingArray[i]["Colour"] = "red";
+        newArray.push(startingArray[i]);
+        match = true;
+        break;
+      };
+    };
+
+  };
+
+  return newArray;
+
+};
+
 // Finding the min/max data value of all countries from the given dataset...
 // Within the specified date range.
 function CheckMinMax(minORmax, data, firstYear, lastYear) {

@@ -53,8 +53,8 @@ var min = "MIN";
 var max = "MAX";
 
 // Temporarily hard coded variables for the radius range.
-var radiusMin = 5;
-var radiusMax = 25;
+var radiusMin = 7;
+var radiusMax = 70;
 
 // Setting the default animation speed.
 var speed = 15000;
