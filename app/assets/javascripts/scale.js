@@ -51,6 +51,7 @@ function scaleDrawData(rData, xData, yData, rScale, xCircleScale, yCircleScale, 
       newData.push({
         "year": currentYear,
         "code": rData[i]["Country Code"],
+        "colour": rData[i]["Colour"],
         "r": rScale(rData[i][currentYear]),
         "x": xCircleScale(xData[i][currentYear]),
         "y": yCircleScale(yData[i][currentYear])

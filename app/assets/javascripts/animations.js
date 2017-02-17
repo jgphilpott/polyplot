@@ -30,6 +30,7 @@ function animate(svg, animationData, speed, topMargin, leftMargin, radiusMax) {
     country.transition()
            .duration(speed)
            .ease(d3.easeLinear)
+           .attr("r", animationData[i][animationData[i].length - 1].r)
            .attrTween("transform", translate(path.node()));
 
     // This function defines how to animate along the given 'Path'.

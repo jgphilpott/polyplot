@@ -77,6 +77,10 @@ function drawGraph(svg, windowWidth, windowHeight, topMargin, rightMargin, botto
 // A function that defines how to draw the circles.
 function drawCircles(svg, circleData, radiusMax, theYear, topMargin, leftMargin) {
 
+  circleData.sort(function(a, b) {
+    return b.r - a.r;
+  });
+
   // Looping through the array of 'Country Objects' provided.
   for (var i = 0; i < circleData.length; i++) {
 
@@ -87,7 +91,7 @@ function drawCircles(svg, circleData, radiusMax, theYear, topMargin, leftMargin)
        .attr("cx", (leftMargin + radiusMax + (circleData[i].x)))
        .attr("cy", (topMargin + radiusMax + (circleData[i].y)))
        .attr("r", circleData[i].r)
-       .attr("fill", "red");
+       .attr("fill", circleData[i].colour);
 
   };// End of FOR loop.
 };// End of 'Draw Circles' function.

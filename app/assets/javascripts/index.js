@@ -55,16 +55,12 @@ $(document).on('ready', function() {
     }).fail(function() {
       console.log("Failed to retrieve the requested dataset for yData!");
     });
-console.log(rData.length);
-console.log(xData.length);
-console.log(yData.length);
+
     //
     rData = dataFilter(rData);
     xData = dataFilter(xData);
     yData = dataFilter(yData);
-console.log(rData.length);
-console.log(xData.length);
-console.log(yData.length);
+
     // Finding the Min and Max values for the selected R, X and Y datasets...
     // To be passed to the scaling functions.
     var rDataMax = CheckMinMax(max, rData, firstYear, lastYear);

@@ -8,7 +8,7 @@ function dataFilter(startingArray ) {
 
     for (var j = 0; j < EuropeAndCentralAsia.length; j++) {
       if (startingArray[i]["Country Code"] === EuropeAndCentralAsia[j]) {
-        startingArray[i]["Colour"] = "red";
+        startingArray[i]["Colour"] = colors[1];
         newArray.push(startingArray[i]);
         match = true;
         break;
@@ -19,7 +19,7 @@ function dataFilter(startingArray ) {
 
     for (var j = 0; j < SubSaharanAfrica.length; j++) {
       if (startingArray[i]["Country Code"] === SubSaharanAfrica[j]) {
-        startingArray[i]["Colour"] = "red";
+        startingArray[i]["Colour"] = colors[6];
         newArray.push(startingArray[i]);
         match = true;
         break;
@@ -30,7 +30,7 @@ function dataFilter(startingArray ) {
 
     for (var j = 0; j < LatinAmericaAndCaribbean.length; j++) {
       if (startingArray[i]["Country Code"] === LatinAmericaAndCaribbean[j]) {
-        startingArray[i]["Colour"] = "red";
+        startingArray[i]["Colour"] = colors[2];
         newArray.push(startingArray[i]);
         match = true;
         break;
@@ -41,7 +41,7 @@ function dataFilter(startingArray ) {
 
     for (var j = 0; j < EastAsiaAndPacific.length; j++) {
       if (startingArray[i]["Country Code"] === EastAsiaAndPacific[j]) {
-        startingArray[i]["Colour"] = "red";
+        startingArray[i]["Colour"] = colors[0];
         newArray.push(startingArray[i]);
         match = true;
         break;
@@ -52,7 +52,7 @@ function dataFilter(startingArray ) {
 
     for (var j = 0; j < MidleEastAndNorthAfrica.length; j++) {
       if (startingArray[i]["Country Code"] === MidleEastAndNorthAfrica[j]) {
-        startingArray[i]["Colour"] = "red";
+        startingArray[i]["Colour"] = colors[3];
         newArray.push(startingArray[i]);
         match = true;
         break;
@@ -63,7 +63,7 @@ function dataFilter(startingArray ) {
 
     for (var j = 0; j < SouthAsia.length; j++) {
       if (startingArray[i]["Country Code"] === SouthAsia[j]) {
-        startingArray[i]["Colour"] = "red";
+        startingArray[i]["Colour"] = colors[5];
         newArray.push(startingArray[i]);
         match = true;
         break;
@@ -74,7 +74,7 @@ function dataFilter(startingArray ) {
 
     for (var j = 0; j < NorthAmerica.length; j++) {
       if (startingArray[i]["Country Code"] === NorthAmerica[j]) {
-        startingArray[i]["Colour"] = "red";
+        startingArray[i]["Colour"] = colors[4];
         newArray.push(startingArray[i]);
         match = true;
         break;
