@@ -27,7 +27,7 @@ $(document).on('ready', function() {
       dataType: "json",
       async: false
     }).done(function(data) {
-      rData = data;
+      rData = dataFilter(data);
     }).fail(function() {
       console.log("Failed to retrieve the requested dataset for rData!");
     });
@@ -39,7 +39,8 @@ $(document).on('ready', function() {
       dataType: "json",
       async: false
     }).done(function(data) {
-      xData = data;
+      xAxisLabel = data[0]["Indicator Name"]
+      xData = dataFilter(data);
     }).fail(function() {
       console.log("Failed to retrieve the requested dataset for xData!");
     });
@@ -51,15 +52,11 @@ $(document).on('ready', function() {
       dataType: "json",
       async: false
     }).done(function(data) {
-      yData = data;
+      yAxisLabel = data[0]["Indicator Name"]
+      yData = dataFilter(data);
     }).fail(function() {
       console.log("Failed to retrieve the requested dataset for yData!");
     });
-
-    //
-    rData = dataFilter(rData);
-    xData = dataFilter(xData);
-    yData = dataFilter(yData);
 
     // Finding the Min and Max values for the selected R, X and Y datasets...
     // To be passed to the scaling functions.
@@ -85,7 +82,7 @@ $(document).on('ready', function() {
     var animationData = scaleAnimationData(rData, xData, yData, rScale, xCircleScale, yCircleScale, firstYear, lastYear, currentYear);
 
     // Calling the function that draws the graph.
-    drawGraph(svg, windowWidth, windowHeight, topMargin, rightMargin, bottomMargin, leftMargin, xScale, yScale);
+    drawGraph(svg, windowWidth, windowHeight, topMargin, rightMargin, bottomMargin, leftMargin, xScale, yScale, xAxisLabel, yAxisLabel);
 
     // Calling the function that draws the circles 'Country Objects'.
     drawCircles(svg, drawData, radiusMax, currentYear, topMargin, leftMargin);

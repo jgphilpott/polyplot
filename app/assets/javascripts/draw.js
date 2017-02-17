@@ -1,5 +1,5 @@
 // A function that defines how to draw the graph.
-function drawGraph(svg, windowWidth, windowHeight, topMargin, rightMargin, bottomMargin, leftMargin, xAxisScale, yAxisScale) {
+function drawGraph(svg, windowWidth, windowHeight, topMargin, rightMargin, bottomMargin, leftMargin, xAxisScale, yAxisScale, xAxisLabel, yAxisLabel) {
 
   // Appending the X Gridlines.
   svg.append("g")
@@ -22,16 +22,35 @@ function drawGraph(svg, windowWidth, windowHeight, topMargin, rightMargin, botto
   // Appending the X Axis.
   svg.append("g")
      .attr("class", "axis")
+     .attr("id", "xAxis")
      .attr("transform", "translate(" + leftMargin + ", " + (windowHeight - bottomMargin) + ")")
      .call(d3.axisBottom(xAxisScale)
              .ticks(10));
 
+  // Appending X Axis Label.
+  svg.append("text")
+     .attr("class", "axis-label")
+     .attr("x", ( leftMargin + (windowWidth - (leftMargin + rightMargin))/2 ))
+     .attr("y",  ( windowHeight - (bottomMargin/2) ))
+     .attr("dy", ".35em")
+     .text(xAxisLabel);
+
   // Appending the Y Axis.
   svg.append("g")
      .attr("class", "axis")
+     .attr("id", "yAxis")
      .attr("transform", "translate(" + leftMargin + ", " + topMargin + ")")
      .call(d3.axisLeft(yAxisScale)
              .ticks(10));
+
+// Appending Y Axis Label.
+svg.append("text")
+   .attr("class", "axis-label")
+   .attr("transform", "rotate(-90)")
+   .attr("x", -(topMargin + (windowHeight - (topMargin + bottomMargin))/2))
+   .attr("y",  leftMargin/2)
+   .attr("dy", ".35em")
+   .text(yAxisLabel);
 
   // Adding Event Listener for Mousemove...
   // This is to create Guidelines and Tooltips.

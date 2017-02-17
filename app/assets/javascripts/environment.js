@@ -24,23 +24,18 @@ function rightM() {
 
 // Defining the Bottom Margin.
 function bottomM() {
-  return 50;
+  return 70;
 };
 
 // Defining the Left Margin.
 function leftM() {
-  return 50;
+  return 70;
 };
 
 // Setting the Default Dataset Keys.
 var rDataKey = "population";
 var xDataKey = "lifeExpectancy";
 var yDataKey = "fertility";
-
-// Creating variables to hold the various datasets.
-var rData;
-var xData;
-var yData;
 
 // Setting the Default Date Range.
 var firstYear = 1960;
