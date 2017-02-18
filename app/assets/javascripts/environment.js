@@ -14,12 +14,12 @@ function windowH() {
 
 // Defining the Top Margin.
 function topM() {
-  return 50;
+  return 120;
 };
 
 // Defining the Right Margin.
 function rightM() {
-  return 50;
+  return 85;
 };
 
 // Defining the Bottom Margin.
@@ -53,6 +53,8 @@ var radiusMax = 70;
 
 // Setting the default animation speed.
 var speed = 15000;
+
+var overCountry  = false;
 
 // An array of color values.
 var colors = ["#3168C5", "#E03621", "#FF9735", "#009634", "#9D0893", "#009AC2", "#E14375", "#000000"];

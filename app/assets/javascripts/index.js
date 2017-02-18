@@ -6,7 +6,7 @@ $(document).on('ready', function() {
 
     // Saving Window Width and Height Variables.
     var windowWidth = windowW();
-    var windowHeight = windowH() - 3.51;// The Minus 3.51 Removes the Scroll Bars (any number greater than 3.5 works).
+    var windowHeight = windowH() - 3.5001;// The Minus 3.51 Removes the Scroll Bars (any number greater than 3.5 works).
 
     // Appending an SVG Container equal to Window Width and Height.
     var svg = d3.select("body").append("svg").attr("width", windowWidth).attr("height", windowHeight);
@@ -16,6 +16,9 @@ $(document).on('ready', function() {
     var rightMargin = rightM();
     var bottomMargin = bottomM();
     var leftMargin = leftM();
+
+    var graphWidth = windowWidth - leftMargin - rightMargin;
+    var graphHeight = windowHeight - topMargin - bottomMargin;
 
     // The following AJAX requests retrieve a JSON blob using the dataset key variables...
     // These requests are synchronous because we can’t proceed without our data.
@@ -82,7 +85,7 @@ $(document).on('ready', function() {
     var animationData = scaleAnimationData(rData, xData, yData, rScale, xCircleScale, yCircleScale, firstYear, lastYear, currentYear);
 
     // Calling the function that draws the graph.
-    drawGraph(svg, windowWidth, windowHeight, topMargin, rightMargin, bottomMargin, leftMargin, xScale, yScale, xAxisLabel, yAxisLabel);
+    drawGraph(svg, windowWidth, windowHeight, topMargin, rightMargin, bottomMargin, leftMargin, xScale, yScale, xAxisLabel, yAxisLabel, graphWidth, graphHeight);
 
     // Calling the function that draws the circles 'Country Objects'.
     drawCircles(svg, drawData, radiusMax, currentYear, topMargin, leftMargin);
