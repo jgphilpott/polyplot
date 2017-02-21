@@ -2,6 +2,7 @@
 function drawAll() {
   drawGraph();
   drawCircles();
+  drawTimeControls();
 };
 
 // A function that defines how to draw the graph.
@@ -44,7 +45,6 @@ function drawGraph() {
   // Appending the X Axis.
   fullScreen.append("g")
             .attr("class", "axis")
-            .attr("id", "xAxis")
             .attr("transform", "translate(" + leftMargin + ", " + (windowHeight - bottomMargin) + ")")
             .call(d3.axisBottom(xScale)
                     .ticks(10));
@@ -60,7 +60,6 @@ function drawGraph() {
   // Appending the Y Axis.
   fullScreen.append("g")
             .attr("class", "axis")
-            .attr("id", "yAxis")
             .attr("transform", "translate(" + leftMargin + ", " + topMargin + ")")
             .call(d3.axisLeft(yScale)
                     .ticks(10));
@@ -114,7 +113,7 @@ function drawCircles() {
 
     // Appending the 'Country Object' as a circle onto the graph.
     graphArea.append("circle")
-             .attr("class", "countryCircle")
+             .attr("class", "country-circle")
              .attr("id", circleData[i].Code)
              .attr("cx", circleData[i].X)
              .attr("cy", circleData[i].Y)
@@ -127,14 +126,14 @@ function drawCircles() {
   var mouseOverCountry  = false;
 
   // Adding an event handler to change style properties of a country circle while the mouse is hovering over it.
-  $(".countryCircle").mouseover(function(event) {
+  $(".country-circle").mouseover(function(event) {
     mouseOverCountry = true;
     $(this).css('cursor', 'pointer');
     $(this).css('stroke-width', 2.5);
   });
 
   // Adding an event handler to restore style properties of a country circle after the mouse leaves.
-  $(".countryCircle").mouseout(function(event) {
+  $(".country-circle").mouseout(function(event) {
     mouseOverCountry = false;
     $(this).css('stroke-width', 1.25);
   });
@@ -143,160 +142,151 @@ function drawCircles() {
 
 function drawTimeControls() {
 
-  var timeControls = svg.append("svg")
-     .attr("width", graphWidth)
-     .attr("height", 34)
-     .attr("x", leftMargin)
-     .attr("y", 65);
+  // Appending a new SVG to simplify the positioning of child elements.
+  var timeControls = fullScreen.append("svg")
+                               .attr("class", "time-controls")
+                               .attr("width", graphWidth)
+                               .attr("height", 34)
+                               .attr("x", leftMargin)
+                               .attr("y", 65);
 
+  // Appending a line to represent the date range.
   timeControls.append("line")
-     .attr("stroke", "grey")
-     .attr("stroke-width", 5)
-     .attr("stroke-linecap", "round")
-     .attr("x1", 150)
-     .attr("y1", 17)
-     .attr("x2", graphWidth - 150)
-     .attr("y2", 17)
+              .attr("x1", 150)
+              .attr("y1", 17)
+              .attr("x2", graphWidth - 150)
+              .attr("y2", 17);
 
+  // Appending the skip back button.
   timeControls.append("path")
-     .attr("stroke", "grey")
-     .attr("fill", "grey")
-     .attr("stroke-width", 1)
-     .attr("transform", "translate(53, 1)")
-     .attr("d", "M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13zM12 9l12 7-12 7z");
+              .attr("transform", "translate(10, 1)")
+              .attr("d", "M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13 M14 16l8-6v12 M10 10h4v12h-4v-12z");
 
+  // Appending the play forward button.
   timeControls.append("path")
-     .attr("stroke", "grey")
-     .attr("fill", "grey")
-     .attr("stroke-width", 1)
-     .attr("transform", "translate(10, 1)")
-     .attr("d", "M16 0c8.837 0 16 7.163 16 16s-7.163 16-16 16-16-7.163-16-16 7.163-16 16-16zM16 29c7.18 0 13-5.82 13-13s-5.82-13-13-13-13 5.82-13 13 5.82 13 13 13 M18 16l-8-6v12 M22 10h-4v12h4v-12z");
+              .attr("transform", "translate(53, 1)")
+              .attr("d", "M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13zM12 9l12 7-12 7z");
 
+  // Appending the fast forward button.
   timeControls.append("path")
-     .attr("stroke", "grey")
-     .attr("fill", "grey")
-     .attr("stroke-width", 1)
-     .attr("transform", "translate(96, 1)")
-     .attr("d", "M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13zM10 11l7 5-7 5zM18 11l7 5-7 5z");
+              .attr("transform", "translate(96, 1)")
+              .attr("d", "M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13zM10 11l7 5-7 5zM18 11l7 5-7 5z");
 
+  // Appending the fast back button.
   timeControls.append("path")
-     .attr("stroke", "grey")
-     .attr("fill", "grey")
-     .attr("stroke-width", 1)
-     .attr("transform", "translate(" + (graphWidth - 86) + ", 1)")
-     .attr("d", "M16 32c8.837 0 16-7.163 16-16s-7.163-16-16-16-16 7.163-16 16 7.163 16 16 16zM16 3c7.18 0 13 5.82 13 13s-5.82 13-13 13-13-5.82-13-13 5.82-13 13-13zM20 23l-12-7 12-7z");
+              .attr("transform", "translate(" + (graphWidth - 129) + ", 1)")
+              .attr("d", "M16 32c8.837 0 16-7.163 16-16s-7.163-16-16-16-16 7.163-16 16 7.163 16 16 16zM16 3c7.18 0 13 5.82 13 13s-5.82 13-13 13-13-5.82-13-13 5.82-13 13-13zM22 21l-7-5 7-5zM14 21l-7-5 7-5z");
 
+  // Appending the play back button.
   timeControls.append("path")
-     .attr("stroke", "grey")
-     .attr("fill", "grey")
-     .attr("stroke-width", 1)
-     .attr("transform", "translate(" + (graphWidth - 43) + ", 1)")
-     .attr("d", "M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13 M14 16l8-6v12 M10 10h4v12h-4v-12z");
+              .attr("transform", "translate(" + (graphWidth - 86) + ", 1)")
+              .attr("d", "M16 32c8.837 0 16-7.163 16-16s-7.163-16-16-16-16 7.163-16 16 7.163 16 16 16zM16 3c7.18 0 13 5.82 13 13s-5.82 13-13 13-13-5.82-13-13 5.82-13 13-13zM20 23l-12-7 12-7z");
 
+  // Appending the skip forward button.
   timeControls.append("path")
-     .attr("stroke", "grey")
-     .attr("fill", "grey")
-     .attr("stroke-width", 1)
-     .attr("transform", "translate(" + (graphWidth - 129) + ", 1)")
-     .attr("d", "M16 32c8.837 0 16-7.163 16-16s-7.163-16-16-16-16 7.163-16 16 7.163 16 16 16zM16 3c7.18 0 13 5.82 13 13s-5.82 13-13 13-13-5.82-13-13 5.82-13 13-13zM22 21l-7-5 7-5zM14 21l-7-5 7-5z");
+              .attr("transform", "translate(" + (graphWidth - 43) + ", 1)")
+              .attr("d", "M16 0c8.837 0 16 7.163 16 16s-7.163 16-16 16-16-7.163-16-16 7.163-16 16-16zM16 29c7.18 0 13-5.82 13-13s-5.82-13-13-13-13 5.82-13 13 5.82 13 13 13 M18 16l-8-6v12 M22 10h-4v12h4v-12z");
 
-  var currentYearControl = timeControls.append("svg")
-                                       .attr("class", "yearControl")
-                                       .attr("id", "currentYearControl")
+  // Appending a new SVG to act as the dragable controller for first year.
+  var firstYearController = timeControls.append("svg")
+                                        .attr("class", "year-control")
+                                        .attr("id", "first-year-controller")
+                                        .attr("width", 28)
+                                        .attr("height", 28)
+                                        .attr("x", 151)
+                                        .attr("y", 3);
+
+  // Appending a new SVG to act as the dragable controller for last year.
+  var lastYearController = timeControls.append("svg")
+                                       .attr("class", "year-control")
+                                       .attr("id", "last-year-controller")
                                        .attr("width", 28)
                                        .attr("height", 28)
-                                       .attr("x", graphWidth/2 - 28)
+                                       .attr("x", graphWidth - 179)
                                        .attr("y", 3);
 
-  var firstYearControl = timeControls.append("svg")
-                                     .attr("class", "yearControl")
-                                     .attr("id", "firstYearControl")
-                                     .attr("width", 28)
-                                     .attr("height", 28)
-                                     .attr("x", 155)
-                                     .attr("y", 3);
+  // Appending a new SVG to act as the dragable controller for current year.
+  var currentYearController = timeControls.append("svg")
+                                          .attr("class", "year-control")
+                                          .attr("id", "current-year-controller")
+                                          .attr("width", 28)
+                                          .attr("height", 28)
+                                          .attr("x", graphWidth/2 - 14)
+                                          .attr("y", 3);
 
-  var lastYearControl = timeControls.append("svg")
-                                    .attr("class", "yearControl")
-                                    .attr("id", "lastYearControl")
-                                    .attr("width", 28)
-                                    .attr("height", 28)
-                                    .attr("x", graphWidth - 183)
-                                    .attr("y", 3);
+  // Appending the background for the 'First Year Controller'.
+  firstYearController.append("circle")
+                     .attr("cx", 14)
+                     .attr("cy", 14)
+                     .attr("r", 14);
 
-  var firstYear = (leftMargin + 155 );
-  var currentYear = (leftMargin + (graphWidth/2 - 28));
-  var lastYear = (leftMargin + (graphWidth - 183));
+  // Appending the background for the 'Last Year Controller'.
+  lastYearController.append("circle")
+                    .attr("cx", 14)
+                    .attr("cy", 14)
+                    .attr("r", 14);
 
-  currentYearControl.append("circle")
-        .attr("cx", 14)
-        .attr("cy", 14)
-        .attr("r", 14)
-        .attr("fill", "white")
+  // Appending the background for the 'Current Year Controller'.
+  currentYearController.append("circle")
+                       .attr("cx", 14)
+                       .attr("cy", 14)
+                       .attr("r", 14);
 
-  firstYearControl.append("circle")
-        .attr("cx", 14)
-        .attr("cy", 14)
-        .attr("r", 14)
-        .attr("fill", "white")
+  // Appending the icon for the 'First Year Controller'.
+  firstYearController.append("path")
+                     .attr("transform", "translate(3, 3)")
+                     .attr("d", "M11.2 0c-6.186 0-11.2 5.014-11.2 11.2s5.014 11.2 11.2 11.2 11.2-5.014 11.2-11.2-5.014-11.2-11.2-11.2zM11.2 19.6c-4.639 0-8.4-3.761-8.4-8.4s3.761-8.4 8.4-8.4c4.639 0 8.4 3.761 8.4 8.4s-3.761 8.4-8.4 8.4zM7 11.2c0-2.32 1.88-4.2 4.2-4.2s4.2 1.88 4.2 4.2c0 2.32-1.88 4.2-4.2 4.2s-4.2-1.88-4.2-4.2z");
 
-  lastYearControl.append("circle")
-        .attr("cx", 14)
-        .attr("cy", 14)
-        .attr("r", 14)
-        .attr("fill", "white")
+  // Appending the icon for the 'Last Year Controller'.
+  lastYearController.append("path")
+                    .attr("transform", "translate(3, 3)")
+                    .attr("d", "M11.2 0c-6.186 0-11.2 5.014-11.2 11.2s5.014 11.2 11.2 11.2 11.2-5.014 11.2-11.2-5.014-11.2-11.2-11.2zM11.2 19.6c-4.639 0-8.4-3.761-8.4-8.4s3.761-8.4 8.4-8.4c4.639 0 8.4 3.761 8.4 8.4s-3.761 8.4-8.4 8.4zM7 11.2c0-2.32 1.88-4.2 4.2-4.2s4.2 1.88 4.2 4.2c0 2.32-1.88 4.2-4.2 4.2s-4.2-1.88-4.2-4.2z");
 
-  firstYearControl.append("path")
-     .attr("stroke", "grey")
-     .attr("fill", "grey")
-     .attr("stroke-width", 1)
-     .attr("transform", "translate(3, 3)")
-     .attr("d", "M11.2 0c-6.186 0-11.2 5.014-11.2 11.2s5.014 11.2 11.2 11.2 11.2-5.014 11.2-11.2-5.014-11.2-11.2-11.2zM11.2 19.6c-4.639 0-8.4-3.761-8.4-8.4s3.761-8.4 8.4-8.4c4.639 0 8.4 3.761 8.4 8.4s-3.761 8.4-8.4 8.4zM7 11.2c0-2.32 1.88-4.2 4.2-4.2s4.2 1.88 4.2 4.2c0 2.32-1.88 4.2-4.2 4.2s-4.2-1.88-4.2-4.2z");
+  // Appending the icon for the 'Current Year Controller'.
+  currentYearController.append("path")
+                       .attr("transform", "translate(3, 3)")
+                       .attr("d", "M11.2 0c-6.186 0-11.2 5.014-11.2 11.2s5.014 11.2 11.2 11.2 11.2-5.014 11.2-11.2-5.014-11.2-11.2-11.2zM11.2 14c-1.546 0-2.8-1.254-2.8-2.8s1.254-2.8 2.8-2.8c1.546 0 2.8 1.254 2.8 2.8s-1.254 2.8-2.8 2.8z");
 
-  lastYearControl.append("path")
-     .attr("stroke", "grey")
-     .attr("fill", "grey")
-     .attr("stroke-width", 1)
-     .attr("transform", "translate(3, 3)")
-     .attr("d", "M11.2 0c-6.186 0-11.2 5.014-11.2 11.2s5.014 11.2 11.2 11.2 11.2-5.014 11.2-11.2-5.014-11.2-11.2-11.2zM11.2 19.6c-4.639 0-8.4-3.761-8.4-8.4s3.761-8.4 8.4-8.4c4.639 0 8.4 3.761 8.4 8.4s-3.761 8.4-8.4 8.4zM7 11.2c0-2.32 1.88-4.2 4.2-4.2s4.2 1.88 4.2 4.2c0 2.32-1.88 4.2-4.2 4.2s-4.2-1.88-4.2-4.2z");
+  // Assigning number variables equal to the controller starting positions.
+  var firstYearControllerPosition = (leftMargin + 151 );
+  var currentYearControllerPosition = (leftMargin + (graphWidth/2 - 14));
+  var lastYearControllerPosition = (leftMargin + (graphWidth - 179));
 
-  currentYearControl.append("path")
-     .attr("stroke", "grey")
-     .attr("fill", "grey")
-     .attr("stroke-width", 1)
-     .attr("transform", "translate(3, 3)")
-     .attr("d", "M11.2 0c-6.186 0-11.2 5.014-11.2 11.2s5.014 11.2 11.2 11.2 11.2-5.014 11.2-11.2-5.014-11.2-11.2-11.2zM11.2 14c-1.546 0-2.8-1.254-2.8-2.8s1.254-2.8 2.8-2.8c1.546 0 2.8 1.254 2.8 2.8s-1.254 2.8-2.8 2.8z");
+  // Adding the draggable event handler for the year controllers.
+  $(".year-control").draggable().bind('drag', function(event, ui) {
 
+    // Checking if the selected controller is for the first year.
+    if (event.target.id === "first-year-controller") {
 
-    $(".yearControl").draggable().bind('drag', function(event, ui){
+      // Checking if the selected controller is within the permitted range.
+      if (ui.position.left > (leftMargin + 151) && ui.position.left < currentYearControllerPosition - 26) {
 
-    if (event.target.id === "firstYearControl") {
+        // Updating the controller position variable.
+        firstYearControllerPosition = ui.position.left;
 
-      if (ui.position.left > (leftMargin + 155) && ui.position.left < currentYear - 26) {
-        firstYear = ui.position.left;
+        // Updating the controller position.
         event.target.setAttribute("x", (ui.position.left - leftMargin));
       };
 
-    } else if (event.target.id === "currentYearControl") {
+      // The following code blocks follow the same pattern as above.
 
-      if (ui.position.left > (firstYear + 26) && ui.position.left < lastYear - 26) {
-        currentYear = ui.position.left;
+    } else if (event.target.id === "last-year-controller") {
+
+      if (ui.position.left > (currentYearControllerPosition + 26) && ui.position.left < (leftMargin + (graphWidth - 179))) {
+        lastYearControllerPosition = ui.position.left;
         event.target.setAttribute("x", (ui.position.left - leftMargin));
       };
 
-    } else if (event.target.id === "lastYearControl") {
+    } else if (event.target.id === "current-year-controller") {
 
-      if (ui.position.left > (currentYear + 26) && ui.position.left < (leftMargin + (graphWidth - 183))) {
-        lastYear = ui.position.left;
+      if (ui.position.left > (firstYearControllerPosition + 26) && ui.position.left < lastYearControllerPosition - 26) {
+        currentYearControllerPosition = ui.position.left;
         event.target.setAttribute("x", (ui.position.left - leftMargin));
       };
 
-    } else {
-      console.log("Error in Year Controls!");
-    };
-
-  });
-};
+    };// End of target ID check.
+  });// End of draggable event handler.
+};// End of 'Draw Time Controls' function.
 
 function drawMenu() {
 

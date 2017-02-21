@@ -1,6 +1,6 @@
 // A function for animating the ‘Country Objects’ along their defined paths.
 function animate(svg, animationData, speed, topMargin, leftMargin, radiusMax) {
- 
+
   // This function will generate a unique path for each ‘Country Object’ it is passed.
   var generator = d3.line()
                     .x(function(d) { return ((d.x) + leftMargin + radiusMax); })
@@ -13,7 +13,7 @@ function animate(svg, animationData, speed, topMargin, leftMargin, radiusMax) {
     // Appending the paths to the SVG container.
     svg.append("path")
        .attr("d", generator(animationData[i]))
-       .attr("class", "countryPath")
+       .attr("class", "country-path")
        .attr("id", animationData[i][0].code)
        .attr("fill", "none");
 
@@ -23,8 +23,8 @@ function animate(svg, animationData, speed, topMargin, leftMargin, radiusMax) {
   for (var i = 0; i < animationData.length; i++) {
 
     // Selecting the ‘Circle’ and 'Path' that correspond to the current 'Country Object' (i) in our loop.
-    var country = d3.selectAll("#" + animationData[i][0].code + ".countryCircle");
-    var path = d3.selectAll("#" + animationData[i][0].code + ".countryPath");
+    var country = d3.selectAll("#" + animationData[i][0].code + ".country-circle");
+    var path = d3.selectAll("#" + animationData[i][0].code + ".country-path");
 
     // Initiating an animation for the current ‘Country Object’.
     country.transition()
