@@ -1,6 +1,9 @@
 // A function for retrieving the currently selected datasets.
 function getData() {
 
+  // Creating the 'Graph Data' variable as an empty array to be populated by the 'Organize' function.
+  graphData = [];
+
   // The following AJAX calls retrieve a JSON blob using the 'Dataset Keys' array...
   // These calls are synchronous because we can’t proceed without our data.
   for (var i = 0; i < datasetKeys.length; i++) {
@@ -22,9 +25,11 @@ function getData() {
         rDataMax = undefined;
         rDataMin = undefined;
       } else if (i === 1) {
+        xAxisLabel = data[0]["Indicator Name"];
         xDataMax = undefined;
         xDataMin = undefined;
       } else if (i === 2) {
+        yAxisLabel = data[0]["Indicator Name"];
         yDataMax = undefined;
         yDataMin = undefined;
       } else {
@@ -118,9 +123,6 @@ function organize(data, index) {
                 // Switch the match variable to true.
                 match = true;
 
-                // Splice the category array, so that we don’t double check codes that have already been matched.
-                EuropeAndCentralAsia.splice(l, 1);
-
                 // Find the current object in the 'Country Objects' array and assign the appropriate color for this category.
                 countryObjects[k - firstYear]["Colour"] = colors[1];
 
@@ -137,7 +139,6 @@ function organize(data, index) {
             for (var l = 0; l < SubSaharanAfrica.length; l++) {
               if (SubSaharanAfrica[l] === data[i]["Country Code"]) {
                 match = true;
-                SubSaharanAfrica.splice(l, 1);
                 countryObjects[k - firstYear]["Colour"] = colors[6];
                 break;
               };
@@ -148,7 +149,6 @@ function organize(data, index) {
             for (var l = 0; l < LatinAmericaAndCaribbean.length; l++) {
               if (LatinAmericaAndCaribbean[l] === data[i]["Country Code"]) {
                 match = true;
-                LatinAmericaAndCaribbean.splice(l, 1);
                 countryObjects[k - firstYear]["Colour"] = colors[2];
                 break;
               };
@@ -159,7 +159,6 @@ function organize(data, index) {
             for (var l = 0; l < EastAsiaAndPacific.length; l++) {
               if (EastAsiaAndPacific[l] === data[i]["Country Code"]) {
                 match = true;
-                EastAsiaAndPacific.splice(l, 1);
                 countryObjects[k - firstYear]["Colour"] = colors[0];
                 break;
               };
@@ -170,7 +169,6 @@ function organize(data, index) {
             for (var l = 0; l < MidleEastAndNorthAfrica.length; l++) {
               if (MidleEastAndNorthAfrica[l] === data[i]["Country Code"]) {
                 match = true;
-                MidleEastAndNorthAfrica.splice(l, 1);
                 countryObjects[k - firstYear]["Colour"] = colors[3];
                 break;
               };
@@ -181,7 +179,6 @@ function organize(data, index) {
             for (var l = 0; l < SouthAsia.length; l++) {
               if (SouthAsia[l] === data[i]["Country Code"]) {
                 match = true;
-                SouthAsia.splice(l, 1);
                 countryObjects[k - firstYear]["Colour"] = colors[5];
                 break;
               };
@@ -192,7 +189,6 @@ function organize(data, index) {
             for (var l = 0; l < NorthAmerica.length; l++) {
               if (NorthAmerica[l] === data[i]["Country Code"]) {
                 match = true;
-                NorthAmerica.splice(l, 1);
                 countryObjects[k - firstYear]["Colour"] = colors[4];
                 break;
               };

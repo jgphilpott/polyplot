@@ -1,36 +1,57 @@
-// Setting a variety of useful variables that will help define how to draw the graph.
+// A function for setting a variety of useful variables based on the users unique browser environment...
+// This will help define how to draw the graph.
+function environmentCheck() {
 
-// Getting Window Width.
-function windowW() {
-  var w = $(window).width();
-  return w;
-};
+  // Getting Window Width.
+  function windowW() {
+    var w = $(window).width();
+    return w;
+  };
 
-// Getting Window Height.
-function windowH() {
-  var h = $(window).height();
-  return h;
-};
+  // Getting Window Height.
+  function windowH() {
+    var h = $(window).height();
+    return h;
+  };
 
-// Defining the Top Margin.
-function topM() {
-  return 120;
-};
+  // Defining the Top Margin.
+  function topM() {
+    return 120;
+  };
 
-// Defining the Right Margin.
-function rightM() {
-  return 50;
-};
+  // Defining the Right Margin.
+  function rightM() {
+    return 70;
+  };
 
-// Defining the Bottom Margin.
-function bottomM() {
-  return 70;
-};
+  // Defining the Bottom Margin.
+  function bottomM() {
+    return 70;
+  };
 
-// Defining the Left Margin.
-function leftM() {
-  return 70;
-};
+  // Defining the Left Margin.
+  function leftM() {
+    return 70;
+  };
+
+  // Saving Window Width and Height Variables.
+  windowWidth = windowW();
+  windowHeight = windowH() - 3.51;// The Minus 3.51 Removes the Scroll Bars (any number greater than 3.5 works).
+
+  // Saving Margin Variables.
+  topMargin = topM();
+  rightMargin = rightM();
+  bottomMargin = bottomM();
+  leftMargin = leftM();
+
+  // Saving Graph Dimensions.
+  graphWidth = windowWidth - leftMargin - rightMargin;
+  graphHeight = windowHeight - topMargin - bottomMargin;
+
+  // Appending an SVG Container equal to Window Width and Height.
+  fullScreen = d3.select("body").append("svg").attr("width", windowWidth).attr("height", windowHeight);
+
+};// End of 'Environment Check' function.
 
 // Setting the Default Dataset Keys.
 datasetKeys = ["population", "lifeExpectancy", "fertility"];
@@ -63,6 +84,3 @@ var southAsia = ["AFG", "BGD", "BTN", "IND", "MDV", "NPL", "PAK", "LKA"];
 var regionsExcludingHighIncome = ["EAP", "ECA", "LAC", "MNA", "SSA"];
 var incomeLevel = ["LIC", "LMC", "LMY", "MIC", "UMC", "HIC", "HPC"];
 var northAmerica = ["BMU", "CAN", "USA"];
-
-// Creating the 'Graph Data' variable as an empty array to be populated by the 'Organize' function.
-graphData = [];
