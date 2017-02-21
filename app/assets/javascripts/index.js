@@ -1,74 +1,28 @@
 // Only loads JavaScript once DOM is ready.
 $(document).on('ready', function() {
 
-  // Main JS Function.
-  function mainFunction() {
+  // 'Initial Setup' function.
+  function initialSetup() {
 
     // Saving Window Width and Height Variables.
-    var windowWidth = windowW();
-    var windowHeight = windowH() - 3.5001;// The Minus 3.51 Removes the Scroll Bars (any number greater than 3.5 works).
+    windowWidth = windowW();
+    windowHeight = windowH() - 3.51;// The Minus 3.51 Removes the Scroll Bars (any number greater than 3.5 works).
 
     // Appending an SVG Container equal to Window Width and Height.
-    var svg = d3.select("body").append("svg").attr("width", windowWidth).attr("height", windowHeight);
+    fullScreen  = d3.select("body").append("svg").attr("width", windowWidth).attr("height", windowHeight);
 
     // Saving Margin Variables.
-    var topMargin = topM();
-    var rightMargin = rightM();
-    var bottomMargin = bottomM();
-    var leftMargin = leftM();
+    topMargin = topM();
+    rightMargin = rightM();
+    bottomMargin = bottomM();
+    leftMargin = leftM();
 
-    var graphWidth = windowWidth - leftMargin - rightMargin;
-    var graphHeight = windowHeight - topMargin - bottomMargin;
+    // Saving Graph Dimensions.
+    graphWidth = windowWidth - leftMargin - rightMargin;
+    graphHeight = windowHeight - topMargin - bottomMargin;
 
-    // The following AJAX requests retrieve a JSON blob using the dataset key variables...
-    // These requests are synchronous because we can’t proceed without our data.
-
-    // Retrieving JSON for the 'rData' dataset.
-    $.ajax({
-      url: "/data/" + rDataKey + ".json",
-      method: "GET",
-      dataType: "json",
-      async: false
-    }).done(function(data) {
-      rData = dataFilter(data);
-    }).fail(function() {
-      console.log("Failed to retrieve the requested dataset for rData!");
-    });
-
-    // Retrieving JSON for the 'xData' dataset.
-    $.ajax({
-      url: "/data/" + xDataKey + ".json",
-      method: "GET",
-      dataType: "json",
-      async: false
-    }).done(function(data) {
-      xAxisLabel = data[0]["Indicator Name"]
-      xData = dataFilter(data);
-    }).fail(function() {
-      console.log("Failed to retrieve the requested dataset for xData!");
-    });
-
-    // Retrieving JSON for the 'yData' dataset.
-    $.ajax({
-      url: "/data/" + yDataKey + ".json",
-      method: "GET",
-      dataType: "json",
-      async: false
-    }).done(function(data) {
-      yAxisLabel = data[0]["Indicator Name"]
-      yData = dataFilter(data);
-    }).fail(function() {
-      console.log("Failed to retrieve the requested dataset for yData!");
-    });
-
-    // Finding the Min and Max values for the selected R, X and Y datasets...
-    // To be passed to the scaling functions.
-    var rDataMax = CheckMinMax(max, rData, firstYear, lastYear);
-    var rDataMin = CheckMinMax(min, rData, firstYear, lastYear);
-    var xDataMax = CheckMinMax(max, xData, firstYear, lastYear);
-    var xDataMin = CheckMinMax(min, xData, firstYear, lastYear);
-    var yDataMax = CheckMinMax(max, yData, firstYear, lastYear);
-    var yDataMin = CheckMinMax(min, yData, firstYear, lastYear);
+    // Retrieving and organizing the currently selected datasets.
+    getData();
 
     // Saving the Scaling Functions into appropriate variables.
     var rScale = radiusS(rDataMin, rDataMax, radiusMin, radiusMax);
@@ -91,17 +45,17 @@ $(document).on('ready', function() {
     drawCircles(svg, drawData, radiusMax, currentYear, topMargin, leftMargin);
 
     // Calling the function that initiates the animation.
-    animate(svg, animationData, speed, topMargin, leftMargin, radiusMax);
+    // animate(svg, animationData, speed, topMargin, leftMargin, radiusMax);
 
-  };// End of Main Function.
+  };// End of 'Initial Setup' function.
 
   // Adjusting for Window Resize.
   $(window).resize(function(){
     $("svg").remove();
-    mainFunction();
+    initialSetup();
   });
 
-  // Calling the Main Function.
-  mainFunction();
+  // Calling 'Initial Setup' function.
+  initialSetup();
 
 });// End of file.

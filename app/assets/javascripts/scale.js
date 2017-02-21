@@ -4,7 +4,7 @@ function radiusS(minData, maxData, radiusMin, radiusMax) {
            .domain([minData, maxData])
            .range([radiusMin, radiusMax]);
 };// End of radius scale function.
-
+ 
 // Creating a scale function for the circle X.
 function xCircleS(minData, maxData, windowWidth, rightMargin, leftMargin, radiusMax) {
   return d3.scaleLinear()

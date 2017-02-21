@@ -1,6 +1,6 @@
 // A function for animating the ‘Country Objects’ along their defined paths.
 function animate(svg, animationData, speed, topMargin, leftMargin, radiusMax) {
-
+ 
   // This function will generate a unique path for each ‘Country Object’ it is passed.
   var generator = d3.line()
                     .x(function(d) { return ((d.x) + leftMargin + radiusMax); })
