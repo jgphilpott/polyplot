@@ -24,19 +24,8 @@ $(document).on('ready', function() {
     // Retrieving and organizing the currently selected datasets.
     getData();
 
-    // Saving the Scaling Functions into appropriate variables.
-    var rScale = radiusS(rDataMin, rDataMax, radiusMin, radiusMax);
-    var xCircleScale = xCircleS(xDataMin, xDataMax, windowWidth, rightMargin, leftMargin, radiusMax);
-    var yCircleScale = yCircleS(yDataMin, yDataMax, windowHeight, topMargin, bottomMargin, radiusMax);
-    var xScale = xAxisS(xDataMin, xDataMax, windowWidth, rightMargin, leftMargin);
-    var yScale = yAxisS(yDataMin, yDataMax, windowHeight, topMargin, bottomMargin);
-
-    // A function to scale, filter and reformat the selected datasets...
-    // Within the specified date range.
-    var drawData = scaleDrawData(rData, xData, yData, rScale, xCircleScale, yCircleScale, firstYear, lastYear, currentYear);
-
-    // A function to format the data for animation.
-    var animationData = scaleAnimationData(rData, xData, yData, rScale, xCircleScale, yCircleScale, firstYear, lastYear, currentYear);
+    // Scaling the organized Graph Data.
+    scaleAllData();
 
     // Calling the function that draws the graph.
     drawGraph(svg, windowWidth, windowHeight, topMargin, rightMargin, bottomMargin, leftMargin, xScale, yScale, xAxisLabel, yAxisLabel, graphWidth, graphHeight);

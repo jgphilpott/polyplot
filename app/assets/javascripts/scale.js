@@ -1,104 +1,57 @@
 // Creating a scale function for the circle radius.
-function radiusS(minData, maxData, radiusMin, radiusMax) {
+function rScale() {
   return d3.scaleLinear()
-           .domain([minData, maxData])
+           .domain([rDataMin, rDataMax])
            .range([radiusMin, radiusMax]);
 };// End of radius scale function.
- 
-// Creating a scale function for the circle X.
-function xCircleS(minData, maxData, windowWidth, rightMargin, leftMargin, radiusMax) {
-  return d3.scaleLinear()
-           .domain([minData, maxData])
-           .range([0, ((windowWidth - rightMargin - leftMargin) - (radiusMax * 2))]);
-};// End of X circle scale function.
 
-// Creating a scale function for the circle Y.
-function yCircleS(minData, maxData, windowHeight, topMargin, bottomMargin, radiusMax) {
+// Creating a scale function for the X axis.
+function xScale() {
   return d3.scaleLinear()
-           .domain([minData, maxData])
-           .range([((windowHeight - topMargin - bottomMargin) - (radiusMax * 2)), 0]);
-};// End of Y circle scale function.
-
-// Creating a scale function for the X Axis.
-function xAxisS(minData, maxData, windowWidth, rightMargin, leftMargin) {
-  return d3.scaleLinear()
-           .domain([minData, maxData])
-           .range([0, (windowWidth - rightMargin - leftMargin)]);
+           .domain([xDataMin, xDataMax])
+           .range([0, (windowWidth - rightMargin - leftMargin - (radiusMax * 2))]);
 };// End of X axis scale function.
 
-// Creating a scale function for the Y Axis.
-function yAxisS(minData, maxData, windowHeight, topMargin, bottomMargin) {
+// Creating a scale function for the Y axis.
+function yScale() {
   return d3.scaleLinear()
-           .domain([minData, maxData])
-           .range([(windowHeight - topMargin - bottomMargin), 0]);
+           .domain([yDataMin, yDataMax])
+           .range([(windowHeight - topMargin - bottomMargin - (radiusMax * 2)), 0]);
 };// End of Y axis scale function.
 
-// A function to scale, filter and reformat the selected datasets...
-// Within the specified date range.
-function scaleDrawData(rData, xData, yData, rScale, xCircleScale, yCircleScale, firstYear, lastYear, currentYear) {
+// Creating a function to scale the organized 'Graph Data'.
+function scaleAllData() {
 
-  // Array for storing the new ‘Country Objects’ to be created.
-  var newData = [];
+  // Creating the 'Scaled Graph Data' array to store the result of the following operations.
+  scaledGraphData = [];
 
-  // Looping over the existing array of ‘Country Objects’.
-  for (var i = 0; i < rData.length; i++) {
+  // Storing the scaling functions into local variables.
+  var RScale = rScale();
+  var XScale = xScale();
+  var YScale = yScale();
 
-    // Only add this (i) ‘Country Object’ to the 'New Data' array IF there are no missing data values.
-    if ((rData[i][currentYear] !== "" && xData[i][currentYear] !== "" && yData[i][currentYear] !== "") && (rData[i][lastYear] !== "" && xData[i][lastYear] !== "" && yData[i][lastYear] !== "")) {
+  // Looping over the 'Graph Data' array.
+  for (var i = 0; i < graphData.length; i++) {
 
-      // Creating a new ‘Country Object’ with scaled data from each dataset...
-      // Pushing it onto the ‘New Data’ array.
-      newData.push({
-        "year": currentYear,
-        "code": rData[i]["Country Code"],
-        "colour": rData[i]["Colour"],
-        "r": rScale(rData[i][currentYear]),
-        "x": xCircleScale(xData[i][currentYear]),
-        "y": yCircleScale(yData[i][currentYear])
+    // Creating the 'Country Objects' array to store the result of the following operations.
+    var countryObjects = [];
+
+    // Looping over the 'Country Objects' array at 'Graph Data' array index (i).
+    for (var j = 0; j < graphData[i].length; j++) {
+
+      // Pushing a new object into the 'Country Objects' array with scaled values.
+      countryObjects.push({
+        "Year": graphData[i][j]["Year"],
+        "Code": graphData[i][j]["Code"],
+        "Colour": graphData[i][j]["Colour"],
+        "R": RScale(graphData[i][j]["R"]),
+        "X": XScale(graphData[i][j]["X"]),
+        "Y": YScale(graphData[i][j]["Y"])
       });// End of push.
-    };// End of missing data check.
-  };// End of country loop.
 
-  return newData;
+    };// End of 'Country Objects' loop.
 
-};// End of 'Scale Draw Data' function.
-
-// A function to format the data for animation.
-function scaleAnimationData(rData, xData, yData, rScale, xCircleScale, yCircleScale, firstYear, lastYear, currentYear) {
-
-  // An array for storing the animation data for each 'Country Object'.
-  var newData = [];
-
-  // Looping over the existing array of ‘Country Objects’.
-  for (var i = 0; i < rData.length; i++) {
-
-    // An array for storing the animation data for each year.
-    var data = [];
-
-    // Only generate animation data if information is available for the 'Current Year' and 'Last Year'.
-    if ((rData[i][currentYear] !== "" && xData[i][currentYear] !== "" && yData[i][currentYear] !== "") && (rData[i][lastYear] !== "" && xData[i][lastYear] !== "" && yData[i][lastYear] !== "")) {
-
-      // Loop over each year for this (i) ‘Country Object’.
-      for (var y = currentYear; y <= lastYear; y++) {
-
-        // If no data is missing for the current year (y) then add a new object to the 'Data' array.
-        if ((rData[i][y] !== "" && xData[i][y] !== "" && yData[i][y] !== "")) {
-          data.push({
-            "year": y,
-            "code": rData[i]["Country Code"],
-            "r": rScale(rData[i][y]),
-            "x": xCircleScale(xData[i][y]),
-            "y": yCircleScale(yData[i][y])
-          });// End of push.
-        };// End of missing data check.
-      };// End of year loop.
-
-      // Pushing the ‘Data’ array into the ‘New Data’ array.
-      newData.push(data);
-    };// End of country loop.
-
-  };// End of country loop.
-
-  return newData;
-
-};// End of 'Scale Animation Data' function.
+    // Pushing 'Country Objects' array into Scaled Graph Data array.
+    scaledGraphData.push(countryObjects);
+  };// End of 'Graph Data' loop.
+};// End of 'Scale All Data' function.

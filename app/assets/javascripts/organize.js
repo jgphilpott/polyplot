@@ -233,9 +233,9 @@ function organize(data, index) {
 
                   // The following code block is used to assign the 'X Data Min' variable.
                   if (xDataMin !== undefined && data[i][graphData[k][l]["Year"]] !== "" && data[i][graphData[k][l]["Year"]] < xDataMin) {
-                    xDataMax = data[i][graphData[k][l]["Year"]];
+                    xDataMin = data[i][graphData[k][l]["Year"]];
                   } else if (xDataMin === undefined && data[i][graphData[k][l]["Year"]] !== "") {
-                    xDataMax = data[i][graphData[k][l]["Year"]];
+                    xDataMin = data[i][graphData[k][l]["Year"]];
                   };
 
                 // Checking if this is the third dataset being passed to the 'Organize' function...
@@ -253,9 +253,9 @@ function organize(data, index) {
 
                   // The following code block is used to assign the 'Y Data Min' variable.
                   if (yDataMin !== undefined && data[i][graphData[k][l]["Year"]] !== "" && data[i][graphData[k][l]["Year"]] < yDataMin) {
-                    yDataMax = data[i][graphData[k][l]["Year"]];
+                    yDataMin = data[i][graphData[k][l]["Year"]];
                   } else if (yDataMin === undefined && data[i][graphData[k][l]["Year"]] !== "") {
-                    yDataMax = data[i][graphData[k][l]["Year"]];
+                    yDataMin = data[i][graphData[k][l]["Year"]];
                   };
 
                 };// End of index check.
