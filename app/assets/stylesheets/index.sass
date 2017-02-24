@@ -4,13 +4,17 @@
 
 .graph-title,
 .date-range,
-.axis-label
+.axis-label,
+.current-year-label
   text-anchor: middle
   font-family: arial
   font-size: 20px
 
 .graph-title
   font-weight: bold
+
+.current-year-label
+  font-size: 15px
 
 .axis
   path
@@ -42,7 +46,7 @@
 
 .time-controls
   line
-    stroke: grey
+    stroke: lightgrey
     stroke-width: 5px
     stroke-linecap: round
 
@@ -50,6 +54,21 @@
     stroke: grey
     stroke-width: 1px
     fill: grey
+
+  #play-forward,
+  #play-backward
+    stroke: #009634
+    fill: #009634
+
+  #fast-forward,
+  #fast-backward
+    stroke: #009AC2
+    fill: #009AC2
+
+  #skip-backward,
+  #skip-forward
+    stroke: #FF9735
+    fill: #FF9735
 
   circle
     fill: white

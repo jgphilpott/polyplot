@@ -59,14 +59,14 @@ datasetKeys = ["population", "lifeExpectancy", "fertility"];
 // Setting the Default Date Range.
 firstYear = 1960;
 lastYear = 2014;
-currentYear = 1960;
+currentYear = 2014;
 
 // Temporarily hard coded variables for the radius range.
 radiusMin = 7;
 radiusMax = 70;
 
 // Setting the default animation speed.
-speed = 15000;
+speed = 500;
 
 // An array of color values.
 colors = ["#3168C5", "#E03621", "#FF9735", "#009634", "#9D0893", "#009AC2", "#E14375", "#000000"];
