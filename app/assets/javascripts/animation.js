@@ -1,5 +1,5 @@
 // A function for animating the ‘Country Objects’ along their defined paths.
-function animateGraph(direction) {
+function animateGraph(direction, speedModifier) {
 
   animatingGraph = true;
 
@@ -145,26 +145,28 @@ function animateGraph(direction) {
 
   };
 
-  var currentYearIncrement = setInterval(increment, speed);
+  variableIncrement = setInterval(increment, speed);
 
   function increment(){
     if (direction === "FORWARD") {
       if (currentYear < lastYear) {
         currentYear = currentYear + 1;
+        $(".current-year-label").text(currentYear);
         currentYearControllerPosition = currentYearScale(currentYear) + leftMargin;
       } else {
         animatingGraph = false;
-        clearInterval(currentYearIncrement);
+        clearInterval(variableIncrement);
         $(".graph-area").remove();
         drawCircles();
       };
     } else if (direction === "BACKWARD") {
       if (currentYear > firstYear) {
         currentYear = currentYear - 1;
+        $(".current-year-label").text(currentYear);
         currentYearControllerPosition = currentYearScale(currentYear) + leftMargin;
       } else {
         animatingGraph = false;
-        clearInterval(currentYearIncrement);
+        clearInterval(variableIncrement);
         $(".graph-area").remove();
         drawCircles();
       };
