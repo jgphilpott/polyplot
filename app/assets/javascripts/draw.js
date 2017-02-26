@@ -10,83 +10,83 @@ function drawAll() {
 function drawGraph() {
 
   // Appending the X Gridlines.
-  fullScreen.append("g")
-            .attr("class", "grid")
-            .attr("transform", "translate(" + leftMargin + ", " + (windowHeight - bottomMargin) + ")")
-            .call(d3.axisBottom(xScale)
-                    .tickSize( -(windowHeight - topMargin - bottomMargin) )
-                    .tickFormat("")
-                    .ticks(5));
+  graphZone.append("g")
+           .attr("class", "grid")
+           .attr("transform", "translate(" + leftMargin + ", " + (graphZoneHeight - bottomMargin) + ")")
+           .call(d3.axisBottom(xScale)
+                   .tickSize( -(graphZoneHeight - topMargin - bottomMargin) )
+                   .tickFormat("")
+                   .ticks(5));
 
   // Appending the Y Gridlines.
-  fullScreen.append("g")
-            .attr("class", "grid")
-            .attr("transform", "translate(" + leftMargin + ", " + topMargin + ")")
-            .call(d3.axisLeft(yScale)
-                    .tickSize( -(windowWidth - leftMargin - rightMargin) )
-                    .tickFormat("")
-                    .ticks(5));
+  graphZone.append("g")
+           .attr("class", "grid")
+           .attr("transform", "translate(" + leftMargin + ", " + topMargin + ")")
+           .call(d3.axisLeft(yScale)
+                   .tickSize( -(graphZoneWidth - leftMargin - rightMargin) )
+                   .tickFormat("")
+                   .ticks(5));
 
   // Appending the X Axis.
-  fullScreen.append("g")
-            .attr("class", "axis")
-            .attr("transform", "translate(" + leftMargin + ", " + (windowHeight - bottomMargin) + ")")
-            .call(d3.axisBottom(xScale)
-                    .ticks(10));
+  graphZone.append("g")
+           .attr("class", "axis")
+           .attr("transform", "translate(" + leftMargin + ", " + (graphZoneHeight - bottomMargin) + ")")
+           .call(d3.axisBottom(xScale)
+                   .ticks(10));
 
   // Appending the Y Axis.
-  fullScreen.append("g")
-            .attr("class", "axis")
-            .attr("transform", "translate(" + leftMargin + ", " + topMargin + ")")
-            .call(d3.axisLeft(yScale)
-                    .ticks(10));
+  graphZone.append("g")
+           .attr("class", "axis")
+           .attr("transform", "translate(" + leftMargin + ", " + topMargin + ")")
+           .call(d3.axisLeft(yScale)
+                   .ticks(10));
 
 };// End of 'Draw Graph' function.
 
 function drawGraphLabels() {
 
   // Appending the 'Graph Title'.
-  fullScreen.append("text")
-            .attr("class", "graph-title")
-            .attr("x", (leftMargin + graphWidth/2))
-            .attr("y",  "1em")
-            .attr("dy", ".35em")
-            .text("World Development Indicators");
+  graphZone.append("text")
+           .attr("class", "graph-title")
+           .attr("x", (leftMargin + graphWidth/2))
+           .attr("y",  "1em")
+           .attr("dy", ".35em")
+           .text("World Development Indicators");
 
   // Appending the graph 'Date Range' label.
-  fullScreen.append("text")
-            .attr("class", "date-range")
-            .attr("x", (leftMargin + graphWidth/2))
-            .attr("y",  "2.5em")
-            .attr("dy", ".35em")
-            .text(firstYear + " - " + lastYear);
+  graphZone.append("text")
+           .attr("class", "date-range")
+           .attr("x", (leftMargin + graphWidth/2))
+           .attr("y",  "2.5em")
+           .attr("dy", ".35em")
+           .text(firstYear + " - " + lastYear);
 
   // Appending 'Current Year Label'.
-  fullScreen.append("text")
-            .attr("class", "current-year-label")
-            .attr("x", currentYearScale(currentYear) + leftMargin + 13)
-            .attr("y",  "70")
-            .attr("dy", ".35em")
-            .text(currentYear);
+  graphZone.append("text")
+           .attr("class", "current-year-label")
+           .attr("x", currentYearScale(currentYear) + leftMargin + 13)
+           .attr("y",  "70")
+           .attr("dy", ".35em")
+           .text(currentYear);
 
   // Appending X Axis Label.
-  fullScreen.append("text")
-            .attr("class", "axis-label")
-            .attr("id", "x-axis-label")
-            .attr("x", (leftMargin + graphWidth/2))
-            .attr("y",  (windowHeight - bottomMargin/2))
-            .attr("dy", ".35em")
-            .text(xAxisLabel);
+  graphZone.append("text")
+           .attr("class", "axis-label")
+           .attr("id", "x-axis-label")
+           .attr("x", (leftMargin + graphWidth/2))
+           .attr("y",  (graphZoneHeight - bottomMargin/2))
+           .attr("dy", ".35em")
+           .text(xAxisLabel);
 
   // Appending Y Axis Label.
-  fullScreen.append("text")
-            .attr("class", "axis-label")
-            .attr("id", "y-axis-label")
-            .attr("transform", "rotate(-90)")
-            .attr("x", -(topMargin + graphHeight/2))
-            .attr("y",  leftMargin/2)
-            .attr("dy", ".35em")
-            .text(yAxisLabel);
+  graphZone.append("text")
+           .attr("class", "axis-label")
+           .attr("id", "y-axis-label")
+           .attr("transform", "rotate(-90)")
+           .attr("x", -(topMargin + graphHeight/2))
+           .attr("y",  leftMargin/2)
+           .attr("dy", ".35em")
+           .text(yAxisLabel);
 
   $("#y-axis-label").mouseover(function() {
     $(this).css('cursor', 'vertical-text');
@@ -100,12 +100,12 @@ function drawCircles() {
   var circleData = [];
 
   // Appending a new SVG so that if a circles body extends over the graph area it will be cutoff, rather than obstructing the view.
-  graphArea = fullScreen.append("svg")
-                        .attr("class", "graph-area")
-                        .attr("width", graphWidth)
-                        .attr("height", graphHeight)
-                        .attr("x", leftMargin)
-                        .attr("y", topMargin);
+  graphArea = graphZone.append("svg")
+                       .attr("class", "graph-area")
+                       .attr("width", graphWidth)
+                       .attr("height", graphHeight)
+                       .attr("x", leftMargin)
+                       .attr("y", topMargin);
 
   // Looping over the 'Scaled Graph Data'.
   for (var i = 0; i < scaledGraphData.length; i++) {
@@ -159,18 +159,21 @@ function drawCircles() {
 // A function that defines how to draw the time controls.
 function drawTimeControls() {
 
+    // Turning graph animation off by default .
+    animatingGraph = false;
+
     var forwardSpeedModifier = 1;
     var backwardSpeedModifier = 1;
     var forward = "FORWARD";
     var backward = "BACKWARD";
 
   // Appending a new SVG to simplify the positioning of child elements.
-  var timeControls = fullScreen.append("svg")
-                               .attr("class", "time-controls")
-                               .attr("width", graphWidth)
-                               .attr("height", 34)
-                               .attr("x", leftMargin)
-                               .attr("y", 75);
+  var timeControls = graphZone.append("svg")
+                              .attr("class", "time-controls")
+                              .attr("width", graphWidth)
+                              .attr("height", 34)
+                              .attr("x", leftMargin)
+                              .attr("y", 75);
 
   // A function to define how to draw the 'Time Buttons'.
   function drawTimeButtons () {
@@ -938,36 +941,36 @@ function drawMenu() {
   var menu = svg.append("svg")
                 .attr("id", "menu")
                 .attr("width", 205)
-                .attr("height", windowHeight)
-                .attr("x", windowWidth - 55)
+                .attr("height", graphZoneHeight)
+                .attr("x", graphZoneWidth - 55)
                 .attr("y", 0);
 
   menu.append("rect")
       .attr("x", 0)
       .attr("y", -2)
       .attr("width", 205)
-      .attr("height", windowHeight + 4)
+      .attr("height", graphZoneHeight + 4)
       .attr("stroke", "grey")
       .attr("stroke-width", 2)
       .attr("fill", "lightgrey");
 
   $("svg").mousemove(function(event) {
 
-    if (event.pageX > (windowWidth - 55) && open === false) {
+    if (event.pageX > (graphZoneWidth - 55) && open === false) {
 
       d3.selectAll("#menu").transition()
                            .duration(1000)
                            .ease(d3.easeLinear)
-                           .attr("x", windowWidth - 200);
+                           .attr("x", graphZoneWidth - 200);
 
       open = true;
 
-    } else if (open === true && locked === false && event.pageX < windowWidth - 200) {
+    } else if (open === true && locked === false && event.pageX < graphZoneWidth - 200) {
 
       d3.selectAll("#menu").transition()
                            .duration(1000)
                            .ease(d3.easeLinear)
-                           .attr("x", windowWidth - 55)
+                           .attr("x", graphZoneWidth - 55)
 
       open = false;
 
@@ -1022,7 +1025,7 @@ function drawMenu() {
       .attr("stroke", "grey")
       .attr("fill", "grey")
       .attr("stroke-width", 1)
-      .attr("transform", "translate(11, " + (windowHeight - 46) + ")")
+      .attr("transform", "translate(11, " + (graphZoneHeight - 46) + ")")
       .attr("d", "M18.5 13h-0.5v-6c0-3.308-2.692-6-6-6h-4c-3.308 0-6 2.692-6 6v6h-0.5c-0.825 0-1.5 0.675-1.5 1.5v15c0 0.825 0.675 1.5 1.5 1.5h17c0.825 0 1.5-0.675 1.5-1.5v-15c0-0.825-0.675-1.5-1.5-1.5zM6 7c0-1.103 0.897-2 2-2h4c1.103 0 2 0.897 2 2v6h-8v-6z");
 
   menu.append("path")
@@ -1031,7 +1034,7 @@ function drawMenu() {
       .attr("stroke", "grey")
       .attr("fill", "grey")
       .attr("stroke-width", 1)
-      .attr("transform", "translate(11, " + (windowHeight - 46) + ")")
+      .attr("transform", "translate(11, " + (graphZoneHeight - 46) + ")")
       .attr("d", "M24 1c3.308 0 6 2.692 6 6v6h-4v-6c0-1.103-0.897-2-2-2h-4c-1.103 0-2 0.897-2 2v6h0.5c0.825 0 1.5 0.675 1.5 1.5v15c0 0.825-0.675 1.5-1.5 1.5h-17c-0.825 0-1.5-0.675-1.5-1.5v-15c0-0.825 0.675-1.5 1.5-1.5h12.5v-6c0-3.308 2.692-6 6-6h4z");
 
   $("#unlocked").on("click", function() {

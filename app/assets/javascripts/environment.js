@@ -1,42 +1,30 @@
-// A function for setting a variety of useful variables based on the users unique browser environment...
+// A function for setting a variety of useful variables based on the browser window dimensions...
 // This will help define how to draw the graph.
-function environmentCheck() {
+function checkEnvironment() {
 
-  // Getting Window Width.
-  function windowW() {
-    var w = $(window).width();
-    return w;
-  };
+  // Saving Window Width and Height variables.
+  var windowWidth = $(window).width();
+  var windowHeight = $(window).height() - 3.51;// The minus 3.51 removes the scroll bars (any number greater than 3.5 works).
 
-  // Getting Window Height.
-  function windowH() {
-    var h = $(window).height();
-    return h;
-  };
-
-  // Defining the Top Margin.
+  // Determining the Top Margin.
   function topM() {
     return 120;
   };
 
-  // Defining the Right Margin.
+  // Determining the Right Margin.
   function rightM() {
     return 70;
   };
 
-  // Defining the Bottom Margin.
+  // Determining the Bottom Margin.
   function bottomM() {
     return 70;
   };
 
-  // Defining the Left Margin.
+  // Determining the Left Margin.
   function leftM() {
     return 70;
   };
-
-  // Saving Window Width and Height Variables.
-  windowWidth = windowW();
-  windowHeight = windowH() - 3.51;// The Minus 3.51 Removes the Scroll Bars (any number greater than 3.5 works).
 
   // Saving Margin Variables.
   topMargin = topM();
@@ -44,34 +32,22 @@ function environmentCheck() {
   bottomMargin = bottomM();
   leftMargin = leftM();
 
+  // Setting the default Menu Width.
+  var menuWidth = 0;
+
   // Saving Graph Dimensions.
-  graphWidth = windowWidth - leftMargin - rightMargin;
+  graphZoneWidth = windowWidth - menuWidth;
+  graphZoneHeight = windowHeight;
+  graphWidth = windowWidth - menuWidth - leftMargin - rightMargin;
   graphHeight = windowHeight - topMargin - bottomMargin;
 
-  // Appending an SVG Container equal to Window Width and Height.
-  fullScreen = d3.select("body").append("svg").attr("width", windowWidth).attr("height", windowHeight);
+  // Appending an SVG container equal to Window Width and Height.
+  graphZone = d3.select("body")
+                .append("svg")
+                .attr("width", graphZoneWidth)
+                .attr("height", graphZoneHeight);
 
-};// End of 'Environment Check' function.
-
-// Setting the Default Dataset Keys.
-datasetKeys = ["population", "lifeExpectancy", "fertility"];
-
-// Setting the Default Date Range.
-firstYear = 1960;
-lastYear = 2014;
-currentYear = 1960;
-
-// Temporarily hard coded variables for the radius range.
-radiusMin = 7;
-radiusMax = 70;
-
-// Setting the default animation speed.
-speed = 500;
-
-animatingGraph = false;
-
-// An array of color values.
-colors = ["#3168C5", "#E03621", "#FF9735", "#009634", "#9D0893", "#009AC2", "#E14375", "#000000"];
+};// End of 'Check Environment' function.
 
 // A series of arrays to group countries by geographic region and income level using country codes.
 var europeAndCentralAsia = ["ALB", "AND", "ARM", "AUT", "AZE", "BLR", "BEL", "BIH", "BGR", "CHI", "HRV", "CYP", "CZE", "DNK", "EST", "FRO", "FIN", "FRA", "GEO", "DEU", "GIB", "GRC", "GRL", "HUN", "ISL", "IRL", "IMN", "ITA", "KAZ", "KSV", "KGZ", "LVA", "LIE", "LTU", "LUX", "MKD", "MDA", "MCO", "MNE", "NLD", "NOR", "POL", "PRT", "ROU", "RUS", "SMR", "SRB", "SVK", "SVN", "ESP", "SWE", "CHE", "TJK", "TUR", "TKM", "UKR", "GBR", "UZB"];

@@ -1,5 +1,10 @@
 // Creating a scale function for the circle radius.
 function RScale() {
+
+  // Setting the default radius range.
+  var radiusMin = 7;
+  var radiusMax = 70;
+
   return d3.scaleLinear()
            .domain([rDataMin, rDataMax])
            .range([radiusMin, radiusMax]);
@@ -9,14 +14,14 @@ function RScale() {
 function XScale() {
   return d3.scaleLinear()
            .domain([xDataMin - ((xDataMax - xDataMin) * 0.01), xDataMax + ((xDataMax - xDataMin) * 0.01)])
-           .range([0, (windowWidth - rightMargin - leftMargin)]);
+           .range([0, (graphZoneWidth - rightMargin - leftMargin)]);
 };// End of X axis scale function.
 
 // Creating a scale function for the Y axis.
 function YScale() {
   return d3.scaleLinear()
            .domain([yDataMin - ((yDataMax - yDataMin) * 0.01), yDataMax + ((xDataMax - xDataMin) * 0.01)])
-           .range([(windowHeight - topMargin - bottomMargin), 0]);
+           .range([(graphZoneHeight - topMargin - bottomMargin), 0]);
 };// End of Y axis scale function.
 
 function firstYearS() {

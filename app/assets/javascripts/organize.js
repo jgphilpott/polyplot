@@ -1,5 +1,5 @@
 // A function for retrieving the currently selected datasets.
-function getData() {
+function getData(datasetKeys) {
 
   // Creating the 'Graph Data' variable as an empty array to be populated by the 'Organize' function.
   graphData = [];
@@ -51,6 +51,14 @@ function getData() {
 
 // A function for organizing the currently selected datasets.
 function organize(data, index) {
+
+  // Setting the default Date Range.
+  firstYear = 1960;
+  currentYear = 1960;
+  lastYear = 2014;
+
+  // An array of color values.
+  var colors = ["#3168C5", "#E03621", "#FF9735", "#009634", "#9D0893", "#009AC2", "#E14375", "#000000"];
 
   // Creating the 'Country Objects' array to store the result of the following operations.
   var countryObjects = [];

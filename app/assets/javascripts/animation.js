@@ -3,6 +3,9 @@ function animateGraph(direction, speedModifier) {
 
   animatingGraph = true;
 
+  // Setting the default animation speed.
+  speed = 500;
+
   // This function will generate a unique path for each ‘Country Objects’ array it is passed.
   var generator = d3.line()
                     .x(function(d) { return d.X; })
