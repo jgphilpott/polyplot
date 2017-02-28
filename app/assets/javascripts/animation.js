@@ -1,11 +1,8 @@
 // A function for animating the ‘Country Objects’ along their defined paths.
-function animateGraph(direction, speed, speedModifier) {
+function animateGraph(direction, currentSpeed) {
 
   // Indicating that an animation is in process.
   animatingGraph = true;
-
-  // Calculating the animation speed.
-  var speed = speed/speedModifier;
 
   // This function will generate a unique path for each ‘Country Objects’ array it is passed.
   var pathGenerator = d3.line()
@@ -93,7 +90,7 @@ function animateGraph(direction, speed, speedModifier) {
 
       // Initiating an animation for the current ‘Country Object’.
       circle.transition()
-            .duration(speed)
+            .duration(currentSpeed)
             .ease(d3.easeLinear)
             .attr("r", pathData[i][1].R)
             .attrTween("transform", translate(path.node()));
@@ -138,36 +135,89 @@ function animateGraph(direction, speed, speedModifier) {
 
     // Initiating a transition for the 'Controller'.
     controller.transition()
-              .duration(speed)
+              .duration(currentSpeed)
               .ease(d3.easeLinear)
               .attr("x", currentYearScale(currentYear + 1));
 
     // Initiating a transition for the 'Year Label'.
     yearLabel.transition()
-              .duration(speed)
+              .duration(currentSpeed)
               .ease(d3.easeLinear)
               .attr("x", currentYearScale(currentYear + 1) + leftMargin + 13)
               .text(currentYear);
 
+
     // Incrementing the current year by one.
     currentYear = currentYear + 1;
+    currentYearControllerPosition = currentYearScale(currentYear) + leftMargin;
 
     // The following code block follows the same pattern, but for backward animation.
 
   } else if (direction === "BACKWARD") {
 
     controller.transition()
-              .duration(speed)
+              .duration(currentSpeed)
               .ease(d3.easeLinear)
               .attr("x", currentYearScale(currentYear - 1));
 
     yearLabel.transition()
-              .duration(speed)
+              .duration(currentSpeed)
               .ease(d3.easeLinear)
               .attr("x", currentYearScale(currentYear - 1) + leftMargin + 13)
               .text(currentYear);
 
     currentYear = currentYear - 1;
+    currentYearControllerPosition = currentYearScale(currentYear) + leftMargin;
 
   };// End of direction check.
 };// End of ‘Animate Graph’ function.
+
+function animateForward() {
+  if (currentYear !== lastYear) {
+    $(".graph-area").remove();
+    drawCircles();
+    animateGraph(forward, currentSpeed);
+  } else {
+    animatingGraph = false;
+    currentYearControllerPosition = currentYearScale(currentYear) + leftMargin;
+    $(".current-year-label").text(currentYear);
+    $("#play-forward, #play-forward-background").css("visibility", "visible");
+    $("#pause-one, #pause-one-background").css("visibility", "hidden");
+    $(".graph-area").remove();
+    drawCircles();
+    clearInterval(animationInterval);
+  };
+};
+
+function animateBackward() {
+  if (currentYear !== firstYear) {
+    $(".graph-area").remove();
+    drawCircles();
+    animateGraph(backward, currentSpeed);
+  } else {
+    animatingGraph = false;
+    currentYearControllerPosition = currentYearScale(currentYear) + leftMargin;
+    $(".current-year-label").text(currentYear);
+    $("#play-backward, #play-backward-background").css("visibility", "visible");
+    $("#pause-two, #pause-two-background").css("visibility", "hidden");
+    $(".graph-area").remove();
+    drawCircles();
+    clearInterval(animationInterval);
+  };
+};
+
+function stopAnimatingGraph() {
+
+  var stop = d3.selectAll(".country-circle, #current-year-controller, .current-year-label");
+
+  stop.transition()
+      .duration(0);
+
+  $("#pause-one, #pause-one-background, #pause-two, #pause-two-background").css("visibility", "hidden");
+  $("#play-forward, #play-forward-background, #play-backward, #play-backward-background").css("visibility", "visible")
+
+  clearInterval(animationInterval);
+
+  animatingGraph = false;
+
+};

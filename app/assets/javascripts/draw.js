@@ -2,6 +2,7 @@
 function drawAll() {
   drawGraph();
   drawGraphLabels();
+  drawCurrentYearLabel();
   drawCircles();
   drawTimeControls();
 };
@@ -61,14 +62,6 @@ function drawGraphLabels() {
            .attr("dy", ".35em")
            .text(firstYear + " - " + lastYear);
 
-  // Appending 'Current Year Label'.
-  graphZone.append("text")
-           .attr("class", "current-year-label")
-           .attr("x", currentYearScale(currentYear) + leftMargin + 13)
-           .attr("y",  "70")
-           .attr("dy", ".35em")
-           .text(currentYear);
-
   // Appending X Axis Label.
   graphZone.append("text")
            .attr("class", "axis-label")
@@ -91,6 +84,18 @@ function drawGraphLabels() {
   $("#y-axis-label").mouseover(function() {
     $(this).css('cursor', 'vertical-text');
   });
+};
+
+function drawCurrentYearLabel() {
+
+    // Appending 'Current Year Label'.
+    graphZone.append("text")
+             .attr("class", "current-year-label")
+             .attr("x", currentYearScale(currentYear) + leftMargin + 13)
+             .attr("y",  "70")
+             .attr("dy", ".35em")
+             .text(currentYear);
+
 };
 
 // A function that defines how to draw the circles.
@@ -159,16 +164,18 @@ function drawCircles() {
 // A function that defines how to draw the time controls.
 function drawTimeControls() {
 
-    // Turning graph animation off by default .
-    animatingGraph = false;
+  // Turning graph animation off by default .
+  animatingGraph = false;
 
-    // Setting the default animation speed.
-    var speed = 500;
+  // Setting the default 'Speed' and 'Speed Modifier' variables.
+  speed = 500;
+  currentSpeed = 500;
+  forwardSpeedModifier = 1;
+  backwardSpeedModifier = 1;
 
-    var forwardSpeedModifier = 1;
-    var backwardSpeedModifier = 1;
-    var forward = "FORWARD";
-    var backward = "BACKWARD";
+  // Setting the direction variables.
+  forward = "FORWARD";
+  backward = "BACKWARD";
 
   // Appending a new SVG to simplify the positioning of child elements.
   var timeControls = graphZone.append("svg")
@@ -181,153 +188,169 @@ function drawTimeControls() {
   // A function to define how to draw the 'Time Buttons'.
   function drawTimeButtons () {
 
-    // Appending the skip backward button background.
-    timeControls.append("circle")
+    // A function to define how to draw the 'Forward Time Buttons'.
+    function drawForwardTimeButtons() {
+
+      // Appending the skip backward button background.
+      timeControls.append("circle")
+                  .attr("class", "time-button")
+                  .attr("id", "skip-backward-background")
+                  .attr("cx", 26)
+                  .attr("cy", 17)
+                  .attr("r", 16);
+
+      // Appending the skip backward button.
+      timeControls.append("path")
+                  .attr("class", "time-button")
+                  .attr("id", "skip-backward")
+                  .attr("transform", "translate(10, 1)")
+                  .attr("d", "M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13 M14 16l8-6v12 M10 10h4v12h-4v-12z");
+
+      // Appending the play forward button background.
+      timeControls.append("circle")
+                  .attr("class", "time-button")
+                  .attr("id", "play-forward-background")
+                  .attr("cx", 69)
+                  .attr("cy", 17)
+                  .attr("r", 16);
+
+      // Appending the play forward button.
+      timeControls.append("path")
+                  .attr("class", "time-button")
+                  .attr("id", "play-forward")
+                  .attr("transform", "translate(53, 1)")
+                  .attr("d", "M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13zM12 9l12 7-12 7z");
+
+      // Appending the pause one button background.
+      timeControls.append("circle")
+                  .attr("class", "time-button")
+                  .attr("id", "pause-one-background")
+                  .attr("cx", 69)
+                  .attr("cy", 17)
+                  .attr("r", 16);
+
+      // Appending the pause one button.
+      timeControls.append("path")
+                  .attr("class", "time-button")
+                  .attr("id", "pause-one")
+                  .attr("transform", "translate(53, 1)")
+                  .attr("d", "M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13zM10 10h4v12h-4zM18 10h4v12h-4z");
+
+      // Appending the fast forward button background.
+      timeControls.append("circle")
+                  .attr("class", "time-button")
+                  .attr("id", "fast-forward-background")
+                  .attr("cx", 112)
+                  .attr("cy", 17)
+                  .attr("r", 16);
+
+      // Appending the fast forward button.
+      timeControls.append("path")
+                  .attr("class", "time-button")
+                  .attr("id", "fast-forward")
+                  .attr("transform", "translate(96, 1)")
+                  .attr("d", "M16 32c8.837 0 16-7.163 16-16s-7.163-16-16-16-16 7.163-16 16 7.163 16 16 16zM16 3c7.18 0 13 5.82 13 13s-5.82 13-13 13-13-5.82-13-13 5.82-13 13-13z");
+
+      // Appending the fast forward button arrow one.
+      timeControls.append("path")
+                  .attr("class", "time-button")
+                  .attr("id", "fast-forward-arrow-one")
+                  .attr("transform", "translate(96, 1)")
+                  .attr("d", "M18 11l7 5-7 5z");
+
+      // Appending the fast forward button arrow two.
+      timeControls.append("path")
+                  .attr("class", "time-button")
+                  .attr("id", "fast-forward-arrow-two")
+                  .attr("transform", "translate(96, 1)")
+                  .attr("d", "M10 11l7 5-7 5z");
+
+    };// End of 'Draw Forward Time Buttons' function.
+
+    // Calling the 'Draw Forward Time Buttons' function.
+    drawForwardTimeButtons();
+
+    // A function to define how to draw the 'Backward Time Buttons'.
+    function drawBackwardTimeButtons() {
+
+      // Appending the fast backward button background.
+      timeControls.append("circle")
+                  .attr("class", "time-button")
+                  .attr("id", "fast-backward-background")
+                  .attr("cx", graphWidth - 113)
+                  .attr("cy", 17)
+                  .attr("r", 16);
+
+      // Appending the fast backward button.
+      timeControls.append("path")
+                  .attr("class", "time-button")
+                  .attr("id", "fast-backward")
+                  .attr("transform", "translate(" + (graphWidth - 129) + ", 1)")
+                  .attr("d", "M16 32c8.837 0 16-7.163 16-16s-7.163-16-16-16-16 7.163-16 16 7.163 16 16 16zM16 3c7.18 0 13 5.82 13 13s-5.82 13-13 13-13-5.82-13-13 5.82-13 13-13z");
+
+      // Appending the fast backward button arrow one.
+      timeControls.append("path")
                 .attr("class", "time-button")
-                .attr("id", "skip-backward-background")
-                .attr("cx", 26)
-                .attr("cy", 17)
-                .attr("r", 16);
-
-    // Appending the skip backward button.
-    timeControls.append("path")
-                .attr("class", "time-button")
-                .attr("id", "skip-backward")
-                .attr("transform", "translate(10, 1)")
-                .attr("d", "M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13 M14 16l8-6v12 M10 10h4v12h-4v-12z");
-
-    // Appending the play forward button background.
-    timeControls.append("circle")
-                .attr("class", "time-button")
-                .attr("id", "play-forward-background")
-                .attr("cx", 69)
-                .attr("cy", 17)
-                .attr("r", 16);
-
-    // Appending the play forward button.
-    timeControls.append("path")
-                .attr("class", "time-button")
-                .attr("id", "play-forward")
-                .attr("transform", "translate(53, 1)")
-                .attr("d", "M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13zM12 9l12 7-12 7z");
-
-    // Appending the pause one button background.
-    timeControls.append("circle")
-                .attr("class", "time-button")
-                .attr("id", "pause-one-background")
-                .attr("cx", 69)
-                .attr("cy", 17)
-                .attr("r", 16);
-
-    // Appending the pause one button.
-    timeControls.append("path")
-                .attr("class", "time-button")
-                .attr("id", "pause-one")
-                .attr("transform", "translate(53, 1)")
-                .attr("d", "M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13zM10 10h4v12h-4zM18 10h4v12h-4z");
-
-    // Appending the fast forward button background.
-    timeControls.append("circle")
-                .attr("class", "time-button")
-                .attr("id", "fast-forward-background")
-                .attr("cx", 112)
-                .attr("cy", 17)
-                .attr("r", 16);
-
-    // Appending the fast forward button.
-    timeControls.append("path")
-                .attr("class", "time-button")
-                .attr("id", "fast-forward")
-                .attr("transform", "translate(96, 1)")
-                .attr("d", "M16 32c8.837 0 16-7.163 16-16s-7.163-16-16-16-16 7.163-16 16 7.163 16 16 16zM16 3c7.18 0 13 5.82 13 13s-5.82 13-13 13-13-5.82-13-13 5.82-13 13-13z");
-
-  // Appending the fast forward button arrow one.
-  timeControls.append("path")
-              .attr("class", "time-button")
-              .attr("id", "fast-forward-arrow-one")
-              .attr("transform", "translate(96, 1)")
-              .attr("d", "M18 11l7 5-7 5z");
-
-  // Appending the fast forward button arrow two.
-  timeControls.append("path")
-              .attr("class", "time-button")
-              .attr("id", "fast-forward-arrow-two")
-              .attr("transform", "translate(96, 1)")
-              .attr("d", "M10 11l7 5-7 5z");
-
-    // Appending the fast backward button background.
-    timeControls.append("circle")
-                .attr("class", "time-button")
-                .attr("id", "fast-backward-background")
-                .attr("cx", graphWidth - 113)
-                .attr("cy", 17)
-                .attr("r", 16);
-
-    // Appending the fast backward button.
-    timeControls.append("path")
-                .attr("class", "time-button")
-                .attr("id", "fast-backward")
+                .attr("id", "fast-backward-arrow-one")
                 .attr("transform", "translate(" + (graphWidth - 129) + ", 1)")
-                .attr("d", "M16 32c8.837 0 16-7.163 16-16s-7.163-16-16-16-16 7.163-16 16 7.163 16 16 16zM16 3c7.18 0 13 5.82 13 13s-5.82 13-13 13-13-5.82-13-13 5.82-13 13-13z");
+                .attr("d", "M14 21l-7-5 7-5z");
 
-  // Appending the fast backward button arrow one.
-  timeControls.append("path")
-              .attr("class", "time-button")
-              .attr("id", "fast-backward-arrow-one")
-              .attr("transform", "translate(" + (graphWidth - 129) + ", 1)")
-              .attr("d", "M14 21l-7-5 7-5z");
-
-  // Appending the fast backward button arrow two.
-  timeControls.append("path")
-              .attr("class", "time-button")
-              .attr("id", "fast-backward-arrow-two")
-              .attr("transform", "translate(" + (graphWidth - 129) + ", 1)")
-              .attr("d", "M22 21l-7-5 7-5z");
-
-    // Appending the play backward button background.
-    timeControls.append("circle")
+      // Appending the fast backward button arrow two.
+      timeControls.append("path")
                 .attr("class", "time-button")
-                .attr("id", "play-backward-background")
-                .attr("cx", graphWidth - 70)
-                .attr("cy", 17)
-                .attr("r", 16);
+                .attr("id", "fast-backward-arrow-two")
+                .attr("transform", "translate(" + (graphWidth - 129) + ", 1)")
+                .attr("d", "M22 21l-7-5 7-5z");
 
-    // Appending the play backward button.
-    timeControls.append("path")
-                .attr("class", "time-button")
-                .attr("id", "play-backward")
-                .attr("transform", "translate(" + (graphWidth - 86) + ", 1)")
-                .attr("d", "M16 32c8.837 0 16-7.163 16-16s-7.163-16-16-16-16 7.163-16 16 7.163 16 16 16zM16 3c7.18 0 13 5.82 13 13s-5.82 13-13 13-13-5.82-13-13 5.82-13 13-13zM20 23l-12-7 12-7z");
+      // Appending the play backward button background.
+      timeControls.append("circle")
+                  .attr("class", "time-button")
+                  .attr("id", "play-backward-background")
+                  .attr("cx", graphWidth - 70)
+                  .attr("cy", 17)
+                  .attr("r", 16);
 
-    // Appending the pause two button background.
-    timeControls.append("circle")
-                .attr("class", "time-button")
-                .attr("id", "pause-two-background")
-                .attr("cx", graphWidth - 70)
-                .attr("cy", 17)
-                .attr("r", 16);
+      // Appending the play backward button.
+      timeControls.append("path")
+                  .attr("class", "time-button")
+                  .attr("id", "play-backward")
+                  .attr("transform", "translate(" + (graphWidth - 86) + ", 1)")
+                  .attr("d", "M16 32c8.837 0 16-7.163 16-16s-7.163-16-16-16-16 7.163-16 16 7.163 16 16 16zM16 3c7.18 0 13 5.82 13 13s-5.82 13-13 13-13-5.82-13-13 5.82-13 13-13zM20 23l-12-7 12-7z");
 
-    // Appending the pause two button.
-    timeControls.append("path")
-                .attr("class", "time-button")
-                .attr("id", "pause-two")
-                .attr("transform", "translate(" + (graphWidth - 86) + ", 1)")
-                .attr("d", "M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13zM10 10h4v12h-4zM18 10h4v12h-4z");
+      // Appending the pause two button background.
+      timeControls.append("circle")
+                  .attr("class", "time-button")
+                  .attr("id", "pause-two-background")
+                  .attr("cx", graphWidth - 70)
+                  .attr("cy", 17)
+                  .attr("r", 16);
 
-    // Appending the skip forward button background.
-    timeControls.append("circle")
-                .attr("class", "time-button")
-                .attr("id", "skip-forward-background")
-                .attr("cx", graphWidth - 27)
-                .attr("cy", 17)
-                .attr("r", 16);
+      // Appending the pause two button.
+      timeControls.append("path")
+                  .attr("class", "time-button")
+                  .attr("id", "pause-two")
+                  .attr("transform", "translate(" + (graphWidth - 86) + ", 1)")
+                  .attr("d", "M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 29c-7.18 0-13-5.82-13-13s5.82-13 13-13 13 5.82 13 13-5.82 13-13 13zM10 10h4v12h-4zM18 10h4v12h-4z");
 
-    // Appending the skip forward button.
-    timeControls.append("path")
-                .attr("class", "time-button")
-                .attr("id", "skip-forward")
-                .attr("transform", "translate(" + (graphWidth - 43) + ", 1)")
-                .attr("d", "M16 0c8.837 0 16 7.163 16 16s-7.163 16-16 16-16-7.163-16-16 7.163-16 16-16zM16 29c7.18 0 13-5.82 13-13s-5.82-13-13-13-13 5.82-13 13 5.82 13 13 13 M18 16l-8-6v12 M22 10h-4v12h4v-12z");
+      // Appending the skip forward button background.
+      timeControls.append("circle")
+                  .attr("class", "time-button")
+                  .attr("id", "skip-forward-background")
+                  .attr("cx", graphWidth - 27)
+                  .attr("cy", 17)
+                  .attr("r", 16);
+
+      // Appending the skip forward button.
+      timeControls.append("path")
+                  .attr("class", "time-button")
+                  .attr("id", "skip-forward")
+                  .attr("transform", "translate(" + (graphWidth - 43) + ", 1)")
+                  .attr("d", "M16 0c8.837 0 16 7.163 16 16s-7.163 16-16 16-16-7.163-16-16 7.163-16 16-16zM16 29c7.18 0 13-5.82 13-13s-5.82-13-13-13-13 5.82-13 13 5.82 13 13 13 M18 16l-8-6v12 M22 10h-4v12h4v-12z");
+
+    };// End of 'Draw Backward Time Buttons' function.
+
+    // Calling the 'Draw Backward Time Buttons' function.
+    drawBackwardTimeButtons();
 
     // Adding an event handler to style the 'Time Buttons' on mouse over.
     $(".time-button").mouseover(function() {
@@ -335,7 +358,7 @@ function drawTimeControls() {
       // Changing the cursor to a pointer.
       $(this).css('cursor', 'pointer');
 
-      // Checking which button the mouse is currently over using  the element ID.
+      // Checking which button the mouse is currently over using the element ID.
       if (this.id === "skip-backward" || this.id === "skip-backward-background") {
 
         // Changing the button background the lightgrey.
@@ -374,16 +397,7 @@ function drawTimeControls() {
     $("#skip-backward, #skip-backward-background").click(function() {
 
       if (animatingGraph) {
-
-        var stop = d3.selectAll(".country-circle, #current-year-controller, .current-year-label");
-
-        stop.transition()
-            .duration(0);
-
-        clearInterval(variableIncrement);
-
-        animatingGraph = false;
-
+        stopAnimatingGraph();
       };
 
       // Checking if the 'Current Year' is already the 'First Year'.
@@ -395,15 +409,12 @@ function drawTimeControls() {
         // Removing old elements.
         $(".year-control").remove();
         $(".time-line").remove();
-        $(".graph-title").remove();
-        $(".date-range").remove();
         $(".current-year-label").remove();
-        $(".axis-label").remove();
-        $(".country-circle").remove();
+        $(".graph-area").remove();
 
         // Redrawing elements.
         drawTimeControllers();
-        drawGraphLabels();
+        drawCurrentYearLabel()
         drawCircles();
 
       };// End of year check;
@@ -414,64 +425,47 @@ function drawTimeControls() {
     $("#play-forward, #play-forward-background").click(function() {
 
       if (animatingGraph) {
-
-        var stop = d3.selectAll(".country-circle, #current-year-controller, .current-year-label");
-
-        stop.transition()
-            .duration(0);
-
-        clearInterval(variableIncrement);
-
-        animatingGraph = false;
-
-        $(".graph-area").remove();
-        drawCircles();
-
+        stopAnimatingGraph();
       };
 
-      $(".year-control").remove();
-      $(".time-line").remove();
+      if (currentYear !== lastYear) {
+        $(".graph-area").remove();
+        $(".year-control").remove();
+        $(".time-line").remove();
+        $(".current-year-label").remove();
 
-      drawTimeControllers();
+        $("#play-forward, #play-forward-background").css("visibility", "hidden");
+        $("#pause-one, #pause-one-background").css("visibility", "visible");
+        $("#play-backward, #play-backward-background").css("visibility", "visible");
+        $("#pause-two, #pause-two-background").css("visibility", "hidden");
 
-      $("#play-forward, #play-forward-background").css("visibility", "hidden");
-      $("#pause-one, #pause-one-background").css("visibility", "visible");
-      $("#play-backward, #play-backward-background").css("visibility", "visible");
-      $("#pause-two, #pause-two-background").css("visibility", "hidden");
+        drawCircles();
+        drawTimeControllers();
+        drawCurrentYearLabel();
 
-      // Calling the 'Animate Graph' function
-      animateGraph(forward, speed, forwardSpeedModifier);
+        // Calculating the animation speed.
+        currentSpeed = speed/forwardSpeedModifier;
 
-      var animationInterval = setInterval(animate, speed);
+        // Calling the 'Animate Graph' function
+        animateGraph(forward, currentSpeed);
 
-      function animate() {
-        if (currentYear !== lastYear) {
-          $(".graph-area").remove();
-          drawCircles();
-          animateGraph(forward, speed, forwardSpeedModifier);
-        } else {
-          animatingGraph = false;
-          $(".current-year-label").text(currentYear);
-          $(".graph-area").remove();
-          drawCircles();
-          clearInterval(animationInterval);
-        };
+        animationInterval = setInterval(animateForward, currentSpeed);
       };
 
     });// End of play forward event handler.
 
+    // Adding an event handler for clicking the 'Pause One Time Button'.
     $("#pause-one, #pause-one-background").click(function() {
 
-      var stop = d3.selectAll(".country-circle, #current-year-controller, .current-year-label");
+      stopAnimatingGraph();
 
-      stop.transition()
-          .duration(0);
-
-      clearInterval(variableIncrement);
-
-      animatingGraph = false;
-
+      $(".current-year-label").remove();
+      $(".year-control").remove();
+      $(".time-line").remove();
       $(".graph-area").remove();
+
+      drawCurrentYearLabel();
+      drawTimeControllers()
       drawCircles();
 
       $("#play-forward, #play-forward-background").css("visibility", "visible");
@@ -482,7 +476,7 @@ function drawTimeControls() {
     $("#fast-forward, #fast-forward-background, #fast-forward-arrow-one, #fast-forward-arrow-two").click(function() {
       if (forwardSpeedModifier === 1) {
 
-        forwardSpeedModifier = 1.5;
+        forwardSpeedModifier = 4/3;
         backwardSpeedModifier = 1;
 
         $("#fast-forward-arrow-one").css({"stroke": "#3168C5", "fill": "#3168C5"});
@@ -490,72 +484,69 @@ function drawTimeControls() {
 
         if (animatingGraph) {
 
-          var stop = d3.selectAll(".country-circle, #current-year-controller, .current-year-label");
-
-          stop.transition()
-              .duration(0);
-
-          clearInterval(variableIncrement);
-
-          animatingGraph = false;
+          stopAnimatingGraph();
 
           $(".graph-area").remove();
           drawCircles();
 
-          animateGraph(forward, forwardSpeedModifier);
+          currentSpeed = speed/forwardSpeedModifier;
+
+          $("#play-forward, #play-forward-background").css("visibility", "hidden");
+          $("#pause-one, #pause-one-background").css("visibility", "visible");
+
+          animateGraph(forward, currentSpeed);
+
+          animationInterval = setInterval(animateForward, currentSpeed);
 
         };
 
-      } else if (forwardSpeedModifier === 1.5) {
+      } else if (forwardSpeedModifier === 4/3) {
 
         forwardSpeedModifier = 2;
-        backwardSpeedModifier = 1;
 
         $("#fast-forward-arrow-two").css({"stroke": "#3168C5", "fill": "#3168C5"});
 
         if (animatingGraph) {
 
-          var stop = d3.selectAll(".country-circle, #current-year-controller, .current-year-label");
-
-          stop.transition()
-              .duration(0);
-
-          clearInterval(variableIncrement);
-
-          animatingGraph = false;
+          stopAnimatingGraph();
 
           $(".graph-area").remove();
           drawCircles();
 
-          animateGraph(forward, forwardSpeedModifier);
+          currentSpeed = speed/forwardSpeedModifier;
+
+          $("#play-forward, #play-forward-background").css("visibility", "hidden");
+          $("#pause-one, #pause-one-background").css("visibility", "visible");
+
+          animateGraph(forward, currentSpeed);
+
+          animationInterval = setInterval(animateForward, currentSpeed);
 
         };
 
       } else if (forwardSpeedModifier === 2) {
 
         forwardSpeedModifier = 1;
-        backwardSpeedModifier = 1;
 
         $("#fast-forward-arrow-one, #fast-forward-arrow-two").css({"stroke": "#009AC2", "fill": "#009AC2"});
 
         if (animatingGraph) {
 
-          var stop = d3.selectAll(".country-circle, #current-year-controller, .current-year-label");
-
-          stop.transition()
-              .duration(0);
-
-          clearInterval(variableIncrement);
-
-          animatingGraph = false;
+          stopAnimatingGraph();
 
           $(".graph-area").remove();
           drawCircles();
 
-          animateGraph(forward, forwardSpeedModifier);
+          currentSpeed = speed/forwardSpeedModifier;
+
+          $("#play-forward, #play-forward-background").css("visibility", "hidden");
+          $("#pause-one, #pause-one-background").css("visibility", "visible");
+
+          animateGraph(forward, currentSpeed);
+
+          animationInterval = setInterval(animateForward, currentSpeed);
 
         };
-
       };
     });
 
@@ -563,7 +554,7 @@ function drawTimeControls() {
     $("#fast-backward, #fast-backward-background, #fast-backward-arrow-one, #fast-backward-arrow-two").click(function() {
       if (backwardSpeedModifier === 1) {
 
-        backwardSpeedModifier = 1.5;
+        backwardSpeedModifier = 4/3;
         forwardSpeedModifier = 1;
 
         $("#fast-backward-arrow-one").css({"stroke": "#3168C5", "fill": "#3168C5"});
@@ -571,72 +562,69 @@ function drawTimeControls() {
 
         if (animatingGraph) {
 
-          var stop = d3.selectAll(".country-circle, #current-year-controller, .current-year-label");
-
-          stop.transition()
-              .duration(0);
-
-          clearInterval(variableIncrement);
-
-          animatingGraph = false;
+          stopAnimatingGraph();
 
           $(".graph-area").remove();
           drawCircles();
 
-          animateGraph(backward, backwardSpeedModifier);
+          currentSpeed = speed/backwardSpeedModifier;
+
+          $("#play-backward, #play-backward-background").css("visibility", "hidden");
+          $("#pause-two, #pause-two-background").css("visibility", "visible");
+
+          animateGraph(backward, currentSpeed);
+
+          animationInterval = setInterval(animateBackward, currentSpeed);
 
         };
 
-      } else if (backwardSpeedModifier === 1.5) {
+      } else if (backwardSpeedModifier === 4/3) {
 
         backwardSpeedModifier = 2;
-        forwardSpeedModifier = 1;
 
         $("#fast-backward-arrow-two").css({"stroke": "#3168C5", "fill": "#3168C5"});
 
         if (animatingGraph) {
 
-          var stop = d3.selectAll(".country-circle, #current-year-controller, .current-year-label");
-
-          stop.transition()
-              .duration(0);
-
-          clearInterval(variableIncrement);
-
-          animatingGraph = false;
+          stopAnimatingGraph();
 
           $(".graph-area").remove();
           drawCircles();
 
-          animateGraph(backward, backwardSpeedModifier);
+          currentSpeed = speed/backwardSpeedModifier;
+
+          $("#play-backward, #play-backward-background").css("visibility", "hidden");
+          $("#pause-two, #pause-two-background").css("visibility", "visible");
+
+          animateGraph(backward, currentSpeed);
+
+          animationInterval = setInterval(animateBackward, currentSpeed);
 
         };
 
       } else if (backwardSpeedModifier === 2) {
 
         backwardSpeedModifier = 1;
-        forwardSpeedModifier = 1;
 
         $("#fast-backward-arrow-one, #fast-backward-arrow-two").css({"stroke": "#009AC2", "fill": "#009AC2"});
 
         if (animatingGraph) {
 
-          var stop = d3.selectAll(".country-circle, #current-year-controller, .current-year-label");
-
-          stop.transition()
-              .duration(0);
-
-          clearInterval(variableIncrement);
-
-          animatingGraph = false;
+          stopAnimatingGraph();
 
           $(".graph-area").remove();
           drawCircles();
 
-          animateGraph(backward, backwardSpeedModifier);
+          currentSpeed = speed/backwardSpeedModifier;
+
+          $("#play-backward, #play-backward-background").css("visibility", "hidden");
+          $("#pause-two, #pause-two-background").css("visibility", "visible");
+
+          animateGraph(backward, currentSpeed);
+
+          animationInterval = setInterval(animateBackward, currentSpeed);
 
         };
-
       };
     });
 
@@ -644,47 +632,44 @@ function drawTimeControls() {
     $("#play-backward, #play-backward-background").click(function() {
 
       if (animatingGraph) {
-
-        var stop = d3.selectAll(".country-circle, #current-year-controller, .current-year-label");
-
-        stop.transition()
-            .duration(0);
-
-        clearInterval(variableIncrement);
-
-        animatingGraph = false;
-
-        $(".graph-area").remove();
-        drawCircles();
-
+        stopAnimatingGraph();
       };
 
-      $(".year-control").remove();
-      $(".time-line").remove();
+      if (currentYear !== firstYear) {
+        $(".graph-area").remove();
+        $(".year-control").remove();
+        $(".time-line").remove();
+        $(".current-year-label").remove();
 
-      drawTimeControllers();
+        $("#play-backward, #play-backward-background").css("visibility", "hidden");
+        $("#pause-two, #pause-two-background").css("visibility", "visible");
+        $("#play-forward, #play-forward-background").css("visibility", "visible");
+        $("#pause-one, #pause-one-background").css("visibility", "hidden");
 
-      $("#play-backward, #play-backward-background").css("visibility", "hidden");
-      $("#pause-two, #pause-two-background").css("visibility", "visible");
-      $("#play-forward, #play-forward-background").css("visibility", "visible");
-      $("#pause-one, #pause-one-background").css("visibility", "hidden");
+        drawCircles();
+        drawTimeControllers();
+        drawCurrentYearLabel();
 
-      // Calling the 'Animate Graph' function
-      animateGraph(backward);
+        currentSpeed = speed/backwardSpeedModifier;
 
+        animateGraph(backward, currentSpeed);
+
+        animationInterval = setInterval(animateBackward, currentSpeed);
+      };
     });
 
+    // Adding an event handler for clicking the 'Pause Two Time Button'.
     $("#pause-two, #pause-two-background").click(function() {
-      var stop = d3.selectAll(".country-circle, #current-year-controller, .current-year-label");
 
-      stop.transition()
-          .duration(0);
+      stopAnimatingGraph();
 
-      clearInterval(variableIncrement);
-
-      animatingGraph = false;
-
+      $(".current-year-label").remove();
+      $(".year-control").remove();
+      $(".time-line").remove();
       $(".graph-area").remove();
+
+      drawCurrentYearLabel();
+      drawTimeControllers()
       drawCircles();
 
       $("#play-backward, #play-backward-background").css("visibility", "visible");
@@ -695,16 +680,7 @@ function drawTimeControls() {
     $("#skip-forward, #skip-forward-background").click(function() {
 
       if (animatingGraph) {
-
-        var stop = d3.selectAll(".country-circle, #current-year-controller, .current-year-label");
-
-        stop.transition()
-            .duration(0);
-
-        clearInterval(variableIncrement);
-
-        animatingGraph = false;
-
+        stopAnimatingGraph();
       };
 
       // Checking if the 'Current Year' is already the 'Last Year'.
@@ -713,24 +689,19 @@ function drawTimeControls() {
         // Updating 'Current Year' variable.
         currentYear = lastYear;
 
-        // Removing old elements
+        // Removing old elements.
         $(".year-control").remove();
         $(".time-line").remove();
-        $(".graph-title").remove();
-        $(".date-range").remove();
         $(".current-year-label").remove();
-        $(".axis-label").remove();
-        $(".country-circle").remove();
+        $(".graph-area").remove();
 
         // Redrawing elements.
         drawTimeControllers();
-        drawGraphLabels();
+        drawCurrentYearLabel()
         drawCircles();
 
       };// End of year check.
-
     });// End of event handler for 'Skip Forward Time Button'.
-
   };// End of 'Draw Time Buttons' function.
 
   // Calling the 'Draw Time Buttons' function.
@@ -829,16 +800,22 @@ function drawTimeControls() {
         if (ui.position.left > (leftMargin + 151) && ui.position.left < currentYearControllerPosition - 26) {
 
           if (animatingGraph) {
+            stopAnimatingGraph();
 
-            var stop = d3.selectAll(".country-circle, #current-year-controller, .current-year-label");
+            var controller = d3.select("#current-year-controller");
+            var label = d3.select(".current-year-label");
 
-            stop.transition()
-                .duration(0);
+            controller.transition()
+                      .duration(1)
+                      .ease(d3.easeLinear)
+                      .attr("x", currentYearScale(currentYear));
 
-            clearInterval(variableIncrement);
+            label.transition()
+                 .duration(1)
+                 .ease(d3.easeLinear)
+                 .attr("x", currentYearScale(currentYear) + leftMargin + 13);
 
-            animatingGraph = false;
-
+            label.text(currentYear);
           };
 
           // Updating the 'Controller Position' variable.
@@ -875,16 +852,22 @@ function drawTimeControls() {
         if (ui.position.left > (currentYearControllerPosition + 26) && ui.position.left < (leftMargin + (graphWidth - 179))) {
 
           if (animatingGraph) {
+            stopAnimatingGraph();
 
-            var stop = d3.selectAll(".country-circle, #current-year-controller, .current-year-label");
+            var controller = d3.select("#current-year-controller");
+            var label = d3.select(".current-year-label");
 
-            stop.transition()
-                .duration(0);
+            controller.transition()
+                      .duration(1)
+                      .ease(d3.easeLinear)
+                      .attr("x", currentYearScale(currentYear));
 
-            clearInterval(variableIncrement);
+            label.transition()
+                 .duration(1)
+                 .ease(d3.easeLinear)
+                 .attr("x", currentYearScale(currentYear) + leftMargin + 13);
 
-            animatingGraph = false;
-
+            label.text(currentYear);
           };
 
           lastYearControllerPosition = ui.position.left;
@@ -910,16 +893,7 @@ function drawTimeControls() {
         if (ui.position.left > (firstYearControllerPosition + 26) && ui.position.left < lastYearControllerPosition - 26) {
 
           if (animatingGraph) {
-
-            var stop = d3.selectAll(".country-circle, #current-year-controller, .current-year-label");
-
-            stop.transition()
-                .duration(0);
-
-            clearInterval(variableIncrement);
-
-            animatingGraph = false;
-
+            stopAnimatingGraph();
           };
 
           currentYearControllerPosition = ui.position.left;
