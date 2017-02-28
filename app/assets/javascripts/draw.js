@@ -162,6 +162,9 @@ function drawTimeControls() {
     // Turning graph animation off by default .
     animatingGraph = false;
 
+    // Setting the default animation speed.
+    var speed = 500;
+
     var forwardSpeedModifier = 1;
     var backwardSpeedModifier = 1;
     var forward = "FORWARD";
@@ -437,7 +440,23 @@ function drawTimeControls() {
       $("#pause-two, #pause-two-background").css("visibility", "hidden");
 
       // Calling the 'Animate Graph' function
-      animateGraph(forward);
+      animateGraph(forward, speed, forwardSpeedModifier);
+
+      var animationInterval = setInterval(animate, speed);
+
+      function animate() {
+        if (currentYear !== lastYear) {
+          $(".graph-area").remove();
+          drawCircles();
+          animateGraph(forward, speed, forwardSpeedModifier);
+        } else {
+          animatingGraph = false;
+          $(".current-year-label").text(currentYear);
+          $(".graph-area").remove();
+          drawCircles();
+          clearInterval(animationInterval);
+        };
+      };
 
     });// End of play forward event handler.
 
