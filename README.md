@@ -1,3 +1,5 @@
+# README
+
 This data visualization application is based on Hans Rosling's ‘Trendalyzer’ software. It’s build as a Rails app using the D3 and jQuery JavaScript libraries.
 
 A live version of this app can be viewed at: i-graph.herokuapp.com
