@@ -64,7 +64,6 @@ function animateGraph(direction, currentSpeed) {
           $("#" + scaledGraphData[i][0].Code + ".country-circle").remove();
 
         };
-
       };// End of direction check.
     };// End of 'Scaled Graph Data' index loop.
   };// End of 'Scaled Graph Data' loop.
@@ -84,16 +83,16 @@ function animateGraph(direction, currentSpeed) {
   // Looping over the 'Path Data' array to generate a transition for each ‘Country Object’.
   for (var i = 0; i < pathData.length; i++) {
 
-    // Selecting the ‘Circle’ and 'Path' that correspond to the current 'Country Object' (i) in our loop.
+    // Selecting the ‘Circle’ and 'Path' that correspond to the current 'Country Object' in our loop.
     var circle = d3.selectAll("#" + pathData[i][0].Code + ".country-circle");
     var path = d3.selectAll("#" + pathData[i][0].Code + ".country-path");
 
-      // Initiating an animation for the current ‘Country Object’.
-      circle.transition()
-            .duration(currentSpeed)
-            .ease(d3.easeLinear)
-            .attr("r", pathData[i][1].R)
-            .attrTween("transform", translate(path.node()));
+    // Initiating a transition for the current ‘Country Object’.
+    circle.transition()
+          .duration(currentSpeed)
+          .ease(d3.easeLinear)
+          .attr("r", pathData[i][1].R)
+          .attrTween("transform", translate(path.node()));
 
     // This function defines how to animate along the given 'Path'.
     function translate(path) {
@@ -118,15 +117,14 @@ function animateGraph(direction, currentSpeed) {
           var yStart = path.getPointAtLength(0).y
 
           // Returning the appropriate coordinates.
-          return "translate(" + (point.x - xStart) + "," + (point.y - yStart) + ")";
+          return "translate(" + (point.x - xStart) + ", " + (point.y - yStart) + ")";
 
         };// End of inner function.
       };//End of outer function.
     };// End of 'Translate' function.
-  };// End of FOR loop.
+  };// End of 'Path Data' loop.
 
-
-  // Saving the current year 'Controller' and 'Label' into variables.
+  // Saving the 'Current Year Controller' and 'Current Year Label' into variables.
   var controller = d3.selectAll("#current-year-controller");
   var yearLabel = d3.selectAll(".current-year-label");
 
@@ -139,7 +137,7 @@ function animateGraph(direction, currentSpeed) {
               .ease(d3.easeLinear)
               .attr("x", currentYearScale(currentYear + 1));
 
-    // Initiating a transition for the 'Year Label'.
+    // Initiating a transition for the 'Label'.
     yearLabel.transition()
               .duration(currentSpeed)
               .ease(d3.easeLinear)
@@ -149,6 +147,8 @@ function animateGraph(direction, currentSpeed) {
 
     // Incrementing the current year by one.
     currentYear = currentYear + 1;
+
+    // Updating the controller position variable.
     currentYearControllerPosition = currentYearScale(currentYear) + leftMargin;
 
     // The following code block follows the same pattern, but for backward animation.
@@ -172,52 +172,91 @@ function animateGraph(direction, currentSpeed) {
   };// End of direction check.
 };// End of ‘Animate Graph’ function.
 
+// A function to update the graph at the end of each forward animation cycle.
 function animateForward() {
+
+  // Checking if the curent year is not already the last year.
   if (currentYear !== lastYear) {
+
+    // Removing and redrawing the graph.
     $(".graph-area").remove();
     drawCircles();
+
+    // Calling the 'Animate Graph' function for the next animation cycle.
     animateGraph(forward, currentSpeed);
+
+  // Else the ‘Current Year’ must equal the ‘Last Year’.
   } else {
+
+    // Indicating the animation is now finished.
     animatingGraph = false;
+
+    // Updating the controller position variable.
     currentYearControllerPosition = currentYearScale(currentYear) + leftMargin;
+
+    // Updating the 'Current Year Label' text.
     $(".current-year-label").text(currentYear);
+
+    // Toggling the play/pause buttons.
     $("#play-forward, #play-forward-background").css("visibility", "visible");
     $("#pause-one, #pause-one-background").css("visibility", "hidden");
+
+    // Removing and redrawing the graph.
     $(".graph-area").remove();
     drawCircles();
-    clearInterval(animationInterval);
-  };
-};
 
+    // Ending the animation interval.
+    clearInterval(animationInterval);
+
+  };// End of year check.
+};// End of 'Animate Forward' function.
+
+// A function to update the graph at the end of each backward animation cycle.
+// This function follows the same pattern as the 'Animate Forward' function.
 function animateBackward() {
+
   if (currentYear !== firstYear) {
+
     $(".graph-area").remove();
     drawCircles();
     animateGraph(backward, currentSpeed);
+
   } else {
+
     animatingGraph = false;
     currentYearControllerPosition = currentYearScale(currentYear) + leftMargin;
+
     $(".current-year-label").text(currentYear);
+
     $("#play-backward, #play-backward-background").css("visibility", "visible");
     $("#pause-two, #pause-two-background").css("visibility", "hidden");
+
     $(".graph-area").remove();
     drawCircles();
-    clearInterval(animationInterval);
-  };
-};
 
+    clearInterval(animationInterval);
+
+  };
+};// End of 'Animate Backward' function.
+
+// A function for stoping the animation.
 function stopAnimatingGraph() {
 
+  // Indicating the animation is now finished.
+  animatingGraph = false;
+
+  // Saving all the animating objects into a single variable.
   var stop = d3.selectAll(".country-circle, #current-year-controller, .current-year-label");
 
+  // Calling a transition with a zero duration on all the animating objects.
   stop.transition()
       .duration(0);
 
+  // Toggling the play/pause buttons.
   $("#pause-one, #pause-one-background, #pause-two, #pause-two-background").css("visibility", "hidden");
   $("#play-forward, #play-forward-background, #play-backward, #play-backward-background").css("visibility", "visible")
 
+  // Ending the animation interval.
   clearInterval(animationInterval);
 
-  animatingGraph = false;
-
-};
+};// End of 'Stop Animating Graph' function.

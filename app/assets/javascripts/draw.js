@@ -1,8 +1,6 @@
 // Calling a series of functions that will draw the graph, data points and user controls.
 function drawAll() {
   drawGraph();
-  drawGraphLabels();
-  drawCurrentYearLabel();
   drawCircles();
   drawTimeControls();
 };
@@ -42,8 +40,12 @@ function drawGraph() {
            .call(d3.axisLeft(yScale)
                    .ticks(10));
 
+  // Calling the 'Draw Graph Labels' function.
+  drawGraphLabels();
+
 };// End of 'Draw Graph' function.
 
+// A function that defines how to draw the graph labels.
 function drawGraphLabels() {
 
   // Appending the 'Graph Title'.
@@ -81,11 +83,17 @@ function drawGraphLabels() {
            .attr("dy", ".35em")
            .text(yAxisLabel);
 
+  // Changing the cursor type for the Y axis.
   $("#y-axis-label").mouseover(function() {
     $(this).css('cursor', 'vertical-text');
   });
-};
 
+  // Calling the 'Draw Current Year Label' function.
+  drawCurrentYearLabel();
+
+};// End of 'Draw Graph Labels' function.
+
+// A function that defines how to draw the current year label.
 function drawCurrentYearLabel() {
 
     // Appending 'Current Year Label'.
@@ -96,7 +104,7 @@ function drawCurrentYearLabel() {
              .attr("dy", ".35em")
              .text(currentYear);
 
-};
+};// End of 'Draw Current Year Label' function.
 
 // A function that defines how to draw the circles.
 function drawCircles() {
@@ -123,8 +131,9 @@ function drawCircles() {
 
         // Pushing the current 'Country Object' into the 'Circle Data' array.
         circleData.push(scaledGraphData[i][j]);
+
       };// End of matching year check.
-    };// End of 'Country Objects' array loop.
+    };// End of 'Scaled Graph Data' index loop.
   };// End of 'Scaled Graph Data' loop.
 
   // Sorting the 'Circle Data' by radius so that the larger circles get apended first.
@@ -144,18 +153,13 @@ function drawCircles() {
              .attr("r", circleData[i].R)
              .attr("fill", circleData[i].Colour);
 
-  };// End of FOR loop.
+  };// End of 'Circle Data' loop.
 
-  // 'Mouse Over Country' is a Boolean variable used to check if the mouse is currently hovering over a country circle.
-  var mouseOverCountry  = false;
-
-  // Adding an event handler to change style properties of a country circle while the mouse is hovering over it.
+  // Adding an event handler to change style properties of a 'Country Circle' while the mouse is hovering over it.
   $(".country-circle").mouseover(function(event) {
-    mouseOverCountry = true;
     $(this).css('cursor', 'pointer');
     $(this).css('stroke-width', 2.5);
   }).mouseout(function(event) {
-    mouseOverCountry = false;
     $(this).css('stroke-width', 1.25);
   });
 
@@ -164,7 +168,7 @@ function drawCircles() {
 // A function that defines how to draw the time controls.
 function drawTimeControls() {
 
-  // Turning graph animation off by default .
+  // Turning graph animation off by default.
   animatingGraph = false;
 
   // Setting the default 'Speed' and 'Speed Modifier' variables.
@@ -185,8 +189,23 @@ function drawTimeControls() {
                               .attr("x", leftMargin)
                               .attr("y", 75);
 
+  // Calling the 'Draw Time Buttons' function.
+  drawTimeButtons ();
+
+  // Calling the draw 'Time Controllers' function.
+  drawTimeControllers();
+
   // A function to define how to draw the 'Time Buttons'.
   function drawTimeButtons () {
+
+    // Calling the 'Draw Forward Time Buttons' function.
+    drawForwardTimeButtons();
+
+    // Calling the 'Draw Backward Time Buttons' function.
+    drawBackwardTimeButtons();
+
+    // Calling the 'Add Event Handlers' function.
+    addEventHandlers();
 
     // A function to define how to draw the 'Forward Time Buttons'.
     function drawForwardTimeButtons() {
@@ -267,9 +286,6 @@ function drawTimeControls() {
 
     };// End of 'Draw Forward Time Buttons' function.
 
-    // Calling the 'Draw Forward Time Buttons' function.
-    drawForwardTimeButtons();
-
     // A function to define how to draw the 'Backward Time Buttons'.
     function drawBackwardTimeButtons() {
 
@@ -349,366 +365,400 @@ function drawTimeControls() {
 
     };// End of 'Draw Backward Time Buttons' function.
 
-    // Calling the 'Draw Backward Time Buttons' function.
-    drawBackwardTimeButtons();
+    // A function for adding event handlers.
+    function addEventHandlers() {
 
-    // Adding an event handler to style the 'Time Buttons' on mouse over.
-    $(".time-button").mouseover(function() {
+      // Adding an event handler to style the 'Time Buttons' on mouseover.
+      $(".time-button").mouseover(function() {
 
-      // Changing the cursor to a pointer.
-      $(this).css('cursor', 'pointer');
+        // Changing the cursor to a pointer.
+        $(this).css('cursor', 'pointer');
 
-      // Checking which button the mouse is currently over using the element ID.
-      if (this.id === "skip-backward" || this.id === "skip-backward-background") {
+        // Checking which button the mouse is currently hovering over using the element ID.
+        if (this.id === "skip-backward" || this.id === "skip-backward-background") {
 
-        // Changing the button background the lightgrey.
-        $("#skip-backward-background").css("fill", "lightgrey");
+          // Changing the button background the lightgrey.
+          $("#skip-backward-background").css("fill", "lightgrey");
 
-        // All of the following code blocks follow the same pattern.
+          // All of the following code blocks follow the same pattern.
 
-      } else if (this.id === "play-forward" || this.id === "play-forward-background") {
-        $("#play-forward-background").css("fill", "lightgrey");
-      } else if (this.id === "fast-forward" || this.id === "fast-forward-background" || this.id === "fast-forward-arrow-one" || this.id === "fast-forward-arrow-two") {
-        $("#fast-forward-background").css("fill", "lightgrey");
-      } else if (this.id === "fast-backward" || this.id === "fast-backward-background" || this.id === "fast-backward-arrow-one" || this.id === "fast-backward-arrow-two") {
-        $("#fast-backward-background").css("fill", "lightgrey");
-      } else if (this.id === "play-backward" || this.id === "play-backward-background") {
-        $("#play-backward-background").css("fill", "lightgrey");
-      } else if (this.id === "skip-forward" || this.id === "skip-forward-background") {
-        $("#skip-forward-background").css("fill", "lightgrey");
-      } else if (this.id === "pause-one" || this.id === "pause-one-background") {
-        $("#pause-one-background").css("fill", "lightgrey");
-      } else if (this.id === "pause-two" || this.id === "pause-two-background") {
-        $("#pause-two-background").css("fill", "lightgrey");
-      } else {
+        } else if (this.id === "play-forward" || this.id === "play-forward-background") {
+          $("#play-forward-background").css("fill", "lightgrey");
+        } else if (this.id === "fast-forward" || this.id === "fast-forward-background" || this.id === "fast-forward-arrow-one" || this.id === "fast-forward-arrow-two") {
+          $("#fast-forward-background").css("fill", "lightgrey");
+        } else if (this.id === "fast-backward" || this.id === "fast-backward-background" || this.id === "fast-backward-arrow-one" || this.id === "fast-backward-arrow-two") {
+          $("#fast-backward-background").css("fill", "lightgrey");
+        } else if (this.id === "play-backward" || this.id === "play-backward-background") {
+          $("#play-backward-background").css("fill", "lightgrey");
+        } else if (this.id === "skip-forward" || this.id === "skip-forward-background") {
+          $("#skip-forward-background").css("fill", "lightgrey");
+        } else if (this.id === "pause-one" || this.id === "pause-one-background") {
+          $("#pause-one-background").css("fill", "lightgrey");
+        } else if (this.id === "pause-two" || this.id === "pause-two-background") {
+          $("#pause-two-background").css("fill", "lightgrey");
+        } else {
 
-        // If an appropriate ID is not found log an error.
-        console.log("Error in time button event handeler!");
-      };// End of 'Time Button' ID check.
+          // If an appropriate ID is not found log an error.
+          console.log("Error in time button event handler!");
 
-    }).mouseout(function() {
+        };// End of 'Time Button' ID check.
 
-      // Restoring the button background to white after the mouse leaves.
-      $("#skip-backward-background, #play-forward-background, #pause-one-background, #fast-forward-background, #fast-backward-background, #play-backward-background, #pause-two-background, #skip-forward-background").css("fill", "white");
+      }).mouseout(function() {
 
-    });// End of 'Time Buttons' styleing event handler.
+        // Restoring the button background to white after the mouse leaves.
+        $("#skip-backward-background, #play-forward-background, #pause-one-background, #fast-forward-background, #fast-backward-background, #play-backward-background, #pause-two-background, #skip-forward-background").css("fill", "white");
 
-    // Adding an event handler for clicking the 'Skip Backward Time Button'.
-    $("#skip-backward, #skip-backward-background").click(function() {
+      });// End of 'Time Buttons' styleing event handler.
 
-      if (animatingGraph) {
+      // Adding an event handler for clicking the 'Skip Backward Time Button'.
+      $("#skip-backward, #skip-backward-background").click(function() {
+
+        // Stop the graph animation if one is in process.
+        if (animatingGraph) {
+          stopAnimatingGraph();
+        };
+
+        // Checking if the 'Current Year' is not already the 'First Year'.
+        if (currentYear !== firstYear) {
+
+          // Updating 'Current Year' variable.
+          currentYear = firstYear;
+
+          // Removing old elements.
+          $(".year-control").remove();
+          $(".time-line").remove();
+          $(".current-year-label").remove();
+          $(".graph-area").remove();
+
+          // Redrawing elements.
+          drawTimeControllers();
+          drawCurrentYearLabel()
+          drawCircles();
+
+        };// End of year check;
+
+      });// End of event handler for 'Skip Backward Time Button'.
+
+      // Adding an event handler for clicking the 'Play Forward Time Button'.
+      $("#play-forward, #play-forward-background").click(function() {
+
+        // Stop the graph animation if one is in process.
+        if (animatingGraph) {
+          stopAnimatingGraph();
+        };
+
+        // Only trigger forward animation if the ‘Current Year’ is not already the ‘Last Year’.
+        if (currentYear !== lastYear) {
+
+          // Removing old elements.
+          $(".graph-area").remove();
+          $(".year-control").remove();
+          $(".time-line").remove();
+          $(".current-year-label").remove();
+
+          // Toggling the play/pause buttons.
+          $("#play-forward, #play-forward-background").css("visibility", "hidden");
+          $("#pause-one, #pause-one-background").css("visibility", "visible");
+          $("#play-backward, #play-backward-background").css("visibility", "visible");
+          $("#pause-two, #pause-two-background").css("visibility", "hidden");
+
+          // Redrawing elements.
+          drawCircles();
+          drawTimeControllers();
+          drawCurrentYearLabel();
+
+          // Calculating the animation speed.
+          currentSpeed = speed/forwardSpeedModifier;
+
+          // Calling the 'Animate Graph' function.
+          animateGraph(forward, currentSpeed);
+
+          //Setting the animation interval.
+          animationInterval = setInterval(animateForward, currentSpeed);
+
+        };// End of year check.
+
+      });// End of 'Play Forward' event handler.
+
+      // Adding an event handler for clicking the 'Pause One Time Button'.
+      $("#pause-one, #pause-one-background").click(function() {
+
+        // Stoping the graph animation.
         stopAnimatingGraph();
-      };
-
-      // Checking if the 'Current Year' is already the 'First Year'.
-      if (currentYear !== firstYear) {
-
-        // Updating 'Current Year' variable.
-        currentYear = firstYear;
 
         // Removing old elements.
+        $(".current-year-label").remove();
         $(".year-control").remove();
         $(".time-line").remove();
-        $(".current-year-label").remove();
         $(".graph-area").remove();
 
         // Redrawing elements.
-        drawTimeControllers();
-        drawCurrentYearLabel()
-        drawCircles();
-
-      };// End of year check;
-
-    });// End of event handler for 'Skip Backward Time Button'.
-
-    // Adding an event handler for clicking the 'Play Forward Time Button'.
-    $("#play-forward, #play-forward-background").click(function() {
-
-      if (animatingGraph) {
-        stopAnimatingGraph();
-      };
-
-      if (currentYear !== lastYear) {
-        $(".graph-area").remove();
-        $(".year-control").remove();
-        $(".time-line").remove();
-        $(".current-year-label").remove();
-
-        $("#play-forward, #play-forward-background").css("visibility", "hidden");
-        $("#pause-one, #pause-one-background").css("visibility", "visible");
-        $("#play-backward, #play-backward-background").css("visibility", "visible");
-        $("#pause-two, #pause-two-background").css("visibility", "hidden");
-
-        drawCircles();
-        drawTimeControllers();
         drawCurrentYearLabel();
+        drawTimeControllers()
+        drawCircles();
 
-        // Calculating the animation speed.
-        currentSpeed = speed/forwardSpeedModifier;
-
-        // Calling the 'Animate Graph' function
-        animateGraph(forward, currentSpeed);
-
-        animationInterval = setInterval(animateForward, currentSpeed);
-      };
-
-    });// End of play forward event handler.
-
-    // Adding an event handler for clicking the 'Pause One Time Button'.
-    $("#pause-one, #pause-one-background").click(function() {
-
-      stopAnimatingGraph();
-
-      $(".current-year-label").remove();
-      $(".year-control").remove();
-      $(".time-line").remove();
-      $(".graph-area").remove();
-
-      drawCurrentYearLabel();
-      drawTimeControllers()
-      drawCircles();
-
-      $("#play-forward, #play-forward-background").css("visibility", "visible");
-      $("#pause-one, #pause-one-background").css("visibility", "hidden");
-    });
-
-    // Adding an event handler for clicking the 'Fast Forward Time Button'.
-    $("#fast-forward, #fast-forward-background, #fast-forward-arrow-one, #fast-forward-arrow-two").click(function() {
-      if (forwardSpeedModifier === 1) {
-
-        forwardSpeedModifier = 4/3;
-        backwardSpeedModifier = 1;
-
-        $("#fast-forward-arrow-one").css({"stroke": "#3168C5", "fill": "#3168C5"});
-        $("#fast-backward-arrow-one, #fast-backward-arrow-two").css({"stroke": "#009AC2", "fill": "#009AC2"});
-
-        if (animatingGraph) {
-
-          stopAnimatingGraph();
-
-          $(".graph-area").remove();
-          drawCircles();
-
-          currentSpeed = speed/forwardSpeedModifier;
-
-          $("#play-forward, #play-forward-background").css("visibility", "hidden");
-          $("#pause-one, #pause-one-background").css("visibility", "visible");
-
-          animateGraph(forward, currentSpeed);
-
-          animationInterval = setInterval(animateForward, currentSpeed);
-
-        };
-
-      } else if (forwardSpeedModifier === 4/3) {
-
-        forwardSpeedModifier = 2;
-
-        $("#fast-forward-arrow-two").css({"stroke": "#3168C5", "fill": "#3168C5"});
-
-        if (animatingGraph) {
-
-          stopAnimatingGraph();
-
-          $(".graph-area").remove();
-          drawCircles();
-
-          currentSpeed = speed/forwardSpeedModifier;
-
-          $("#play-forward, #play-forward-background").css("visibility", "hidden");
-          $("#pause-one, #pause-one-background").css("visibility", "visible");
-
-          animateGraph(forward, currentSpeed);
-
-          animationInterval = setInterval(animateForward, currentSpeed);
-
-        };
-
-      } else if (forwardSpeedModifier === 2) {
-
-        forwardSpeedModifier = 1;
-
-        $("#fast-forward-arrow-one, #fast-forward-arrow-two").css({"stroke": "#009AC2", "fill": "#009AC2"});
-
-        if (animatingGraph) {
-
-          stopAnimatingGraph();
-
-          $(".graph-area").remove();
-          drawCircles();
-
-          currentSpeed = speed/forwardSpeedModifier;
-
-          $("#play-forward, #play-forward-background").css("visibility", "hidden");
-          $("#pause-one, #pause-one-background").css("visibility", "visible");
-
-          animateGraph(forward, currentSpeed);
-
-          animationInterval = setInterval(animateForward, currentSpeed);
-
-        };
-      };
-    });
-
-    // Adding an event handler for clicking the 'Fast Backward Time Button'.
-    $("#fast-backward, #fast-backward-background, #fast-backward-arrow-one, #fast-backward-arrow-two").click(function() {
-      if (backwardSpeedModifier === 1) {
-
-        backwardSpeedModifier = 4/3;
-        forwardSpeedModifier = 1;
-
-        $("#fast-backward-arrow-one").css({"stroke": "#3168C5", "fill": "#3168C5"});
-        $("#fast-forward-arrow-one, #fast-forward-arrow-two").css({"stroke": "#009AC2", "fill": "#009AC2"});
-
-        if (animatingGraph) {
-
-          stopAnimatingGraph();
-
-          $(".graph-area").remove();
-          drawCircles();
-
-          currentSpeed = speed/backwardSpeedModifier;
-
-          $("#play-backward, #play-backward-background").css("visibility", "hidden");
-          $("#pause-two, #pause-two-background").css("visibility", "visible");
-
-          animateGraph(backward, currentSpeed);
-
-          animationInterval = setInterval(animateBackward, currentSpeed);
-
-        };
-
-      } else if (backwardSpeedModifier === 4/3) {
-
-        backwardSpeedModifier = 2;
-
-        $("#fast-backward-arrow-two").css({"stroke": "#3168C5", "fill": "#3168C5"});
-
-        if (animatingGraph) {
-
-          stopAnimatingGraph();
-
-          $(".graph-area").remove();
-          drawCircles();
-
-          currentSpeed = speed/backwardSpeedModifier;
-
-          $("#play-backward, #play-backward-background").css("visibility", "hidden");
-          $("#pause-two, #pause-two-background").css("visibility", "visible");
-
-          animateGraph(backward, currentSpeed);
-
-          animationInterval = setInterval(animateBackward, currentSpeed);
-
-        };
-
-      } else if (backwardSpeedModifier === 2) {
-
-        backwardSpeedModifier = 1;
-
-        $("#fast-backward-arrow-one, #fast-backward-arrow-two").css({"stroke": "#009AC2", "fill": "#009AC2"});
-
-        if (animatingGraph) {
-
-          stopAnimatingGraph();
-
-          $(".graph-area").remove();
-          drawCircles();
-
-          currentSpeed = speed/backwardSpeedModifier;
-
-          $("#play-backward, #play-backward-background").css("visibility", "hidden");
-          $("#pause-two, #pause-two-background").css("visibility", "visible");
-
-          animateGraph(backward, currentSpeed);
-
-          animationInterval = setInterval(animateBackward, currentSpeed);
-
-        };
-      };
-    });
-
-    // Adding an event handler for clicking the 'Play Backward Time Button'.
-    $("#play-backward, #play-backward-background").click(function() {
-
-      if (animatingGraph) {
-        stopAnimatingGraph();
-      };
-
-      if (currentYear !== firstYear) {
-        $(".graph-area").remove();
-        $(".year-control").remove();
-        $(".time-line").remove();
-        $(".current-year-label").remove();
-
-        $("#play-backward, #play-backward-background").css("visibility", "hidden");
-        $("#pause-two, #pause-two-background").css("visibility", "visible");
+        // Toggling the play/pause buttons.
         $("#play-forward, #play-forward-background").css("visibility", "visible");
         $("#pause-one, #pause-one-background").css("visibility", "hidden");
 
-        drawCircles();
-        drawTimeControllers();
-        drawCurrentYearLabel();
+      });// End of 'Pause One' event handler.
 
-        currentSpeed = speed/backwardSpeedModifier;
+      // Adding an event handler for clicking the 'Fast Forward Time Button'.
+      $("#fast-forward, #fast-forward-background, #fast-forward-arrow-one, #fast-forward-arrow-two").click(function() {
 
-        animateGraph(backward, currentSpeed);
+        // Checking the current value of the 'Forward Speed Modifier' variable.
+        if (forwardSpeedModifier === 1) {
 
-        animationInterval = setInterval(animateBackward, currentSpeed);
-      };
-    });
+          // Reassigning the 'Speed Modifier' variables.
+          forwardSpeedModifier = 4/3;
+          backwardSpeedModifier = 1;
 
-    // Adding an event handler for clicking the 'Pause Two Time Button'.
-    $("#pause-two, #pause-two-background").click(function() {
+          // Styling the arrows.
+          $("#fast-forward-arrow-one").css({"stroke": "#3168C5", "fill": "#3168C5"});
+          $("#fast-backward-arrow-one, #fast-backward-arrow-two").css({"stroke": "#009AC2", "fill": "#009AC2"});
 
-      stopAnimatingGraph();
+          // Checking if an animation is already in process.
+          if (animatingGraph) {
 
-      $(".current-year-label").remove();
-      $(".year-control").remove();
-      $(".time-line").remove();
-      $(".graph-area").remove();
+            // Stoping the current animation.
+            stopAnimatingGraph();
 
-      drawCurrentYearLabel();
-      drawTimeControllers()
-      drawCircles();
+            // Removing and redrawing the graph.
+            $(".graph-area").remove();
+            drawCircles();
 
-      $("#play-backward, #play-backward-background").css("visibility", "visible");
-      $("#pause-two, #pause-two-background").css("visibility", "hidden");
-    });
+            // Calculating the animation speed.
+            currentSpeed = speed/forwardSpeedModifier;
 
-    // Adding an event handler for clicking the 'Skip Forward Time Button'.
-    $("#skip-forward, #skip-forward-background").click(function() {
+            // Toggling the play/pause buttons.
+            $("#play-forward, #play-forward-background").css("visibility", "hidden");
+            $("#pause-one, #pause-one-background").css("visibility", "visible");
 
-      if (animatingGraph) {
+            // Calling the 'Animate Graph' function.
+            animateGraph(forward, currentSpeed);
+
+            //Setting the animation interval.
+            animationInterval = setInterval(animateForward, currentSpeed);
+
+          };// End of animation check.
+
+          // The following code blocks follow the same pattern as above.
+
+        } else if (forwardSpeedModifier === 4/3) {
+
+          forwardSpeedModifier = 2;
+
+          $("#fast-forward-arrow-two").css({"stroke": "#3168C5", "fill": "#3168C5"});
+
+          if (animatingGraph) {
+
+            stopAnimatingGraph();
+
+            $(".graph-area").remove();
+            drawCircles();
+
+            currentSpeed = speed/forwardSpeedModifier;
+
+            $("#play-forward, #play-forward-background").css("visibility", "hidden");
+            $("#pause-one, #pause-one-background").css("visibility", "visible");
+
+            animateGraph(forward, currentSpeed);
+
+            animationInterval = setInterval(animateForward, currentSpeed);
+
+          };
+
+        } else if (forwardSpeedModifier === 2) {
+
+          forwardSpeedModifier = 1;
+
+          $("#fast-forward-arrow-one, #fast-forward-arrow-two").css({"stroke": "#009AC2", "fill": "#009AC2"});
+
+          if (animatingGraph) {
+
+            stopAnimatingGraph();
+
+            $(".graph-area").remove();
+            drawCircles();
+
+            currentSpeed = speed/forwardSpeedModifier;
+
+            $("#play-forward, #play-forward-background").css("visibility", "hidden");
+            $("#pause-one, #pause-one-background").css("visibility", "visible");
+
+            animateGraph(forward, currentSpeed);
+
+            animationInterval = setInterval(animateForward, currentSpeed);
+
+          };
+        };// End of 'Forward Speed Modifier' variable check.
+      });// End of 'Fast Forward' event handler.
+
+      // Adding an event handler for clicking the 'Fast Backward Time Button'.
+      // Follows the same pattern as the ‘Fast Forward’ button.
+      $("#fast-backward, #fast-backward-background, #fast-backward-arrow-one, #fast-backward-arrow-two").click(function() {
+
+        if (backwardSpeedModifier === 1) {
+
+          backwardSpeedModifier = 4/3;
+          forwardSpeedModifier = 1;
+
+          $("#fast-backward-arrow-one").css({"stroke": "#3168C5", "fill": "#3168C5"});
+          $("#fast-forward-arrow-one, #fast-forward-arrow-two").css({"stroke": "#009AC2", "fill": "#009AC2"});
+
+          if (animatingGraph) {
+
+            stopAnimatingGraph();
+
+            $(".graph-area").remove();
+            drawCircles();
+
+            currentSpeed = speed/backwardSpeedModifier;
+
+            $("#play-backward, #play-backward-background").css("visibility", "hidden");
+            $("#pause-two, #pause-two-background").css("visibility", "visible");
+
+            animateGraph(backward, currentSpeed);
+
+            animationInterval = setInterval(animateBackward, currentSpeed);
+
+          };
+
+        } else if (backwardSpeedModifier === 4/3) {
+
+          backwardSpeedModifier = 2;
+
+          $("#fast-backward-arrow-two").css({"stroke": "#3168C5", "fill": "#3168C5"});
+
+          if (animatingGraph) {
+
+            stopAnimatingGraph();
+
+            $(".graph-area").remove();
+            drawCircles();
+
+            currentSpeed = speed/backwardSpeedModifier;
+
+            $("#play-backward, #play-backward-background").css("visibility", "hidden");
+            $("#pause-two, #pause-two-background").css("visibility", "visible");
+
+            animateGraph(backward, currentSpeed);
+
+            animationInterval = setInterval(animateBackward, currentSpeed);
+
+          };
+
+        } else if (backwardSpeedModifier === 2) {
+
+          backwardSpeedModifier = 1;
+
+          $("#fast-backward-arrow-one, #fast-backward-arrow-two").css({"stroke": "#009AC2", "fill": "#009AC2"});
+
+          if (animatingGraph) {
+
+            stopAnimatingGraph();
+
+            $(".graph-area").remove();
+            drawCircles();
+
+            currentSpeed = speed/backwardSpeedModifier;
+
+            $("#play-backward, #play-backward-background").css("visibility", "hidden");
+            $("#pause-two, #pause-two-background").css("visibility", "visible");
+
+            animateGraph(backward, currentSpeed);
+
+            animationInterval = setInterval(animateBackward, currentSpeed);
+
+          };
+        };
+      });// End of 'Fast Backward' event handler.
+
+      // Adding an event handler for clicking the 'Play Backward Time Button'.
+      // Follows the same pattern as the ‘Play Forward’ button.
+      $("#play-backward, #play-backward-background").click(function() {
+
+        if (animatingGraph) {
+          stopAnimatingGraph();
+        };
+
+        if (currentYear !== firstYear) {
+          $(".graph-area").remove();
+          $(".year-control").remove();
+          $(".time-line").remove();
+          $(".current-year-label").remove();
+
+          $("#play-backward, #play-backward-background").css("visibility", "hidden");
+          $("#pause-two, #pause-two-background").css("visibility", "visible");
+          $("#play-forward, #play-forward-background").css("visibility", "visible");
+          $("#pause-one, #pause-one-background").css("visibility", "hidden");
+
+          drawCircles();
+          drawTimeControllers();
+          drawCurrentYearLabel();
+
+          currentSpeed = speed/backwardSpeedModifier;
+
+          animateGraph(backward, currentSpeed);
+
+          animationInterval = setInterval(animateBackward, currentSpeed);
+
+        };
+      });// End of 'Play Backward' event handler.
+
+      // Adding an event handler for clicking the 'Pause Two Time Button'.
+      // Follows the same pattern as the ‘Pause One’ button.
+      $("#pause-two, #pause-two-background").click(function() {
+
         stopAnimatingGraph();
-      };
 
-      // Checking if the 'Current Year' is already the 'Last Year'.
-      if (currentYear !== lastYear) {
-
-        // Updating 'Current Year' variable.
-        currentYear = lastYear;
-
-        // Removing old elements.
+        $(".current-year-label").remove();
         $(".year-control").remove();
         $(".time-line").remove();
-        $(".current-year-label").remove();
         $(".graph-area").remove();
 
-        // Redrawing elements.
-        drawTimeControllers();
-        drawCurrentYearLabel()
+        drawCurrentYearLabel();
+        drawTimeControllers()
         drawCircles();
 
-      };// End of year check.
-    });// End of event handler for 'Skip Forward Time Button'.
-  };// End of 'Draw Time Buttons' function.
+        $("#play-backward, #play-backward-background").css("visibility", "visible");
+        $("#pause-two, #pause-two-background").css("visibility", "hidden");
 
-  // Calling the 'Draw Time Buttons' function.
-  drawTimeButtons ();
+      });// End of 'Pause Two' event handler.
+
+      // Adding an event handler for clicking the 'Skip Forward Time Button'.
+      // Follows the same pattern as the ‘Skip Backward’ button.
+      $("#skip-forward, #skip-forward-background").click(function() {
+
+        if (animatingGraph) {
+          stopAnimatingGraph();
+        };
+
+        if (currentYear !== lastYear) {
+
+          currentYear = lastYear;
+
+          $(".year-control").remove();
+          $(".time-line").remove();
+          $(".current-year-label").remove();
+          $(".graph-area").remove();
+
+          drawTimeControllers();
+          drawCurrentYearLabel()
+          drawCircles();
+
+        };
+      });// End of event handler for 'Skip Forward Time Button'.
+    };// End of 'Add Event Handlers' function.
+  };// End of 'Draw Time Buttons' function.
 
   // A function to define how to draw the 'Time Controllers'.
   function drawTimeControllers() {
+
+    // Assigning number variables equal to the controller starting positions.
+    firstYearControllerPosition = firstYearScale(firstYear) + leftMargin;
+    currentYearControllerPosition = currentYearScale(currentYear) + leftMargin;
+    lastYearControllerPosition = lastYearScale(lastYear) + leftMargin;
 
     // Appending a line to represent the date range.
     timeControls.append("line")
@@ -727,15 +777,6 @@ function drawTimeControls() {
                                           .attr("x", firstYearScale(firstYear))
                                           .attr("y", 3);
 
-    // Appending a new SVG to act as the dragable controller for last year.
-    var lastYearController = timeControls.append("svg")
-                                         .attr("class", "year-control")
-                                         .attr("id", "last-year-controller")
-                                         .attr("width", 28)
-                                         .attr("height", 28)
-                                         .attr("x", lastYearScale(lastYear))
-                                         .attr("y", 3);
-
     // Appending a new SVG to act as the dragable controller for current year.
     var currentYearController = timeControls.append("svg")
                                             .attr("class", "year-control")
@@ -744,6 +785,15 @@ function drawTimeControls() {
                                             .attr("height", 28)
                                             .attr("x", currentYearScale(currentYear))
                                             .attr("y", 3);
+
+    // Appending a new SVG to act as the dragable controller for last year.
+    var lastYearController = timeControls.append("svg")
+                                         .attr("class", "year-control")
+                                         .attr("id", "last-year-controller")
+                                         .attr("width", 28)
+                                         .attr("height", 28)
+                                         .attr("x", lastYearScale(lastYear))
+                                         .attr("y", 3);
 
     // Appending the background for the 'First Year Controller'.
     firstYearController.append("circle")
@@ -756,17 +806,6 @@ function drawTimeControls() {
                        .attr("transform", "translate(3, 3)")
                        .attr("d", "M11.2 0c-6.186 0-11.2 5.014-11.2 11.2s5.014 11.2 11.2 11.2 11.2-5.014 11.2-11.2-5.014-11.2-11.2-11.2zM11.2 19.6c-4.639 0-8.4-3.761-8.4-8.4s3.761-8.4 8.4-8.4c4.639 0 8.4 3.761 8.4 8.4s-3.761 8.4-8.4 8.4zM7 11.2c0-2.32 1.88-4.2 4.2-4.2s4.2 1.88 4.2 4.2c0 2.32-1.88 4.2-4.2 4.2s-4.2-1.88-4.2-4.2z");
 
-    // Appending the background for the 'Last Year Controller'.
-    lastYearController.append("circle")
-                      .attr("cx", 14)
-                      .attr("cy", 14)
-                      .attr("r", 14);
-
-    // Appending the 'Last Year Controller'.
-    lastYearController.append("path")
-                      .attr("transform", "translate(3, 3)")
-                      .attr("d", "M11.2 0c-6.186 0-11.2 5.014-11.2 11.2s5.014 11.2 11.2 11.2 11.2-5.014 11.2-11.2-5.014-11.2-11.2-11.2zM11.2 19.6c-4.639 0-8.4-3.761-8.4-8.4s3.761-8.4 8.4-8.4c4.639 0 8.4 3.761 8.4 8.4s-3.761 8.4-8.4 8.4zM7 11.2c0-2.32 1.88-4.2 4.2-4.2s4.2 1.88 4.2 4.2c0 2.32-1.88 4.2-4.2 4.2s-4.2-1.88-4.2-4.2z");
-
     // Appending the background for the 'Current Year Controller'.
     currentYearController.append("circle")
                          .attr("cx", 14)
@@ -778,17 +817,24 @@ function drawTimeControls() {
                          .attr("transform", "translate(3, 3)")
                          .attr("d", "M11.2 0c-6.186 0-11.2 5.014-11.2 11.2s5.014 11.2 11.2 11.2 11.2-5.014 11.2-11.2-5.014-11.2-11.2-11.2zM11.2 14c-1.546 0-2.8-1.254-2.8-2.8s1.254-2.8 2.8-2.8c1.546 0 2.8 1.254 2.8 2.8s-1.254 2.8-2.8 2.8z");
 
+    // Appending the background for the 'Last Year Controller'.
+    lastYearController.append("circle")
+                      .attr("cx", 14)
+                      .attr("cy", 14)
+                      .attr("r", 14);
+
+    // Appending the 'Last Year Controller'.
+    lastYearController.append("path")
+                      .attr("transform", "translate(3, 3)")
+                      .attr("d", "M11.2 0c-6.186 0-11.2 5.014-11.2 11.2s5.014 11.2 11.2 11.2 11.2-5.014 11.2-11.2-5.014-11.2-11.2-11.2zM11.2 19.6c-4.639 0-8.4-3.761-8.4-8.4s3.761-8.4 8.4-8.4c4.639 0 8.4 3.761 8.4 8.4s-3.761 8.4-8.4 8.4zM7 11.2c0-2.32 1.88-4.2 4.2-4.2s4.2 1.88 4.2 4.2c0 2.32-1.88 4.2-4.2 4.2s-4.2-1.88-4.2-4.2z");
+
     // Adding and event handler for hovering over the year controls.
     $(".year-control").mouseover(function() {
 
       // Changing the cursor to horizontal resize.
       $(this).css('cursor', 'ew-resize');
-    });
 
-    // Assigning number variables equal to the controller starting positions.
-    firstYearControllerPosition = firstYearScale(firstYear) + leftMargin;
-    currentYearControllerPosition = currentYearScale(currentYear) + leftMargin;
-    lastYearControllerPosition = lastYearScale(lastYear) + leftMargin;
+    });
 
     // Adding a event handler for dragging the year controllers.
     $(".year-control").draggable().bind('drag', function(event, ui) {
@@ -796,27 +842,35 @@ function drawTimeControls() {
       // Checking if the selected controller is for the first year.
       if (event.target.id === "first-year-controller") {
 
-        // Checking if the selected controller is within the permitted range.
+        // Checking if the selected controller is within the permitted date range.
         if (ui.position.left > (leftMargin + 151) && ui.position.left < currentYearControllerPosition - 26) {
 
+          // Checking if an animation is in process.
           if (animatingGraph) {
+
+            // Stoping the animation.
             stopAnimatingGraph();
 
+            // Saving the 'Current Year Controller' and 'Current Year Label' into variables.
             var controller = d3.select("#current-year-controller");
             var label = d3.select(".current-year-label");
 
+            // Moving the controller to the current year position.
             controller.transition()
                       .duration(1)
                       .ease(d3.easeLinear)
                       .attr("x", currentYearScale(currentYear));
 
+            // Moving the label to the current year position.
             label.transition()
                  .duration(1)
                  .ease(d3.easeLinear)
                  .attr("x", currentYearScale(currentYear) + leftMargin + 13);
 
+            // Updating the label text.
             label.text(currentYear);
-          };
+
+          };// End of animation check.
 
           // Updating the 'Controller Position' variable.
           firstYearControllerPosition = ui.position.left;
@@ -834,8 +888,11 @@ function drawTimeControls() {
           // Removing graph elements based on old data.
           $(".grid").remove();
           $(".axis").remove();
+          $(".graph-title").remove();
+          $(".date-range").remove();
+          $(".current-year-label").remove();
+          $(".axis-label").remove();
           $(".graph-area").remove();
-          $(".country-circle").remove();
 
           // Redrawing the graph elements with the new data.
           drawGraph();
@@ -843,50 +900,10 @@ function drawTimeControls() {
 
           // Updating the 'Controller Position'.
           event.target.setAttribute("x", (ui.position.left - leftMargin));
+
         };// End of range check.
 
         // The following code blocks follow the same pattern as above.
-
-      } else if (event.target.id === "last-year-controller") {
-
-        if (ui.position.left > (currentYearControllerPosition + 26) && ui.position.left < (leftMargin + (graphWidth - 179))) {
-
-          if (animatingGraph) {
-            stopAnimatingGraph();
-
-            var controller = d3.select("#current-year-controller");
-            var label = d3.select(".current-year-label");
-
-            controller.transition()
-                      .duration(1)
-                      .ease(d3.easeLinear)
-                      .attr("x", currentYearScale(currentYear));
-
-            label.transition()
-                 .duration(1)
-                 .ease(d3.easeLinear)
-                 .attr("x", currentYearScale(currentYear) + leftMargin + 13);
-
-            label.text(currentYear);
-          };
-
-          lastYearControllerPosition = ui.position.left;
-          lastYear = Math.round(lastYearScale.invert(ui.position.left - leftMargin));
-          $(".date-range").text(firstYear + " - " + lastYear);
-
-          var newDomain = true;
-          scaleAllData(newDomain);
-
-          $(".grid").remove();
-          $(".axis").remove();
-          $(".graph-area").remove();
-          $(".country-circle").remove();
-
-          drawGraph();
-          drawCircles();
-
-          event.target.setAttribute("x", (ui.position.left - leftMargin));
-        };
 
       } else if (event.target.id === "current-year-controller") {
 
@@ -914,131 +931,55 @@ function drawTimeControls() {
           label.text(currentYear);
 
           event.target.setAttribute("x", (ui.position.left - leftMargin));
+
         };
 
+      } else if (event.target.id === "last-year-controller") {
+
+        if (ui.position.left > (currentYearControllerPosition + 26) && ui.position.left < (leftMargin + (graphWidth - 179))) {
+
+          if (animatingGraph) {
+            stopAnimatingGraph();
+
+            var controller = d3.select("#current-year-controller");
+            var label = d3.select(".current-year-label");
+
+            controller.transition()
+                      .duration(1)
+                      .ease(d3.easeLinear)
+                      .attr("x", currentYearScale(currentYear));
+
+            label.transition()
+                 .duration(1)
+                 .ease(d3.easeLinear)
+                 .attr("x", currentYearScale(currentYear) + leftMargin + 13);
+
+            label.text(currentYear);
+
+          };
+
+          lastYearControllerPosition = ui.position.left;
+          lastYear = Math.round(lastYearScale.invert(ui.position.left - leftMargin));
+          $(".date-range").text(firstYear + " - " + lastYear);
+
+          var newDomain = true;
+          scaleAllData(newDomain);
+
+          $(".grid").remove();
+          $(".axis").remove();
+          $(".graph-title").remove();
+          $(".date-range").remove();
+          $(".current-year-label").remove();
+          $(".axis-label").remove();
+          $(".graph-area").remove();
+
+          drawGraph();
+          drawCircles();
+
+          event.target.setAttribute("x", (ui.position.left - leftMargin));
+
+        };
       };// End of target ID check.
     });// End of draggable event handler.
   };// End of draw 'Time Controllers' function.
-
-  // Calling the draw 'Time Controllers' function.
-  drawTimeControllers();
-
 };// End of 'Draw Time Controls' function.
-
-// A function that defines how to draw the 'Menu'.
-function drawMenu() {
-
-  var open = false;
-  var locked = false;
-
-  var menu = svg.append("svg")
-                .attr("id", "menu")
-                .attr("width", 205)
-                .attr("height", graphZoneHeight)
-                .attr("x", graphZoneWidth - 55)
-                .attr("y", 0);
-
-  menu.append("rect")
-      .attr("x", 0)
-      .attr("y", -2)
-      .attr("width", 205)
-      .attr("height", graphZoneHeight + 4)
-      .attr("stroke", "grey")
-      .attr("stroke-width", 2)
-      .attr("fill", "lightgrey");
-
-  $("svg").mousemove(function(event) {
-
-    if (event.pageX > (graphZoneWidth - 55) && open === false) {
-
-      d3.selectAll("#menu").transition()
-                           .duration(1000)
-                           .ease(d3.easeLinear)
-                           .attr("x", graphZoneWidth - 200);
-
-      open = true;
-
-    } else if (open === true && locked === false && event.pageX < graphZoneWidth - 200) {
-
-      d3.selectAll("#menu").transition()
-                           .duration(1000)
-                           .ease(d3.easeLinear)
-                           .attr("x", graphZoneWidth - 55)
-
-      open = false;
-
-    };
-  });
-
-  menu.append("path")
-      .attr("class", "nav-icon")
-      .attr("stroke", "grey")
-      .attr("fill", "grey")
-      .attr("stroke-width", 1)
-      .attr("transform", "translate(11, 22)")
-      .attr("d", "M15 2c-8.284 0-15 6.716-15 15s6.716 15 15 15c8.284 0 15-6.716 15-15s-6.716-15-15-15zM23.487 22c0.268-1.264 0.437-2.606 0.492-4h3.983c-0.104 1.381-0.426 2.722-0.959 4h-3.516zM6.513 12c-0.268 1.264-0.437 2.606-0.492 4h-3.983c0.104-1.381 0.426-2.722 0.959-4h3.516zM21.439 12c0.3 1.28 0.481 2.62 0.54 4h-5.979v-4h5.439zM16 10v-5.854c0.456 0.133 0.908 0.355 1.351 0.668 0.831 0.586 1.625 1.488 2.298 2.609 0.465 0.775 0.867 1.638 1.203 2.578h-4.852zM10.351 7.422c0.673-1.121 1.467-2.023 2.298-2.609 0.443-0.313 0.895-0.535 1.351-0.668v5.854h-4.852c0.336-0.94 0.738-1.803 1.203-2.578zM14 12v4h-5.979c0.059-1.38 0.24-2.72 0.54-4h5.439zM2.997 22c-0.533-1.278-0.854-2.619-0.959-4h3.983c0.055 1.394 0.224 2.736 0.492 4h-3.516zM8.021 18h5.979v4h-5.439c-0.3-1.28-0.481-2.62-0.54-4zM14 24v5.854c-0.456-0.133-0.908-0.355-1.351-0.668-0.831-0.586-1.625-1.488-2.298-2.609-0.465-0.775-0.867-1.638-1.203-2.578h4.852zM19.649 26.578c-0.673 1.121-1.467 2.023-2.298 2.609-0.443 0.312-0.895 0.535-1.351 0.668v-5.854h4.852c-0.336 0.94-0.738 1.802-1.203 2.578zM16 22v-4h5.979c-0.059 1.38-0.24 2.72-0.54 4h-5.439zM23.98 16c-0.055-1.394-0.224-2.736-0.492-4h3.516c0.533 1.278 0.855 2.619 0.959 4h-3.983zM25.958 10h-2.997c-0.582-1.836-1.387-3.447-2.354-4.732 1.329 0.636 2.533 1.488 3.585 2.54 0.671 0.671 1.261 1.404 1.766 2.192zM5.808 7.808c1.052-1.052 2.256-1.904 3.585-2.54-0.967 1.285-1.771 2.896-2.354 4.732h-2.997c0.504-0.788 1.094-1.521 1.766-2.192zM4.042 24h2.997c0.583 1.836 1.387 3.447 2.354 4.732-1.329-0.636-2.533-1.488-3.585-2.54-0.671-0.671-1.261-1.404-1.766-2.192zM24.192 26.192c-1.052 1.052-2.256 1.904-3.585 2.54 0.967-1.285 1.771-2.896 2.354-4.732h2.997c-0.504 0.788-1.094 1.521-1.766 2.192z");
-
-  menu.append("path")
-      .attr("class", "nav-icon")
-      .attr("stroke", "grey")
-      .attr("fill", "grey")
-      .attr("stroke-width", 1)
-      .attr("transform", "translate(11, 75)")
-      .attr("d", "M14 4v-0.5c0-0.825-0.675-1.5-1.5-1.5h-5c-0.825 0-1.5 0.675-1.5 1.5v0.5h-6v4h6v0.5c0 0.825 0.675 1.5 1.5 1.5h5c0.825 0 1.5-0.675 1.5-1.5v-0.5h18v-4h-18zM8 8v-4h4v4h-4zM26 13.5c0-0.825-0.675-1.5-1.5-1.5h-5c-0.825 0-1.5 0.675-1.5 1.5v0.5h-18v4h18v0.5c0 0.825 0.675 1.5 1.5 1.5h5c0.825 0 1.5-0.675 1.5-1.5v-0.5h6v-4h-6v-0.5zM20 18v-4h4v4h-4zM14 23.5c0-0.825-0.675-1.5-1.5-1.5h-5c-0.825 0-1.5 0.675-1.5 1.5v0.5h-6v4h6v0.5c0 0.825 0.675 1.5 1.5 1.5h5c0.825 0 1.5-0.675 1.5-1.5v-0.5h18v-4h-18v-0.5zM8 28v-4h4v4h-4z");
-
-  menu.append("path")
-      .attr("class", "nav-icon")
-      .attr("stroke", "grey")
-      .attr("fill", "grey")
-      .attr("stroke-width", 1)
-      .attr("transform", "translate(11, 128)")
-      .attr("d", "M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5 M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5 M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z");
-
-  menu.append("path")
-      .attr("class", "nav-icon")
-      .attr("stroke", "grey")
-      .attr("fill", "grey")
-      .attr("stroke-width", 1)
-      .attr("transform", "translate(11, 181)")
-      .attr("d", "M16 0c-8.837 0-16 2.239-16 5v3l12 12v10c0 1.105 1.791 2 4 2s4-0.895 4-2v-10l12-12v-3c0-2.761-7.163-5-16-5zM2.95 4.338c0.748-0.427 1.799-0.832 3.040-1.171 2.748-0.752 6.303-1.167 10.011-1.167s7.262 0.414 10.011 1.167c1.241 0.34 2.292 0.745 3.040 1.171 0.494 0.281 0.76 0.519 0.884 0.662-0.124 0.142-0.391 0.38-0.884 0.662-0.748 0.427-1.8 0.832-3.040 1.171-2.748 0.752-6.303 1.167-10.011 1.167s-7.262-0.414-10.011-1.167c-1.24-0.34-2.292-0.745-3.040-1.171-0.494-0.282-0.76-0.519-0.884-0.662 0.124-0.142 0.391-0.38 0.884-0.662z");
-
-  menu.append("path")
-      .attr("class", "nav-icon")
-      .attr("stroke", "grey")
-      .attr("fill", "grey")
-      .attr("stroke-width", 1)
-      .attr("transform", "translate(11, 234)")
-      .attr("d", "M27 22c-1.411 0-2.685 0.586-3.594 1.526l-13.469-6.734c0.041-0.258 0.063-0.522 0.063-0.791s-0.022-0.534-0.063-0.791l13.469-6.734c0.909 0.94 2.183 1.526 3.594 1.526 2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5c0 0.269 0.022 0.534 0.063 0.791l-13.469 6.734c-0.909-0.94-2.183-1.526-3.594-1.526-2.761 0-5 2.239-5 5s2.239 5 5 5c1.411 0 2.685-0.586 3.594-1.526l13.469 6.734c-0.041 0.258-0.063 0.522-0.063 0.791 0 2.761 2.239 5 5 5s5-2.239 5-5c0-2.761-2.239-5-5-5z");
-
-
-  menu.append("path")
-      .attr("class", "nav-icon")
-      .attr("id", "locked")
-      .attr("visibility", "hidden")
-      .attr("stroke", "grey")
-      .attr("fill", "grey")
-      .attr("stroke-width", 1)
-      .attr("transform", "translate(11, " + (graphZoneHeight - 46) + ")")
-      .attr("d", "M18.5 13h-0.5v-6c0-3.308-2.692-6-6-6h-4c-3.308 0-6 2.692-6 6v6h-0.5c-0.825 0-1.5 0.675-1.5 1.5v15c0 0.825 0.675 1.5 1.5 1.5h17c0.825 0 1.5-0.675 1.5-1.5v-15c0-0.825-0.675-1.5-1.5-1.5zM6 7c0-1.103 0.897-2 2-2h4c1.103 0 2 0.897 2 2v6h-8v-6z");
-
-  menu.append("path")
-      .attr("class", "nav-icon")
-      .attr("id", "unlocked")
-      .attr("stroke", "grey")
-      .attr("fill", "grey")
-      .attr("stroke-width", 1)
-      .attr("transform", "translate(11, " + (graphZoneHeight - 46) + ")")
-      .attr("d", "M24 1c3.308 0 6 2.692 6 6v6h-4v-6c0-1.103-0.897-2-2-2h-4c-1.103 0-2 0.897-2 2v6h0.5c0.825 0 1.5 0.675 1.5 1.5v15c0 0.825-0.675 1.5-1.5 1.5h-17c-0.825 0-1.5-0.675-1.5-1.5v-15c0-0.825 0.675-1.5 1.5-1.5h12.5v-6c0-3.308 2.692-6 6-6h4z");
-
-  $("#unlocked").on("click", function() {
-    $("#unlocked").attr("visibility", "hidden");
-    $("#locked").attr("visibility", "visible");
-    locked = true;
-  });
-
-  $("#locked").on("click", function() {
-    $("#locked").attr("visibility", "hidden");
-    $("#unlocked").attr("visibility", "visible");
-    locked = false;
-  });
-};

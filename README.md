@@ -1,24 +1,12 @@
-# README
+This data visualization application is based on Hans Rosling's ‘Trendalyzer’ software. It’s build as a Rails app using the D3 and jQuery JavaScript libraries.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A live version of this app can be viewed at: i-graph.herokuapp.com
 
-Things you may want to cover:
+To run the app localy:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Clone this repository to your own devise.
+* Navigate into the root directory.
+* Enter 'rails db:migrate' and 'rails db:setup' in the command line.
+* Ensure you have PostgreSQL running.
+* Enter ‘rails s’ in the command line.
+* Open localhost:3000 (or whichever port the server logs indicate) in your web browser.
