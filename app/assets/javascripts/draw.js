@@ -40,6 +40,14 @@ function drawGraph() {
            .call(d3.axisLeft(yScale)
                    .ticks(10));
 
+  $(".grid").mouseover(function() {
+    if (animatingGraph === true) {
+      $(this).css('cursor', 'wait');
+    } else {
+      $(this).css('cursor', 'default');
+    };
+  });
+
   // Calling the 'Draw Graph Labels' function.
   drawGraphLabels();
 
@@ -144,8 +152,17 @@ function drawCircles() {
   // Looping over the 'Circle Data' array.
   for (var i = 0; i < circleData.length; i++) {
 
-    // Saving the current ‘Circle Data’ index into a variable to bind as data to the DOM element.
-    var countryObject = circleData[i];
+    for (var j = 0; j < graphData.length; j++) {
+      if (circleData[i].Code === graphData[j][0].Code) {
+        for (var k = 0; k < graphData[j].length; k++) {
+          if (circleData[i].Year === graphData[j][k].Year) {
+            var countryObject = graphData[j][k];
+            break;
+          };
+        };
+        break;
+      };
+    };
 
     // Appending the 'Country Object' as a circle onto the graph.
     graphArea.append("circle")
@@ -161,10 +178,147 @@ function drawCircles() {
 
   // Adding an event handler to change style properties of a 'Country Circle' while the mouse is hovering over it.
   $(".country-circle").mouseover(function(event) {
-    $(this).css('cursor', 'pointer');
-    $(this).css('stroke-width', 2.5);
+
+    if (animatingGraph !== true) {
+
+      $(this).css('cursor', 'pointer');
+      $(this).css('stroke-width', 2.5);
+
+      var countryObject = d3.select(this).datum();
+      var padding = 5;
+
+      graphZone.append("text")
+               .attr("class", "country-circle-name-temp")
+               .text(countryObject.Name);
+
+      graphZone.append("text")
+               .attr("class", "country-circle-x-temp")
+               .text(Math.round(countryObject.X * 100)/100);
+
+      graphZone.append("text")
+               .attr("class", "country-circle-y-temp")
+               .text(Math.round(countryObject.Y * 100)/100);
+
+      var nameWidth = $(".country-circle-name-temp")[0].getBBox().width;
+      var nameHeight = $(".country-circle-name-temp")[0].getBBox().height;
+      var xWidth = $(".country-circle-x-temp")[0].getBBox().width;
+      var xHeight = $(".country-circle-x-temp")[0].getBBox().height;
+      var yWidth = $(".country-circle-y-temp")[0].getBBox().width;
+      var yHeight = $(".country-circle-y-temp")[0].getBBox().height;
+
+      $(".country-circle-name-temp").remove();
+      $(".country-circle-x-temp").remove();
+      $(".country-circle-y-temp").remove();
+
+      graphZone.append("rect")
+               .attr("class", "country-circle-name-label")
+               .attr("width", nameWidth + (padding * 2))
+               .attr("height", nameHeight + (padding * 2))
+               .attr("x", this.cx.animVal.value - (nameWidth + (padding * 2))/2 + leftMargin)
+               .attr("y", function() {
+                 if ((topMargin + event.target.cy.animVal.value - event.target.r.animVal.value - padding - (nameHeight + (padding * 2))) < topMargin) {
+                   return topMargin + event.target.cy.animVal.value + event.target.r.animVal.value + padding + 2.5;
+                 } else {
+                   return event.target.cy.animVal.value - event.target.r.animVal.value - nameHeight - (padding * 3) - 2.5 + topMargin;
+                 };
+               })
+               .attr("rx", 10)
+               .attr("ry", 10)
+               .attr("stroke", countryObject.Colour)
+               .attr("stroke-width", 2)
+               .attr("fill", "white");
+
+      graphZone.append("rect")
+               .attr("class", "country-circle-x-label")
+               .attr("width", xWidth + (padding * 2))
+               .attr("height", xHeight + (padding * 2))
+               .attr("x", leftMargin + this.cx.animVal.value - (xWidth + (padding * 2))/2)
+               .attr("y", function() {
+                 if ((topMargin + event.target.cy.animVal.value + event.target.r.animVal.value) > (graphZoneHeight - bottomMargin - xHeight - (padding * 4))) {
+                   return topMargin + padding;
+                 } else {
+                   return graphZoneHeight - bottomMargin - padding - (xHeight + (padding * 2));
+                 };
+               })
+               .attr("rx", 10)
+               .attr("ry", 10)
+               .attr("stroke", countryObject.Colour)
+               .attr("stroke-width", 2)
+               .attr("fill", "white");
+
+      graphZone.append("rect")
+               .attr("class", "country-circle-y-label")
+               .attr("width", yWidth + (padding * 2))
+               .attr("height", yHeight + (padding * 2))
+               .attr("x", function() {
+                 if ((leftMargin + event.target.cx.animVal.value - event.target.r.animVal.value) < (leftMargin + (yWidth + (padding * 2)) + padding)) {
+                   return graphZoneWidth - rightMargin - padding - (yWidth + (padding * 2));
+                 } else {
+                   return leftMargin + padding;
+                 };
+               })
+               .attr("y", topMargin + this.cy.animVal.value - (yHeight + (padding * 2))/2)
+               .attr("rx", 10)
+               .attr("ry", 10)
+               .attr("stroke", countryObject.Colour)
+               .attr("stroke-width", 2)
+               .attr("fill", "white");
+
+      graphZone.append("text")
+               .attr("class", "country-circle-name")
+               .attr("x", this.cx.animVal.value + leftMargin)
+               .attr("y", function() {
+                 if ((topMargin + event.target.cy.animVal.value - event.target.r.animVal.value - padding - (nameHeight + (padding * 2))) < topMargin) {
+                   return topMargin + event.target.cy.animVal.value + event.target.r.animVal.value + padding + 2.5 + (nameHeight + (padding * 2))/2;
+                 } else {
+                   return event.target.cy.animVal.value - event.target.r.animVal.value - padding - 2.5 - (nameHeight + (padding * 2))/2 + topMargin;
+                 };
+               })
+               .attr("dy", ".35em")
+               .text(countryObject.Name);
+
+      graphZone.append("text")
+               .attr("class", "country-circle-x")
+               .attr("x", leftMargin + this.cx.animVal.value)
+               .attr("y", function() {
+                 if ((topMargin + event.target.cy.animVal.value + event.target.r.animVal.value) > (graphZoneHeight - bottomMargin - xHeight - (padding * 4))) {
+                   return topMargin + padding + (xHeight + (padding * 2))/2;
+                 } else {
+                   return graphZoneHeight - bottomMargin - padding - (xHeight + (padding * 2))/2;
+                 };
+               })
+               .attr("dy", ".35em")
+               .text(Math.round(countryObject.X * 100)/100);
+
+      graphZone.append("text")
+               .attr("class", "country-circle-y")
+               .attr("x", function() {
+                 if ((leftMargin + event.target.cx.animVal.value - event.target.r.animVal.value) < (leftMargin + (yWidth + (padding * 2)) + padding)) {
+                   return graphZoneWidth - rightMargin - padding - (yWidth + (padding * 2))/2;
+                 } else {
+                   return leftMargin + padding + (yWidth + (padding * 2))/2;
+                 };
+               })
+               .attr("y", topMargin + this.cy.animVal.value)
+               .attr("dy", ".35em")
+               .text(Math.round(countryObject.Y * 100)/100);
+
+    } else {
+
+      $(this).css('cursor', 'not-allowed');
+
+    };
+
   }).mouseout(function(event) {
+
     $(this).css('stroke-width', 1.25);
+    $(".country-circle-name-label").remove();
+    $(".country-circle-name").remove();
+    $(".country-circle-x-label").remove();
+    $(".country-circle-x").remove();
+    $(".country-circle-y-label").remove();
+    $(".country-circle-y").remove();
+
   });
 
 };// End of 'Draw Circles' function.
