@@ -144,6 +144,7 @@ function scaleAllData(newDomain) {
         // Pushing a new object into the 'Country Objects' array with scaled values.
         countryObjects.push({
           "Year": graphData[i][j]["Year"],
+          "Name": graphData[i][j]["Name"],
           "Code": graphData[i][j]["Code"],
           "Colour": graphData[i][j]["Colour"],
           "R": rScale(graphData[i][j]["R"]),

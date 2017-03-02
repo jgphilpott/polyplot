@@ -144,8 +144,12 @@ function drawCircles() {
   // Looping over the 'Circle Data' array.
   for (var i = 0; i < circleData.length; i++) {
 
+    // Saving the current ‘Circle Data’ index into a variable to bind as data to the DOM element.
+    var countryObject = circleData[i];
+
     // Appending the 'Country Object' as a circle onto the graph.
     graphArea.append("circle")
+             .data([countryObject])
              .attr("class", "country-circle")
              .attr("id", circleData[i].Code)
              .attr("cx", circleData[i].X)

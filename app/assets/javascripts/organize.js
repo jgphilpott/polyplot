@@ -102,6 +102,7 @@ function organize(data, index) {
             // The 'R' key will be used to calculate the radius for this 'Country Object'.
             countryObjects.push({
               "Year": k,
+              "Name": data[i]["Country Name"],
               "Code": data[i]["Country Code"],
               "R": data[i][k]
             });
