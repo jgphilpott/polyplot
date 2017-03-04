@@ -42,6 +42,7 @@ $(document).on('ready', function() {
 
     // Removing the current graph.
     $("svg").remove();
+    $(".menuZone").remove();
 
     // Checking the new browser dimensions and rescaling the data.
     checkEnvironment();

@@ -8,47 +8,54 @@ function checkEnvironment() {
 
   // Determining the Top Margin.
   function topM() {
-    if (windowHeight <= 340) {
+    if (graphZoneHeight <= 340) {
       return 110;
-    } else if (windowHeight > 340 && windowHeight <= 680) {
+    } else if (graphZoneHeight > 340 && graphZoneHeight <= 680) {
       return 120;
-    } else if (windowHeight > 680) {
+    } else if (graphZoneHeight > 680) {
       return 130;
     };
   };
 
   // Determining the Right Margin.
   function rightM() {
-    if (windowWidth <= 640) {
-      return 50;
-    } else if (windowWidth > 640 && windowWidth <= 1280) {
-      return 60;
-    } else if (windowWidth > 1280) {
-      return 70;
+    if (graphZoneWidth <= 640) {
+      return 10;
+    } else if (graphZoneWidth > 640 && graphZoneWidth <= 1280) {
+      return 20;
+    } else if (graphZoneWidth > 1280) {
+      return 30;
     };
   };
 
   // Determining the Bottom Margin.
   function bottomM() {
-    if (windowHeight <= 340) {
+    if (graphZoneHeight <= 340) {
       return 50;
-    } else if (windowHeight > 340 && windowHeight <= 680) {
+    } else if (graphZoneHeight > 340 && graphZoneHeight <= 680) {
       return 60;
-    } else if (windowHeight > 680) {
+    } else if (graphZoneHeight > 680) {
       return 70;
     };
   };
 
   // Determining the Left Margin.
   function leftM() {
-    if (windowWidth <= 640) {
+    if (graphZoneWidth <= 640) {
       return 50;
-    } else if (windowWidth > 640 && windowWidth <= 1280) {
+    } else if (graphZoneWidth > 640 && graphZoneWidth <= 1280) {
       return 60;
-    } else if (windowWidth > 1280) {
+    } else if (graphZoneWidth > 1280) {
       return 70;
     };
   };
+
+  // Setting the default Menu Width.
+  menuWidth = 85;
+
+  // Saving Graph Dimensions.
+  graphZoneWidth = windowWidth - menuWidth;
+  graphZoneHeight = windowHeight;
 
   // Saving Margin Variables.
   topMargin = topM();
@@ -56,14 +63,8 @@ function checkEnvironment() {
   bottomMargin = bottomM();
   leftMargin = leftM();
 
-  // Setting the default Menu Width.
-  var menuWidth = 0;
-
-  // Saving Graph Dimensions.
-  graphZoneWidth = windowWidth - menuWidth;
-  graphZoneHeight = windowHeight;
-  graphWidth = windowWidth - menuWidth - leftMargin - rightMargin;
-  graphHeight = windowHeight - topMargin - bottomMargin;
+  graphWidth = graphZoneWidth - leftMargin - rightMargin;
+  graphHeight = graphZoneHeight - topMargin - bottomMargin;
 
   // Appending an SVG container equal to Window Width and Height.
   graphZone = d3.select("body")
