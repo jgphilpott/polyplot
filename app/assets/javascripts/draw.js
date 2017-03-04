@@ -8,6 +8,11 @@ function drawAll() {
 // A function that defines how to draw the graph.
 function drawGraph() {
 
+  var xGridTickFrequency = (graphWidth)/160;
+  var yGridTickFrequency = (graphHeight)/100;
+  var xAxisTickFrequency = (graphWidth)/80;
+  var yAxisTickFrequency = (graphHeight)/50;
+
   // Appending the X Gridlines.
   graphZone.append("g")
            .attr("class", "grid")
@@ -15,7 +20,7 @@ function drawGraph() {
            .call(d3.axisBottom(xScale)
                    .tickSize( -(graphZoneHeight - topMargin - bottomMargin) )
                    .tickFormat("")
-                   .ticks(5));
+                   .ticks(xGridTickFrequency));
 
   // Appending the Y Gridlines.
   graphZone.append("g")
@@ -24,21 +29,23 @@ function drawGraph() {
            .call(d3.axisLeft(yScale)
                    .tickSize( -(graphZoneWidth - leftMargin - rightMargin) )
                    .tickFormat("")
-                   .ticks(5));
+                   .ticks(yGridTickFrequency));
 
   // Appending the X Axis.
   graphZone.append("g")
            .attr("class", "axis")
+           .attr("id", "xAxis")
            .attr("transform", "translate(" + leftMargin + ", " + (graphZoneHeight - bottomMargin) + ")")
            .call(d3.axisBottom(xScale)
-                   .ticks(10));
+                   .ticks(xAxisTickFrequency));
 
   // Appending the Y Axis.
   graphZone.append("g")
            .attr("class", "axis")
+           .attr("id", "yAxis")
            .attr("transform", "translate(" + leftMargin + ", " + topMargin + ")")
            .call(d3.axisLeft(yScale)
-                   .ticks(10));
+                   .ticks(yAxisTickFrequency));
 
   $(".grid").mouseover(function() {
     if (animatingGraph === true) {
@@ -55,6 +62,10 @@ function drawGraph() {
 
 // A function that defines how to draw the graph labels.
 function drawGraphLabels() {
+
+  var xAxisHeight = $("#xAxis")[0].getBBox().height;
+  var yAxisWidth = $("#yAxis")[0].getBBox().width;
+  var textSize = 20;
 
   // Appending the 'Graph Title'.
   graphZone.append("text")
@@ -77,8 +88,9 @@ function drawGraphLabels() {
            .attr("class", "axis-label")
            .attr("id", "x-axis-label")
            .attr("x", (leftMargin + graphWidth/2))
-           .attr("y",  (graphZoneHeight - bottomMargin/2))
+           .attr("y",  (graphZoneHeight - (bottomMargin - xAxisHeight)/2))
            .attr("dy", ".35em")
+           .attr("font-size", textSize)
            .text(xAxisLabel);
 
   // Appending Y Axis Label.
@@ -87,9 +99,61 @@ function drawGraphLabels() {
            .attr("id", "y-axis-label")
            .attr("transform", "rotate(-90)")
            .attr("x", -(topMargin + graphHeight/2))
-           .attr("y",  leftMargin/2)
+           .attr("y",  (leftMargin - yAxisWidth)/2)
            .attr("dy", ".35em")
+           .attr("font-size", textSize)
            .text(yAxisLabel);
+
+  var xAxisLabelWidth = $("#x-axis-label")[0].getBBox().width;
+  var yAxisLabelWidth = $("#y-axis-label")[0].getBBox().width;
+
+  if (xAxisLabelWidth > graphWidth) {
+    while (xAxisLabelWidth > graphWidth) {
+
+      $("#x-axis-label").remove();
+
+      textSize = textSize - 1;
+
+      // Appending the new X Axis Label.
+      graphZone.append("text")
+               .attr("class", "axis-label")
+               .attr("id", "x-axis-label")
+               .attr("x", (leftMargin + graphWidth/2))
+               .attr("y",  (graphZoneHeight - (bottomMargin - xAxisHeight)/2))
+               .attr("dy", ".35em")
+               .attr("font-size", textSize)
+               .text(xAxisLabel);
+
+      var xAxisLabelWidth = $("#x-axis-label")[0].getBBox().width;
+
+    };
+    textSize = 20;
+  };
+
+  if (yAxisLabelWidth > graphHeight) {
+    while (yAxisLabelWidth > graphHeight) {
+
+      $("#y-axis-label").remove();
+
+      textSize = textSize - 1;
+
+      // Appending the new Y Axis Label.
+      graphZone.append("text")
+               .attr("class", "axis-label")
+               .attr("id", "y-axis-label")
+               .attr("transform", "rotate(-90)")
+               .attr("x", -(topMargin + graphHeight/2))
+               .attr("y",  (leftMargin - yAxisWidth)/2)
+               .attr("dy", ".35em")
+               .attr("font-size", textSize)
+               .text(yAxisLabel);
+
+      var yAxisLabelWidth = $("#y-axis-label")[0].getBBox().width;
+
+    };
+    textSize = 20;
+  };
+
 
   // Changing the cursor type for the Y axis.
   $("#y-axis-label").mouseover(function() {

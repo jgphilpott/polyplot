@@ -8,22 +8,46 @@ function checkEnvironment() {
 
   // Determining the Top Margin.
   function topM() {
-    return 120;
+    if (windowHeight <= 340) {
+      return 110;
+    } else if (windowHeight > 340 && windowHeight <= 680) {
+      return 120;
+    } else if (windowHeight > 680) {
+      return 130;
+    };
   };
 
   // Determining the Right Margin.
   function rightM() {
-    return 70;
+    if (windowWidth <= 640) {
+      return 50;
+    } else if (windowWidth > 640 && windowWidth <= 1280) {
+      return 60;
+    } else if (windowWidth > 1280) {
+      return 70;
+    };
   };
 
   // Determining the Bottom Margin.
   function bottomM() {
-    return 70;
+    if (windowHeight <= 340) {
+      return 50;
+    } else if (windowHeight > 340 && windowHeight <= 680) {
+      return 60;
+    } else if (windowHeight > 680) {
+      return 70;
+    };
   };
 
   // Determining the Left Margin.
   function leftM() {
-    return 70;
+    if (windowWidth <= 640) {
+      return 50;
+    } else if (windowWidth > 640 && windowWidth <= 1280) {
+      return 60;
+    } else if (windowWidth > 1280) {
+      return 70;
+    };
   };
 
   // Saving Margin Variables.
