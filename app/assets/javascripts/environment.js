@@ -51,7 +51,7 @@ function checkEnvironment() {
   };
 
   // Setting the default Menu Width.
-  menuWidth = 85;
+  menuWidth = 60;
 
   // Saving Graph Dimensions.
   graphZoneWidth = windowWidth - menuWidth;

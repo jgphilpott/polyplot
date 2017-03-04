@@ -3,7 +3,7 @@ function drawAll() {
   drawGraph();
   drawCircles();
   drawTimeControls();
-  drawMenu();
+  // drawMenu();
 };
 
 // A function that defines how to draw the graph.
@@ -276,7 +276,7 @@ function drawCircles() {
       $(".country-circle-y-temp").remove();
 
       graphZone.append("rect")
-               .attr("class", "country-circle-name-label")
+               .attr("class", "country-circle-name-label tooltip-one")
                .attr("width", nameWidth + (padding * 2))
                .attr("height", nameHeight + (padding * 2))
                .attr("x", this.cx.animVal.value - (nameWidth + (padding * 2))/2 + leftMargin)
@@ -294,7 +294,7 @@ function drawCircles() {
                .attr("fill", "white");
 
       graphZone.append("rect")
-               .attr("class", "country-circle-x-label")
+               .attr("class", "country-circle-x-label tooltip-one")
                .attr("width", xWidth + (padding * 2))
                .attr("height", xHeight + (padding * 2))
                .attr("x", leftMargin + this.cx.animVal.value - (xWidth + (padding * 2))/2)
@@ -312,7 +312,7 @@ function drawCircles() {
                .attr("fill", "white");
 
       graphZone.append("rect")
-               .attr("class", "country-circle-y-label")
+               .attr("class", "country-circle-y-label tooltip-one")
                .attr("width", yWidth + (padding * 2))
                .attr("height", yHeight + (padding * 2))
                .attr("x", function() {
@@ -330,7 +330,7 @@ function drawCircles() {
                .attr("fill", "white");
 
       graphZone.append("text")
-               .attr("class", "country-circle-name")
+               .attr("class", "country-circle-name tooltip-one")
                .attr("x", this.cx.animVal.value + leftMargin)
                .attr("y", function() {
                  if ((topMargin + event.target.cy.animVal.value - event.target.r.animVal.value - padding - (nameHeight + (padding * 2))) < topMargin) {
@@ -343,7 +343,7 @@ function drawCircles() {
                .text(countryObject.Name);
 
       graphZone.append("text")
-               .attr("class", "country-circle-x")
+               .attr("class", "country-circle-x tooltip-one")
                .attr("x", leftMargin + this.cx.animVal.value)
                .attr("y", function() {
                  if ((topMargin + event.target.cy.animVal.value + event.target.r.animVal.value) > (graphZoneHeight - bottomMargin - xHeight - (padding * 4))) {
@@ -356,7 +356,7 @@ function drawCircles() {
                .text(Math.round(countryObject.X * 100)/100);
 
       graphZone.append("text")
-               .attr("class", "country-circle-y")
+               .attr("class", "country-circle-y tooltip-one")
                .attr("x", function() {
                  if ((leftMargin + event.target.cx.animVal.value - event.target.r.animVal.value) < (leftMargin + (yWidth + (padding * 2)) + padding)) {
                    return graphZoneWidth - rightMargin - padding - (yWidth + (padding * 2))/2;
@@ -1116,6 +1116,7 @@ function drawTimeControls() {
           $(".current-year-label").remove();
           $(".axis-label").remove();
           $(".graph-area").remove();
+          $(".tooltip-one").remove();
 
           // Redrawing the graph elements with the new data.
           drawGraph();
@@ -1141,6 +1142,7 @@ function drawTimeControls() {
 
           $(".country-circle").remove();
           $(".graph-area").remove();
+          $(".tooltip-one").remove();
 
           drawCircles();
 
@@ -1195,6 +1197,7 @@ function drawTimeControls() {
           $(".current-year-label").remove();
           $(".axis-label").remove();
           $(".graph-area").remove();
+          $(".tooltip-one").remove();
 
           drawGraph();
           drawCircles();
