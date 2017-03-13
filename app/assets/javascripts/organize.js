@@ -54,9 +54,6 @@ function getData(datasetKeys) {
 // A function for organizing the currently selected datasets.
 function organize(data, index) {
 
-  // An array of color values.
-  var colors = ["#3168C5", "#E03621", "#FF9735", "#009634", "#9D0893", "#009AC2", "#E14375", "#000000"];
-
   // A series of arrays to group countries by geographic region and income level using country codes.
   var europeAndCentralAsia = ["ALB", "AND", "ARM", "AUT", "AZE", "BLR", "BEL", "BIH", "BGR", "CHI", "HRV", "CYP", "CZE", "DNK", "EST", "FRO", "FIN", "FRA", "GEO", "DEU", "GIB", "GRC", "GRL", "HUN", "ISL", "IRL", "IMN", "ITA", "KAZ", "KSV", "KGZ", "LVA", "LIE", "LTU", "LUX", "MKD", "MDA", "MCO", "MNE", "NLD", "NOR", "POL", "PRT", "ROU", "RUS", "SMR", "SRB", "SVK", "SVN", "ESP", "SWE", "CHE", "TJK", "TUR", "TKM", "UKR", "GBR", "UZB"];
   var subSaharanAfrica = ["AGO", "BEN", "BWA", "BFA", "BDI", "CPV", "COG", "CIV", "CMR", "CAF", "TCD", "COM", "COD", "GNQ", "ERI", "ETH", "GAB", "GHA", "GIN", "GNB", "KEN", "LSO", "LBR", "MDG", "MWI", "MLI", "MRT", "MUS", "MOZ", "NAM", "NER", "NGA", "RWA", "STP", "SEN", "SYC", "SLE", "SOM", "ZAF", "SSD", "SDN", "SWZ", "TZA", "GMB", "TGO", "UGA", "ZMB", "ZWE"];

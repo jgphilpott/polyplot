@@ -3,7 +3,7 @@ function drawAll() {
   drawGraph();
   drawCircles();
   drawTimeControls();
-  // drawMenu();
+  drawMenu();
 };
 
 // A function that defines how to draw the graph.
@@ -1213,11 +1213,8 @@ function drawTimeControls() {
 // A function that defines how to draw the 'Menu'.
 function drawMenu() {
 
-  var open = false;
-  var locked = false;
-
   var menuZone = d3.select("body").append("div")
-                   .attr("class","menuZone")
+                   .attr("class","menu-zone")
                    .style("width", menuWidth - 15 + "px")
                    .style("height", graphZoneHeight + 3.51 + "px");
 
@@ -1231,79 +1228,249 @@ function drawMenu() {
   menu.append("rect")
       .attr("x", 0)
       .attr("y", -2)
-      .attr("width", 205)
+      .attr("width", 287)
       .attr("height", graphZoneHeight + 4);
 
-  // $("svg").mousemove(function(event) {
-  //
-  //   if (event.pageX > (graphZoneWidth) && open === false) {
-  //
-  //     d3.selectAll("#menu").transition()
-  //                          .duration(1000)
-  //                          .ease(d3.easeLinear)
-  //                          .attr("x", graphZoneWidth - 145);
-  //
-  //     open = true;
-  //
-  //   } else if (open === true && locked === false && event.pageX < graphZoneWidth - 145) {
-  //
-  //     d3.selectAll("#menu").transition()
-  //                          .duration(1000)
-  //                          .ease(d3.easeLinear)
-  //                          .attr("x", graphZoneWidth)
-  //
-  //     open = false;
-  //
-  //   };
-  // });
-
   menu.append("path")
-      .attr("class", "nav-icon")
+      .attr("class", "nav-icon globe")
+      .attr("id", "globe")
       .attr("transform", "translate(11, 22)")
-      .attr("d", "M15 2c-8.284 0-15 6.716-15 15s6.716 15 15 15c8.284 0 15-6.716 15-15s-6.716-15-15-15zM23.487 22c0.268-1.264 0.437-2.606 0.492-4h3.983c-0.104 1.381-0.426 2.722-0.959 4h-3.516zM6.513 12c-0.268 1.264-0.437 2.606-0.492 4h-3.983c0.104-1.381 0.426-2.722 0.959-4h3.516zM21.439 12c0.3 1.28 0.481 2.62 0.54 4h-5.979v-4h5.439zM16 10v-5.854c0.456 0.133 0.908 0.355 1.351 0.668 0.831 0.586 1.625 1.488 2.298 2.609 0.465 0.775 0.867 1.638 1.203 2.578h-4.852zM10.351 7.422c0.673-1.121 1.467-2.023 2.298-2.609 0.443-0.313 0.895-0.535 1.351-0.668v5.854h-4.852c0.336-0.94 0.738-1.803 1.203-2.578zM14 12v4h-5.979c0.059-1.38 0.24-2.72 0.54-4h5.439zM2.997 22c-0.533-1.278-0.854-2.619-0.959-4h3.983c0.055 1.394 0.224 2.736 0.492 4h-3.516zM8.021 18h5.979v4h-5.439c-0.3-1.28-0.481-2.62-0.54-4zM14 24v5.854c-0.456-0.133-0.908-0.355-1.351-0.668-0.831-0.586-1.625-1.488-2.298-2.609-0.465-0.775-0.867-1.638-1.203-2.578h4.852zM19.649 26.578c-0.673 1.121-1.467 2.023-2.298 2.609-0.443 0.312-0.895 0.535-1.351 0.668v-5.854h4.852c-0.336 0.94-0.738 1.802-1.203 2.578zM16 22v-4h5.979c-0.059 1.38-0.24 2.72-0.54 4h-5.439zM23.98 16c-0.055-1.394-0.224-2.736-0.492-4h3.516c0.533 1.278 0.855 2.619 0.959 4h-3.983zM25.958 10h-2.997c-0.582-1.836-1.387-3.447-2.354-4.732 1.329 0.636 2.533 1.488 3.585 2.54 0.671 0.671 1.261 1.404 1.766 2.192zM5.808 7.808c1.052-1.052 2.256-1.904 3.585-2.54-0.967 1.285-1.771 2.896-2.354 4.732h-2.997c0.504-0.788 1.094-1.521 1.766-2.192zM4.042 24h2.997c0.583 1.836 1.387 3.447 2.354 4.732-1.329-0.636-2.533-1.488-3.585-2.54-0.671-0.671-1.261-1.404-1.766-2.192zM24.192 26.192c-1.052 1.052-2.256 1.904-3.585 2.54 0.967-1.285 1.771-2.896 2.354-4.732h2.997c-0.504 0.788-1.094 1.521-1.766 2.192z");
+      .attr("d", "M15 2c-8.284 0-15 6.716-15 15s6.716 15 15 15c8.284 0 15-6.716 15-15s-6.716-15-15-15zM23.487 22c0.268-1.264 0.437-2.606 0.492-4h3.983c-0.104 1.381-0.426 2.722-0.959 4h-3.516zM6.513 12c-0.268 1.264-0.437 2.606-0.492 4h-3.983c0.104-1.381 0.426-2.722 0.959-4h3.516zM21.439 12c0.3 1.28 0.481 2.62 0.54 4h-5.979v-4h5.439zM16 10v-5.854c0.456 0.133 0.908 0.355 1.351 0.668 0.831 0.586 1.625 1.488 2.298 2.609 0.465 0.775 0.867 1.638 1.203 2.578h-4.852zM10.351 7.422c0.673-1.121 1.467-2.023 2.298-2.609 0.443-0.313 0.895-0.535 1.351-0.668v5.854h-4.852c0.336-0.94 0.738-1.803 1.203-2.578zM14 12v4h-5.979c0.059-1.38 0.24-2.72 0.54-4h5.439zM2.997 22c-0.533-1.278-0.854-2.619-0.959-4h3.983c0.055 1.394 0.224 2.736 0.492 4h-3.516zM8.021 18h5.979v4h-5.439c-0.3-1.28-0.481-2.62-0.54-4zM14 24v5.854c-0.456-0.133-0.908-0.355-1.351-0.668-0.831-0.586-1.625-1.488-2.298-2.609-0.465-0.775-0.867-1.638-1.203-2.578h4.852zM19.649 26.578c-0.673 1.121-1.467 2.023-2.298 2.609-0.443 0.312-0.895 0.535-1.351 0.668v-5.854h4.852c-0.336 0.94-0.738 1.802-1.203 2.578zM16 22v-4h5.979c-0.059 1.38-0.24 2.72-0.54 4h-5.439zM23.98 16c-0.055-1.394-0.224-2.736-0.492-4h3.516c0.533 1.278 0.855 2.619 0.959 4h-3.983zM25.958 10h-2.997c-0.582-1.836-1.387-3.447-2.354-4.732 1.329 0.636 2.533 1.488 3.585 2.54 0.671 0.671 1.261 1.404 1.766 2.192zM5.808 7.808c1.052-1.052 2.256-1.904 3.585-2.54-0.967 1.285-1.771 2.896-2.354 4.732h-2.997c0.504-0.788 1.094-1.521 1.766-2.192zM4.042 24h2.997c0.583 1.836 1.387 3.447 2.354 4.732-1.329-0.636-2.533-1.488-3.585-2.54-0.671-0.671-1.261-1.404-1.766-2.192zM24.192 26.192c-1.052 1.052-2.256 1.904-3.585 2.54 0.967-1.285 1.771-2.896 2.354-4.732h2.997c-0.504 0.788-1.094 1.521-1.766 2.192z")
+      .style("fill", iconOneColor);
 
   menu.append("path")
-      .attr("class", "nav-icon")
+      .attr("class", "nav-icon settings")
+      .attr("id", "settings")
       .attr("transform", "translate(11, 75)")
-      .attr("d", "M14 4v-0.5c0-0.825-0.675-1.5-1.5-1.5h-5c-0.825 0-1.5 0.675-1.5 1.5v0.5h-6v4h6v0.5c0 0.825 0.675 1.5 1.5 1.5h5c0.825 0 1.5-0.675 1.5-1.5v-0.5h18v-4h-18zM8 8v-4h4v4h-4zM26 13.5c0-0.825-0.675-1.5-1.5-1.5h-5c-0.825 0-1.5 0.675-1.5 1.5v0.5h-18v4h18v0.5c0 0.825 0.675 1.5 1.5 1.5h5c0.825 0 1.5-0.675 1.5-1.5v-0.5h6v-4h-6v-0.5zM20 18v-4h4v4h-4zM14 23.5c0-0.825-0.675-1.5-1.5-1.5h-5c-0.825 0-1.5 0.675-1.5 1.5v0.5h-6v4h6v0.5c0 0.825 0.675 1.5 1.5 1.5h5c0.825 0 1.5-0.675 1.5-1.5v-0.5h18v-4h-18v-0.5zM8 28v-4h4v4h-4z");
+      .attr("d", "M14 4v-0.5c0-0.825-0.675-1.5-1.5-1.5h-5c-0.825 0-1.5 0.675-1.5 1.5v0.5h-6v4h6v0.5c0 0.825 0.675 1.5 1.5 1.5h5c0.825 0 1.5-0.675 1.5-1.5v-0.5h18v-4h-18zM8 8v-4h4v4h-4zM26 13.5c0-0.825-0.675-1.5-1.5-1.5h-5c-0.825 0-1.5 0.675-1.5 1.5v0.5h-18v4h18v0.5c0 0.825 0.675 1.5 1.5 1.5h5c0.825 0 1.5-0.675 1.5-1.5v-0.5h6v-4h-6v-0.5zM20 18v-4h4v4h-4zM14 23.5c0-0.825-0.675-1.5-1.5-1.5h-5c-0.825 0-1.5 0.675-1.5 1.5v0.5h-6v4h6v0.5c0 0.825 0.675 1.5 1.5 1.5h5c0.825 0 1.5-0.675 1.5-1.5v-0.5h18v-4h-18v-0.5zM8 28v-4h4v4h-4z")
+      .style("fill", iconTwoColor);
 
   menu.append("path")
-      .attr("class", "nav-icon")
+      .attr("class", "nav-icon datasets")
+      .attr("id", "datasets")
       .attr("transform", "translate(11, 128)")
-      .attr("d", "M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5 M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5 M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z");
+      .attr("d", "M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5 M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5 M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z")
+      .style("fill", iconThreeColor);;
 
   menu.append("path")
-      .attr("class", "nav-icon")
+      .attr("class", "nav-icon filter")
+      .attr("id", "filter")
       .attr("transform", "translate(11, 181)")
-      .attr("d", "M16 0c-8.837 0-16 2.239-16 5v3l12 12v10c0 1.105 1.791 2 4 2s4-0.895 4-2v-10l12-12v-3c0-2.761-7.163-5-16-5zM2.95 4.338c0.748-0.427 1.799-0.832 3.040-1.171 2.748-0.752 6.303-1.167 10.011-1.167s7.262 0.414 10.011 1.167c1.241 0.34 2.292 0.745 3.040 1.171 0.494 0.281 0.76 0.519 0.884 0.662-0.124 0.142-0.391 0.38-0.884 0.662-0.748 0.427-1.8 0.832-3.040 1.171-2.748 0.752-6.303 1.167-10.011 1.167s-7.262-0.414-10.011-1.167c-1.24-0.34-2.292-0.745-3.040-1.171-0.494-0.282-0.76-0.519-0.884-0.662 0.124-0.142 0.391-0.38 0.884-0.662z");
+      .attr("d", "M16 0c-8.837 0-16 2.239-16 5v3l12 12v10c0 1.105 1.791 2 4 2s4-0.895 4-2v-10l12-12v-3c0-2.761-7.163-5-16-5zM2.95 4.338c0.748-0.427 1.799-0.832 3.040-1.171 2.748-0.752 6.303-1.167 10.011-1.167s7.262 0.414 10.011 1.167c1.241 0.34 2.292 0.745 3.040 1.171 0.494 0.281 0.76 0.519 0.884 0.662-0.124 0.142-0.391 0.38-0.884 0.662-0.748 0.427-1.8 0.832-3.040 1.171-2.748 0.752-6.303 1.167-10.011 1.167s-7.262-0.414-10.011-1.167c-1.24-0.34-2.292-0.745-3.040-1.171-0.494-0.282-0.76-0.519-0.884-0.662 0.124-0.142 0.391-0.38 0.884-0.662z")
+      .style("fill", iconFourColor);
 
   menu.append("path")
-      .attr("class", "nav-icon")
+      .attr("class", "nav-icon share")
+      .attr("id", "share")
       .attr("transform", "translate(11, 234)")
-      .attr("d", "M27 22c-1.411 0-2.685 0.586-3.594 1.526l-13.469-6.734c0.041-0.258 0.063-0.522 0.063-0.791s-0.022-0.534-0.063-0.791l13.469-6.734c0.909 0.94 2.183 1.526 3.594 1.526 2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5c0 0.269 0.022 0.534 0.063 0.791l-13.469 6.734c-0.909-0.94-2.183-1.526-3.594-1.526-2.761 0-5 2.239-5 5s2.239 5 5 5c1.411 0 2.685-0.586 3.594-1.526l13.469 6.734c-0.041 0.258-0.063 0.522-0.063 0.791 0 2.761 2.239 5 5 5s5-2.239 5-5c0-2.761-2.239-5-5-5z");
+      .attr("d", "M27 22c-1.411 0-2.685 0.586-3.594 1.526l-13.469-6.734c0.041-0.258 0.063-0.522 0.063-0.791s-0.022-0.534-0.063-0.791l13.469-6.734c0.909 0.94 2.183 1.526 3.594 1.526 2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5c0 0.269 0.022 0.534 0.063 0.791l-13.469 6.734c-0.909-0.94-2.183-1.526-3.594-1.526-2.761 0-5 2.239-5 5s2.239 5 5 5c1.411 0 2.685-0.586 3.594-1.526l13.469 6.734c-0.041 0.258-0.063 0.522-0.063 0.791 0 2.761 2.239 5 5 5s5-2.239 5-5c0-2.761-2.239-5-5-5z")
+      .style("fill", iconFiveColor);
 
   menu.append("path")
-      .attr("class", "nav-icon")
+      .attr("class", "lock")
       .attr("id", "locked")
       .attr("visibility", "hidden")
       .attr("transform", "translate(11, " + (graphZoneHeight - 46) + ")")
       .attr("d", "M18.5 13h-0.5v-6c0-3.308-2.692-6-6-6h-4c-3.308 0-6 2.692-6 6v6h-0.5c-0.825 0-1.5 0.675-1.5 1.5v15c0 0.825 0.675 1.5 1.5 1.5h17c0.825 0 1.5-0.675 1.5-1.5v-15c0-0.825-0.675-1.5-1.5-1.5zM6 7c0-1.103 0.897-2 2-2h4c1.103 0 2 0.897 2 2v6h-8v-6z");
 
   menu.append("path")
-      .attr("class", "nav-icon")
+      .attr("class", "lock")
       .attr("id", "unlocked")
       .attr("transform", "translate(11, " + (graphZoneHeight - 46) + ")")
       .attr("d", "M24 1c3.308 0 6 2.692 6 6v6h-4v-6c0-1.103-0.897-2-2-2h-4c-1.103 0-2 0.897-2 2v6h0.5c0.825 0 1.5 0.675 1.5 1.5v15c0 0.825-0.675 1.5-1.5 1.5h-17c-0.825 0-1.5-0.675-1.5-1.5v-15c0-0.825 0.675-1.5 1.5-1.5h12.5v-6c0-3.308 2.692-6 6-6h4z");
 
-  // $("#unlocked").on("click", function() {
-  //   $("#unlocked").attr("visibility", "hidden");
-  //   $("#locked").attr("visibility", "visible");
-  //   locked = true;
-  // });
-  //
-  // $("#locked").on("click", function() {
-  //   $("#locked").attr("visibility", "hidden");
-  //   $("#unlocked").attr("visibility", "visible");
-  //   locked = false;
-  // });
+  $(".nav-icon, .lock").mouseover(function() {
+    $(this).css('cursor', 'pointer');
+  });
+
+  $(".menu").mouseover(function() {
+    if (menuWidth === 85) {
+      $(".globe").css({"fill": colors[0]});
+      $(".settings").css({"fill": colors[1]});
+      $(".datasets").css({"fill": colors[2]});
+      $(".filter").css({"fill": colors[3]});
+      $(".share").css({"fill": colors[4]});
+    };
+  }).mouseout(function() {
+    if (menuWidth === 85) {
+      $(".globe").css({"fill": "grey"});
+      $(".settings").css({"fill": "grey"});
+      $(".datasets").css({"fill": "grey"});
+      $(".filter").css({"fill": "grey"});
+      $(".share").css({"fill": "grey"});
+    };
+  })
+
+  $(".nav-icon").click(function() {
+
+    switch (this.id) {
+      case "globe":
+        menuSize = 165;
+        $(".nav-icon").css({"fill": "grey"});
+        $(this).css({"fill": colors[0]});
+        iconOneColor = colors[0];
+        iconTwoColor = "grey";
+        iconThreeColor = "grey";
+        iconFourColor = "grey";
+        iconFiveColor = "grey";
+        break;
+      case "settings":
+        menuSize = 285;
+        $(".nav-icon").css({"fill": "grey"});
+        $(this).css({"fill": colors[1]});
+        iconOneColor = "grey";
+        iconTwoColor = colors[1];
+        iconThreeColor = "grey";
+        iconFourColor = "grey";
+        iconFiveColor = "grey";
+        break;
+      case "datasets":
+        menuSize = 285;
+        $(".nav-icon").css({"fill": "grey"});
+        $(this).css({"fill": colors[2]});
+        iconOneColor = "grey";
+        iconTwoColor = "grey";
+        iconThreeColor = colors[2];
+        iconFourColor = "grey";
+        iconFiveColor = "grey";
+        break;
+      case "filter":
+        menuSize = 285;
+        $(".nav-icon").css({"fill": "grey"});
+        $(this).css({"fill": colors[3]});
+        iconOneColor = "grey";
+        iconTwoColor = "grey";
+        iconThreeColor = "grey";
+        iconFourColor = colors[3];
+        iconFiveColor = "grey";
+        break;
+      case "share":
+        menuSize = 285;
+        $(".nav-icon").css({"fill": "grey"});
+        $(this).css({"fill": colors[4]});
+        iconOneColor = "grey";
+        iconTwoColor = "grey";
+        iconThreeColor = "grey";
+        iconFourColor = "grey";
+        iconFiveColor = colors[4];
+        break;
+      default:
+        console.log("Error in menu switch!");
+    };
+
+    menuOpen = true;
+
+    menuResize = setInterval(openMenu, 100)
+
+    function openMenu() {
+      if (menuWidth < menuSize) {
+
+        menuWidth = menuWidth + 10;
+
+        $(".graph-zone").remove();
+        $(".menu-zone").remove();
+        checkEnvironment();
+        scaleAllData();
+
+        drawAll();
+
+      } else if (menuWidth > menuSize) {
+
+        menuWidth = menuWidth - 10;
+
+        $(".graph-zone").remove();
+        $(".menu-zone").remove();
+        checkEnvironment();
+        scaleAllData();
+
+        drawAll();
+
+      } else {
+        clearInterval(menuResize);
+      };
+    };
+  });
+
+  $("body").mousemove(function(event) {
+    if (menuOpen === true && event.pageX < graphZoneWidth && locked === false) {
+
+      menuOpen = false;
+      clearInterval(menuResize);
+
+      menuResize = setInterval(closeMenu, 100)
+
+      function closeMenu() {
+        if (menuWidth > 85) {
+
+          menuWidth = menuWidth - 10;
+
+          $(".graph-zone").remove();
+          $(".menu-zone").remove();
+          checkEnvironment();
+          scaleAllData();
+
+          drawAll();
+
+        } else {
+          clearInterval(menuResize);
+          $(".globe").css({"fill": "grey"});
+          $(".settings").css({"fill": "grey"});
+          $(".datasets").css({"fill": "grey"});
+          $(".filter").css({"fill": "grey"});
+          $(".share").css({"fill": "grey"});
+          iconOneColor = "grey";
+          iconTwoColor = "grey";
+          iconThreeColor = "grey";
+          iconFourColor = "grey";
+          iconFiveColor = "grey";
+        };
+      };
+    } else if (event.pageX > graphZoneWidth && menuOpen === false && menuWidth !== 85) {
+
+      menuOpen = true;
+      clearInterval(menuResize);
+
+      menuResize = setInterval(openMenu, 100)
+
+      function openMenu() {
+        if (menuWidth < menuSize) {
+
+          menuWidth = menuWidth + 10;
+
+          $(".graph-zone").remove();
+          $(".menu-zone").remove();
+          checkEnvironment();
+          scaleAllData();
+
+          drawAll();
+
+        } else if (menuWidth > menuSize) {
+
+          menuWidth = menuWidth - 10;
+
+          $(".graph-zone").remove();
+          $(".menu-zone").remove();
+          checkEnvironment();
+          scaleAllData();
+
+          drawAll();
+
+        } else {
+          clearInterval(menuResize);
+        };
+      };
+    };
+  });
+
+  $("#unlocked").click(function() {
+    $("#unlocked").attr("visibility", "hidden");
+    $("#locked").attr("visibility", "visible");
+    locked = true;
+  });
+
+  $("#locked").click(function() {
+    $("#locked").attr("visibility", "hidden");
+    $("#unlocked").attr("visibility", "visible");
+    locked = false;
+  });
 };

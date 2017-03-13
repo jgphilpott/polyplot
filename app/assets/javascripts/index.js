@@ -23,6 +23,23 @@ $(document).on('ready', function() {
     // Setting the default 'Dataset Keys'.
     var datasetKeys = ["population", "lifeExpectancy", "fertility"];
 
+    // Setting the default Menu Width.
+    menuWidth = 85;
+    
+    menuSize = 85;
+
+    menuOpen = false;
+    locked = false;
+
+    iconOneColor = "grey";
+    iconTwoColor = "grey";
+    iconThreeColor = "grey";
+    iconFourColor = "grey";
+    iconFiveColor = "grey";
+
+    // An array of color values.
+    colors = ["#3168C5", "#E03621", "#FF9735", "#009634", "#9D0893", "#009AC2", "#E14375", "#000"];
+
     // Retrieving and organizing the currently selected datasets.
     getData(datasetKeys);
 
@@ -42,7 +59,7 @@ $(document).on('ready', function() {
 
     // Removing the current graph.
     $("svg").remove();
-    $(".menuZone").remove();
+    $(".menu-zone").remove();
 
     // Checking the new browser dimensions and rescaling the data.
     checkEnvironment();

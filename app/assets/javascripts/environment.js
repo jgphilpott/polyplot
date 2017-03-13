@@ -50,9 +50,6 @@ function checkEnvironment() {
     };
   };
 
-  // Setting the default Menu Width.
-  menuWidth = 60;
-
   // Saving Graph Dimensions.
   graphZoneWidth = windowWidth - menuWidth;
   graphZoneHeight = windowHeight;
@@ -69,6 +66,7 @@ function checkEnvironment() {
   // Appending an SVG container equal to Window Width and Height.
   graphZone = d3.select("body")
                 .append("svg")
+                .attr("class", "graph-zone")
                 .attr("width", graphZoneWidth)
                 .attr("height", graphZoneHeight);
 
