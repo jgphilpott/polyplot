@@ -10,7 +10,8 @@
 .country-circle-x,
 .country-circle-x-temp,
 .country-circle-y,
-.country-circle-y-temp
+.country-circle-y-temp,
+.menu-label
   text-anchor: middle
   font-family: arial
   font-size: 20px
@@ -30,6 +31,13 @@
 .country-circle-y,
 .country-circle-y-temp
   font-size: 15px
+
+.menu-title
+  font-family: arial
+  font-size: 15px
+
+.menu-label
+  font-size: 10px
 
 .axis
   path
@@ -105,12 +113,25 @@
   overflow-y: scroll
 
 .menu
+  .nav-icon-background
+    stroke: lightgrey
+    stroke-width: 1
+    fill: lightgrey
+
   rect
     stroke: grey
     stroke-width: 2
     fill: lightgrey
 
-  path
+  path,
+  .icon-one-icon,
+  .icon-five-icon
     stroke: grey
     stroke-width: 0.3
     fill: grey
+
+  .icon-one-icon
+    fill: #3168C5
+
+  .icon-five-icon
+    fill: #9D0893

@@ -25,17 +25,23 @@ $(document).on('ready', function() {
 
     // Setting the default Menu Width.
     menuWidth = 85;
-    
+
     menuSize = 85;
 
     menuOpen = false;
-    locked = false;
+    locked = true;
 
     iconOneColor = "grey";
     iconTwoColor = "grey";
     iconThreeColor = "grey";
     iconFourColor = "grey";
     iconFiveColor = "grey";
+
+    iconOneOpen = false;
+    iconTwoOpen = false;
+    iconThreeOpen = false;
+    iconFourOpen = false;
+    iconFiveOpen = false;
 
     // An array of color values.
     colors = ["#3168C5", "#E03621", "#FF9735", "#009634", "#9D0893", "#009AC2", "#E14375", "#000"];
