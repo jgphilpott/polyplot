@@ -32,9 +32,13 @@
 .country-circle-y-temp
   font-size: 15px
 
-.menu-title
+.menu-title,
+.menu-text
   font-family: arial
   font-size: 15px
+
+.menu-text
+  font-size: 12px
 
 .menu-label
   font-size: 10px
@@ -113,15 +117,38 @@
   overflow-y: scroll
 
 .menu
-  .nav-icon-background
-    stroke: lightgrey
-    stroke-width: 1
-    fill: lightgrey
 
   rect
     stroke: grey
     stroke-width: 2
     fill: lightgrey
+
+  .nav-icon-background
+    stroke: lightgrey
+    stroke-width: 1
+    fill: lightgrey
+
+  .colour-legend
+    stroke: grey
+    stroke-width: 1
+    rx: 20
+    ry: 20
+
+  .checkbox-checked-background,
+  .folder-plus-background
+    stroke: #B1D3B9
+    stroke-width: 1
+    fill: #B1D3B9
+
+  .checkbox-unchecked-background
+    stroke: #D3D3D3
+    stroke-width: 1
+    fill: #D3D3D3
+
+  .folder-minus-background
+    stroke: #D3B5B1
+    stroke-width: 1
+    fill: #D3B5B1
 
   path,
   .icon-one-icon,

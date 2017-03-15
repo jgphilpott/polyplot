@@ -1210,6 +1210,154 @@ function drawTimeControls() {
   };// End of draw 'Time Controllers' function.
 };// End of 'Draw Time Controls' function.
 
+// These functions are here for development only.
+function openMenu() {
+  if (menuWidth < menuSize) {
+
+    menuWidth = menuWidth + 10;
+
+    $(".graph-zone").remove();
+    $(".menu-zone").remove();
+    checkEnvironment();
+    scaleAllData();
+
+    drawAll();
+
+  } else if (menuWidth > menuSize) {
+
+    menuWidth = menuWidth - 10;
+
+    $(".graph-zone").remove();
+    $(".menu-zone").remove();
+    checkEnvironment();
+    scaleAllData();
+
+    drawAll();
+
+  } else {
+    clearInterval(menuResize);
+  };
+};
+function closeMenu() {
+  if (menuWidth > 85) {
+
+    menuWidth = menuWidth - 10;
+
+    $(".graph-zone").remove();
+    $(".menu-zone").remove();
+    checkEnvironment();
+    scaleAllData();
+
+    drawAll();
+
+  } else {
+    clearInterval(menuResize);
+    $(".globe").css({"fill": "grey"});
+    $(".settings").css({"fill": "grey"});
+    $(".datasets").css({"fill": "grey"});
+    $(".filter").css({"fill": "grey"});
+    $(".share").css({"fill": "grey"});
+    iconOneColor = "grey";
+    iconTwoColor = "grey";
+    iconThreeColor = "grey";
+    iconFourColor = "grey";
+    iconFiveColor = "grey";
+    $(".icon-one-item").remove();
+    $(".icon-two-item").remove();
+    $(".icon-three-item").remove();
+    $(".icon-four-item").remove();
+    $(".icon-five-item").remove();
+    iconOneOpen = false;
+    iconTwoOpen = false;
+    iconThreeOpen = false;
+    iconFourOpen = false;
+    iconFiveOpen = false;
+  };
+};
+function openFolder(array, exemption, extension) {
+
+  for (var i = 0; i < array.length; i++) {
+
+    if (i > exemption) {
+
+      var colourLegend = $(".icon-four-item." + array[i] + ".colour-legend");
+      var checkboxUnchecked = $(".icon-four-item." + array[i] + ".checkbox-unchecked");
+      var checkboxUncheckedBackground = $(".icon-four-item." + array[i] + ".checkbox-unchecked-background");
+      var checkboxChecked = $(".icon-four-item." + array[i] + ".checkbox-checked");
+      var checkboxCheckedBackground = $(".icon-four-item." + array[i] + ".checkbox-checked-background");
+      var folderMinus = $(".icon-four-item." + array[i] + ".folder-minus");
+      var folderMinusBackground = $(".icon-four-item." + array[i] + ".folder-minus-background");
+      var folderPlus = $(".icon-four-item." + array[i] + ".folder-plus");
+      var folderPlusBackground = $(".icon-four-item." + array[i] + ".folder-plus-background");
+      var menuTitle = $(".icon-four-item." + array[i] + ".menu-title");
+
+      d3.selectAll(".icon-four-item." + array[i] + ".colour-legend")
+        .transition()
+        .duration(1)
+        .ease(d3.easeLinear)
+        .attr("y", extension + Number(colourLegend[0].attributes[4].value));
+
+      d3.selectAll(".icon-four-item." + array[i] + ".checkbox-unchecked")
+        .transition()
+        .duration(1)
+        .ease(d3.easeLinear)
+        .attr("transform", "translate(86, " + (extension + checkboxUnchecked[0].transform.animVal[0].matrix.f) + ")");
+
+      d3.selectAll(".icon-four-item." + array[i] + ".checkbox-unchecked-background")
+        .transition()
+        .duration(1)
+        .ease(d3.easeLinear)
+        .attr("y", extension + Number(checkboxUncheckedBackground[0].attributes[4].value));
+
+      d3.selectAll(".icon-four-item." + array[i] + ".checkbox-checked")
+        .transition()
+        .duration(1)
+        .ease(d3.easeLinear)
+        .attr("transform", "translate(86, " + (extension + checkboxChecked[0].transform.animVal[0].matrix.f) + ")");
+
+      d3.selectAll(".icon-four-item." + array[i] + ".checkbox-checked-background")
+        .transition()
+        .duration(1)
+        .ease(d3.easeLinear)
+        .attr("y", extension + Number(checkboxCheckedBackground[0].attributes[4].value));
+
+      d3.selectAll(".icon-four-item." + array[i] + ".folder-minus")
+        .transition()
+        .duration(1)
+        .ease(d3.easeLinear)
+        .attr("transform", "translate(109 " + (extension + folderMinus[0].transform.animVal[0].matrix.f) + ")");
+
+      d3.selectAll(".icon-four-item." + array[i] + ".folder-minus-background")
+        .transition()
+        .duration(1)
+        .ease(d3.easeLinear)
+        .attr("y", extension + Number(folderMinusBackground[0].attributes[4].value));
+
+      d3.selectAll(".icon-four-item." + array[i] + ".folder-plus")
+        .transition()
+        .duration(1)
+        .ease(d3.easeLinear)
+        .attr("transform", "translate(109 " + (extension + folderPlus[0].transform.animVal[0].matrix.f) + ")");
+
+      d3.selectAll(".icon-four-item." + array[i] + ".folder-plus-background")
+        .transition()
+        .duration(1)
+        .ease(d3.easeLinear)
+        .attr("y", extension + Number(folderPlusBackground[0].attributes[4].value));
+
+      d3.selectAll(".icon-four-item." + array[i] + ".menu-title")
+        .transition()
+        .duration(1)
+        .ease(d3.easeLinear)
+        .attr("y", extension + Number(menuTitle[0].attributes[2].value));
+
+    };
+  };
+};
+function closeFolder() {
+
+};
+
 // A function that defines how to draw the 'Menu'.
 function drawMenu() {
 
@@ -1225,15 +1373,15 @@ function drawMenu() {
                      .attr("x", 0)
                      .attr("y", 0);
 
-  menu.append("rect")
-      .attr("x", 0)
-      .attr("y", -2)
-      .attr("width", 350)
-      .attr("height", graphZoneHeight + 7.51);
+  var menuBackground =  menu.append("rect")
+                            .attr("x", 0)
+                            .attr("y", -2)
+                            .attr("width", 350)
+                            .attr("height", graphZoneHeight + 7.51);
 
   menu.append("rect")
       .attr("class", "nav-icon-background")
-      .attr("id", "globe")
+      .attr("id", "home")
       .attr("width", 32)
       .attr("height", 32)
       .attr("x", 11)
@@ -1241,9 +1389,9 @@ function drawMenu() {
 
   menu.append("path")
       .attr("class", "nav-icon globe")
-      .attr("id", "globe")
+      .attr("id", "home")
       .attr("transform", "translate(11, 20)")
-      .attr("d", "M16 1c-8.284 0-15 6.716-15 15s6.716 15 15 15c8.284 0 15-6.716 15-15s-6.716-15-15-15zM24.487 21c0.268-1.264 0.437-2.606 0.492-4h3.983c-0.104 1.381-0.426 2.722-0.959 4h-3.516zM7.513 11c-0.268 1.264-0.437 2.606-0.492 4h-3.983c0.104-1.381 0.426-2.722 0.959-4h3.516zM22.439 11c0.3 1.28 0.481 2.62 0.54 4h-5.979v-4h5.439zM17 9v-5.854c0.456 0.133 0.908 0.355 1.351 0.668 0.831 0.586 1.625 1.488 2.298 2.609 0.465 0.775 0.867 1.638 1.203 2.578h-4.852zM11.351 6.422c0.673-1.121 1.467-2.023 2.298-2.609 0.443-0.313 0.895-0.535 1.351-0.668v5.854h-4.852c0.336-0.94 0.738-1.803 1.203-2.578zM15 11v4h-5.979c0.059-1.38 0.24-2.72 0.54-4h5.439zM3.997 21c-0.533-1.278-0.854-2.619-0.959-4h3.983c0.055 1.394 0.224 2.736 0.492 4h-3.516zM9.021 17h5.979v4h-5.439c-0.3-1.28-0.481-2.62-0.54-4zM15 23v5.854c-0.456-0.133-0.908-0.355-1.351-0.668-0.831-0.586-1.625-1.488-2.298-2.609-0.465-0.775-0.867-1.638-1.203-2.578h4.852zM20.649 25.578c-0.673 1.121-1.467 2.023-2.298 2.609-0.443 0.312-0.895 0.535-1.351 0.668v-5.854h4.852c-0.336 0.94-0.738 1.802-1.203 2.578zM17 21v-4h5.979c-0.059 1.38-0.24 2.72-0.54 4h-5.439zM24.98 15c-0.055-1.394-0.224-2.736-0.492-4h3.516c0.533 1.278 0.855 2.619 0.959 4h-3.983zM26.958 9h-2.997c-0.582-1.836-1.387-3.447-2.354-4.732 1.329 0.636 2.533 1.488 3.585 2.54 0.671 0.671 1.261 1.404 1.766 2.192zM6.808 6.808c1.052-1.052 2.256-1.904 3.585-2.54-0.967 1.285-1.771 2.896-2.354 4.732h-2.997c0.504-0.788 1.094-1.521 1.766-2.192zM5.042 23h2.997c0.582 1.836 1.387 3.447 2.354 4.732-1.329-0.636-2.533-1.488-3.585-2.54-0.671-0.671-1.261-1.404-1.766-2.192zM25.192 25.192c-1.052 1.052-2.256 1.904-3.585 2.54 0.967-1.285 1.771-2.896 2.354-4.732h2.997c-0.504 0.788-1.094 1.521-1.766 2.192z")
+      .attr("d", "M32 18.451l-16-12.42-16 12.42v-5.064l16-12.42 16 12.42zM28 18v12h-8v-8h-8v8h-8v-12l12-9z")
       .style("fill", iconOneColor);
 
   menu.append("rect")
@@ -1342,6 +1490,8 @@ function drawMenu() {
 
     if (iconOneOpen) {
 
+      menuSize = 145;
+
       menu.append("rect")
           .attr("class", "icon-one-item nav-icon-background")
           .attr("width", 32)
@@ -1353,7 +1503,7 @@ function drawMenu() {
       menu.append("path")
           .attr("class", "icon-one-item icon-one-icon")
           .attr("transform", "translate(66, 20)")
-          .attr("d", "M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM16 30c-1.967 0-3.84-0.407-5.538-1.139l7.286-8.197c0.163-0.183 0.253-0.419 0.253-0.664v-3c0-0.552-0.448-1-1-1-3.531 0-7.256-3.671-7.293-3.707-0.188-0.188-0.442-0.293-0.707-0.293h-4c-0.552 0-1 0.448-1 1v6c0 0.379 0.214 0.725 0.553 0.894l3.447 1.724v5.871c-3.627-2.53-6-6.732-6-11.489 0-2.147 0.484-4.181 1.348-6h3.652c0.265 0 0.52-0.105 0.707-0.293l4-4c0.188-0.188 0.293-0.442 0.293-0.707v-2.419c1.268-0.377 2.61-0.581 4-0.581 2.2 0 4.281 0.508 6.134 1.412-0.13 0.109-0.256 0.224-0.376 0.345-1.133 1.133-1.757 2.64-1.757 4.243s0.624 3.109 1.757 4.243c1.139 1.139 2.663 1.758 4.239 1.758 0.099 0 0.198-0.002 0.297-0.007 0.432 1.619 1.211 5.833-0.263 11.635-0.014 0.055-0.022 0.109-0.026 0.163-2.541 2.596-6.084 4.208-10.004 4.208z")
+          .attr("d", "M15 2c-8.284 0-15 6.716-15 15s6.716 15 15 15c8.284 0 15-6.716 15-15s-6.716-15-15-15zM23.487 22c0.268-1.264 0.437-2.606 0.492-4h3.983c-0.104 1.381-0.426 2.722-0.959 4h-3.516zM6.513 12c-0.268 1.264-0.437 2.606-0.492 4h-3.983c0.104-1.381 0.426-2.722 0.959-4h3.516zM21.439 12c0.3 1.28 0.481 2.62 0.54 4h-5.979v-4h5.439zM16 10v-5.854c0.456 0.133 0.908 0.355 1.351 0.668 0.831 0.586 1.625 1.488 2.298 2.609 0.465 0.775 0.867 1.638 1.203 2.578h-4.852zM10.351 7.422c0.673-1.121 1.467-2.023 2.298-2.609 0.443-0.313 0.895-0.535 1.351-0.668v5.854h-4.852c0.336-0.94 0.738-1.803 1.203-2.578zM14 12v4h-5.979c0.059-1.38 0.24-2.72 0.54-4h5.439zM2.997 22c-0.533-1.278-0.854-2.619-0.959-4h3.983c0.055 1.394 0.224 2.736 0.492 4h-3.516zM8.021 18h5.979v4h-5.439c-0.3-1.28-0.481-2.62-0.54-4zM14 24v5.854c-0.456-0.133-0.908-0.355-1.351-0.668-0.831-0.586-1.625-1.488-2.298-2.609-0.465-0.775-0.867-1.638-1.203-2.578h4.852zM19.649 26.578c-0.673 1.121-1.467 2.023-2.298 2.609-0.443 0.312-0.895 0.535-1.351 0.668v-5.854h4.852c-0.336 0.94-0.738 1.802-1.203 2.578zM16 22v-4h5.979c-0.059 1.38-0.24 2.72-0.54 4h-5.439zM23.98 16c-0.055-1.394-0.224-2.736-0.492-4h3.516c0.533 1.278 0.855 2.619 0.959 4h-3.983zM25.958 10h-2.997c-0.582-1.836-1.387-3.447-2.354-4.732 1.329 0.636 2.533 1.488 3.585 2.54 0.671 0.671 1.261 1.404 1.766 2.192zM5.808 7.808c1.052-1.052 2.256-1.904 3.585-2.54-0.967 1.285-1.771 2.896-2.354 4.732h-2.997c0.504-0.788 1.094-1.521 1.766-2.192zM4.042 24h2.997c0.583 1.836 1.387 3.447 2.354 4.732-1.329-0.636-2.533-1.488-3.585-2.54-0.671-0.671-1.261-1.404-1.766-2.192zM24.192 26.192c-1.052 1.052-2.256 1.904-3.585 2.54 0.967-1.285 1.771-2.896 2.354-4.732h2.997c-0.504 0.788-1.094 1.521-1.766 2.192z")
           .on("click", function() { window.open("http://data.worldbank.org/"); });
 
       menu.append("text")
@@ -1417,60 +1567,197 @@ function drawMenu() {
 
   function iconTwoMenu() {
     if (iconTwoOpen) {
-
+      menuSize = 285;
     };
   };
 
   function iconThreeMenu() {
     if (iconThreeOpen) {
-
+      menuSize = 285;
     };
   };
 
   function iconFourMenu() {
     if (iconFourOpen) {
 
-      var geographicRegions = ["Europe & Central Asia", "Sub Saharan Africa", "Latin America & Caribbean", "East Asia & Pacific", "Midle East & North Africa", "South Asia", "North America"];
+      menuSize = 355;
+
+      var geographicRegions = ["East Asia & Pacific", "Europe & Central Asia", "Latin America & Caribbean", "Midle East & North Africa", "North America", "South Asia", "Sub Saharan Africa"];
+      var geographicRegionClassNames = ["east-asia-and-pacific", "europe-and-central-asia", "latin-america-and-caribbean", "midle-east-and-north-africa", "north-america", "south-asia", "sub-saharan-africa",];
 
       for (var i = 0; i < geographicRegions.length; i++) {
 
-        var currentRegion = geographicRegions[i].replace('&', 'and').replace(/\s/g, '-').toLowerCase();
+        menu.append("rect")
+            .attr("class", "icon-four-item " + geographicRegionClassNames[i] + " colour-legend")
+            .attr("width", 13)
+            .attr("height", 13)
+            .attr("x", 66)
+            .attr("y", 12 + (i * 20))
+            .style("fill", colors[i]);
 
         menu.append("path")
-            .attr("class", "icon-four-item " + currentRegion + " folder-plus")
-            .attr("transform", "translate(66, " + (10 + (i * 20)) + ")")
-            .attr("d", "M9 3.5l-2-2h-7v13h16v-11h-7zM11 10.5h-2v2h-2v-2h-2v-2h2v-2h2v2h2v2z");
-
-        menu.append("path")
-            .attr("class", "icon-four-item " + currentRegion + " folder-minus")
-            .attr("transform", "translate(66, " + (10 + (i * 20)) + ")")
-            .attr("visibility", "hidden")
-            .attr("d", "M9 3.5l-2-2h-7v13h16v-11h-7zM11 10.5h-6v-2h6v2z");
-
-        menu.append("path")
-            .attr("class", "icon-four-item " + currentRegion + " checkbox-checked")
-            .attr("transform", "translate(91, " + (10 + (i * 20)) + ")")
-            .attr("d", "M14 0h-12c-1.1 0-2 0.9-2 2v12c0 1.1 0.9 2 2 2h12c1.1 0 2-0.9 2-2v-12c0-1.1-0.9-2-2-2zM7 12.414l-3.707-3.707 1.414-1.414 2.293 2.293 4.793-4.793 1.414 1.414-6.207 6.207z");
-
-        menu.append("path")
-            .attr("class", "icon-four-item " + currentRegion + " checkbox-unchecked")
-            .attr("transform", "translate(91, " + (10 + (i * 20)) + ")")
-            .attr("visibility", "hidden")
+            .attr("class", "icon-four-item " + geographicRegionClassNames[i] + " checkbox-unchecked")
+            .attr("transform", "translate(86, " + (10 + (i * 20)) + ")")
             .attr("d", "M14 0h-12c-1.1 0-2 0.9-2 2v12c0 1.1 0.9 2 2 2h12c1.1 0 2-0.9 2-2v-12c0-1.1-0.9-2-2-2zM14 14h-12v-12h12v12z");
 
+        menu.append("rect")
+            .attr("class", "icon-four-item " + geographicRegionClassNames[i] + " checkbox-unchecked-background")
+            .attr("width", 11)
+            .attr("height", 11)
+            .attr("x", 88.5)
+            .attr("y", 12.5 + (i * 20));
+
+        menu.append("rect")
+            .attr("class", "icon-four-item " + geographicRegionClassNames[i] + " checkbox-checked-background")
+            .attr("width", 11)
+            .attr("height", 11)
+            .attr("x", 88.5)
+            .attr("y", 12.5 + (i * 20));
+
+        menu.append("path")
+            .attr("class", "icon-four-item " + geographicRegionClassNames[i] + " checkbox-checked")
+            .attr("transform", "translate(86, " + (10 + (i * 20)) + ")")
+            .attr("d", "M14 0h-12c-1.1 0-2 0.9-2 2v12c0 1.1 0.9 2 2 2h12c1.1 0 2-0.9 2-2v-12c0-1.1-0.9-2-2-2zM7 12.414l-3.707-3.707 1.414-1.414 2.293 2.293 4.793-4.793 1.414 1.414-6.207 6.207z");
+
+        menu.append("rect")
+            .attr("class", "icon-four-item " + geographicRegionClassNames[i] + " folder-minus-background")
+            .attr("width", 7)
+            .attr("height", 7)
+            .attr("x", 114)
+            .attr("y", 16 + (i * 20))
+            .attr("visibility", "hidden");
+
+        menu.append("path")
+            .attr("class", "icon-four-item " + geographicRegionClassNames[i] + " folder-minus")
+            .attr("transform", "translate(109, " + (10 + (i * 20)) + ")")
+            .attr("d", "M9 3.5l-2-2h-7v13h16v-11h-7zM11 10.5h-6v-2h6v2z")
+            .attr("visibility", "hidden");
+
+        menu.append("rect")
+            .attr("class", "icon-four-item " + geographicRegionClassNames[i] + " folder-plus-background")
+            .attr("width", 7)
+            .attr("height", 7)
+            .attr("x", 114)
+            .attr("y", 16 + (i * 20));
+
+        menu.append("path")
+            .attr("class", "icon-four-item " + geographicRegionClassNames[i] + " folder-plus")
+            .attr("transform", "translate(109, " + (10 + (i * 20)) + ")")
+            .attr("d", "M9 3.5l-2-2h-7v13h16v-11h-7zM11 10.5h-2v2h-2v-2h-2v-2h2v-2h2v2h2v2z");
+
         menu.append("text")
-            .attr("class", "icon-four-item menu-title")
-            .attr("x", 115)
+            .attr("class", "icon-four-item " + geographicRegionClassNames[i] + " menu-title")
+            .attr("x", 130)
             .attr("y",  20 + (i * 20))
             .attr("dy", ".35em")
             .text(geographicRegions[i]);
 
       };
+
+      $(".checkbox-checked, .checkbox-checked-background").click(function() {
+        $("." + this.classList[1] + ".checkbox-checked").css("visibility", "hidden");
+        $("." + this.classList[1] + ".checkbox-checked-background").css("visibility", "hidden");
+      });
+
+      $(".checkbox-unchecked, .checkbox-unchecked-background").click(function() {
+        $("." + this.classList[1] + ".checkbox-checked").css("visibility", "visible");
+        $("." + this.classList[1] + ".checkbox-checked-background").css("visibility", "visible");
+      });
+
+      $(".folder-plus, .folder-plus-background").click(function() {
+
+        $("." + this.classList[1] + ".folder-plus").css("visibility", "hidden");
+        $("." + this.classList[1] + ".folder-plus-background").css("visibility", "hidden");
+        $("." + this.classList[1] + ".folder-minus").css("visibility", "visible");
+        $("." + this.classList[1] + ".folder-minus-background").css("visibility", "visible");
+
+        switch (this.classList[1]) {
+
+          case "east-asia-and-pacific":
+
+            var extension = eastAsiaAndPacific.length * 20;
+
+            var startAt = Number($(".icon-four-item." + this.classList[1] + ".menu-title")[0].attributes[2].value);
+
+            for (var i = 0; i < graphData.length; i++) {
+              for (var j = 0; j < eastAsiaAndPacific.length; j++) {
+                if (graphData[i][0].Code === eastAsiaAndPacific[j]) {
+
+                  menu.append("text")
+                      .attr("class", "icon-four-item " + (this.classList[1] + "-country-name") + " menu-text")
+                      .attr("x", 145)
+                      .attr("y", startAt + 20 + (j * 20))
+                      .attr("dy", ".35em")
+                      .text(graphData[i][0].Name)
+
+                  break;
+
+                };
+              };
+            };
+
+            menu.transition()
+                .duration(1)
+                .ease(d3.easeLinear)
+                .attr("height", graphZoneHeight + 3.51 + (extension - graphZoneHeight + 3.51) + 150)
+
+            menuBackground.transition()
+                          .duration(1)
+                          .ease(d3.easeLinear)
+                          .attr("height", graphZoneHeight + 7.51 + (extension - graphZoneHeight + 7.51) + 150)
+
+            var exemption = 0;
+
+            openFolder(geographicRegionClassNames, exemption, extension)
+
+            break;
+
+          case "europe-and-central-asia":
+
+            break;
+
+          case "latin-america-and-caribbean":
+
+            break;
+
+          case "midle-east-and-north-africa":
+
+            break;
+
+          case "north-america":
+
+            break;
+
+          case "south-asia":
+
+            break;
+
+          case "sub-saharan-africa":
+
+            break;
+
+          default:
+            console.log("Error in folder plus switch!");
+
+        };
+      });
+
+      $(".folder-minus, .folder-minus-background").click(function() {
+        $("." + this.classList[1] + ".folder-plus").css("visibility", "visible");
+        $("." + this.classList[1] + ".folder-plus-background").css("visibility", "visible");
+        $("." + this.classList[1] + ".folder-minus").css("visibility", "hidden");
+        $("." + this.classList[1] + ".folder-minus-background").css("visibility", "hidden");
+      });
+
+      $(".checkbox-checked, .checkbox-checked-background, .checkbox-unchecked, .checkbox-unchecked-background, .folder-plus, .folder-plus-background, .folder-minus, .folder-minus-background").css("cursor", "pointer")
+
     };
   };
 
   function iconFiveMenu() {
     if (iconFiveOpen) {
+
+      menuSize = 145;
 
       menu.append("rect")
           .attr("class", "icon-five-item nav-icon-background")
@@ -1478,15 +1765,12 @@ function drawMenu() {
           .attr("height", 24)
           .attr("x", 70)
           .attr("y", 24)
-          .style("fill", "#9D0893")
           .on("click", function() { window.open("mailto:?&subject=iGraph - Data Visualization&body=Take%20a%20look%20at%20this%20awesome%20data%20visualization%20tool%20made%20by%20Jacob%20Philpott%20with%20D3.js%3A%20i-graph.herokuapp.com"); });
 
       menu.append("path")
           .attr("class", "icon-five-item icon-five-icon")
           .attr("transform", "translate(66, 20)")
-          .attr("d", "M26.666 0h-21.332c-2.934 0-5.334 2.4-5.334 5.333v21.333c0 2.934 2.4 5.334 5.334 5.334h21.332c2.936 0 5.334-2.4 5.334-5.334v-21.333c0-2.934-2.398-5.333-5.334-5.333zM8 8h16c0.286 0 0.563 0.061 0.817 0.177l-8.817 10.286-8.817-10.287c0.254-0.116 0.531-0.177 0.817-0.177zM6 22v-12c0-0.042 0.002-0.084 0.004-0.125l5.864 6.842-5.8 5.8c-0.045-0.167-0.069-0.34-0.069-0.517zM24 24h-16c-0.177 0-0.35-0.024-0.517-0.069l5.691-5.691 2.826 3.297 2.826-3.297 5.691 5.691c-0.167 0.045-0.34 0.069-0.517 0.069zM26 22c0 0.177-0.024 0.35-0.069 0.517l-5.8-5.8 5.864-6.842c0.003 0.041 0.004 0.083 0.004 0.125v12z")
-          .style("fill", "lightgrey")
-          .style("stroke", "lightgrey")
+          .attr("d", "M16 0c-8.837 0-16 7.163-16 16s7.163 16 16 16 16-7.163 16-16-7.163-16-16-16zM8 8h16c0.286 0 0.563 0.061 0.817 0.177l-8.817 10.286-8.817-10.287c0.254-0.116 0.531-0.177 0.817-0.177zM6 22v-12c0-0.042 0.002-0.084 0.004-0.125l5.864 6.842-5.8 5.8c-0.045-0.167-0.069-0.34-0.069-0.517zM24 24h-16c-0.177 0-0.35-0.024-0.517-0.069l5.691-5.691 2.826 3.297 2.826-3.297 5.691 5.691c-0.167 0.045-0.34 0.069-0.517 0.069zM26 22c0 0.177-0.024 0.35-0.069 0.517l-5.8-5.8 5.865-6.842c0.003 0.041 0.004 0.083 0.004 0.125v12z")
           .on("click", function() { window.open("mailto:?&subject=iGraph - Data Visualization&body=Take%20a%20look%20at%20this%20awesome%20data%20visualization%20tool%20made%20by%20Jacob%20Philpott%20with%20D3.js%3A%20i-graph.herokuapp.com"); });
 
       menu.append("rect")
@@ -1558,71 +1842,6 @@ function drawMenu() {
   iconFourMenu();
   iconFiveMenu();
 
-  function openMenu() {
-    if (menuWidth < menuSize) {
-
-      menuWidth = menuWidth + 10;
-
-      $(".graph-zone").remove();
-      $(".menu-zone").remove();
-      checkEnvironment();
-      scaleAllData();
-
-      drawAll();
-
-    } else if (menuWidth > menuSize) {
-
-      menuWidth = menuWidth - 10;
-
-      $(".graph-zone").remove();
-      $(".menu-zone").remove();
-      checkEnvironment();
-      scaleAllData();
-
-      drawAll();
-
-    } else {
-      clearInterval(menuResize);
-    };
-  };
-
-  function closeMenu() {
-    if (menuWidth > 85) {
-
-      menuWidth = menuWidth - 10;
-
-      $(".graph-zone").remove();
-      $(".menu-zone").remove();
-      checkEnvironment();
-      scaleAllData();
-
-      drawAll();
-
-    } else {
-      clearInterval(menuResize);
-      $(".globe").css({"fill": "grey"});
-      $(".settings").css({"fill": "grey"});
-      $(".datasets").css({"fill": "grey"});
-      $(".filter").css({"fill": "grey"});
-      $(".share").css({"fill": "grey"});
-      iconOneColor = "grey";
-      iconTwoColor = "grey";
-      iconThreeColor = "grey";
-      iconFourColor = "grey";
-      iconFiveColor = "grey";
-      $(".icon-one-item").remove();
-      $(".icon-two-item").remove();
-      $(".icon-three-item").remove();
-      $(".icon-four-item").remove();
-      $(".icon-five-item").remove();
-      iconOneOpen = false;
-      iconTwoOpen = false;
-      iconThreeOpen = false;
-      iconFourOpen = false;
-      iconFiveOpen = false;
-    };
-  };
-
   $(".nav-icon, .nav-icon-background, .lock").mouseover(function() {
     $(this).css('cursor', 'pointer');
   });
@@ -1649,8 +1868,7 @@ function drawMenu() {
 
     switch (this.id) {
 
-      case "globe":
-        menuSize = 145;
+      case "home":
         $(".nav-icon").css({"fill": "grey"});
         $(".globe").css({"fill": colors[0]});
         iconOneColor = colors[0];
@@ -1658,20 +1876,19 @@ function drawMenu() {
         iconThreeColor = "grey";
         iconFourColor = "grey";
         iconFiveColor = "grey";
-        iconOneOpen = true;
-        iconOneMenu();
         $(".icon-two-item").remove();
         $(".icon-three-item").remove();
         $(".icon-four-item").remove();
         $(".icon-five-item").remove();
+        iconOneOpen = true;
         iconTwoOpen = false;
         iconThreeOpen = false;
         iconFourOpen = false;
         iconFiveOpen = false;
+        iconOneMenu();
         break;
 
       case "settings":
-        menuSize = 285;
         $(".nav-icon").css({"fill": "grey"});
         $(".settings").css({"fill": colors[1]});
         iconOneColor = "grey";
@@ -1679,20 +1896,19 @@ function drawMenu() {
         iconThreeColor = "grey";
         iconFourColor = "grey";
         iconFiveColor = "grey";
-        iconTwoOpen = true;
-        iconTwoMenu();
         $(".icon-one-item").remove();
         $(".icon-three-item").remove();
         $(".icon-four-item").remove();
         $(".icon-five-item").remove();
         iconOneOpen = false;
+        iconTwoOpen = true;
         iconThreeOpen = false;
         iconFourOpen = false;
         iconFiveOpen = false;
+        iconTwoMenu();
         break;
 
       case "datasets":
-        menuSize = 285;
         $(".nav-icon").css({"fill": "grey"});
         $(".datasets").css({"fill": colors[2]});
         iconOneColor = "grey";
@@ -1700,20 +1916,19 @@ function drawMenu() {
         iconThreeColor = colors[2];
         iconFourColor = "grey";
         iconFiveColor = "grey";
-        iconThreeOpen = true;
-        iconThreeMenu();
         $(".icon-one-item").remove();
         $(".icon-two-item").remove();
         $(".icon-four-item").remove();
         $(".icon-five-item").remove();
         iconOneOpen = false;
         iconTwoOpen = false;
+        iconThreeOpen = true;
         iconFourOpen = false;
         iconFiveOpen = false;
+        iconThreeMenu();
         break;
 
       case "filter":
-        menuSize = 335;
         $(".nav-icon").css({"fill": "grey"});
         $(".filter").css({"fill": colors[3]});
         iconOneColor = "grey";
@@ -1721,8 +1936,6 @@ function drawMenu() {
         iconThreeColor = "grey";
         iconFourColor = colors[3];
         iconFiveColor = "grey";
-        iconFourOpen = true;
-        iconFourMenu();
         $(".icon-one-item").remove();
         $(".icon-two-item").remove();
         $(".icon-three-item").remove();
@@ -1730,11 +1943,12 @@ function drawMenu() {
         iconOneOpen = false;
         iconTwoOpen = false;
         iconThreeOpen = false;
+        iconFourOpen = true;
         iconFiveOpen = false;
+        iconFourMenu();
         break;
 
       case "share":
-        menuSize = 145;
         $(".nav-icon").css({"fill": "grey"});
         $(".share").css({"fill": colors[4]});
         iconOneColor = "grey";
@@ -1742,8 +1956,6 @@ function drawMenu() {
         iconThreeColor = "grey";
         iconFourColor = "grey";
         iconFiveColor = colors[4];
-        iconFiveOpen = true;
-        iconFiveMenu();
         $(".icon-one-item").remove();
         $(".icon-two-item").remove();
         $(".icon-three-item").remove();
@@ -1752,6 +1964,8 @@ function drawMenu() {
         iconTwoOpen = false;
         iconThreeOpen = false;
         iconFourOpen = false;
+        iconFiveOpen = true;
+        iconFiveMenu();
         break;
 
       default:
@@ -1761,7 +1975,7 @@ function drawMenu() {
 
     menuOpen = true;
 
-    menuResize = setInterval(openMenu, 100)
+    menuResize = setInterval(openMenu, 100);
 
   });
 
