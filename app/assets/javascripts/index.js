@@ -47,6 +47,11 @@ $(document).on('ready', function() {
     menuOpen = true;
     menuResize = setInterval(openMenu, 100);
 
+    geographicRegionNames = ["East Asia & Pacific", "Europe & Central Asia", "Latin America & Caribbean", "Midle East & North Africa", "North America", "South Asia", "Sub Saharan Africa"];
+
+    drawRegionsExceptionList = [];
+    drawCountriesExceptionList = [];
+
     // An array of color values.
     colors = ["#3168C5", "#E03621", "#FF9735", "#009634", "#9D0893", "#009AC2", "#E14375", "#000"];
 

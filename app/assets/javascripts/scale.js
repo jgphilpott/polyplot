@@ -146,6 +146,7 @@ function scaleAllData(newDomain) {
           "Year": graphData[i][j]["Year"],
           "Name": graphData[i][j]["Name"],
           "Code": graphData[i][j]["Code"],
+          "Region": graphData[i][j]["Region"],
           "Colour": graphData[i][j]["Colour"],
           "R": rScale(graphData[i][j]["R"]),
           "X": xScale(graphData[i][j]["X"]),

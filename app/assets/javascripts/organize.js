@@ -55,18 +55,18 @@ function getData(datasetKeys) {
 function organize(data, index) {
 
   // A series of arrays to group countries by geographic region and income level using country codes.
-  var europeAndCentralAsia = ["ALB", "AND", "ARM", "AUT", "AZE", "BLR", "BEL", "BIH", "BGR", "CHI", "HRV", "CYP", "CZE", "DNK", "EST", "FRO", "FIN", "FRA", "GEO", "DEU", "GIB", "GRC", "GRL", "HUN", "ISL", "IRL", "IMN", "ITA", "KAZ", "KSV", "KGZ", "LVA", "LIE", "LTU", "LUX", "MKD", "MDA", "MCO", "MNE", "NLD", "NOR", "POL", "PRT", "ROU", "RUS", "SMR", "SRB", "SVK", "SVN", "ESP", "SWE", "CHE", "TJK", "TUR", "TKM", "UKR", "GBR", "UZB"];
-  var subSaharanAfrica = ["AGO", "BEN", "BWA", "BFA", "BDI", "CPV", "COG", "CIV", "CMR", "CAF", "TCD", "COM", "COD", "GNQ", "ERI", "ETH", "GAB", "GHA", "GIN", "GNB", "KEN", "LSO", "LBR", "MDG", "MWI", "MLI", "MRT", "MUS", "MOZ", "NAM", "NER", "NGA", "RWA", "STP", "SEN", "SYC", "SLE", "SOM", "ZAF", "SSD", "SDN", "SWZ", "TZA", "GMB", "TGO", "UGA", "ZMB", "ZWE"];
-  var latinAmericaAndCaribbean = ["ATG", "ARG", "ABW", "BRB", "BLZ", "BOL", "BRA", "VGB", "CYM", "CHL", "COL", "CRI", "CUB", "CUW", "DMA", "DOM", "ECU", "SLV", "GRD", "GTM", "GUY", "HTI", "HND", "JAM", "MEX", "NIC", "PAN", "PRY", "PER", "PRI", "SXM", "KNA", "LCA", "MAF", "VCT", "SUR", "BHS", "TTO", "TCA", "URY", "VEN", "VIR"];
+  europeAndCentralAsia = ["ALB", "AND", "ARM", "AUT", "AZE", "BLR", "BEL", "BIH", "BGR", "CHI", "HRV", "CYP", "CZE", "DNK", "EST", "FRO", "FIN", "FRA", "GEO", "DEU", "GIB", "GRC", "GRL", "HUN", "ISL", "IRL", "IMN", "ITA", "KAZ", "KSV", "KGZ", "LVA", "LIE", "LTU", "LUX", "MKD", "MDA", "MCO", "MNE", "NLD", "NOR", "POL", "PRT", "ROU", "RUS", "SMR", "SRB", "SVK", "SVN", "ESP", "SWE", "CHE", "TJK", "TUR", "TKM", "UKR", "GBR", "UZB"];
+  subSaharanAfrica = ["AGO", "BEN", "BWA", "BFA", "BDI", "CPV", "COG", "CIV", "CMR", "CAF", "TCD", "COM", "COD", "GNQ", "ERI", "ETH", "GAB", "GHA", "GIN", "GNB", "KEN", "LSO", "LBR", "MDG", "MWI", "MLI", "MRT", "MUS", "MOZ", "NAM", "NER", "NGA", "RWA", "STP", "SEN", "SYC", "SLE", "SOM", "ZAF", "SSD", "SDN", "SWZ", "TZA", "GMB", "TGO", "UGA", "ZMB", "ZWE"];
+  latinAmericaAndCaribbean = ["ATG", "ARG", "ABW", "BRB", "BLZ", "BOL", "BRA", "VGB", "CYM", "CHL", "COL", "CRI", "CUB", "CUW", "DMA", "DOM", "ECU", "SLV", "GRD", "GTM", "GUY", "HTI", "HND", "JAM", "MEX", "NIC", "PAN", "PRY", "PER", "PRI", "SXM", "KNA", "LCA", "MAF", "VCT", "SUR", "BHS", "TTO", "TCA", "URY", "VEN", "VIR"];
   eastAsiaAndPacific = ["ASM", "AUS", "BRN", "KHM", "CHN", "PRK", "FJI", "PYF", "GUM", "HKG", "IDN", "JPN", "KIR", "KOR", "LAO", "MAC", "MYS", "MHL", "FSM", "MNG", "MMR", "NRU", "NCL", "NZL", "MNP", "PLW", "PNG", "PHL", "WSM", "SGP", "SLB", "THA", "TLS", "TON", "TUV", "VUT", "VNM"];
-  var midleEastAndNorthAfrica = ["DZA", "BHR", "DJI", "EGY", "IRN", "IRQ", "ISR", "JOR", "KWT", "LBN", "LBY", "MLT", "MAR", "OMN", "QAT", "SAU", "SYR", "TUN", "ARE", "PSE", "YEM"];
+  midleEastAndNorthAfrica = ["DZA", "BHR", "DJI", "EGY", "IRN", "IRQ", "ISR", "JOR", "KWT", "LBN", "LBY", "MLT", "MAR", "OMN", "QAT", "SAU", "SYR", "TUN", "ARE", "PSE", "YEM"];
   var regions = ["EAS", "ECS", "LCN", "MEA", "NAC", "SAS", "SSF", "ARB", "CEB", "CSS", "EMU", "EUU", "OSS", "PSS", "SST", "WLD"];
   var other = ["EAR", "FCS", "INX", "LDC", "LTE", "OED", "PRE", "PST", "IBD", "IDA", "IDB", "IDX"];
   var regionsIDAandIBRD = ["IBT", "TEA", "TEC", "TLA", "TMN", "TSA", "TSS"];
-  var southAsia = ["AFG", "BGD", "BTN", "IND", "MDV", "NPL", "PAK", "LKA"];
+  southAsia = ["AFG", "BGD", "BTN", "IND", "MDV", "NPL", "PAK", "LKA"];
   var regionsExcludingHighIncome = ["EAP", "ECA", "LAC", "MNA", "SSA"];
   var incomeLevel = ["LIC", "LMC", "LMY", "MIC", "UMC", "HIC", "HPC"];
-  var northAmerica = ["BMU", "CAN", "USA"];
+  northAmerica = ["BMU", "CAN", "USA"];
 
   // Creating and sorting a concatenate array of the selected geographic and/or income level catagories.
   var countryCodesArray = [];
@@ -134,6 +134,8 @@ function organize(data, index) {
                 // Find the current object in the 'Country Objects' array and assign the appropriate color for this category.
                 countryObjects[k - firstYear]["Colour"] = colors[1];
 
+                countryObjects[k - firstYear]["Region"] = geographicRegionNames[1];
+
                 // Break the category array loop, so that we don’t pointlessly iterate after a match has already been found.
                 break;
 
@@ -149,6 +151,7 @@ function organize(data, index) {
               if (subSaharanAfrica[l] === data[i]["Country Code"]) {
                 match = true;
                 countryObjects[k - firstYear]["Colour"] = colors[6];
+                countryObjects[k - firstYear]["Region"] = geographicRegionNames[6];
                 break;
               };
             };
@@ -159,6 +162,7 @@ function organize(data, index) {
               if (latinAmericaAndCaribbean[l] === data[i]["Country Code"]) {
                 match = true;
                 countryObjects[k - firstYear]["Colour"] = colors[2];
+                countryObjects[k - firstYear]["Region"] = geographicRegionNames[2];
                 break;
               };
             };
@@ -169,6 +173,7 @@ function organize(data, index) {
               if (eastAsiaAndPacific[l] === data[i]["Country Code"]) {
                 match = true;
                 countryObjects[k - firstYear]["Colour"] = colors[0];
+                countryObjects[k - firstYear]["Region"] = geographicRegionNames[0];
                 break;
               };
             };
@@ -179,6 +184,7 @@ function organize(data, index) {
               if (midleEastAndNorthAfrica[l] === data[i]["Country Code"]) {
                 match = true;
                 countryObjects[k - firstYear]["Colour"] = colors[3];
+                countryObjects[k - firstYear]["Region"] = geographicRegionNames[3];
                 break;
               };
             };
@@ -189,6 +195,7 @@ function organize(data, index) {
               if (southAsia[l] === data[i]["Country Code"]) {
                 match = true;
                 countryObjects[k - firstYear]["Colour"] = colors[5];
+                countryObjects[k - firstYear]["Region"] = geographicRegionNames[5];
                 break;
               };
             };
@@ -199,6 +206,7 @@ function organize(data, index) {
               if (northAmerica[l] === data[i]["Country Code"]) {
                 match = true;
                 countryObjects[k - firstYear]["Colour"] = colors[4];
+                countryObjects[k - firstYear]["Region"] = geographicRegionNames[4];
                 break;
               };
             };
