@@ -1514,9 +1514,243 @@ function drawMenu() {
       var spaceing = 20;
 
       // Declaring an array of strings equal to the 'Geographic Region Names' array in a class name format.
-      var classifiedGeographicRegionNames = geographicRegionNames.map(function(i) {
-        return i.replace(/&/g, "and").replace(/\s/g, "-").toLowerCase();
+      var classifiedGeographicRegionNames = geographicRegionNames.map(function(item) {
+        return item.replace(/&/g, "and").replace(/\s/g, "-").toLowerCase();
       });
+
+      // Adding category folders and filter controls.
+      for (var i = 0; i < geographicRegionNames.length; i++) {
+
+        menu.append("rect")
+            .attr("class", "icon-four-item " + classifiedGeographicRegionNames[i] + " colour-legend")
+            .attr("width", 13)
+            .attr("height", 13)
+            .attr("x", 66)
+            .attr("y", 12 + (i * spaceing))
+            .style("fill", colors[i]);
+
+        menu.append("rect")
+            .attr("class", "icon-four-item " + classifiedGeographicRegionNames[i] + " checkbox-unchecked-background")
+            .attr("width", 11)
+            .attr("height", 11)
+            .attr("x", 88.5)
+            .attr("y", 12.5 + (i * spaceing));
+
+        menu.append("path")
+            .attr("class", "icon-four-item " + classifiedGeographicRegionNames[i] + " checkbox-unchecked")
+            .attr("transform", "translate(86, " + (10 + (i * spaceing)) + ")")
+            .attr("d", "M14 0h-12c-1.1 0-2 0.9-2 2v12c0 1.1 0.9 2 2 2h12c1.1 0 2-0.9 2-2v-12c0-1.1-0.9-2-2-2zM14 14h-12v-12h12v12z");
+
+        menu.append("rect")
+            .attr("class", "icon-four-item " + classifiedGeographicRegionNames[i] + " checkbox-checked-background")
+            .attr("width", 11)
+            .attr("height", 11)
+            .attr("x", 88.5)
+            .attr("y", 12.5 + (i * spaceing))
+            .attr("visibility", function() {
+
+              for (var j = 0; j < drawRegionsExceptionList.length; j++) {
+                if (drawRegionsExceptionList[j] === classifiedGeographicRegionNames[i]) {
+
+                  return "hidden";
+
+                };
+              };
+
+              return "visible";
+
+            });
+
+        menu.append("path")
+            .attr("class", "icon-four-item " + classifiedGeographicRegionNames[i] + " checkbox-checked")
+            .attr("transform", "translate(86, " + (10 + (i * spaceing)) + ")")
+            .attr("d", "M14 0h-12c-1.1 0-2 0.9-2 2v12c0 1.1 0.9 2 2 2h12c1.1 0 2-0.9 2-2v-12c0-1.1-0.9-2-2-2zM7 12.414l-3.707-3.707 1.414-1.414 2.293 2.293 4.793-4.793 1.414 1.414-6.207 6.207z")
+            .attr("visibility", function() {
+
+              for (var j = 0; j < drawRegionsExceptionList.length; j++) {
+                if (drawRegionsExceptionList[j] === classifiedGeographicRegionNames[i]) {
+
+                  return "hidden";
+
+                };
+              };
+
+              return "visible";
+
+            });
+
+        menu.append("rect")
+            .attr("class", "icon-four-item " + classifiedGeographicRegionNames[i] + " folder-minus-background")
+            .attr("width", 7)
+            .attr("height", 7)
+            .attr("x", 114)
+            .attr("y", 16 + (i * spaceing))
+            .attr("visibility", "hidden");
+
+        menu.append("path")
+            .attr("class", "icon-four-item " + classifiedGeographicRegionNames[i] + " folder-minus")
+            .attr("transform", "translate(109, " + (10 + (i * spaceing)) + ")")
+            .attr("d", "M9 3.5l-2-2h-7v13h16v-11h-7zM11 10.5h-6v-2h6v2z")
+            .attr("visibility", "hidden");
+
+        menu.append("rect")
+            .attr("class", "icon-four-item " + classifiedGeographicRegionNames[i] + " folder-plus-background")
+            .attr("width", 7)
+            .attr("height", 7)
+            .attr("x", 114)
+            .attr("y", 16 + (i * spaceing));
+
+        menu.append("path")
+            .attr("class", "icon-four-item " + classifiedGeographicRegionNames[i] + " folder-plus")
+            .attr("transform", "translate(109, " + (10 + (i * spaceing)) + ")")
+            .attr("d", "M9 3.5l-2-2h-7v13h16v-11h-7zM11 10.5h-2v2h-2v-2h-2v-2h2v-2h2v2h2v2z");
+
+        menu.append("text")
+            .attr("class", "icon-four-item " + classifiedGeographicRegionNames[i] + " menu-title")
+            .attr("x", 130)
+            .attr("y",  20 + (i * spaceing))
+            .attr("dy", ".35em")
+            .text(geographicRegionNames[i]);
+
+      };
+
+      // A function to transition all the currently drawn objects when opening/closing a folder.
+      function transitionObjects(index, extension) {
+
+        // Looping over the list of 'Classified Geographic Region Names' array.
+        for (var i = 0; i < classifiedGeographicRegionNames.length; i++) {
+
+          // Checking if the current loop index is greater than the 'Index' argument.
+          if (i > index) {
+
+            // Saving all elements below the folder being opened/closed into variables.
+            var colourLegend = $("." + classifiedGeographicRegionNames[i] + ".colour-legend");
+            var checkboxUnchecked = $("." + classifiedGeographicRegionNames[i] + ".checkbox-unchecked");
+            var checkboxUncheckedBackground = $("." + classifiedGeographicRegionNames[i] + ".checkbox-unchecked-background");
+            var subCheckboxUnchecked = $("." + classifiedGeographicRegionNames[i] + "-country.sub-checkbox-unchecked");
+            var subCheckboxUncheckedBackground = $("." + classifiedGeographicRegionNames[i] + "-country.sub-checkbox-unchecked-background");
+            var checkboxChecked = $("." + classifiedGeographicRegionNames[i] + ".checkbox-checked");
+            var checkboxCheckedBackground = $("." + classifiedGeographicRegionNames[i] + ".checkbox-checked-background");
+            var subCheckboxChecked = $("." + classifiedGeographicRegionNames[i] + "-country.sub-checkbox-checked");
+            var subCheckboxCheckedBackground = $("." + classifiedGeographicRegionNames[i] + "-country.sub-checkbox-checked-background");
+            var folderMinus = $("." + classifiedGeographicRegionNames[i] + ".folder-minus");
+            var folderMinusBackground = $("." + classifiedGeographicRegionNames[i] + ".folder-minus-background");
+            var folderPlus = $("." + classifiedGeographicRegionNames[i] + ".folder-plus");
+            var folderPlusBackground = $("." + classifiedGeographicRegionNames[i] + ".folder-plus-background");
+            var menuTitle = $("." + classifiedGeographicRegionNames[i] + ".menu-title");
+            var menuText = $("." + classifiedGeographicRegionNames[i] + "-country.menu-text");
+
+            // The following code blocks transition each element from its curent location to it's new location based on the 'Extension' variable.
+
+            d3.selectAll("." + classifiedGeographicRegionNames[i] + ".colour-legend")
+              .transition()
+              .duration(1)
+              .ease(d3.easeLinear)
+              .attr("y", extension + Number(colourLegend[0].attributes[4].value));
+
+            d3.selectAll("." + classifiedGeographicRegionNames[i] + ".checkbox-unchecked")
+              .transition()
+              .duration(1)
+              .ease(d3.easeLinear)
+              .attr("transform", "translate(86, " + (extension + checkboxUnchecked[0].transform.animVal[0].matrix.f) + ")");
+
+            d3.selectAll("." + classifiedGeographicRegionNames[i] + ".checkbox-unchecked-background")
+              .transition()
+              .duration(1)
+              .ease(d3.easeLinear)
+              .attr("y", extension + Number(checkboxUncheckedBackground[0].attributes[4].value));
+
+            d3.selectAll("." + classifiedGeographicRegionNames[i] + ".checkbox-checked")
+              .transition()
+              .duration(1)
+              .ease(d3.easeLinear)
+              .attr("transform", "translate(86, " + (extension + checkboxChecked[0].transform.animVal[0].matrix.f) + ")");
+
+            d3.selectAll("." + classifiedGeographicRegionNames[i] + ".checkbox-checked-background")
+              .transition()
+              .duration(1)
+              .ease(d3.easeLinear)
+              .attr("y", extension + Number(checkboxCheckedBackground[0].attributes[4].value));
+
+            d3.selectAll("." + classifiedGeographicRegionNames[i] + ".folder-minus")
+              .transition()
+              .duration(1)
+              .ease(d3.easeLinear)
+              .attr("transform", "translate(109 " + (extension + folderMinus[0].transform.animVal[0].matrix.f) + ")");
+
+            d3.selectAll("." + classifiedGeographicRegionNames[i] + ".folder-minus-background")
+              .transition()
+              .duration(1)
+              .ease(d3.easeLinear)
+              .attr("y", extension + Number(folderMinusBackground[0].attributes[4].value));
+
+            d3.selectAll("." + classifiedGeographicRegionNames[i] + ".folder-plus")
+              .transition()
+              .duration(1)
+              .ease(d3.easeLinear)
+              .attr("transform", "translate(109 " + (extension + folderPlus[0].transform.animVal[0].matrix.f) + ")");
+
+            d3.selectAll("." + classifiedGeographicRegionNames[i] + ".folder-plus-background")
+              .transition()
+              .duration(1)
+              .ease(d3.easeLinear)
+              .attr("y", extension + Number(folderPlusBackground[0].attributes[4].value));
+
+            d3.selectAll("." + classifiedGeographicRegionNames[i] + ".menu-title")
+              .transition()
+              .duration(1)
+              .ease(d3.easeLinear)
+              .attr("y", extension + Number(menuTitle[0].attributes[2].value));
+
+            // Checking if sub folder items exist for this region...
+            if (menuText.length !== 0) {
+
+              // Looping over the array of 'Sub Unchecked Boxs'.
+              // Applying the same transition as above for each sub element.
+              for (var j = 0; j < subCheckboxUnchecked.length; j++) {
+
+                d3.selectAll("." + subCheckboxUnchecked[j].classList[2] + ".sub-checkbox-unchecked")
+                  .transition()
+                  .duration(1)
+                  .ease(d3.easeLinear)
+                  .attr("transform", "translate(135, " + (extension + subCheckboxUnchecked[j].transform.animVal[0].matrix.f) + ")");
+
+                d3.selectAll("." + subCheckboxUncheckedBackground[j].classList[2] + ".sub-checkbox-unchecked-background")
+                  .transition()
+                  .duration(1)
+                  .ease(d3.easeLinear)
+                  .attr("y", extension + Number(subCheckboxUncheckedBackground[j].attributes[4].value));
+
+                d3.selectAll("." + menuText[j].classList[2] + ".menu-text")
+                  .transition()
+                  .duration(1)
+                  .ease(d3.easeLinear)
+                  .attr("y", extension + Number(menuText[j].attributes[2].value));
+
+              };
+
+              // Looping over the array of 'Sub Checked Boxs'.
+              // Applying the same transition as above for each sub element.
+              for (var j = 0; j < subCheckboxChecked.length; j++) {
+
+                d3.selectAll("." + subCheckboxChecked[j].classList[2] + ".sub-checkbox-checked")
+                  .transition()
+                  .duration(1)
+                  .ease(d3.easeLinear)
+                  .attr("transform", "translate(135, " + (extension + subCheckboxChecked[j].transform.animVal[0].matrix.f) + ")");
+
+
+                d3.selectAll("." + subCheckboxCheckedBackground[j].classList[2] + ".sub-checkbox-checked-background")
+                  .transition()
+                  .duration(1)
+                  .ease(d3.easeLinear)
+                  .attr("y", extension + Number(subCheckboxCheckedBackground[j].attributes[4].value));
+
+              };
+            };// End of 'Sub Items' check.
+          };// End of 'Index' check.
+        };// End of 'Classified Geographic Region Names' array loop.
+      };// End of 'Transition Objects' function.
 
       // A function that defines how to open a category folder.
       function openFolder(folderName, category) {
@@ -1553,6 +1787,9 @@ function drawMenu() {
                         .attr("height", graphZoneHeight + 7.51 + (totalExtension - graphZoneHeight + 7.51) + (classifiedGeographicRegionNames.length * spaceing) + spaceing/2)
 
         };// End of menu height check.
+
+        // Transitioning existing objects to make room for the new 'Sub Folder Objects'.
+        transitionObjects(index, extension);
 
         // A function that defines how to draw the 'Country Filter Objects'.
         function addSubFolderObjects(objectName, data) {
@@ -1644,7 +1881,7 @@ function drawMenu() {
                 };
               })
               .attr("x", 150)
-              .attr("y", startingPoint + 20 + (j * 20))
+              .attr("y", startingPoint + 20 + (j * spaceing))
               .attr("dy", ".35em")
               .text(objectName);
 
@@ -1695,22 +1932,29 @@ function drawMenu() {
           };// End of 'Category' array loop.
         };// End of 'Graph Data' array loop.
 
-        transitionObjects(index, extension);
-
+        // Attaching an event handeler for clicking the 'Sub Checked Box'.
         $(".sub-checkbox-checked, .sub-checkbox-checked-background").click(function() {
 
+          // Hideing the 'Sub Checked Box'.
           $("." + this.classList[2] + ".sub-checkbox-checked, ." + this.classList[2] + ".sub-checkbox-checked-background").css("visibility", "hidden");
 
+          // Removing the corresponding 'Country Circle'.
           $("." + this.classList[2] + ".country-circle").remove();
 
+          // Adding the corresponding 'Country Name' to the exception list.
           drawCountriesExceptionList.push(this.classList[2]);
 
-        });
+        });// End of 'Sub Checked Box' event handeler.
 
+        // Attaching an event handeler for clicking the 'Sub Unchecked Box'.
         $(".sub-checkbox-unchecked, .sub-checkbox-unchecked-background").click(function() {
 
+          // Makeing the 'Sub Checked Box' visible.
           $("." + this.classList[2] + ".sub-checkbox-checked, ." + this.classList[2] + ".sub-checkbox-checked-background").css("visibility", "visible");
 
+          // Looping over the 'Countries Exception List'...
+          // Checking if the 'Country Name' of the clicked object matches the string at the index of the loop...
+          // Removing the 'Country Name' from the exception list and breaking the loop.
           for (var i = 0; i < drawCountriesExceptionList.length; i++) {
             if (drawCountriesExceptionList[i] === this.classList[2]) {
               drawCountriesExceptionList.splice(i, 1);
@@ -1718,6 +1962,9 @@ function drawMenu() {
             };
           };
 
+          // Looping over the 'Regions Exception List'...
+          // Checking if the 'Regions Name' of the clicked object matches the string at the index of the loop...
+          // Removing the 'Regions Name' from the exception list and breaking the loop.
           for (var i = 0; i < drawRegionsExceptionList.length; i++) {
             if (drawRegionsExceptionList[i] === this.classList[1].replace(/-country/, "")) {
               drawRegionsExceptionList.splice(i, 1);
@@ -1726,271 +1973,78 @@ function drawMenu() {
             };
           };
 
+          // Removing and redrawing the 'Country Circles'.
           $(".country-circle").remove();
           drawCircles();
 
-        });
+        });// End of 'Sub Unchecked Box' event handeler.
 
+        // Attaching an event handeler for styleing the cursor while over the 'Sub Check Boxs'.
         $(".sub-checkbox-checked, .sub-checkbox-checked-background, .sub-checkbox-unchecked, .sub-checkbox-unchecked-background").mouseover(function() {
 
+          // Checking if the 'Check Box' class list contains 'no-data' and styleing the cursor appropriatly.
           if (this.classList.contains("no-data")) {
             $(this).css("cursor", "not-allowed");
           } else {
             $(this).css("cursor", "pointer");
           };
-        });
-      };
+        });// End of cursor styleing event handeler.
+      };// End of 'Open Folder Function'.
 
+      // A function that defines how to close a category folder.
       function closeFolder(folderName, category) {
 
-        var index = undefined;
-
+        // Saving the index of the ‘Classified Geographic Region Names’ array that matches the ‘Folder Name’.
         for (var i = 0; i < classifiedGeographicRegionNames.length; i++) {
           if (classifiedGeographicRegionNames[i] === folderName) {
-            index = i;
+            var index = i;
           };
         };
 
+        // Determining the extension variable for this category.
         var extension = -(category.length * 20);
 
+        // Reassigning the 'Total Extension' variable with the addition of the 'Extension' variable.
+        totalExtension = totalExtension + extension;
+
+        // Checking if the extended menu height is greter than the window height.
+        if ((graphZoneHeight + 3.51 + (totalExtension - graphZoneHeight + 3.51) + (classifiedGeographicRegionNames.length * spaceing) + spaceing/2) > (graphZoneHeight + 3.51)) {
+
+          // Transitioning the menu height.
+          menu.transition()
+              .duration(1)
+              .ease(d3.easeLinear)
+              .attr("height", graphZoneHeight + 3.51 + (totalExtension - graphZoneHeight + 3.51) + (classifiedGeographicRegionNames.length * spaceing) + spaceing/2)
+
+          // Transitioning the menu background height.
+          menuBackground.transition()
+                        .duration(1)
+                        .ease(d3.easeLinear)
+                        .attr("height", graphZoneHeight + 7.51 + (totalExtension - graphZoneHeight + 7.51) + (classifiedGeographicRegionNames.length * spaceing) + spaceing/2)
+
+        } else {
+
+          // Transitioning the menu height.
+          menu.transition()
+              .duration(1)
+              .ease(d3.easeLinear)
+              .attr("height", graphZoneHeight + 3.51)
+
+          // Transitioning the menu background height.
+          menuBackground.transition()
+                        .duration(1)
+                        .ease(d3.easeLinear)
+                        .attr("height", graphZoneHeight + 7.51)
+
+        } // End of menu height check.
+
+        // Removing 'Sub Folder Objects'.
         $("." + folderName + "-country").remove();
 
+        // Transitioning existing objects to account for the removal of the old 'Sub Folder Objects'.
         transitionObjects(index, extension);
 
-      };
-
-      function transitionObjects(index, extension) {
-
-        for (var i = 0; i < classifiedGeographicRegionNames.length; i++) {
-
-          if (i > index) {
-
-            var colourLegend = $("." + classifiedGeographicRegionNames[i] + ".colour-legend");
-            var checkboxUnchecked = $("." + classifiedGeographicRegionNames[i] + ".checkbox-unchecked");
-            var checkboxUncheckedBackground = $("." + classifiedGeographicRegionNames[i] + ".checkbox-unchecked-background");
-            var subCheckboxUnchecked = $("." + classifiedGeographicRegionNames[i] + "-country.sub-checkbox-unchecked");
-            var subCheckboxUncheckedBackground = $("." + classifiedGeographicRegionNames[i] + "-country.sub-checkbox-unchecked-background");
-            var checkboxChecked = $("." + classifiedGeographicRegionNames[i] + ".checkbox-checked");
-            var checkboxCheckedBackground = $("." + classifiedGeographicRegionNames[i] + ".checkbox-checked-background");
-            var subCheckboxChecked = $("." + classifiedGeographicRegionNames[i] + "-country.sub-checkbox-checked");
-            var subCheckboxCheckedBackground = $("." + classifiedGeographicRegionNames[i] + "-country.sub-checkbox-checked-background");
-            var folderMinus = $("." + classifiedGeographicRegionNames[i] + ".folder-minus");
-            var folderMinusBackground = $("." + classifiedGeographicRegionNames[i] + ".folder-minus-background");
-            var folderPlus = $("." + classifiedGeographicRegionNames[i] + ".folder-plus");
-            var folderPlusBackground = $("." + classifiedGeographicRegionNames[i] + ".folder-plus-background");
-            var menuTitle = $("." + classifiedGeographicRegionNames[i] + ".menu-title");
-            var menuText = $("." + classifiedGeographicRegionNames[i] + "-country.menu-text");
-
-            d3.selectAll("." + classifiedGeographicRegionNames[i] + ".colour-legend")
-              .transition()
-              .duration(1)
-              .ease(d3.easeLinear)
-              .attr("y", extension + Number(colourLegend[0].attributes[4].value));
-
-            d3.selectAll("." + classifiedGeographicRegionNames[i] + ".checkbox-unchecked")
-              .transition()
-              .duration(1)
-              .ease(d3.easeLinear)
-              .attr("transform", "translate(86, " + (extension + checkboxUnchecked[0].transform.animVal[0].matrix.f) + ")");
-
-            d3.selectAll("." + classifiedGeographicRegionNames[i] + ".checkbox-unchecked-background")
-              .transition()
-              .duration(1)
-              .ease(d3.easeLinear)
-              .attr("y", extension + Number(checkboxUncheckedBackground[0].attributes[4].value));
-
-            d3.selectAll("." + classifiedGeographicRegionNames[i] + ".checkbox-checked")
-              .transition()
-              .duration(1)
-              .ease(d3.easeLinear)
-              .attr("transform", "translate(86, " + (extension + checkboxChecked[0].transform.animVal[0].matrix.f) + ")");
-
-            d3.selectAll("." + classifiedGeographicRegionNames[i] + ".checkbox-checked-background")
-              .transition()
-              .duration(1)
-              .ease(d3.easeLinear)
-              .attr("y", extension + Number(checkboxCheckedBackground[0].attributes[4].value));
-
-            d3.selectAll("." + classifiedGeographicRegionNames[i] + ".folder-minus")
-              .transition()
-              .duration(1)
-              .ease(d3.easeLinear)
-              .attr("transform", "translate(109 " + (extension + folderMinus[0].transform.animVal[0].matrix.f) + ")");
-
-            d3.selectAll("." + classifiedGeographicRegionNames[i] + ".folder-minus-background")
-              .transition()
-              .duration(1)
-              .ease(d3.easeLinear)
-              .attr("y", extension + Number(folderMinusBackground[0].attributes[4].value));
-
-            d3.selectAll("." + classifiedGeographicRegionNames[i] + ".folder-plus")
-              .transition()
-              .duration(1)
-              .ease(d3.easeLinear)
-              .attr("transform", "translate(109 " + (extension + folderPlus[0].transform.animVal[0].matrix.f) + ")");
-
-            d3.selectAll("." + classifiedGeographicRegionNames[i] + ".folder-plus-background")
-              .transition()
-              .duration(1)
-              .ease(d3.easeLinear)
-              .attr("y", extension + Number(folderPlusBackground[0].attributes[4].value));
-
-            d3.selectAll("." + classifiedGeographicRegionNames[i] + ".menu-title")
-              .transition()
-              .duration(1)
-              .ease(d3.easeLinear)
-              .attr("y", extension + Number(menuTitle[0].attributes[2].value));
-
-            if (menuText.length !== 0) {
-
-              for (var j = 0; j < subCheckboxUnchecked.length; j++) {
-
-                d3.selectAll("." + subCheckboxUnchecked[j].classList[2] + ".sub-checkbox-unchecked")
-                  .transition()
-                  .duration(1)
-                  .ease(d3.easeLinear)
-                  .attr("transform", "translate(135, " + (extension + subCheckboxUnchecked[j].transform.animVal[0].matrix.f) + ")");
-
-              };
-
-              for (var j = 0; j < subCheckboxUncheckedBackground.length; j++) {
-
-                d3.selectAll("." + subCheckboxUncheckedBackground[j].classList[2] + ".sub-checkbox-unchecked-background")
-                  .transition()
-                  .duration(1)
-                  .ease(d3.easeLinear)
-                  .attr("y", extension + Number(subCheckboxUncheckedBackground[j].attributes[4].value));
-
-              };
-
-              for (var j = 0; j < subCheckboxChecked.length; j++) {
-
-                d3.selectAll("." + subCheckboxChecked[j].classList[2] + ".sub-checkbox-checked")
-                  .transition()
-                  .duration(1)
-                  .ease(d3.easeLinear)
-                  .attr("transform", "translate(135, " + (extension + subCheckboxChecked[j].transform.animVal[0].matrix.f) + ")");
-
-              };
-
-              for (var j = 0; j < subCheckboxCheckedBackground.length; j++) {
-
-                d3.selectAll("." + subCheckboxCheckedBackground[j].classList[2] + ".sub-checkbox-checked-background")
-                  .transition()
-                  .duration(1)
-                  .ease(d3.easeLinear)
-                  .attr("y", extension + Number(subCheckboxCheckedBackground[j].attributes[4].value));
-
-              };
-
-              for (var j = 0; j < menuText.length; j++) {
-
-                d3.selectAll("." + menuText[j].classList[2] + ".menu-text")
-                  .transition()
-                  .duration(1)
-                  .ease(d3.easeLinear)
-                  .attr("y", extension + Number(menuText[j].attributes[2].value));
-
-              };
-            };
-          };
-        };
-      };
-
-      for (var i = 0; i < geographicRegionNames.length; i++) {
-
-        menu.append("rect")
-            .attr("class", "icon-four-item " + classifiedGeographicRegionNames[i] + " colour-legend")
-            .attr("width", 13)
-            .attr("height", 13)
-            .attr("x", 66)
-            .attr("y", 12 + (i * 20))
-            .style("fill", colors[i]);
-
-        menu.append("rect")
-            .attr("class", "icon-four-item " + classifiedGeographicRegionNames[i] + " checkbox-unchecked-background")
-            .attr("width", 11)
-            .attr("height", 11)
-            .attr("x", 88.5)
-            .attr("y", 12.5 + (i * 20));
-
-        menu.append("path")
-            .attr("class", "icon-four-item " + classifiedGeographicRegionNames[i] + " checkbox-unchecked")
-            .attr("transform", "translate(86, " + (10 + (i * 20)) + ")")
-            .attr("d", "M14 0h-12c-1.1 0-2 0.9-2 2v12c0 1.1 0.9 2 2 2h12c1.1 0 2-0.9 2-2v-12c0-1.1-0.9-2-2-2zM14 14h-12v-12h12v12z");
-
-        menu.append("rect")
-            .attr("class", "icon-four-item " + classifiedGeographicRegionNames[i] + " checkbox-checked-background")
-            .attr("width", 11)
-            .attr("height", 11)
-            .attr("x", 88.5)
-            .attr("y", 12.5 + (i * 20))
-            .attr("visibility", function() {
-
-              for (var j = 0; j < drawRegionsExceptionList.length; j++) {
-                if (drawRegionsExceptionList[j] === classifiedGeographicRegionNames[i]) {
-
-                  return "hidden";
-
-                };
-              };
-
-              return "visible";
-
-            });
-
-        menu.append("path")
-            .attr("class", "icon-four-item " + classifiedGeographicRegionNames[i] + " checkbox-checked")
-            .attr("transform", "translate(86, " + (10 + (i * 20)) + ")")
-            .attr("d", "M14 0h-12c-1.1 0-2 0.9-2 2v12c0 1.1 0.9 2 2 2h12c1.1 0 2-0.9 2-2v-12c0-1.1-0.9-2-2-2zM7 12.414l-3.707-3.707 1.414-1.414 2.293 2.293 4.793-4.793 1.414 1.414-6.207 6.207z")
-            .attr("visibility", function() {
-
-              for (var j = 0; j < drawRegionsExceptionList.length; j++) {
-                if (drawRegionsExceptionList[j] === classifiedGeographicRegionNames[i]) {
-
-                  return "hidden";
-
-                };
-              };
-
-              return "visible";
-
-            });
-
-        menu.append("rect")
-            .attr("class", "icon-four-item " + classifiedGeographicRegionNames[i] + " folder-minus-background")
-            .attr("width", 7)
-            .attr("height", 7)
-            .attr("x", 114)
-            .attr("y", 16 + (i * 20))
-            .attr("visibility", "hidden");
-
-        menu.append("path")
-            .attr("class", "icon-four-item " + classifiedGeographicRegionNames[i] + " folder-minus")
-            .attr("transform", "translate(109, " + (10 + (i * 20)) + ")")
-            .attr("d", "M9 3.5l-2-2h-7v13h16v-11h-7zM11 10.5h-6v-2h6v2z")
-            .attr("visibility", "hidden");
-
-        menu.append("rect")
-            .attr("class", "icon-four-item " + classifiedGeographicRegionNames[i] + " folder-plus-background")
-            .attr("width", 7)
-            .attr("height", 7)
-            .attr("x", 114)
-            .attr("y", 16 + (i * 20));
-
-        menu.append("path")
-            .attr("class", "icon-four-item " + classifiedGeographicRegionNames[i] + " folder-plus")
-            .attr("transform", "translate(109, " + (10 + (i * 20)) + ")")
-            .attr("d", "M9 3.5l-2-2h-7v13h16v-11h-7zM11 10.5h-2v2h-2v-2h-2v-2h2v-2h2v2h2v2z");
-
-        menu.append("text")
-            .attr("class", "icon-four-item " + classifiedGeographicRegionNames[i] + " menu-title")
-            .attr("x", 130)
-            .attr("y",  20 + (i * 20))
-            .attr("dy", ".35em")
-            .text(geographicRegionNames[i]);
-
-      };
+      };// End of 'Close Folder' function.
 
       function modifyCountriesExceptionList(modify, category) {
 
@@ -2004,7 +2058,19 @@ function drawMenu() {
             };
           };
         } else if (modify === "remove") {
-          console.log("TO-DO");
+          for (var i = 0; i < graphData.length; i++) {
+            for (var j = 0; j < category.length; j++) {
+              if (category[j] === graphData[i][0].Code) {
+                for (var k = 0; k < drawCountriesExceptionList.length; k++) {
+                  if (drawCountriesExceptionList[k] === graphData[i][0].Name.replace(/[.,\/#!$%\^&\*;:{}=\-_`'’~()]/g, "").replace(/\s/g, "-").toLowerCase()) {
+                    drawCountriesExceptionList.splice(k, 1);
+                    break;
+                  };
+                };
+                break;
+              };
+            };
+          };
         } else {
           console.log("Error in 'Modify Countries Exception List' function!");
         };
@@ -2025,36 +2091,99 @@ function drawMenu() {
           case "east-asia-and-pacific":
 
             modifyCountriesExceptionList(modify, eastAsiaAndPacific)
+
+            for (var i = 0; i < openFoldersList.length; i++) {
+              if (openFoldersList[i] === this.classList[1]) {
+                $("." + this.classList[1] + "-country.sub-checkbox-checked").css("visibility", "hidden");
+                $("." + this.classList[1] + "-country.sub-checkbox-checked-background").css("visibility", "hidden");
+                break;
+              };
+            };
+
             break;
 
           case "europe-and-central-asia":
 
-            modifyCountriesExceptionList(modify, europeAndCentralAsia)
+            modifyCountriesExceptionList(modify, europeAndCentralAsia);
+
+            for (var i = 0; i < openFoldersList.length; i++) {
+              if (openFoldersList[i] === this.classList[1]) {
+                $("." + this.classList[1] + "-country.sub-checkbox-checked").css("visibility", "hidden");
+                $("." + this.classList[1] + "-country.sub-checkbox-checked-background").css("visibility", "hidden");
+                break;
+              };
+            };
+
             break;
 
           case "latin-america-and-caribbean":
 
-            modifyCountriesExceptionList(modify, latinAmericaAndCaribbean)
+            modifyCountriesExceptionList(modify, latinAmericaAndCaribbean);
+
+            for (var i = 0; i < openFoldersList.length; i++) {
+              if (openFoldersList[i] === this.classList[1]) {
+                $("." + this.classList[1] + "-country.sub-checkbox-checked").css("visibility", "hidden");
+                $("." + this.classList[1] + "-country.sub-checkbox-checked-background").css("visibility", "hidden");
+                break;
+              };
+            };
+
             break;
 
           case "midle-east-and-north-africa":
 
-            modifyCountriesExceptionList(modify, midleEastAndNorthAfrica)
+            modifyCountriesExceptionList(modify, midleEastAndNorthAfrica);
+
+            for (var i = 0; i < openFoldersList.length; i++) {
+              if (openFoldersList[i] === this.classList[1]) {
+                $("." + this.classList[1] + "-country.sub-checkbox-checked").css("visibility", "hidden");
+                $("." + this.classList[1] + "-country.sub-checkbox-checked-background").css("visibility", "hidden");
+                break;
+              };
+            };
+
             break;
 
           case "north-america":
 
-            modifyCountriesExceptionList(modify, northAmerica)
+            modifyCountriesExceptionList(modify, northAmerica);
+
+            for (var i = 0; i < openFoldersList.length; i++) {
+              if (openFoldersList[i] === this.classList[1]) {
+                $("." + this.classList[1] + "-country.sub-checkbox-checked").css("visibility", "hidden");
+                $("." + this.classList[1] + "-country.sub-checkbox-checked-background").css("visibility", "hidden");
+                break;
+              };
+            };
+
             break;
 
           case "south-asia":
 
-            modifyCountriesExceptionList(modify, southAsia)
+            modifyCountriesExceptionList(modify, southAsia);
+
+            for (var i = 0; i < openFoldersList.length; i++) {
+              if (openFoldersList[i] === this.classList[1]) {
+                $("." + this.classList[1] + "-country.sub-checkbox-checked").css("visibility", "hidden");
+                $("." + this.classList[1] + "-country.sub-checkbox-checked-background").css("visibility", "hidden");
+                break;
+              };
+            };
+
             break;
 
           case "sub-saharan-africa":
 
-            modifyCountriesExceptionList(modify, subSaharanAfrica)
+            modifyCountriesExceptionList(modify, subSaharanAfrica);
+
+            for (var i = 0; i < openFoldersList.length; i++) {
+              if (openFoldersList[i] === this.classList[1]) {
+                $("." + this.classList[1] + "-country.sub-checkbox-checked").css("visibility", "hidden");
+                $("." + this.classList[1] + "-country.sub-checkbox-checked-background").css("visibility", "hidden");
+                break;
+              };
+            };
+
             break;
 
           default:
@@ -2073,26 +2202,47 @@ function drawMenu() {
           };
         };
 
-        $(".country-circle").remove();
-        drawCircles();
-
         var modify = "remove";
 
         switch (this.classList[1]) {
 
           case "east-asia-and-pacific":
 
-            modifyCountriesExceptionList(modify, eastAsiaAndPacific)
+            modifyCountriesExceptionList(modify, eastAsiaAndPacific);
+
+            for (var i = 0; i < openFoldersList.length; i++) {
+              if (openFoldersList[i] === this.classList[1]) {
+                $("." + this.classList[1] + "-country.sub-checkbox-checked").css("visibility", "visible");
+                $("." + this.classList[1] + "-country.sub-checkbox-checked-background").css("visibility", "visible");
+              };
+            };
+
             break;
 
           case "europe-and-central-asia":
 
             modifyCountriesExceptionList(modify, europeAndCentralAsia)
+
+            for (var i = 0; i < openFoldersList.length; i++) {
+              if (openFoldersList[i] === this.classList[1]) {
+                $("." + this.classList[1] + "-country.sub-checkbox-checked").css("visibility", "visible");
+                $("." + this.classList[1] + "-country.sub-checkbox-checked-background").css("visibility", "visible");
+              };
+            };
+
             break;
 
           case "latin-america-and-caribbean":
 
             modifyCountriesExceptionList(modify, latinAmericaAndCaribbean)
+
+            for (var i = 0; i < openFoldersList.length; i++) {
+              if (openFoldersList[i] === this.classList[1]) {
+                $("." + this.classList[1] + "-country.sub-checkbox-checked").css("visibility", "visible");
+                $("." + this.classList[1] + "-country.sub-checkbox-checked-background").css("visibility", "visible");
+              };
+            };
+
             break;
 
           case "midle-east-and-north-africa":
@@ -2103,22 +2253,50 @@ function drawMenu() {
           case "north-america":
 
             modifyCountriesExceptionList(modify, northAmerica)
+
+            for (var i = 0; i < openFoldersList.length; i++) {
+              if (openFoldersList[i] === this.classList[1]) {
+                $("." + this.classList[1] + "-country.sub-checkbox-checked").css("visibility", "visible");
+                $("." + this.classList[1] + "-country.sub-checkbox-checked-background").css("visibility", "visible");
+              };
+            };
+
             break;
 
           case "south-asia":
 
             modifyCountriesExceptionList(modify, southAsia)
+
+            for (var i = 0; i < openFoldersList.length; i++) {
+              if (openFoldersList[i] === this.classList[1]) {
+                $("." + this.classList[1] + "-country.sub-checkbox-checked").css("visibility", "visible");
+                $("." + this.classList[1] + "-country.sub-checkbox-checked-background").css("visibility", "visible");
+              };
+            };
+
             break;
 
           case "sub-saharan-africa":
 
             modifyCountriesExceptionList(modify, subSaharanAfrica)
+
+            for (var i = 0; i < openFoldersList.length; i++) {
+              if (openFoldersList[i] === this.classList[1]) {
+                $("." + this.classList[1] + "-country.sub-checkbox-checked").css("visibility", "visible");
+                $("." + this.classList[1] + "-country.sub-checkbox-checked-background").css("visibility", "visible");
+              };
+            };
+
             break;
 
           default:
             console.log("Error in checkbox checked switch!");
 
         };
+
+        $(".country-circle").remove();
+        drawCircles();
+
       });
 
       $(".folder-plus, .folder-plus-background").click(function() {
@@ -2130,37 +2308,44 @@ function drawMenu() {
 
           case "east-asia-and-pacific":
 
-            openFolder(this.classList[1], eastAsiaAndPacific)
+            openFolder(this.classList[1], eastAsiaAndPacific);
+            openFoldersList.push(this.classList[1]);
             break;
 
           case "europe-and-central-asia":
 
-            openFolder(this.classList[1], europeAndCentralAsia)
+            openFolder(this.classList[1], europeAndCentralAsia);
+            openFoldersList.push(this.classList[1]);
             break;
 
           case "latin-america-and-caribbean":
 
-            openFolder(this.classList[1], latinAmericaAndCaribbean)
+            openFolder(this.classList[1], latinAmericaAndCaribbean);
+            openFoldersList.push(this.classList[1]);
             break;
 
           case "midle-east-and-north-africa":
 
-            openFolder(this.classList[1], midleEastAndNorthAfrica)
+            openFolder(this.classList[1], midleEastAndNorthAfrica);
+            openFoldersList.push(this.classList[1]);
             break;
 
           case "north-america":
 
-            openFolder(this.classList[1], northAmerica)
+            openFolder(this.classList[1], northAmerica);
+            openFoldersList.push(this.classList[1]);
             break;
 
           case "south-asia":
 
-            openFolder(this.classList[1], southAsia)
+            openFolder(this.classList[1], southAsia);
+            openFoldersList.push(this.classList[1]);
             break;
 
           case "sub-saharan-africa":
 
-            openFolder(this.classList[1], subSaharanAfrica)
+            openFolder(this.classList[1], subSaharanAfrica);
+            openFoldersList.push(this.classList[1]);
             break;
 
           default:
@@ -2178,37 +2363,93 @@ function drawMenu() {
 
           case "east-asia-and-pacific":
 
-            closeFolder(this.classList[1], eastAsiaAndPacific)
+            closeFolder(this.classList[1], eastAsiaAndPacific);
+
+            for (var i = 0; i < openFoldersList.length; i++) {
+              if (openFoldersList[i] === this.classList[1]) {
+                openFoldersList.splice(i, 1);
+                break;
+              };
+            };
+
             break;
 
           case "europe-and-central-asia":
 
             closeFolder(this.classList[1], europeAndCentralAsia)
+
+            for (var i = 0; i < openFoldersList.length; i++) {
+              if (openFoldersList[i] === this.classList[1]) {
+                openFoldersList.splice(i, 1);
+                break;
+              };
+            };
+
             break;
 
           case "latin-america-and-caribbean":
 
             closeFolder(this.classList[1], latinAmericaAndCaribbean)
+
+            for (var i = 0; i < openFoldersList.length; i++) {
+              if (openFoldersList[i] === this.classList[1]) {
+                openFoldersList.splice(i, 1);
+                break;
+              };
+            };
+
             break;
 
           case "midle-east-and-north-africa":
 
             closeFolder(this.classList[1], midleEastAndNorthAfrica)
+
+            for (var i = 0; i < openFoldersList.length; i++) {
+              if (openFoldersList[i] === this.classList[1]) {
+                openFoldersList.splice(i, 1);
+                break;
+              };
+            };
+
             break;
 
           case "north-america":
 
             closeFolder(this.classList[1], northAmerica)
+
+            for (var i = 0; i < openFoldersList.length; i++) {
+              if (openFoldersList[i] === this.classList[1]) {
+                openFoldersList.splice(i, 1);
+                break;
+              };
+            };
+
             break;
 
           case "south-asia":
 
             closeFolder(this.classList[1], southAsia)
+
+            for (var i = 0; i < openFoldersList.length; i++) {
+              if (openFoldersList[i] === this.classList[1]) {
+                openFoldersList.splice(i, 1);
+                break;
+              };
+            };
+
             break;
 
           case "sub-saharan-africa":
 
             closeFolder(this.classList[1], subSaharanAfrica)
+
+            for (var i = 0; i < openFoldersList.length; i++) {
+              if (openFoldersList[i] === this.classList[1]) {
+                openFoldersList.splice(i, 1);
+                break;
+              };
+            };
+
             break;
 
           default:
@@ -2220,7 +2461,7 @@ function drawMenu() {
       $(".checkbox-checked, .checkbox-checked-background, .checkbox-unchecked, .checkbox-unchecked-background, .folder-plus, .folder-plus-background, .folder-minus, .folder-minus-background").css("cursor", "pointer")
 
     };
-  };
+  };// End of 'Icon Four Menu' function.
 
   function iconFiveMenu() {
     if (iconFiveOpen) {

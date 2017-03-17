@@ -51,6 +51,7 @@ $(document).on('ready', function() {
 
     drawRegionsExceptionList = [];
     drawCountriesExceptionList = [];
+    openFoldersList = [];
 
     // An array of color values.
     colors = ["#3168C5", "#E03621", "#FF9735", "#009634", "#9D0893", "#009AC2", "#E14375", "#000"];
