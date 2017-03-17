@@ -1498,52 +1498,74 @@ function drawMenu() {
     };
   };
 
+  // A function that defines how to draw the filter menu.
   function iconFourMenu() {
 
+    // Checking if the corresponding 'Open' variable is true.
     if (iconFourOpen) {
 
+      // Reassigning a the 'Menu Size' variable.
       menuSize = 355;
 
+      // Declaring the 'Total Extension' variable to track how far the menu expends past the window height.
       var totalExtension = 0;
 
-      var classifiedGeographicRegionNames = ["east-asia-and-pacific", "europe-and-central-asia", "latin-america-and-caribbean", "midle-east-and-north-africa", "north-america", "south-asia", "sub-saharan-africa",];
+      // Declaring a variable to control the spacing of elements.
+      var spaceing = 20;
 
+      // Declaring an array of strings equal to the 'Geographic Region Names' array in a class name format.
+      var classifiedGeographicRegionNames = geographicRegionNames.map(function(i) {
+        return i.replace(/&/g, "and").replace(/\s/g, "-").toLowerCase();
+      });
+
+      // A function that defines how to open a category folder.
       function openFolder(folderName, category) {
 
-        var index = undefined;
-
+        // Saving the index of the ‘Classified Geographic Region Names’ array that matches the ‘Folder Name’.
         for (var i = 0; i < classifiedGeographicRegionNames.length; i++) {
           if (classifiedGeographicRegionNames[i] === folderName) {
-            index = i;
+            var index = i;
           };
         };
 
-        var extension = category.length * 20;
-
-        totalExtension = totalExtension + extension;
-
+        // Declaring the 'Starting Point' variable as equal to the curent folders 'y' value.
         var startingPoint = Number($("." + classifiedGeographicRegionNames[index] + ".menu-title")[0].attributes[2].value);
 
-        if ((graphZoneHeight + 3.51 + (totalExtension - graphZoneHeight + 3.51) + 150) > (graphZoneHeight + 3.51)) {
+        // Determining the extension variable for this category.
+        var extension = category.length * spaceing;
 
+        // Reassigning the 'Total Extension' variable with the addition of the 'Extension' variable.
+        totalExtension = totalExtension + extension;
+
+        // Checking if the extended menu height is greter than the window height.
+        if ((graphZoneHeight + 3.51 + (totalExtension - graphZoneHeight + 3.51) + (classifiedGeographicRegionNames.length * spaceing) + spaceing/2) > (graphZoneHeight + 3.51)) {
+
+          // Transitioning the menu height.
           menu.transition()
               .duration(1)
               .ease(d3.easeLinear)
-              .attr("height", graphZoneHeight + 3.51 + (totalExtension - graphZoneHeight + 3.51) + 150)
+              .attr("height", graphZoneHeight + 3.51 + (totalExtension - graphZoneHeight + 3.51) + (classifiedGeographicRegionNames.length * spaceing) + spaceing/2)
 
+          // Transitioning the menu background height.
           menuBackground.transition()
                         .duration(1)
                         .ease(d3.easeLinear)
-                        .attr("height", graphZoneHeight + 7.51 + (totalExtension - graphZoneHeight + 7.51) + 150)
+                        .attr("height", graphZoneHeight + 7.51 + (totalExtension - graphZoneHeight + 7.51) + (classifiedGeographicRegionNames.length * spaceing) + spaceing/2)
 
-        };
+        };// End of menu height check.
 
-        function addCountryFilterObjects(objectName, data) {
+        // A function that defines how to draw the 'Country Filter Objects'.
+        function addSubFolderObjects(objectName, data) {
 
+          // Declaring a string equal to the current 'Object Name' in class name format.
           var classifiedCountryName = objectName.replace(/[.,\/#!$%\^&\*;:{}=\-_`'’~()]/g, "").replace(/\s/g, "-").toLowerCase();
 
+          // Appending the 'Unchecked Checkbox Background'.
           menu.append("rect")
               .attr("class", function() {
+
+                // Checking if there is data available for this country...
+                // Adding an additional ‘no-data’ class if false.
                 if (data) {
                   return "icon-four-item " + classifiedGeographicRegionNames[index] + "-country " + classifiedCountryName + " sub-checkbox-unchecked-background";
                 } else {
@@ -1553,8 +1575,9 @@ function drawMenu() {
               .attr("width", 5.8)
               .attr("height", 5.8)
               .attr("x", 137)
-              .attr("y", startingPoint + 17 + (j * 20));
+              .attr("y", startingPoint + 17 + (j * spaceing));
 
+          // Appending the 'Unchecked Checkbox'.
           menu.append("path")
               .attr("class", function() {
                 if (data) {
@@ -1563,55 +1586,57 @@ function drawMenu() {
                   return "icon-four-item " + classifiedGeographicRegionNames[index] + "-country " + classifiedCountryName + " sub-checkbox-unchecked no-data";
                 };
               })
-              .attr("transform", "translate(135, " + (startingPoint + 15 + (j * 20)) + ")")
+              .attr("transform", "translate(135, " + (startingPoint + 15 + (j * spaceing)) + ")")
               .attr("d", "M8.4 0h-7.2c-0.66 0-1.2 0.54-1.2 1.2v7.2c0 0.66 0.54 1.2 1.2 1.2h7.2c0.66 0 1.2-0.54 1.2-1.2v-7.2c0-0.66-0.54-1.2-1.2-1.2zM8.4 8.4h-7.2v-7.2h7.2v7.2z");
 
+          // Checking if there is data available for this country.
           if (data) {
 
+            // Appending the 'Checked Checkbox Background'.
             menu.append("rect")
                 .attr("class", "icon-four-item " + classifiedGeographicRegionNames[index] + "-country " + classifiedCountryName + " sub-checkbox-checked-background")
                 .attr("width", 5.8)
                 .attr("height", 5.8)
                 .attr("x", 137)
-                .attr("y", startingPoint + 17 + (j * 20))
+                .attr("y", startingPoint + 17 + (j * spaceing))
                 .attr("visibility", function() {
 
+                  // Looping over the 'Countries Exception List' array.
                   for (var k = 0; k < drawCountriesExceptionList.length; k++) {
 
+                    // Checking if the current countries name is included in the list.
                     if (drawCountriesExceptionList[k] === classifiedCountryName) {
-
                       return "hidden";
-
                     };
                   };
 
+                  // If no match is found in the exception list...
                   return "visible";
 
                 });
 
+            // Appending the 'Checked Checkbox'.
             menu.append("path")
                 .attr("class", "icon-four-item " + classifiedGeographicRegionNames[index] + "-country " + classifiedCountryName + " sub-checkbox-checked")
-                .attr("transform", "translate(135, " + (startingPoint + 15 + (j * 20)) + ")")
+                .attr("transform", "translate(135, " + (startingPoint + 15 + (j * spaceing)) + ")")
                 .attr("d", "M8.4 0h-7.2c-0.66 0-1.2 0.54-1.2 1.2v7.2c0 0.66 0.54 1.2 1.2 1.2h7.2c0.66 0 1.2-0.54 1.2-1.2v-7.2c0-0.66-0.54-1.2-1.2-1.2zM4.2 7.449l-2.224-2.224 0.849-0.849 1.376 1.376 2.876-2.876 0.849 0.849-3.724 3.724z")
                 .attr("visibility", function() {
-
                   for (var k = 0; k < drawCountriesExceptionList.length; k++) {
-
                     if (drawCountriesExceptionList[k] === classifiedCountryName) {
-
                       return "hidden";
-
                     };
                   };
-
                   return "visible";
-
                 });
 
           };
 
+          // Appending the current countries name as a label.
           menu.append("text")
               .attr("class", function() {
+
+                // Checking if there is data available for this country...
+                // Adding an additional ‘menu-no-data-text’ class if false.
                 if (data) {
                   return "icon-four-item " + classifiedGeographicRegionNames[index] + "-country " + classifiedCountryName + " menu-text";
                 } else {
@@ -1623,37 +1648,52 @@ function drawMenu() {
               .attr("dy", ".35em")
               .text(objectName);
 
-        };
+        };// End of 'Add Sub Folder Objects' function.
 
+        // Looping over the 'Graph Data' array.
         for (var i = 0; i < graphData.length; i++) {
+
+          // Looping over the current 'Category' array.
           for (var j = 0; j < category.length; j++) {
+
+            // Checking if the first object at the current 'Graph Data' index has a code that matches the current 'Category' index.
             if (graphData[i][0].Code === category[j]) {
+
+              // Looping over the array located at 'i' of the 'Scaled Graph Data' array.
               for (var k = 0; k < scaledGraphData[i].length; k++) {
+
+                // Checking if the year of the object at the current index matches the 'Curent Year' variable.
                 if (scaledGraphData[i][k].Year === currentYear) {
 
+                  // Declaring 'Data' to be true and calling the function that adds the current country object to the list.
                   var data = true;
-                  addCountryFilterObjects(graphData[i][0].Name, data);
+                  addSubFolderObjects(graphData[i][0].Name, data);
                   break;
 
                 } else if (scaledGraphData[i][k].Year >= currentYear) {
 
-                  addCountryFilterObjects(graphData[i][0].Name);
+                  // If no object was found with a year matching the 'Curent Year'...
+                  // Call the function that adds the current country object to the list, without the 'Data' argument.
+                  addSubFolderObjects(graphData[i][0].Name);
                   break;
 
-                };
-              };
+                };// End of 'Current Year' check.
+              };// End of 'Scaled Graph Data' array loop.
 
+              // Checking the length of the array located at 'i' of the 'Scaled Graph Data' array.
               if (scaledGraphData[i].length === 0) {
 
-                addCountryFilterObjects(graphData[i][0].Name);
+                // Call the function that adds the current country object to the list, without the 'Data' argument.
+                addSubFolderObjects(graphData[i][0].Name);
 
-              };
+              };// End of length check.
 
+              // Breaking the 'Category' array loop.
               break;
 
-            };
-          };
-        };
+            };// End of matching code check.
+          };// End of 'Category' array loop.
+        };// End of 'Graph Data' array loop.
 
         transitionObjects(index, extension);
 
