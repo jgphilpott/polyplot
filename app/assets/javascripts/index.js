@@ -2,7 +2,7 @@
 // This data visualization application is based on Hans Rosling's 'Trendalyzer' software (https://en.wikipedia.org/wiki/Trendalyzer).
 // This version of the software was created by Jacob Philpott (https://linkedin.com/in/jgphilpott).
 // The full source code is available for free on GitHub (https://github.com/jgphilpott/iGraph).
-// A live demo is available on Heroku (https://i-graph.herokuapp.com).
+// A live demo is available online (https://i-graph.herokuapp.com).
 // Please do not remove this comment!
 //
 
