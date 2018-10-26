@@ -1,6 +1,10 @@
 // A function that defines how to draw the filter menu.
 function drawFiltersMenu() {
 
+  drawRegionsExceptionList = [];
+  drawCountriesExceptionList = [];
+  openFoldersList = [];
+
   // Checking if the corresponding 'Open' variable is true.
   if (iconFourOpen) {
 

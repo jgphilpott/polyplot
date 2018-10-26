@@ -35,7 +35,7 @@ function closeMenu() {
     $(".menu-zone").remove();
     checkEnvironment();
     scaleAllData();
-
+setup();
     drawCanvas();
 
   } else {

@@ -21,6 +21,16 @@ function setup() {
   // Setting the default menu width.
   menuWidth = 85;
 
+  menuSize = 85;
+
+  menuOpen = false;
+
+  iconOneOpen = false;
+  iconTwoOpen = false;
+  iconThreeOpen = false;
+  iconFourOpen = false;
+  iconFiveOpen = false;
+
   // Setting graph zone dimensions.
   graphZoneWidth = windowWidth - menuWidth;
   graphZoneHeight = windowHeight;

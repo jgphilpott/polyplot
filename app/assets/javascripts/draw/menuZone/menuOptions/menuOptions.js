@@ -1,5 +1,11 @@
 function drawMenuOptions() {
 
+  iconOneColor = "grey";
+  iconTwoColor = "grey";
+  iconThreeColor = "grey";
+  iconFourColor = "grey";
+  iconFiveColor = "grey";
+
   menu.append("rect")
       .attr("class", "nav-icon-background")
       .attr("id", "home")
