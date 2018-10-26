@@ -63,11 +63,4 @@ function checkEnvironment() {
   graphWidth = graphZoneWidth - leftMargin - rightMargin;
   graphHeight = graphZoneHeight - topMargin - bottomMargin;
 
-  // Appending an SVG container equal to Window Width and Height.
-  graphZone = d3.select("body")
-                .append("svg")
-                .attr("class", "graph-zone")
-                .attr("width", graphZoneWidth)
-                .attr("height", graphZoneHeight);
-
 };// End of 'Check Environment' function.

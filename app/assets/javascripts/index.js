@@ -65,8 +65,8 @@ $(document).on('ready', function() {
     // Scaling the organized 'Graph Data'.
     scaleAllData();
 
-    // Calling a series of functions that will draw the graph, data points and user controls.
-    drawAll();
+    // Calling a series of functions that will draw the graph, data points and user menu.
+    drawCanvas();
 
   };// End of 'Initial Setup' function.
 
@@ -82,7 +82,7 @@ $(document).on('ready', function() {
     scaleAllData();
 
     // Redrawing the view.
-    drawAll();
+    drawCanvas();
 
   });// End of window resizing event handler.
 });// End of file. // Okay lots to do! ;)
