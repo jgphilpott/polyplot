@@ -3,21 +3,21 @@ function drawMenuZone() {
 
   menuZone = d3.select("body").append("div")
                .attr("class","menu-zone")
-               .style("width", menuWidth - 15 + "px")
-               .style("height", graphZoneHeight + 3.51 + "px");
+               .style("width", menuWidth + "px")
+               .style("height", graphZoneHeight + "px");
 
   menu = menuZone.append("svg")
                  .attr("class", "menu")
-                 .attr("width", menuWidth - 30)
-                 .attr("height", graphZoneHeight + 3.51)
+                 .attr("width", menuWidth)
+                 .attr("height", graphZoneHeight)
                  .attr("x", 0)
                  .attr("y", 0);
 
   menuBackground =  menu.append("rect")
                         .attr("x", 0)
-                        .attr("y", -2)
+                        .attr("y", 0)
                         .attr("width", 350)
-                        .attr("height", graphZoneHeight + 7.51);
+                        .attr("height", graphZoneHeight);
 
   drawMenuOptions();
 
