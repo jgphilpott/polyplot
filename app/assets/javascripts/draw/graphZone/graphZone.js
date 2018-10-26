@@ -1,6 +1,12 @@
 // A function that defines how to draw the graph.
 function drawGraphZone() {
 
+  graphZone = d3.select("body")
+                .append("svg")
+                .attr("class", "graph-zone")
+                .attr("width", graphZoneWidth)
+                .attr("height", graphZoneHeight);
+
   var xGridTickFrequency = (graphWidth)/160;
   var yGridTickFrequency = (graphHeight)/100;
   var xAxisTickFrequency = (graphWidth)/80;

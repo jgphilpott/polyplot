@@ -1,12 +1,28 @@
 // Appending the canvas (layer zero) and calling functions that will draw the layer one components of the view.
 function drawCanvas() {
 
-  // This should be refactored to be one base canvas with the 'menuZone' and 'graphZone' on top.
-  graphZone = d3.select("body")
-                .append("svg")
-                .attr("class", "graph-zone")
-                .attr("width", graphZoneWidth)
-                .attr("height", graphZoneHeight);
+    menuSize = 85; // What's this?
+
+    iconOneColor = "grey"; // Okay serious refactoring needed!
+    iconTwoColor = "grey";
+    iconThreeColor = "grey";
+    iconFourColor = "grey";
+    iconFiveColor = "grey";
+
+    iconOneOpen = false;
+    iconTwoOpen = false;
+    iconThreeOpen = false;
+    iconFourOpen = false;
+    iconFiveOpen = false;
+
+    // Development ONLY!
+    menuOpen = false;
+    menuResize = setInterval(openMenu, 100);
+
+    drawRegionsExceptionList = [];
+    drawCountriesExceptionList = [];
+    openFoldersList = [];
+
 
   drawMenuZone();
   drawGraphZone();

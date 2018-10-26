@@ -1,5 +1,5 @@
 // A function for retrieving the currently selected datasets.
-function getData(datasetKeys) {
+function getData() {
 
   // Creating the 'Graph Data' variable as an empty array to be populated by the 'Organize' function.
   graphData = [];

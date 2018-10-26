@@ -75,11 +75,11 @@ function drawMenuOptions() {
       .attr("d", "M27 22c-1.411 0-2.685 0.586-3.594 1.526l-13.469-6.734c0.041-0.258 0.063-0.522 0.063-0.791s-0.022-0.534-0.063-0.791l13.469-6.734c0.909 0.94 2.183 1.526 3.594 1.526 2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5c0 0.269 0.022 0.534 0.063 0.791l-13.469 6.734c-0.909-0.94-2.183-1.526-3.594-1.526-2.761 0-5 2.239-5 5s2.239 5 5 5c1.411 0 2.685-0.586 3.594-1.526l13.469 6.734c-0.041 0.258-0.063 0.522-0.063 0.791 0 2.761 2.239 5 5 5s5-2.239 5-5c0-2.761-2.239-5-5-5z")
       .style("fill", iconFiveColor);
 
-  if (locked) {
+  if (menuLocked) {
 
     menu.append("path")
         .attr("class", "lock")
-        .attr("id", "locked")
+        .attr("id", "menuLocked")
         .attr("transform", "translate(11, " + (graphZoneHeight - 46) + ")")
         .attr("d", "M18.5 13h-0.5v-6c0-3.308-2.692-6-6-6h-4c-3.308 0-6 2.692-6 6v6h-0.5c-0.825 0-1.5 0.675-1.5 1.5v15c0 0.825 0.675 1.5 1.5 1.5h17c0.825 0 1.5-0.675 1.5-1.5v-15c0-0.825-0.675-1.5-1.5-1.5zM6 7c0-1.103 0.897-2 2-2h4c1.103 0 2 0.897 2 2v6h-8v-6z");
 
@@ -94,7 +94,7 @@ function drawMenuOptions() {
 
     menu.append("path")
         .attr("class", "lock")
-        .attr("id", "locked")
+        .attr("id", "menuLocked")
         .attr("visibility", "hidden")
         .attr("transform", "translate(11, " + (graphZoneHeight - 46) + ")")
         .attr("d", "M18.5 13h-0.5v-6c0-3.308-2.692-6-6-6h-4c-3.308 0-6 2.692-6 6v6h-0.5c-0.825 0-1.5 0.675-1.5 1.5v15c0 0.825 0.675 1.5 1.5 1.5h17c0.825 0 1.5-0.675 1.5-1.5v-15c0-0.825-0.675-1.5-1.5-1.5zM6 7c0-1.103 0.897-2 2-2h4c1.103 0 2 0.897 2 2v6h-8v-6z");
@@ -251,7 +251,7 @@ function drawMenuOptions() {
   });
 
   $("body").mousemove(function(event) {
-    if (menuOpen === true && event.pageX < graphZoneWidth && locked === false) {
+    if (menuOpen === true && event.pageX < graphZoneWidth && menuLocked === false) {
 
       menuOpen = false;
       clearInterval(menuResize);
@@ -270,13 +270,13 @@ function drawMenuOptions() {
 
   $("#unlocked").click(function() {
     $("#unlocked").attr("visibility", "hidden");
-    $("#locked").attr("visibility", "visible");
-    locked = true;
+    $("#menuLocked").attr("visibility", "visible");
+    menuLocked = true;
   });
 
-  $("#locked").click(function() {
-    $("#locked").attr("visibility", "hidden");
+  $("#menuLocked").click(function() {
+    $("#menuLocked").attr("visibility", "hidden");
     $("#unlocked").attr("visibility", "visible");
-    locked = false;
+    menuLocked = false;
   });
 };

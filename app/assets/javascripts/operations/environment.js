@@ -1,66 +1,20 @@
-// A function for setting a variety of useful variables based on the browser window dimensions...
+// A function for checking the browser environment..
 // This will help define how to draw the graph.
 function checkEnvironment() {
 
-  // Saving Window Width and Height variables.
-  var windowWidth = $(window).width();
-  var windowHeight = $(window).height();
+  // Checking Window Width and Height variables.
+  windowWidth = $(window).width();
+  windowHeight = $(window).height();
 
-  // Determining the Top Margin.
-  function topM() {
-    if (graphZoneHeight <= 340) {
-      return 110;
-    } else if (graphZoneHeight > 340 && graphZoneHeight <= 680) {
-      return 120;
-    } else if (graphZoneHeight > 680) {
-      return 130;
-    };
-  };
+  // Checking the users agent and language settings.
+  var userAgent = navigator.userAgent;
+  var userLanguage = navigator.language;
 
-  // Determining the Right Margin.
-  function rightM() {
-    if (graphZoneWidth <= 640) {
-      return 10;
-    } else if (graphZoneWidth > 640 && graphZoneWidth <= 1280) {
-      return 20;
-    } else if (graphZoneWidth > 1280) {
-      return 30;
-    };
-  };
+  // Checking if the user is online and if java is enabled?
+  var userOnline = navigator.onLine;
+  var userJava = navigator.javaEnabled();
 
-  // Determining the Bottom Margin.
-  function bottomM() {
-    if (graphZoneHeight <= 340) {
-      return 50;
-    } else if (graphZoneHeight > 340 && graphZoneHeight <= 680) {
-      return 60;
-    } else if (graphZoneHeight > 680) {
-      return 70;
-    };
-  };
-
-  // Determining the Left Margin.
-  function leftM() {
-    if (graphZoneWidth <= 640) {
-      return 50;
-    } else if (graphZoneWidth > 640 && graphZoneWidth <= 1280) {
-      return 60;
-    } else if (graphZoneWidth > 1280) {
-      return 70;
-    };
-  };
-
-  // Saving Graph Dimensions.
-  graphZoneWidth = windowWidth - menuWidth;
-  graphZoneHeight = windowHeight;
-
-  // Saving Margin Variables.
-  topMargin = topM();
-  rightMargin = rightM();
-  bottomMargin = bottomM();
-  leftMargin = leftM();
-
-  graphWidth = graphZoneWidth - leftMargin - rightMargin;
-  graphHeight = graphZoneHeight - topMargin - bottomMargin;
+  // Checking if cookies are enabled?
+  var userCookies = navigator.cookieEnabled;
 
 };// End of 'Check Environment' function.
