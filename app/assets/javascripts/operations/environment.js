@@ -4,7 +4,7 @@ function checkEnvironment() {
 
   // Saving Window Width and Height variables.
   var windowWidth = $(window).width();
-  var windowHeight = $(window).height() - 3.51;// The minus 3.51 removes the scroll bars (any number greater than 3.5 works).
+  var windowHeight = $(window).height();
 
   // Determining the Top Margin.
   function topM() {
