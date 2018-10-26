@@ -5,7 +5,7 @@ function getData(datasetKeys) {
   graphData = [];
 
   // The following AJAX calls retrieve JSON blob's using the 'Dataset Keys' array...
-  // These calls are synchronous because we can’t proceed without our data.
+  // These calls are synchronous because we can’t proceed without our data... this can be fixed.
   for (var i = 0; i < datasetKeys.length; i++) {
 
     // This is the AJAX call.
@@ -22,6 +22,7 @@ function getData(datasetKeys) {
 
       // The following code block resets the min/max variables for each ‘Get Data’ function call.
       // It also saves the ‘Indicator Names’ into variables for later use in the draw functions.
+      // Maybe do all this inside the organize function..
       if (i === 0) {
         rAxisLabel = data[0]["Indicator Name"];
         rDataMax = undefined;
@@ -55,6 +56,7 @@ function getData(datasetKeys) {
 function organize(data, index) {
 
   // A series of arrays to group countries by geographic region and income level using country codes.
+  // Not here..
   europeAndCentralAsia = ["ALB", "AND", "ARM", "AUT", "AZE", "BLR", "BEL", "BIH", "BGR", "CHI", "HRV", "CYP", "CZE", "DNK", "EST", "FRO", "FIN", "FRA", "GEO", "DEU", "GIB", "GRC", "GRL", "HUN", "ISL", "IRL", "IMN", "ITA", "KAZ", "KSV", "KGZ", "LVA", "LIE", "LTU", "LUX", "MKD", "MDA", "MCO", "MNE", "NLD", "NOR", "POL", "PRT", "ROU", "RUS", "SMR", "SRB", "SVK", "SVN", "ESP", "SWE", "CHE", "TJK", "TUR", "TKM", "UKR", "GBR", "UZB"];
   subSaharanAfrica = ["AGO", "BEN", "BWA", "BFA", "BDI", "CPV", "COG", "CIV", "CMR", "CAF", "TCD", "COM", "COD", "GNQ", "ERI", "ETH", "GAB", "GHA", "GIN", "GNB", "KEN", "LSO", "LBR", "MDG", "MWI", "MLI", "MRT", "MUS", "MOZ", "NAM", "NER", "NGA", "RWA", "STP", "SEN", "SYC", "SLE", "SOM", "ZAF", "SSD", "SDN", "SWZ", "TZA", "GMB", "TGO", "UGA", "ZMB", "ZWE"];
   latinAmericaAndCaribbean = ["ATG", "ARG", "ABW", "BRB", "BLZ", "BOL", "BRA", "VGB", "CYM", "CHL", "COL", "CRI", "CUB", "CUW", "DMA", "DOM", "ECU", "SLV", "GRD", "GTM", "GUY", "HTI", "HND", "JAM", "MEX", "NIC", "PAN", "PRY", "PER", "PRI", "SXM", "KNA", "LCA", "MAF", "VCT", "SUR", "BHS", "TTO", "TCA", "URY", "VEN", "VIR"];
@@ -86,7 +88,6 @@ function organize(data, index) {
         countryCodesArray.splice(j, 1);
 
         // Checking if this is the first dataset being passed to the 'Organize' function...
-        // 'Index' here refers to the argument passed in by the 'Get Data' function.
         if (index === 0) {
 
           // Creating the 'Country Objects' array to store the result of the following operations.
@@ -146,7 +147,7 @@ function organize(data, index) {
             if (match) { continue; }
 
             // The following category array loops are essentially identical to the first one, so no comments will be provided.
-
+            // Okay serious refactoring needed!
             for (var l = 0; l < subSaharanAfrica.length; l++) {
               if (subSaharanAfrica[l] === data[i]["Country Code"]) {
                 match = true;
@@ -210,7 +211,7 @@ function organize(data, index) {
                 break;
               };
             };
-          };// End of year (k) loop.
+          };// End of year loop.
 
           // Pushing the 'Country Objects' array into the 'Graph Data' array.
           graphData.push(countryObjects);

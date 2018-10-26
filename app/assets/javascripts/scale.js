@@ -115,7 +115,7 @@ function scaleAllData(newDomain) {
           };
         };// End of year check.
       };// End of 'Graph Data' index loop.
-    };// end of 'Graph Data' loop.
+    };// End of 'Graph Data' loop.
   };// End of 'New Domain' check.
 
   // Creating the 'Scaled Graph Data' array to store the result of the following operations.

@@ -26,12 +26,12 @@ $(document).on('ready', function() {
     // Setting the default Menu Width.
     menuWidth = 85;
 
-    menuSize = 85;
+    menuSize = 85; // What's this?
 
-    menuOpen = false;
+    menuOpen = false; // Why here?
     locked = true;
 
-    iconOneColor = "grey";
+    iconOneColor = "grey"; // Okay serious refactoring needed!
     iconTwoColor = "grey";
     iconThreeColor = "grey";
     iconFourColor = "grey";
@@ -43,7 +43,7 @@ $(document).on('ready', function() {
     iconFourOpen = true;
     iconFiveOpen = false;
 
-    // Development ONLY!
+    // Development ONLY! // Yeah I can see that!
     menuOpen = true;
     menuResize = setInterval(openMenu, 100);
 
@@ -73,7 +73,7 @@ $(document).on('ready', function() {
   // Creating an event handler for window resizing.
   $(window).resize(function(){
 
-    // Removing the current graph.
+    // Removing the current view.
     $("svg").remove();
     $(".menu-zone").remove();
 
@@ -81,8 +81,8 @@ $(document).on('ready', function() {
     checkEnvironment();
     scaleAllData();
 
-    // Redrawing the graph.
+    // Redrawing the view.
     drawAll();
 
   });// End of window resizing event handler.
-});// End of file.
+});// End of file. // Okay lots to do! ;)

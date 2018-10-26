@@ -1242,6 +1242,8 @@ function openMenu() {
     clearInterval(menuResize);
   };
 };
+
+// This one too I guess.. 
 function closeMenu() {
   if (menuWidth > 85) {
 

@@ -120,7 +120,7 @@ function animateGraph(direction, currentSpeed) {
           return "translate(" + (point.x - xStart) + ", " + (point.y - yStart) + ")";
 
         };// End of inner function.
-      };//End of outer function.
+      };// End of outer function.
     };// End of 'Translate' function.
   };// End of 'Path Data' loop.
 
