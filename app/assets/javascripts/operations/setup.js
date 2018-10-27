@@ -16,7 +16,7 @@ function setup() {
   colors = ["#3168C5", "#E03621", "#FF9735", "#009634", "#9D0893", "#009AC2", "#E14375", "#000000"];
 
   // Menu is locked by default.
-  menuLocked = true;
+  menuLocked = false;
 
   // Setting the default menu width.
   menuWidth = 52;
