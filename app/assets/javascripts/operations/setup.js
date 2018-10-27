@@ -20,7 +20,7 @@ function setup() {
 
   // Setting the default menu width.
   menuWidth = 52;
-
+  iconSize = 32;
   menuSize = 52;
 
   menuOpen = false;
