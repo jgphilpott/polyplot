@@ -19,9 +19,9 @@ function setup() {
   menuLocked = true;
 
   // Setting the default menu width.
-  menuWidth = 85;
+  menuWidth = 52;
 
-  menuSize = 85;
+  menuSize = 52;
 
   menuOpen = false;
 

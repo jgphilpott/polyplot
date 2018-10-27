@@ -4,7 +4,7 @@ function checkEnvironment() {
 
   // Checking Window Width and Height variables.
   windowWidth = $(window).width();
-  windowHeight = $(window).height();
+  windowHeight = $(window).height() + 3.5;
 
   // Checking the users agent and language settings.
   var userAgent = navigator.userAgent;

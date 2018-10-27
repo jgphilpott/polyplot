@@ -1,24 +1,31 @@
-// A function that defines how to draw the 'Menu'.
-function drawMenuZone() {
+// A function that defines how to draw the 'Menu Zone'.
+function drawMenuZone(canvas) {
 
-  menuZone = d3.select("body").append("div")
-               .attr("class","menu-zone")
-               .style("width", menuWidth + "px")
-               .style("height", graphZoneHeight + "px");
+  var menuZoneData = {
+    name: "Menu Zone",
+    classList: ["menu-zone", "layer-one"],
+    width: menuWidth,
+    height: windowHeight,
+    x: windowWidth - menuWidth,
+    y: 0
+  };
 
-  menu = menuZone.append("svg")
-                 .attr("class", "menu")
-                 .attr("width", menuWidth)
-                 .attr("height", graphZoneHeight)
-                 .attr("x", 0)
-                 .attr("y", 0);
+  var menuZone = canvas.append("svg")
+                       .data([menuZoneData])
+                       .attr("class", listify(menuZoneData.classList))
+                       .attr("width", menuZoneData.width)
+                       .attr("height", menuZoneData.height)
+                       .attr("x", menuZoneData.x)
+                       .attr("y", menuZoneData.y);
 
-  menuBackground =  menu.append("rect")
-                        .attr("x", 0)
-                        .attr("y", 0)
-                        .attr("width", 350)
-                        .attr("height", graphZoneHeight);
+  menuZone.append("rect")
+          .data([menuZoneData])
+          .attr("class", listify(menuZoneData.classList))
+          .attr("width", menuZoneData.width)
+          .attr("height", menuZoneData.height)
+          .attr("x", 0)
+          .attr("y", 0);
 
-  drawMenuOptions();
+  drawMenuOptions(menuZone);
 
 };

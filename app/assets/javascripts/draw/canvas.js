@@ -3,22 +3,26 @@ function drawCanvas() {
 
   // Creating the canvas data.
   var canvasData = {
-    name: "canvas",
+    name: "Canvas",
     classList: ["canvas", "layer-zero"],
     width: windowWidth,
-    height: windowHeight
+    height: windowHeight,
+    x: 0,
+    y: 0
   };
 
   // Appending the canvas to the HTML body.
   var canvas = d3.select("body")
                  .append("svg")
                  .data([canvasData])
-                 .attr("class", "canvas layer-zero")
+                 .attr("class", listify(canvasData.classList))
                  .attr("width", canvasData.width)
-                 .attr("height", canvasData.height);
+                 .attr("height", canvasData.height)
+                 .attr("x", canvasData.x)
+                 .attr("y", canvasData.y);
 
   // Drawing the layer one components of the view.
   drawMenuZone(canvas);
-  drawGraphZone(canvas);
+  // drawGraphZone(canvas);
 
 };// End of 'drawCanvas' function.

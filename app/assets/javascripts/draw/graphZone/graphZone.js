@@ -1,5 +1,5 @@
 // A function that defines how to draw the graph.
-function drawGraphZone() {
+function drawGraphZone(canvas) {
 
   graphZone = d3.select("body")
                 .append("svg")
