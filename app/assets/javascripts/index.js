@@ -6,7 +6,7 @@
 // Please do not remove this comment!
 //
 
-// Only loads JavaScript once DOM is ready.
+// Only executes JavaScript once DOM is ready.
 $(document).on('ready', function() {
 
   // Checking the users browser environment.
@@ -21,7 +21,7 @@ $(document).on('ready', function() {
   // Scaling the organized 'Graph Data'.
   scaleAllData();
 
-  // Calling a series of functions that will draw the graph, data points and user menu.
+  // Calling a function that will draw the graph, data points and user menu.
   drawCanvas();
 
-});// End of file. // Okay lots to do! ;)
+});// End of file.
