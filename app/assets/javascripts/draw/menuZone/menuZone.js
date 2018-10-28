@@ -1,6 +1,9 @@
 // A function that defines how to draw the 'Menu Zone'.
 function drawMenuZone(canvas) {
 
+  // Setting the default menu width.
+  menuWidth = 52;
+
   var menuZoneData = {
     name: "Menu Zone",
     classList: ["menu-zone", "layer-one"],

@@ -13,13 +13,13 @@ $(document).on('ready', function() {
   checkEnvironment();
 
   // Setting up the application with default variables.
-  setup();
+  setupDefault();
 
   // Retrieving and organizing the currently selected datasets.
-  getData();
+  // getData();
 
   // Scaling the organized 'Graph Data'.
-  scaleAllData();
+  // scaleAllData();
 
   // Calling a function that will draw the graph, data points and user menu.
   drawCanvas();

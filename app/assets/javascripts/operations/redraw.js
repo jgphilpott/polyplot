@@ -5,8 +5,8 @@ function reDraw() {
 
   // Checking the new browser dimensions and rescaling the data.
   checkEnvironment();
-  setup();
-  scaleAllData();
+  setupDefault()
+  // scaleAllData();
 
   // Redrawing the view.
   drawCanvas();
