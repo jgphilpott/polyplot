@@ -15,13 +15,13 @@ function setup() {
   // An array of color values.
   colors = ["#3168C5", "#E03621", "#FF9735", "#009634", "#9D0893", "#009AC2", "#E14375", "#000000"];
 
-  // Menu is locked by default.
+  // Menu is unlocked by default.
   menuLocked = false;
 
   // Setting the default menu width.
   menuWidth = 52;
-  iconSize = 32;
   menuSize = 52;
+  iconSize = 32;
 
   menuOpen = false;
 

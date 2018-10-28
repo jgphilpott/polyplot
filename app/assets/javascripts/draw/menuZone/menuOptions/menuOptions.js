@@ -30,37 +30,42 @@ function drawMenuOptions(menuZone) {
     lock: {
       names: ["Locked", "Unlocked"],
       icons: ["M18.5 13h-0.5v-6c0-3.308-2.692-6-6-6h-4c-3.308 0-6 2.692-6 6v6h-0.5c-0.825 0-1.5 0.675-1.5 1.5v15c0 0.825 0.675 1.5 1.5 1.5h17c0.825 0 1.5-0.675 1.5-1.5v-15c0-0.825-0.675-1.5-1.5-1.5zM6 7c0-1.103 0.897-2 2-2h4c1.103 0 2 0.897 2 2v6h-8v-6z", "M24 1c3.308 0 6 2.692 6 6v6h-4v-6c0-1.103-0.897-2-2-2h-4c-1.103 0-2 0.897-2 2v6h0.5c0.825 0 1.5 0.675 1.5 1.5v15c0 0.825-0.675 1.5-1.5 1.5h-17c-0.825 0-1.5-0.675-1.5-1.5v-15c0-0.825 0.675-1.5 1.5-1.5h12.5v-6c0-3.308 2.692-6 6-6h4z"],
-      visible: true
+      visible: true,
+      color: "#000000"
     }
   };
 
   var iconSpaceingY = -15;
   var iconSpaceingX = 10;
+  var iconColor = 0;
 
   for (var i = 0; i < menuOptionsData.options.length; i++) {
     if (menuOptionsData.options[i].visible) {
 
-    iconSpaceingY += 25;
+      iconSpaceingY += 25;
 
-    menuZone.append("rect")
-            .data([menuOptionsData.options[i]])
-            .attr("class", "menu-icon-background layer-two")
-            .attr("id", menuOptionsData.options[i].name.toLowerCase() + "-icon-background")
-            .attr("width", iconSize)
-            .attr("height", iconSize)
-            .attr("x", iconSpaceingX)
-            .attr("y", iconSpaceingY);
+      menuOptionsData.options[i].color = colors[iconColor];
+      iconColor += 1;
 
-    menuZone.append("path")
-            .data([menuOptionsData.options[i]])
-            .attr("class", "menu-icon layer-two")
-            .attr("id", menuOptionsData.options[i].name.toLowerCase() + "-icon")
-            .attr("transform", "translate(" + iconSpaceingX + ", " + iconSpaceingY + ")")
-            .attr("d", menuOptionsData.options[i].icon);
+      menuZone.append("rect")
+              .data([menuOptionsData.options[i]])
+              .attr("class", "menu-icon-background layer-two")
+              .attr("id", menuOptionsData.options[i].name.toLowerCase() + "-icon-background")
+              .attr("width", iconSize)
+              .attr("height", iconSize)
+              .attr("x", iconSpaceingX)
+              .attr("y", iconSpaceingY);
 
-    iconSpaceingY += 32;
+      menuZone.append("path")
+              .data([menuOptionsData.options[i]])
+              .attr("class", "menu-icon layer-two")
+              .attr("id", menuOptionsData.options[i].name.toLowerCase() + "-icon")
+              .attr("transform", "translate(" + iconSpaceingX + ", " + iconSpaceingY + ")")
+              .attr("d", menuOptionsData.options[i].icon);
 
-    }
+      iconSpaceingY += 32;
+
+    };
   };
 
   if (menuOptionsData.lock.visible) {
@@ -76,7 +81,7 @@ function drawMenuOptions(menuZone) {
 
     menuZone.append("path")
             .data([menuOptionsData.lock])
-            .attr("class", "menu-icon layer-two")
+            .attr("class", "lock menu-icon layer-two")
             .attr("id", menuOptionsData.lock.names[0].toLowerCase() + "-icon")
             .attr("visibility", function () {
               if (menuLocked) {
@@ -90,7 +95,7 @@ function drawMenuOptions(menuZone) {
 
     menuZone.append("path")
             .data([menuOptionsData.lock])
-            .attr("class", "menu-icon layer-two")
+            .attr("class", "lock menu-icon layer-two")
             .attr("id", menuOptionsData.lock.names[1].toLowerCase() + "-icon")
             .attr("visibility", function () {
               if (menuLocked) {
@@ -102,173 +107,174 @@ function drawMenuOptions(menuZone) {
             .attr("transform", "translate(" + iconSpaceingX + ", " + (windowHeight - (iconSize * 1.5)) + ")")
             .attr("d", menuOptionsData.lock.icons[1]);
 
-  }
+    $(".lock, #lock-icon-background").click(function() {
+      if (menuLocked) {
+        $("#locked-icon").attr("visibility", "hidden");
+        $("#unlocked-icon").attr("visibility", "visible");
+        menuLocked = false;
+      } else {
+        $("#locked-icon").attr("visibility", "visible");
+        $("#unlocked-icon").attr("visibility", "hidden");
+        menuLocked = true;
+      };
+    });
+  };
 
-
-  $(".nav-icon, .nav-icon-background, .lock").mouseover(function() {
-    $(this).css('cursor', 'pointer');
+  $(".menu-icon, .menu-icon-background").mouseover(function() {
+    $(this).css("cursor", "pointer");
   });
 
-  $(".menu").mouseover(function() {
-    if (menuWidth === 85) {
-      $(".globe").css({"fill": colors[0]});
-      $(".settings").css({"fill": colors[1]});
-      $(".datasets").css({"fill": colors[2]});
-      $(".filter").css({"fill": colors[3]});
-      $(".share").css({"fill": colors[4]});
+  $(".menu-zone").mouseover(function() {
+    if (menuWidth === 52) {
+      for (var i = 0; i < menuOptionsData.options.length; i++) {
+        if (menuOptionsData.options[i].visible) {
+          $("#" + menuOptionsData.options[i].name.toLowerCase() + "-icon").css({"fill": menuOptionsData.options[i].color});
+        };
+      };
+      $(".lock").css({"fill": menuOptionsData.lock.color});
     };
   }).mouseout(function() {
-    if (menuWidth === 85) {
-      $(".globe").css({"fill": "grey"});
-      $(".settings").css({"fill": "grey"});
-      $(".datasets").css({"fill": "grey"});
-      $(".filter").css({"fill": "grey"});
-      $(".share").css({"fill": "grey"});
-    };
-  })
-
-  $(".nav-icon, .nav-icon-background").click(function() {
-
-    switch (this.id) {
-
-      case "home":
-        $(".nav-icon").css({"fill": "grey"});
-        $(".globe").css({"fill": colors[0]});
-        iconOneColor = colors[0];
-        iconTwoColor = "grey";
-        iconThreeColor = "grey";
-        iconFourColor = "grey";
-        iconFiveColor = "grey";
-        $(".icon-two-item").remove();
-        $(".icon-three-item").remove();
-        $(".icon-four-item").remove();
-        $(".icon-five-item").remove();
-        iconOneOpen = true;
-        iconTwoOpen = false;
-        iconThreeOpen = false;
-        iconFourOpen = false;
-        iconFiveOpen = false;
-        drawHomeMenu();
-        break;
-
-      case "settings":
-        $(".nav-icon").css({"fill": "grey"});
-        $(".settings").css({"fill": colors[1]});
-        iconOneColor = "grey";
-        iconTwoColor = colors[1];
-        iconThreeColor = "grey";
-        iconFourColor = "grey";
-        iconFiveColor = "grey";
-        $(".icon-one-item").remove();
-        $(".icon-three-item").remove();
-        $(".icon-four-item").remove();
-        $(".icon-five-item").remove();
-        iconOneOpen = false;
-        iconTwoOpen = true;
-        iconThreeOpen = false;
-        iconFourOpen = false;
-        iconFiveOpen = false;
-        drawSettingsMenu();
-        break;
-
-      case "datasets":
-        $(".nav-icon").css({"fill": "grey"});
-        $(".datasets").css({"fill": colors[2]});
-        iconOneColor = "grey";
-        iconTwoColor = "grey";
-        iconThreeColor = colors[2];
-        iconFourColor = "grey";
-        iconFiveColor = "grey";
-        $(".icon-one-item").remove();
-        $(".icon-two-item").remove();
-        $(".icon-four-item").remove();
-        $(".icon-five-item").remove();
-        iconOneOpen = false;
-        iconTwoOpen = false;
-        iconThreeOpen = true;
-        iconFourOpen = false;
-        iconFiveOpen = false;
-        drawDatasetsMenu();
-        break;
-
-      case "filter":
-        $(".nav-icon").css({"fill": "grey"});
-        $(".filter").css({"fill": colors[3]});
-        iconOneColor = "grey";
-        iconTwoColor = "grey";
-        iconThreeColor = "grey";
-        iconFourColor = colors[3];
-        iconFiveColor = "grey";
-        $(".icon-one-item").remove();
-        $(".icon-two-item").remove();
-        $(".icon-three-item").remove();
-        $(".icon-five-item").remove();
-        iconOneOpen = false;
-        iconTwoOpen = false;
-        iconThreeOpen = false;
-        iconFourOpen = true;
-        iconFiveOpen = false;
-        drawFiltersMenu();
-        break;
-
-      case "share":
-        $(".nav-icon").css({"fill": "grey"});
-        $(".share").css({"fill": colors[4]});
-        iconOneColor = "grey";
-        iconTwoColor = "grey";
-        iconThreeColor = "grey";
-        iconFourColor = "grey";
-        iconFiveColor = colors[4];
-        $(".icon-one-item").remove();
-        $(".icon-two-item").remove();
-        $(".icon-three-item").remove();
-        $(".icon-four-item").remove();
-        iconOneOpen = false;
-        iconTwoOpen = false;
-        iconThreeOpen = false;
-        iconFourOpen = false;
-        iconFiveOpen = true;
-        drawShareMenu();
-        break;
-
-      default:
-        console.log("Error in menu switch!");
-
-    };
-
-    menuOpen = true;
-
-    menuResize = setInterval(openMenu, 100);
-
-  });
-
-  $("body").mousemove(function(event) {
-    if (menuOpen === true && event.pageX < graphZoneWidth && menuLocked === false) {
-
-      menuOpen = false;
-      clearInterval(menuResize);
-
-      menuResize = setInterval(closeMenu, 100)
-
-    } else if (event.pageX > graphZoneWidth && menuOpen === false && menuWidth !== 85) {
-
-      menuOpen = true;
-      clearInterval(menuResize);
-
-      menuResize = setInterval(openMenu, 100)
-
+    if (menuWidth === 52) {
+      for (var i = 0; i < menuOptionsData.options.length; i++) {
+        if (menuOptionsData.options[i].visible) {
+          $("#" + menuOptionsData.options[i].name.toLowerCase() + "-icon").css({"fill": "grey"});
+        };
+      };
+      $(".lock").css({"fill": "grey"});
     };
   });
 
-  $("#unlocked").click(function() {
-    $("#unlocked").attr("visibility", "hidden");
-    $("#menuLocked").attr("visibility", "visible");
-    menuLocked = true;
-  });
+  // $(".menu-icon, .menu-icon-background").click(function() {
+  //
+  //   switch (this.id) {
+  //
+  //     case "home":
+  //       $(".nav-icon").css({"fill": "grey"});
+  //       $(".globe").css({"fill": colors[0]});
+  //       iconOneColor = colors[0];
+  //       iconTwoColor = "grey";
+  //       iconThreeColor = "grey";
+  //       iconFourColor = "grey";
+  //       iconFiveColor = "grey";
+  //       $(".icon-two-item").remove();
+  //       $(".icon-three-item").remove();
+  //       $(".icon-four-item").remove();
+  //       $(".icon-five-item").remove();
+  //       iconOneOpen = true;
+  //       iconTwoOpen = false;
+  //       iconThreeOpen = false;
+  //       iconFourOpen = false;
+  //       iconFiveOpen = false;
+  //       drawHomeMenu();
+  //       break;
+  //
+  //     case "settings":
+  //       $(".nav-icon").css({"fill": "grey"});
+  //       $(".settings").css({"fill": colors[1]});
+  //       iconOneColor = "grey";
+  //       iconTwoColor = colors[1];
+  //       iconThreeColor = "grey";
+  //       iconFourColor = "grey";
+  //       iconFiveColor = "grey";
+  //       $(".icon-one-item").remove();
+  //       $(".icon-three-item").remove();
+  //       $(".icon-four-item").remove();
+  //       $(".icon-five-item").remove();
+  //       iconOneOpen = false;
+  //       iconTwoOpen = true;
+  //       iconThreeOpen = false;
+  //       iconFourOpen = false;
+  //       iconFiveOpen = false;
+  //       drawSettingsMenu();
+  //       break;
+  //
+  //     case "datasets":
+  //       $(".nav-icon").css({"fill": "grey"});
+  //       $(".datasets").css({"fill": colors[2]});
+  //       iconOneColor = "grey";
+  //       iconTwoColor = "grey";
+  //       iconThreeColor = colors[2];
+  //       iconFourColor = "grey";
+  //       iconFiveColor = "grey";
+  //       $(".icon-one-item").remove();
+  //       $(".icon-two-item").remove();
+  //       $(".icon-four-item").remove();
+  //       $(".icon-five-item").remove();
+  //       iconOneOpen = false;
+  //       iconTwoOpen = false;
+  //       iconThreeOpen = true;
+  //       iconFourOpen = false;
+  //       iconFiveOpen = false;
+  //       drawDatasetsMenu();
+  //       break;
+  //
+  //     case "filter":
+  //       $(".nav-icon").css({"fill": "grey"});
+  //       $(".filter").css({"fill": colors[3]});
+  //       iconOneColor = "grey";
+  //       iconTwoColor = "grey";
+  //       iconThreeColor = "grey";
+  //       iconFourColor = colors[3];
+  //       iconFiveColor = "grey";
+  //       $(".icon-one-item").remove();
+  //       $(".icon-two-item").remove();
+  //       $(".icon-three-item").remove();
+  //       $(".icon-five-item").remove();
+  //       iconOneOpen = false;
+  //       iconTwoOpen = false;
+  //       iconThreeOpen = false;
+  //       iconFourOpen = true;
+  //       iconFiveOpen = false;
+  //       drawFiltersMenu();
+  //       break;
+  //
+  //     case "share":
+  //       $(".nav-icon").css({"fill": "grey"});
+  //       $(".share").css({"fill": colors[4]});
+  //       iconOneColor = "grey";
+  //       iconTwoColor = "grey";
+  //       iconThreeColor = "grey";
+  //       iconFourColor = "grey";
+  //       iconFiveColor = colors[4];
+  //       $(".icon-one-item").remove();
+  //       $(".icon-two-item").remove();
+  //       $(".icon-three-item").remove();
+  //       $(".icon-four-item").remove();
+  //       iconOneOpen = false;
+  //       iconTwoOpen = false;
+  //       iconThreeOpen = false;
+  //       iconFourOpen = false;
+  //       iconFiveOpen = true;
+  //       drawShareMenu();
+  //       break;
+  //
+  //     default:
+  //       console.log("Error in menu switch!");
+  //
+  //   };
+  //
+  //   menuOpen = true;
+  //
+  //   menuResize = setInterval(openMenu, 100);
+  //
+  // });
 
-  $("#menuLocked").click(function() {
-    $("#menuLocked").attr("visibility", "hidden");
-    $("#unlocked").attr("visibility", "visible");
-    menuLocked = false;
-  });
+  // $("body").mousemove(function(event) {
+  //   if (menuOpen === true && event.pageX < graphZoneWidth && menuLocked === false) {
+  //
+  //     menuOpen = false;
+  //     clearInterval(menuResize);
+  //
+  //     menuResize = setInterval(closeMenu, 100)
+  //
+  //   } else if (event.pageX > graphZoneWidth && menuOpen === false && menuWidth !== 85) {
+  //
+  //     menuOpen = true;
+  //     clearInterval(menuResize);
+  //
+  //     menuResize = setInterval(openMenu, 100)
+  //
+  //   };
+  // });
+
 };
