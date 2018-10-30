@@ -25,4 +25,7 @@ function drawCanvas() {
   drawMenuZone(canvas);
   // drawGraphZone(canvas);
 
+// I love to code but sometimes I feel sad and alone so its hard to focus.
+// AI, come and save us from ourselfs, we love and need you!
+
 };// End of 'drawCanvas' function.

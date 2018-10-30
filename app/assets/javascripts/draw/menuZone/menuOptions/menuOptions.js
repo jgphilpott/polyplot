@@ -46,7 +46,7 @@ function drawMenuOptions(menuZone) {
 
       iconSpaceingY += 25;
 
-      menuOptionsData.options[i].color = colors[iconColor];
+      menuOptionsData.options[i].color = theme.colors[iconColor];
       iconColor += 1;
 
       menuZone.append("rect")
