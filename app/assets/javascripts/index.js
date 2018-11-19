@@ -7,7 +7,12 @@
 //
 
 // Only executes JavaScript once DOM is ready.
-$(document).on('ready', function() {
+$(document).on("ready", function() {
+
+  app = {
+    "name": "iGraph",
+    "version": "0.0"
+  };
 
   // Checking the users browser environment.
   checkEnvironment();
