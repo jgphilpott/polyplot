@@ -2,17 +2,13 @@
 // This will help define how to draw the graph.
 function checkEnvironment() {
 
-  app.view = {
-    "width": $(window).width(),
-    "height": $(window).height()
-  };
+  app.view.width = $(window).width();
+  app.view.height = $(window).height();
 
-  app.user = {
-    "agent": navigator.userAgent,
-    "language": navigator.language,
-    "online": navigator.onLine,
-    "java": navigator.javaEnabled(),
-    "cookies": navigator.cookieEnabled
-  };
+  app.user.agent = navigator.userAgent;
+  app.user.language = navigator.language;
+  app.user.online = navigator.onLine;
+  app.user.java = navigator.javaEnabled();
+  app.user.cookies = navigator.cookieEnabled;
 
 };// End of 'Check Environment' function.

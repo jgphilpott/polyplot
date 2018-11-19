@@ -4,31 +4,32 @@ function drawMenuZone(canvas) {
   // Setting the default menu width.
   menuWidth = 52;
 
-  var menuZoneData = {
-    name: "Menu Zone",
-    classList: ["menu-zone", "layer-one"],
+  app.view.canvas.menu = {
+    name: "Menu",
+    classList: ["menu", "layer-one"],
     width: menuWidth,
-    height: windowHeight,
-    x: windowWidth - menuWidth,
+    height: app.view.canvas.height,
+    x: app.view.canvas.width - menuWidth,
     y: 0
   };
 
-  var menuZone = canvas.append("svg")
-                       .data([menuZoneData])
-                       .attr("class", listify(menuZoneData.classList))
-                       .attr("width", menuZoneData.width)
-                       .attr("height", menuZoneData.height)
-                       .attr("x", menuZoneData.x)
-                       .attr("y", menuZoneData.y);
+  var menu = canvas.append("svg")
+                   .data([app.view.canvas.menu])
+                   .attr("class", listify(app.view.canvas.menu.classList))
+                   .attr("width", app.view.canvas.menu.width)
+                   .attr("height", app.view.canvas.menu.height)
+                   .attr("x", app.view.canvas.menu.x)
+                   .attr("y", app.view.canvas.menu.y);
 
-  menuZone.append("rect")
-          .data([menuZoneData])
-          .attr("class", listify(menuZoneData.classList))
-          .attr("width", menuZoneData.width)
-          .attr("height", menuZoneData.height)
-          .attr("x", 0)
-          .attr("y", 0);
+  menu.append("rect")
+      .data([app.view.canvas.menu])
+      .attr("class", listify(app.view.canvas.menu.classList))
+      .attr("width", app.view.canvas.menu.width)
+      .attr("height", app.view.canvas.menu.height)
+      .attr("x", 0)
+      .attr("y", 0)
+      .attr("fill", app.view.theme.grayScale[1]);
 
-  drawMenuOptions(menuZone);
+  drawMenuOptions(menu);
 
 };

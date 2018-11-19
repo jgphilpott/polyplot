@@ -1,8 +1,6 @@
 // Setting up the application with default variables.
 function setupDefault() {
 
-  app.data = {};
-
   app.data.keys = ["population", "lifeExpectancy", "fertility"];
 
   app.view.theme = {
@@ -11,4 +9,4 @@ function setupDefault() {
     grayScale: ["#ffffff", "#D3D3D3", "#808080", "#000000"]
   };
 
-};// End of 'Initial Setup' function.
+};// End of 'Default Setup' function.

@@ -2,16 +2,18 @@
 // This data visualization application is based on Hans Rosling's 'Trendalyzer' software (https://en.wikipedia.org/wiki/Trendalyzer).
 // This version of the software was created by Jacob Philpott (https://linkedin.com/in/jgphilpott).
 // The full source code is available for free on GitHub (https://github.com/jgphilpott/iGraph).
-// A live demo is available online (https://i-graph.herokuapp.com).
+// A live demo is available online (https://igraph.herokuapp.com).
 // Please do not remove this comment!
 //
 
-// Only executes JavaScript once DOM is ready.
 $(document).on("ready", function() {
 
   app = {
     "name": "iGraph",
-    "version": "0.0"
+    "version": "0.0",
+    "data": {},
+    "view": {},
+    "user": {}
   };
 
   // Checking the users browser environment.

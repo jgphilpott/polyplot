@@ -2,11 +2,11 @@
 function drawCanvas() {
 
   // Creating the canvas data.
-  var canvasData = {
+  app.view.canvas = {
     name: "Canvas",
     classList: ["canvas", "layer-zero"],
-    width: windowWidth,
-    height: windowHeight,
+    width: app.view.width,
+    height: app.view.height,
     x: 0,
     y: 0
   };
@@ -14,12 +14,12 @@ function drawCanvas() {
   // Appending the canvas to the HTML body.
   var canvas = d3.select("body")
                  .append("svg")
-                 .data([canvasData])
-                 .attr("class", listify(canvasData.classList))
-                 .attr("width", canvasData.width)
-                 .attr("height", canvasData.height)
-                 .attr("x", canvasData.x)
-                 .attr("y", canvasData.y);
+                 .data([app.view.canvas])
+                 .attr("class", listify(app.view.canvas.classList))
+                 .attr("width", app.view.canvas.width)
+                 .attr("height", app.view.canvas.height)
+                 .attr("x", app.view.canvas.x)
+                 .attr("y", app.view.canvas.y);
 
   // Drawing the layer one components of the view.
   drawMenuZone(canvas);
