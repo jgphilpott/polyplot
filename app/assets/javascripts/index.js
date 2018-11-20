@@ -6,8 +6,10 @@
 // Please do not remove this comment!
 //
 
+// Only loads JavaScript once DOM is ready.
 $(document).on("ready", function() {
 
+  // Initializing the app with a few basic properties.
   app = {
     "name": "iGraph",
     "version": "0.0",
@@ -25,7 +27,7 @@ $(document).on("ready", function() {
   // Retrieving and organizing the currently selected datasets.
   // getData();
 
-  // Scaling the organized 'Graph Data'.
+  // Scaling the organized data.
   // scaleAllData();
 
   // Calling a function that will draw the graph, data points and user menu.
