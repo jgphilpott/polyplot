@@ -1,10 +1,9 @@
-FROM python:3.6.7-alpine
+FROM continuumio/miniconda3:latest
 
 ADD . /root
 
 WORKDIR /root
 
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+RUN conda install --file requirements.txt
 
 CMD ["python", "app.py"]
