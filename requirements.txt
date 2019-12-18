@@ -3,7 +3,7 @@
 # platform: linux-64
 _libgcc_mutex=0.1=main
 backcall=0.1.0=py_0
-bzip2=1.0.8=h516909a_1
+bzip2=1.0.8=h516909a_2
 ca-certificates=2019.11.28=hecc5488_0
 certifi=2019.11.28=py37_0
 click=7.0=py_0
@@ -26,7 +26,7 @@ libstdcxx-ng=9.2.0=hdf63c60_0
 markupsafe=1.1.1=py37h516909a_0
 ncurses=6.1=hf484d3e_1002
 openssl=1.1.1d=h516909a_0
-parso=0.5.1=py_0
+parso=0.5.2=py_0
 pexpect=4.7.0=py37_0
 pickleshare=0.7.5=py37_1000
 pip=19.3.1=py37_0
