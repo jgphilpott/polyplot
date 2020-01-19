@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="180" height="180" src="https://github.com/jgphilpott/iGraph/blob/master/icon.jpg">
+  <img width="160" height="160" src="https://github.com/jgphilpott/iGraph/blob/master/app/img/icon.jpg">
 </p>
 
 # iGraph
