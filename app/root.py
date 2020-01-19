@@ -5,7 +5,7 @@ app = Flask("iGraph", template_folder="app", static_folder="app")
 
 @app.route("/")
 def home():
-    return "Welcome to iGraph!"
+    return render_template("html/home.html")
 
 if __name__ == "__main__":
     compile(dirname=("app/sass", "app/css"))
