@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <title>Home</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+  </head>
+  <body>
+    {% extends "html/theme.html" %}
+    {% block content %}
+
+      <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+
+    {% endblock %}
+  </body>
+</html>
