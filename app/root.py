@@ -1,6 +1,5 @@
 from flask import Flask, render_template
 from sass import compile
-import data
 
 app = Flask("iGraph", template_folder="app", static_folder="app")
 
