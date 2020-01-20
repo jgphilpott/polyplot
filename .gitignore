@@ -1,5 +1,6 @@
 # Python
 __pycache__
+*.ipynb_checkpoints
 
 # CSS
 app/css
