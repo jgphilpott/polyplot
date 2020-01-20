@@ -8,13 +8,6 @@ web:
   links:
     - mongo
 
-notebook:
-  image: jupyter/minimal-notebook
-  ports:
-    - 8888:8888
-  links:
-    - mongo
-
 mongo:
   image: mongo:3.0.2
   ports:
