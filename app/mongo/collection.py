@@ -35,12 +35,14 @@ def get_collections(log=False):
         print("\n\033[93mThere are a total of {} collections.\033[0m\n".format(str(total)))
         count = 0
 
-        for collection in collections:
+        if total > 0:
 
-            count += 1
-            print("\033[93mCollection #{}:\033[0m {}".format(str(count), str(collection)))
+            for collection in collections:
 
-        print()
+                count += 1
+                print("\033[93mCollection #{}:\033[0m {}".format(str(count), str(collection)))
+
+            print()
 
     else:
 
@@ -92,33 +94,35 @@ def collect_indicators(log=False):
 
         print("\n\033[93m There are a total of {} indicators.\033[0m\n".format(len(indicators)))
 
-    for indicator in indicators:
+    if indicators:
 
-        if indicator["code"] not in collections:
+        for indicator in indicators:
 
-            try:
+            if indicator["code"] not in collections:
+
+                try:
+
+                    if log:
+
+                        collect_indicator(indicator, log=True)
+
+                    else:
+
+                        collect_indicator(indicator)
+
+                except:
+
+                    if log:
+
+                        print("\033[91m Error collecting indicator: \033[0m{}".format(indicator["code"]))
+
+            else:
 
                 if log:
 
-                    collect_indicator(indicator, log=True)
+                    print("\033[93m Indicator\033[0m {} \033[93malready exists.\033[0m".format(indicator["code"]))
 
-                else:
-
-                    collect_indicator(indicator)
-
-            except:
-
-                if log:
-
-                    print("\033[91mError collecting indicator: \033[0m{}".format(indicator["code"]))
-
-        else:
-
-            if log:
-
-                print("\033[93mIndicator\033[0m {} \033[93malready exists.\033[0m".format(indicator["code"]))
-
-    print()
+        print()
 
 def drop_collection(collection, log=False):
 
