@@ -28,8 +28,8 @@ alias col-get-inds="py cli.py collect_indicators --log=True"
 alias col-drop="py cli.py drop_collection --log=True"
 
 # Indicators
-alias get-ind="py cli.py get_indicator"
-alias get-inds="py cli.py get_indicators"
+alias get-ind="py cli.py get_indicator --log=True"
+alias get-inds="py cli.py get_indicators --log=True"
 
 # Startup
 export PS1=' \e[5m\e[93m>>>\e[0m '
