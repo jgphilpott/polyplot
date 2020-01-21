@@ -1,13 +1,13 @@
 # Welcome
-alias welcome="printf '\e[93mWelcome to iGraph!\e[0m 😍\n'"
+alias welcome="printf '\n\e[93mWelcome to iGraph!\e[0m 😍\n\n'"
 
 # Variables
 alias space="printf '\n'"
 alias cl="clear"
 
 # Common
-alias cwd="space && printf '\e[93mThe current working directory is:\e[0m ' && pwd && space"
-alias lsa="space && printf '\e[93mAll the files in the current directory are:\e[0m\n' && space && ls -a && space"
+alias cwd="printf '\n\e[93mThe current working directory is:\e[0m ' && pwd && space"
+alias lsa="printf '\n\e[93mAll the files in the current directory are:\e[0m\n\n' && ls -a && space"
 
 # Python
 alias py="python3"
@@ -34,8 +34,6 @@ alias get-inds="py cli.py get_indicators"
 # Startup
 export PS1=' \e[5m\e[93m>>>\e[0m '
 cl
-space
 welcome
-space
 cwd
 lsa
