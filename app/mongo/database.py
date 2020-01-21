@@ -9,9 +9,7 @@ def get_client(log=False):
 
     if log:
 
-        print("\n\033[93mThe mongo client:\033[0m\n")
-        print(client)
-        print()
+        print("\n\033[93mThe mongo client:\033[0m\n\n{}\n".format(client))
 
     else:
 
@@ -21,9 +19,7 @@ def get_database(log=False):
 
     if log:
 
-        print("\n\033[93mThe mongo database:\033[0m\n")
-        print(database)
-        print()
+        print("\n\033[93mThe mongo database:\033[0m\n\n{}\n".format(database))
 
     else:
 
