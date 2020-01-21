@@ -48,19 +48,19 @@ $(document).ready(function() {
   var geometry = new THREE.SphereGeometry( 3, 32, 32);
   var material = new THREE.MeshStandardMaterial( {color: 0x0000ff} );
 
-  for (var i = 0; i < xData.length; i++) {
-
-    var sphere = new THREE.Mesh( geometry, material )
-
-    if (typeof xData[i]["2000"] == "number") {
-        // console.log(xData[i]["2000"])
-        sphere.position.x = xData[i]["2000"]
-        sphere.position.y = 10
-        sphere.position.z = 10
-        scene.add( sphere )
-    }
-
-  }
+  // for (var i = 0; i < xData.length; i++) {
+  //
+  //   var sphere = new THREE.Mesh( geometry, material )
+  //
+  //   if (typeof xData[i]["2000"] == "number") {
+  //       // console.log(xData[i]["2000"])
+  //       sphere.position.x = xData[i]["2000"]
+  //       sphere.position.y = 10
+  //       sphere.position.z = 10
+  //       scene.add( sphere )
+  //   }
+  //
+  // }
 
   var light = new THREE.PointLight(0xffffff, 3);
   light.position.set(-100,200,100);
