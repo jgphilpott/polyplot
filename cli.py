@@ -8,6 +8,7 @@ from app.mongo.collection import get_collection
 from app.mongo.collection import get_collections
 from app.mongo.collection import collect_indicator
 from app.mongo.collection import collect_indicators
+from app.mongo.collection import drop_collection
 
 from app.mongo.indicator import get_indicator
 from app.mongo.indicator import get_indicators

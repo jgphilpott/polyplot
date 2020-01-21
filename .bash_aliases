@@ -21,10 +21,11 @@ alias db-database="py cli.py get_database --log=True"
 alias db-drop="py cli.py drop_database --log=True"
 
 # Collections
-alias col="py cli.py get_collection"
-alias cols="py cli.py get_collections"
-alias col-get-ind="py cli.py collect_indicator"
-alias col-get-inds="py cli.py collect_indicators"
+alias col="py cli.py get_collection --log=True"
+alias cols="py cli.py get_collections --log=True"
+alias col-get-ind="py cli.py collect_indicator --log=True"
+alias col-get-inds="py cli.py collect_indicators --log=True"
+alias col-drop="py cli.py drop_collection --log=True"
 
 # Indicators
 alias get-ind="py cli.py get_indicator"
