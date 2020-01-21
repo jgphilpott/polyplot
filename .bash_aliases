@@ -32,7 +32,9 @@ alias get-ind="py cli.py get_indicator --log=True"
 alias get-inds="py cli.py get_indicators --log=True"
 
 # Startup
-export PS1=' \e[5m\e[93m>>>\e[0m '
+export PS1=" \e[5m\e[93m>>>\e[0m "
+echo -ne "\e]10;#00ff00\e\\"
+echo -ne "\e]11;#000000\e\\"
 cl
 welcome
 cwd

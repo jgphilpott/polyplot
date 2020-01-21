@@ -8,33 +8,43 @@ database = get_database()
 
 def get_collection(collection, log=False):
 
+    code = str(collection)
+    collection = database[code]
+
     if log:
 
-        print("\n\033[93mCollection: \033[0m{}\n\n{}\n".format((str(collection)), database[str(collection)]))
+        if collection.count():
+
+            print("\n\033[93mCollection:\033[0m {}\n\n{}\n".format((str(code)), str(collection)))
+
+        else:
+
+            print("\n\033[91mCollection\033[0m {} \033[91mnot found.\033[0m\n".format((str(code))))
 
     else:
 
-        return database[str(collection)]
+        return collection
 
 def get_collections(log=False):
 
+    collections = database.list_collection_names()
+
     if log:
 
-        collections = database.list_collection_names()
         total = len(collections)
-        print("\n\033[93mThere are a total of {} collections.\033[0m\n".format(total))
+        print("\n\033[93mThere are a total of {} collections.\033[0m\n".format(str(total)))
         count = 0
 
         for collection in collections:
 
             count += 1
-            print("\033[93mCollection #{}:\033[0m {}".format(count, str(collection)))
+            print("\033[93mCollection #{}:\033[0m {}".format(str(count), str(collection)))
 
         print()
 
     else:
 
-        return database.list_collection_names()
+        return collections
 
 def collect_indicator(indicator, log=False):
 
@@ -50,7 +60,7 @@ def collect_indicator(indicator, log=False):
 
     if log:
 
-        print("\033[93mCollecting:\033[0m {}".format(indicator["code"]))
+        print("\033[93m Collecting:\033[0m {}".format(indicator["code"]))
         bar = tqdm(initial=page, total=pages)
 
     while page <= pages:
@@ -80,7 +90,7 @@ def collect_indicators(log=False):
 
     if log:
 
-        print("\n\033[93mThere are a total of {} indicators.\033[0m\n".format(len(indicators)))
+        print("\n\033[93m There are a total of {} indicators.\033[0m\n".format(len(indicators)))
 
     for indicator in indicators:
 
