@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <title>2D Scatter Plot</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/2d-scatter.css') }}">
+  </head>
+  <body>
+    {% extends "html/theme.html" %}
+    {% block content %}
+
+      <script src="{{ url_for('static', filename='js/libs/d3.js') }}"></script>
+      <script src="{{ url_for('static', filename='js/2dScatter.js') }}"></script>
+
+    {% endblock %}
+  </body>
+</html>

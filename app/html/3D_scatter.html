@@ -1,17 +1,15 @@
 <html>
   <head>
-    <title>iGraph</title>
+    <title>2D Scatter Plot</title>
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/3d-scatter.css') }}">
   </head>
   <body>
     {% extends "html/theme.html" %}
     {% block content %}
 
-      <h1>iGraph</h1>
-
-      <p>A data visualization application inspired by Hans Rosling's 'Trendalyzer' software.</p>
-
+      <script src="{{ url_for('static', filename='js/libs/three.js') }}"></script>
+      <script src="{{ url_for('static', filename='js/libs/orbitControls.js') }}"></script>
       <script src="{{ url_for('static', filename='js/home.js') }}"></script>
 
     {% endblock %}
