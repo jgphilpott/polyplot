@@ -2,6 +2,9 @@
 __pycache__
 *.ipynb_checkpoints
 
+# JavaScript
+app/js/libs
+
 # CSS
 app/css
 *.css

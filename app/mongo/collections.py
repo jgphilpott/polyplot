@@ -2,7 +2,7 @@ from tqdm import tqdm
 from requests import get
 
 from app.mongo.database import get_database
-from app.mongo.indicator import get_indicators
+from app.mongo.indicators import get_indicators
 
 database = get_database()
 
