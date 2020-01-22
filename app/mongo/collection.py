@@ -50,40 +50,42 @@ def get_collections(log=False):
 
 def collect_indicator(indicator, log=False):
 
-    collection = database[str(indicator)]
+    if indicator not in get_collections():
 
-    api = "https://api.worldbank.org/v2/country/all/indicator/{}?format=json".format(str(indicator))
-    meta = get(api).json()
+        collection = database[str(indicator)]
 
-    page = 1
-    pages = meta[0]["pages"]
+        api = "https://api.worldbank.org/v2/country/all/indicator/{}?format=json".format(str(indicator))
+        meta = get(api).json()
 
-    items = []
+        page = 1
+        pages = meta[0]["pages"]
 
-    if log:
+        items = []
 
-        print("\033[93m Collecting indicator:\033[0m {}".format(str(indicator)))
-        bar = tqdm(initial=page, total=pages)
+        if log:
 
-    while page <= pages:
+            print("\033[93m Collecting indicator:\033[0m {}".format(str(indicator)))
+            bar = tqdm(initial=page, total=pages)
 
-        url = api + "&page=" + str(page)
-        data = get(url).json()[1]
+        while page <= pages:
 
-        for item in data:
+            url = api + "&page=" + str(page)
+            data = get(url).json()[1]
 
-            obj_exists = [obj for obj in items if obj["code"] in [item["countryiso3code"]]]
-            obj = {"year": int(item["date"]), "value": item["value"]}
+            for item in data:
 
-            if obj_exists:
-                obj_exists[0]["history"].append(obj)
-            else:
-                items.append({"code": item["countryiso3code"], "history": [obj]})
+                obj_exists = [obj for obj in items if obj["code"] in [item["countryiso3code"]]]
+                obj = {"year": int(item["date"]), "value": item["value"]}
 
-        bar.update(1)
-        page += 1
+                if obj_exists:
+                    obj_exists[0]["history"].append(obj)
+                else:
+                    items.append({"code": item["countryiso3code"], "history": [obj]})
 
-    collection.insert_many(items)
+            bar.update(1)
+            page += 1
+
+        collection.insert_many(items)
 
 def collect_indicators(log=False):
 
