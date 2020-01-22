@@ -50,9 +50,9 @@ def get_collections(log=False):
 
 def collect_indicator(indicator, log=False):
 
-    collection = database[indicator["code"]]
+    collection = database[str(indicator)]
 
-    api = "https://api.worldbank.org/v2/country/all/indicator/{}?format=json".format(indicator["code"])
+    api = "https://api.worldbank.org/v2/country/all/indicator/{}?format=json".format(str(indicator))
     meta = get(api).json()
 
     page = 1
@@ -62,7 +62,7 @@ def collect_indicator(indicator, log=False):
 
     if log:
 
-        print("\033[93m Collecting:\033[0m {}".format(indicator["code"]))
+        print("\033[93m Collecting indicator:\033[0m {}".format(str(indicator)))
         bar = tqdm(initial=page, total=pages)
 
     while page <= pages:
@@ -104,23 +104,23 @@ def collect_indicators(log=False):
 
                     if log:
 
-                        collect_indicator(indicator, log=True)
+                        collect_indicator(indicator["code"], log=True)
 
                     else:
 
-                        collect_indicator(indicator)
+                        collect_indicator(indicator["code"])
 
                 except:
 
                     if log:
 
-                        print("\033[91m Error collecting indicator: \033[0m{}".format(indicator["code"]))
+                        print("\033[91m Error collecting indicator: \033[0m{}".format(str(indicator["code"])))
 
             else:
 
                 if log:
 
-                    print("\033[93m Indicator\033[0m {} \033[93malready exists.\033[0m".format(indicator["code"]))
+                    print("\033[93m Indicator\033[0m {} \033[93malready exists.\033[0m".format(str(indicator["code"])))
 
         print()
 
