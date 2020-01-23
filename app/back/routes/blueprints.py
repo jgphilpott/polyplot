@@ -1,6 +1,6 @@
 from flask import render_template
 from json import dumps as jsonify
-# from back.mongo.collections import get_collection
+from back.mongo.collections import get_collection
 
 def register(app):
 
@@ -19,8 +19,7 @@ def register(app):
     @app.route("/3D_scatter")
     def _3D_scatter():
 
-        # data = [1, 2, 3, 4, 5]
-
-        # data = list(get_collection("SP.POP.TOTL"))
+        # collection = get_collection("SP.POP.TOTL").find()[0]
+        # data = list(collection)
 
         return render_template("html/3D_scatter.html", data=jsonify(data))
