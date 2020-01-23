@@ -1,8 +1,8 @@
 from tqdm import tqdm
 from requests import get
 
-from mongo.database import get_database
-from mongo.indicators import get_indicators
+from back.mongo.database import get_database
+from back.mongo.indicators import get_indicators
 
 database = get_database()
 
