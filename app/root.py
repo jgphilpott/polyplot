@@ -1,8 +1,8 @@
 from flask import Flask
-from tools.setup import config
 from flask_socketio import SocketIO
+from back.settings.setup import config
 
-app = Flask("iGraph", template_folder="app", static_folder="app")
+app = Flask("iGraph", template_folder="app/front", static_folder="app/front")
 
 if __name__ == "__main__":
 
