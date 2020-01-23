@@ -6,5 +6,5 @@ __pycache__
 app/front/js/libs
 
 # CSS
-app/css
+app/front/css
 *.css
