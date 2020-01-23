@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+  console.log(data)
+
   let width = $(window).width()
   let height = $(window).height()
 
