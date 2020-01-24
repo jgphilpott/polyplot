@@ -6,5 +6,4 @@ def launch(app):
     port = 5000
     debug = True
 
-    socketio = SocketIO(app)
-    socketio.run(app, host=host, port=port, debug=debug)
+    SocketIO(app).run(app, host=host, port=port, debug=debug)

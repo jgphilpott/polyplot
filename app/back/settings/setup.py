@@ -1,4 +1,4 @@
-from back.settings.env import config
+from back.settings.config import config
 from back.settings.routes import register
 from back.settings.compile import compile_all
 from back.tools.downloader.libs import get_libs
