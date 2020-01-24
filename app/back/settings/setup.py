@@ -1,12 +1,13 @@
-from os import urandom
-from sass import compile
-from back.routes.blueprints import register
-from back.tools.download.libs import get_libs
+from back.settings.env import config
+from back.settings.routes import register
+from back.settings.compile import compile_all
+from back.tools.downloader.libs import get_libs
 
-def config(app):
+def setup(app, app_folder):
 
-    compile(dirname=("app/front/sass", "app/front/css"))
-    app.config["SECRET_KEY"] = urandom(42).hex()
-    app.jinja_env.auto_reload = True
-    register(app)
-    get_libs()
+    app = config(app)
+    app = register(app)
+    get_libs(app_folder)
+    compile_all(app_folder)
+
+    return app
