@@ -1,7 +1,10 @@
 # JavaScript Libs
-app/front/libs/vendor
+app/front/libs/js/vendor
 
-# Python
+# Sass Libs
+app/front/libs/sass/vendor
+
+# Python Cache
 __pycache__
 
 # CSS
