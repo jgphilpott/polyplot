@@ -1,11 +1,13 @@
 from flask import Flask
-from flask_socketio import SocketIO
-from back.settings.setup import config
+from back.settings.setup import setup
+from back.settings.launch import launch
 
-app = Flask("iGraph", template_folder="app/front", static_folder="app/front")
+name = "iGraph"
 
-if __name__ == "__main__":
+app_folder = "app/front"
 
-    config(app)
-    socketio = SocketIO(app)
-    socketio.run(app, host="0.0.0.0", port=5000, debug=True)
+app = Flask(name, template_folder=app_folder, static_folder=app_folder)
+
+app = setup(app)
+
+launch(app)
