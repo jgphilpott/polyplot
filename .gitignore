@@ -3,7 +3,7 @@ __pycache__
 *.ipynb_checkpoints
 
 # JavaScript
-app/front/js/libs
+app/front/libs/vendor
 
 # CSS
 app/front/css

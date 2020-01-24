@@ -2,7 +2,7 @@ from urllib.request import urlretrieve
 
 def get_libs():
 
-    libs_dir = "app/front/js/libs"
+    libs_dir = "app/front/libs/vendor"
 
     try:
 
