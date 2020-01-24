@@ -8,6 +8,6 @@ app_folder = "app/front"
 
 app = Flask(name, template_folder=app_folder, static_folder=app_folder)
 
-app = setup(app)
+app = setup(app, app_folder)
 
 launch(app)
