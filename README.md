@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="160" height="160" src="https://github.com/jgphilpott/iGraph/blob/master/app/img/icon.jpg">
+  <img width="160" height="160" src="https://github.com/jgphilpott/iGraph/blob/master/app/back/mongo/raw/img/icon.jpg">
 </p>
 
 # Intro

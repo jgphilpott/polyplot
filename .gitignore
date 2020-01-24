@@ -1,10 +1,8 @@
-# Python
-__pycache__
-*.ipynb_checkpoints
-
-# JavaScript
+# JavaScript Libs
 app/front/libs/vendor
 
+# Python
+__pycache__
+
 # CSS
-app/front/css
 *.css
