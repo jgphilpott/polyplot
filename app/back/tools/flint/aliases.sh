@@ -13,7 +13,7 @@ alias lsa="printf '\n\e[93mAll the files in the current directory are:\e[0m\n\n'
 alias py="python3"
 
 # Fire
-alias fire="space && app/cli.py && space"
+alias fire="space && py app/cli.py && space"
 
 # Database
 alias db-client="py app/cli.py get_client --log=True"
