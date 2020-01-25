@@ -1,11 +1,11 @@
+from flask import render_template
+from json import dumps as jsonify
+
 def register_three_route(app):
 
-    pass
+    @app.route("/three")
+    def three():
 
-    # @app.route("/3D_scatter")
-    # def _3D_scatter():
-    #
-    #     # collection = get_collection("SP.POP.TOTL").find()[0]
-    #     # data = list(collection)
-    #
-    #     return render_template("html/3D_scatter.html", data=jsonify(data))
+        data = None
+
+        return render_template("tree/home/three/page.html", data=jsonify(data))
