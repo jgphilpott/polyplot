@@ -1,0 +1,20 @@
+<html>
+  <head>
+
+    <title>500</title>
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='tree/errors/_500_/style.css') }}">
+
+  </head>
+  <body>
+    {% extends "tree/theme.html" %}
+    {% block content %}
+
+      <h1>500</h1>
+
+      <script src="{{ url_for('static', filename='tree/errors/_500_/script.js') }}"></script>
+
+    {% endblock %}
+  </body>
+</html>
