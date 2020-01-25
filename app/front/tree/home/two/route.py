@@ -1,8 +1,11 @@
+from flask import render_template
+from json import dumps as jsonify
+
 def register_two_route(app):
 
-    pass
-    
-    # @app.route("/2D_scatter")
-    # def _2D_scatter():
-    #
-    #     return render_template("html/2D_scatter.html", data=jsonify(data))
+    @app.route("/two")
+    def two():
+
+        data = None
+
+        return render_template("tree/home/two/page.html", data=jsonify(data))
