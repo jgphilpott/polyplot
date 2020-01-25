@@ -1,9 +1,12 @@
+# Source
+alias source="source ~/app/back/tools/flint/aliases.sh"
+
 # Welcome
 alias welcome="printf '\n\e[93mWelcome to iGraph!\e[0m 😍\n\n'"
 
 # Variables
-alias space="printf '\n'"
 alias cl="clear"
+alias space="printf '\n'"
 
 # Common
 alias cwd="printf '\n\e[93mThe current working directory is:\e[0m ' && pwd && space"
@@ -16,20 +19,20 @@ alias py="python3"
 alias fire="space && py app/cli.py && space"
 
 # Database
-alias db-client="py app/cli.py get_client --log=True"
-alias db-database="py app/cli.py get_database --log=True"
+alias db-client="py app/cli.py find_client --log=True"
+alias db-data="py app/cli.py find_database --log=True"
 alias db-drop="py app/cli.py drop_database --log=True"
 
 # Collections
-alias col="py app/cli.py get_collection --log=True"
-alias cols="py app/cli.py get_collections --log=True"
-alias col-ind="py app/cli.py collect_indicator --log=True"
-alias col-inds="py app/cli.py collect_indicators --log=True"
+alias col="py app/cli.py find_collection --log=True"
+alias cols="py app/cli.py find_collections --log=True"
 alias col-drop="py app/cli.py drop_collection --log=True"
 
-# Indicators
-alias ind="py app/cli.py get_indicator --log=True"
-alias inds="py app/cli.py get_indicators --log=True"
+# Indexes
+alias ind="py app/cli.py find_index --log=True"
+alias inds="py app/cli.py find_indexes --log=True"
+alias upd-ind="py app/cli.py update_index --log=True"
+alias upd-inds="py app/cli.py update_indexes --log=True"
 
 # Startup
 export PS1=" \e[5m\e[93m>>>\e[0m "
