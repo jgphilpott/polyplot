@@ -1,27 +1,27 @@
 [
   {
     "category": "Agriculture & Rural Development",
-    "indicator": "Arable land (% of land area)",
+    "index": "Arable land (% of land area)",
     "code": "AG.LND.ARBL.ZS"
   },
   {
     "category": "Economy & Growth",
-    "indicator": "GDP per capita growth (annual %)",
+    "index": "GDP per capita growth (annual %)",
     "code": "NY.GDP.PCAP.KD.ZG"
   },
   {
     "category": "Education",
-    "indicator": "Literacy rate, adult total (% of people ages 15 and above)",
+    "index": "Literacy rate, adult total (% of people ages 15 and above)",
     "code": "SE.ADT.LITR.ZS"
   },
   {
     "category": "Health",
-    "indicator": "Population, total",
+    "index": "Population, total",
     "code": "SP.POP.TOTL"
   },
   {
     "category": "Public Sector",
-    "indicator": "Military expenditure (% of GDP)",
+    "index": "Military expenditure (% of GDP)",
     "code": "MS.MIL.XPND.GD.ZS"
   }
 ]
