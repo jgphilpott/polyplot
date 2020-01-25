@@ -1,18 +1,21 @@
 <html>
   <head>
+
     <title>iGraph</title>
+
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='tree/home/style.css') }}">
+
   </head>
   <body>
-    {% extends "html/theme.html" %}
+    {% extends "tree/theme.html" %}
     {% block content %}
 
       <h1>iGraph</h1>
 
       <p>A data visualization application inspired by Hans Rosling's 'Trendalyzer' software.</p>
 
-      <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+      <script src="{{ url_for('static', filename='tree/home/script.js') }}"></script>
 
     {% endblock %}
   </body>

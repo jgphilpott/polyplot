@@ -6,5 +6,6 @@ def register_home_route(app):
     @app.route("/")
     def home():
 
-        return "hello"
-        # return render_template("html/home.html", data=jsonify(data))
+        data = None
+
+        return render_template("tree/home/page.html", data=jsonify(data))
