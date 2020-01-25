@@ -7,15 +7,17 @@ every_minute = 60
 every_hour = 3600
 every_day = 86400
 every_week = 604800
+every_month = 2592000
+every_year = 31536000
 
 def now():
 
     return utcnow()
 
-def set_interval(func, args, time):
+def set_interval(func, args, interval):
 
     def wrapper():
-        set_interval(func, args, time)
+        set_interval(func, args, interval)
         func(args)
 
-    Timer(time, wrapper).start()
+    Timer(interval, wrapper).start()
