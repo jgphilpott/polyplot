@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="160" height="160" src="https://github.com/jgphilpott/iGraph/blob/master/app/back/mongo/raw/img/icon.jpg">
+  <img width="160" height="160" src="https://github.com/jgphilpott/iGraph/blob/master/app/front/img/icon.jpg">
 </p>
 
 # Intro
@@ -22,7 +22,7 @@ sudo docker-compose up -d
 
 # Development
 
-To start a shell session in the iGraph container run:
+To start an interactive shell in the iGraph container run:
 
 ```
 sudo docker exec -it igraph_web_1 bash
@@ -31,5 +31,5 @@ sudo docker exec -it igraph_web_1 bash
 To load the development alias list run:
 
 ```
-source ~/.bash_aliases
+source ~/app/back/tools/flint/aliases.sh
 ```
