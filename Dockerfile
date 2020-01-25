@@ -1,4 +1,4 @@
-FROM docker.pkg.github.com/jumanji-lab/docker-images/flask-pack:v1
+FROM docker.pkg.github.com/jgphilpott/docker-images/flask-pack:v4
 
 RUN pip install --upgrade pip
 
