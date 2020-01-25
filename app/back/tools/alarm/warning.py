@@ -1,4 +1,4 @@
-def warning_loop(warning="", yes_message="", no_message=""):
+def warning_loop(warning="\n\033[91mWarning!\033[0m\n", yes_message="", no_message=""):
 
     print(warning)
 

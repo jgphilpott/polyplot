@@ -23,7 +23,7 @@ def drop_database(log=False):
 
         reply = warning_loop(warning, message)
 
-        if reply == True:
+        if reply:
 
             client.drop_database(database)
 
