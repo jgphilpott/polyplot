@@ -1,5 +1,6 @@
 from os import getcwd
 from json import load
+
 from back.mongo.data.base import find_database
 from back.mongo.data.collect.ions import find_collections
 
@@ -16,11 +17,10 @@ def load_json():
 
         collection = database["indexes"]
 
-        with open(cwd + "/indexes.json") as list:
+        with open(path + "/indexes.json") as list:
 
             indexes = load(list)
 
-        print(indexes)
         collection.insert_many(indexes)
 
 def load_data():
