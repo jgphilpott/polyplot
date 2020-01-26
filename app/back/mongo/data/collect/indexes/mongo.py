@@ -1,27 +1,30 @@
-from pprint import pprint as pp
 from back.mongo.data.collect.ions import find_collection
 from back.mongo.data.collect.indexes.object import Index
+from pprint import pprint as pp
 
 indexes = find_collection("indexes")
 
 def find_index(index, log=False):
 
     code = index
-    index = indexes.find_one({"code": code})
 
     if log:
+
+        index = indexes.find_one({"code": code}, {"_id": 0, "geographies": 0})
 
         if index:
 
             print("\n\033[93mIndex:\033[0m {}\n".format(code))
             pp(index)
-            print()
+            print("")
 
         else:
 
             print("\n\033[93mIndex\033[0m {} \033[93mnot found.\033[0m\n".format(code))
 
     else:
+
+        index = indexes.find_one({"code": code}, {"_id": 0})
 
         return index
 
@@ -35,7 +38,7 @@ def find_indexes(log=False):
 
             count = 1
 
-            for index in indexes.find():
+            for index in indexes.find({}, {"_id": 0}):
 
                 print("\033[93mIndex #{}:\033[0m {} \033[93m=\033[0m {}".format(count, index["code"], index["index"]))
                 count += 1
@@ -44,7 +47,7 @@ def find_indexes(log=False):
 
     else:
 
-        return indexes.find()
+        return indexes.find({}, {"_id": 0})
 
 def update_index(index, log=False):
 
