@@ -2,6 +2,7 @@ from back.mongo.data.base import find_database
 from back.tools.alarm.warning import warning_loop
 
 database = find_database()
+collections = database.list_collection_names()
 
 def find_collection(collection, log=False):
 
@@ -24,12 +25,9 @@ def find_collection(collection, log=False):
 
 def find_collections(log=False):
 
-    collections = database.list_collection_names()
-
     if log:
 
-        total = len(collections)
-        print("\n\033[93mThere are a total of {} collections.\033[0m\n".format(total))
+        print("\n\033[93mThere are a total of {} collections.\033[0m\n".format(len(collections)))
 
         if collections:
 
