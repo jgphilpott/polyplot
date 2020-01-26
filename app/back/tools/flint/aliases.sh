@@ -15,24 +15,25 @@ alias lsa="printf '\n\e[93mAll the files in the current directory are:\e[0m\n\n'
 # Python
 alias py="python3"
 
-# Fire
-alias fire="space && py app/cli.py && space"
+# CLI
+alias flint="space && py app/cli.py && space"
+alias fire="py app/cli.py"
 
 # Database
-alias db-client="py app/cli.py find_client --log=True"
-alias db-data="py app/cli.py find_database --log=True"
-alias db-drop="py app/cli.py drop_database --log=True"
+alias db-client="fire find_client --log=True"
+alias db-data="fire find_database --log=True"
+alias db-drop="fire drop_database --log=True"
 
 # Collections
-alias col="py app/cli.py find_collection --log=True"
-alias cols="py app/cli.py find_collections --log=True"
-alias col-drop="py app/cli.py drop_collection --log=True"
+alias col="fire find_collection --log=True"
+alias cols="fire find_collections --log=True"
+alias col-drop="fire drop_collection --log=True"
 
 # Indexes
-alias ind="py app/cli.py find_index --log=True"
-alias inds="py app/cli.py find_indexes --log=True"
-alias upd-ind="py app/cli.py update_index --log=True"
-alias upd-inds="py app/cli.py update_indexes --log=True"
+alias ind="fire find_index --log=True"
+alias inds="fire find_indexes --log=True"
+alias upd-ind="fire update_index --log=True"
+alias upd-inds="fire update_indexes --log=True"
 
 # Startup
 export PS1=" \e[5m\e[93m>>>\e[0m "
