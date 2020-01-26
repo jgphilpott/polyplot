@@ -1,4 +1,6 @@
+from pprint import pprint as pp
 from back.mongo.data.collect.ions import find_collection
+from back.mongo.data.collect.indexes.object import Index
 
 indexes = find_collection("indexes")
 
@@ -11,7 +13,9 @@ def find_index(index, log=False):
 
         if index:
 
-            print("\n\033[93mIndex:\033[0m {}\n\n{}\n".format(code, index))
+            print("\n\033[93mIndex:\033[0m {}\n".format(code))
+            pp(index)
+            print()
 
         else:
 
@@ -44,8 +48,28 @@ def find_indexes(log=False):
 
 def update_index(index, log=False):
 
-    pass
+    code = index
+    index = find_index(code)
+    index = Index(index)
+
+    if log:
+
+        index.update(log)
+
+    else:
+
+        index.update()
+
+    indexes.update_one({"code": index.code}, {"$set": index.__dict__})
 
 def update_indexes(log=False):
 
-    pass
+    for index in find_indexes():
+
+        if log:
+
+            update_index(index["code"], log=log)
+
+        else:
+
+            update_index(index["code"])
