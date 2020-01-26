@@ -15,7 +15,7 @@ class Index():
 
         else:
 
-            self.geographies = None
+            self.geographies = []
 
     def update(self, log=False):
 
@@ -61,10 +61,16 @@ class Index():
 
             except:
 
-                print("\033[91mError updating index\033[0m {}".format(self.code))
+                if log:
+
+                    print("\n\033[91mError updating index\033[0m {}".format(self.code))
 
         else:
 
-            print("\033[93mIndex\033[0m {} \033[93mis already up to date.\033[0m".format(self.code))
+            if log:
 
-        print()
+                print("\n\033[93mIndex\033[0m {} \033[93mis already up to date.\033[0m".format(self.code))
+
+        if log:
+
+            print("")

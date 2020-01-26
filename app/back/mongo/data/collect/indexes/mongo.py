@@ -1,6 +1,6 @@
+from pprint import pprint as pp
 from back.mongo.data.collect.ions import find_collection
 from back.mongo.data.collect.indexes.object import Index
-from pprint import pprint as pp
 
 indexes = find_collection("indexes")
 
@@ -40,10 +40,10 @@ def find_indexes(log=False):
 
             for index in indexes.find({}, {"_id": 0}):
 
-                print("\033[93mIndex #{}:\033[0m {} \033[93m=\033[0m {}".format(count, index["code"], index["index"]))
+                print("\033[93mIndex #{}:\033[0m {} \033[93m~\033[0m {}".format(count, index["code"], index["index"]))
                 count += 1
 
-            print()
+            print("")
 
     else:
 
