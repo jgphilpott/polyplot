@@ -1,5 +1,4 @@
 from flask import render_template
-from json import dumps as jsonify
 
 def register_home_route(app):
 
@@ -8,4 +7,4 @@ def register_home_route(app):
 
         data = None
 
-        return render_template("tree/home/page.html", data=jsonify(data))
+        return render_template("tree/home/page.html", data=data)

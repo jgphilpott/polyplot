@@ -1,11 +1,12 @@
 from flask import render_template
-from json import dumps as jsonify
+
+from back.mongo.data.collect.indexes.mongo import find_index
 
 def register_three_route(app):
 
     @app.route("/three")
     def three():
 
-        data = None
+        data = find_index("SP.POP.TOTL")
 
-        return render_template("tree/home/three/page.html", data=jsonify(data))
+        return render_template("tree/home/three/page.html", data=data)

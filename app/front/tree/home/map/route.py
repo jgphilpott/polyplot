@@ -1,5 +1,4 @@
 from flask import render_template
-from json import dumps as jsonify
 
 def register_map_route(app):
 
@@ -8,4 +7,4 @@ def register_map_route(app):
 
         data = None
 
-        return render_template("tree/home/map/page.html", data=jsonify(data))
+        return render_template("tree/home/map/page.html", data=data)
