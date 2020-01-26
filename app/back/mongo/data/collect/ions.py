@@ -48,17 +48,20 @@ def find_collections(log=False):
 
 def drop_collection(collection, log=False):
 
+    code = collection
+    collection = find_collection(code)
+
     if log:
 
-        warning = "\n\033[91mWarning! Are you sure you want to drop the collection:\033[0m {}\n".format(collection)
-        message = "\n\033[93mOkay, the collection\033[0m {} \033[93mhas been droped!\033[0m\n".format(collection)
+        warning = "\n\033[91mWarning! Are you sure you want to drop the collection:\033[0m {}\n".format(code)
+        message = "\n\033[93mOkay, the collection\033[0m {} \033[93mhas been droped!\033[0m\n".format(code)
 
         reply = warning_loop(warning, message)
 
         if reply:
 
-            get_collection(collection).drop()
+            collection.drop()
 
     else:
 
-        return get_collection(collection).drop()
+        return collection.drop()
