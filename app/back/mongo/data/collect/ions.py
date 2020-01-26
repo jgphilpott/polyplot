@@ -38,7 +38,7 @@ def find_collections(log=False):
                 print("\033[93mCollection #{}:\033[0m {}".format(count, collection))
                 count += 1
 
-            print()
+            print("")
 
     else:
 
