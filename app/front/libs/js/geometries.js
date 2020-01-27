@@ -1,3 +1,14 @@
+function new_sphere(size, x, y, z) {
+
+  sphere = new THREE.SphereGeometry(size, 32, 32)
+  sphere = new THREE.Mesh(sphere, new_mesh_material())
+  sphere.position.x = x
+  sphere.position.y = y
+  sphere.position.z = z
+  return sphere
+
+}
+
 function new_vector(type, size) {
 
   vector = new THREE.Geometry()
