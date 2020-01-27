@@ -24,9 +24,7 @@ def find_index(index, log=False):
 
     else:
 
-        index = indexes.find_one({"code": code}, {"_id": 0})
-
-        return index
+        return indexes.find_one({"code": code}, {"_id": 0})
 
 def find_indexes(log=False):
 

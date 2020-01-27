@@ -32,8 +32,8 @@ alias col-drop="fire drop_collection --log=True"
 # Indexes
 alias ind="fire find_index --log=True"
 alias inds="fire find_indexes --log=True"
-alias upd-ind="fire update_index --log=True"
-alias upd-inds="fire update_indexes --log=True"
+alias ind-upd="fire update_index --log=True"
+alias inds-upd="fire update_indexes --log=True"
 
 # Startup
 export PS1=" \e[5m\e[93m>>>\e[0m "
