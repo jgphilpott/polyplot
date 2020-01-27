@@ -1,0 +1,12 @@
+red = new THREE.Color(0xE03A3E)
+orange = new THREE.Color(0xF5821F)
+yellow = new THREE.Color(0xFDB827)
+green = new THREE.Color(0x61BB46)
+blue = new THREE.Color(0x009DDC)
+purple = new THREE.Color(0x963D97)
+
+black = new THREE.Color(0x000000)
+dark_grey = new THREE.Color(0xB3B3B3)
+grey = new THREE.Color(0xCCCCCC)
+light_grey = new THREE.Color(0xE6E6E6)
+white = new THREE.Color(0xffffff)
