@@ -10,4 +10,6 @@ from back.mongo.data.collect.ions import find_collection, find_collections, drop
 
 from back.mongo.data.collect.indexes.mongo import find_index, find_indexes, update_index, update_indexes
 
+from back.settings.compile import compile_sass
+
 Fire()

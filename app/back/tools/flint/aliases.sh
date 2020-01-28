@@ -35,6 +35,9 @@ alias inds="fire find_indexes --log=True"
 alias ind-upd="fire update_index --log=True"
 alias inds-upd="fire update_indexes --log=True"
 
+# Styling
+alias sass="fire compile_sass app/front"
+
 # Startup
 export PS1=" \e[5m\e[93m>>>\e[0m "
 echo -ne "\e]10;#00ff00\e\\"
