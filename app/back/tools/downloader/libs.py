@@ -14,6 +14,7 @@ def get_js_libs(js_libs_dir):
 
     urlretrieve("https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js", js_libs_dir + "/three.js")
     urlretrieve("https://threejs.org/examples/js/controls/OrbitControls.js", js_libs_dir + "/orbitControls.js")
+    urlretrieve("https://raw.githubusercontent.com/jeromeetienne/threex.domevents/master/threex.domevents.js", js_libs_dir + "/threeX.js")
 
 def get_sass_libs(sass_libs_dir):
 
