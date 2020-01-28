@@ -3,7 +3,7 @@
 
     <title>3D Polyplot</title>
 
-    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='imgs/icons/favicon.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='tree/home/three/style.css') }}">
 
   </head>
@@ -11,8 +11,17 @@
     {% extends "tree/theme.html" %}
     {% block content %}
 
+      <div id="legend" class="panel">
+        <h1>Legend</h1>
+        <p><strong>X:</strong> Index Name</p>
+        <p><strong>Y:</strong> Index Name</p>
+        <p><strong>Z:</strong> Index Name</p>
+        <p><strong>R:</strong> Index Name</p>
+      </div>
+
       <script src="{{ url_for('static', filename='libs/js/vendor/three.js') }}"></script>
       <script src="{{ url_for('static', filename='libs/js/vendor/orbitControls.js') }}"></script>
+      <script src="{{ url_for('static', filename='libs/js/vendor/threeX.js') }}"></script>
 
       <script src="{{ url_for('static', filename='libs/js/colors.js') }}"></script>
       <script src="{{ url_for('static', filename='libs/js/environment.js') }}"></script>
@@ -24,6 +33,9 @@
 
       <script src="{{ url_for('static', filename='libs/js/materials.js') }}"></script>
       <script src="{{ url_for('static', filename='libs/js/geometries.js') }}"></script>
+      <script src="{{ url_for('static', filename='libs/js/scale.js') }}"></script>
+
+      <script src="{{ url_for('static', filename='libs/js/ui.js') }}"></script>
 
       <script src="{{ url_for('static', filename='tree/home/three/script.js') }}"></script>
 

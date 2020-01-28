@@ -39,3 +39,7 @@ function dragElement(elmnt) {
     document.onmousemove = null;
   }
 }
+
+function make_draggable(id) {
+  dragElement(document.getElementById(id))
+}
