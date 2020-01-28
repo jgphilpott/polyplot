@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html>
   <head>
 
-    <meta charset="utf-8">
+    <meta charset="utf-8" lang="en" dir="ltr">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='imgs/icons/favicon.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='tree/theme.css') }}">
 
     <script src="{{ url_for('static', filename='libs/js/vendor/jquery.js') }}"></script>
@@ -16,10 +15,11 @@
   <body>
 
     <a href="https://github.com/jgphilpott/iGraph">
-      <img id="ribbon" src="{{ url_for('static', filename='imgs/github/forkme_right_red.png') }}">
+      <img id="forkme" src="{{ url_for('static', filename='imgs/github/forkme_right_red.png') }}">
     </a>
 
     {% block content %}
     {% endblock %}
+
   </body>
 </html>
