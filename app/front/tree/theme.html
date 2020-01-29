@@ -7,9 +7,9 @@
     <link rel="shortcut icon" href="{{ url_for('static', filename='imgs/icons/favicon.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='tree/theme.css') }}">
 
+    <script> const data = {{ data | tojson | safe }} </script>
     <script src="{{ url_for('static', filename='libs/js/vendor/jquery.js') }}"></script>
     <script src="{{ url_for('static', filename='tree/theme.js') }}"></script>
-    <script> const data = {{ data | tojson | safe }} </script>
 
   </head>
   <body>
