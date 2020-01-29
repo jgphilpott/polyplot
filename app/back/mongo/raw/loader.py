@@ -4,14 +4,12 @@ from json import load
 from back.mongo.data.base import find_database
 from back.mongo.data.collect.ions import find_collections
 
-cwd = getcwd() + "/app/back/mongo/raw"
-
 database = find_database()
 collections = find_collections()
 
-def load_json():
+def load_json(path):
 
-    path = cwd + "/json"
+    path = path + "/json"
 
     if "indexes" not in collections:
 
@@ -23,6 +21,18 @@ def load_json():
 
         collection.insert_many(indexes)
 
+    if "countries" not in collections:
+
+        collection = database["countries"]
+
+        with open(path + "/countries.json") as list:
+
+            countries = load(list)
+
+        collection.insert_many(countries)
+
 def load_data():
 
-    load_json()
+    path = getcwd() + "/app/back/mongo/raw"
+
+    load_json(path)
