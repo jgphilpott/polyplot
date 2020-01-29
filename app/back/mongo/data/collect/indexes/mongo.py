@@ -32,16 +32,14 @@ def find_indexes(log=False):
 
         print("\n\033[93mThere are a total of {} indexes.\033[0m\n".format(indexes.count()))
 
-        if indexes.count():
+        count = 1
 
-            count = 1
+        for index in indexes.find({}, {"_id": 0}):
 
-            for index in indexes.find({}, {"_id": 0}):
+            print("\033[93mIndex #{}:\033[0m {} \033[93m~\033[0m {}".format(count, index["code"], index["index"]))
+            count += 1
 
-                print("\033[93mIndex #{}:\033[0m {} \033[93m~\033[0m {}".format(count, index["code"], index["index"]))
-                count += 1
-
-            print("")
+        print("")
 
     else:
 

@@ -1,5 +1,7 @@
 class Country():
 
-    def __init__(self):
+    def __init__(self, country):
 
-        pass
+        self.code = country["code"]
+        self.name = country["name"]
+        self.region = country["region"]
