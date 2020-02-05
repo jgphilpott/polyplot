@@ -1,5 +1,5 @@
 $(document).ready(function() {
 
-  console.log("Welcome to iGraph!")
+  console.log("Welcome to Polyplot!")
 
 })
