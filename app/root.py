@@ -2,7 +2,7 @@ from flask import Flask
 from back.settings.setup import setup
 from back.settings.launch import launch
 
-name = "iGraph"
+name = "polyplot"
 
 app_folder = "app/front"
 

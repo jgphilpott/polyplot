@@ -1,15 +1,15 @@
 web:
   build: .
-  container_name: iGraph
+  container_name: polyplot
   ports:
    - 5000:5000
   volumes:
    - .:/root
   links:
-    - mongo
+   - mongo
 
 mongo:
-  container_name: iMongo
+  container_name: mongo
   image: mongo:3.0.2
   ports:
-    - 27017:27017
+   - 27017:27017
