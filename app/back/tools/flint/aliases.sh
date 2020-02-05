@@ -2,7 +2,7 @@
 alias source="source ~/app/back/tools/flint/aliases.sh"
 
 # Welcome
-alias welcome="printf '\n\e[93mWelcome to iGraph!\e[0m 😍\n\n'"
+alias welcome="printf '\n\e[93mWelcome to Polyplot!\e[0m 😍\n\n'"
 
 # Variables
 alias cl="clear"
