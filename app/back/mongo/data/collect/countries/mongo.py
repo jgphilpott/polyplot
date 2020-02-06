@@ -6,7 +6,25 @@ countries = find_collection("countries")
 
 def find_country(country, log=False):
 
-    pass
+    code = country
+
+    if log:
+
+        country = countries.find_one({"code": code}, {"_id": 0})
+
+        if country:
+
+            print("\n\033[93mCountry:\033[0m {}\n".format(code))
+            pp(country)
+            print("")
+
+        else:
+
+            print("\n\033[93mCountry\033[0m {} \033[93mnot found.\033[0m\n".format(code))
+
+    else:
+
+        return countries.find_one({"code": code}, {"_id": 0})
 
 def find_countries(log=False):
 
