@@ -9,9 +9,9 @@ def register_three_route(app):
     def three():
 
         r_index = "SP.POP.TOTL"
-        x_index = "NY.GDP.PCAP.KD.ZG"
-        y_index = "SE.ADT.LITR.ZS"
-        z_index = "MS.MIL.XPND.GD.ZS"
+        x_index = "SP.DYN.LE00.IN"
+        y_index = "SP.DYN.TFRT.IN"
+        z_index = "NY.GDP.PCAP.KD.ZG"
 
         try:
 

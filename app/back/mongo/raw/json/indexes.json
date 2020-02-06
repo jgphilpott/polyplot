@@ -10,18 +10,28 @@
     "code": "NY.GDP.PCAP.KD.ZG"
   },
   {
-    "category": "Education",
-    "index": "Literacy rate, adult total (% of people ages 15 and above)",
-    "code": "SE.ADT.LITR.ZS"
-  },
-  {
     "category": "Health",
     "index": "Population, total",
     "code": "SP.POP.TOTL"
   },
   {
+    "category": "Health",
+    "index": "Life expectancy at birth, total (years)",
+    "code": "SP.DYN.LE00.IN"
+  },
+  {
+    "category": "Health",
+    "index": "Fertility rate, total (births per woman)",
+    "code": "SP.DYN.TFRT.IN"
+  },
+  {
     "category": "Public Sector",
     "index": "Military expenditure (% of GDP)",
     "code": "MS.MIL.XPND.GD.ZS"
+  },
+  {
+    "category": "Education",
+    "index": "Literacy rate, adult total (% of people ages 15 and above)",
+    "code": "SE.ADT.LITR.ZS"
   }
 ]
