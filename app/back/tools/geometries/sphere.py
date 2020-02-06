@@ -1,55 +1,20 @@
 from back.mongo.data.collect.indexes import find_index
+from back.mongo.data.collect.countries import find_countries
 
 def spherify(r_index="SP.POP.TOTL", x_index="NY.GDP.PCAP.KD.ZG", y_index="SE.ADT.LITR.ZS", z_index="MS.MIL.XPND.GD.ZS"):
 
-    geos = []
+    countries = list(find_countries())
 
-    for geo in find_index(r_index)["geographies"]:
+    r = find_index(r_index)["geographies"]
+    x = find_index(x_index)["geographies"]
+    y = find_index(y_index)["geographies"]
+    z = find_index(z_index)["geographies"]
 
-        matches = [obj for obj in geos if obj["code"] in [geo["code"]]]
+    for country in countries:
 
-        if matches:
+        country["r"] = [index for index in r if index["code"] in [country["code"]]][0]["history"]
+        country["x"] = [index for index in x if index["code"] in [country["code"]]][0]["history"]
+        country["y"] = [index for index in y if index["code"] in [country["code"]]][0]["history"]
+        country["z"] = [index for index in y if index["code"] in [country["code"]]][0]["history"]
 
-            matches[0]["r"] = geo["history"]
-
-        else:
-
-            geos.append({"code": geo["code"], "r": geo["history"]})
-
-    for geo in find_index(x_index)["geographies"]:
-
-        matches = [obj for obj in geos if obj["code"] in [geo["code"]]]
-
-        if matches:
-
-            matches[0]["x"] = geo["history"]
-
-        else:
-
-            geos.append({"code": geo["code"], "x": geo["history"]})
-
-    for geo in find_index(y_index)["geographies"]:
-
-        matches = [obj for obj in geos if obj["code"] in [geo["code"]]]
-
-        if matches:
-
-            matches[0]["y"] = geo["history"]
-
-        else:
-
-            geos.append({"code": geo["code"], "y": geo["history"]})
-
-    for geo in find_index(z_index)["geographies"]:
-
-        matches = [obj for obj in geos if obj["code"] in [geo["code"]]]
-
-        if matches:
-
-            matches[0]["z"] = geo["history"]
-
-        else:
-
-            geos.append({"code": geo["code"], "z": geo["history"]})
-
-    return geos
+    return countries
