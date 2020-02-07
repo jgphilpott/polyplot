@@ -1,7 +1,7 @@
-function new_sphere(size, x, y, z) {
+function new_sphere(size, x, y, z, color=black) {
 
   sphere = new THREE.SphereGeometry(size, 32, 32)
-  sphere = new THREE.Mesh(sphere, new_mesh_material())
+  sphere = new THREE.Mesh(sphere, new_mesh_material(color))
   sphere.position.x = x
   sphere.position.y = y
   sphere.position.z = z

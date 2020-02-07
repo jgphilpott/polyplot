@@ -4,7 +4,7 @@ function new_line_material(color=black, width=1) {
 
 }
 
-function new_mesh_material(color=red) {
+function new_mesh_material(color=black) {
 
   return new THREE.MeshStandardMaterial({color: color})
 

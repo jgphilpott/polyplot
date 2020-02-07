@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="150" height="150" src="https://github.com/jgphilpott/polyplot/blob/master/app/front/imgs/icons/icon.jpg">
+  <img width="150" height="150" src="https://github.com/jgphilpott/polyplot/blob/master/app/front/imgs/icons/icon.png">
 </p>
 
 # Intro
