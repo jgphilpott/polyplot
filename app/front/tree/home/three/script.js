@@ -9,7 +9,9 @@ $(document).ready(function() {
   canvas = new_canvas(renderer)
   scene = new_scene()
 
-  light = new_light(scene)
+  light = newPointLight()
+  scene.add(light)
+
   camera = new_camera(width, height)
   controls = new_controls(camera, canvas)
 
