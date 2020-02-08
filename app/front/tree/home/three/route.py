@@ -27,7 +27,7 @@ def register_three_route(app):
                 country["r"] = [index for index in r if index["code"] in [country["code"]]][0]["history"]
                 country["x"] = [index for index in x if index["code"] in [country["code"]]][0]["history"]
                 country["y"] = [index for index in y if index["code"] in [country["code"]]][0]["history"]
-                country["z"] = [index for index in y if index["code"] in [country["code"]]][0]["history"]
+                country["z"] = [index for index in z if index["code"] in [country["code"]]][0]["history"]
 
             data = countries
 
