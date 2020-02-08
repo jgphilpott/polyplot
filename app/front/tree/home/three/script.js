@@ -13,16 +13,8 @@ $(document).ready(function() {
   camera = new_camera(width, height)
   controls = new_controls(camera, canvas)
 
-  yearMin = 1960
-  year = 1992
-  yearMax = 2019
-
   dom	= new THREEx.DomEvents(camera, renderer.domElement)
   axes = new_axes(scene, 100, 100, 100)
-
-  function yolo(data) {
-    console.log(data);
-  }
 
   for (var i = 0; i < data.length; i++) {
 
@@ -44,7 +36,8 @@ $(document).ready(function() {
       z = scale_value(z, [-z_max, z_max], [-100, 100])
 
       sphere = new_sphere(r, x, y, z, regionsColourSwitch(data[i]["region"]))
-      addEventListener(dom, sphere, "mouseover", yolo, data[i]["name"])
+      addEventListener(dom, sphere, "mouseover", metaUpdate, data[i]["code"])
+      addEventListener(dom, sphere, "mouseout", metaClear)
       scene.add(sphere)
 
     }
