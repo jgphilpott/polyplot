@@ -1,0 +1,13 @@
+red = new THREE.Color("rgba(224, 58, 62)")
+orange = new THREE.Color("rgba(245, 130, 31)")
+yellow = new THREE.Color("rgba(253, 184, 39)")
+green = new THREE.Color("rgba(97, 187, 70)")
+blue = new THREE.Color("rgba(0, 157, 220)")
+purple = new THREE.Color("rgba(150, 61, 151)")
+pink = new THREE.Color("rgba(225, 67, 117)")
+
+black = new THREE.Color("rgba(0, 0, 0)")
+darkGrey = new THREE.Color("rgba(179, 179, 179)")
+grey = new THREE.Color("rgba(204, 204, 204)")
+lightGrey = new THREE.Color("rgba(230, 230, 230)")
+white = new THREE.Color("rgba(255, 255, 255)")

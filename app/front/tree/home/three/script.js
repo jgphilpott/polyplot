@@ -46,7 +46,7 @@ $(document).ready(function() {
       y = scale_value(y, [-y_max, y_max], [-100, 100])
       z = scale_value(z, [-z_max, z_max], [-100, 100])
 
-      sphere = new_sphere(r, x, y, z)
+      sphere = new_sphere(r, x, y, z, regionsColourSwitch(data[i]["region"]))
       add_event_listener(sphere, data[i]["name"])
       scene.add(sphere)
 
