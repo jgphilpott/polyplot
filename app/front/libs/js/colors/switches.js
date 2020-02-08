@@ -1,29 +1,37 @@
 function regionsColourSwitch(region) {
-  switch(region) {
 
-    case "Europe & Central Asia":
-      return red
+  if (region == "Europe & Central Asia") {
 
-    case "Latin America & Caribbean":
-      return orange
+    return red
 
-    case "South Asia":
-      return yellow
+  } else if (region == "Latin America & Caribbean") {
 
-    case "Midle East & North Africa":
-      return green
+    return orange
 
-    case "East Asia & Pacific":
-      return blue
+  } else if (region == "South Asia") {
 
-    case "North America":
-      return purple
+    return yellow
 
-    case "Sub-Saharan Africa":
-      return pink
+  } else if (region == "Midle East & North Africa") {
 
-    default:
-      return black
+    return green
+
+  } else if (region == "East Asia & Pacific") {
+
+    return blue
+
+  } else if (region == "North America") {
+
+    return purple
+
+  } else if (region == "Sub-Saharan Africa") {
+
+    return pink
+
+  } else {
+
+    return black
 
   }
+
 }
