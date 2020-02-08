@@ -15,49 +15,44 @@ $(document).ready(function() {
 
   axes = new_axes(scene, 100, 100, 100)
 
-  domEvents	= new THREEx.DomEvents(camera, renderer.domElement)
-
   min_year = 1960
   year = 1992
   max_year = 2019
 
-  // console.log(axis_abs_value("x", "max"))
-  // console.log(axis_abs_value("y", "max"))
-  // console.log(axis_abs_value("z", "max"))
+  domEvents	= new THREEx.DomEvents(camera, renderer.domElement)
 
-  make_draggable("legend")
+  function add_event_listener(obj, data) {
+    domEvents.addEventListener(obj, 'click', function(event){
+      console.log(data)
+    }, false)
+  }
 
-  sphere = new_sphere(3, 50, 50, 50)
-  domEvents.addEventListener(sphere, 'click', function(event){
+  for (var i = 0; i < data.length; i++) {
 
-    console.log(min_year)
-  }, false)
-  scene.add(sphere)
+    r = data[i]["r"].find(item => item.year == year)["value"]
+    x = data[i]["x"].find(item => item.year == year)["value"]
+    y = data[i]["y"].find(item => item.year == year)["value"]
+    z = data[i]["z"].find(item => item.year == year)["value"]
 
-  sphere = new_sphere(3, 30, 30, 30)
-  domEvents.addEventListener(sphere, 'click', function(event){
-    console.log("30")
-  }, false)
-  scene.add(sphere)
+    if (r != null && x != null && y != null && z != null) {
 
-  // for (var i = 0; i < data.length; i++) {
-  //
-  //   x = data[i]["x"].find(item => item.year == year)["value"]
-  //   y = data[i]["y"].find(item => item.year == year)["value"]
-  //   z = data[i]["z"].find(item => item.year == year)["value"]
-  //
-  //   x = scale_value(x, [-10, 10], [-100, 100])
-  //   z = scale_value(z, [0, 10], [0, 100])
-  //
-  //   if (x != null && y != null && z != null) {
-  //     sphere = new_sphere(3, x, y, z)
-  //     domEvents.addEventListener(sphere, 'click', function(event){
-  //     	console.log(i)
-  //     }, false)
-  //     scene.add(sphere)
-  //   }
-  //
-  // }
+      r_max = axis_abs_value("r", "max")
+      x_max = axis_abs_value("x", "max")
+      y_max = axis_abs_value("y", "max")
+      z_max = axis_abs_value("z", "max")
+
+      r = scale_value(r, [0, r_max], [0.5, 5])
+      x = scale_value(x, [-x_max, x_max], [-100, 100])
+      y = scale_value(y, [-y_max, y_max], [-100, 100])
+      z = scale_value(z, [-z_max, z_max], [-100, 100])
+
+      sphere = new_sphere(r, x, y, z)
+      add_event_listener(sphere, data[i]["name"])
+      scene.add(sphere)
+
+    }
+
+  }
 
   function animate() {
 
