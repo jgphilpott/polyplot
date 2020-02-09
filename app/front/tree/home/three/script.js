@@ -12,7 +12,7 @@ $(document).ready(function() {
   light = newPointLight(white, 3)
   scene.add(light)
 
-  camera = new_camera(width, height)
+  camera = newPerspectiveCamera(width, height)
   controls = newOrbitControls(camera, canvas)
 
   dom	= new THREEx.DomEvents(camera, renderer.domElement)
