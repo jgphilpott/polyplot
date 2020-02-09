@@ -11,10 +11,9 @@
     {% extends "tree/theme.html" %}
     {% block content %}
 
-      <h1>Polyplot</h1>
+      <canvas id="canvas"></canvas>
 
-      <p>A data visualization application inspired by Hans Rosling's 'Trendalyzer' software.</p>
-
+      <script src="{{ url_for('static', filename='libs/js/colors/standard.js') }}"></script>
       <script src="{{ url_for('static', filename='tree/home/script.js') }}"></script>
 
     {% endblock %}
