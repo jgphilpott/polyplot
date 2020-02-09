@@ -1,10 +1,10 @@
-function addEventListener(dom, obj, type, callback, data=null) {
+function addEventListener(dom, obj, type, callback, args=null) {
 
   if (type == "click") {
 
     dom.addEventListener(obj, "click", function(event){
-      if (data) {
-        callback(data)
+      if (args) {
+        callback(args)
       } else {
         callback()
       }
@@ -13,8 +13,8 @@ function addEventListener(dom, obj, type, callback, data=null) {
   } else if (type == "dblclick") {
 
     dom.addEventListener(obj, "dblclick", function(event){
-      if (data) {
-        callback(data)
+      if (args) {
+        callback(args)
       } else {
         callback()
       }
@@ -23,8 +23,8 @@ function addEventListener(dom, obj, type, callback, data=null) {
   } else if (type == "mousedown") {
 
     dom.addEventListener(obj, "mousedown", function(event){
-      if (data) {
-        callback(data)
+      if (args) {
+        callback(args)
       } else {
         callback()
       }
@@ -33,8 +33,8 @@ function addEventListener(dom, obj, type, callback, data=null) {
   } else if (type == "mouseup") {
 
     dom.addEventListener(obj, "mouseup", function(event){
-      if (data) {
-        callback(data)
+      if (args) {
+        callback(args)
       } else {
         callback()
       }
@@ -43,8 +43,8 @@ function addEventListener(dom, obj, type, callback, data=null) {
   } else if (type == "mouseover") {
 
     dom.addEventListener(obj, "mouseover", function(event){
-      if (data) {
-        callback(data)
+      if (args) {
+        callback(args)
       } else {
         callback()
       }
@@ -53,8 +53,8 @@ function addEventListener(dom, obj, type, callback, data=null) {
   } else if (type == "mouseout") {
 
     dom.addEventListener(obj, "mouseout", function(event){
-      if (data) {
-        callback(data)
+      if (args) {
+        callback(args)
       } else {
         callback()
       }

@@ -9,11 +9,11 @@ $(document).ready(function() {
   canvas = new_canvas(renderer)
   scene = new_scene()
 
-  light = newPointLight()
+  light = newPointLight(white, 3)
   scene.add(light)
 
   camera = new_camera(width, height)
-  controls = new_controls(camera, canvas)
+  controls = newOrbitControls(camera, canvas)
 
   dom	= new THREEx.DomEvents(camera, renderer.domElement)
   axes = new_axes(scene, 100, 100, 100)
