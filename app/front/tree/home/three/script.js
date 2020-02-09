@@ -1,9 +1,9 @@
 $(document).ready(function() {
 
-  browser = find_browser()
+  browser = findBrowser()
 
-  width = find_width()
-  height = find_height()
+  width = findWidth()
+  height = findHeight()
 
   renderer = new_renderer(width, height)
   canvas = new_canvas(renderer)
