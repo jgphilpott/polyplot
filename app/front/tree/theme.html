@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='tree/theme.css') }}">
 
     <script> const data = {{ data | tojson | safe }} </script>
-    <script src="{{ url_for('static', filename='libs/js/vendor/jquery.js') }}"></script>
-    <script src="{{ url_for('static', filename='tree/theme.js') }}"></script>
 
   </head>
   <body>
@@ -17,6 +15,9 @@
     <a href="https://github.com/jgphilpott/polyplot">
       <img id="forkme" src="{{ url_for('static', filename='imgs/forkme/right/red.png') }}">
     </a>
+
+    <script src="{{ url_for('static', filename='libs/js/vendor/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='tree/theme.js') }}"></script>
 
     {% block content %}
     {% endblock %}
