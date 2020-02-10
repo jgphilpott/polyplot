@@ -6,13 +6,6 @@
 
 Polyplot is a data visualization application inspired by [Hans Rosling](https://en.wikipedia.org/wiki/Hans_Rosling)'s '[Trendalyzer](https://en.wikipedia.org/wiki/Trendalyzer)' software.
 
-# Content
-
- - [Intro](https://github.com/jgphilpott/polyplot#intro)
- - [Content](https://github.com/jgphilpott/polyplot#content)
- - [Quick Start](https://github.com/jgphilpott/polyplot#quick-start)
- - [Development](https://github.com/jgphilpott/polyplot#development)
-
 # Quick Start
 
 Assuming you have [docker compose installed](https://docs.docker.com/compose/install/), clone this repository, navigate into the root directory and run:
