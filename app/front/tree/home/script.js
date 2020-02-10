@@ -1,55 +1,27 @@
 $(document).ready(function() {
 
   // Credit: https://codepen.io/jacquelinclem/pen/udnwI
-  function initParticleWeb() {
-
-    window.requestAnimFrame = function() {
-
-      return (
-
-        window.requestAnimationFrame       ||
-        window.webkitRequestAnimationFrame ||
-        window.mozRequestAnimationFrame    ||
-        window.oRequestAnimationFrame      ||
-        window.msRequestAnimationFrame     ||
-
-        function(callback) {
-
-          window.setTimeout(callback, 1000 / 60)
-
-        }
-
-      )
-
-    }()
-
-    canvas = document.getElementById("canvas")
-    dpi = window.devicePixelRatio || 1
-    context = canvas.getContext("2d")
-    context.scale(dpi, dpi)
-
-    function dpiFix() {
-
-      styleWidth = +getComputedStyle(canvas).getPropertyValue("width").slice(0, -2)
-      styleHeight = +getComputedStyle(canvas).getPropertyValue("height").slice(0, -2)
-
-      canvas.setAttribute("width", styleWidth * dpi)
-      canvas.setAttribute("height", styleHeight * dpi)
-
-    }
+  // GitHub: https://github.com/jacquelinclem
+  function summonParticleWeb() {
 
     particles = []
     particleCount = 42
     colors = [red, orange, yellow, green, blue, purple, pink]
+
+    canvas = document.getElementById("canvas")
+    dpi = window.devicePixelRatio || 1
+
+    context = canvas.getContext("2d")
+    context.scale(dpi, dpi)
 
     function Particle() {
 
       this.radius = Math.round((Math.random() * 3) + 5)
       this.x = Math.floor((Math.random() * ((+getComputedStyle(canvas).getPropertyValue("width").slice(0, -2) * dpi) - this.radius + 1) + this.radius))
       this.y = Math.floor((Math.random() * ((+getComputedStyle(canvas).getPropertyValue("height").slice(0, -2) * dpi) - this.radius + 1) + this.radius))
-      this.color = colors[Math.floor(Math.random() * colors.length)]
       this.speedx = Math.round((Math.random() * 201) + 0) / 100
       this.speedy = Math.round((Math.random() * 201) + 0) / 100
+      this.color = colors[Math.floor(Math.random() * colors.length)]
 
       switch (Math.round(Math.random() * colors.length)) {
 
@@ -140,6 +112,16 @@ $(document).ready(function() {
 
     }
 
+    function dpiFix() {
+
+      styleWidth = +getComputedStyle(canvas).getPropertyValue("width").slice(0, -2)
+      styleHeight = +getComputedStyle(canvas).getPropertyValue("height").slice(0, -2)
+
+      canvas.setAttribute("width", styleWidth * dpi)
+      canvas.setAttribute("height", styleHeight * dpi)
+
+    }
+
     for (var i = 0; i < particleCount; i++) {
 
       dpiFix()
@@ -160,6 +142,26 @@ $(document).ready(function() {
 
       }
 
+      window.requestAnimFrame = function() {
+
+        return (
+
+          window.requestAnimationFrame       ||
+          window.webkitRequestAnimationFrame ||
+          window.mozRequestAnimationFrame    ||
+          window.oRequestAnimationFrame      ||
+          window.msRequestAnimationFrame     ||
+
+          function(callback) {
+
+            window.setTimeout(callback, 1000 / 60)
+
+          }
+
+        )
+
+      }()
+
       requestAnimFrame(animate)
 
     }
@@ -168,6 +170,6 @@ $(document).ready(function() {
 
   }
 
-  initParticleWeb()
+  summonParticleWeb()
 
 })
