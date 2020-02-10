@@ -14,6 +14,8 @@ Assuming you have [docker compose installed](https://docs.docker.com/compose/ins
 sudo docker-compose up -d
 ```
 
+If everything worked, you should now be able to view the application when you visit `localhost:5000` in a web browser (ideally Chrome, not all browsers are supported).
+
 # Development
 
 To start an interactive shell in the Polyplot container run:

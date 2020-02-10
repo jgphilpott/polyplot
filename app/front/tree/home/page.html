@@ -11,6 +11,18 @@
     {% extends "tree/theme.html" %}
     {% block content %}
 
+      <div id="home" class="panel">
+
+        <img id="logo" src="{{ url_for('static', filename='imgs/icons/logo.png') }}">
+
+        <h1 id="title">Polyplot</h1>
+
+        <p id="description">A data visualization application inspired by Hans Rosling's 'Trendalyzer' software.</p>
+
+        <iframe id="video" src="https://www.youtube.com/embed/placeholder" allowfullscreen></iframe>
+
+      </div>
+
       <canvas id="canvas"></canvas>
 
       <script src="{{ url_for('static', filename='libs/js/colors/standard.js') }}"></script>
