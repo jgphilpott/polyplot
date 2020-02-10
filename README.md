@@ -14,7 +14,7 @@ Assuming you have [docker compose installed](https://docs.docker.com/compose/ins
 sudo docker-compose up -d
 ```
 
-If everything worked, you should now be able to view the application when you visit `localhost:5000` in a web browser (ideally Chrome, not all browsers are supported).
+If everything worked, you should now be able to view the application when you visit `localhost:5000` in a web browser.
 
 # Development
 
