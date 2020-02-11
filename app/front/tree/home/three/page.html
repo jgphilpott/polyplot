@@ -6,6 +6,10 @@
     <link rel="shortcut icon" href="{{ url_for('static', filename='imgs/icons/favicon.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='tree/home/three/style.css') }}">
 
+    <script src="{{ url_for('static', filename='libs/mjs/vendor/three.js') }}"></script>
+    <script src="{{ url_for('static', filename='libs/mjs/vendor/orbitControls.js') }}"></script>
+    <script src="{{ url_for('static', filename='libs/mjs/vendor/threeX.js') }}"></script>
+
   </head>
   <body>
     {% extends "tree/theme.html" %}
@@ -42,10 +46,6 @@
         <p><strong>Y:</strong> <span id="meta-y">None</span></p>
         <p><strong>Z:</strong> <span id="meta-z">None</span></p>
       </div>
-
-      <script src="{{ url_for('static', filename='libs/js/vendor/three.js') }}"></script>
-      <script src="{{ url_for('static', filename='libs/js/vendor/orbitControls.js') }}"></script>
-      <script src="{{ url_for('static', filename='libs/js/vendor/threeX.js') }}"></script>
 
       <script src="{{ url_for('static', filename='libs/js/colors/three.js') }}"></script>
       <script src="{{ url_for('static', filename='libs/js/colors/switches.js') }}"></script>
