@@ -1,0 +1,20 @@
+<html>
+  <head>
+
+    <title>Countries</title>
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='imgs/icons/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='tree/home/countries/style.css') }}">
+
+  </head>
+  <body>
+    {% extends "tree/theme.html" %}
+    {% block content %}
+
+      <h1>Countries</h1>
+
+      <script src="{{ url_for('static', filename='tree/home/countries/script.js') }}"></script>
+
+    {% endblock %}
+  </body>
+</html>
