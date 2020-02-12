@@ -1,10 +1,10 @@
 web:
   container_name: polyplot
   build: .
-  ports:
-   - 5000:5000
   volumes:
    - .:/root
+  ports:
+   - 5000:5000
   links:
    - database
 
