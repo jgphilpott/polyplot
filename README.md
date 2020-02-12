@@ -11,7 +11,7 @@ Polyplot is a data visualization application inspired by [Hans Rosling](https://
 Assuming you have [docker compose installed](https://docs.docker.com/compose/install/), clone this repository, navigate into the root directory and run:
 
 ```
-sudo docker-compose up -d
+sudo docker-compose up --build -d
 ```
 
 If everything worked, you should now be able to view the application when you visit `localhost:5000` in a web browser.

@@ -1,14 +1,22 @@
 web:
-  build: .
   container_name: polyplot
+  build: .
   ports:
    - 5000:5000
   volumes:
    - .:/root
   links:
-   - mongo
+   - database
 
-mongo:
+notebook:
+  container_name: jupyter
+  image: jupyter/minimal-notebook:latest
+  ports:
+   - 8888:8888
+  links:
+   - database
+
+database:
   container_name: mongo
   image: mongo:3.0.2
   ports:
