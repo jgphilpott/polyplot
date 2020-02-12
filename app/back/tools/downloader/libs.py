@@ -17,7 +17,7 @@ def get_js_libs(js_libs_dir):
     urlretrieve("https://raw.githubusercontent.com/jeromeetienne/threex.domevents/1100828c40df668a82a97c811895918088cc607f/threex.domevents.js", js_libs_dir + "/threeX.js")
     urlretrieve("https://raw.githubusercontent.com/mrdoob/three.js/23f814719b2d199e324448751862f2a5fc7d27a5/examples/js/controls/OrbitControls.js", js_libs_dir + "/orbitControls.js")
 
-    urlretrieve("https://raw.githubusercontent.com/jgphilpott/particleWeb/master/particleWeb.js", js_libs_dir + "/particleWeb.js")
+    urlretrieve("https://raw.githubusercontent.com/jgphilpott/particleWeb/6b3cf31aa51ce901d4d9e00b47eef5ef656efe2b/particleWeb.js", js_libs_dir + "/particleWeb.js")
 
 def get_sass_libs(sass_libs_dir):
 

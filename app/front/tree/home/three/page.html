@@ -15,6 +15,8 @@
     {% extends "tree/theme.html" %}
     {% block content %}
 
+      <script src="{{ url_for('static', filename='tree/home/three/script.mjs') }}" type="module"></script>
+
       <div id="start"></div>
 
       <div id="time" class="panel">
@@ -71,8 +73,6 @@
       <script src="{{ url_for('static', filename='libs/js/ui/threeX/events.js') }}"></script>
       <script src="{{ url_for('static', filename='libs/js/ui/panels/legend.js') }}"></script>
       <script src="{{ url_for('static', filename='libs/js/ui/panels/meta.js') }}"></script>
-
-      <script src="{{ url_for('static', filename='tree/home/three/script.js') }}"></script>
 
     {% endblock %}
   </body>

@@ -1,4 +1,4 @@
-import {rainbow} from "../../libs/mjs/colors/standard.mjs"
+import {rainbow} from "../../libs/mjs/colors/solid/rainbow.mjs"
 
 $(document).ready(function() {
 
