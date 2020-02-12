@@ -1,9 +1,6 @@
+import {width, height} from "../../../libs/mjs/env/dimensions.mjs"
+
 $(document).ready(function() {
-
-  browser = findBrowser()
-
-  width = findWidth()
-  height = findHeight()
 
   renderer = new_renderer(width, height)
   canvas = new_canvas(renderer)

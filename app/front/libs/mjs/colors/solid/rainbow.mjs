@@ -5,4 +5,5 @@ export let green = "rgba(97, 187, 70)"
 export let blue = "rgba(0, 157, 220)"
 export let purple = "rgba(150, 61, 151)"
 export let pink = "rgba(225, 67, 117)"
+
 export let rainbow = [red, orange, yellow, green, blue, purple, pink]
