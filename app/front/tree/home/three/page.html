@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='tree/home/three/style.css') }}">
 
     <script src="{{ url_for('static', filename='libs/mjs/vendor/three.js') }}"></script>
-    <script src="{{ url_for('static', filename='libs/mjs/vendor/orbitControls.js') }}"></script>
     <script src="{{ url_for('static', filename='libs/mjs/vendor/threeX.js') }}"></script>
+    <script src="{{ url_for('static', filename='libs/mjs/vendor/orbitControls.js') }}"></script>
 
   </head>
   <body>
@@ -48,28 +48,6 @@
         <p><strong>Y:</strong> <span id="meta-y">None</span></p>
         <p><strong>Z:</strong> <span id="meta-z">None</span></p>
       </div>
-
-      <script src="{{ url_for('static', filename='libs/js/colors/three.js') }}"></script>
-      <script src="{{ url_for('static', filename='libs/js/colors/switches.js') }}"></script>
-
-      <script src="{{ url_for('static', filename='libs/js/time/variables.js') }}"></script>
-
-      <script src="{{ url_for('static', filename='libs/js/essentials.js') }}"></script>
-
-      <script src="{{ url_for('static', filename='libs/js/lights/ambient.js') }}"></script>
-      <script src="{{ url_for('static', filename='libs/js/lights/point.js') }}"></script>
-      <script src="{{ url_for('static', filename='libs/js/lights/spot.js') }}"></script>
-
-      <script src="{{ url_for('static', filename='libs/js/cameras/perspective.js') }}"></script>
-      <script src="{{ url_for('static', filename='libs/js/controls/orbit.js') }}"></script>
-
-      <script src="{{ url_for('static', filename='libs/js/materials.js') }}"></script>
-      <script src="{{ url_for('static', filename='libs/js/geometries.js') }}"></script>
-      <script src="{{ url_for('static', filename='libs/js/scale.js') }}"></script>
-
-      <script src="{{ url_for('static', filename='libs/js/ui/threeX/events.js') }}"></script>
-      <script src="{{ url_for('static', filename='libs/js/ui/panels/legend.js') }}"></script>
-      <script src="{{ url_for('static', filename='libs/js/ui/panels/meta.js') }}"></script>
 
     {% endblock %}
   </body>
