@@ -3,10 +3,10 @@ from flask import render_template
 from back.mongo.data.collect.indexes import find_index
 from back.mongo.data.collect.countries import find_countries
 
-def register_three_route(app):
+def register_poly3_route(app):
 
-    @app.route("/three")
-    def three():
+    @app.route("/poly3")
+    def poly3():
 
         r_index = "SP.POP.TOTL"
         x_index = "SP.DYN.LE00.IN"
@@ -35,4 +35,4 @@ def register_three_route(app):
 
             data = None
 
-        return render_template("tree/home/three/page.html", data=data)
+        return render_template("tree/home/poly3/page.html", data=data)
