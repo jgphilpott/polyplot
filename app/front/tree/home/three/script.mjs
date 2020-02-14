@@ -1,40 +1,62 @@
 import {width, height} from "../../../libs/mjs/env/dimensions.mjs"
 
+import {regionsColourSwitch} from "../../../libs/mjs/colors/switches/regions.mjs"
+
+import {newRenderer} from "../../../libs/mjs/threeCore/renderer.mjs"
+import {newCanvas} from "../../../libs/mjs/threeCore/canvas.mjs"
+import {newScene} from "../../../libs/mjs/threeCore/scene.mjs"
+import {addEventListener} from "../../../libs/mjs/threeCore/x.mjs"
+
+import {metaUpdate, metaClear} from "../../../libs/mjs/panels/meta.mjs"
+
+import {newPointLight} from "../../../libs/mjs/lights/point.mjs"
+import {newPerspectiveCamera} from "../../../libs/mjs/cameras/perspective.mjs"
+import {newOrbitControls} from "../../../libs/mjs/controls/orbit.mjs"
+
+import {addAxes} from "../../../libs/mjs/geometries/axes.mjs"
+import {newSphere} from "../../../libs/mjs/geometries/sphere.mjs"
+
+import {year} from "../../../libs/mjs/time/years.mjs"
+
+import {rangeAxis, absMaxValue} from "../../../libs/mjs/scales/range.mjs"
+import {linearScale} from "../../../libs/mjs/scales/linear.mjs"
+
 $(document).ready(function() {
 
-  renderer = new_renderer(width, height)
-  canvas = new_canvas(renderer)
-  scene = new_scene()
+  let renderer = newRenderer(width, height)
+  let canvas = newCanvas(renderer)
+  let scene = newScene()
 
-  light = newPointLight(white, 3)
+  let camera = newPerspectiveCamera(width, height)
+  let controls = newOrbitControls(camera, canvas)
+
+  let light = newPointLight()
   scene.add(light)
 
-  camera = newPerspectiveCamera(width, height)
-  controls = newOrbitControls(camera, canvas)
+  addAxes(scene)
 
-  dom	= new THREEx.DomEvents(camera, renderer.domElement)
-  axes = new_axes(scene, 100, 100, 100)
+  let dom	= new THREEx.DomEvents(camera, renderer.domElement)
 
-  for (var i = 0; i < data.length; i++) {
+  let rMax = absMaxValue(rangeAxis("r"))
+  let xMax = absMaxValue(rangeAxis("x"))
+  let yMax = absMaxValue(rangeAxis("y"))
+  let zMax = absMaxValue(rangeAxis("z"))
 
-    r = data[i]["r"].find(item => item.year == year)["value"]
-    x = data[i]["x"].find(item => item.year == year)["value"]
-    y = data[i]["y"].find(item => item.year == year)["value"]
-    z = data[i]["z"].find(item => item.year == year)["value"]
+  for (let i = 0; i < data.length; i++) {
+
+    let r = data[i]["r"].find(item => item.year == year)["value"]
+    let x = data[i]["x"].find(item => item.year == year)["value"]
+    let y = data[i]["y"].find(item => item.year == year)["value"]
+    let z = data[i]["z"].find(item => item.year == year)["value"]
 
     if (r != null && x != null && y != null && z != null) {
 
-      r_max = axis_abs_value("r", "max")
-      x_max = axis_abs_value("x", "max")
-      y_max = axis_abs_value("y", "max")
-      z_max = axis_abs_value("z", "max")
+      r = linearScale(r, [0, rMax], [0.7, 7])
+      x = linearScale(x, [-xMax, xMax], [-100, 100])
+      y = linearScale(y, [-yMax, yMax], [-100, 100])
+      z = linearScale(z, [-zMax, zMax], [-100, 100])
 
-      r = scale_value(r, [0, r_max], [0.5, 5])
-      x = scale_value(x, [-x_max, x_max], [-100, 100])
-      y = scale_value(y, [-y_max, y_max], [-100, 100])
-      z = scale_value(z, [-z_max, z_max], [-100, 100])
-
-      sphere = new_sphere(r, x, y, z, regionsColourSwitch(data[i]["region"]))
+      let sphere = newSphere(r, x, y, z, regionsColourSwitch(data[i]["region"]))
       addEventListener(dom, sphere, "mouseover", metaUpdate, data[i]["code"])
       addEventListener(dom, sphere, "mouseout", metaClear)
       scene.add(sphere)
