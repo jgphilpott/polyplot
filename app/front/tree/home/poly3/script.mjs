@@ -11,6 +11,7 @@ import {newCanvas} from "../../../libs/mjs/threeCore/canvas.mjs"
 import {newScene} from "../../../libs/mjs/threeCore/scene.mjs"
 import {xEvents, xEvent} from "../../../libs/mjs/threeCore/events.mjs"
 
+import {addAmbientLight} from "../../../libs/mjs/lights/ambient.mjs"
 import {addPointLight} from "../../../libs/mjs/lights/point.mjs"
 
 import {newPerspectiveCamera} from "../../../libs/mjs/cameras/perspective.mjs"
@@ -33,7 +34,8 @@ $(document).ready(function() {
   let scene = newScene()
 
   // Lights
-  addPointLight(scene, grayscale[4], 2)
+  addAmbientLight(scene)
+  addPointLight(scene)
 
   // Camera
   let camera = newPerspectiveCamera(width, height)
