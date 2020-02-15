@@ -1,46 +1,53 @@
-import {width, height} from "../../../libs/mjs/env/dimensions.mjs"
+import {year} from "../../../libs/mjs/time/years.mjs"
 
+import {rainbow} from "../../../libs/mjs/colors/three/rainbow.mjs"
+import {grayscale} from "../../../libs/mjs/colors/three/grayscale.mjs"
 import {regionsColourSwitch} from "../../../libs/mjs/colors/switches/regions.mjs"
+
+import {min, max, width, height} from "../../../libs/mjs/env/dimensions.mjs"
 
 import {newRenderer} from "../../../libs/mjs/threeCore/renderer.mjs"
 import {newCanvas} from "../../../libs/mjs/threeCore/canvas.mjs"
 import {newScene} from "../../../libs/mjs/threeCore/scene.mjs"
-import {addEventListener} from "../../../libs/mjs/threeCore/x.mjs"
+import {xEvents, xEvent} from "../../../libs/mjs/threeCore/events.mjs"
 
-import {metaUpdate, metaClear} from "../../../libs/mjs/panels/meta.mjs"
+import {addPointLight} from "../../../libs/mjs/lights/point.mjs"
 
-import {newPointLight} from "../../../libs/mjs/lights/point.mjs"
 import {newPerspectiveCamera} from "../../../libs/mjs/cameras/perspective.mjs"
+
 import {newOrbitControls} from "../../../libs/mjs/controls/orbit.mjs"
-
-import {addAxes} from "../../../libs/mjs/geometries/axes.mjs"
-import {newSphere} from "../../../libs/mjs/geometries/sphere.mjs"
-
-import {year} from "../../../libs/mjs/time/years.mjs"
 
 import {rangeAxis, absMaxValue} from "../../../libs/mjs/scales/range.mjs"
 import {linearScale} from "../../../libs/mjs/scales/linear.mjs"
 
+import {addAxes} from "../../../libs/mjs/geometries/axes.mjs"
+import {newSphere} from "../../../libs/mjs/geometries/sphere.mjs"
+
+import {metaUpdate, metaClear} from "../../../libs/mjs/panels/meta.mjs"
+
 $(document).ready(function() {
 
+  // Setup
   let renderer = newRenderer(width, height)
   let canvas = newCanvas(renderer)
   let scene = newScene()
 
+  // Lights
+  addPointLight(scene, grayscale[4], 2)
+
+  // Camera
   let camera = newPerspectiveCamera(width, height)
+
+  // Action
   let controls = newOrbitControls(camera, canvas)
-
-  let light = newPointLight()
-  scene.add(light)
-
-  addAxes(scene)
-
-  let dom	= new THREEx.DomEvents(camera, renderer.domElement)
+  let dom	= xEvents(camera, renderer)
 
   let rMax = absMaxValue(rangeAxis("r"))
   let xMax = absMaxValue(rangeAxis("x"))
   let yMax = absMaxValue(rangeAxis("y"))
   let zMax = absMaxValue(rangeAxis("z"))
+
+  addAxes(scene)
 
   for (let i = 0; i < data.length; i++) {
 
@@ -51,14 +58,14 @@ $(document).ready(function() {
 
     if (r != null && x != null && y != null && z != null) {
 
-      r = linearScale(r, [0, rMax], [0.7, 7])
-      x = linearScale(x, [-xMax, xMax], [-100, 100])
-      y = linearScale(y, [-yMax, yMax], [-100, 100])
-      z = linearScale(z, [-zMax, zMax], [-100, 100])
+      r = linearScale(r, [min, rMax], [max / 150, max / 15])
+      x = linearScale(x, [-xMax, xMax], [-max, max])
+      y = linearScale(y, [-yMax, yMax], [-max, max])
+      z = linearScale(z, [-zMax, zMax], [-max, max])
 
       let sphere = newSphere(r, x, y, z, regionsColourSwitch(data[i]["region"]))
-      addEventListener(dom, sphere, "mouseover", metaUpdate, data[i]["code"])
-      addEventListener(dom, sphere, "mouseout", metaClear)
+      xEvent(dom, sphere, "mouseover", metaUpdate, data[i]["code"])
+      xEvent(dom, sphere, "mouseout", metaClear)
       scene.add(sphere)
 
     }
