@@ -1,5 +1,5 @@
-import {rainbow} from "../three/rainbow.mjs"
 import {black} from "../three/grayscale.mjs"
+import {rainbow} from "../three/rainbow.mjs"
 
 export function regionsColourSwitch(region) {
 

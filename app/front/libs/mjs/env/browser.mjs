@@ -17,7 +17,7 @@ export function findBrowser() {
                   {"name": "opera", "status": opera},
                   {"name": "blink", "status": blink}]
 
-  for (var i = 0; i < browsers.length; i++) {
+  for (let i = 0; i < browsers.length; i++) {
 
     if (browsers[i]["status"]) {
 
