@@ -24,13 +24,15 @@ export function absMaxValue(values=[]) {
 
 export function rangeAxis(axis, values=[]) {
 
-  for (let i = 0; i < data.length; i++) {
+  let plots = data.plot.plots
 
-    for (let j = 0; j < data[i][axis].length; j++) {
+  for (let i = 0; i < plots.length; i++) {
 
-      if (typeof(data[i][axis][j]["value"]) == "number") {
+    for (let j = 0; j < plots[i][axis].length; j++) {
 
-        values.push(data[i][axis][j]["value"])
+      if (typeof(plots[i][axis][j]["value"]) == "number") {
+
+        values.push(plots[i][axis][j]["value"])
 
       }
 

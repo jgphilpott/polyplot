@@ -1,37 +1,37 @@
 [
   {
     "category": "Agriculture & Rural Development",
-    "index": "Arable land (% of land area)",
+    "name": "Arable land (% of land area)",
     "code": "AG.LND.ARBL.ZS"
   },
   {
     "category": "Economy & Growth",
-    "index": "GDP per capita growth (annual %)",
+    "name": "GDP per capita growth (annual %)",
     "code": "NY.GDP.PCAP.KD.ZG"
   },
   {
     "category": "Health",
-    "index": "Population, total",
+    "name": "Population, total",
     "code": "SP.POP.TOTL"
   },
   {
     "category": "Health",
-    "index": "Life expectancy at birth, total (years)",
+    "name": "Life expectancy at birth, total (years)",
     "code": "SP.DYN.LE00.IN"
   },
   {
     "category": "Health",
-    "index": "Fertility rate, total (births per woman)",
+    "name": "Fertility rate, total (births per woman)",
     "code": "SP.DYN.TFRT.IN"
   },
   {
     "category": "Public Sector",
-    "index": "Military expenditure (% of GDP)",
+    "name": "Military expenditure (% of GDP)",
     "code": "MS.MIL.XPND.GD.ZS"
   },
   {
     "category": "Education",
-    "index": "Literacy rate, adult total (% of people ages 15 and above)",
+    "name": "Literacy rate, adult total (% of people ages 15 and above)",
     "code": "SE.ADT.LITR.ZS"
   }
 ]

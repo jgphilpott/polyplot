@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template, request
 
 from back.mongo.data.collect.indexes import find_index
 from back.mongo.data.collect.countries import find_countries
@@ -8,28 +8,32 @@ def register_poly3_route(app):
     @app.route("/poly3")
     def poly3():
 
-        r_index = "SP.POP.TOTL"
-        x_index = "SP.DYN.LE00.IN"
-        y_index = "SP.DYN.TFRT.IN"
-        z_index = "NY.GDP.PCAP.KD.ZG"
-
         try:
+
+            data = {}
+            data["plot"] = {}
+            data["plot"]["title"] = "World Bank Development Indicators"
+
+            r = find_index(request.args["r"]) if "r" in request.args else find_index("SP.POP.TOTL")
+            x = find_index(request.args["x"]) if "x" in request.args else find_index("SP.DYN.LE00.IN")
+            y = find_index(request.args["y"]) if "y" in request.args else find_index("SP.DYN.TFRT.IN")
+            z = find_index(request.args["z"]) if "z" in request.args else find_index("NY.GDP.PCAP.KD.ZG")
+
+            data["plot"]["r"] = r["name"]
+            data["plot"]["x"] = x["name"]
+            data["plot"]["y"] = y["name"]
+            data["plot"]["z"] = z["name"]
 
             countries = list(find_countries())
 
-            r = find_index(r_index)["geographies"]
-            x = find_index(x_index)["geographies"]
-            y = find_index(y_index)["geographies"]
-            z = find_index(z_index)["geographies"]
-
             for country in countries:
 
-                country["r"] = [index for index in r if index["code"] in [country["code"]]][0]["history"]
-                country["x"] = [index for index in x if index["code"] in [country["code"]]][0]["history"]
-                country["y"] = [index for index in y if index["code"] in [country["code"]]][0]["history"]
-                country["z"] = [index for index in z if index["code"] in [country["code"]]][0]["history"]
+                country["r"] = [index for index in r["geographies"] if index["code"] in [country["code"]]][0]["history"]
+                country["x"] = [index for index in x["geographies"] if index["code"] in [country["code"]]][0]["history"]
+                country["y"] = [index for index in y["geographies"] if index["code"] in [country["code"]]][0]["history"]
+                country["z"] = [index for index in z["geographies"] if index["code"] in [country["code"]]][0]["history"]
 
-            data = countries
+            data["plot"]["plots"] = countries
 
         except:
 

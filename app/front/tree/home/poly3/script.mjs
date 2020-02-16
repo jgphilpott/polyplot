@@ -51,12 +51,14 @@ $(document).ready(function() {
 
   addAxes(scene)
 
-  for (let i = 0; i < data.length; i++) {
+  let plots = data.plot.plots
 
-    let r = data[i]["r"].find(item => item.year == year)["value"]
-    let x = data[i]["x"].find(item => item.year == year)["value"]
-    let y = data[i]["y"].find(item => item.year == year)["value"]
-    let z = data[i]["z"].find(item => item.year == year)["value"]
+  for (let i = 0; i < plots.length; i++) {
+
+    let r = plots[i]["r"].find(item => item.year == year)["value"]
+    let x = plots[i]["x"].find(item => item.year == year)["value"]
+    let y = plots[i]["y"].find(item => item.year == year)["value"]
+    let z = plots[i]["z"].find(item => item.year == year)["value"]
 
     if (r != null && x != null && y != null && z != null) {
 
@@ -65,8 +67,8 @@ $(document).ready(function() {
       y = linearScale(y, [-yMax, yMax], [-max, max])
       z = linearScale(z, [-zMax, zMax], [-max, max])
 
-      let sphere = newSphere(r, x, y, z, regionsColourSwitch(data[i]["region"]))
-      xEvent(dom, sphere, "mouseover", metaUpdate, data[i]["code"])
+      let sphere = newSphere(r, x, y, z, regionsColourSwitch(plots[i]["region"]))
+      xEvent(dom, sphere, "mouseover", metaUpdate, plots[i]["code"])
       xEvent(dom, sphere, "mouseout", metaClear)
       scene.add(sphere)
 

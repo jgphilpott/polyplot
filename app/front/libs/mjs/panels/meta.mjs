@@ -2,7 +2,7 @@ import {year} from "../time/years.mjs"
 
 export function metaUpdate(code) {
 
-  let plot = data.find(item => item.code == code)
+  let plot = data.plot.plots.find(item => item.code == code)
 
   let r = plot.r.find(item => item.year == year).value
   let x = plot.x.find(item => item.year == year).value

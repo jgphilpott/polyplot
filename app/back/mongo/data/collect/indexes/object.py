@@ -6,7 +6,7 @@ class Index():
     def __init__(self, index):
 
         self.category = index["category"]
-        self.index = index["index"]
+        self.name = index["name"]
         self.code = index["code"]
 
         if "geographies" in index:
@@ -33,7 +33,7 @@ class Index():
 
                 if log:
 
-                    print("\n\033[93mUpdating index:\033[0m {} \033[93m~\033[0m {}".format(self.code, self.index))
+                    print("\n\033[93mUpdating index:\033[0m {} \033[93m~\033[0m {}".format(self.code, self.name))
                     bar = tqdm(initial=page, total=pages)
 
                 while page <= pages:
