@@ -7,14 +7,16 @@
     <link rel="shortcut icon" href="{{ url_for('static', filename='imgs/icons/favicon.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='tree/theme.css') }}">
 
-    <script> const data = {{ data | tojson | safe }} </script>
     <script src="{{ url_for('static', filename='libs/mjs/vendor/sha256.js') }}"></script>
+    <script src="{{ url_for('static', filename='libs/mjs/vendor/socket.js') }}"></script>
     <script src="{{ url_for('static', filename='libs/mjs/vendor/jQuery.js') }}"></script>
     <script src="{{ url_for('static', filename='libs/mjs/vendor/jQueryUI.js') }}"></script>
     <script src="{{ url_for('static', filename='tree/theme.mjs') }}" type="module"></script>
 
   </head>
   <body>
+
+    <script> const data = {{ data | tojson | safe }} </script>
 
     <a href="https://github.com/jgphilpott/polyplot">
       <img id="forkme" src="{{ url_for('static', filename='imgs/forkme/right/red.png') }}">
