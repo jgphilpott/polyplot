@@ -1,9 +1,3 @@
-export function xEvents(camera, renderer) {
-
-  return new THREEx.DomEvents(camera, renderer.domElement)
-
-}
-
 export function xEvent(dom, obj, type, callback, args=null) {
 
   if (type == "click") {
@@ -79,5 +73,11 @@ export function xEvent(dom, obj, type, callback, args=null) {
     }, false)
 
   }
+
+}
+
+export function xEvents(camera, renderer) {
+
+  return new THREEx.DomEvents(camera, renderer.domElement)
 
 }
