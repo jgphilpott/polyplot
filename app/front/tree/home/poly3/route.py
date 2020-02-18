@@ -11,8 +11,14 @@ def register_poly3_route(app):
         try:
 
             data = {}
+
             data["plot"] = {}
+
             data["plot"]["title"] = "World Bank Development Indicators"
+
+            data["plot"]["yearMin"] = 1960
+            data["plot"]["year"] = 1990
+            data["plot"]["yearMax"] = 2019
 
             r = find_index(request.args["r"]) if "r" in request.args else find_index("SP.POP.TOTL")
             x = find_index(request.args["x"]) if "x" in request.args else find_index("SP.DYN.LE00.IN")
