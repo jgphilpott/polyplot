@@ -19,10 +19,18 @@ export function newAxis(type) {
 
 }
 
+export function addAxis(scene, type) {
+
+  let axis = newAxis(type)
+  scene.add(axis)
+  return axis
+
+}
+
 export function addAxes(scene) {
 
-  scene.add(newAxis("x"))
-  scene.add(newAxis("y"))
-  scene.add(newAxis("z"))
+  addAxis(scene, "x")
+  addAxis(scene, "y")
+  addAxis(scene, "z")
 
 }
