@@ -3,40 +3,66 @@ import {rScale, xScale, yScale, zScale} from "../scales/axes.mjs"
 
 export function animatePlot(dom, plot, year=data.plot.year, direction="forward", speed=1200) {
 
-  // console.log(plot)
+if (plot.object != null) {
 
-  let r = plot.object.geometry.parameters.radius
-  let x = plot.object.position.x
-  let y = plot.object.position.y
-  let z = plot.object.position.z
+  let rNow = plot.object.geometry.parameters.radius
+  let xNow = plot.object.position.x
+  let yNow = plot.object.position.y
+  let zNow = plot.object.position.z
 
-  data.plot.year += 1
+  // console.log(plot, data.plot.year);
 
   let rNew = plot["r"].find(item => item.year == data.plot.year).value
   let xNew = plot["x"].find(item => item.year == data.plot.year).value
   let yNew = plot["y"].find(item => item.year == data.plot.year).value
   let zNew = plot["z"].find(item => item.year == data.plot.year).value
 
+if (rNew != null && xNew != null && yNew != null && zNew != null) {
+
   rNew = rScale(rNew)
   xNew = xScale(xNew)
   yNew = yScale(yNew)
   zNew = zScale(zNew)
 
-  let rDif = Math.abs(r - rNew)
-  let xDif = Math.abs(x - xNew)
-  let yDif = Math.abs(y - yNew)
-  let zDif = Math.abs(z - zNew)
+  let rDiff = rNew / rNow
+  let xDiff = xNew - xNow
+  let yDiff = yNew - yNow
+  let zDiff = zNew - zNow
 
-  let steps = speed / 42
+  let steps = speed / 60
 
-  let rStep = rDif / steps
-  let xStep = xDif / steps
-  let yStep = yDif / steps
-  let zStep = zDif / steps
+  let rStep = null
+
+  if (rDiff > 1) {
+
+    rStep = (rDiff - 1) / steps
+
+  } else if (rDiff < 1) {
+
+    rStep = (1 - rDiff) / steps
+
+  }
+
+  let xStep = xDiff / steps
+  let yStep = yDiff / steps
+  let zStep = zDiff / steps
 
   function updatePlot() {
 
-    plot.object.geometry.parameters.radius += rStep
+    if (rDiff > 1) {
+
+      plot.object.scale.x += rStep
+      plot.object.scale.y += rStep
+      plot.object.scale.z += rStep
+
+    } else if (rDiff < 1) {
+
+      plot.object.scale.x -= rStep
+      plot.object.scale.y -= rStep
+      plot.object.scale.z -= rStep
+
+    }
+
     plot.object.position.x += xStep
     plot.object.position.y += yStep
     plot.object.position.z += zStep
@@ -44,26 +70,32 @@ export function animatePlot(dom, plot, year=data.plot.year, direction="forward",
   }
 
   let stepInterval = setInterval(function(){
-    updatePlot()
-  }, 42)
 
-  function stop() {
+    updatePlot()
+
+  }, 60)
+
+  function stopInterval() {
+
     clearInterval(stepInterval)
+
   }
 
-  setTimeout(stop, speed)
+  setTimeout(stopInterval, speed)
+
+}
+
+}
 
 }
 
 export function animatePlots(dom, plots=data.plot.plots, year=data.plot.year, direction="forward", speed=1200) {
 
+  data.plot.year += 1
+
   for (let i = 0; i < plots.length; i++) {
 
-    if (plots[i].code == "IND") {
-
-      animatePlot(dom, plots[i], year, direction, speed)
-
-    }
+    animatePlot(dom, plots[i], year, direction, 1200)
 
   }
 
