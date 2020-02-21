@@ -9,8 +9,8 @@ export function newPointLight(color=white, intensity=1, x=max, y=max, z=max) {
 
 }
 
-export function addPointLight(scene, color=white, intensity=1, x=max, y=max, z=max) {
+export function addPointLight(color=white, intensity=1, x=max, y=max, z=max) {
 
-  scene.add(newPointLight(color, intensity, x, y, z))
+  data.plot.core.scene.add(newPointLight(color, intensity, x, y, z))
 
 }
