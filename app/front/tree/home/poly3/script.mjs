@@ -10,10 +10,10 @@ import {newPerspectiveCamera} from "../../../libs/mjs/cameras/perspective.mjs"
 import {newOrbitControls} from "../../../libs/mjs/controls/orbit.mjs"
 import {xEvent, xEvents} from "../../../libs/mjs/threeCore/events.mjs"
 
+import {scaleAll} from "../../../libs/mjs/scales/axes.mjs"
+
 import {addAxes} from "../../../libs/mjs/geometries/axes.mjs"
 import {newSphere} from "../../../libs/mjs/geometries/sphere.mjs"
-
-import {rScale, xScale, yScale, zScale} from "../../../libs/mjs/scales/axes.mjs"
 
 import {regionsColourSwitch} from "../../../libs/mjs/colors/switches/regions.mjs"
 
@@ -42,6 +42,7 @@ $(document).ready(function() {
   plot.core.controls = newOrbitControls()
   plot.core.dom	= xEvents()
 
+  scaleAll()
   addAxes()
 
   let plots = plot.plots
@@ -55,10 +56,10 @@ $(document).ready(function() {
 
     if (r != null && x != null && y != null && z != null) {
 
-      r = rScale(r)
-      x = xScale(x)
-      y = yScale(y)
-      z = zScale(z)
+      r = plot.r.scale(r)
+      x = plot.x.scale(x)
+      y = plot.y.scale(y)
+      z = plot.z.scale(z)
 
       let sphere = newSphere(r, x, y, z, regionsColourSwitch(plots[i]["region"]))
       xEvent(sphere, "mouseover", metaUpdate, plots[i]["code"])
