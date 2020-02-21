@@ -1,5 +1,5 @@
-export function newCanvas(renderer) {
+export function newCanvas() {
 
-  return document.body.appendChild(renderer.domElement)
+  return document.body.appendChild(data.plot.core.renderer.domElement)
 
 }

@@ -1,4 +1,6 @@
-export function xEvent(dom, obj, type, callback, args=null) {
+export function xEvent(obj, type, callback, args=null) {
+
+  let dom = data.plot.core.dom
 
   if (type == "click") {
 
@@ -76,8 +78,8 @@ export function xEvent(dom, obj, type, callback, args=null) {
 
 }
 
-export function xEvents(camera, renderer) {
+export function xEvents() {
 
-  return new THREEx.DomEvents(camera, renderer.domElement)
+  return new THREEx.DomEvents(data.plot.core.camera, data.plot.core.renderer.domElement)
 
 }
