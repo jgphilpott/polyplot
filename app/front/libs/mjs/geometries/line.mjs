@@ -8,10 +8,10 @@ export function newLine(vertices=[], color=black, linewidth=1) {
 
 }
 
-export function addLine(scene, vertices=[], color=black, linewidth=1) {
+export function addLine(vertices=[], color=black, linewidth=1) {
 
   let line = newLine(vertices, color, linewidth)
-  scene.add(line)
+  data.plot.core.scene.add(line)
   return line
 
 }

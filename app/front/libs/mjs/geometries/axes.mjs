@@ -19,18 +19,18 @@ export function newAxis(type) {
 
 }
 
-export function addAxis(scene, type) {
+export function addAxis(type) {
 
   let axis = newAxis(type)
-  scene.add(axis)
+  data.plot.core.scene.add(axis)
   return axis
 
 }
 
-export function addAxes(scene) {
+export function addAxes() {
 
-  addAxis(scene, "x")
-  addAxis(scene, "y")
-  addAxis(scene, "z")
+  addAxis("x")
+  addAxis("y")
+  addAxis("z")
 
 }
