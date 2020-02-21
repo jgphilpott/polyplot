@@ -11,24 +11,18 @@ def register_poly3_route(app):
         try:
 
             data = {}
-
-            data["plot"] = {}
-
-            data["plot"]["title"] = "World Bank Development Indicators"
-
-            data["plot"]["yearMin"] = 1960
-            data["plot"]["year"] = 1990
-            data["plot"]["yearMax"] = 2019
+            data["plot"] = {"title": "World Bank Development Indicators"}
+            data["plot"]["time"] = {"yearMin": 1960, "year": 1990, "yearMax": 2019}
 
             r = find_index(request.args["r"]) if "r" in request.args else find_index("SP.POP.TOTL")
             x = find_index(request.args["x"]) if "x" in request.args else find_index("SP.DYN.LE00.IN")
             y = find_index(request.args["y"]) if "y" in request.args else find_index("SP.DYN.TFRT.IN")
             z = find_index(request.args["z"]) if "z" in request.args else find_index("NY.GDP.PCAP.KD.ZG")
 
-            data["plot"]["r"] = r["name"]
-            data["plot"]["x"] = x["name"]
-            data["plot"]["y"] = y["name"]
-            data["plot"]["z"] = z["name"]
+            data["plot"]["r"] = {"name": r["name"]}
+            data["plot"]["x"] = {"name": x["name"]}
+            data["plot"]["y"] = {"name": y["name"]}
+            data["plot"]["z"] = {"name": z["name"]}
 
             countries = list(find_countries())
 
