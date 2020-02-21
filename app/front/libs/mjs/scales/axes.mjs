@@ -2,30 +2,48 @@ import {min, max} from "../env/dimensions.mjs"
 import {linearScale} from "./linear.mjs"
 import {absMaxValue, rangeAxis} from "./range.mjs"
 
+let plot = data.plot
+
 export function rScale(r) {
 
-  let rMax = absMaxValue(rangeAxis("r"))
-  return linearScale(r, [min, rMax], [max / 150, max / 15])
+  return linearScale(r, [min, plot.r.max], [max / 150, max / 15])
 
 }
 
 export function xScale(x) {
 
-  let xMax = absMaxValue(rangeAxis("x"))
-  return linearScale(x, [-xMax, xMax], [-max, max])
+  return linearScale(x, [-plot.x.max, plot.x.max], [-max, max])
 
 }
 
 export function yScale(y) {
 
-  let yMax = absMaxValue(rangeAxis("y"))
-  return linearScale(y, [-yMax, yMax], [-max, max])
+  return linearScale(y, [-plot.y.max, plot.y.max], [-max, max])
 
 }
 
 export function zScale(z) {
 
-  let zMax = absMaxValue(rangeAxis("z"))
-  return linearScale(z, [-zMax, zMax], [-max, max])
+  return linearScale(z, [-plot.z.max, plot.z.max], [-max, max])
+
+}
+
+export function scaleAll() {
+
+  plot.r.min = 0
+  plot.r.max = absMaxValue(rangeAxis("r"))
+  plot.r.scale = rScale
+
+  plot.x.min = 0
+  plot.x.max = absMaxValue(rangeAxis("x"))
+  plot.x.scale = xScale
+
+  plot.y.min = 0
+  plot.y.max = absMaxValue(rangeAxis("y"))
+  plot.y.scale = yScale
+
+  plot.z.min = 0
+  plot.z.max = absMaxValue(rangeAxis("z"))
+  plot.z.scale = zScale
 
 }
