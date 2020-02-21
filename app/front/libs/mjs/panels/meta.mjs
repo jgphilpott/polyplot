@@ -20,7 +20,7 @@ export function metaUpdate(code) {
 export function metaClear() {
 
   $("#meta-name").text("No Name")
-  $("#meta-flag").attr("src", "/front/imgs/flags/None.png")
+  $("#meta-flag").attr("src", "/front/imgs/flags/null.png")
   $("#meta-region").text("No Region")
   $("#meta-r").text("None")
   $("#meta-x").text("None")

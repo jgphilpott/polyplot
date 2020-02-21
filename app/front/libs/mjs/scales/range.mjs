@@ -30,9 +30,9 @@ export function rangeAxis(axis, values=[]) {
 
     for (let j = 0; j < plots[i][axis].length; j++) {
 
-      if (typeof(plots[i][axis][j]["value"]) == "number") {
+      if (typeof(plots[i][axis][j].value) == "number") {
 
-        values.push(plots[i][axis][j]["value"])
+        values.push(plots[i][axis][j].value)
 
       }
 

@@ -6,7 +6,7 @@ let plot = data.plot
 
 export function rScale(r) {
 
-  return linearScale(r, [min, plot.r.max], [max / 150, max / 15])
+  return linearScale(r, [min, plot.r.max], [max / 200, max / 20])
 
 }
 
