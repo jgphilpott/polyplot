@@ -1,6 +1,6 @@
-import {addPointLight} from "../point.mjs"
 import {white} from "../../colors/three/grayscale.mjs"
 import {min, max} from "../../env/dimensions.mjs"
+import {addPointLight} from "../point.mjs"
 
 export function addPointOctet(color=white, intensity=1, x=max, y=max, z=max) {
 
