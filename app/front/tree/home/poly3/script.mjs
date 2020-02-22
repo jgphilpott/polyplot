@@ -8,13 +8,14 @@ import {addPointLight} from "../../../libs/mjs/lights/point.mjs"
 import {newPerspectiveCamera} from "../../../libs/mjs/cameras/perspective.mjs"
 
 import {newOrbitControls} from "../../../libs/mjs/controls/orbit.mjs"
+import {addEventListeners} from "../../../libs/mjs/events/x.mjs"
 
-import {addEventListeners} from "../../../libs/mjs/events/all.mjs"
-
-import {scaleAll} from "../../../libs/mjs/scales/axes.mjs"
-
+import {scaleAxes} from "../../../libs/mjs/scales/axes.mjs"
 import {addAxes} from "../../../libs/mjs/geometries/axes.mjs"
+
 import {addPlot} from "../../../libs/mjs/geometries/plot.mjs"
+
+import {animatePlot} from "../../../libs/mjs/animation/plot.mjs"
 
 $(document).ready(function() {
 
@@ -37,8 +38,7 @@ $(document).ready(function() {
   plot.core.controls = newOrbitControls()
   addEventListeners()
 
-  scaleAll()
-
+  scaleAxes()
   addAxes()
 
   let plots = plot.plots
@@ -67,18 +67,6 @@ $(document).ready(function() {
 
   }
 
-  function animate() {
-
-  	requestAnimationFrame(animate)
-
-    plot.core.controls.update()
-
-  	plot.core.renderer.render(plot.core.scene, plot.core.camera)
-
-  }
-
-  animate()
-
-  console.log(data)
+  animatePlot()
 
 })
