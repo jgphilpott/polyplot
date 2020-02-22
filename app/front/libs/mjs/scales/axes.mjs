@@ -28,7 +28,7 @@ export function zScale(z) {
 
 }
 
-export function scaleAll() {
+export function scaleAxes() {
 
   plot.r.min = 0
   plot.r.max = absMaxValue(rangeAxis("r"))
