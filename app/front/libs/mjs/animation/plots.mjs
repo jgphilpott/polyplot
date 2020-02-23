@@ -28,37 +28,16 @@ export function animatePlot(plot, direction="forward", speed=1200) {
 
       let steps = speed / data.plot.core.frameRate
 
-      var rStep
-
-      if (rDiff > 1) {
-
-        rStep = (rDiff - 1) / steps
-
-      } else if (rDiff < 1) {
-
-        rStep = (1 - rDiff) / steps
-
-      }
-
+      let rStep = (rDiff - 1) / steps
       let xStep = xDiff / steps
       let yStep = yDiff / steps
       let zStep = zDiff / steps
 
       function updatePlot() {
 
-        if (rDiff > 1) {
-
-          plot.object.scale.x += rStep
-          plot.object.scale.y += rStep
-          plot.object.scale.z += rStep
-
-        } else if (rDiff < 1) {
-
-          plot.object.scale.x -= rStep
-          plot.object.scale.y -= rStep
-          plot.object.scale.z -= rStep
-
-        }
+        plot.object.scale.x += rStep
+        plot.object.scale.y += rStep
+        plot.object.scale.z += rStep
 
         plot.object.position.x += xStep
         plot.object.position.y += yStep
