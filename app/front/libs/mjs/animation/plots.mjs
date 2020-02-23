@@ -7,19 +7,19 @@ export function animatePlot(plot, direction="forward", speed=1200) {
   let yNew = plot.y.find(item => item.year == data.plot.time.year).value
   let zNew = plot.z.find(item => item.year == data.plot.time.year).value
 
-  if (plot.object != null) {
+  if (typeof(rNew) == "number" && typeof(xNew) == "number" && typeof(yNew) == "number" && typeof(zNew) == "number") {
 
-    let rNow = plot.object.geometry.parameters.radius
-    let xNow = plot.object.position.x
-    let yNow = plot.object.position.y
-    let zNow = plot.object.position.z
+    rNew = data.plot.r.scale(rNew)
+    xNew = data.plot.x.scale(xNew)
+    yNew = data.plot.y.scale(yNew)
+    zNew = data.plot.z.scale(zNew)
 
-    if (rNew != null && xNew != null && yNew != null && zNew != null) {
+    if (plot.object != null) {
 
-      rNew = data.plot.r.scale(rNew)
-      xNew = data.plot.x.scale(xNew)
-      yNew = data.plot.y.scale(yNew)
-      zNew = data.plot.z.scale(zNew)
+      let rNow = plot.object.geometry.parameters.radius * plot.object.scale.x
+      let xNow = plot.object.position.x
+      let yNow = plot.object.position.y
+      let zNow = plot.object.position.z
 
       let rDiff = rNew / rNow
       let xDiff = xNew - xNow
@@ -28,15 +28,15 @@ export function animatePlot(plot, direction="forward", speed=1200) {
 
       let steps = speed / data.plot.core.frameRate
 
-      let rStep = null
+      var rStep
 
       if (rDiff > 1) {
 
-        rStep = (rDiff - plot.object.scale.x) / steps
+        rStep = (rDiff - 1) / steps
 
       } else if (rDiff < 1) {
 
-        rStep = (plot.object.scale.x - rDiff) / steps
+        rStep = (1 - rDiff) / steps
 
       }
 
@@ -66,11 +66,7 @@ export function animatePlot(plot, direction="forward", speed=1200) {
 
       }
 
-      let stepInterval = setInterval(function(){
-
-        updatePlot()
-
-      }, data.plot.core.frameRate)
+      let stepInterval = setInterval(updatePlot, data.plot.core.frameRate)
 
       function stopInterval() {
 
@@ -80,22 +76,22 @@ export function animatePlot(plot, direction="forward", speed=1200) {
 
       setTimeout(stopInterval, speed)
 
-    } else {
+    } else if (plot.object == null) {
 
-      data.plot.core.scene.remove(plot.object)
-      plot.object = null
+      function updatePlot() {
 
-    }
+        plot.object = addPlot(rNew, xNew, yNew, zNew, plot.region, plot.code)
 
-  } else if (rNew != null && xNew != null && yNew != null && zNew != null) {
+      }
 
-    function updatePlot() {
-
-      plot.object = addPlot(rNew, xNew, yNew, zNew, plot.region, plot.code)
+      setTimeout(updatePlot, speed)
 
     }
 
-    setTimeout(updatePlot(), speed)
+  } else if (plot.object != null) {
+
+    data.plot.core.scene.remove(plot.object)
+    plot.object = null
 
   }
 

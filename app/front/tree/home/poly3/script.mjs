@@ -50,7 +50,7 @@ $(document).ready(function() {
     let y = plots[i].y.find(item => item.year == plot.time.year).value
     let z = plots[i].z.find(item => item.year == plot.time.year).value
 
-    if (r != null && x != null && y != null && z != null) {
+    if (typeof(r) == "number" && typeof(x) == "number" && typeof(y) == "number" && typeof(z) == "number") {
 
       r = plot.r.scale(r)
       x = plot.x.scale(x)
