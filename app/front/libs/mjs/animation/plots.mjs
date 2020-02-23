@@ -1,4 +1,11 @@
-export function animatePlot(plot, year=data.plot.time.year, direction="forward", speed=1200) {
+import {addPlot} from "../geometries/plot.mjs"
+
+export function animatePlot(plot, direction="forward", speed=1200) {
+
+  let rNew = plot.r.find(item => item.year == data.plot.time.year).value
+  let xNew = plot.x.find(item => item.year == data.plot.time.year).value
+  let yNew = plot.y.find(item => item.year == data.plot.time.year).value
+  let zNew = plot.z.find(item => item.year == data.plot.time.year).value
 
   if (plot.object != null) {
 
@@ -6,11 +13,6 @@ export function animatePlot(plot, year=data.plot.time.year, direction="forward",
     let xNow = plot.object.position.x
     let yNow = plot.object.position.y
     let zNow = plot.object.position.z
-
-    let rNew = plot["r"].find(item => item.year == data.plot.time.year).value
-    let xNew = plot["x"].find(item => item.year == data.plot.time.year).value
-    let yNew = plot["y"].find(item => item.year == data.plot.time.year).value
-    let zNew = plot["z"].find(item => item.year == data.plot.time.year).value
 
     if (rNew != null && xNew != null && yNew != null && zNew != null) {
 
@@ -85,17 +87,35 @@ export function animatePlot(plot, year=data.plot.time.year, direction="forward",
 
     }
 
+  } else if (rNew != null && xNew != null && yNew != null && zNew != null) {
+
+    function updatePlot() {
+
+      plot.object = addPlot(rNew, xNew, yNew, zNew, plot.region, plot.code)
+
+    }
+
+    setTimeout(updatePlot(), speed)
+
   }
 
 }
 
-export function animatePlots(plots=data.plot.plots, year=data.plot.time.year, direction="forward", speed=1200) {
+export function animatePlots(plots=data.plot.plots, direction="forward", speed=1200) {
 
-  data.plot.time.year += 1
+  if (direction == "forward" && data.plot.time.year < data.plot.time.yearMax) {
+
+    data.plot.time.year += 1
+
+  } else if (direction == "backward" && data.plot.time.year > data.plot.time.yearMin) {
+
+    data.plot.time.year -= 1
+
+  }
 
   for (let i = 0; i < plots.length; i++) {
 
-    setTimeout(animatePlot(plots[i], year, direction, speed), 0)
+    setTimeout(animatePlot(plots[i], direction, speed), 0)
 
   }
 
