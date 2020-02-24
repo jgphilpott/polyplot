@@ -8,7 +8,7 @@ Polyplot is a data visualization application inspired by [Ola Rosling](https://g
 
 # Quick Start
 
-Assuming you have [docker compose installed](https://docs.docker.com/compose/install/), clone this repository, navigate into the root directory and run:
+Assuming you have [docker compose installed](https://docs.docker.com/compose/install), clone this repository, navigate into the root directory and run:
 
 ```
 sudo docker-compose up --build -d
