@@ -8,8 +8,8 @@ web:
   links:
    - database
 
-notebook:
-  container_name: jupyter
+jupyter:
+  container_name: notebook
   image: jupyter/minimal-notebook:latest
   ports:
    - 8888:8888
