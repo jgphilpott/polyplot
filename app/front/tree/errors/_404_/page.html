@@ -6,6 +6,8 @@
     <link rel="shortcut icon" href="{{ url_for('static', filename='imgs/icons/favicon.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='tree/errors/_404_/style.css') }}">
 
+    <script src="{{ url_for('static', filename='libs/mjs/vendor/particleWeb.js') }}"></script>
+
   </head>
   <body>
     {% extends "tree/theme.html" %}
@@ -13,7 +15,15 @@
 
       <script src="{{ url_for('static', filename='tree/errors/_404_/script.mjs') }}" type="module"></script>
 
-      <h1>404</h1>
+      <div id="error" class="panel">
+
+        <h1 id="number">404</h1>
+
+        <h3 id="name">Page Not Found</h3>
+
+      </div>
+
+      <canvas id="canvas"></canvas>
 
     {% endblock %}
   </body>
