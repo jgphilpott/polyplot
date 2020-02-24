@@ -17,36 +17,48 @@
 
       <script src="{{ url_for('static', filename='tree/home/poly3/script.mjs') }}" type="module"></script>
 
-      <div id="start" class="panel"></div>
-
       <div id="time" class="panel">
+
         <h1>Time</h1>
+
       </div>
 
-      <div id="menu" class="panel">
-        <h1>Menu</h1>
+      <div id="settings" class="panel">
+
+        <h1>Settings</h1>
+
       </div>
 
       <div id="legend" class="panel">
+
         <h1>Legend</h1>
-        <p><strong>R:</strong> Index Name</p>
-        <p><strong>X:</strong> Index Name</p>
-        <p><strong>Y:</strong> Index Name</p>
-        <p><strong>Z:</strong> Index Name</p>
+
+        <p><strong>R:</strong> Indicator Name</p>
+        <p><strong>X:</strong> Indicator Name</p>
+        <p><strong>Y:</strong> Indicator Name</p>
+        <p><strong>Z:</strong> Indicator Name</p>
+
       </div>
 
       <div id="map" class="panel">
+
         <h1>Map</h1>
+
       </div>
 
       <div id="meta" class="panel">
-        <h1 id="meta-name">No Name</h1>
-        <img id="meta-flag" src="{{ url_for('static', filename='imgs/flags/null.png') }}">
-        <h3 id="meta-region">No Region</h3>
-        <p><strong>R:</strong> <span id="meta-r">None</span></p>
-        <p><strong>X:</strong> <span id="meta-x">None</span></p>
-        <p><strong>Y:</strong> <span id="meta-y">None</span></p>
-        <p><strong>Z:</strong> <span id="meta-z">None</span></p>
+
+        <h1 id="name">Meta</h1>
+
+        <img id="flag" src="{{ url_for('static', filename='imgs/flags/None.png') }}">
+
+        <h3 id="region">None</h3>
+
+        <p><strong>R:</strong> <span id="r">None</span></p>
+        <p><strong>X:</strong> <span id="x">None</span></p>
+        <p><strong>Y:</strong> <span id="y">None</span></p>
+        <p><strong>Z:</strong> <span id="z">None</span></p>
+
       </div>
 
     {% endblock %}
