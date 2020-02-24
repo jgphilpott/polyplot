@@ -18,6 +18,18 @@
 
     <script> const data = {{ data | tojson | safe }} </script>
 
+    <div id="nav">
+
+      <img id="menu" src="{{ url_for('static', filename='imgs/icons/menu.png') }}">
+
+      <a href="/poly3"><h1>Poly3</h1></a>
+
+      <a href="/poly2"><h1>Poly2</h1></a>
+
+      <a href="/map"><h1>Map</h1></a>
+
+    </div>
+
     <a href="https://github.com/jgphilpott/polyplot">
       <img id="forkme" src="{{ url_for('static', filename='imgs/forkme/right/red.png') }}">
     </a>
