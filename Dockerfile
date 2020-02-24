@@ -18,6 +18,10 @@ RUN pip install Flask-Login
 
 RUN pip install libsass
 
+RUN pip install sha256
+RUN pip install ecdsa
+RUN pip install rsa
+
 ADD . /root
 
 WORKDIR /root
