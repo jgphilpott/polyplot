@@ -4,6 +4,9 @@ app/front/libs/mjs/vendor
 # Sass Libs
 app/front/libs/sass/vendor
 
+# Notes
+*.ipynb_checkpoints
+
 # Python Cache
 __pycache__
 
