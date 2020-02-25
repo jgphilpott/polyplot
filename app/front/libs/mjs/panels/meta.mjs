@@ -7,24 +7,30 @@ export function metaUpdate(code) {
   let y = plot.y.find(item => item.year == data.plot.time.year).value
   let z = plot.z.find(item => item.year == data.plot.time.year).value
 
-  $("#meta-name").text(plot.name)
-  $("#meta-flag").attr("src", "/front/imgs/flags/" + code + ".png")
-  $("#meta-region").text(plot.region)
-  $("#meta-r").text(r)
-  $("#meta-x").text(x)
-  $("#meta-y").text(y)
-  $("#meta-z").text(z)
+  $("#meta #name").text(plot.name)
+
+  $("#meta #flag").attr("src", "/front/imgs/flags/" + code + ".png")
+
+  $("#meta #region").text(plot.region)
+
+  $("#meta #r-data").text(r)
+  $("#meta #x-data").text(x)
+  $("#meta #y-data").text(y)
+  $("#meta #z-data").text(z)
 
 }
 
 export function metaClear() {
 
-  $("#meta-name").text("No Name")
-  $("#meta-flag").attr("src", "/front/imgs/flags/null.png")
-  $("#meta-region").text("No Region")
-  $("#meta-r").text("None")
-  $("#meta-x").text("None")
-  $("#meta-y").text("None")
-  $("#meta-z").text("None")
+  $("#meta #name").text("Meta")
+
+  $("#meta #flag").attr("src", "/front/imgs/flags/None.png")
+
+  $("#meta #region").text("None")
+
+  $("#meta #r-data").text("None")
+  $("#meta #x-data").text("None")
+  $("#meta #y-data").text("None")
+  $("#meta #z-data").text("None")
 
 }
