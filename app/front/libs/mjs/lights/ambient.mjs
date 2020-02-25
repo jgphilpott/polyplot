@@ -11,6 +11,6 @@ export function newAmbientLight(color=white, intensity=1, x=min, y=min, z=min) {
 
 export function addAmbientLight(color=white, intensity=1, x=min, y=min, z=min) {
 
-  data.plot.core.scene.add(newAmbientLight(color, intensity, x, y, z))
+  return data.plot.core.scene.add(newAmbientLight(color, intensity, x, y, z))
 
 }

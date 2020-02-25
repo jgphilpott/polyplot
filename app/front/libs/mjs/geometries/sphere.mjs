@@ -11,8 +11,6 @@ export function newSphere(r=1, x=0, y=0, z=0, color=black) {
 
 export function addSphere(r=1, x=0, y=0, z=0, color=black) {
 
-  let sphere = newSphere(r, x, y, z, color)
-  data.plot.core.scene.add(sphere)
-  return sphere
+  return data.plot.core.scene.add(sphere = newSphere(r, x, y, z, color))
 
 }

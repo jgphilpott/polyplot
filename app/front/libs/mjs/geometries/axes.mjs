@@ -21,9 +21,7 @@ export function newAxis(type) {
 
 export function addAxis(type) {
 
-  let axis = newAxis(type)
-  data.plot.core.scene.add(axis)
-  return axis
+  return data.plot.core.scene.add(newAxis(type))
 
 }
 

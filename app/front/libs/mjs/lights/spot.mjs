@@ -12,6 +12,6 @@ export function newSpotLight(color=white, intensity=1, x=max, y=max, z=max, xTar
 
 export function addSpotLight(color=white, intensity=1, x=max, y=max, z=max, xTarget=min, yTarget=min, zTarget=min) {
 
-  data.plot.core.scene.add(newSpotLight(color, intensity, x, y, z, xTarget, yTarget, zTarget))
+  return data.plot.core.scene.add(newSpotLight(color, intensity, x, y, z, xTarget, yTarget, zTarget))
 
 }

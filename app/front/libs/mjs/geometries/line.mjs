@@ -10,8 +10,6 @@ export function newLine(vertices=[], color=black, linewidth=1) {
 
 export function addLine(vertices=[], color=black, linewidth=1) {
 
-  let line = newLine(vertices, color, linewidth)
-  data.plot.core.scene.add(line)
-  return line
+  return data.plot.core.scene.add(newLine(vertices, color, linewidth))
 
 }
