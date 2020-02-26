@@ -1,4 +1,8 @@
-export function metaUpdate(code) {
+export function addMetaPanel() {
+
+}
+
+export function updateMetaPanel(code) {
 
   let plot = data.plot.plots.find(item => item.code == code)
 
@@ -20,7 +24,7 @@ export function metaUpdate(code) {
 
 }
 
-export function metaClear() {
+export function clearMetaPanel() {
 
   $("#meta #name").text("Meta")
 

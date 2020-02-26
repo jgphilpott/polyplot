@@ -1,6 +1,6 @@
 import {animatePlots} from "../animation/plots.mjs"
 
-export function addTimeEvents() {
+export function addTimePanel() {
 
   $("body").on("keypress", function(event) {
 

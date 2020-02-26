@@ -1,5 +1,3 @@
-import {addTimeEvents} from "../panels/time.mjs"
-
 export function xEvent(obj, type, callback, args=null) {
 
   let dom = data.plot.core.dom
@@ -83,13 +81,5 @@ export function xEvent(obj, type, callback, args=null) {
 export function xEvents() {
 
   return new THREEx.DomEvents(data.plot.core.camera, data.plot.core.renderer.domElement)
-
-}
-
-export function addEventListeners() {
-
-  data.plot.core.dom = xEvents()
-
-  addTimeEvents()
 
 }
