@@ -8,7 +8,7 @@ import {addPointLight} from "../../../libs/mjs/lights/point.mjs"
 import {newPerspectiveCamera} from "../../../libs/mjs/cameras/perspective.mjs"
 
 import {newOrbitControls} from "../../../libs/mjs/controls/orbit.mjs"
-import {addEventListeners} from "../../../libs/mjs/events/x.mjs"
+import {addEventListeners} from "../../../libs/mjs/core/events.mjs"
 
 import {scaleAxes} from "../../../libs/mjs/scales/axes.mjs"
 import {addAxes} from "../../../libs/mjs/geometries/axes.mjs"

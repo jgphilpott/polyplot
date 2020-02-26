@@ -1,5 +1,5 @@
 import {black} from "../colors/three/grayscale.mjs"
-import {xEvent} from "../events/x.mjs"
+import {xEvent} from "../core/events.mjs"
 import {newSphere} from "./sphere.mjs"
 import {regionsColourSwitch} from "../colors/switches/regions.mjs"
 import {metaUpdate, metaClear} from "../../../libs/mjs/panels/meta.mjs"

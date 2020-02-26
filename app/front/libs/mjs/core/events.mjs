@@ -1,4 +1,4 @@
-import {addTimeEvents} from "./time.mjs"
+import {addTimeEvents} from "../panels/time.mjs"
 
 export function xEvent(obj, type, callback, args=null) {
 
