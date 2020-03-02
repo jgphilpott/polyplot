@@ -20,4 +20,66 @@ export function addPanels() {
   addSettingsPanel()
   addTimePanel()
 
+  let panels = $(".panel")
+
+  function makeDragable(panel) {
+
+    panel = $(".panel#" + panel.id)
+
+    let width = panel.width()
+    let height = panel.height()
+
+    let xOffset = 0, yOffset = 0
+
+    function start(event) {
+
+      event.preventDefault()
+
+      if (panel.css("transform") != "none") {
+
+        let translation = panel.css("transform").replace(/[{()}]/g, "").replace(/[a-zA-Z]/g, "").split(",")
+
+        xOffset = event.clientX - panel.position().left + Number(translation[4])
+        yOffset = event.clientY - panel.position().top + Number(translation[5])
+
+      } else {
+
+        xOffset = event.clientX - panel.position().left
+        yOffset = event.clientY - panel.position().top
+
+      }
+
+      document.onmousemove = drag
+      document.onmouseup = stop
+
+    }
+
+    function drag(event) {
+
+      event.preventDefault()
+
+      panel.width(width)
+      panel.height(height)
+
+      panel.css({top: event.clientY - yOffset, left: event.clientX - xOffset})
+
+    }
+
+    function stop() {
+
+      document.onmouseup = null
+      document.onmousemove = null
+
+    }
+
+    panel.mousedown(start)
+
+  }
+
+  for (let i = 0; i < panels.length; i++) {
+
+    makeDragable(panels[i])
+
+  }
+
 }
