@@ -34,6 +34,7 @@ export function addPanels() {
     function start(event) {
 
       event.preventDefault()
+      event.stopPropagation()
 
       if (panel.css("transform") != "none") {
 
@@ -57,6 +58,7 @@ export function addPanels() {
     function drag(event) {
 
       event.preventDefault()
+      event.stopPropagation()
 
       panel.width(width)
       panel.height(height)
@@ -65,7 +67,10 @@ export function addPanels() {
 
     }
 
-    function stop() {
+    function stop(event) {
+
+      event.preventDefault()
+      event.stopPropagation()
 
       document.onmouseup = null
       document.onmousemove = null
