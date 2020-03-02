@@ -26,9 +26,6 @@ export function addPanels() {
 
     panel = $(".panel#" + panel.id)
 
-    let width = panel.width()
-    let height = panel.height()
-
     let xOffset = 0, yOffset = 0
 
     function start(event) {
@@ -59,9 +56,6 @@ export function addPanels() {
 
       event.preventDefault()
       event.stopPropagation()
-
-      panel.width(width)
-      panel.height(height)
 
       panel.css({top: event.clientY - yOffset, left: event.clientX - xOffset})
 

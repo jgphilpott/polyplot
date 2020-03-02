@@ -6,17 +6,17 @@
 
 #time.panel
 
-  position: absolute
+  position: fixed
   visibility: visible
 
   top: 10px
   left: 50%
 
-  transform: translateX(-50%)
+  transform: translate(-50%, 0%)
 
 #settings.panel
 
-  position: absolute
+  position: fixed
   visibility: hidden
 
   top: 50%
@@ -26,26 +26,30 @@
 
 #legend.panel
 
-  position: absolute
+  position: fixed
   visibility: visible
 
-  bottom: 10px
+  top: calc(100% - 10px)
   left: 10px
+
+  transform: translate(0%, -100%)
 
 #map.panel
 
-  position: absolute
+  position: fixed
   visibility: hidden
 
-  bottom: 10px
+  top: calc(100% - 10px)
   left: 50%
 
-  transform: translateX(-50%)
+  transform: translate(0%, -100%)
 
 #meta.panel
 
-  position: absolute
+  position: fixed
   visibility: visible
 
-  bottom: 10px
-  right: 10px
+  top: calc(100% - 10px)
+  left: calc(100% - 10px)
+
+  transform: translate(-100%, -100%)
