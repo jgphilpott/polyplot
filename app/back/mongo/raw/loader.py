@@ -11,15 +11,15 @@ def load_json(path):
 
     path = path + "/json"
 
-    if "indexes" not in collections:
+    if "indicators" not in collections:
 
-        collection = database["indexes"]
+        collection = database["indicators"]
 
-        with open(path + "/indexes.json") as list:
+        with open(path + "/indicators.json") as list:
 
-            indexes = load(list)
+            indicators = load(list)
 
-        collection.insert_many(indexes)
+        collection.insert_many(indicators)
 
     if "countries" not in collections:
 
