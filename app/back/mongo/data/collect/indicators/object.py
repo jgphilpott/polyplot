@@ -1,17 +1,17 @@
 from tqdm import tqdm
 from requests import get
 
-class Index():
+class Indicator():
 
-    def __init__(self, index):
+    def __init__(self, indicator):
 
-        self.category = index["category"]
-        self.name = index["name"]
-        self.code = index["code"]
+        self.category = indicator["category"]
+        self.name = indicator["name"]
+        self.code = indicator["code"]
 
-        if "geographies" in index:
+        if "geographies" in indicator:
 
-            self.geographies = index["geographies"]
+            self.geographies = indicator["geographies"]
 
         else:
 
@@ -33,7 +33,7 @@ class Index():
 
                 if log:
 
-                    print("\n\033[93mUpdating index:\033[0m {} \033[93m~\033[0m {}".format(self.code, self.name))
+                    print("\n\033[93mUpdating indicator:\033[0m {} \033[93m~\033[0m {}".format(self.code, self.name))
                     bar = tqdm(initial=page, total=pages)
 
                 while page <= pages:
@@ -63,13 +63,13 @@ class Index():
 
                 if log:
 
-                    print("\n\033[91mError updating index\033[0m {}".format(self.code))
+                    print("\n\033[91mError updating indicator\033[0m {}".format(self.code))
 
         else:
 
             if log:
 
-                print("\n\033[93mIndex\033[0m {} \033[93mis already up to date.\033[0m".format(self.code))
+                print("\n\033[93mIndicator\033[0m {} \033[93mis already up to date.\033[0m".format(self.code))
 
         if log:
 

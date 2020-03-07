@@ -1,10 +1,10 @@
 from pprint import pprint as pp
 from back.mongo.data.collect.ions import find_collection
-from back.mongo.data.collect.indexes.object import Index
+from back.mongo.data.collect.indicators.object import Index
 
 indexes = find_collection("indexes")
 
-def find_index(index, log=False):
+def find_indicator(index, log=False):
 
     code = index
 
@@ -26,7 +26,7 @@ def find_index(index, log=False):
 
         return indexes.find_one({"code": code}, {"_id": 0})
 
-def find_indexes(log=False):
+def find_indicators(log=False):
 
     if log:
 
@@ -45,7 +45,7 @@ def find_indexes(log=False):
 
         return indexes.find({}, {"_id": 0})
 
-def update_index(index, log=False):
+def update_indicator(index, log=False):
 
     code = index
     index = find_index(code)
@@ -61,7 +61,7 @@ def update_index(index, log=False):
 
     indexes.update_one({"code": index.code}, {"$set": index.__dict__})
 
-def update_indexes(log=False):
+def update_indicators(log=False):
 
     for index in find_indexes():
 
