@@ -16,8 +16,8 @@ alias lsa="printf '\n\e[93mAll the files in the current directory are:\e[0m\n\n'
 alias py="python3"
 
 # CLI
-alias flint="space && py app/cli.py && space"
-alias fire="py app/cli.py"
+alias flint="space && py app/spark.py && space"
+alias fire="py app/spark.py"
 
 # Database
 alias db-client="fire find_client --log=True"

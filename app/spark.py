@@ -1,7 +1,5 @@
 from fire import Fire
 
-from back.tools.flint.dev import *
-
 from back.mongo.client import find_client
 
 from back.mongo.data.base import find_database, drop_database
