@@ -33,11 +33,11 @@ alias col-drop="fire drop_collection --log=True"
 alias coun="fire find_country --log=True"
 alias couns="fire find_countries --log=True"
 
-# Indexes
-alias ind="fire find_index --log=True"
-alias inds="fire find_indexes --log=True"
-alias ind-upd="fire update_index --log=True"
-alias inds-upd="fire update_indexes --log=True"
+# Indicators
+alias ind="fire find_indicator --log=True"
+alias inds="fire find_indicators --log=True"
+alias ind-upd="fire update_indicator --log=True"
+alias inds-upd="fire update_indicators --log=True"
 
 # Styling
 alias sass="fire compile_sass app/front"
