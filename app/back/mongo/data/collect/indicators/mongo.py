@@ -1,74 +1,74 @@
 from pprint import pprint as pp
 from back.mongo.data.collect.ions import find_collection
-from back.mongo.data.collect.indicators.object import Index
+from back.mongo.data.collect.indicators.object import Indicator
 
-indexes = find_collection("indexes")
+indicators = find_collection("indicators")
 
-def find_indicator(index, log=False):
+def find_indicator(indicator, log=False):
 
-    code = index
+    code = indicator
 
     if log:
 
-        index = indexes.find_one({"code": code}, {"_id": 0, "geographies": 0})
+        indicator = indicators.find_one({"code": code}, {"_id": 0, "geographies": 0})
 
-        if index:
+        if indicator:
 
-            print("\n\033[93mIndex:\033[0m {}\n".format(code))
-            pp(index)
+            print("\n\033[93mIndicator:\033[0m {}\n".format(code))
+            pp(indicator)
             print("")
 
         else:
 
-            print("\n\033[93mIndex\033[0m {} \033[93mnot found.\033[0m\n".format(code))
+            print("\n\033[93mIndicator\033[0m {} \033[93mnot found.\033[0m\n".format(code))
 
     else:
 
-        return indexes.find_one({"code": code}, {"_id": 0})
+        return indicators.find_one({"code": code}, {"_id": 0})
 
 def find_indicators(log=False):
 
     if log:
 
-        print("\n\033[93mThere are a total of {} indexes.\033[0m\n".format(indexes.count()))
+        print("\n\033[93mThere are a total of {} indicators.\033[0m\n".format(indicators.count()))
 
         count = 1
 
-        for index in indexes.find({}, {"_id": 0}):
+        for indicator in indicators.find({}, {"_id": 0}):
 
-            print("\033[93mIndex #{}:\033[0m {} \033[93m~\033[0m {}".format(count, index["code"], index["name"]))
+            print("\033[93mIndicator #{}:\033[0m {} \033[93m~\033[0m {}".format(count, indicator["code"], indicator["name"]))
             count += 1
 
         print("")
 
     else:
 
-        return indexes.find({}, {"_id": 0})
+        return indicators.find({}, {"_id": 0})
 
-def update_indicator(index, log=False):
+def update_indicator(indicator, log=False):
 
-    code = index
-    index = find_index(code)
-    index = Index(index)
+    code = indicator
+    indicator = find_indicator(code)
+    indicator = Indicator(indicator)
 
     if log:
 
-        index.update(log)
+        indicator.update(log)
 
     else:
 
-        index.update()
+        indicator.update()
 
-    indexes.update_one({"code": index.code}, {"$set": index.__dict__})
+    indicators.update_one({"code": indicator.code}, {"$set": indicator.__dict__})
 
 def update_indicators(log=False):
 
-    for index in find_indexes():
+    for indicator in find_indicators():
 
         if log:
 
-            update_index(index["code"], log=log)
+            update_indicator(indicator["code"], log=log)
 
         else:
 
-            update_index(index["code"])
+            update_indicator(indicator["code"])
