@@ -6034,7 +6034,7 @@
       "Economy & Growth"
     ],
     "code": "NY.GDP.PCAP.KD.ZG",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "GDP per capita growth (annual %)"
   },
