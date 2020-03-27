@@ -6,7 +6,7 @@ web:
   ports:
    - 5000:5000
   links:
-   - database
+   - mongo
 
 jupyter:
   container_name: notebook
@@ -14,10 +14,10 @@ jupyter:
   ports:
    - 8888:8888
   links:
-   - database
+   - mongo
 
-database:
-  container_name: mongo
+mongo:
+  container_name: database
   image: mongo:3.0.2
   ports:
    - 27017:27017
