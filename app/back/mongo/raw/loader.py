@@ -3,6 +3,7 @@ from json import load
 
 from back.mongo.data.base import find_database
 from back.mongo.data.collect.ions import find_collections
+from back.mongo.data.collect.indicators.mongo import update_indicator
 
 database = find_database()
 collections = find_collections()
@@ -19,7 +20,13 @@ def load_json(path):
 
             indicators = load(list)
 
-        collection.insert_many(indicators)
+            for indicator in indicators:
+
+                collection.insert(indicator)
+
+                if indicator["default"] == True:
+
+                    update_indicator(indicator["code"])
 
     if "countries" not in collections:
 
