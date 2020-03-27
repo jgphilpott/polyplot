@@ -2,7 +2,7 @@ from back.mongo.client import find_client
 from back.tools.alarm.warning import warning_loop
 
 client = find_client()
-database = client.iGraph
+database = client.polyplot
 
 def find_database(log=False):
 

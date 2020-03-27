@@ -1,13 +1,12 @@
-from tqdm import tqdm
 from requests import get
 
 class Indicator():
 
     def __init__(self, indicator):
 
-        self.category = indicator["category"]
-        self.name = indicator["name"]
         self.code = indicator["code"]
+        self.name = indicator["name"]
+        self.categories = indicator["categories"]
 
         if "geographies" in indicator:
 
@@ -23,25 +22,15 @@ class Indicator():
 
             try:
 
-                api = "https://api.worldbank.org/v2/country/all/indicator/{}?format=json".format(self.code)
-                meta = get(api).json()[0]
-
-                page = 1
-                pages = meta["pages"]
+                api = "https://api.worldbank.org/v2/country/all/indicator/"
+                meta = get("{}{}?format=json".format(api, self.code)).json()[0]
+                data = get("{}{}?format=json&per_page={}".format(api, self.code, meta["total"])).json()[1]
 
                 geos = []
 
-                if log:
+                for item in data:
 
-                    print("\n\033[93mUpdating indicator:\033[0m {} \033[93m~\033[0m {}".format(self.code, self.name))
-                    bar = tqdm(initial=page, total=pages)
-
-                while page <= pages:
-
-                    url = api + "&page=" + str(page)
-                    data = get(url).json()[1]
-
-                    for item in data:
+                    if item["value"]:
 
                         geo_exists = [geo for geo in geos if geo["code"] in [item["countryiso3code"]]]
                         obj = {"year": int(item["date"]), "value": item["value"]}
@@ -54,10 +43,11 @@ class Indicator():
 
                             geos.append({"code": item["countryiso3code"], "history": [obj]})
 
-                    bar.update(1)
-                    page += 1
-
                 self.geographies = geos
+
+                if log:
+
+                    print("\n\033[93mUpdated indicator:\033[0m {} \033[93m~\033[0m {}".format(self.code, self.name))
 
             except:
 
