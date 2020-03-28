@@ -1,8 +1,5 @@
 from json import load
 
-from os import remove, rmdir
-from os.path import exists
-
 from back.mongo.data.base import find_database
 from back.mongo.data.collect.ions import find_collections
 from back.mongo.data.collect.indicators.mongo import update_indicator
@@ -30,8 +27,6 @@ def load_json(path):
 
                 update_indicator(indicator["code"])
 
-        remove(file)
-
     if "countries" not in collections:
 
         collection = database["countries"]
@@ -42,8 +37,6 @@ def load_json(path):
             countries = load(list)
             collection.insert_many(countries)
 
-        remove(file)
-
     if "maps" not in collections:
 
         collection = database["maps"]
@@ -53,10 +46,6 @@ def load_json(path):
 
             maps = load(list)
             collection.insert_many(maps)
-
-        remove(file)
-
-    if exists(path): rmdir(path)
 
 def load_data():
 
