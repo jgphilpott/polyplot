@@ -4,7 +4,7 @@
 
 # Intro
 
-Polyplot is a data visualization application inspired by [Ola Rosling](https://github.com/olarosling)'s [Trendalyzer](https://en.wikipedia.org/wiki/Trendalyzer) software.
+Polyplot is a data exploration tool inspired by [Ola Rosling](https://github.com/olarosling)'s [Trendalyzer](https://en.wikipedia.org/wiki/Trendalyzer) software.
 
 # Quick Start
 
