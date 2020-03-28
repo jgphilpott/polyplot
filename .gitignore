@@ -1,6 +1,3 @@
-# Data Backups
-app/back/mongo/raw/backup
-
 # JavaScript Libs
 app/front/libs/mjs/vendor
 
