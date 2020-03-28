@@ -10,13 +10,13 @@ alias space="printf '\n'"
 
 # Common
 alias cwd="printf '\n\e[93mThe current working directory is:\e[0m ' && pwd && space"
-alias lsa="printf '\n\e[93mAll the files in the current directory are:\e[0m\n\n' && ls -a && space"
+alias lsa="printf '\n\e[93mAll the files in the current working directory are:\e[0m\n\n' && ls -a && space"
 
 # Python
 alias py="python3"
 
 # CLI
-alias flint="space && py app/spark.py && space"
+alias spark="space && py app/spark.py && space"
 alias fire="py app/spark.py"
 
 # Database
