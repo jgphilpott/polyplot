@@ -1,15 +1,12 @@
 from back.settings.config import config
 from back.settings.routes import register
-from back.mongo.raw.loader import load_data
 from back.settings.compile import compile_all
-from back.tools.downloader.libs import get_libs
+from back.mongo.backups.loader import load_all
 
 def setup(app, app_folder):
 
-    app = config(app)
-    app = register(app)
-    get_libs(app_folder)
+    app = register(config(app))
     compile_all(app_folder)
-    load_data()
+    load_all(app_folder)
 
     return app
