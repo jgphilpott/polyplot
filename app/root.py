@@ -8,6 +8,6 @@ app_folder = "app/front"
 
 app = Flask(name, template_folder=app_folder, static_folder=app_folder)
 
-app = setup(app, app_folder)
+polyplot = setup(app, app_folder)
 
-launch(app)
+launch(polyplot)
