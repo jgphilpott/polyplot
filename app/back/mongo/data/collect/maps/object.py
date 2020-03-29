@@ -2,6 +2,6 @@ class Map():
 
     def __init__(self, map):
 
-        self.code = map["code"]
-        self.name = map["name"]
-        self.coordinates = map["coordinates"]
+        self.type = map["type"]
+        self.properties = map["properties"]
+        self.geometry = map["geometry"]
