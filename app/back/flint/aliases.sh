@@ -20,24 +20,28 @@ alias spark="space && py app/spark.py && space"
 alias fire="py app/spark.py"
 
 # Database
-alias db-client="fire find_client --log=True"
-alias db-data="fire find_database --log=True"
-alias db-drop="fire drop_database --log=True"
+alias db-client="fire find_client"
+alias db-data="fire find_database"
+alias db-drop="fire drop_database"
 
 # Collections
-alias col="fire find_collection --log=True"
-alias cols="fire find_collections --log=True"
-alias col-drop="fire drop_collection --log=True"
+alias col="fire find_collection"
+alias cols="fire find_collections"
+alias col-drop="fire drop_collection"
 
 # Countries
-alias coun="fire find_country --log=True"
-alias couns="fire find_countries --log=True"
+alias coun="fire find_country"
+alias couns="fire find_countries"
 
 # Indicators
-alias ind="fire find_indicator --log=True"
-alias inds="fire find_indicators --log=True"
-alias ind-upd="fire update_indicator --log=True"
-alias inds-upd="fire update_indicators --log=True"
+alias ind="fire find_indicator"
+alias inds="fire find_indicators"
+alias ind-upd="fire update_indicator"
+alias inds-upd="fire update_indicators"
+
+# Maps
+alias map="fire find_map"
+alias maps="fire find_maps"
 
 # Styling
 alias sass="fire compile_sass app/front"
