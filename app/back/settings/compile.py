@@ -1,9 +1,9 @@
 from sass import compile
 
-def compile_sass(app_folder):
+def compile_sass(path):
 
-    compile(dirname=(app_folder, app_folder))
+    compile(dirname=(path, path))
 
-def compile_all(app_folder):
+def compile_all(path):
 
-    compile_sass(app_folder)
+    compile_sass(path)
