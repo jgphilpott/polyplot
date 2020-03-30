@@ -11,6 +11,16 @@ def load_json(path):
 
     path = "/root/app/back/mongo/backups/json"
 
+    if "countries" not in collections:
+
+        collection = database["countries"]
+        file = path + "/countries.json"
+
+        with open(file) as list:
+
+            countries = load(list)
+            collection.insert_many(countries)
+
     if "indicators" not in collections:
 
         collection = database["indicators"]
@@ -26,16 +36,6 @@ def load_json(path):
             if indicator["default"] == True:
 
                 update_indicator(indicator["code"])
-
-    if "countries" not in collections:
-
-        collection = database["countries"]
-        file = path + "/countries.json"
-
-        with open(file) as list:
-
-            countries = load(list)
-            collection.insert_many(countries)
 
     if "maps" not in collections:
 
