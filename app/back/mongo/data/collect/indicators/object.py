@@ -6,6 +6,10 @@ class Indicator():
 
         self.code = indicator["code"]
         self.name = indicator["name"]
+
+        self.default = indicator["default"]
+        self.featured = indicator["featured"]
+
         self.categories = indicator["categories"]
 
         if "geographies" in indicator:
@@ -45,22 +49,6 @@ class Indicator():
 
                 self.geographies = geos
 
-                if log:
-
-                    print("\n\033[93mUpdated indicator:\033[0m {} \033[93m~\033[0m {}".format(self.code, self.name))
-
             except:
 
-                if log:
-
-                    print("\n\033[91mError updating indicator\033[0m {}".format(self.code))
-
-        else:
-
-            if log:
-
-                print("\n\033[93mIndicator\033[0m {} \033[93mis already up to date.\033[0m".format(self.code))
-
-        if log:
-
-            print("")
+                pass
