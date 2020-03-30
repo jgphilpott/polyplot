@@ -20,7 +20,7 @@ class Indicator():
 
             self.geographies = []
 
-    def update(self, log=False):
+    def update(self):
 
         if not self.geographies:
 
@@ -36,8 +36,8 @@ class Indicator():
 
                     if item["value"]:
 
-                        geo_exists = [geo for geo in geos if geo["code"] in [item["countryiso3code"]]]
                         obj = {"year": int(item["date"]), "value": item["value"]}
+                        geo_exists = [geo for geo in geos if geo["code"] in [item["countryiso3code"]]]
 
                         if geo_exists:
 
