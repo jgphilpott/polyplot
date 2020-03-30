@@ -1,5 +1,5 @@
 # Source
-alias source="source ~/app/back/tools/flint/aliases.sh"
+alias source="source ~/app/back/flint/aliases.sh"
 
 # Welcome
 alias welcome="printf '\n\e[93mWelcome to Polyplot!\e[0m 😍\n\n'"
