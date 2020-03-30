@@ -20,8 +20,7 @@ alias spark="space && py app/spark.py && space"
 alias fire="py app/spark.py"
 
 # Database
-alias db-client="fire find_client"
-alias db-data="fire find_database"
+alias db="fire find_database"
 alias db-drop="fire drop_database"
 
 # Collections
