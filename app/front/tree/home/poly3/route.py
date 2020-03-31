@@ -1,7 +1,7 @@
 from flask import render_template, request
 
-from back.mongo.data.collect.indicators import find_indicator
 from back.mongo.data.collect.countries import find_countries
+from back.mongo.data.collect.indicators import find_indicator
 
 def register_poly3_route(app):
 
@@ -24,7 +24,7 @@ def register_poly3_route(app):
             data["plot"]["y"] = {"name": y["name"]}
             data["plot"]["z"] = {"name": z["name"]}
 
-            countries = list(find_countries())
+            countries = find_countries()
 
             for country in countries:
 
