@@ -1,20 +1,15 @@
 from back.mongo.data.base import find_database
 
 database = find_database()
-collections = database.list_collection_names()
 
 def find_collection(code):
 
-    collection = database[code]
-
-    return collection
+    return database[code]
 
 def find_collections():
 
-    return collections
+    return database.list_collection_names()
 
 def drop_collection(code):
 
-    collection = find_collection(code)
-
-    return collection.drop()
+    return find_collection(code).drop()
