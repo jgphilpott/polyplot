@@ -34,21 +34,21 @@ class Indicator():
 
                 for item in data:
 
-                    if item["value"]:
+                    obj = {"year": int(item["date"]), "value": item["value"]}
+                    geo_exists = [geo for geo in geos if geo["code"] in [item["countryiso3code"]]]
 
-                        obj = {"year": int(item["date"]), "value": item["value"]}
-                        geo_exists = [geo for geo in geos if geo["code"] in [item["countryiso3code"]]]
+                    if geo_exists:
 
-                        if geo_exists:
+                        geo_exists[0]["history"].append(obj)
 
-                            geo_exists[0]["history"].append(obj)
+                    else:
 
-                        else:
-
-                            geos.append({"code": item["countryiso3code"], "history": [obj]})
+                        geos.append({"code": item["countryiso3code"], "history": [obj]})
 
                 self.geographies = geos
 
             except:
 
                 pass
+
+        return self
