@@ -4,12 +4,4 @@ $(document).ready(function() {
 
   const socket = io()
 
-  socket.on("clientConnect", function(data) {
-    // console.log("Client Count: " + data)
-  })
-
-  socket.on("clientDisconnect", function(data) {
-    // console.log("Client Count: " + data)
-  })
-
 })
