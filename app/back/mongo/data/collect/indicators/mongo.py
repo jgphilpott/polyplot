@@ -1,25 +1,21 @@
 from back.mongo.data.collect.ions import find_collection
 from back.mongo.data.collect.indicators.object import Indicator
 
-indicators = find_collection("indicators")
+collection = find_collection("indicators")
 
-def find_indicator(indicator):
+def find_indicator(code):
 
-    code = indicator
-
-    return indicators.find_one({"code": code}, {"_id": 0})
+    return dict(collection.find_one({"code": code}, {"_id": 0}))
 
 def find_indicators():
 
-    return indicators.find({}, {"_id": 0})
+    return list(collection.find({}, {"_id": 0}))
 
 def update_indicator(code):
 
-    indicator = find_indicator(code)
-    indicator = Indicator(indicator)
-    indicator.update()
+    indicator = Indicator(find_indicator(code)).update()
 
-    indicators.update_one({"code": indicator.code}, {"$set": indicator.__dict__})
+    collection.update_one({"code": indicator.code}, {"$set": indicator.__dict__})
 
 def update_indicators():
 
