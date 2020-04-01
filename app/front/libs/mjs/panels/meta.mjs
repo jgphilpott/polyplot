@@ -1,6 +1,4 @@
-export function addMetaPanel() {
-
-}
+export function addMetaPanel() {}
 
 export function updateMetaPanel(code) {
 

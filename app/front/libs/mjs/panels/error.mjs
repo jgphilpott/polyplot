@@ -1,3 +1,1 @@
-export function addErrorPanel() {
-
-}
+export function addErrorPanel() {}

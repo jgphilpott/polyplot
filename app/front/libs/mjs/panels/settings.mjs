@@ -1,3 +1,1 @@
-export function addSettingsPanel() {
-
-}
+export function addSettingsPanel() {}

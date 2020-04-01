@@ -1,3 +1,1 @@
-export function addHomePanel() {
-
-}
+export function addHomePanel() {}

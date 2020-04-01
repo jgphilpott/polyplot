@@ -1,3 +1,1 @@
-export function addMapPanel() {
-
-}
+export function addMapPanel() {}
