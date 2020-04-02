@@ -18,4 +18,13 @@ $(document).ready(function() {
 
   canvas.enter().append("path").attr("d", geoGenerator)
 
+  var zoom = d3.zoom()
+      .scaleExtent([1, 40])
+      .translateExtent([[0, 0], [width(), height()]])
+      .on("zoom", function() {
+        d3.selectAll('path').attr('transform', d3.event.transform)
+      })
+
+  d3.select("svg").call(zoom)
+
 })
