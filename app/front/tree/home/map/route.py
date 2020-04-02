@@ -7,6 +7,6 @@ def register_map_route(app):
     @app.route("/map")
     def map():
 
-        data = find_maps()
+        data = find_maps("large")
 
         return render_template("tree/home/map/page.html", data=data)
