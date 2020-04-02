@@ -1,6 +1,6 @@
 from flask import render_template
 
-from back.mongo.data.collect.countries.mongo import find_countries
+from back.mongo.data.collect.countries import find_countries
 
 def register_countries_route(app):
 

@@ -1,5 +1,7 @@
 from flask import render_template
 
+from back.mongo.data.collect.indicators import find_indicators
+
 def register_indicators_route(app):
 
     @app.route("/indicators")
