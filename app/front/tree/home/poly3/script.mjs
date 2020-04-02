@@ -71,4 +71,6 @@ $(document).ready(function() {
 
   animatePlot()
 
+  console.log(data)
+
 })
