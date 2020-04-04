@@ -1,7 +1,12 @@
 import {width, height} from "../../../libs/mjs/env/dimensions.mjs"
+
+import {addTitlePanel} from "../../../libs/mjs/panels/title.mjs"
 import {makePanelsDragable} from "../../../libs/mjs/panels/all.mjs"
 
 $(document).ready(function() {
+
+  addTitlePanel()
+  makePanelsDragable()
 
   let canvas = d3.select("#canvas")
 
@@ -27,8 +32,6 @@ $(document).ready(function() {
                })
 
   canvas.call(zoom)
-
-  makePanelsDragable()
 
   console.log(data)
 
