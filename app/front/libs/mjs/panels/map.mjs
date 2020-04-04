@@ -1,1 +1,5 @@
-export function addMapPanel() {}
+export function addMapPanel() {
+
+  let panel = $(".panel#map")
+
+}

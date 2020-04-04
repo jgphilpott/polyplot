@@ -1,1 +1,5 @@
-export function addSettingsPanel() {}
+export function addSettingsPanel() {
+
+  let panel = $(".panel#settings")
+
+}

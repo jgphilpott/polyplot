@@ -1,4 +1,8 @@
-export function addMetaPanel() {}
+export function addMetaPanel() {
+
+  let panel = $(".panel#meta")
+
+}
 
 export function updateMetaPanel(code) {
 
