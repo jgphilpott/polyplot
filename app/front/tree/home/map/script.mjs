@@ -1,4 +1,5 @@
 import {width, height} from "../../../libs/mjs/env/dimensions.mjs"
+import {makePanelsDragable} from "../../../libs/mjs/panels/all.mjs"
 
 $(document).ready(function() {
 
@@ -26,6 +27,8 @@ $(document).ready(function() {
                })
 
   canvas.call(zoom)
+
+  makePanelsDragable()
 
   console.log(data)
 
