@@ -43,7 +43,7 @@ class Indicator():
 
                     else:
 
-                        geos.append({"code": item["countryiso3code"], "history": [obj]})
+                        geos.append({"code": item["countryiso3code"], "name": item["country"]["value"], "history": [obj]})
 
                 self.geographies = geos
 
