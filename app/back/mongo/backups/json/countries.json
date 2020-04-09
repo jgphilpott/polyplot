@@ -1,1086 +1,1159 @@
 [
   {
-    "code": "ABW",
-    "name": "Aruba",
-    "region": "Latin America & Caribbean"
-  },
-  {
     "code": "AFG",
+    "formal_name": "Islamic Republic of Afghanistan",
     "name": "Afghanistan",
     "region": "South Asia"
   },
   {
     "code": "AGO",
+    "formal_name": "Republic of Angola",
     "name": "Angola",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "ALB",
+    "formal_name": "Republic of Albania",
     "name": "Albania",
     "region": "Europe & Central Asia"
   },
   {
     "code": "AND",
+    "formal_name": "Principality of Andorra",
     "name": "Andorra",
     "region": "Europe & Central Asia"
   },
   {
     "code": "ARE",
+    "formal_name": "United Arab Emirates",
     "name": "United Arab Emirates",
     "region": "Midle East & North Africa"
   },
   {
     "code": "ARG",
+    "formal_name": "Argentine Republic",
     "name": "Argentina",
     "region": "Latin America & Caribbean"
   },
   {
     "code": "ARM",
+    "formal_name": "Republic of Armenia",
     "name": "Armenia",
     "region": "Europe & Central Asia"
   },
   {
-    "code": "ASM",
-    "name": "American Samoa",
-    "region": "East Asia & Pacific"
-  },
-  {
     "code": "ATG",
+    "formal_name": "Antigua and Barbuda",
     "name": "Antigua and Barbuda",
     "region": "Latin America & Caribbean"
   },
   {
     "code": "AUS",
+    "formal_name": "Commonwealth of Australia",
     "name": "Australia",
     "region": "East Asia & Pacific"
   },
   {
     "code": "AUT",
+    "formal_name": "Republic of Austria",
     "name": "Austria",
     "region": "Europe & Central Asia"
   },
   {
     "code": "AZE",
+    "formal_name": "Republic of Azerbaijan",
     "name": "Azerbaijan",
     "region": "Europe & Central Asia"
   },
   {
     "code": "BDI",
+    "formal_name": "Republic of Burundi",
     "name": "Burundi",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "BEL",
+    "formal_name": "Kingdom of Belgium",
     "name": "Belgium",
     "region": "Europe & Central Asia"
   },
   {
     "code": "BEN",
+    "formal_name": "Republic of Benin",
     "name": "Benin",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "BFA",
+    "formal_name": "Burkina Faso",
     "name": "Burkina Faso",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "BGD",
+    "formal_name": "People's Republic of Bangladesh",
     "name": "Bangladesh",
     "region": "South Asia"
   },
   {
     "code": "BGR",
+    "formal_name": "Republic of Bulgaria",
     "name": "Bulgaria",
     "region": "Europe & Central Asia"
   },
   {
     "code": "BHR",
+    "formal_name": "Kingdom of Bahrain",
     "name": "Bahrain",
     "region": "Midle East & North Africa"
   },
   {
     "code": "BHS",
+    "formal_name": "Commonwealth of The Bahamas",
     "name": "Bahamas, The",
     "region": "Latin America & Caribbean"
   },
   {
     "code": "BIH",
+    "formal_name": "Bosnia and Herzegovina",
     "name": "Bosnia and Herzegovina",
     "region": "Europe & Central Asia"
   },
   {
     "code": "BLR",
+    "formal_name": "Republic of Belarus",
     "name": "Belarus",
     "region": "Europe & Central Asia"
   },
   {
     "code": "BLZ",
+    "formal_name": "Belize",
     "name": "Belize",
     "region": "Latin America & Caribbean"
   },
   {
-    "code": "BMU",
-    "name": "Bermuda",
-    "region": "North America"
-  },
-  {
     "code": "BOL",
+    "formal_name": "Plurinational State of Bolivia",
     "name": "Bolivia",
     "region": "Latin America & Caribbean"
   },
   {
     "code": "BRA",
+    "formal_name": "Federative Republic of Brazil",
     "name": "Brazil",
     "region": "Latin America & Caribbean"
   },
   {
     "code": "BRB",
+    "formal_name": "Barbados",
     "name": "Barbados",
     "region": "Latin America & Caribbean"
   },
   {
     "code": "BRN",
+    "formal_name": "Nation of Brunei, the Abode of Peace",
     "name": "Brunei Darussalam",
     "region": "East Asia & Pacific"
   },
   {
     "code": "BTN",
+    "formal_name": "Kingdom of Bhutan",
     "name": "Bhutan",
     "region": "South Asia"
   },
   {
     "code": "BWA",
+    "formal_name": "Republic of Botswana",
     "name": "Botswana",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "CAF",
+    "formal_name": "Central African Republic",
     "name": "Central African Republic",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "CAN",
+    "formal_name": "Canada",
     "name": "Canada",
     "region": "North America"
   },
   {
     "code": "CHE",
+    "formal_name": "Swiss Confederation",
     "name": "Switzerland",
     "region": "Europe & Central Asia"
   },
   {
-    "code": "CHI",
-    "name": "Channel Islands",
-    "region": "Europe & Central Asia"
-  },
-  {
     "code": "CHL",
+    "formal_name": "Republic of Chile",
     "name": "Chile",
     "region": "Latin America & Caribbean"
   },
   {
     "code": "CHN",
+    "formal_name": "People's Republic of China",
     "name": "China",
     "region": "East Asia & Pacific"
   },
   {
     "code": "CIV",
+    "formal_name": "Republic of Cote d'Ivoire",
     "name": "Cote d'Ivoire",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "CMR",
+    "formal_name": "Republic of Cameroon",
     "name": "Cameroon",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "COD",
-    "name": "Congo, Dem. Rep.",
+    "formal_name": "Congo, Democratic Republic of the",
+    "name": "Congo, Democratic Republic of the",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "COG",
-    "name": "Congo, Rep.",
+    "formal_name": "Congo, Republic of the",
+    "name": "Congo, Republic of the",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "COL",
+    "formal_name": "Republic of Colombia",
     "name": "Colombia",
     "region": "Latin America & Caribbean"
   },
   {
     "code": "COM",
+    "formal_name": "Union of the Comoros",
     "name": "Comoros",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "CPV",
+    "formal_name": "Republic of Cabo Verde",
     "name": "Cabo Verde",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "CRI",
+    "formal_name": "Republic of Costa Rica",
     "name": "Costa Rica",
     "region": "Latin America & Caribbean"
   },
   {
     "code": "CUB",
+    "formal_name": "Republic of Cuba",
     "name": "Cuba",
     "region": "Latin America & Caribbean"
   },
   {
-    "code": "CUW",
-    "name": "Curacao",
-    "region": "Latin America & Caribbean"
-  },
-  {
-    "code": "CYM",
-    "name": "Cayman Islands",
-    "region": "Latin America & Caribbean"
-  },
-  {
     "code": "CYP",
+    "formal_name": "Republic of Cyprus",
     "name": "Cyprus",
     "region": "Europe & Central Asia"
   },
   {
     "code": "CZE",
+    "formal_name": "Czech Republic",
     "name": "Czech Republic",
     "region": "Europe & Central Asia"
   },
   {
     "code": "DEU",
+    "formal_name": "Federal Republic of Germany",
     "name": "Germany",
     "region": "Europe & Central Asia"
   },
   {
     "code": "DJI",
+    "formal_name": "Republic of Djibouti",
     "name": "Djibouti",
     "region": "Midle East & North Africa"
   },
   {
     "code": "DMA",
+    "formal_name": "Commonwealth of Dominica",
     "name": "Dominica",
     "region": "Latin America & Caribbean"
   },
   {
     "code": "DNK",
+    "formal_name": "Kingdom of Denmark",
     "name": "Denmark",
     "region": "Europe & Central Asia"
   },
   {
     "code": "DOM",
+    "formal_name": "Dominican Republic",
     "name": "Dominican Republic",
     "region": "Latin America & Caribbean"
   },
   {
     "code": "DZA",
+    "formal_name": "People's Democratic Republic of Algeria",
     "name": "Algeria",
     "region": "Midle East & North Africa"
   },
   {
     "code": "ECU",
+    "formal_name": "Republic of Ecuador",
     "name": "Ecuador",
     "region": "Latin America & Caribbean"
   },
   {
     "code": "EGY",
-    "name": "Egypt, Arab Rep.",
+    "formal_name": "Arab Republic of Egypt",
+    "name": "Egypt",
     "region": "Midle East & North Africa"
   },
   {
     "code": "ERI",
+    "formal_name": "State of Eritrea",
     "name": "Eritrea",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "ESP",
+    "formal_name": "Kingdom of Spain",
     "name": "Spain",
     "region": "Europe & Central Asia"
   },
   {
     "code": "EST",
+    "formal_name": "Republic of Estonia",
     "name": "Estonia",
     "region": "Europe & Central Asia"
   },
   {
     "code": "ETH",
+    "formal_name": "Federal Democratic Republic of Ethiopia",
     "name": "Ethiopia",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "FIN",
+    "formal_name": "Republic of Finland",
     "name": "Finland",
     "region": "Europe & Central Asia"
   },
   {
     "code": "FJI",
+    "formal_name": "Republic of Fiji",
     "name": "Fiji",
     "region": "East Asia & Pacific"
   },
   {
     "code": "FRA",
+    "formal_name": "French Republic",
     "name": "France",
     "region": "Europe & Central Asia"
   },
   {
-    "code": "FRO",
-    "name": "Faroe Islands",
-    "region": "Europe & Central Asia"
-  },
-  {
     "code": "FSM",
-    "name": "Micronesia, Fed. Sts.",
+    "formal_name": "Federated States of Micronesia",
+    "name": "Micronesia",
     "region": "East Asia & Pacific"
   },
   {
     "code": "GAB",
+    "formal_name": "Gabonese Republic",
     "name": "Gabon",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "GBR",
+    "formal_name": "United Kingdom of Great Britain and Northern Ireland",
     "name": "United Kingdom",
     "region": "Europe & Central Asia"
   },
   {
     "code": "GEO",
+    "formal_name": "Georgia",
     "name": "Georgia",
     "region": "Europe & Central Asia"
   },
   {
     "code": "GHA",
+    "formal_name": "Republic of Ghana",
     "name": "Ghana",
     "region": "Sub-Saharan Africa"
   },
   {
-    "code": "GIB",
-    "name": "Gibraltar",
-    "region": "Europe & Central Asia"
-  },
-  {
     "code": "GIN",
+    "formal_name": "Republic of Guinea",
     "name": "Guinea",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "GMB",
+    "formal_name": "Republic of The Gambia",
     "name": "Gambia, The",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "GNB",
+    "formal_name": "Republic of Guinea-Bissau",
     "name": "Guinea-Bissau",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "GNQ",
+    "formal_name": "Republic of Equatorial Guinea",
     "name": "Equatorial Guinea",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "GRC",
+    "formal_name": "Hellenic Republic",
     "name": "Greece",
     "region": "Europe & Central Asia"
   },
   {
     "code": "GRD",
+    "formal_name": "Grenada",
     "name": "Grenada",
     "region": "Latin America & Caribbean"
   },
   {
-    "code": "GRL",
-    "name": "Greenland",
-    "region": "Europe & Central Asia"
-  },
-  {
     "code": "GTM",
+    "formal_name": "Republic of Guatemala",
     "name": "Guatemala",
     "region": "Latin America & Caribbean"
   },
   {
-    "code": "GUM",
-    "name": "Guam",
-    "region": "East Asia & Pacific"
-  },
-  {
     "code": "GUY",
+    "formal_name": "Co-operative Republic of Guyana",
     "name": "Guyana",
     "region": "Latin America & Caribbean"
   },
   {
-    "code": "HKG",
-    "name": "Hong Kong SAR, China",
-    "region": "East Asia & Pacific"
-  },
-  {
     "code": "HND",
+    "formal_name": "Republic of Honduras",
     "name": "Honduras",
     "region": "Latin America & Caribbean"
   },
   {
     "code": "HRV",
+    "formal_name": "Republic of Croatia",
     "name": "Croatia",
     "region": "Europe & Central Asia"
   },
   {
     "code": "HTI",
+    "formal_name": " Republic of Haiti",
     "name": "Haiti",
     "region": "Latin America & Caribbean"
   },
   {
     "code": "HUN",
+    "formal_name": "Hungary",
     "name": "Hungary",
     "region": "Europe & Central Asia"
   },
   {
     "code": "IDN",
+    "formal_name": "Republic of Indonesia",
     "name": "Indonesia",
     "region": "East Asia & Pacific"
   },
   {
-    "code": "IMN",
-    "name": "Isle of Man",
-    "region": "Europe & Central Asia"
-  },
-  {
     "code": "IND",
+    "formal_name": "Republic of India",
     "name": "India",
     "region": "South Asia"
   },
   {
     "code": "IRL",
+    "formal_name": "Ireland",
     "name": "Ireland",
     "region": "Europe & Central Asia"
   },
   {
     "code": "IRN",
-    "name": "Iran, Islamic Rep.",
+    "formal_name": "Islamic Republic of Iran",
+    "name": "Iran",
     "region": "Midle East & North Africa"
   },
   {
     "code": "IRQ",
+    "formal_name": "Republic of Iraq",
     "name": "Iraq",
     "region": "Midle East & North Africa"
   },
   {
     "code": "ISL",
+    "formal_name": "Iceland",
     "name": "Iceland",
     "region": "Europe & Central Asia"
   },
   {
     "code": "ISR",
+    "formal_name": "State of Israel",
     "name": "Israel",
     "region": "Midle East & North Africa"
   },
   {
     "code": "ITA",
+    "formal_name": "Italian Republic",
     "name": "Italy",
     "region": "Europe & Central Asia"
   },
   {
     "code": "JAM",
+    "formal_name": "Jamaica",
     "name": "Jamaica",
     "region": "Latin America & Caribbean"
   },
   {
     "code": "JOR",
+    "formal_name": "Hashemite Kingdom of Jordan",
     "name": "Jordan",
     "region": "Midle East & North Africa"
   },
   {
     "code": "JPN",
+    "formal_name": "Japan",
     "name": "Japan",
     "region": "East Asia & Pacific"
   },
   {
     "code": "KAZ",
+    "formal_name": "Republic of Kazakhstan",
     "name": "Kazakhstan",
     "region": "Europe & Central Asia"
   },
   {
     "code": "KEN",
+    "formal_name": "Republic of Kenya",
     "name": "Kenya",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "KGZ",
-    "name": "Kyrgyz Republic",
+    "formal_name": "Kyrgyz Republic",
+    "name": "Kyrgyzstan",
     "region": "Europe & Central Asia"
   },
   {
     "code": "KHM",
+    "formal_name": "Kingdom of Cambodia",
     "name": "Cambodia",
     "region": "East Asia & Pacific"
   },
   {
     "code": "KIR",
+    "formal_name": "Republic of Kiribati",
     "name": "Kiribati",
     "region": "East Asia & Pacific"
   },
   {
     "code": "KNA",
-    "name": "St. Kitts and Nevis",
+    "formal_name": "Federation of Saint Christopher and Nevis",
+    "name": "Saint Kitts and Nevis",
     "region": "Latin America & Caribbean"
   },
   {
     "code": "KOR",
-    "name": "Korea, Rep.",
+    "formal_name": "Republic of Korea",
+    "name": "Korea, South",
     "region": "East Asia & Pacific"
   },
   {
     "code": "KWT",
+    "formal_name": "State of Kuwait",
     "name": "Kuwait",
     "region": "Midle East & North Africa"
   },
   {
     "code": "LAO",
-    "name": "Lao PDR",
+    "formal_name": "Lao People's Democratic Republic",
+    "name": "Laos",
     "region": "East Asia & Pacific"
   },
   {
     "code": "LBN",
+    "formal_name": "Lebanese Republic",
     "name": "Lebanon",
     "region": "Midle East & North Africa"
   },
   {
     "code": "LBR",
+    "formal_name": "Republic of Liberia",
     "name": "Liberia",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "LBY",
+    "formal_name": "State of Libya",
     "name": "Libya",
     "region": "Midle East & North Africa"
   },
   {
     "code": "LCA",
-    "name": "St. Lucia",
+    "formal_name": "Saint Lucia",
+    "name": "Saint Lucia",
     "region": "Latin America & Caribbean"
   },
   {
     "code": "LIE",
+    "formal_name": "Principality of Liechtenstein",
     "name": "Liechtenstein",
     "region": "Europe & Central Asia"
   },
   {
     "code": "LKA",
+    "formal_name": "Democratic Socialist Republic of Sri Lanka",
     "name": "Sri Lanka",
     "region": "South Asia"
   },
   {
     "code": "LSO",
+    "formal_name": "Kingdom of Lesotho",
     "name": "Lesotho",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "LTU",
+    "formal_name": "Republic of Lithuania",
     "name": "Lithuania",
     "region": "Europe & Central Asia"
   },
   {
     "code": "LUX",
+    "formal_name": "Grand Duchy of Luxembourg",
     "name": "Luxembourg",
     "region": "Europe & Central Asia"
   },
   {
     "code": "LVA",
+    "formal_name": "Republic of Latvia",
     "name": "Latvia",
     "region": "Europe & Central Asia"
   },
   {
-    "code": "MAC",
-    "name": "Macao SAR, China",
-    "region": "East Asia & Pacific"
-  },
-  {
-    "code": "MAF",
-    "name": "St. Martin (French part)",
-    "region": "Latin America & Caribbean"
-  },
-  {
     "code": "MAR",
+    "formal_name": "Kingdom of Morocco",
     "name": "Morocco",
     "region": "Midle East & North Africa"
   },
   {
     "code": "MCO",
+    "formal_name": "Principality of Monaco",
     "name": "Monaco",
     "region": "Europe & Central Asia"
   },
   {
     "code": "MDA",
+    "formal_name": "Republic of Moldova",
     "name": "Moldova",
     "region": "Europe & Central Asia"
   },
   {
     "code": "MDG",
+    "formal_name": "Republic of Madagascar",
     "name": "Madagascar",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "MDV",
+    "formal_name": "Republic of Maldives",
     "name": "Maldives",
     "region": "South Asia"
   },
   {
     "code": "MEX",
+    "formal_name": "United Mexican States",
     "name": "Mexico",
     "region": "Latin America & Caribbean"
   },
   {
     "code": "MHL",
+    "formal_name": "Republic of the Marshall Islands",
     "name": "Marshall Islands",
     "region": "East Asia & Pacific"
   },
   {
     "code": "MKD",
+    "formal_name": "Republic of North Macedonia",
     "name": "North Macedonia",
     "region": "Europe & Central Asia"
   },
   {
     "code": "MLI",
+    "formal_name": "Republic of Mali",
     "name": "Mali",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "MLT",
+    "formal_name": "Republic of Malta",
     "name": "Malta",
     "region": "Midle East & North Africa"
   },
   {
     "code": "MMR",
+    "formal_name": "Republic of the Union of Myanmar",
     "name": "Myanmar",
     "region": "East Asia & Pacific"
   },
   {
     "code": "MNE",
+    "formal_name": "Montenegro",
     "name": "Montenegro",
     "region": "Europe & Central Asia"
   },
   {
     "code": "MNG",
+    "formal_name": "Mongolia",
     "name": "Mongolia",
     "region": "East Asia & Pacific"
   },
   {
-    "code": "MNP",
-    "name": "Northern Mariana Islands",
-    "region": "East Asia & Pacific"
-  },
-  {
     "code": "MOZ",
+    "formal_name": "Republic of Mozambique",
     "name": "Mozambique",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "MRT",
+    "formal_name": "Islamic Republic of Mauritania",
     "name": "Mauritania",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "MUS",
+    "formal_name": "Republic of Mauritius",
     "name": "Mauritius",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "MWI",
+    "formal_name": "Republic of Malawi",
     "name": "Malawi",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "MYS",
+    "formal_name": "Malaysia",
     "name": "Malaysia",
     "region": "East Asia & Pacific"
   },
   {
     "code": "NAM",
+    "formal_name": "Republic of Namibia",
     "name": "Namibia",
     "region": "Sub-Saharan Africa"
   },
   {
-    "code": "NCL",
-    "name": "New Caledonia",
-    "region": "East Asia & Pacific"
-  },
-  {
     "code": "NER",
+    "formal_name": "Republic of Niger",
     "name": "Niger",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "NGA",
+    "formal_name": "Federal Republic of Nigeria",
     "name": "Nigeria",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "NIC",
+    "formal_name": "Republic of Nicaragua",
     "name": "Nicaragua",
     "region": "Latin America & Caribbean"
   },
   {
     "code": "NLD",
+    "formal_name": "Kingdom of the Netherlands",
     "name": "Netherlands",
     "region": "Europe & Central Asia"
   },
   {
     "code": "NOR",
+    "formal_name": "Kingdom of Norway",
     "name": "Norway",
     "region": "Europe & Central Asia"
   },
   {
     "code": "NPL",
+    "formal_name": "Federal Democratic Republic of Nepal",
     "name": "Nepal",
     "region": "South Asia"
   },
   {
     "code": "NRU",
+    "formal_name": "Republic of Nauru",
     "name": "Nauru",
     "region": "East Asia & Pacific"
   },
   {
     "code": "NZL",
+    "formal_name": "New Zealand",
     "name": "New Zealand",
     "region": "East Asia & Pacific"
   },
   {
     "code": "OMN",
+    "formal_name": "Sultanate of Oman",
     "name": "Oman",
     "region": "Midle East & North Africa"
   },
   {
     "code": "PAK",
+    "formal_name": "Islamic Republic of Pakistan",
     "name": "Pakistan",
     "region": "South Asia"
   },
   {
     "code": "PAN",
+    "formal_name": "Republic of Panama",
     "name": "Panama",
     "region": "Latin America & Caribbean"
   },
   {
     "code": "PER",
+    "formal_name": "Republic of Peru",
     "name": "Peru",
     "region": "Latin America & Caribbean"
   },
   {
     "code": "PHL",
+    "formal_name": "Republic of the Philippines",
     "name": "Philippines",
     "region": "East Asia & Pacific"
   },
   {
     "code": "PLW",
+    "formal_name": "Republic of Palau",
     "name": "Palau",
     "region": "East Asia & Pacific"
   },
   {
     "code": "PNG",
+    "formal_name": "Independent State of Papua New Guinea",
     "name": "Papua New Guinea",
     "region": "East Asia & Pacific"
   },
   {
     "code": "POL",
+    "formal_name": "Republic of Poland",
     "name": "Poland",
     "region": "Europe & Central Asia"
   },
   {
-    "code": "PRI",
-    "name": "Puerto Rico",
-    "region": "Latin America & Caribbean"
-  },
-  {
     "code": "PRK",
-    "name": "Korea, Dem. Peoples Rep.",
+    "formal_name": "Democratic People's Republic of Korea",
+    "name": "Korea, North",
     "region": "East Asia & Pacific"
   },
   {
     "code": "PRT",
+    "formal_name": "Portuguese Republic",
     "name": "Portugal",
     "region": "Europe & Central Asia"
   },
   {
     "code": "PRY",
+    "formal_name": "Republic of Paraguay",
     "name": "Paraguay",
     "region": "Latin America & Caribbean"
   },
   {
-    "code": "PSE",
-    "name": "West Bank and Gaza",
-    "region": "Midle East & North Africa"
-  },
-  {
-    "code": "PYF",
-    "name": "French Polynesia",
-    "region": "East Asia & Pacific"
-  },
-  {
     "code": "QAT",
+    "formal_name": "State of Qatar",
     "name": "Qatar",
     "region": "Midle East & North Africa"
   },
   {
     "code": "ROU",
+    "formal_name": "Romania",
     "name": "Romania",
     "region": "Europe & Central Asia"
   },
   {
     "code": "RUS",
-    "name": "Russian Federation",
+    "formal_name": "Russian Federation",
+    "name": "Russia",
     "region": "Europe & Central Asia"
   },
   {
     "code": "RWA",
+    "formal_name": "Republic of Rwanda",
     "name": "Rwanda",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "SAU",
+    "formal_name": "Kingdom of Saudi Arabia",
     "name": "Saudi Arabia",
     "region": "Midle East & North Africa"
   },
   {
     "code": "SDN",
+    "formal_name": "Republic of the Sudan",
     "name": "Sudan",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "SEN",
+    "formal_name": "Republic of Senegal",
     "name": "Senegal",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "SGP",
+    "formal_name": "Republic of Singapore",
     "name": "Singapore",
     "region": "East Asia & Pacific"
   },
   {
     "code": "SLB",
+    "formal_name": "Solomon Islands",
     "name": "Solomon Islands",
     "region": "East Asia & Pacific"
   },
   {
     "code": "SLE",
+    "formal_name": "Republic of Sierra Leone",
     "name": "Sierra Leone",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "SLV",
+    "formal_name": "Republic of El Salvador",
     "name": "El Salvador",
     "region": "Latin America & Caribbean"
   },
   {
     "code": "SMR",
+    "formal_name": "Republic of San Marino",
     "name": "San Marino",
     "region": "Europe & Central Asia"
   },
   {
     "code": "SOM",
+    "formal_name": "Federal Republic of Somalia",
     "name": "Somalia",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "SRB",
+    "formal_name": "Republic of Serbia",
     "name": "Serbia",
     "region": "Europe & Central Asia"
   },
   {
     "code": "SSD",
+    "formal_name": "Republic of South Sudan",
     "name": "South Sudan",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "STP",
+    "formal_name": "Democratic Republic of Sao Tome and Principe",
     "name": "Sao Tome and Principe",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "SUR",
+    "formal_name": "Republic of Suriname",
     "name": "Suriname",
     "region": "Latin America & Caribbean"
   },
   {
     "code": "SVK",
-    "name": "Slovak Republic",
+    "formal_name": "Slovak Republic",
+    "name": "Slovakia",
     "region": "Europe & Central Asia"
   },
   {
     "code": "SVN",
+    "formal_name": "Republic of Slovenia",
     "name": "Slovenia",
     "region": "Europe & Central Asia"
   },
   {
     "code": "SWE",
+    "formal_name": "Kingdom of Sweden",
     "name": "Sweden",
     "region": "Europe & Central Asia"
   },
   {
     "code": "SWZ",
+    "formal_name": "Kingdom of Eswatini",
     "name": "Eswatini",
     "region": "Sub-Saharan Africa"
   },
   {
-    "code": "SXM",
-    "name": "Sint Maarten (Dutch part)",
-    "region": "Latin America & Caribbean"
-  },
-  {
     "code": "SYC",
+    "formal_name": "Republic of Seychelles",
     "name": "Seychelles",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "SYR",
-    "name": "Syrian Arab Republic",
+    "formal_name": "Syrian Arab Republic",
+    "name": "Syria",
     "region": "Midle East & North Africa"
   },
   {
-    "code": "TCA",
-    "name": "Turks and Caicos Islands",
-    "region": "Latin America & Caribbean"
-  },
-  {
     "code": "TCD",
+    "formal_name": "Republic of Chad",
     "name": "Chad",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "TGO",
+    "formal_name": "Togolese Republic",
     "name": "Togo",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "THA",
+    "formal_name": "Kingdom of Thailand",
     "name": "Thailand",
     "region": "East Asia & Pacific"
   },
   {
     "code": "TJK",
+    "formal_name": "Republic of Tajikistan",
     "name": "Tajikistan",
     "region": "Europe & Central Asia"
   },
   {
     "code": "TKM",
+    "formal_name": "Turkmenistan",
     "name": "Turkmenistan",
     "region": "Europe & Central Asia"
   },
   {
     "code": "TLS",
+    "formal_name": "Democratic Republic of Timor-Leste",
     "name": "Timor-Leste",
     "region": "East Asia & Pacific"
   },
   {
     "code": "TON",
+    "formal_name": "Kingdom of Tonga",
     "name": "Tonga",
     "region": "East Asia & Pacific"
   },
   {
     "code": "TTO",
+    "formal_name": "Republic of Trinidad and Tobago",
     "name": "Trinidad and Tobago",
     "region": "Latin America & Caribbean"
   },
   {
     "code": "TUN",
+    "formal_name": "Republic of Tunisia",
     "name": "Tunisia",
     "region": "Midle East & North Africa"
   },
   {
     "code": "TUR",
+    "formal_name": "Republic of Turkey",
     "name": "Turkey",
     "region": "Europe & Central Asia"
   },
   {
     "code": "TUV",
+    "formal_name": "Tuvalu",
     "name": "Tuvalu",
     "region": "East Asia & Pacific"
   },
   {
     "code": "TZA",
+    "formal_name": "United Republic of Tanzania",
     "name": "Tanzania",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "UGA",
+    "formal_name": "Republic of Uganda",
     "name": "Uganda",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "UKR",
+    "formal_name": "Ukraine",
     "name": "Ukraine",
     "region": "Europe & Central Asia"
   },
   {
     "code": "URY",
+    "formal_name": "Oriental Republic of Uruguay",
     "name": "Uruguay",
     "region": "Latin America & Caribbean"
   },
   {
     "code": "USA",
+    "formal_name": "United States of America",
     "name": "United States",
     "region": "North America"
   },
   {
     "code": "UZB",
+    "formal_name": "Republic of Uzbekistan",
     "name": "Uzbekistan",
     "region": "Europe & Central Asia"
   },
   {
     "code": "VCT",
-    "name": "St. Vincent and the Grenadines",
+    "formal_name": "Saint Vincent and the Grenadines",
+    "name": "Saint Vincent and the Grenadines",
     "region": "Latin America & Caribbean"
   },
   {
     "code": "VEN",
-    "name": "Venezuela, RB",
-    "region": "Latin America & Caribbean"
-  },
-  {
-    "code": "VGB",
-    "name": "British Virgin Islands",
-    "region": "Latin America & Caribbean"
-  },
-  {
-    "code": "VIR",
-    "name": "Virgin Islands (U.S.)",
+    "formal_name": "Bolivarian Republic of Venezuela",
+    "name": "Venezuela",
     "region": "Latin America & Caribbean"
   },
   {
     "code": "VNM",
+    "formal_name": "Socialist Republic of Vietnam",
     "name": "Vietnam",
     "region": "East Asia & Pacific"
   },
   {
     "code": "VUT",
+    "formal_name": "Republic of Vanuatu",
     "name": "Vanuatu",
     "region": "East Asia & Pacific"
   },
   {
     "code": "WSM",
+    "formal_name": "Independent State of Samoa",
     "name": "Samoa",
     "region": "East Asia & Pacific"
   },
   {
-    "code": "XKX",
-    "name": "Kosovo",
-    "region": "Europe & Central Asia"
-  },
-  {
     "code": "YEM",
-    "name": "Yemen, Rep.",
+    "formal_name": "Republic of Yemen",
+    "name": "Yemen",
     "region": "Midle East & North Africa"
   },
   {
     "code": "ZAF",
+    "formal_name": "Republic of South Africa",
     "name": "South Africa",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "ZMB",
+    "formal_name": "Republic of Zambia",
     "name": "Zambia",
     "region": "Sub-Saharan Africa"
   },
   {
     "code": "ZWE",
+    "formal_name": "Republic of Zimbabwe",
     "name": "Zimbabwe",
     "region": "Sub-Saharan Africa"
   }
