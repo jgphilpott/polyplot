@@ -197,7 +197,7 @@
       "Environment"
     ],
     "code": "AG.LND.TOTL.K2",
-    "default": true,
+    "default": false,
     "featured": true,
     "name": "Land area (sq. km)"
   },
@@ -443,7 +443,7 @@
       "External Debt"
     ],
     "code": "BN.CAB.XOKA.CD",
-    "default": true,
+    "default": false,
     "featured": true,
     "name": "Current account balance (BoP, current US$)"
   },
@@ -1126,7 +1126,7 @@
       "External Debt"
     ],
     "code": "DT.DOD.DIMF.CD",
-    "default": true,
+    "default": false,
     "featured": true,
     "name": "Use of IMF credit (DOD, current US$)"
   },
@@ -1811,7 +1811,7 @@
       "Environment"
     ],
     "code": "EG.ELC.ACCS.ZS",
-    "default": true,
+    "default": false,
     "featured": true,
     "name": "Access to electricity (% of population)"
   },
@@ -2006,7 +2006,7 @@
       "Infrastructure"
     ],
     "code": "EG.USE.ELEC.KH.PC",
-    "default": true,
+    "default": false,
     "featured": true,
     "name": "Electric power consumption (kWh per capita)"
   },
@@ -2067,7 +2067,7 @@
       "Environment"
     ],
     "code": "EN.ATM.CO2E.KT",
-    "default": true,
+    "default": false,
     "featured": true,
     "name": "CO2 emissions (kt)"
   },
@@ -2468,7 +2468,7 @@
       "Urban Development"
     ],
     "code": "EN.POP.DNST",
-    "default": true,
+    "default": false,
     "featured": true,
     "name": "Population density (people per sq. km of land area)"
   },
@@ -2790,7 +2790,7 @@
       "Financial Sector"
     ],
     "code": "FI.RES.TOTL.CD",
-    "default": true,
+    "default": false,
     "featured": true,
     "name": "Total reserves (includes gold, current US$)"
   },
@@ -2920,7 +2920,7 @@
       "Financial Sector"
     ],
     "code": "FP.CPI.TOTL.ZG",
-    "default": true,
+    "default": false,
     "featured": true,
     "name": "Inflation, consumer prices (annual %)"
   },
@@ -2947,7 +2947,7 @@
       "Financial Sector"
     ],
     "code": "FR.INR.LEND",
-    "default": true,
+    "default": false,
     "featured": true,
     "name": "Lending interest rate (%)"
   },
@@ -3057,7 +3057,7 @@
       "Public Sector"
     ],
     "code": "GC.DOD.TOTL.GD.ZS",
-    "default": true,
+    "default": false,
     "featured": true,
     "name": "Central government debt, total (% of GDP)"
   },
@@ -4387,7 +4387,7 @@
       "Infrastructure"
     ],
     "code": "IS.AIR.DPRT",
-    "default": true,
+    "default": false,
     "featured": true,
     "name": "Air transport, registered carrier departures worldwide"
   },
@@ -4432,7 +4432,7 @@
       "Infrastructure"
     ],
     "code": "IS.RRS.TOTL.KM",
-    "default": true,
+    "default": false,
     "featured": true,
     "name": "Rail lines (total route-km)"
   },
@@ -4667,7 +4667,7 @@
       "Public Sector"
     ],
     "code": "MS.MIL.XPND.GD.ZS",
-    "default": true,
+    "default": false,
     "featured": true,
     "name": "Military expenditure (% of GDP)"
   },
@@ -4996,7 +4996,7 @@
       "Trade"
     ],
     "code": "NE.EXP.GNFS.ZS",
-    "default": true,
+    "default": false,
     "featured": true,
     "name": "Exports of goods and services (% of GDP)"
   },
@@ -5207,7 +5207,7 @@
       "Trade"
     ],
     "code": "NE.IMP.GNFS.ZS",
-    "default": true,
+    "default": false,
     "featured": true,
     "name": "Imports of goods and services (% of GDP)"
   },
@@ -5961,7 +5961,7 @@
       "Economy & Growth"
     ],
     "code": "NY.GDP.MKTP.KD.ZG",
-    "default": true,
+    "default": false,
     "featured": true,
     "name": "GDP growth (annual %)"
   },
@@ -6503,7 +6503,7 @@
       "Education"
     ],
     "code": "SE.ADT.LITR.ZS",
-    "default": true,
+    "default": false,
     "featured": true,
     "name": "Literacy rate, adult total (% of people ages 15 and above)"
   },
@@ -7828,7 +7828,7 @@
       "Education"
     ],
     "code": "SE.XPD.TOTL.GB.ZS",
-    "default": true,
+    "default": false,
     "featured": true,
     "name": "Government expenditure on education, total (% of government expenditure)"
   },
@@ -8200,7 +8200,7 @@
       "Health"
     ],
     "code": "SH.DYN.AIDS.ZS",
-    "default": true,
+    "default": false,
     "featured": true,
     "name": "Prevalence of HIV, total (% of population ages 15-49)"
   },
@@ -8211,7 +8211,7 @@
       "Health"
     ],
     "code": "SH.DYN.MORT",
-    "default": true,
+    "default": false,
     "featured": true,
     "name": "Mortality rate, under-5 (per 1,000 live births)"
   },
@@ -10592,7 +10592,7 @@
       "Social Protection & Labor"
     ],
     "code": "SL.TLF.TOTL.IN",
-    "default": true,
+    "default": false,
     "featured": true,
     "name": "Labor force, total"
   },
@@ -11789,7 +11789,7 @@
       "Agriculture & Rural Development"
     ],
     "code": "SP.RUR.TOTL.ZS",
-    "default": true,
+    "default": false,
     "featured": true,
     "name": "Rural population (% of total population)"
   },
