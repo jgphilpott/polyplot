@@ -12,6 +12,7 @@ def register_poly3_route(app):
         data = {}
         data["plot"] = {"title": "World Bank Development Indicators"}
         data["plot"]["time"] = {"yearMin": 1960, "year": 1990, "yearMax": 2019}
+        data["plot"]["GeoJSON"] = {"type": "FeatureCollection", "features": find_maps("low")}
 
         r = find_indicator(request.args["r"]) if "r" in request.args else find_indicator("SP.POP.TOTL")
         x = find_indicator(request.args["x"]) if "x" in request.args else find_indicator("SP.DYN.LE00.IN")
