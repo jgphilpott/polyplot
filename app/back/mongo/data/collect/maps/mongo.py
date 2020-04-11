@@ -3,11 +3,11 @@ from back.mongo.data.collect.maps.object import Map
 
 collection = find_collection("maps")
 
-def find_map(code, detail="small"):
+def find_map(code, detail="low"):
 
     return dict(collection.find_one({"code": code}, {"_id": 0}))["detail"][detail]
 
-def find_maps(detail="small"):
+def find_maps(detail="low"):
 
     maps = []
 
