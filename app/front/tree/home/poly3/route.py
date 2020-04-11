@@ -27,10 +27,10 @@ def register_poly3_route(app):
 
         for country in countries:
 
-            country["r"] = [index for index in r["geographies"] if index["code"] in [country["code"]]][0]["history"]
-            country["x"] = [index for index in x["geographies"] if index["code"] in [country["code"]]][0]["history"]
-            country["y"] = [index for index in y["geographies"] if index["code"] in [country["code"]]][0]["history"]
-            country["z"] = [index for index in z["geographies"] if index["code"] in [country["code"]]][0]["history"]
+            country["r"] = [indicator for indicator in r["geographies"] if indicator["code"] in [country["code"]]][0]["history"]
+            country["x"] = [indicator for indicator in x["geographies"] if indicator["code"] in [country["code"]]][0]["history"]
+            country["y"] = [indicator for indicator in y["geographies"] if indicator["code"] in [country["code"]]][0]["history"]
+            country["z"] = [indicator for indicator in z["geographies"] if indicator["code"] in [country["code"]]][0]["history"]
 
         data["plot"]["plots"] = countries
 

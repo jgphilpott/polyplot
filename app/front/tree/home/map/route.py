@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template, request
 
 from back.mongo.data.collect.countries import find_countries
 from back.mongo.data.collect.indicators import find_indicator
@@ -12,6 +12,17 @@ def register_map_route(app):
         data = {}
         data["plot"] = {"title": "World Bank Development Indicators"}
         data["plot"]["time"] = {"yearMin": 1960, "year": 1990, "yearMax": 2019}
-        data["plot"]["geoJSON"] = {"type": "FeatureCollection", "features": find_maps("large")}
+        data["plot"]["GeoJSON"] = {"type": "FeatureCollection", "features": find_maps("high")}
+
+        x = find_indicator(request.args["x"]) if "x" in request.args else find_indicator("SP.DYN.LE00.IN")
+        data["plot"]["x"] = {"name": x["name"]}
+
+        countries = find_countries()
+
+        for country in countries:
+
+            country["x"] = [indicator for indicator in x["geographies"] if indicator["code"] in [country["code"]]][0]["history"]
+
+        data["plot"]["plots"] = countries
 
         return render_template("tree/home/map/page.html", data=data)
