@@ -30,7 +30,7 @@ export function clearMetaPanel() {
 
   $("#meta #name").text("Meta")
 
-  $("#meta #flag").attr("src", "/front/imgs/flags/None.png")
+  $("#meta #flag").attr("src", "/front/imgs/flags/null.png")
 
   $("#meta #region").text("None")
 
