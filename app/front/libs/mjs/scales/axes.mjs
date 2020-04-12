@@ -1,6 +1,6 @@
 import {min, max} from "../env/dimensions.mjs"
 import {linearScale} from "./linear.mjs"
-import {absMaxValue, rangeAxis} from "./range.mjs"
+import {minValue, maxValue, absMinValue, absMaxValue, rangeAxis} from "./range.mjs"
 
 let plot = data.plot
 
@@ -28,22 +28,30 @@ export function zScale(z) {
 
 }
 
-export function scaleAxes() {
+export function scaleAxes(type) {
 
-  plot.r.min = 0
-  plot.r.max = absMaxValue(rangeAxis("r"))
-  plot.r.scale = rScale
+  if (type == "poly3") {
 
-  plot.x.min = 0
-  plot.x.max = absMaxValue(rangeAxis("x"))
-  plot.x.scale = xScale
+    plot.r.min = 0
+    plot.r.max = absMaxValue(rangeAxis("r"))
+    plot.r.scale = rScale
 
-  plot.y.min = 0
-  plot.y.max = absMaxValue(rangeAxis("y"))
-  plot.y.scale = yScale
+    plot.x.min = 0
+    plot.x.max = absMaxValue(rangeAxis("x"))
+    plot.x.scale = xScale
 
-  plot.z.min = 0
-  plot.z.max = absMaxValue(rangeAxis("z"))
-  plot.z.scale = zScale
+    plot.y.min = 0
+    plot.y.max = absMaxValue(rangeAxis("y"))
+    plot.y.scale = yScale
+
+    plot.z.min = 0
+    plot.z.max = absMaxValue(rangeAxis("z"))
+    plot.z.scale = zScale
+
+  } else if (type == "poly2") {
+
+  } else if (type == "map") {
+
+  }
 
 }

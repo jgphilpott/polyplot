@@ -1,12 +1,10 @@
 import {width, height} from "../../../libs/mjs/env/dimensions.mjs"
+import {scaleAxes} from "../../../libs/mjs/scales/axes.mjs"
 
 import {addTitlePanel} from "../../../libs/mjs/panels/title.mjs"
 import {makePanelsDragable} from "../../../libs/mjs/panels/all.mjs"
 
 $(document).ready(function() {
-
-  addTitlePanel()
-  makePanelsDragable()
 
   let canvas = d3.select("#canvas")
 
@@ -14,15 +12,23 @@ $(document).ready(function() {
   let geoOrthographic = d3.geoOrthographic()
   let geoEquirectangular = d3.geoEquirectangular()
 
-  let projection = geoEquirectangular.fitSize([width(), height()], data.plot.geoJSON)
+  let projection = geoEquirectangular.fitSize([width(), height()], data.plot.GeoJSON)
 
   let path = d3.geoPath().projection(projection)
 
+  scaleAxes("map")
+
+  addTitlePanel()
+  makePanelsDragable()
+
   canvas.selectAll("path")
-        .data(data.plot.geoJSON.features)
+        .data(data.plot.GeoJSON.features)
         .enter()
         .append("path")
         .attr("d", path)
+        .attr("id", function(feature) {
+          return feature.properties.code
+        })
 
   let zoom = d3.zoom()
                .scaleExtent([1, 42])
