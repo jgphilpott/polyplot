@@ -6,13 +6,15 @@ import {makePanelsDragable} from "../../../libs/mjs/panels/all.mjs"
 
 $(document).ready(function() {
 
+  let plot = data.plot
+
   let canvas = d3.select("#canvas")
 
   let geoMercator = d3.geoMercator()
   let geoOrthographic = d3.geoOrthographic()
   let geoEquirectangular = d3.geoEquirectangular()
 
-  let projection = geoEquirectangular.fitSize([width(), height()], data.plot.GeoJSON)
+  let projection = geoEquirectangular.fitSize([width(), height()], plot.GeoJSON)
 
   let path = d3.geoPath().projection(projection)
 
@@ -22,13 +24,34 @@ $(document).ready(function() {
   makePanelsDragable()
 
   canvas.selectAll("path")
-        .data(data.plot.GeoJSON.features)
+        .data(plot.GeoJSON.features)
         .enter()
         .append("path")
         .attr("d", path)
         .attr("id", function(feature) {
+
           return feature.properties.code
+
         })
+        .attr("fill", function(feature) {
+
+          let history = plot.plots.find(plot => plot.code == feature.properties.code).x
+          let value = history.find(year => year.year == plot.time.year).value
+
+          if (value) {
+
+            return plot.x.scale(value)
+
+
+          } else {
+
+            return "gray"
+
+          }
+
+        })
+        .attr("stroke", "white")
+        .attr("stroke-width", 0.2)
 
   let zoom = d3.zoom()
                .scaleExtent([1, 42])

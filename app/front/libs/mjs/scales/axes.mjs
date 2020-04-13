@@ -1,5 +1,6 @@
 import {min, max, width, height} from "../env/dimensions.mjs"
 import {minValue, maxValue, absMinValue, absMaxValue, rangeAxis} from "./range.mjs"
+import {red, yellow, green} from "../colors/solid/rainbow.mjs"
 
 let plot = data.plot
 
@@ -9,7 +10,7 @@ export function scaleAxes() {
 
     plot.x.min = rangeAxis("x")[0]
     plot.x.max = rangeAxis("x")[1]
-    plot.x.scale = d3.scaleLinear().range(["gray", "red"]).domain([plot.x.min, plot.x.max])
+    plot.x.scale = d3.scaleLinear().range([red, yellow, green]).domain([plot.x.min, plot.x.max / 2, plot.x.max])
 
   } else if (plot.type == "Poly2") {
 
