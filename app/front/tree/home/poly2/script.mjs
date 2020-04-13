@@ -5,7 +5,7 @@ import {makePanelsDragable} from "../../../libs/mjs/panels/all.mjs"
 
 $(document).ready(function() {
 
-  scaleAxes("poly2")
+  scaleAxes()
 
   addTitlePanel()
   makePanelsDragable()

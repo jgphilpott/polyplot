@@ -16,7 +16,7 @@ $(document).ready(function() {
 
   let path = d3.geoPath().projection(projection)
 
-  scaleAxes("map")
+  scaleAxes()
 
   addTitlePanel()
   makePanelsDragable()

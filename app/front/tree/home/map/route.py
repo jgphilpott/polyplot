@@ -10,7 +10,7 @@ def register_map_route(app):
     def map():
 
         data = {}
-        data["plot"] = {"title": "World Bank Development Indicators"}
+        data["plot"] = {"title": "World Bank Development Indicators", "type": "Map"}
         data["plot"]["time"] = {"yearMin": 1960, "year": 1990, "yearMax": 2019}
         data["plot"]["GeoJSON"] = {"type": "FeatureCollection", "features": find_maps("high")}
 

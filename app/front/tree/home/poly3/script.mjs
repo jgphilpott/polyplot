@@ -46,7 +46,7 @@ $(document).ready(function() {
   plot.core.controls = newOrbitControls()
   plot.core.dom = xEvents()
 
-  scaleAxes("poly3")
+  scaleAxes()
   addAxes()
 
   addTitlePanel()

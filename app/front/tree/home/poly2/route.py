@@ -10,7 +10,7 @@ def register_poly2_route(app):
     def poly2():
 
         data = {}
-        data["plot"] = {"title": "World Bank Development Indicators"}
+        data["plot"] = {"title": "World Bank Development Indicators", "type": "Poly2"}
         data["plot"]["time"] = {"yearMin": 1960, "year": 1990, "yearMax": 2019}
         data["plot"]["GeoJSON"] = {"type": "FeatureCollection", "features": find_maps("low")}
 

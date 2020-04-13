@@ -1,56 +1,47 @@
-import {min, max} from "../env/dimensions.mjs"
-import {linearScale} from "./linear.mjs"
+import {min, max, width, height} from "../env/dimensions.mjs"
 import {minValue, maxValue, absMinValue, absMaxValue, rangeAxis} from "./range.mjs"
 
 let plot = data.plot
 
-export function rScale(r) {
+export function scaleAxes() {
 
-  return linearScale(r, [min, plot.r.max], [max / 200, max / 20])
+  if (plot.type == "Map") {
 
-}
+    plot.x.min = rangeAxis("x")[0]
+    plot.x.max = rangeAxis("x")[1]
+    plot.x.scale = d3.scaleLinear().range(["gray", "red"]).domain([plot.x.min, plot.x.max])
 
-export function xScale(x) {
+  } else if (plot.type == "Poly2") {
 
-  return linearScale(x, [-plot.x.max, plot.x.max], [-max, max])
+    plot.r.min = rangeAxis("r")[0]
+    plot.r.max = rangeAxis("r")[1]
+    // plot.r.scale = rScale
 
-}
+    plot.x.min = rangeAxis("x")[0]
+    plot.x.max = rangeAxis("x")[1]
+    // plot.x.scale = xScale
 
-export function yScale(y) {
+    plot.y.min = rangeAxis("y")[0]
+    plot.y.max = rangeAxis("y")[1]
+    // plot.y.scale = yScale
 
-  return linearScale(y, [-plot.y.max, plot.y.max], [-max, max])
-
-}
-
-export function zScale(z) {
-
-  return linearScale(z, [-plot.z.max, plot.z.max], [-max, max])
-
-}
-
-export function scaleAxes(type) {
-
-  if (type == "poly3") {
+  } else if (plot.type == "Poly3") {
 
     plot.r.min = 0
     plot.r.max = absMaxValue(rangeAxis("r"))
-    plot.r.scale = rScale
+    plot.r.scale = d3.scaleLinear().range([max / 200, max / 20]).domain([min, plot.r.max])
 
     plot.x.min = 0
     plot.x.max = absMaxValue(rangeAxis("x"))
-    plot.x.scale = xScale
+    plot.x.scale = d3.scaleLinear().range([-max, max]).domain([-plot.x.max, plot.x.max])
 
     plot.y.min = 0
     plot.y.max = absMaxValue(rangeAxis("y"))
-    plot.y.scale = yScale
+    plot.y.scale = d3.scaleLinear().range([-max, max]).domain([-plot.y.max, plot.y.max])
 
     plot.z.min = 0
     plot.z.max = absMaxValue(rangeAxis("z"))
-    plot.z.scale = zScale
-
-  } else if (type == "poly2") {
-
-  } else if (type == "map") {
+    plot.z.scale = d3.scaleLinear().range([-max, max]).domain([-plot.z.max, plot.z.max])
 
   }
 
