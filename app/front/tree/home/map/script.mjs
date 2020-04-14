@@ -2,6 +2,7 @@ import {width, height} from "../../../libs/mjs/env/dimensions.mjs"
 import {scaleAxes} from "../../../libs/mjs/scales/axes.mjs"
 
 import {addTitlePanel} from "../../../libs/mjs/panels/title.mjs"
+import {addTimePanel} from "../../../libs/mjs/panels/time.mjs"
 import {makePanelsDragable} from "../../../libs/mjs/panels/all.mjs"
 
 $(document).ready(function() {
@@ -21,6 +22,7 @@ $(document).ready(function() {
   scaleAxes()
 
   addTitlePanel()
+  addTimePanel()
   makePanelsDragable()
 
   canvas.selectAll("path")
@@ -33,6 +35,7 @@ $(document).ready(function() {
           return feature.properties.code
 
         })
+        .attr("class", "country")
         .attr("fill", function(feature) {
 
           let history = plot.plots.find(plot => plot.code == feature.properties.code).x
@@ -50,8 +53,6 @@ $(document).ready(function() {
           }
 
         })
-        .attr("stroke", "white")
-        .attr("stroke-width", 0.2)
 
   let zoom = d3.zoom()
                .scaleExtent([1, 42])

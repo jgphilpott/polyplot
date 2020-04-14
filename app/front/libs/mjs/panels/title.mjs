@@ -1,7 +1,6 @@
 export function addTitlePanel() {
 
-  let panel = $(".panel#title")
-
-  $("#title #name").text(data.plot.title)
+  $("body").append("<div id='title' class='panel'></div>")
+  $("#title.panel").append("<h1 id='name'>" + data.plot.title + "</h1>")
 
 }
