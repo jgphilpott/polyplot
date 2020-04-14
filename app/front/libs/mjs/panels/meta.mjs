@@ -1,6 +1,6 @@
 export function addMetaPanel() {
 
-  let panel = $(".panel#meta")
+  let panel = $("#meta.panel")
 
 }
 

@@ -6,7 +6,7 @@ export function makePanelsDragable() {
 
   for (let i = 0; i < panels.length; i++) {
 
-    let panel = $(".panel#" + panels[i].id)
+    let panel = $("#" + panels[i].id + ".panel")
     makeDragable(panel)
 
   }

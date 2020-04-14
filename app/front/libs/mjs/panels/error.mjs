@@ -1,5 +1,5 @@
 export function addErrorPanel() {
 
-  let panel = $(".panel#error")
+  let panel = $("#error.panel")
 
 }

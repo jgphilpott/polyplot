@@ -1,5 +1,5 @@
 export function addMapPanel() {
 
-  let panel = $(".panel#map")
+  let panel = $("#map.panel")
 
 }

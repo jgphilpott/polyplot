@@ -1,6 +1,6 @@
 export function addLegendPanel() {
 
-  let panel = $(".panel#legend")
+  let panel = $("#legend.panel")
 
   $("#legend #r-data").text(data.plot.r.name)
   $("#legend #x-data").text(data.plot.x.name)

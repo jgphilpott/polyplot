@@ -1,5 +1,5 @@
 export function addSettingsPanel() {
 
-  let panel = $(".panel#settings")
+  let panel = $("#settings.panel")
 
 }

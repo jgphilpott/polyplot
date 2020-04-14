@@ -1,5 +1,5 @@
 export function addHomePanel() {
 
-  let panel = $(".panel#home")
+  let panel = $("#home.panel")
 
 }
