@@ -1,6 +1,19 @@
 export function addMetaPanel() {
 
+  $("body").append("<div id='meta' class='panel'></div>")
+
   let panel = $("#meta.panel")
+
+  panel.append("<h1 id='name'>Meta</h1>")
+
+  panel.append("<img id='flag' src='/front/imgs/flags/null.png'>")
+
+  panel.append("<h3 id='region'>None</h3>")
+
+  panel.append("<p id='r'><strong id='r-key'>R:</strong> <span id='r-data'>None</span></p>")
+  panel.append("<p id='x'><strong id='x-key'>X:</strong> <span id='x-data'>None</span></p>")
+  panel.append("<p id='y'><strong id='y-key'>Y:</strong> <span id='y-data'>None</span></p>")
+  panel.append("<p id='z'><strong id='z-key'>Z:</strong> <span id='z-data'>None</span></p>")
 
 }
 
