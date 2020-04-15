@@ -15,7 +15,7 @@ import {addAxes} from "../../../libs/mjs/geometries/axes.mjs"
 
 import {addTitlePanel} from "../../../libs/mjs/panels/title.mjs"
 import {addTimePanel} from "../../../libs/mjs/panels/time.mjs"
-import {addSettingsPanel} from "../../../libs/mjs/panels/settings.mjs"
+import {addMenuPanel} from "../../../libs/mjs/panels/menu.mjs"
 import {addLegendPanel} from "../../../libs/mjs/panels/legend.mjs"
 import {addMapPanel} from "../../../libs/mjs/panels/map.mjs"
 import {addMetaPanel} from "../../../libs/mjs/panels/meta.mjs"
@@ -51,7 +51,7 @@ $(document).ready(function() {
 
   addTitlePanel()
   addTimePanel()
-  addSettingsPanel()
+  addMenuPanel()
   addLegendPanel()
   addMapPanel()
   addMetaPanel()
