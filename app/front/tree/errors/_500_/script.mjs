@@ -5,6 +5,8 @@ import {addMenuPanel} from "../../../libs/mjs/panels/menu.mjs"
 
 $(document).ready(function() {
 
+  $("body").append("<canvas id='canvas'></canvas>")
+
   summonParticleWeb(42, rainbow)
 
   addErrorPanel()
