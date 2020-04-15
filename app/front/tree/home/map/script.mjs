@@ -1,9 +1,6 @@
 import {width, height} from "../../../libs/mjs/env/dimensions.mjs"
 import {scaleAxes} from "../../../libs/mjs/scales/axes.mjs"
-
-import {addTitlePanel} from "../../../libs/mjs/panels/title.mjs"
-import {addTimePanel} from "../../../libs/mjs/panels/time.mjs"
-import {makePanelsDragable} from "../../../libs/mjs/panels/all.mjs"
+import {addAllPanels} from "../../../libs/mjs/panels/all.mjs"
 
 $(document).ready(function() {
 
@@ -21,9 +18,7 @@ $(document).ready(function() {
 
   scaleAxes()
 
-  addTitlePanel()
-  addTimePanel()
-  makePanelsDragable()
+  addAllPanels()
 
   canvas.selectAll("path")
         .data(plot.GeoJSON.features)

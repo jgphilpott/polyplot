@@ -13,13 +13,7 @@ import {xEvents} from "../../../libs/mjs/core/events.mjs"
 import {scaleAxes} from "../../../libs/mjs/scales/axes.mjs"
 import {addAxes} from "../../../libs/mjs/geometries/axes.mjs"
 
-import {addTitlePanel} from "../../../libs/mjs/panels/title.mjs"
-import {addTimePanel} from "../../../libs/mjs/panels/time.mjs"
-import {addMenuPanel} from "../../../libs/mjs/panels/menu.mjs"
-import {addLegendPanel} from "../../../libs/mjs/panels/legend.mjs"
-import {addMapPanel} from "../../../libs/mjs/panels/map.mjs"
-import {addMetaPanel} from "../../../libs/mjs/panels/meta.mjs"
-import {makePanelsDragable} from "../../../libs/mjs/panels/all.mjs"
+import {addAllPanels} from "../../../libs/mjs/panels/all.mjs"
 
 import {addPlot} from "../../../libs/mjs/geometries/plot.mjs"
 
@@ -49,13 +43,7 @@ $(document).ready(function() {
   scaleAxes()
   addAxes()
 
-  addTitlePanel()
-  addTimePanel()
-  addMenuPanel()
-  addLegendPanel()
-  addMapPanel()
-  addMetaPanel()
-  makePanelsDragable()
+  addAllPanels()
 
   let plots = plot.plots
 
