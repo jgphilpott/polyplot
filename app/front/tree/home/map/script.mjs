@@ -1,6 +1,7 @@
 import {width, height} from "../../../libs/mjs/env/dimensions.mjs"
 import {scaleAxes} from "../../../libs/mjs/scales/axes.mjs"
 import {addAllPanels} from "../../../libs/mjs/panels/all.mjs"
+import {updateMetaPanel, clearMetaPanel} from "../../../libs/mjs/panels/meta.mjs"
 
 $(document).ready(function() {
 
@@ -49,6 +50,22 @@ $(document).ready(function() {
           }
 
         })
+
+  let plots = $(".country")
+
+  for (let i = 0; i < plots.length; i++) {
+
+    $("#" + plots[i].id + ".country").mouseenter(function() {
+
+      updateMetaPanel(plots[i].id)
+
+    }).mouseleave(function() {
+
+      clearMetaPanel()
+
+    })
+
+  }
 
   let zoom = d3.zoom()
                .scaleExtent([1, 42])
