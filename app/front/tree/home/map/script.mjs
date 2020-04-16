@@ -4,9 +4,11 @@ import {addAllPanels} from "../../../libs/mjs/panels/all.mjs"
 
 $(document).ready(function() {
 
-  let plot = data.plot
+  $("body").append("<svg id='canvas'></svg>")
 
   let canvas = d3.select("#canvas")
+
+  let plot = data.plot
 
   let geoMercator = d3.geoMercator()
   let geoOrthographic = d3.geoOrthographic()
@@ -40,7 +42,6 @@ $(document).ready(function() {
 
             return plot.x.scale(value)
 
-
           } else {
 
             return "gray"
@@ -53,7 +54,9 @@ $(document).ready(function() {
                .scaleExtent([1, 42])
                .translateExtent([[0, 0], [width(), height()]])
                .on("zoom", function() {
+
                  d3.selectAll("path").attr("transform", d3.event.transform)
+
                })
 
   canvas.call(zoom)
