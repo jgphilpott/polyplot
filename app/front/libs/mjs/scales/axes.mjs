@@ -16,7 +16,7 @@ export function scaleAxes() {
 
     plot.r.min = rangeAxis("r")[0]
     plot.r.max = rangeAxis("r")[1]
-    // plot.r.scale = rScale
+    plot.r.scale = d3.scaleLinear().range([width() / 200, width() / 20]).domain([plot.r.min, plot.r.max])
 
     plot.x.min = rangeAxis("x")[0]
     plot.x.max = rangeAxis("x")[1]
