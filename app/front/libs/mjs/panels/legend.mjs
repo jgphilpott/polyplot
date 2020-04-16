@@ -1,3 +1,5 @@
+import {makeDragable} from "../ui/dragable.mjs"
+
 export function addLegendPanel() {
 
   $("body").append("<div id='legend' class='panel'></div>")
@@ -10,5 +12,7 @@ export function addLegendPanel() {
   panel.append("<p id='x'><strong id='x-key'>X:</strong> <span id='x-data'>" + data.plot.x.name + "</span></p>")
   panel.append("<p id='y'><strong id='y-key'>Y:</strong> <span id='y-data'>" + data.plot.y.name + "</span></p>")
   panel.append("<p id='z'><strong id='z-key'>Z:</strong> <span id='z-data'>" + data.plot.z.name + "</span></p>")
+
+  makeDragable(panel)
 
 }

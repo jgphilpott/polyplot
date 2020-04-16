@@ -1,3 +1,5 @@
+import {makeDragable} from "../ui/dragable.mjs"
+
 export function addMetaPanel() {
 
   $("body").append("<div id='meta' class='panel'></div>")
@@ -14,6 +16,8 @@ export function addMetaPanel() {
   panel.append("<p id='x'><strong id='x-key'>X:</strong> <span id='x-data'>None</span></p>")
   panel.append("<p id='y'><strong id='y-key'>Y:</strong> <span id='y-data'>None</span></p>")
   panel.append("<p id='z'><strong id='z-key'>Z:</strong> <span id='z-data'>None</span></p>")
+
+  makeDragable(panel)
 
 }
 

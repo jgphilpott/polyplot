@@ -1,4 +1,5 @@
 // import {animatePlots} from "../animation/plots.mjs"
+import {makeDragable} from "../ui/dragable.mjs"
 
 let plot = data.plot
 
@@ -32,5 +33,7 @@ export function addTimePanel() {
     }
 
   })
+
+  makeDragable(panel)
 
 }
