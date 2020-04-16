@@ -1,7 +1,25 @@
-import {black} from "../three/grayscale.mjs"
-import {rainbow} from "../three/rainbow.mjs"
+import {black as solidBlack} from "../solid/grayscale.mjs"
+import {rainbow as solidRainbow} from "../solid/rainbow.mjs"
+
+import {black as threeBlack} from "../three/grayscale.mjs"
+import {rainbow as threeRainbow} from "../three/rainbow.mjs"
 
 export function regionsColourSwitch(region) {
+
+  let black = null
+  let rainbow = null
+
+  if (data.plot.type == "Poly3") {
+
+    black = threeBlack
+    rainbow = threeRainbow
+
+  } else {
+
+    black = solidBlack
+    rainbow = solidRainbow
+
+  }
 
   if (region == "Europe & Central Asia") {
 
