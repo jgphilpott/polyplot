@@ -14,6 +14,7 @@ RUN pip install beautifulsoup4
 RUN pip install eventlet
 RUN pip install Flask-SocketIO
 
+RUN pip install Flask-Session
 RUN pip install Flask-Login
 
 RUN pip install libsass
