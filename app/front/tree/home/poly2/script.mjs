@@ -2,6 +2,7 @@ import {scaleAxes} from "../../../libs/mjs/scales/axes.mjs"
 import {addAllPanels} from "../../../libs/mjs/panels/all.mjs"
 import {width, height} from "../../../libs/mjs/env/dimensions.mjs"
 import {regionsColourSwitch} from "../../../libs/mjs/colors/switches/regions.mjs"
+import {updateMetaPanel, clearMetaPanel} from "../../../libs/mjs/panels/meta.mjs"
 
 $(document).ready(function() {
 
@@ -61,6 +62,16 @@ $(document).ready(function() {
           .attr("cx", plot.x.scale(x))
           .attr("cy", plot.y.scale(y))
           .attr("fill", regionsColourSwitch(plots[i].region))
+
+    $("#" + plots[i].code + ".plot").mouseenter(function() {
+
+      updateMetaPanel(plots[i].code)
+
+    }).mouseleave(function() {
+
+      clearMetaPanel()
+
+    })
 
   }
 
