@@ -1,5 +1,3 @@
-import {makeDragable} from "../ui/dragable.mjs"
-
 import {addErrorPanel} from "./error.mjs"
 import {addHomePanel} from "./home.mjs"
 import {addLegendPanel} from "./legend.mjs"
@@ -10,24 +8,11 @@ import {addMetaPanel} from "./meta.mjs"
 import {addTimePanel} from "./time.mjs"
 import {addTitlePanel} from "./title.mjs"
 
-export function makePanelsDragable() {
-
-  let panels = $(".panel")
-
-  for (let i = 0; i < panels.length; i++) {
-
-    let panel = $("#" + panels[i].id + ".panel")
-    makeDragable(panel)
-
-  }
-
-}
-
 export function addAllPanels() {
 
-  // addLegendPanel()
+  addLegendPanel()
   addMenuPanel()
-  // addMetaPanel()
+  addMetaPanel()
   addTimePanel()
   addTitlePanel()
 
@@ -44,7 +29,5 @@ export function addAllPanels() {
     addMapPanel()
 
   }
-
-  makePanelsDragable()
 
 }
