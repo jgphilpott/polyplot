@@ -1,9 +1,9 @@
 // import {animatePlots} from "../animation/plots.mjs"
 import {makeDragable} from "../ui/dragable.mjs"
 
-let plot = data.plot
-
 export function addTimePanel() {
+
+  let plot = data.plot
 
   $("body").append("<div id='time' class='panel'></div>")
 

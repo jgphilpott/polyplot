@@ -2,6 +2,8 @@ import {makeDragable} from "../ui/dragable.mjs"
 
 export function addMetaPanel() {
 
+  let plot = data.plot
+
   $("body").append("<div id='meta' class='panel'></div>")
 
   let panel = $("#meta.panel")
@@ -12,10 +14,24 @@ export function addMetaPanel() {
 
   panel.append("<h3 id='region'>None</h3>")
 
-  panel.append("<p id='r'><strong id='r-key'>R:</strong> <span id='r-data'>None</span></p>")
-  panel.append("<p id='x'><strong id='x-key'>X:</strong> <span id='x-data'>None</span></p>")
-  panel.append("<p id='y'><strong id='y-key'>Y:</strong> <span id='y-data'>None</span></p>")
-  panel.append("<p id='z'><strong id='z-key'>Z:</strong> <span id='z-data'>None</span></p>")
+  if (plot.type == "Map") {
+
+    panel.append("<p id='x'><strong id='x-key'>X:</strong> <span id='x-data'>None</span></p>")
+
+  } else if (plot.type == "Poly2") {
+
+    panel.append("<p id='r'><strong id='r-key'>R:</strong> <span id='r-data'>None</span></p>")
+    panel.append("<p id='x'><strong id='x-key'>X:</strong> <span id='x-data'>None</span></p>")
+    panel.append("<p id='y'><strong id='y-key'>Y:</strong> <span id='y-data'>None</span></p>")
+
+  } else if (plot.type == "Poly3") {
+
+    panel.append("<p id='r'><strong id='r-key'>R:</strong> <span id='r-data'>None</span></p>")
+    panel.append("<p id='x'><strong id='x-key'>X:</strong> <span id='x-data'>None</span></p>")
+    panel.append("<p id='y'><strong id='y-key'>Y:</strong> <span id='y-data'>None</span></p>")
+    panel.append("<p id='z'><strong id='z-key'>Z:</strong> <span id='z-data'>None</span></p>")
+
+  }
 
   makeDragable(panel)
 
