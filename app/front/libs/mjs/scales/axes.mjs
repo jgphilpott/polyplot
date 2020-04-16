@@ -20,11 +20,11 @@ export function scaleAxes() {
 
     plot.x.min = rangeAxis("x")[0]
     plot.x.max = rangeAxis("x")[1]
-    // plot.x.scale = xScale
+    plot.x.scale = d3.scaleLinear().range([0, width()]).domain([plot.x.min, plot.x.max])
 
     plot.y.min = rangeAxis("y")[0]
     plot.y.max = rangeAxis("y")[1]
-    // plot.y.scale = yScale
+    plot.y.scale = d3.scaleLinear().range([height(), 0]).domain([plot.y.min, plot.y.max])
 
   } else if (plot.type == "Poly3") {
 
