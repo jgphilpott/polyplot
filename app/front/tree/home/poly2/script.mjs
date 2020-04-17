@@ -12,6 +12,8 @@ $(document).ready(function() {
 
   let canvas = d3.select("#canvas")
 
+  addAllPanels()
+
   scaleAxes()
 
   canvas.append("g")
@@ -74,8 +76,6 @@ $(document).ready(function() {
     })
 
   }
-
-  addAllPanels()
 
   console.log(data)
 

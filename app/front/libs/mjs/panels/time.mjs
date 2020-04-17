@@ -16,17 +16,19 @@ export function addTimePanel() {
   panel.append("<img id='playForward' class='button' src='/front/imgs/time/playForward.svg') }}'>")
   panel.append("<img id='fastForward' class='button' src='/front/imgs/time/fastForward.svg') }}'>")
 
-  panel.append("<img id='minCap' class='button' src='/front/imgs/time/cap.svg') }}'>")
-  panel.append("<img id='point' class='button' src='/front/imgs/time/point.svg') }}'>")
-  panel.append("<img id='maxCap' class='button' src='/front/imgs/time/cap.svg') }}'>")
+  panel.append("<img id='minCap' class='controller' src='/front/imgs/time/cap.svg') }}'>")
+  panel.append("<img id='point' class='controller' src='/front/imgs/time/point.svg') }}'>")
+  panel.append("<img id='maxCap' class='controller' src='/front/imgs/time/cap.svg') }}'>")
 
   panel.append("<img id='fastBackward' class='button' src='/front/imgs/time/fastBackward.svg') }}'>")
   panel.append("<img id='playBackward' class='button' src='/front/imgs/time/playBackward.svg') }}'>")
   panel.append("<img id='skipForward' class='button' src='/front/imgs/time/skipForward.svg') }}'>")
 
-  makeDragable($("#minCap.button"))
-  makeDragable($("#point.button"))
-  makeDragable($("#maxCap.button"))
+  panel.append("<p id='year'>" + plot.time.year + "</p>")
+
+  makeDragable($("#minCap.controller"))
+  makeDragable($("#point.controller"))
+  makeDragable($("#maxCap.controller"))
 
   $("body").on("keypress", function(event) {
 

@@ -10,10 +10,10 @@ import {newPerspectiveCamera} from "../../../libs/mjs/cameras/perspective.mjs"
 import {newOrbitControls} from "../../../libs/mjs/controls/orbit.mjs"
 import {xEvents} from "../../../libs/mjs/core/events.mjs"
 
+import {addAllPanels} from "../../../libs/mjs/panels/all.mjs"
+
 import {scaleAxes} from "../../../libs/mjs/scales/axes.mjs"
 import {addAxes} from "../../../libs/mjs/geometries/axes.mjs"
-
-import {addAllPanels} from "../../../libs/mjs/panels/all.mjs"
 
 import {addPlot} from "../../../libs/mjs/geometries/plot.mjs"
 
@@ -40,10 +40,10 @@ $(document).ready(function() {
   plot.core.controls = newOrbitControls()
   plot.core.dom = xEvents()
 
+  addAllPanels()
+
   scaleAxes()
   addAxes()
-
-  addAllPanels()
 
   let plots = plot.plots
 

@@ -1,15 +1,17 @@
-import {width, height} from "../../../libs/mjs/env/dimensions.mjs"
 import {scaleAxes} from "../../../libs/mjs/scales/axes.mjs"
 import {addAllPanels} from "../../../libs/mjs/panels/all.mjs"
+import {width, height} from "../../../libs/mjs/env/dimensions.mjs"
 import {updateMetaPanel, clearMetaPanel} from "../../../libs/mjs/panels/meta.mjs"
 
 $(document).ready(function() {
+
+  let plot = data.plot
 
   $("body").append("<svg id='canvas'></svg>")
 
   let canvas = d3.select("#canvas")
 
-  let plot = data.plot
+  addAllPanels()
 
   let geoMercator = d3.geoMercator()
   let geoOrthographic = d3.geoOrthographic()
@@ -20,8 +22,6 @@ $(document).ready(function() {
   let path = d3.geoPath().projection(projection)
 
   scaleAxes()
-
-  addAllPanels()
 
   canvas.selectAll("path")
         .data(plot.GeoJSON.features)

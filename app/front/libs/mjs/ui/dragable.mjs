@@ -33,13 +33,13 @@ export function makeDragable(element) {
 
     element.css("cursor", "grabbing")
 
-    if (element[0].id == "minCap" || element[0].id == "point" || element[0].id == "maxCap") {
+    if (element.hasClass("controller")) {
 
-      element.css({left: event.clientX - xOffset})
+      element.css({"left": event.clientX - xOffset})
 
     } else {
 
-      element.css({top: event.clientY - yOffset, left: event.clientX - xOffset})
+      element.css({"top": event.clientY - yOffset, "left": event.clientX - xOffset})
 
     }
 
@@ -50,7 +50,7 @@ export function makeDragable(element) {
     event.preventDefault()
     event.stopPropagation()
 
-    if (element[0].id == "minCap" || element[0].id == "point" || element[0].id == "maxCap") {
+    if (element.hasClass("controller")) {
 
       element.css("cursor", "ew-resize")
 
