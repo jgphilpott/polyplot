@@ -1,6 +1,6 @@
 export function makeDragable(element) {
 
-  let xOffset = 0, yOffset = 0
+  let xOffset, yOffset = 0
 
   function start(event) {
 
@@ -32,7 +32,16 @@ export function makeDragable(element) {
     event.stopPropagation()
 
     element.css("cursor", "grabbing")
-    element.css({top: event.clientY - yOffset, left: event.clientX - xOffset})
+
+    if (element[0].id == "minCap" || element[0].id == "point" || element[0].id == "maxCap") {
+
+      element.css({left: event.clientX - xOffset})
+
+    } else {
+
+      element.css({top: event.clientY - yOffset, left: event.clientX - xOffset})
+
+    }
 
   }
 
@@ -41,7 +50,15 @@ export function makeDragable(element) {
     event.preventDefault()
     event.stopPropagation()
 
-    element.css("cursor", "grab")
+    if (element[0].id == "minCap" || element[0].id == "point" || element[0].id == "maxCap") {
+
+      element.css("cursor", "ew-resize")
+
+    } else {
+
+      element.css("cursor", "grab")
+
+    }
 
     document.onmouseup = null
     document.onmousemove = null

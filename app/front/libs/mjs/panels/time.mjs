@@ -24,6 +24,10 @@ export function addTimePanel() {
   panel.append("<img id='playBackward' class='button' src='/front/imgs/time/playBackward.svg') }}'>")
   panel.append("<img id='skipForward' class='button' src='/front/imgs/time/skipForward.svg') }}'>")
 
+  makeDragable($("#minCap.button"))
+  makeDragable($("#point.button"))
+  makeDragable($("#maxCap.button"))
+
   $("body").on("keypress", function(event) {
 
     if (event.keyCode == 32) {
