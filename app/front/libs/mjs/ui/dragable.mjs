@@ -35,23 +35,34 @@ export function makeDragable(element) {
 
     if (element.hasClass("controller")) {
 
-      element.css({"left": event.clientX - xOffset})
+      let minOffset = 110
+      let maxOffset = 540
 
       if (element[0].id == "minCap") {
 
-        // $("#year").css({"left": event.clientX - xOffset})
+        if (event.clientX - xOffset >= minOffset) {
+
+          element.css({"left": event.clientX - xOffset})
+
+        }
 
       } else if (element[0].id == "point") {
+
+        element.css({"left": event.clientX - xOffset})
 
         $("#year").css({"left": event.clientX - xOffset})
 
       } else if (element[0].id == "maxCap") {
 
-        // $("#year").css({"left": event.clientX - xOffset})
+        if (event.clientX - xOffset <= maxOffset) {
+
+          element.css({"left": event.clientX - xOffset})
+
+        }
 
       }
 
-    } else {
+    } else if (element.hasClass("panel")) {
 
       element.css({"top": event.clientY - yOffset, "left": event.clientX - xOffset})
 
