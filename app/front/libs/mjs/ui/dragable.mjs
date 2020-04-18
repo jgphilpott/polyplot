@@ -37,6 +37,22 @@ export function makeDragable(element) {
 
       element.css({"left": event.clientX - xOffset})
 
+      console.log($("#time #line")[0])
+
+      if (element[0].id == "minCap") {
+
+        // $("#year").css({"left": event.clientX - xOffset})
+
+      } else if (element[0].id == "point") {
+
+        $("#year").css({"left": event.clientX - xOffset})
+
+      } else if (element[0].id == "maxCap") {
+
+        // $("#year").css({"left": event.clientX - xOffset})
+
+      }
+
     } else {
 
       element.css({"top": event.clientY - yOffset, "left": event.clientX - xOffset})
