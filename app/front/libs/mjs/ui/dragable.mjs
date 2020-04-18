@@ -38,9 +38,12 @@ export function makeDragable(element) {
       let minOffset = 110
       let maxOffset = 540
 
+      let point = $("#point")[0].offsetLeft
+      let pointWidth = $("#point")[0].width
+
       if (element[0].id == "minCap") {
 
-        if (event.clientX - xOffset >= minOffset) {
+        if (event.clientX - xOffset >= minOffset && event.clientX - xOffset <= point - pointWidth) {
 
           element.css({"left": event.clientX - xOffset})
 
@@ -54,7 +57,7 @@ export function makeDragable(element) {
 
       } else if (element[0].id == "maxCap") {
 
-        if (event.clientX - xOffset <= maxOffset) {
+        if (event.clientX - xOffset <= maxOffset && event.clientX - xOffset >= point + pointWidth) {
 
           element.css({"left": event.clientX - xOffset})
 
@@ -79,7 +82,7 @@ export function makeDragable(element) {
 
       element.css("cursor", "ew-resize")
 
-    } else {
+    } else if (element.hasClass("panel")) {
 
       element.css("cursor", "grab")
 
