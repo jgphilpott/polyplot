@@ -45,20 +45,20 @@ export function updateMetaPanel(code) {
 
   if (data.plot.type == "Map") {
 
-    x = plot.x.find(item => item.year == data.plot.time.year).value
+    x = plot.x.find(item => item.year == data.plot.t.year).value
 
   } else if (data.plot.type == "Poly2") {
 
-    r = plot.r.find(item => item.year == data.plot.time.year).value
-    x = plot.x.find(item => item.year == data.plot.time.year).value
-    y = plot.y.find(item => item.year == data.plot.time.year).value
+    r = plot.r.find(item => item.year == data.plot.t.year).value
+    x = plot.x.find(item => item.year == data.plot.t.year).value
+    y = plot.y.find(item => item.year == data.plot.t.year).value
 
   } else if (data.plot.type == "Poly3") {
 
-    r = plot.r.find(item => item.year == data.plot.time.year).value
-    x = plot.x.find(item => item.year == data.plot.time.year).value
-    y = plot.y.find(item => item.year == data.plot.time.year).value
-    z = plot.z.find(item => item.year == data.plot.time.year).value
+    r = plot.r.find(item => item.year == data.plot.t.year).value
+    x = plot.x.find(item => item.year == data.plot.t.year).value
+    y = plot.y.find(item => item.year == data.plot.t.year).value
+    z = plot.z.find(item => item.year == data.plot.t.year).value
 
   }
 

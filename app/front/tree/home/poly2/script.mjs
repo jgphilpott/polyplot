@@ -32,8 +32,8 @@ $(document).ready(function() {
 
   let plots = plot.plots.sort(function(a, b) {
 
-    a = a.r.find(item => item.year == plot.time.year).value
-    b = b.r.find(item => item.year == plot.time.year).value
+    a = a.r.find(item => item.year == plot.t.year).value
+    b = b.r.find(item => item.year == plot.t.year).value
 
     if (a <= b) {
 
@@ -53,9 +53,9 @@ $(document).ready(function() {
 
   for (let i = 0; i < plots.length; i++) {
 
-    let r = plots[i].r.find(item => item.year == plot.time.year).value
-    let x = plots[i].x.find(item => item.year == plot.time.year).value
-    let y = plots[i].y.find(item => item.year == plot.time.year).value
+    let r = plots[i].r.find(item => item.year == plot.t.year).value
+    let x = plots[i].x.find(item => item.year == plot.t.year).value
+    let y = plots[i].y.find(item => item.year == plot.t.year).value
 
     canvas.append("circle")
           .attr("id", plots[i].code)

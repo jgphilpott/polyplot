@@ -49,10 +49,10 @@ $(document).ready(function() {
 
   for (let i = 0; i < plots.length; i++) {
 
-    let r = plots[i].r.find(item => item.year == plot.time.year).value
-    let x = plots[i].x.find(item => item.year == plot.time.year).value
-    let y = plots[i].y.find(item => item.year == plot.time.year).value
-    let z = plots[i].z.find(item => item.year == plot.time.year).value
+    let r = plots[i].r.find(item => item.year == plot.t.year).value
+    let x = plots[i].x.find(item => item.year == plot.t.year).value
+    let y = plots[i].y.find(item => item.year == plot.t.year).value
+    let z = plots[i].z.find(item => item.year == plot.t.year).value
 
     if (typeof(r) == "number" && typeof(x) == "number" && typeof(y) == "number" && typeof(z) == "number") {
 

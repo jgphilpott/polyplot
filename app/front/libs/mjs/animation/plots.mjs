@@ -2,10 +2,10 @@ import {addPlot} from "../geometries/plot.mjs"
 
 export function animatePlot(plot, direction="forward", speed=1200) {
 
-  let rNew = plot.r.find(item => item.year == data.plot.time.year).value
-  let xNew = plot.x.find(item => item.year == data.plot.time.year).value
-  let yNew = plot.y.find(item => item.year == data.plot.time.year).value
-  let zNew = plot.z.find(item => item.year == data.plot.time.year).value
+  let rNew = plot.r.find(item => item.year == data.plot.t.year).value
+  let xNew = plot.x.find(item => item.year == data.plot.t.year).value
+  let yNew = plot.y.find(item => item.year == data.plot.t.year).value
+  let zNew = plot.z.find(item => item.year == data.plot.t.year).value
 
   if (typeof(rNew) == "number" && typeof(xNew) == "number" && typeof(yNew) == "number" && typeof(zNew) == "number") {
 
@@ -78,13 +78,13 @@ export function animatePlot(plot, direction="forward", speed=1200) {
 
 export function animatePlots(plots=data.plot.plots, direction="forward", speed=1200) {
 
-  if (direction == "forward" && data.plot.time.year < data.plot.time.yearMax) {
+  if (direction == "forward" && data.plot.t.year < data.plot.t.maxYear) {
 
-    data.plot.time.year += 1
+    data.plot.t.year += 1
 
-  } else if (direction == "backward" && data.plot.time.year > data.plot.time.yearMin) {
+  } else if (direction == "backward" && data.plot.t.year > data.plot.t.minYear) {
 
-    data.plot.time.year -= 1
+    data.plot.t.year -= 1
 
   }
 

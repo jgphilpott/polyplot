@@ -7,14 +7,15 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='tree/errors/_500_/style.css') }}">
 
     <script src="{{ url_for('static', filename='libs/mjs/vendor/particleWeb.js') }}"></script>
-    <script src="{{ url_for('static', filename='tree/errors/_500_/script.mjs') }}" type="module"></script>
+
 
   </head>
   <body>
-
     {% extends "tree/theme.html" %}
     {% block content %}
-    {% endblock %}
 
+      <script src="{{ url_for('static', filename='tree/errors/_500_/script.mjs') }}" type="module"></script>
+
+    {% endblock %}
   </body>
 </html>

@@ -9,10 +9,7 @@ def register_poly2_route(app):
     @app.route("/poly2")
     def poly2():
 
-        data = {}
-        data["plot"] = {"title": "World Bank Development Indicators", "type": "Poly2"}
-        data["plot"]["time"] = {"yearMin": 1960, "year": 1990, "yearMax": 2019}
-        data["plot"]["GeoJSON"] = {"type": "FeatureCollection", "features": find_maps("low")}
+        data = {"plot": {"title": "World Bank Development Indicators", "type": "Poly2"}}
 
         r = find_indicator(request.args["r"]) if "r" in request.args else find_indicator("SP.POP.TOTL")
         x = find_indicator(request.args["x"]) if "x" in request.args else find_indicator("SP.DYN.LE00.IN")
@@ -21,6 +18,8 @@ def register_poly2_route(app):
         data["plot"]["r"] = {"name": r["name"]}
         data["plot"]["x"] = {"name": x["name"]}
         data["plot"]["y"] = {"name": y["name"]}
+        data["plot"]["t"] = {"minYear": 1960, "year": 1990, "maxYear": 2019}
+        data["plot"]["GeoJSON"] = {"type": "FeatureCollection", "features": find_maps("low")}
 
         countries = find_countries()
 

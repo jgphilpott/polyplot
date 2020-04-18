@@ -37,8 +37,6 @@ export function makeDragable(element) {
 
       element.css({"left": event.clientX - xOffset})
 
-      console.log($("#time #line")[0])
-
       if (element[0].id == "minCap") {
 
         // $("#year").css({"left": event.clientX - xOffset})

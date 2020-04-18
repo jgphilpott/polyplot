@@ -37,7 +37,7 @@ $(document).ready(function() {
         .attr("fill", function(feature) {
 
           let history = plot.plots.find(plot => plot.code == feature.properties.code).x
-          let value = history.find(year => year.year == plot.time.year).value
+          let value = history.find(year => year.year == plot.t.year).value
 
           if (value) {
 

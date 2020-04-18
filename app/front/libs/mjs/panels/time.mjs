@@ -9,7 +9,10 @@ export function addTimePanel() {
 
   let panel = $("#time.panel")
 
-  panel.append("<h1 id='years'><span id='yearMin'>" + plot.time.yearMin + "</span> - <span id='yearMax'>" + plot.time.yearMax + "</span></h1>")
+  plot.t.minCap = plot.t.minYear
+  plot.t.maxCap = plot.t.maxYear
+
+  panel.append("<h1 id='years'><span id='yearMin'>" + plot.t.minYear + "</span> - <span id='yearMax'>" + plot.t.maxYear + "</span></h1>")
   panel.append("<img id='line' src='/front/imgs/time/line.svg') }}'>")
 
   panel.append("<img id='skipBackward' class='button' src='/front/imgs/time/skipBackward.svg') }}'>")
@@ -24,7 +27,7 @@ export function addTimePanel() {
   panel.append("<img id='playBackward' class='button' src='/front/imgs/time/playBackward.svg') }}'>")
   panel.append("<img id='skipForward' class='button' src='/front/imgs/time/skipForward.svg') }}'>")
 
-  panel.append("<p id='year'>" + plot.time.year + "</p>")
+  panel.append("<p id='year'>" + plot.t.year + "</p>")
 
   makeDragable($("#minCap.controller"))
   makeDragable($("#point.controller"))

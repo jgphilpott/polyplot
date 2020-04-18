@@ -11,12 +11,12 @@
     <script src="{{ url_for('static', filename='libs/mjs/vendor/socket.js') }}"></script>
     <script src="{{ url_for('static', filename='libs/mjs/vendor/jQuery.js') }}"></script>
     <script src="{{ url_for('static', filename='libs/mjs/vendor/jQueryUI.js') }}"></script>
-    <script src="{{ url_for('static', filename='tree/theme.mjs') }}" type="module"></script>
 
   </head>
   <body>
 
     <script> const data = {{ data | tojson | safe }} </script>
+    <script src="{{ url_for('static', filename='tree/theme.mjs') }}" type="module"></script>
 
     <div id="nav">
 

@@ -8,14 +8,14 @@
 
     <script src="{{ url_for('static', filename='libs/mjs/vendor/d3.js') }}"></script>
     <script src="{{ url_for('static', filename='libs/mjs/vendor/three.js') }}"></script>
-    <script src="{{ url_for('static', filename='tree/home/map/script.mjs') }}" type="module"></script>
 
   </head>
   <body>
-
     {% extends "tree/theme.html" %}
     {% block content %}
-    {% endblock %}
 
+      <script src="{{ url_for('static', filename='tree/home/map/script.mjs') }}" type="module"></script>
+
+    {% endblock %}
   </body>
 </html>

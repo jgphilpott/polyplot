@@ -9,13 +9,13 @@ def register_map_route(app):
     @app.route("/map")
     def map():
 
-        data = {}
-        data["plot"] = {"title": "World Bank Development Indicators", "type": "Map"}
-        data["plot"]["time"] = {"yearMin": 1960, "year": 1990, "yearMax": 2019}
-        data["plot"]["GeoJSON"] = {"type": "FeatureCollection", "features": find_maps("high")}
+        data = {"plot": {"title": "World Bank Development Indicators", "type": "Map"}}
 
         x = find_indicator(request.args["x"]) if "x" in request.args else find_indicator("SP.DYN.LE00.IN")
+
         data["plot"]["x"] = {"name": x["name"]}
+        data["plot"]["t"] = {"minYear": 1960, "year": 1990, "maxYear": 2019}
+        data["plot"]["GeoJSON"] = {"type": "FeatureCollection", "features": find_maps("high")}
 
         countries = find_countries()
 
