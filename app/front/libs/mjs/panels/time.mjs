@@ -17,6 +17,7 @@ export function addTimePanel() {
 
   panel.append("<img id='skipBackward' class='button' src='/front/imgs/time/skipBackward.svg') }}'>")
   panel.append("<img id='playForward' class='button' src='/front/imgs/time/playForward.svg') }}'>")
+  panel.append("<img id='pauseLeft' class='button' src='/front/imgs/time/pauseLeft.svg') }}'>")
   panel.append("<img id='fastForward' class='button' src='/front/imgs/time/fastForward.svg') }}'>")
 
   panel.append("<img id='minCap' class='controller' src='/front/imgs/time/cap.svg') }}'>")
@@ -25,6 +26,7 @@ export function addTimePanel() {
 
   panel.append("<img id='fastBackward' class='button' src='/front/imgs/time/fastBackward.svg') }}'>")
   panel.append("<img id='playBackward' class='button' src='/front/imgs/time/playBackward.svg') }}'>")
+  panel.append("<img id='pauseRight' class='button' src='/front/imgs/time/pauseRight.svg') }}'>")
   panel.append("<img id='skipForward' class='button' src='/front/imgs/time/skipForward.svg') }}'>")
 
   panel.append("<p id='year'>" + plot.t.year + "</p>")
@@ -46,6 +48,70 @@ export function addTimePanel() {
     }).mouseout(function() {
 
       button.attr("src", "/front/imgs/time/" + buttons[i].id + ".svg")
+
+    })
+
+    button.click(function() {
+
+      switch (buttons[i].id) {
+
+        case "skipBackward":
+
+          break
+
+        case "playForward":
+
+          $(this).css({"visibility": "hidden"})
+          $("#playBackward").css({"visibility": "hidden"})
+
+          $("#pauseLeft").css({"visibility": "visible"})
+          $("#pauseRight").css({"visibility": "visible"})
+
+          break
+
+        case "pauseLeft":
+
+          $(this).css({"visibility": "hidden"})
+          $("#pauseRight").css({"visibility": "hidden"})
+
+          $("#playForward").css({"visibility": "visible"})
+          $("#playBackward").css({"visibility": "visible"})
+
+          break
+
+        case "fastForward":
+
+          break
+
+        case "fastBackward":
+
+          break
+
+        case "playBackward":
+
+          $("#playForward").css({"visibility": "hidden"})
+          $(this).css({"visibility": "hidden"})
+
+          $("#pauseLeft").css({"visibility": "visible"})
+          $("#pauseRight").css({"visibility": "visible"})
+
+          break
+
+        case "pauseRight":
+
+          $("#pauseLeft").css({"visibility": "hidden"})
+          $(this).css({"visibility": "hidden"})
+
+          $("#playForward").css({"visibility": "visible"})
+          $("#playBackward").css({"visibility": "visible"})
+
+          break
+
+        case "skipForward":
+
+          break
+
+      }
 
     })
 
