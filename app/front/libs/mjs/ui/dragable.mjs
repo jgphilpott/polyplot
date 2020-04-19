@@ -1,4 +1,4 @@
-export function makeDragable(element) {
+export function makeDragable(element, events=[]) {
 
   let xOffset, yOffset = 0
 
@@ -31,43 +31,18 @@ export function makeDragable(element) {
     event.preventDefault()
     event.stopPropagation()
 
+    let eventX = event.clientX - xOffset
+    let eventY = event.clientY - yOffset
+
     element.css("cursor", "grabbing")
 
     if (element.hasClass("controller")) {
 
-      let minOffset = 110
-      let maxOffset = 540
-
-      let point = $("#point")[0].offsetLeft
-      let pointWidth = $("#point")[0].width
-
-      if (element[0].id == "minCap") {
-
-        if (event.clientX - xOffset >= minOffset && event.clientX - xOffset <= point - pointWidth) {
-
-          element.css({"left": event.clientX - xOffset})
-
-        }
-
-      } else if (element[0].id == "point") {
-
-        element.css({"left": event.clientX - xOffset})
-
-        $("#year").css({"left": event.clientX - xOffset})
-
-      } else if (element[0].id == "maxCap") {
-
-        if (event.clientX - xOffset <= maxOffset && event.clientX - xOffset >= point + pointWidth) {
-
-          element.css({"left": event.clientX - xOffset})
-
-        }
-
-      }
+      events[0](element, [eventX, eventY])
 
     } else if (element.hasClass("panel")) {
 
-      element.css({"top": event.clientY - yOffset, "left": event.clientX - xOffset})
+      element.css({"top": eventY, "left": eventX})
 
     }
 
