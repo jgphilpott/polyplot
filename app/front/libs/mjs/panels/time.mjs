@@ -1,9 +1,9 @@
-// import {animatePlots} from "../animation/plots.mjs"
+import {animatePlots} from "../animation/plots.mjs"
 import {makeDragable} from "../ui/dragable.mjs"
 
-export function addTimePanel() {
+let plot = data.plot
 
-  let plot = data.plot
+export function addTimePanel() {
 
   $("body").append("<div id='time' class='panel'></div>")
 
@@ -12,7 +12,7 @@ export function addTimePanel() {
   plot.t.minCap = plot.t.minYear
   plot.t.maxCap = plot.t.maxYear
 
-  panel.append("<h1 id='years'><span id='yearMin'>" + plot.t.minYear + "</span> - <span id='yearMax'>" + plot.t.maxYear + "</span></h1>")
+  panel.append("<h1 id='years'><span id='minYear'>" + plot.t.minCap + "</span> - <span id='maxYear'>" + plot.t.maxCap + "</span></h1>")
   panel.append("<img id='line' src='/front/imgs/time/line.svg') }}'>")
 
   panel.append("<img id='skipBackward' class='button' src='/front/imgs/time/skipBackward.svg') }}'>")
@@ -29,9 +29,9 @@ export function addTimePanel() {
 
   panel.append("<p id='year'>" + plot.t.year + "</p>")
 
-  makeDragable($("#minCap.controller"), [updateTimeControllers])
-  makeDragable($("#point.controller"), [updateTimeControllers])
-  makeDragable($("#maxCap.controller"), [updateTimeControllers])
+  makeDragable($("#minCap"), [updateTimeControls])
+  makeDragable($("#point"), [updateTimeControls])
+  makeDragable($("#maxCap"), [updateTimeControls])
 
   $("body").on("keypress", function(event) {
 
@@ -47,30 +47,42 @@ export function addTimePanel() {
 
 }
 
-export function updateTimeControllers(controller, eventCoordinates) {
+export function updateTimeControls(controller, eventCoordinates) {
 
-  let minOffset = 110
-  let maxOffset = 540
+  let minOffset = $("#line")[0].offsetLeft
+  let maxOffset = minOffset + $("#line")[0].offsetWidth
+
+  let minCap = $("#minCap")[0].offsetLeft
 
   let point = $("#point")[0].offsetLeft
   let pointWidth = $("#point")[0].width
 
+  let maxCap = $("#maxCap")[0].offsetLeft
+
   if (controller[0].id == "minCap" && eventCoordinates[0] >= minOffset && eventCoordinates[0] <= point - pointWidth) {
+
+    plot.t.minCap = Math.floor(data.plot.t.scale.invert(minCap - minOffset))
 
     controller.css({"left": eventCoordinates[0]})
 
-  } else if (controller[0].id == "point" && eventCoordinates[0] >= $("#minCap")[0].offsetLeft + pointWidth && eventCoordinates[0] <= $("#maxCap")[0].offsetLeft - pointWidth) {
+    $("#minYear").text(plot.t.minCap)
 
-    data.plot.t.year = Math.floor(data.plot.t.scale.invert($("#point")[0].offsetLeft - minOffset - 24))
+  } else if (controller[0].id == "point" && eventCoordinates[0] >= minCap + pointWidth && eventCoordinates[0] <= maxCap - pointWidth) {
+
+    plot.t.year = Math.floor(data.plot.t.scale.invert(point - pointWidth - minOffset))
 
     controller.css({"left": eventCoordinates[0]})
 
     $("#year").css({"left": eventCoordinates[0]})
-    $("#year").text(data.plot.t.year)
+    $("#year").text(plot.t.year)
 
   } else if (controller[0].id == "maxCap" && eventCoordinates[0] <= maxOffset && eventCoordinates[0] >= point + pointWidth) {
 
+    plot.t.maxCap = Math.floor(data.plot.t.scale.invert(maxCap - (pointWidth * 2) - minOffset))
+
     controller.css({"left": eventCoordinates[0]})
+
+    $("#maxYear").text(plot.t.maxCap)
 
   }
 

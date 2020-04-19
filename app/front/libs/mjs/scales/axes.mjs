@@ -6,10 +6,10 @@ let plot = data.plot
 
 export function scaleAxes() {
 
-  let timeLine = $("#time #line")[0].width
+  let timeLine = $("#line")[0].width
 
-  let minCap = $("#time #minCap")[0].width
-  let maxCap = $("#time #maxCap")[0].width
+  let minCap = $("#minCap")[0].width
+  let maxCap = $("#maxCap")[0].width
 
   let timeRange = timeLine - minCap - maxCap - 1
 
