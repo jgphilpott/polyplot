@@ -9,10 +9,9 @@ export function scaleAxes() {
   let timeLine = $("#time #line")[0].width
 
   let minCap = $("#time #minCap")[0].width
-  let point = $("#time #point")[0].width
   let maxCap = $("#time #maxCap")[0].width
 
-  let timeRange = timeLine - minCap - point - maxCap
+  let timeRange = timeLine - minCap - maxCap - 1
 
   plot.t.scale = d3.scaleLinear().range([0, timeRange]).domain([plot.t.minCap, plot.t.maxCap])
 
