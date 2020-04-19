@@ -33,6 +33,24 @@ export function addTimePanel() {
   makeDragable($("#point"), [updateTimeControls])
   makeDragable($("#maxCap"), [updateTimeControls])
 
+  let buttons = $(".button")
+
+  for (let i = 0; i < buttons.length; i++) {
+
+    let button = $("#" + buttons[i].id)
+
+    button.mouseover(function() {
+
+      button.attr("src", "/front/imgs/time/hover/" + buttons[i].id + ".svg")
+
+    }).mouseout(function() {
+
+      button.attr("src", "/front/imgs/time/" + buttons[i].id + ".svg")
+
+    })
+
+  }
+
   $("body").on("keypress", function(event) {
 
     if (event.keyCode == 32) {
