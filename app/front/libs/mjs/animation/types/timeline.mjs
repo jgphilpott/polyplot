@@ -1,12 +1,11 @@
-export function animateTimeline() {
+let plot = data.plot
 
-  let plot = data.plot
+export function animateTimeline(duration = plot.animation.speed) {
 
   let offset = $("#timeline")[0].offsetLeft
   let pointWidth = $("#point")[0].width
 
   let easement = d3.easeLinear
-  let duration = plot.animation.speed
   let scaledYear = plot.t.scale(plot.t.year)
 
   d3.select("#point")

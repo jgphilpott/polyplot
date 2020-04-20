@@ -3,6 +3,7 @@ import {animatePlots} from "../animation/plots.mjs"
 import {animateMaps} from "../animation/types/maps.mjs"
 import {animateCircles} from "../animation/types/circles.mjs"
 import {animateSpheres} from "../animation/types/spheres.mjs"
+import {animateTimeline} from "../animation/types/timeline.mjs"
 
 import {makeDragable} from "../ui/dragable.mjs"
 
@@ -63,6 +64,24 @@ export function addTimePanel() {
       switch (buttons[i].id) {
 
         case "skipBackward":
+
+          if (plot.animation.status == "active") {
+
+            $("#playForward").css({"visibility": "visible"})
+            $("#playBackward").css({"visibility": "visible"})
+
+            clearInterval(plot.animation.interval)
+            plot.animation.status = "inactive"
+
+            $("#pauseLeft").css({"visibility": "hidden"})
+            $("#pauseRight").css({"visibility": "hidden"})
+
+          }
+
+          plot.t.year = plot.t.minCap
+
+          animateMaps(0)
+          animateTimeline(0)
 
           break
 
@@ -125,6 +144,24 @@ export function addTimePanel() {
           break
 
         case "skipForward":
+
+          if (plot.animation.status == "active") {
+
+            $("#playForward").css({"visibility": "visible"})
+            $("#playBackward").css({"visibility": "visible"})
+
+            clearInterval(plot.animation.interval)
+            plot.animation.status = "inactive"
+
+            $("#pauseLeft").css({"visibility": "hidden"})
+            $("#pauseRight").css({"visibility": "hidden"})
+
+          }
+
+          plot.t.year = plot.t.maxCap
+
+          animateMaps(0)
+          animateTimeline(0)
 
           break
 
