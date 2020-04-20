@@ -187,6 +187,19 @@ export function updateTimeControls(controller, eventCoordinates) {
 
     plot.t.year = Math.floor(data.plot.t.scale.invert(point - pointWidth - minOffset))
 
+    if (plot.animation.status == "active") {
+
+      $("#playForward").css({"visibility": "visible"})
+      $("#playBackward").css({"visibility": "visible"})
+
+      clearInterval(plot.animation.interval)
+      plot.animation.status = "inactive"
+
+      $("#pauseLeft").css({"visibility": "hidden"})
+      $("#pauseRight").css({"visibility": "hidden"})      
+
+    }
+
     if (plot.type == "Map") {
 
       animateMaps(0)

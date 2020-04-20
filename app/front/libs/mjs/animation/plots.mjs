@@ -54,8 +54,15 @@ export function updateYear() {
 
   } else {
 
+    $("#playForward").css({"visibility": "visible"})
+    $("#playBackward").css({"visibility": "visible"})
+
     clearInterval(plot.animation.interval)
     plot.animation.status = "inactive"
+
+    $("#pauseLeft").css({"visibility": "hidden"})
+    $("#pauseRight").css({"visibility": "hidden"})
+
     return false
 
   }
