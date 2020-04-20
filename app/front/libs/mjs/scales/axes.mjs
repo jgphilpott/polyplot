@@ -6,14 +6,17 @@ let plot = data.plot
 
 export function scaleAxes() {
 
-  let timeLine = $("#line")[0].width
+  let timeline = $("#timeline")[0].width
 
   let minCap = $("#minCap")[0].width
   let maxCap = $("#maxCap")[0].width
 
-  let timeRange = timeLine - minCap - maxCap - 1
+  let timeRange = timeline - minCap - maxCap
 
   plot.t.scale = d3.scaleLinear().range([0, timeRange]).domain([plot.t.minCap, plot.t.maxCap])
+
+  $("#point").css({"left": $("#timeline")[0].offsetLeft + $("#minCap")[0].width + plot.t.scale(plot.t.year) + "px"})
+  $("#year").css({"left": $("#timeline")[0].offsetLeft + $("#minCap")[0].width + plot.t.scale(plot.t.year) + "px"})
 
   if (plot.type == "Map") {
 

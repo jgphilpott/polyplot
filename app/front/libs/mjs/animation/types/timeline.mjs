@@ -1,8 +1,8 @@
-export function animateTimeline(direction) {
+export function animateTimeline() {
 
   let plot = data.plot
 
-  let offset = $("#line")[0].offsetLeft
+  let offset = $("#timeline")[0].offsetLeft
   let pointWidth = $("#point")[0].width
 
   let easement = d3.easeLinear

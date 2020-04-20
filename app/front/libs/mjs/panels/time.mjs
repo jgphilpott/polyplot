@@ -12,10 +12,10 @@ export function addTimePanel() {
   plot.t.minCap = plot.t.minYear
   plot.t.maxCap = plot.t.maxYear
 
-  plot.animation = {"direction": "forward", "speed": 1200, "status": "inactive"}
+  plot.animation = {"direction": "forward", "speed": 420, "status": "inactive"}
 
   panel.append("<h1 id='years'><span id='minYear'>" + plot.t.minCap + "</span> - <span id='maxYear'>" + plot.t.maxCap + "</span></h1>")
-  panel.append("<img id='line' src='/front/imgs/time/line.svg') }}'>")
+  panel.append("<img id='timeline' src='/front/imgs/time/timeline.svg') }}'>")
 
   panel.append("<img id='skipBackward' class='button' src='/front/imgs/time/skipBackward.svg') }}'>")
   panel.append("<img id='playForward' class='button' src='/front/imgs/time/playForward.svg') }}'>")
@@ -139,8 +139,8 @@ export function addTimePanel() {
 
 export function updateTimeControls(controller, eventCoordinates) {
 
-  let minOffset = $("#line")[0].offsetLeft
-  let maxOffset = minOffset + $("#line")[0].offsetWidth
+  let minOffset = $("#timeline")[0].offsetLeft
+  let maxOffset = minOffset + $("#timeline")[0].offsetWidth
 
   let minCap = $("#minCap")[0].offsetLeft
 
