@@ -20,7 +20,7 @@ def register_poly3_route(app):
         data["plot"]["x"] = {"name": x["name"]}
         data["plot"]["y"] = {"name": y["name"]}
         data["plot"]["z"] = {"name": z["name"]}
-        data["plot"]["t"] = {"minYear": 1960, "year": 1970, "maxYear": 2019}
+        data["plot"]["t"] = {"minYear": 1960, "year": 1970, "maxYear": 2018}
         data["plot"]["GeoJSON"] = {"type": "FeatureCollection", "features": find_maps("low")}
 
         countries = find_countries()

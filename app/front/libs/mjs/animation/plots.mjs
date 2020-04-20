@@ -2,19 +2,58 @@ import {animateMaps} from "./types/maps.mjs"
 import {animateCircles} from "./types/circles.mjs"
 import {animateSpheres} from "./types/spheres.mjs"
 
-export function animatePlots(direction, speed=1200) {
+let plot = data.plot
+let animation = null
 
-  if (data.plot.type == "Map") {
+export function animatePlots(direction) {
 
-    animateMaps()
+  plot.animation.direction = direction
 
-  } else if (data.plot.type == "Poly2") {
+  updatePlots()
+  plot.animation.status = "active"
+  animation = setInterval(updatePlots, plot.animation.speed)
 
-    animateCircles()
+}
 
-  } else if (data.plot.type == "Poly3") {
+export function updatePlots() {
 
-    animateSpheres()
+  if (updateTime()) {
+
+    if (plot.type == "Map") {
+
+      animateMaps()
+
+    } else if (plot.type == "Poly2") {
+
+      animateCircles()
+
+    } else if (plot.type == "Poly3") {
+
+      animateSpheres()
+
+    }
+
+  }
+
+}
+
+export function updateTime() {
+
+  if (plot.animation.direction == "forward" && plot.t.year < plot.t.maxCap) {
+
+    plot.t.year += 1
+    return true
+
+  } else if (plot.animation.direction == "backward" && plot.t.year > plot.t.minCap) {
+
+    plot.t.year -= 1
+    return true
+
+  } else {
+
+    clearInterval(animation)
+    plot.animation.status = "inactive"
+    return false
 
   }
 

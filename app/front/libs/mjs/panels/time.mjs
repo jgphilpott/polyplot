@@ -12,6 +12,8 @@ export function addTimePanel() {
   plot.t.minCap = plot.t.minYear
   plot.t.maxCap = plot.t.maxYear
 
+  plot.animation = {"direction": "forward", "speed": 1200, "status": "inactive"}
+
   panel.append("<h1 id='years'><span id='minYear'>" + plot.t.minCap + "</span> - <span id='maxYear'>" + plot.t.maxCap + "</span></h1>")
   panel.append("<img id='line' src='/front/imgs/time/line.svg') }}'>")
 
@@ -64,7 +66,7 @@ export function addTimePanel() {
           $(this).css({"visibility": "hidden"})
           $("#playBackward").css({"visibility": "hidden"})
 
-          animatePlots()
+          animatePlots("forward")
 
           $("#pauseLeft").css({"visibility": "visible"})
           $("#pauseRight").css({"visibility": "visible"})
@@ -94,7 +96,7 @@ export function addTimePanel() {
           $("#playForward").css({"visibility": "hidden"})
           $(this).css({"visibility": "hidden"})
 
-          animatePlots()
+          animatePlots("backward")
 
           $("#pauseLeft").css({"visibility": "visible"})
           $("#pauseRight").css({"visibility": "visible"})
@@ -125,7 +127,7 @@ export function addTimePanel() {
 
     if (event.keyCode == 32) {
 
-      animatePlots()
+      animatePlots("forward")
 
     }
 

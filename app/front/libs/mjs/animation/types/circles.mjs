@@ -1,5 +1,5 @@
 export function animateCircles() {
 
-  console.log("poly2")
+  console.log(data.plot.t.year)
 
 }

@@ -2,7 +2,7 @@
 
 export function animateSpheres() {
 
-  console.log("poly3")
+  console.log(data.plot.t.year)
 
 }
 

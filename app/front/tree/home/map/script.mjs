@@ -23,7 +23,7 @@ $(document).ready(function() {
 
   scaleAxes()
 
-  canvas.selectAll("path")
+  canvas.selectAll(".map")
         .data(plot.GeoJSON.features)
         .enter()
         .append("path")
@@ -33,7 +33,7 @@ $(document).ready(function() {
           return feature.properties.code
 
         })
-        .attr("class", "country")
+        .attr("class", "map")
         .attr("fill", function(feature) {
 
           let history = plot.plots.find(plot => plot.code == feature.properties.code).x
@@ -51,11 +51,11 @@ $(document).ready(function() {
 
         })
 
-  let plots = $(".country")
+  let plots = $(".map")
 
   for (let i = 0; i < plots.length; i++) {
 
-    $("#" + plots[i].id + ".country").mouseenter(function() {
+    $("#" + plots[i].id + ".map").mouseenter(function() {
 
       updateMetaPanel(plots[i].id)
 
