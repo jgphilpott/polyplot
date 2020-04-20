@@ -1,6 +1,7 @@
 import {animateMaps} from "./types/maps.mjs"
 import {animateCircles} from "./types/circles.mjs"
 import {animateSpheres} from "./types/spheres.mjs"
+import {animateTimeline} from "./types/timeline.mjs"
 
 let plot = data.plot
 let animation = null
@@ -17,7 +18,9 @@ export function animatePlots(direction) {
 
 export function updatePlots() {
 
-  if (updateTime()) {
+  if (updateYear()) {
+
+    animateTimeline()
 
     if (plot.type == "Map") {
 
@@ -37,7 +40,7 @@ export function updatePlots() {
 
 }
 
-export function updateTime() {
+export function updateYear() {
 
   if (plot.animation.direction == "forward" && plot.t.year < plot.t.maxCap) {
 
