@@ -83,6 +83,9 @@ export function addTimePanel() {
           $(this).css({"visibility": "hidden"})
           $("#pauseRight").css({"visibility": "hidden"})
 
+          clearInterval(plot.animation.interval)
+          plot.animation.status = "inactive"
+
           $("#playForward").css({"visibility": "visible"})
           $("#playBackward").css({"visibility": "visible"})
 
@@ -112,6 +115,9 @@ export function addTimePanel() {
 
           $("#pauseLeft").css({"visibility": "hidden"})
           $(this).css({"visibility": "hidden"})
+
+          clearInterval(plot.animation.interval)
+          plot.animation.status = "inactive"
 
           $("#playForward").css({"visibility": "visible"})
           $("#playBackward").css({"visibility": "visible"})
@@ -196,7 +202,7 @@ export function updateTimeControls(controller, eventCoordinates) {
       plot.animation.status = "inactive"
 
       $("#pauseLeft").css({"visibility": "hidden"})
-      $("#pauseRight").css({"visibility": "hidden"})      
+      $("#pauseRight").css({"visibility": "hidden"})
 
     }
 
