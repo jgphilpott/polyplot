@@ -64,6 +64,8 @@ export function addTimePanel() {
           $(this).css({"visibility": "hidden"})
           $("#playBackward").css({"visibility": "hidden"})
 
+          animatePlots()
+
           $("#pauseLeft").css({"visibility": "visible"})
           $("#pauseRight").css({"visibility": "visible"})
 
@@ -91,6 +93,8 @@ export function addTimePanel() {
 
           $("#playForward").css({"visibility": "hidden"})
           $(this).css({"visibility": "hidden"})
+
+          animatePlots()
 
           $("#pauseLeft").css({"visibility": "visible"})
           $("#pauseRight").css({"visibility": "visible"})
@@ -121,7 +125,7 @@ export function addTimePanel() {
 
     if (event.keyCode == 32) {
 
-      // animatePlots()
+      animatePlots()
 
     }
 
