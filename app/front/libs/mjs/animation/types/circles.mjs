@@ -1,5 +1,7 @@
-export function animateCircles() {
+let plot = data.plot
 
-  console.log(data.plot.t.year)
+export function animateCircles(speed = plot.animation.speed) {
+
+  console.log(plot.t.year)
 
 }

@@ -1,4 +1,9 @@
 import {animatePlots} from "../animation/plots.mjs"
+
+import {animateMaps} from "../animation/types/maps.mjs"
+import {animateCircles} from "../animation/types/circles.mjs"
+import {animateSpheres} from "../animation/types/spheres.mjs"
+
 import {makeDragable} from "../ui/dragable.mjs"
 
 let plot = data.plot
@@ -12,7 +17,7 @@ export function addTimePanel() {
   plot.t.minCap = plot.t.minYear
   plot.t.maxCap = plot.t.maxYear
 
-  plot.animation = {"direction": "forward", "speed": 420, "status": "inactive"}
+  plot.animation = {"direction": "forward", "speed": 360, "status": "inactive", "interval": null}
 
   panel.append("<h1 id='years'><span id='minYear'>" + plot.t.minCap + "</span> - <span id='maxYear'>" + plot.t.maxCap + "</span></h1>")
   panel.append("<img id='timeline' src='/front/imgs/time/timeline.svg') }}'>")
@@ -127,7 +132,28 @@ export function addTimePanel() {
 
     if (event.keyCode == 32) {
 
-      animatePlots("forward")
+      if (plot.animation.status == "inactive") {
+
+        $("#playForward").css({"visibility": "hidden"})
+        $("#playBackward").css({"visibility": "hidden"})
+
+        animatePlots()
+
+        $("#pauseLeft").css({"visibility": "visible"})
+        $("#pauseRight").css({"visibility": "visible"})
+
+      } else if (plot.animation.status == "active") {
+
+        $("#playForward").css({"visibility": "visible"})
+        $("#playBackward").css({"visibility": "visible"})
+
+        clearInterval(plot.animation.interval)
+        plot.animation.status = "inactive"
+
+        $("#pauseLeft").css({"visibility": "hidden"})
+        $("#pauseRight").css({"visibility": "hidden"})
+
+      }
 
     }
 
@@ -160,6 +186,20 @@ export function updateTimeControls(controller, eventCoordinates) {
   } else if (controller[0].id == "point" && eventCoordinates[0] >= minCap + pointWidth && eventCoordinates[0] <= maxCap - pointWidth) {
 
     plot.t.year = Math.floor(data.plot.t.scale.invert(point - pointWidth - minOffset))
+
+    if (plot.type == "Map") {
+
+      animateMaps(0)
+
+    } else if (plot.type == "Poly2") {
+
+      animateCircles(0)
+
+    } else if (plot.type == "Poly3") {
+
+      animateSpheres(0)
+
+    }
 
     controller.css({"left": eventCoordinates[0]})
 

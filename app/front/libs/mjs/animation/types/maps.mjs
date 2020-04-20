@@ -1,10 +1,10 @@
-export function animateMaps() {
+let plot = data.plot
 
-  let plot = data.plot
+export function animateMaps(speed = plot.animation.speed) {
 
   d3.selectAll(".map")
     .transition()
-    .duration(plot.animation.speed)
+    .duration(speed)
     .style("fill", function(feature) {
 
       let history = plot.plots.find(plot => plot.code == feature.properties.code).x
@@ -21,7 +21,5 @@ export function animateMaps() {
       }
 
     })
-
-    console.log(plot.t.year)
 
 }

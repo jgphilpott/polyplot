@@ -1,8 +1,10 @@
 // import {addPlot} from "../../geometries/plot.mjs"
 
-export function animateSpheres() {
+let plot = data.plot
 
-  console.log(data.plot.t.year)
+export function animateSpheres(speed = plot.animation.speed) {
+
+  console.log(plot.t.year)
 
 }
 

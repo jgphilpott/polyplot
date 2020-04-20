@@ -4,15 +4,15 @@ import {animateSpheres} from "./types/spheres.mjs"
 import {animateTimeline} from "./types/timeline.mjs"
 
 let plot = data.plot
-let animation = null
 
-export function animatePlots(direction) {
+export function animatePlots(direction = plot.animation.direction) {
 
   plot.animation.direction = direction
 
   updatePlots()
+
+  plot.animation.interval = setInterval(updatePlots, plot.animation.speed)
   plot.animation.status = "active"
-  animation = setInterval(updatePlots, plot.animation.speed)
 
 }
 
@@ -54,7 +54,7 @@ export function updateYear() {
 
   } else {
 
-    clearInterval(animation)
+    clearInterval(plot.animation.interval)
     plot.animation.status = "inactive"
     return false
 
