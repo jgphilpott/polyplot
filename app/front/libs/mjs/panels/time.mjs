@@ -18,7 +18,7 @@ export function addTimePanel() {
   plot.t.minCap = plot.t.minYear
   plot.t.maxCap = plot.t.maxYear
 
-  plot.animation = {"direction": "forward", "speed": 360, "status": "inactive", "interval": null}
+  plot.animation = {"direction": "forward", "speed": 360, "speedMultiplier": 1, "status": "inactive", "interval": null}
 
   panel.append("<h1 id='years'><span id='minYear'>" + plot.t.minCap + "</span> - <span id='maxYear'>" + plot.t.maxCap + "</span></h1>")
   panel.append("<img id='timeline' src='/front/imgs/time/timeline.svg') }}'>")
@@ -39,9 +39,9 @@ export function addTimePanel() {
 
   panel.append("<p id='year'>" + plot.t.year + "</p>")
 
-  makeDragable($("#minCap"), [updateTimeControls])
-  makeDragable($("#point"), [updateTimeControls])
-  makeDragable($("#maxCap"), [updateTimeControls])
+  makeDragable($("#minCap"), [dragTimeControls])
+  makeDragable($("#point"), [dragTimeControls])
+  makeDragable($("#maxCap"), [dragTimeControls])
 
   let buttons = $(".button")
 
@@ -55,7 +55,19 @@ export function addTimePanel() {
 
     }).mouseout(function() {
 
-      button.attr("src", "/front/imgs/time/" + buttons[i].id + ".svg")
+      if (!((buttons[i].id == "fastForward" || buttons[i].id == "fastBackward") && plot.animation.speedMultiplier != 1)) {
+
+        button.attr("src", "/front/imgs/time/" + buttons[i].id + ".svg")
+
+      } else if (buttons[i].id == "fastForward" && plot.animation.direction != "forward") {
+
+        button.attr("src", "/front/imgs/time/" + buttons[i].id + ".svg")
+
+      } else if (buttons[i].id == "fastBackward" && plot.animation.direction != "backward") {
+
+        button.attr("src", "/front/imgs/time/" + buttons[i].id + ".svg")
+
+      }
 
     })
 
@@ -112,9 +124,13 @@ export function addTimePanel() {
 
         case "fastForward":
 
+          toggleSpeed("forward")
+
           break
 
         case "fastBackward":
+
+          toggleSpeed("backward")
 
           break
 
@@ -206,7 +222,47 @@ export function addTimePanel() {
 
 }
 
-export function updateTimeControls(controller, eventCoordinates) {
+export function toggleSpeed(direction) {
+
+  if (direction == "forward") {
+
+    $("#fastBackward").attr("src", "/front/imgs/time/fastBackward.svg")
+
+  } else if (direction == "backward") {
+
+    $("#fastForward").attr("src", "/front/imgs/time/fastForward.svg")
+
+  }
+
+  if (plot.animation.speedMultiplier != 1) {
+
+    if (plot.animation.direction == direction) {
+
+      plot.animation.speedMultiplier = 1
+
+    } else {
+
+      plot.animation.direction = direction
+
+    }
+
+  } else {
+
+    plot.animation.direction = direction
+    plot.animation.speedMultiplier = 3
+
+  }
+
+  if (plot.animation.status == "active") {
+
+    clearInterval(plot.animation.interval)
+    animatePlots(direction)
+
+  }
+
+}
+
+export function dragTimeControls(controller, eventCoordinates) {
 
   let minOffset = $("#timeline")[0].offsetLeft
   let maxOffset = minOffset + $("#timeline")[0].offsetWidth

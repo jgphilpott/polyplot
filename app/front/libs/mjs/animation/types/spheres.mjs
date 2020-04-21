@@ -2,7 +2,7 @@
 
 let plot = data.plot
 
-export function animateSpheres(speed = plot.animation.speed) {
+export function animateSpheres(duration) {
 
   console.log(plot.t.year)
 

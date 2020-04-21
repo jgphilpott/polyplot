@@ -5,34 +5,34 @@ import {animateTimeline} from "./types/timeline.mjs"
 
 let plot = data.plot
 
-export function animatePlots(direction = plot.animation.direction) {
+export function animatePlots(direction = plot.animation.direction, speed = (plot.animation.speed / plot.animation.speedMultiplier)) {
 
   plot.animation.direction = direction
 
   updatePlots()
 
-  plot.animation.interval = setInterval(updatePlots, plot.animation.speed)
+  plot.animation.interval = setInterval(updatePlots, speed)
   plot.animation.status = "active"
 
 }
 
-export function updatePlots() {
+export function updatePlots(speed = (plot.animation.speed / plot.animation.speedMultiplier)) {
 
   if (updateYear()) {
 
-    animateTimeline()
+    animateTimeline(speed)
 
     if (plot.type == "Map") {
 
-      animateMaps()
+      animateMaps(speed)
 
     } else if (plot.type == "Poly2") {
 
-      animateCircles()
+      animateCircles(speed)
 
     } else if (plot.type == "Poly3") {
 
-      animateSpheres()
+      animateSpheres(speed)
 
     }
 
@@ -45,11 +45,13 @@ export function updateYear() {
   if (plot.animation.direction == "forward" && plot.t.year < plot.t.maxCap) {
 
     plot.t.year += 1
+
     return true
 
   } else if (plot.animation.direction == "backward" && plot.t.year > plot.t.minCap) {
 
     plot.t.year -= 1
+
     return true
 
   } else {

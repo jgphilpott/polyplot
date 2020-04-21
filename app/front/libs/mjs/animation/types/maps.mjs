@@ -1,10 +1,10 @@
 let plot = data.plot
 
-export function animateMaps(speed = plot.animation.speed) {
+export function animateMaps(duration) {
 
   d3.selectAll(".map")
     .transition()
-    .duration(speed)
+    .duration(duration)
     .style("fill", function(feature) {
 
       let history = plot.plots.find(plot => plot.code == feature.properties.code).x

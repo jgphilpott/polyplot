@@ -1,6 +1,6 @@
 let plot = data.plot
 
-export function animateTimeline(duration = plot.animation.speed) {
+export function animateTimeline(duration) {
 
   let offset = $("#timeline")[0].offsetLeft
   let pointWidth = $("#point")[0].width
