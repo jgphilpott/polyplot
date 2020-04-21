@@ -56,17 +56,40 @@ export function updateYear() {
 
   } else {
 
-    $("#playForward").css({"visibility": "visible"})
-    $("#playBackward").css({"visibility": "visible"})
-
-    clearInterval(plot.animation.interval)
-    plot.animation.status = "inactive"
-
-    $("#pauseLeft").css({"visibility": "hidden"})
-    $("#pauseRight").css({"visibility": "hidden"})
+    clearAnimation()
 
     return false
 
   }
+
+}
+
+export function startAnimation(direction) {
+
+  animatePlots(direction)
+
+  $("#playForward").css({"visibility": "hidden"})
+  $("#playBackward").css({"visibility": "hidden"})
+
+  $("#pauseLeft").css({"visibility": "visible"})
+  $("#pauseRight").css({"visibility": "visible"})
+
+}
+
+export function clearAnimation() {
+
+  clearInterval(plot.animation.interval)
+  plot.animation.status = "inactive"
+
+  plot.animation.speedMultiplier = 1
+
+  $("#playForward").css({"visibility": "visible"})
+  $("#playBackward").css({"visibility": "visible"})
+
+  $("#pauseLeft").css({"visibility": "hidden"})
+  $("#pauseRight").css({"visibility": "hidden"})
+
+  $("#fastForward").attr("src", "/front/imgs/time/fastForward.svg")
+  $("#fastBackward").attr("src", "/front/imgs/time/fastBackward.svg")
 
 }

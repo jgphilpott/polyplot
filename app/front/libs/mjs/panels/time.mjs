@@ -1,4 +1,5 @@
-import {animatePlots} from "../animation/plots.mjs"
+import {startAnimation} from "../animation/plots.mjs"
+import {clearAnimation} from "../animation/plots.mjs"
 
 import {animateMaps} from "../animation/types/maps.mjs"
 import {animateCircles} from "../animation/types/circles.mjs"
@@ -77,18 +78,7 @@ export function addTimePanel() {
 
         case "skipBackward":
 
-          if (plot.animation.status == "active") {
-
-            $("#playForward").css({"visibility": "visible"})
-            $("#playBackward").css({"visibility": "visible"})
-
-            clearInterval(plot.animation.interval)
-            plot.animation.status = "inactive"
-
-            $("#pauseLeft").css({"visibility": "hidden"})
-            $("#pauseRight").css({"visibility": "hidden"})
-
-          }
+          clearAnimation()
 
           plot.t.year = plot.t.minCap
 
@@ -99,26 +89,13 @@ export function addTimePanel() {
 
         case "playForward":
 
-          $(this).css({"visibility": "hidden"})
-          $("#playBackward").css({"visibility": "hidden"})
-
-          animatePlots("forward")
-
-          $("#pauseLeft").css({"visibility": "visible"})
-          $("#pauseRight").css({"visibility": "visible"})
+          startAnimation("forward")
 
           break
 
         case "pauseLeft":
 
-          $(this).css({"visibility": "hidden"})
-          $("#pauseRight").css({"visibility": "hidden"})
-
-          clearInterval(plot.animation.interval)
-          plot.animation.status = "inactive"
-
-          $("#playForward").css({"visibility": "visible"})
-          $("#playBackward").css({"visibility": "visible"})
+          clearAnimation()
 
           break
 
@@ -136,43 +113,19 @@ export function addTimePanel() {
 
         case "playBackward":
 
-          $("#playForward").css({"visibility": "hidden"})
-          $(this).css({"visibility": "hidden"})
-
-          animatePlots("backward")
-
-          $("#pauseLeft").css({"visibility": "visible"})
-          $("#pauseRight").css({"visibility": "visible"})
+          startAnimation("backward")
 
           break
 
         case "pauseRight":
 
-          $("#pauseLeft").css({"visibility": "hidden"})
-          $(this).css({"visibility": "hidden"})
-
-          clearInterval(plot.animation.interval)
-          plot.animation.status = "inactive"
-
-          $("#playForward").css({"visibility": "visible"})
-          $("#playBackward").css({"visibility": "visible"})
+          clearAnimation()
 
           break
 
         case "skipForward":
 
-          if (plot.animation.status == "active") {
-
-            $("#playForward").css({"visibility": "visible"})
-            $("#playBackward").css({"visibility": "visible"})
-
-            clearInterval(plot.animation.interval)
-            plot.animation.status = "inactive"
-
-            $("#pauseLeft").css({"visibility": "hidden"})
-            $("#pauseRight").css({"visibility": "hidden"})
-
-          }
+          clearAnimation()
 
           plot.t.year = plot.t.maxCap
 
@@ -193,24 +146,11 @@ export function addTimePanel() {
 
       if (plot.animation.status == "inactive") {
 
-        $("#playForward").css({"visibility": "hidden"})
-        $("#playBackward").css({"visibility": "hidden"})
-
-        animatePlots()
-
-        $("#pauseLeft").css({"visibility": "visible"})
-        $("#pauseRight").css({"visibility": "visible"})
+        startAnimation()
 
       } else if (plot.animation.status == "active") {
 
-        $("#playForward").css({"visibility": "visible"})
-        $("#playBackward").css({"visibility": "visible"})
-
-        clearInterval(plot.animation.interval)
-        plot.animation.status = "inactive"
-
-        $("#pauseLeft").css({"visibility": "hidden"})
-        $("#pauseRight").css({"visibility": "hidden"})
+        clearAnimation()
 
       }
 
@@ -223,16 +163,6 @@ export function addTimePanel() {
 }
 
 export function toggleSpeed(direction) {
-
-  if (direction == "forward") {
-
-    $("#fastBackward").attr("src", "/front/imgs/time/fastBackward.svg")
-
-  } else if (direction == "backward") {
-
-    $("#fastForward").attr("src", "/front/imgs/time/fastForward.svg")
-
-  }
 
   if (plot.animation.speedMultiplier != 1) {
 
@@ -256,7 +186,17 @@ export function toggleSpeed(direction) {
   if (plot.animation.status == "active") {
 
     clearInterval(plot.animation.interval)
-    animatePlots(direction)
+    startAnimation(direction)
+
+  }
+
+  if (direction == "forward") {
+
+    $("#fastBackward").attr("src", "/front/imgs/time/fastBackward.svg")
+
+  } else if (direction == "backward") {
+
+    $("#fastForward").attr("src", "/front/imgs/time/fastForward.svg")
 
   }
 
@@ -286,18 +226,7 @@ export function dragTimeControls(controller, eventCoordinates) {
 
     plot.t.year = Math.floor(data.plot.t.scale.invert(point - pointWidth - minOffset))
 
-    if (plot.animation.status == "active") {
-
-      $("#playForward").css({"visibility": "visible"})
-      $("#playBackward").css({"visibility": "visible"})
-
-      clearInterval(plot.animation.interval)
-      plot.animation.status = "inactive"
-
-      $("#pauseLeft").css({"visibility": "hidden"})
-      $("#pauseRight").css({"visibility": "hidden"})
-
-    }
+    clearAnimation()
 
     if (plot.type == "Map") {
 

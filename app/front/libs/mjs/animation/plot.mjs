@@ -1,14 +1,16 @@
+let plot = data.plot
+
 export function animatePlot() {
 
-  let plot = data.plot.core
+  let core = plot.core
 
   function animate() {
 
     requestAnimationFrame(animate)
 
-    plot.controls.update()
+    core.controls.update()
 
-    plot.renderer.render(plot.scene, plot.camera)
+    core.renderer.render(core.scene, core.camera)
 
   }
 
