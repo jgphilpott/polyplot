@@ -78,12 +78,7 @@ export function addTimePanel() {
 
         case "skipBackward":
 
-          clearAnimation()
-
-          plot.t.year = plot.t.minCap
-
-          animateMaps(0)
-          animateTimeline(0)
+          skip("backward")
 
           break
 
@@ -125,12 +120,7 @@ export function addTimePanel() {
 
         case "skipForward":
 
-          clearAnimation()
-
-          plot.t.year = plot.t.maxCap
-
-          animateMaps(0)
-          animateTimeline(0)
+          skip("forward")
 
           break
 
@@ -159,6 +149,38 @@ export function addTimePanel() {
   })
 
   makeDragable(panel)
+
+}
+
+export function skip(direction) {
+
+  clearAnimation()
+
+  if (direction == "forward") {
+
+    plot.t.year = plot.t.maxCap
+
+  } else if (direction == "backward") {
+
+    plot.t.year = plot.t.minCap
+
+  }
+
+  animateTimeline(0)
+
+  if (plot.type == "Map") {
+
+    animateMaps(0)
+
+  } else if (plot.type == "Poly2") {
+
+    animateCircles(0)
+
+  } else if (plot.type == "Poly3") {
+
+    animateSpheres(0)
+
+  }
 
 }
 
