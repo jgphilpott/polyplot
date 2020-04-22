@@ -58,6 +58,7 @@ $(document).ready(function() {
     let y = plots[i].y.find(item => item.year == plot.t.year).value
 
     canvas.append("circle")
+          .data([plots[i]])
           .attr("id", plots[i].code)
           .attr("class", "plot")
           .attr("r", plot.r.scale(r))
