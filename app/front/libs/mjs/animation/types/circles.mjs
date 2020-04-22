@@ -1,15 +1,46 @@
+import {regionsColourSwitch} from "../../colors/switches/regions.mjs"
+
 let plot = data.plot
+let plots = plot.plots
 
 export function animateCircles(duration) {
 
-  d3.selectAll(".plot")
-    .transition()
-    .duration(duration)
-    .style("fill", function(feature) {
+  for (let i = 0; i < plots.length; i++) {
 
-      console.log(feature)
-      return "black"
+    let circle = $("#" + plots[i].code).length
 
-    })
+    let rNew = plots[i].r.find(item => item.year == data.plot.t.year).value
+    let xNew = plots[i].x.find(item => item.year == data.plot.t.year).value
+    let yNew = plots[i].y.find(item => item.year == data.plot.t.year).value
+
+    if (circle && (typeof(rNew) == "number" && typeof(xNew) == "number" && typeof(yNew) == "number")) {
+
+      d3.select("#" + plots[i].code)
+        .transition()
+        .ease(d3.easeLinear)
+        .duration(duration)
+        .attr("r", plot.r.scale(rNew))
+        .attr("cx", plot.x.scale(xNew))
+        .attr("cy", plot.y.scale(yNew))
+
+    } else if (circle && !(typeof(rNew) == "number" && typeof(xNew) == "number" && typeof(yNew) == "number")) {
+
+      $("#" + plots[i].code).remove()
+
+    } else if (!circle && (typeof(rNew) == "number" && typeof(xNew) == "number" && typeof(yNew) == "number")) {
+
+      d3.select("#canvas")
+        .append("circle")
+        .data([plots[i]])
+        .attr("id", plots[i].code)
+        .attr("class", "plot")
+        .attr("r", plot.r.scale(rNew))
+        .attr("cx", plot.x.scale(xNew))
+        .attr("cy", plot.y.scale(yNew))
+        .attr("fill", regionsColourSwitch(plots[i].region))
+
+    }
+
+  }
 
 }

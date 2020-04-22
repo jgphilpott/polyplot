@@ -1,6 +1,7 @@
 import {addPlot} from "../../geometries/plot.mjs"
 
 let plot = data.plot
+let plots = plot.plots
 
 export function animateSpheres(duration) {
 
@@ -57,7 +58,7 @@ export function animateSpheres(duration) {
 
       setTimeout(stopInterval, speed)
 
-    } else if (plot.object == null) {
+    } else  {
 
       function updatePlot() {
 

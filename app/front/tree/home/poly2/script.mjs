@@ -57,24 +57,28 @@ $(document).ready(function() {
     let x = plots[i].x.find(item => item.year == plot.t.year).value
     let y = plots[i].y.find(item => item.year == plot.t.year).value
 
-    canvas.append("circle")
-          .data([plots[i]])
-          .attr("id", plots[i].code)
-          .attr("class", "plot")
-          .attr("r", plot.r.scale(r))
-          .attr("cx", plot.x.scale(x))
-          .attr("cy", plot.y.scale(y))
-          .attr("fill", regionsColourSwitch(plots[i].region))
+    if (typeof(r) == "number" && typeof(x) == "number" && typeof(y) == "number") {
 
-    $("#" + plots[i].code + ".plot").mouseenter(function() {
+      canvas.append("circle")
+            .data([plots[i]])
+            .attr("id", plots[i].code)
+            .attr("class", "plot")
+            .attr("r", plot.r.scale(r))
+            .attr("cx", plot.x.scale(x))
+            .attr("cy", plot.y.scale(y))
+            .attr("fill", regionsColourSwitch(plots[i].region))
 
-      updateMetaPanel(plots[i].code)
+      $("#" + plots[i].code + ".plot").mouseenter(function() {
 
-    }).mouseleave(function() {
+        updateMetaPanel(plots[i].code)
 
-      clearMetaPanel()
+      }).mouseleave(function() {
 
-    })
+        clearMetaPanel()
+
+      })
+
+    }
 
   }
 

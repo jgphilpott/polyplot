@@ -1,4 +1,5 @@
 let plot = data.plot
+let plots = plot.plots
 
 export function animateMaps(duration) {
 
@@ -7,7 +8,7 @@ export function animateMaps(duration) {
     .duration(duration)
     .style("fill", function(feature) {
 
-      let history = plot.plots.find(plot => plot.code == feature.properties.code).x
+      let history = plots.find(plot => plot.code == feature.properties.code).x
       let value = history.find(year => year.year == plot.t.year).value
 
       if (typeof(value) == "number") {
