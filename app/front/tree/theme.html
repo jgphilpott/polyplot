@@ -13,7 +13,7 @@
     <script src="{{ url_for('static', filename='libs/mjs/vendor/jQueryUI.js') }}"></script>
 
   </head>
-  <body>
+  <body oncontextmenu="return false">
 
     <script> const data = {{ data | tojson | safe }} </script>
     <script src="{{ url_for('static', filename='tree/theme.mjs') }}" type="module"></script>
