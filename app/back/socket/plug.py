@@ -1,26 +1,18 @@
 from flask_socketio import SocketIO, emit
 
-clients = 0
+from back.socket.clients import connect_clients
+from back.socket.countries import connect_countries
+from back.socket.indicators import connect_indicators
+from back.socket.maps import connect_maps
 
 def plugin(app):
 
     app = SocketIO(app)
 
-    @app.on("connect")
-    def connect():
-
-        global clients
-        clients += 1
-
-        emit("clientConnect", clients, broadcast=True)
-
-    @app.on("disconnect")
-    def disconnect():
-
-        global clients
-        clients -= 1
-
-        emit("clientDisconnect", clients, broadcast=True)
+    connect_clients(app)
+    connect_countries(app)
+    connect_indicators(app)
+    connect_maps(app)
 
     return app
 
