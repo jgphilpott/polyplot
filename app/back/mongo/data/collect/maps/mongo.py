@@ -1,3 +1,5 @@
+from sys import getsizeof
+
 from back.mongo.data.collect.ions import find_collection
 from back.mongo.data.collect.maps.object import Map
 
@@ -18,3 +20,11 @@ def find_maps(detail="low"):
             maps.append(map["detail"][detail])
 
     return maps
+
+def find_map_size(code, detail="low"):
+
+    return getsizeof(str(find_map(code, detail)))
+
+def find_maps_size(detail="low"):
+
+    return getsizeof(str(find_maps(detail)))
