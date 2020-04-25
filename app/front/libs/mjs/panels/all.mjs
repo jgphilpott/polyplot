@@ -1,5 +1,6 @@
 import {addErrorPanel} from "./error.mjs"
 import {addHomePanel} from "./home.mjs"
+import {addIndicatorsPanel} from "./indicators.mjs"
 import {addLegendPanel} from "./legend.mjs"
 import {addLinePanel} from "./line.mjs"
 import {addMapPanel} from "./map.mjs"
@@ -10,6 +11,7 @@ import {addTitlePanel} from "./title.mjs"
 
 export function addAllPanels() {
 
+  addIndicatorsPanel()
   addLegendPanel()
   addMenuPanel()
   addMetaPanel()
