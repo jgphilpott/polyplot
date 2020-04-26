@@ -48,17 +48,29 @@ export function addIndicatorsPanel() {
 
       for (let i = 0; i < indicatorCategories.length; i++) {
 
-        panel.append("<h3>" + indicatorCategories[i].category + "</h3>")
+        panel.append("<h3 class='category'>" + indicatorCategories[i].category + "</h3>")
 
         for (let j = 0; j < indicatorCategories[i].indicators.length; j++) {
 
-          panel.append("<p>" + indicatorCategories[i].indicators[j].name + "</p>")
+          panel.append("<p id='" + indicatorCategories[i].indicators[j].code + "' class='indicator'>" + indicatorCategories[i].indicators[j].name + "</p>")
 
         }
 
       }
 
+      $(".indicator").click(function() {
+
+        socket.emit("get_indicator", this.id)
+
+      })
+
     }
+
+    socket.on("new_indicator", function(indicator) {
+
+      console.log(indicator)
+
+    })
 
     drawIndicators()
 
