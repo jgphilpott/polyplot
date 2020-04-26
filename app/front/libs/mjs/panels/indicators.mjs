@@ -8,6 +8,14 @@ export function addIndicatorsPanel() {
 
   panel.append("<h1 id='title'>Indicators</h1>")
 
+  socket.emit("get_indicators")
+
+  socket.on("new_indicators", function(indicators) {
+
+    console.log(indicators)
+
+  })
+
   makeDragable(panel)
 
 }
