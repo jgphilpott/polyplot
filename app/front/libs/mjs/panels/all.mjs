@@ -1,3 +1,4 @@
+import {addCountriesPanel} from "./countries.mjs"
 import {addErrorPanel} from "./error.mjs"
 import {addHomePanel} from "./home.mjs"
 import {addIndicatorsPanel} from "./indicators.mjs"
@@ -11,6 +12,7 @@ import {addTitlePanel} from "./title.mjs"
 
 export function addAllPanels() {
 
+  addCountriesPanel()
   addIndicatorsPanel()
   addLegendPanel()
   addMenuPanel()
