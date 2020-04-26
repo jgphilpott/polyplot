@@ -19,24 +19,24 @@ export function addTimePanel() {
   plot.t.minCap = plot.t.minYear
   plot.t.maxCap = plot.t.maxYear
 
-  plot.animation = {"direction": "forward", "speed": 360, "speedMultiplier": 1, "status": "inactive", "interval": null}
+  plot.animation = {"direction": "forward", "speed": 600, "speedMultiplier": 1, "status": "inactive", "interval": null}
 
   panel.append("<h1 id='years'><span id='minYear'>" + plot.t.minCap + "</span> - <span id='maxYear'>" + plot.t.maxCap + "</span></h1>")
-  panel.append("<img id='timeline' src='/front/imgs/time/timeline.svg') }}'>")
+  panel.append("<img id='timeline' src='/front/imgs/panels/time/timeline.svg') }}'>")
 
-  panel.append("<img id='skipBackward' class='button' src='/front/imgs/time/skipBackward.svg') }}'>")
-  panel.append("<img id='playForward' class='button' src='/front/imgs/time/playForward.svg') }}'>")
-  panel.append("<img id='pauseLeft' class='button' src='/front/imgs/time/pauseLeft.svg') }}'>")
-  panel.append("<img id='fastForward' class='button' src='/front/imgs/time/fastForward.svg') }}'>")
+  panel.append("<img id='skipBackward' class='button' src='/front/imgs/panels/time/skipBackward.svg') }}'>")
+  panel.append("<img id='playForward' class='button' src='/front/imgs/panels/time/playForward.svg') }}'>")
+  panel.append("<img id='pauseLeft' class='button' src='/front/imgs/panels/time/pauseLeft.svg') }}'>")
+  panel.append("<img id='fastForward' class='button' src='/front/imgs/panels/time/fastForward.svg') }}'>")
 
-  panel.append("<img id='minCap' class='controller' src='/front/imgs/time/cap.svg') }}'>")
-  panel.append("<img id='point' class='controller' src='/front/imgs/time/point.svg') }}'>")
-  panel.append("<img id='maxCap' class='controller' src='/front/imgs/time/cap.svg') }}'>")
+  panel.append("<img id='minCap' class='controller' src='/front/imgs/panels/time/cap.svg') }}'>")
+  panel.append("<img id='point' class='controller' src='/front/imgs/panels/time/point.svg') }}'>")
+  panel.append("<img id='maxCap' class='controller' src='/front/imgs/panels/time/cap.svg') }}'>")
 
-  panel.append("<img id='fastBackward' class='button' src='/front/imgs/time/fastBackward.svg') }}'>")
-  panel.append("<img id='playBackward' class='button' src='/front/imgs/time/playBackward.svg') }}'>")
-  panel.append("<img id='pauseRight' class='button' src='/front/imgs/time/pauseRight.svg') }}'>")
-  panel.append("<img id='skipForward' class='button' src='/front/imgs/time/skipForward.svg') }}'>")
+  panel.append("<img id='fastBackward' class='button' src='/front/imgs/panels/time/fastBackward.svg') }}'>")
+  panel.append("<img id='playBackward' class='button' src='/front/imgs/panels/time/playBackward.svg') }}'>")
+  panel.append("<img id='pauseRight' class='button' src='/front/imgs/panels/time/pauseRight.svg') }}'>")
+  panel.append("<img id='skipForward' class='button' src='/front/imgs/panels/time/skipForward.svg') }}'>")
 
   panel.append("<p id='year'>" + plot.t.year + "</p>")
 
@@ -52,21 +52,21 @@ export function addTimePanel() {
 
     button.mouseover(function() {
 
-      button.attr("src", "/front/imgs/time/hover/" + buttons[i].id + ".svg")
+      button.attr("src", "/front/imgs/panels/time/hover/" + buttons[i].id + ".svg")
 
     }).mouseout(function() {
 
       if (!((buttons[i].id == "fastForward" || buttons[i].id == "fastBackward") && plot.animation.speedMultiplier != 1)) {
 
-        button.attr("src", "/front/imgs/time/" + buttons[i].id + ".svg")
+        button.attr("src", "/front/imgs/panels/time/" + buttons[i].id + ".svg")
 
       } else if (buttons[i].id == "fastForward" && plot.animation.direction != "forward") {
 
-        button.attr("src", "/front/imgs/time/" + buttons[i].id + ".svg")
+        button.attr("src", "/front/imgs/panels/time/" + buttons[i].id + ".svg")
 
       } else if (buttons[i].id == "fastBackward" && plot.animation.direction != "backward") {
 
-        button.attr("src", "/front/imgs/time/" + buttons[i].id + ".svg")
+        button.attr("src", "/front/imgs/panels/time/" + buttons[i].id + ".svg")
 
       }
 
@@ -214,11 +214,11 @@ export function toggleSpeed(direction) {
 
   if (direction == "forward") {
 
-    $("#fastBackward").attr("src", "/front/imgs/time/fastBackward.svg")
+    $("#fastBackward").attr("src", "/front/imgs/panels/time/fastBackward.svg")
 
   } else if (direction == "backward") {
 
-    $("#fastForward").attr("src", "/front/imgs/time/fastForward.svg")
+    $("#fastForward").attr("src", "/front/imgs/panels/time/fastForward.svg")
 
   }
 

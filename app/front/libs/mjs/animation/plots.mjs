@@ -89,7 +89,7 @@ export function clearAnimation() {
   $("#pauseLeft").css({"visibility": "hidden"})
   $("#pauseRight").css({"visibility": "hidden"})
 
-  $("#fastForward").attr("src", "/front/imgs/time/fastForward.svg")
-  $("#fastBackward").attr("src", "/front/imgs/time/fastBackward.svg")
+  $("#fastForward").attr("src", "/front/imgs/panels/time/fastForward.svg")
+  $("#fastBackward").attr("src", "/front/imgs/panels/time/fastBackward.svg")
 
 }

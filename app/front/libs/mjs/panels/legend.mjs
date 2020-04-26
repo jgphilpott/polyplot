@@ -8,7 +8,7 @@ export function addLegendPanel() {
 
   let panel = $("#legend.panel")
 
-  panel.append("<div id='head'><img id='search' src='/front/imgs/icons/search.png'><h1 id='name'>Legend</h1></div>")
+  panel.append("<div id='head'><img id='search' src='/front/imgs/panels/legend/search.png'><h1 id='name'>Legend</h1></div>")
 
   if (plot.type == "Map") {
 
