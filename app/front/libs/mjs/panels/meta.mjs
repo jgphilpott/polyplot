@@ -33,6 +33,8 @@ export function addMetaPanel() {
 
   }
 
+  panel.css("top", $("#legend").position().top - 10)
+
   makeDragable(panel)
 
 }
