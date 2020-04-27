@@ -48,15 +48,51 @@ export function addIndicatorsPanel() {
 
       for (let i = 0; i < indicatorCategories.length; i++) {
 
-        panel.append("<h3 class='category'>" + indicatorCategories[i].category + "</h3>")
+        let categoryBox = "<div id='" + camalize(indicatorCategories[i].category) + "' class='category-box'>"
+
+        categoryBox += "<h3 class='category'>" + indicatorCategories[i].category + "</h3>"
+        categoryBox += "<div class='indicators-box'>"
 
         for (let j = 0; j < indicatorCategories[i].indicators.length; j++) {
 
-          panel.append("<p id='" + indicatorCategories[i].indicators[j].code + "' class='indicator'>" + indicatorCategories[i].indicators[j].name + "</p>")
+          categoryBox += "<p id='" + indicatorCategories[i].indicators[j].code + "' class='indicator'>" + indicatorCategories[i].indicators[j].name + "</p>"
 
         }
 
+        panel.append(categoryBox += "</div></div>")
+
       }
+
+      $(".category").click(function() {
+
+        let id = $(this).parent().attr("id")
+
+        let thisCategoryBox = $("#" + id + ".category-box")
+        let thisIndicatorsBox = $("#" + id + ".category-box .indicators-box")
+
+        if (thisIndicatorsBox.css("display") == "none") {
+
+          $(".category-box").animate({"width": 700}, {"duration": 1000, "queue": false})
+          $(".category-box").animate({"height": 30}, {"duration": 1000, "queue": false})
+          $(".indicators-box").css("display", "none")
+
+          thisIndicatorsBox.css("display", "block")
+          let height = thisIndicatorsBox.height() + 35
+          thisIndicatorsBox.css("display", "none")
+
+          thisCategoryBox.animate({"width": 700}, {"duration": 1000, "queue": false})
+          thisCategoryBox.animate({"height": height}, {"duration": 1000, "queue": false})
+          thisIndicatorsBox.css("display", "block")
+
+        } else {
+
+          $(".category-box").animate({"width": 350}, {"duration": 1000, "queue": false})
+          $(".category-box").animate({"height": 30}, {"duration": 1000, "queue": false})
+          $(".indicators-box").css("display", "none")
+
+        }
+
+      })
 
       $(".indicator").click(function() {
 
@@ -66,13 +102,13 @@ export function addIndicatorsPanel() {
 
     }
 
-    socket.on("new_indicator", function(indicator) {
-
-      console.log(indicator)
-
-    })
-
     drawIndicators()
+
+  })
+
+  socket.on("new_indicator", function(indicator) {
+
+    console.log(indicator)
 
   })
 
