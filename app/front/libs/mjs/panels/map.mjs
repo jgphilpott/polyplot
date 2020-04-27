@@ -25,24 +25,38 @@ export function addMapPanel() {
 
     let projection = geoOrthographic.fitSize([250, 250], {"type": "FeatureCollection", "features": maps})
 
-    let path = d3.geoPath().projection(projection)
+    let λ = 0
+    let φ = 0
+    let γ = 0
 
-    svg.selectAll(".map")
-       .data(maps)
-       .enter()
-       .append("path")
-       .attr("d", path)
-       .attr("id", function(feature) {
+    function drawMap() {
 
-         return feature.properties.code
+      $(".map").remove()
 
-       })
-       .attr("class", "map")
-       .attr("fill", function(feature) {
+      λ += 1
 
-         return regionsColourSwitch(plot.plots.find(plot => plot.code == feature.properties.code).region, "miniMap")
+      let path = d3.geoPath().projection(projection.rotate([λ, φ, γ]))
 
-       })
+      svg.selectAll(".map")
+         .data(maps)
+         .enter()
+         .append("path")
+         .attr("d", path)
+         .attr("id", function(feature) {
+
+           return feature.properties.code
+
+         })
+         .attr("class", "map")
+         .attr("fill", function(feature) {
+
+           return regionsColourSwitch(plot.plots.find(plot => plot.code == feature.properties.code).region, "miniMap")
+
+         })
+
+    }
+
+    setInterval(drawMap, 100)
 
   })
 
