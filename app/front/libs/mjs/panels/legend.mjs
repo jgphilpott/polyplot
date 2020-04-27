@@ -29,6 +29,22 @@ export function addLegendPanel() {
 
   }
 
+  $("#search").click(function() {
+
+    let indicators = $("#indicators.panel")
+
+    if (indicators.css("visibility") == "hidden") {
+
+      indicators.css("visibility", "visible")
+
+    } else {
+
+      indicators.css("visibility", "hidden")
+
+    }
+
+  })
+
   makeDragable(panel)
 
 }
