@@ -4,12 +4,12 @@ import {rainbow as solidRainbow} from "../solid/rainbow.mjs"
 import {black as threeBlack} from "../three/grayscale.mjs"
 import {rainbow as threeRainbow} from "../three/rainbow.mjs"
 
-export function regionsColourSwitch(region) {
+export function regionsColourSwitch(region, type = null) {
 
   let black = null
   let rainbow = null
 
-  if (data.plot.type == "Poly3") {
+  if (data.plot.type == "Poly3" && type != "miniMap") {
 
     black = threeBlack
     rainbow = threeRainbow

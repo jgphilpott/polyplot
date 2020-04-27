@@ -1,4 +1,7 @@
 import {makeDragable} from "../ui/dragable.mjs"
+import {regionsColourSwitch} from "../colors/switches/regions.mjs"
+
+let plot = data.plot
 
 export function addMapPanel() {
 
@@ -35,7 +38,11 @@ export function addMapPanel() {
 
        })
        .attr("class", "map")
-       .attr("fill", "gray")
+       .attr("fill", function(feature) {
+
+         return regionsColourSwitch(plot.plots.find(plot => plot.code == feature.properties.code).region, "miniMap")
+
+       })
 
   })
 
