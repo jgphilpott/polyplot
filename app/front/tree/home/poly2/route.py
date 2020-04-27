@@ -2,7 +2,6 @@ from flask import render_template, request
 
 from back.mongo.data.collect.countries import find_countries
 from back.mongo.data.collect.indicators import find_indicator
-from back.mongo.data.collect.maps import find_maps
 
 def register_poly2_route(app):
 
@@ -19,7 +18,6 @@ def register_poly2_route(app):
         data["plot"]["x"] = {"name": x["name"]}
         data["plot"]["y"] = {"name": y["name"]}
         data["plot"]["t"] = {"minYear": 1960, "year": 1970, "maxYear": 2018}
-        data["plot"]["GeoJSON"] = {"type": "FeatureCollection", "features": find_maps("low")}
 
         countries = find_countries()
 
