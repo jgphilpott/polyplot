@@ -6,6 +6,8 @@ export function addCountriesPanel() {
 
   let panel = $("#countries.panel")
 
+  panel.append("<img class='close' src='/front/imgs/panels/all/close.png'>")
+
   panel.append("<h1 id='title'>Countries by Region</h1>")
 
   makeDragable(panel)

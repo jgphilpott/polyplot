@@ -8,6 +8,8 @@ export function addMetaPanel() {
 
   let panel = $("#meta.panel")
 
+  panel.append("<img class='close' src='/front/imgs/panels/all/close.png'>")
+
   panel.append("<h1 id='name'>Meta</h1>")
 
   panel.append("<img id='flag' src='/front/imgs/flags/null.png'>")

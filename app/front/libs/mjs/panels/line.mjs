@@ -6,6 +6,8 @@ export function addLinePanel() {
 
   let panel = $("#line.panel")
 
+  panel.append("<img class='close' src='/front/imgs/panels/all/close.png'>")
+
   panel.append("<h1 id='title'>Line</h1>")
 
   makeDragable(panel)

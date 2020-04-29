@@ -16,6 +16,8 @@ export function addTimePanel() {
 
   let panel = $("#time.panel")
 
+  panel.append("<img class='close' src='/front/imgs/panels/all/close.png'>")
+
   plot.t.minCap = plot.t.minYear
   plot.t.maxCap = plot.t.maxYear
 

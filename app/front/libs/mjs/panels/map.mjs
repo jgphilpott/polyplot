@@ -9,6 +9,8 @@ export function addMapPanel() {
 
   let panel = $("#map.panel")
 
+  panel.append("<img class='close' src='/front/imgs/panels/all/close.png'>")
+
   panel.append("<svg id='svg'></svg>")
 
   socket.emit("get_maps")
@@ -56,7 +58,9 @@ export function addMapPanel() {
 
     }
 
-    setInterval(drawMap, 100)
+    drawMap()
+
+    // setInterval(drawMap, 100)
 
   })
 

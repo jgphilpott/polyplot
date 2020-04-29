@@ -6,6 +6,8 @@ export function addMenuPanel() {
 
   let panel = $("#menu.panel")
 
+  panel.append("<img class='close' src='/front/imgs/panels/all/close.png'>")
+
   panel.append("<div id='head'><img id='logo' src='/front/imgs/theme/logo.png'><h1 id='title'>Polyplot</h1></div>")
 
   panel.append("<div class='option'><h3 id='settings'>Settings</h3></div>")
