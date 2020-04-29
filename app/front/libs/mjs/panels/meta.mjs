@@ -1,4 +1,5 @@
 import {makeDragable} from "../ui/dragable.mjs"
+import {addPanelEvents} from "../ui/events.mjs"
 
 export function addMetaPanel() {
 
@@ -38,6 +39,7 @@ export function addMetaPanel() {
   panel.css("top", $("#legend").position().top - 10)
 
   makeDragable(panel)
+  addPanelEvents(panel)
 
 }
 

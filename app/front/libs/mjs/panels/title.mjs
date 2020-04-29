@@ -1,4 +1,5 @@
 import {makeDragable} from "../ui/dragable.mjs"
+import {addPanelEvents} from "../ui/events.mjs"
 
 export function addTitlePanel() {
 
@@ -11,5 +12,6 @@ export function addTitlePanel() {
   panel.append("<h1 id='name'>" + data.plot.title + "</h1>")
 
   makeDragable(panel)
+  addPanelEvents(panel)
 
 }

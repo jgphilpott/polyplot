@@ -1,4 +1,5 @@
 import {makeDragable} from "../ui/dragable.mjs"
+import {addPanelEvents} from "../ui/events.mjs"
 
 export function addMenuPanel() {
 
@@ -17,5 +18,6 @@ export function addMenuPanel() {
   panel.append("<div class='option opt'><h3 id='login'>Login</h3></div>")
 
   makeDragable(panel)
+  addPanelEvents(panel)
 
 }

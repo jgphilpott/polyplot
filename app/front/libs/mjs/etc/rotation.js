@@ -31,8 +31,8 @@ function rotate(element, degree, duration = 1000) {
 
   $({"deg": rotation}).animate({"deg": degree}, {
 
-    duration: duration,
-    step: function(now) {
+    "duration": duration,
+    "step": function(now) {
 
       element.css({"transform": "rotate(" + now + "deg)"})
 

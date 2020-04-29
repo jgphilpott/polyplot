@@ -1,4 +1,5 @@
 import {makeDragable} from "../ui/dragable.mjs"
+import {addPanelEvents} from "../ui/events.mjs"
 
 export function addLinePanel() {
 
@@ -11,5 +12,6 @@ export function addLinePanel() {
   panel.append("<h1 id='title'>Line</h1>")
 
   makeDragable(panel)
+  addPanelEvents(panel)
 
 }

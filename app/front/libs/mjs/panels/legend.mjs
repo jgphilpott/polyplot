@@ -1,4 +1,5 @@
 import {makeDragable} from "../ui/dragable.mjs"
+import {addPanelEvents} from "../ui/events.mjs"
 
 export function addLegendPanel() {
 
@@ -48,5 +49,6 @@ export function addLegendPanel() {
   })
 
   makeDragable(panel)
+  addPanelEvents(panel)
 
 }

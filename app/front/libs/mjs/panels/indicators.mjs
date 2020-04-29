@@ -1,4 +1,5 @@
 import {makeDragable} from "../ui/dragable.mjs"
+import {addPanelEvents} from "../ui/events.mjs"
 
 export function addIndicatorsPanel() {
 
@@ -142,5 +143,6 @@ export function addIndicatorsPanel() {
   })
 
   makeDragable(panel)
+  addPanelEvents(panel)
 
 }

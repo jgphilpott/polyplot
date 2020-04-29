@@ -1,4 +1,5 @@
 import {makeDragable} from "../ui/dragable.mjs"
+import {addPanelEvents} from "../ui/events.mjs"
 
 export function addCountriesPanel() {
 
@@ -11,5 +12,6 @@ export function addCountriesPanel() {
   panel.append("<h1 id='title'>Countries by Region</h1>")
 
   makeDragable(panel)
+  addPanelEvents(panel)
 
 }

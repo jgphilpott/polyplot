@@ -1,4 +1,5 @@
 import {makeDragable} from "../ui/dragable.mjs"
+import {addPanelEvents} from "../ui/events.mjs"
 
 export function addHomePanel() {
 
@@ -14,5 +15,6 @@ export function addHomePanel() {
   panel.append("<iframe id='video' src='https://www.youtube.com/embed/placeholder' allowfullscreen></iframe>")
 
   makeDragable(panel)
+  addPanelEvents(panel)
 
 }
