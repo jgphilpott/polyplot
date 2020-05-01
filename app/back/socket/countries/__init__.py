@@ -7,7 +7,7 @@ def connect_countries(app):
     @app.on("get_country")
     def get_country(code):
 
-        emit("new_country", find_country(code))
+        emit("new_country", find_country({"code": code}))
 
     @app.on("get_countries")
     def get_countries():
