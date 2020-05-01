@@ -46,6 +46,9 @@ alias inds-upd="fire update_indicators"
 alias map="fire find_map"
 alias maps="fire find_maps"
 
+# Meta
+alias meta="fire find_meta"
+
 # Styling
 alias sass="fire compile_sass app/front"
 

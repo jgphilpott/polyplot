@@ -1,7 +1,7 @@
 [
   {
     "code": "categories",
-    "values": [
+    "value": [
       "Agriculture & Rural Development",
       "Aid Effectiveness",
       "Climate Change",
@@ -26,7 +26,7 @@
   },
   {
     "code": "regions",
-    "values": [
+    "value": [
       "East Asia & Pacific",
       "Europe & Central Asia",
       "Latin America & Caribbean",
