@@ -1,0 +1,39 @@
+[
+  {
+    "code": "categories",
+    "values": [
+      "Agriculture & Rural Development",
+      "Aid Effectiveness",
+      "Climate Change",
+      "Economy & Growth",
+      "Education",
+      "Energy & Mining",
+      "Environment",
+      "External Debt",
+      "Financial Sector",
+      "Gender",
+      "Health",
+      "Infrastructure",
+      "Poverty",
+      "Private Sector",
+      "Public Sector",
+      "Science & Technology",
+      "Social Development",
+      "Social Protection & Labor",
+      "Trade",
+      "Urban Development"
+    ]
+  },
+  {
+    "code": "regions",
+    "values": [
+      "East Asia & Pacific",
+      "Europe & Central Asia",
+      "Latin America & Caribbean",
+      "Midle East & North Africa",
+      "North America",
+      "South Asia",
+      "Sub-Saharan Africa"
+    ]
+  }
+]
