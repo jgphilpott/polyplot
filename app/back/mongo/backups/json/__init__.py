@@ -1,10 +1,8 @@
 from json import load
 
-from back.mongo.data.base import find_database
-from back.mongo.data.collect.ions import find_collections
+from back.mongo.data.collect.ions import find_collection, find_collections
 from back.mongo.data.collect.indicators.mongo import update_indicator
 
-database = find_database()
 collections = find_collections()
 
 def load_json(path):
@@ -13,7 +11,7 @@ def load_json(path):
 
     if "countries" not in collections:
 
-        collection = database["countries"]
+        collection = find_collection("countries")
         file = path + "/countries.json"
 
         with open(file) as list:
@@ -23,7 +21,7 @@ def load_json(path):
 
     if "indicators" not in collections:
 
-        collection = database["indicators"]
+        collection = find_collection("indicators")
         file = path + "/indicators.json"
 
         with open(file) as list:
@@ -39,7 +37,7 @@ def load_json(path):
 
     if "maps" not in collections:
 
-        collection = database["maps"]
+        collection = find_collection("maps")
         file = path + "/maps.json"
 
         with open(file) as list:
