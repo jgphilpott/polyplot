@@ -1,22 +1,12 @@
-from sys import getsizeof
-
 from back.mongo.data.collect.ions import find_collection
 from back.mongo.data.collect.countries.object import Country
 
 collection = find_collection("countries")
 
-def find_country(code):
+def find_country(query={}, filter={"_id": 0}):
 
-    return dict(collection.find_one({"code": code}, {"_id": 0}))
+    return dict(collection.find_one(query, filter))
 
-def find_countries():
+def find_countries(query={}, filter={"_id": 0}):
 
-    return list(collection.find({}, {"_id": 0}))
-
-def find_country_size(code):
-
-    return getsizeof(str(find_country(code)))
-
-def find_countries_size():
-
-    return getsizeof(str(find_countries()))
+    return list(collection.find(query, filter))
