@@ -27,5 +27,5 @@ docker exec -it polyplot bash
 Next, to load the development alias set run:
 
 ```
-source ~/app/back/flint/aliases.sh
+source /root/app/back/flint/aliases.sh
 ```
