@@ -24,3 +24,6 @@ def load_js(path):
     urlretrieve("https://raw.githubusercontent.com/mrdoob/three.js/23f814719b2d199e324448751862f2a5fc7d27a5/examples/js/controls/OrbitControls.js", path + "/orbitControls.js")
 
     urlretrieve("https://raw.githubusercontent.com/jgphilpott/particleWeb/6b3cf31aa51ce901d4d9e00b47eef5ef656efe2b/particleWeb.js", path + "/particleWeb.js")
+
+    urlretrieve("https://gist.githubusercontent.com/jgphilpott/19e7a94cdf6d6d4cd868cc18e628026c/raw/2c5d68bb84f0d4e14478bcac359a77137f6a25f5/camalize.js", path + "/camalize.js")
+    urlretrieve("https://gist.githubusercontent.com/jgphilpott/1bc17b82063f14fabb8f3e38825f6f10/raw/b5ddf5f386213f47ac4fd4b9f41bc116b37f29a3/rotation.js", path + "/rotation.js")
