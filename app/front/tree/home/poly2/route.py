@@ -10,9 +10,9 @@ def register_poly2_route(app):
 
         data = {"plot": {"title": "World Bank Development Indicators", "type": "Poly2"}}
 
-        r = find_indicator(request.args["r"]) if "r" in request.args else find_indicator("SP.POP.TOTL")
-        x = find_indicator(request.args["x"]) if "x" in request.args else find_indicator("SP.DYN.LE00.IN")
-        y = find_indicator(request.args["y"]) if "y" in request.args else find_indicator("SP.DYN.TFRT.IN")
+        r = find_indicator({"code": request.args["r"]}) if "r" in request.args else find_indicator({"code": "SP.POP.TOTL"})
+        x = find_indicator({"code": request.args["x"]}) if "x" in request.args else find_indicator({"code": "SP.DYN.LE00.IN"})
+        y = find_indicator({"code": request.args["y"]}) if "y" in request.args else find_indicator({"code": "SP.DYN.TFRT.IN"})
 
         data["plot"]["r"] = {"name": r["name"]}
         data["plot"]["x"] = {"name": x["name"]}

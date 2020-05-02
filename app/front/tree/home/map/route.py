@@ -11,11 +11,11 @@ def register_map_route(app):
 
         data = {"plot": {"title": "World Bank Development Indicators", "type": "Map"}}
 
-        x = find_indicator(request.args["x"]) if "x" in request.args else find_indicator("SP.DYN.LE00.IN")
+        x = find_indicator({"code": request.args["x"]}) if "x" in request.args else find_indicator({"code": "SP.DYN.LE00.IN"})
 
         data["plot"]["x"] = {"name": x["name"]}
         data["plot"]["t"] = {"minYear": 1960, "year": 1970, "maxYear": 2018}
-        data["plot"]["GeoJSON"] = {"type": "FeatureCollection", "features": find_maps("high")}
+        data["plot"]["GeoJSON"] = {"type": "FeatureCollection", "features": find_maps(detail="high")}
 
         countries = find_countries()
 
