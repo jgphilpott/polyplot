@@ -26,39 +26,53 @@ export function animateSpheres(duration) {
       yNew = plot.y.scale(yNew)
       zNew = plot.z.scale(zNew)
 
-      let rDiff = rNew / rNow
+      let rDiff = (rNew / rNow) - 1
       let xDiff = xNew - xNow
       let yDiff = yNew - yNow
       let zDiff = zNew - zNow
 
-      let steps = duration / plot.core.frameRate
+      if (duration) {
 
-      let rStep = (rDiff - 1) / steps
-      let xStep = xDiff / steps
-      let yStep = yDiff / steps
-      let zStep = zDiff / steps
+        let steps = duration / plot.core.frameRate
 
-      function updatePlot() {
+        let rStep = rDiff / steps
+        let xStep = xDiff / steps
+        let yStep = yDiff / steps
+        let zStep = zDiff / steps
 
-        sphere.scale.x += rStep
-        sphere.scale.y += rStep
-        sphere.scale.z += rStep
+        function updatePlot() {
 
-        sphere.position.x += xStep
-        sphere.position.y += yStep
-        sphere.position.z += zStep
+          sphere.scale.x += rStep
+          sphere.scale.y += rStep
+          sphere.scale.z += rStep
+
+          sphere.position.x += xStep
+          sphere.position.y += yStep
+          sphere.position.z += zStep
+
+        }
+
+        let stepInterval = setInterval(updatePlot, plot.core.frameRate)
+
+        function stopInterval() {
+
+          clearInterval(stepInterval)
+
+        }
+
+        setTimeout(stopInterval, duration)
+
+      } else {
+
+        sphere.scale.x += rDiff
+        sphere.scale.y += rDiff
+        sphere.scale.z += rDiff
+
+        sphere.position.x += xDiff
+        sphere.position.y += yDiff
+        sphere.position.z += zDiff
 
       }
-
-      let stepInterval = setInterval(updatePlot, plot.core.frameRate)
-
-      function stopInterval() {
-
-        clearInterval(stepInterval)
-
-      }
-
-      setTimeout(stopInterval, duration)
 
     } else if (sphere && !(typeof(rNew) == "number" && typeof(xNew) == "number" && typeof(yNew) == "number" && typeof(zNew) == "number")) {
 
@@ -67,13 +81,13 @@ export function animateSpheres(duration) {
 
     } else if (!sphere && (typeof(rNew) == "number" && typeof(xNew) == "number" && typeof(yNew) == "number" && typeof(zNew) == "number")) {
 
-      function updatePlot() {
-
-        plots[i].object = addPlot(rNew, xNew, yNew, zNew, plots[i].region, plots[i].code)
-
-      }
-
-      setTimeout(updatePlot, duration)
+      // function updatePlot() {
+      //
+      //   plots[i].object = addPlot(rNew, xNew, yNew, zNew, plots[i].region, plots[i].code)
+      //
+      // }
+      //
+      // setTimeout(updatePlot, duration)
 
     }
 
