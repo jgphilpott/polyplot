@@ -1,5 +1,5 @@
-import {min, max, width, height} from "../env/dimensions.mjs"
-import {minValue, maxValue, absMinValue, absMaxValue, rangeAxis} from "./range.mjs"
+import {min, max, width, height} from "./range.mjs"
+import {minValue, maxValue, absMinValue, absMaxValue, rangeAxis} from "./domain.mjs"
 import {red, yellow, green} from "../colors/solid/rainbow.mjs"
 
 let plot = data.plot
