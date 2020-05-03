@@ -1,4 +1,4 @@
-export function addPanelEvents(panel) {
+export function addPanelHover(panel) {
 
   let id = panel.attr("id")
   let close = $("#" + id + " .close")

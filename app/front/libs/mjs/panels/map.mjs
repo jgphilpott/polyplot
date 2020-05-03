@@ -1,5 +1,5 @@
-import {makeDragable} from "../ui/dragable.mjs"
-import {addPanelEvents} from "../ui/events.mjs"
+import {makeDragable} from "./events/drag.mjs"
+import {addPanelHover} from "./events/hover.mjs"
 import {regionsColourSwitch} from "../colors/switches/regions.mjs"
 
 let plot = data.plot
@@ -66,6 +66,6 @@ export function addMapPanel() {
   })
 
   makeDragable(panel)
-  addPanelEvents(panel)
+  addPanelHover(panel)
 
 }

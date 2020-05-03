@@ -6,8 +6,8 @@ import {animateCircles} from "../animation/types/circles.mjs"
 import {animateSpheres} from "../animation/types/spheres.mjs"
 import {animateTimeline} from "../animation/types/timeline.mjs"
 
-import {makeDragable} from "../ui/dragable.mjs"
-import {addPanelEvents} from "../ui/events.mjs"
+import {makeDragable} from "./events/drag.mjs"
+import {addPanelHover} from "./events/hover.mjs"
 
 let plot = data.plot
 
@@ -152,7 +152,7 @@ export function addTimePanel() {
   })
 
   makeDragable(panel)
-  addPanelEvents(panel)
+  addPanelHover(panel)
 
 }
 
