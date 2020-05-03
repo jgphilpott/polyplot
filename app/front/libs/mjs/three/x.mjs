@@ -1,4 +1,4 @@
-export function xEvent(obj, type, callback, args=null) {
+export function event(obj, type, callback, args=null) {
 
   let dom = data.plot.core.dom
 
@@ -78,7 +78,7 @@ export function xEvent(obj, type, callback, args=null) {
 
 }
 
-export function xEvents() {
+export function events() {
 
   return new THREEx.DomEvents(data.plot.core.camera, data.plot.core.renderer.domElement)
 
