@@ -1,7 +1,7 @@
 let plot = data.plot
 let plots = plot.plots
 
-export function scaleAxis(axis) {
+export function findDomain(axis) {
 
   let domain = []
 
