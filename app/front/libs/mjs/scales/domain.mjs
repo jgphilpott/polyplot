@@ -1,33 +1,9 @@
 let plot = data.plot
 let plots = plot.plots
 
-export function minValue(values=[]) {
+export function scaleAxis(axis) {
 
-  return Math.min.apply(null, values)
-
-}
-
-export function maxValue(values=[]) {
-
-  return Math.max.apply(null, values)
-
-}
-
-export function absMinValue(values=[]) {
-
-  return Math.min.apply(null, values.map(Math.abs))
-
-}
-
-export function absMaxValue(values=[]) {
-
-  return Math.max.apply(null, values.map(Math.abs))
-
-}
-
-export function rangeAxis(axis) {
-
-  let range = []
+  let domain = []
 
   for (let i = 0; i < plots.length; i++) {
 
@@ -39,7 +15,7 @@ export function rangeAxis(axis) {
 
         if (typeof(plots[i][axis][j].value) == "number") {
 
-          range.push(plots[i][axis][j].value)
+          domain.push(plots[i][axis][j].value)
 
         }
 
@@ -49,6 +25,6 @@ export function rangeAxis(axis) {
 
   }
 
-  return [minValue(range), maxValue(range)]
+  return [minValue(domain), maxValue(domain)]
 
 }
