@@ -24,5 +24,6 @@ export function setup() {
 
   // Action
   core.controls = addControls()
+  core.events = new THREEx.DomEvents(core.camera, core.canvas)
 
 }
