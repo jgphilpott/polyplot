@@ -1,0 +1,50 @@
+@import "../colors/glass/grayscale.sass"
+@import "../colors/solid/grayscale.sass"
+
+.panel
+
+  background: $gray-glass
+
+  border: 1px solid $black
+  border-radius: 5px
+
+  padding: 5px
+
+  h1, h3, p
+
+    margin: 5px
+
+  h1
+
+    font-size: 20px
+
+  h3
+
+    font-size: 18px
+
+  p
+
+    font-size: 16px
+
+  .close
+
+    position: fixed
+    visibility: hidden
+
+    top: 0px
+    right: 0px
+
+    width: 8px
+    height: 8px
+
+    margin: 5px
+
+  .close:hover
+
+    cursor: pointer
+
+.panel:hover
+
+  background: $dark-gray-glass
+
+  cursor: grab
