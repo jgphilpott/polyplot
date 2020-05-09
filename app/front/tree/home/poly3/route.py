@@ -15,10 +15,10 @@ def register_poly3_route(app):
         y = find_indicator({"code": request.args["y"]}) if "y" in request.args else find_indicator({"code": "SP.DYN.TFRT.IN"})
         z = find_indicator({"code": request.args["z"]}) if "z" in request.args else find_indicator({"code": "NY.GDP.PCAP.KD.ZG"})
 
-        data["plot"]["r"] = {"name": r["name"]}
-        data["plot"]["x"] = {"name": x["name"]}
-        data["plot"]["y"] = {"name": y["name"]}
-        data["plot"]["z"] = {"name": z["name"]}
+        data["plot"]["r"] = {"name": r["name"], "code": r["code"]}
+        data["plot"]["x"] = {"name": x["name"], "code": x["code"]}
+        data["plot"]["y"] = {"name": y["name"], "code": y["code"]}
+        data["plot"]["z"] = {"name": z["name"], "code": z["code"]}
         data["plot"]["t"] = {"minYear": 1960, "year": 1970, "maxYear": 2018}
 
         countries = find_countries()

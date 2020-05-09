@@ -14,9 +14,9 @@ def register_poly2_route(app):
         x = find_indicator({"code": request.args["x"]}) if "x" in request.args else find_indicator({"code": "SP.DYN.LE00.IN"})
         y = find_indicator({"code": request.args["y"]}) if "y" in request.args else find_indicator({"code": "SP.DYN.TFRT.IN"})
 
-        data["plot"]["r"] = {"name": r["name"]}
-        data["plot"]["x"] = {"name": x["name"]}
-        data["plot"]["y"] = {"name": y["name"]}
+        data["plot"]["r"] = {"name": r["name"], "code": r["code"]}
+        data["plot"]["x"] = {"name": x["name"], "code": x["code"]}
+        data["plot"]["y"] = {"name": y["name"], "code": y["code"]}
         data["plot"]["t"] = {"minYear": 1960, "year": 1970, "maxYear": 2018}
 
         countries = find_countries()

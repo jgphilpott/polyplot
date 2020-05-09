@@ -13,7 +13,7 @@ def register_map_route(app):
 
         x = find_indicator({"code": request.args["x"]}) if "x" in request.args else find_indicator({"code": "SP.DYN.LE00.IN"})
 
-        data["plot"]["x"] = {"name": x["name"]}
+        data["plot"]["x"] = {"name": x["name"], "code": x["code"]}
         data["plot"]["t"] = {"minYear": 1960, "year": 1970, "maxYear": 2018}
         data["plot"]["GeoJSON"] = {"type": "FeatureCollection", "features": find_maps(detail="high")}
 
