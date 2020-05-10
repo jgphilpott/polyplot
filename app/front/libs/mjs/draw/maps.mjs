@@ -1,4 +1,5 @@
 import {width, height} from "../env/window.mjs"
+import {regionsColourSwitch} from "../colors/switches/regions.mjs"
 
 import {makeZoomable} from "../cartography/zoom.mjs"
 import {orthographic, equirectangular} from "../cartography/projections.mjs"
@@ -8,58 +9,80 @@ import {updateMetaPanel, clearMetaPanel} from "../panels/meta.mjs"
 let plot = data.plot
 let plots = plot.plots
 
-export function drawMaps(plotType=plot.type) {
+export function drawMaps(plotType=plot.type, λ=0, φ=0, γ=0) {
 
-  let canvas = d3.select("#canvas")
+  let canvas, projection, path = null
 
-  let projection = equirectangular.fitSize([width(), height()], plot.GeoJSON)
+  if (plotType == "Map") {
 
-  let path = d3.geoPath().projection(projection)
+    canvas = d3.select("#canvas")
+    projection = equirectangular.fitSize([width(), height()], plot.GeoJSON)
+    path = d3.geoPath().projection(projection)
+
+  } else if (plotType == "miniMap") {
+
+    canvas = d3.select("#miniMap")
+    projection = orthographic.scale(125).translate([125, 125])
+    path = d3.geoPath().projection(projection.rotate([λ, φ, γ]))
+
+  }
 
   canvas.selectAll(".map")
         .data(plot.GeoJSON.features)
         .enter()
         .append("path")
+        .attr("d", path)
         .attr("id", function(feature) {
 
           return feature.properties.code
 
         })
         .attr("class", "map")
-        .attr("d", path)
         .attr("fill", function(feature) {
 
-          let history = plots.find(plot => plot.code == feature.properties.code).x
-          let value = history.find(date => date.year == plot.t.year).value
+          if (plotType == "Map") {
 
-          if (typeof(value) == "number") {
+            let history = plots.find(plot => plot.code == feature.properties.code).x
+            let value = history.find(date => date.year == plot.t.year).value
 
-            return plot.x.scale(value)
+            if (typeof(value) == "number") {
 
-          } else {
+              return plot.x.scale(value)
 
-            return "gray"
+            } else {
+
+              return "gray"
+
+            }
+
+          } else if (plotType == "miniMap") {
+
+            return regionsColourSwitch(feature.properties.region)
 
           }
 
         })
 
-  let maps = $(".map")
+  if (plotType == "Map") {
 
-  for (let i = 0; i < maps.length; i++) {
+    let maps = $(".map")
 
-    $("#" + maps[i].id + ".map").mouseenter(function() {
+    for (let i = 0; i < maps.length; i++) {
 
-      updateMetaPanel(maps[i].id)
+      $("#" + maps[i].id + ".map").mouseenter(function() {
 
-    }).mouseleave(function() {
+        updateMetaPanel(maps[i].id)
 
-      clearMetaPanel()
+      }).mouseleave(function() {
 
-    })
+        clearMetaPanel()
+
+      })
+
+    }
+
+    makeZoomable(canvas)
 
   }
-
-  makeZoomable(canvas)
 
 }
