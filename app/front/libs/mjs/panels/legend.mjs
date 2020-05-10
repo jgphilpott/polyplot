@@ -1,5 +1,4 @@
-import {makeDragable} from "./events/drag.mjs"
-import {addPanelHover} from "./events/hover.mjs"
+import {addPanelEvents} from "./events/all.mjs"
 
 let plot = data.plot
 
@@ -48,7 +47,6 @@ export function addLegendPanel() {
 
   })
 
-  makeDragable(panel)
-  addPanelHover(panel)
+  addPanelEvents(panel)
 
 }

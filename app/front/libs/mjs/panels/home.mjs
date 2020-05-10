@@ -1,5 +1,4 @@
-import {makeDragable} from "./events/drag.mjs"
-import {addPanelHover} from "./events/hover.mjs"
+import {addPanelEvents} from "./events/all.mjs"
 
 export function addHomePanel() {
 
@@ -14,7 +13,6 @@ export function addHomePanel() {
   panel.append("<p id='description'>A data exploration application inspired by <a href='https://github.com/olarosling'>Ola Rosling</a>'s <a href='https://en.wikipedia.org/wiki/Trendalyzer'>Trendalyzer</a> software.</p>")
   panel.append("<iframe id='video' src='https://www.youtube.com/embed/placeholder' allowfullscreen></iframe>")
 
-  makeDragable(panel)
-  addPanelHover(panel)
+  addPanelEvents(panel)
 
 }

@@ -1,5 +1,4 @@
-import {makeDragable} from "./events/drag.mjs"
-import {addPanelHover} from "./events/hover.mjs"
+import {addPanelEvents} from "./events/all.mjs"
 
 let plot = data.plot
 let plots = plot.plots
@@ -40,8 +39,7 @@ export function addMetaPanel() {
 
   panel.css("top", $("#legend").position().top - 10)
 
-  makeDragable(panel)
-  addPanelHover(panel)
+  addPanelEvents(panel)
 
 }
 

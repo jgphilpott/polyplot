@@ -1,5 +1,4 @@
-import {makeDragable} from "./events/drag.mjs"
-import {addPanelHover} from "./events/hover.mjs"
+import {addPanelEvents} from "./events/all.mjs"
 
 export function addErrorPanel() {
 
@@ -12,7 +11,6 @@ export function addErrorPanel() {
   panel.append("<h1 id='code'>" + data.code + "</h1>")
   panel.append("<h3 id='message'>" + data.message + "</h3>")
 
-  makeDragable(panel)
-  addPanelHover(panel)
+  addPanelEvents(panel)
 
 }

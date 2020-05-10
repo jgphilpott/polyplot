@@ -1,5 +1,4 @@
-import {makeDragable} from "./events/drag.mjs"
-import {addPanelHover} from "./events/hover.mjs"
+import {addPanelEvents} from "./events/all.mjs"
 
 export function addCountriesPanel() {
 
@@ -11,7 +10,6 @@ export function addCountriesPanel() {
 
   panel.append("<h1 id='title'>Countries by Region</h1>")
 
-  makeDragable(panel)
-  addPanelHover(panel)
+  addPanelEvents(panel)
 
 }
