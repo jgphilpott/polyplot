@@ -12,10 +12,4 @@ def connect_indicators(app):
     @app.on("get_indicators")
     def get_indicators():
 
-        indicators = find_indicators({"geographies": {"$exists": True, "$ne": []}})
-
-        for indicator in indicators:
-
-            del indicator["geographies"]
-
-        emit("new_indicators", indicators)
+        emit("new_indicators", find_indicators({"geographies": {"$exists": True, "$ne": []}}, {"_id": 0, "geographies": 0}))
