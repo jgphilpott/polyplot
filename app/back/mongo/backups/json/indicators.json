@@ -43,7 +43,7 @@
       "Environment"
     ],
     "code": "AG.LND.AGRI.ZS",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Agricultural land (% of land area)"
   },
@@ -72,7 +72,7 @@
       "Environment"
     ],
     "code": "AG.LND.ARBL.ZS",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Arable land (% of land area)"
   },
@@ -90,7 +90,7 @@
       "Agriculture & Rural Development"
     ],
     "code": "AG.LND.CROP.ZS",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Permanent cropland (% of land area)"
   },
@@ -166,7 +166,7 @@
       "Environment"
     ],
     "code": "AG.LND.FRST.ZS",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Forest area (% of land area)"
   },
@@ -176,7 +176,7 @@
       "Climate Change"
     ],
     "code": "AG.LND.IRIG.AG.ZS",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Agricultural irrigated land (% of total agricultural land)"
   },
@@ -226,7 +226,7 @@
       "Agriculture & Rural Development"
     ],
     "code": "AG.LND.TRAC.ZS",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Agricultural machinery, tractors per 100 sq. km of arable land"
   },
@@ -702,7 +702,7 @@
       "Financial Sector"
     ],
     "code": "BX.KLT.DINV.CD.WD",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Foreign direct investment, net inflows (BoP, current US$)"
   },
@@ -1117,7 +1117,7 @@
       "External Debt"
     ],
     "code": "DT.DOD.DECT.GN.ZS",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "External debt stocks (% of GNI)"
   },
@@ -1172,7 +1172,7 @@
       "External Debt"
     ],
     "code": "DT.DOD.DSTC.IR.ZS",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Short-term debt (% of total reserves)"
   },
@@ -1631,7 +1631,7 @@
       "External Debt"
     ],
     "code": "DT.ODA.ODAT.GN.ZS",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Net ODA received (% of GNI)"
   },
@@ -1897,7 +1897,7 @@
       "Environment"
     ],
     "code": "EG.ELC.RNEW.ZS",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Renewable electricity output (% of total electricity output)"
   },
@@ -1967,7 +1967,7 @@
       "Energy & Mining"
     ],
     "code": "EG.USE.COMM.CL.ZS",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Alternative and nuclear energy (% of total energy use)"
   },
@@ -1976,7 +1976,7 @@
       "Energy & Mining"
     ],
     "code": "EG.USE.COMM.FO.ZS",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Fossil fuel energy consumption (% of total)"
   },
@@ -2168,7 +2168,7 @@
       "Environment"
     ],
     "code": "EN.ATM.GHGT.KT.CE",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Total greenhouse gas emissions (kt of CO2 equivalent)"
   },
@@ -2238,7 +2238,7 @@
       "Environment"
     ],
     "code": "EN.ATM.METH.KT.CE",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Methane emissions (kt of CO2 equivalent)"
   },
@@ -2298,7 +2298,7 @@
       "Environment"
     ],
     "code": "EN.ATM.NOXE.KT.CE",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Nitrous oxide emissions (thousand metric tons of CO2 equivalent)"
   },
@@ -2441,7 +2441,7 @@
       "Environment"
     ],
     "code": "EN.FSH.THRD.NO",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Fish species, threatened"
   },
@@ -2459,7 +2459,7 @@
       "Environment"
     ],
     "code": "EN.MAM.THRD.NO",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Mammal species, threatened"
   },
@@ -2511,7 +2511,7 @@
       "Urban Development"
     ],
     "code": "EN.POP.SLUM.UR.ZS",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Population living in slums (% of urban population)"
   },
@@ -2716,7 +2716,7 @@
       "Financial Sector"
     ],
     "code": "FB.AST.NPER.ZS",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Bank nonperforming loans to total gross loans (%)"
   },
@@ -2725,7 +2725,7 @@
       "Financial Sector"
     ],
     "code": "FB.ATM.TOTL.P5",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Automated teller machines (ATMs) (per 100,000 adults)"
   },
@@ -2734,7 +2734,7 @@
       "Financial Sector"
     ],
     "code": "FB.BNK.CAPA.ZS",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Bank capital to assets ratio (%)"
   },
@@ -2883,7 +2883,7 @@
       "Financial Sector"
     ],
     "code": "FM.LBL.BMNY.GD.ZS",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Broad money (% of GDP)"
   },
@@ -2938,7 +2938,7 @@
       "Financial Sector"
     ],
     "code": "FR.INR.DPST",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Deposit interest rate (%)"
   },
@@ -2965,7 +2965,7 @@
       "Financial Sector"
     ],
     "code": "FR.INR.RINR",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Real interest rate (%)"
   },
@@ -3166,7 +3166,7 @@
       "Public Sector"
     ],
     "code": "GC.REV.XGRT.GD.ZS",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Revenue, excluding grants (% of GDP)"
   },
@@ -3285,7 +3285,7 @@
       "Public Sector"
     ],
     "code": "GC.TAX.TOTL.GD.ZS",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Tax revenue (% of GDP)"
   },
@@ -3412,7 +3412,7 @@
       "Public Sector"
     ],
     "code": "GC.XPN.TOTL.GD.ZS",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Expense (% of GDP)"
   },
@@ -3458,7 +3458,7 @@
       "Private Sector"
     ],
     "code": "IC.BUS.EASE.XQ",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Ease of doing business index (1=most business-friendly regulations)"
   },
@@ -3476,7 +3476,7 @@
       "Private Sector"
     ],
     "code": "IC.BUS.NREG",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "New businesses registered (number)"
   },
@@ -3988,7 +3988,7 @@
       "Private Sector"
     ],
     "code": "IE.PPI.ENGY.CD",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Investment in energy with private participation (current US$)"
   },
@@ -4071,7 +4071,7 @@
       "Science & Technology"
     ],
     "code": "IP.JRN.ARTC.SC",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Scientific and technical journal articles"
   },
@@ -4468,7 +4468,7 @@
       "Infrastructure"
     ],
     "code": "IT.CEL.SETS.P2",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Mobile cellular subscriptions (per 100 people)"
   },
@@ -4486,7 +4486,7 @@
       "Infrastructure"
     ],
     "code": "IT.MLT.MAIN.P2",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Fixed telephone subscriptions (per 100 people)"
   },
@@ -4504,7 +4504,7 @@
       "Infrastructure"
     ],
     "code": "IT.NET.BBND.P2",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Fixed broadband subscriptions (per 100 people)"
   },
@@ -4522,7 +4522,7 @@
       "Infrastructure"
     ],
     "code": "IT.NET.SECR.P6",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Secure Internet servers (per 1 million people)"
   },
@@ -4541,7 +4541,7 @@
       "Trade"
     ],
     "code": "LP.EXP.DURS.MD",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Lead time to export, median case (days)"
   },
@@ -4551,7 +4551,7 @@
       "Trade"
     ],
     "code": "LP.IMP.DURS.MD",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Lead time to import, median case (days)"
   },
@@ -5925,7 +5925,7 @@
       "Economy & Growth"
     ],
     "code": "NY.GDP.MKTP.CD",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "GDP (current US$)"
   },
@@ -6289,7 +6289,7 @@
       "Economy & Growth"
     ],
     "code": "NY.GNS.ICTR.ZS",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Gross savings (% of GDP)"
   },
@@ -6739,7 +6739,7 @@
       "Education"
     ],
     "code": "SE.PRM.ENRL.TC.ZS",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Pupil-teacher ratio, primary"
   },
@@ -7074,7 +7074,7 @@
       "Gender"
     ],
     "code": "SE.PRM.UNER.FE",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Children out of school, primary, female"
   },
@@ -7093,7 +7093,7 @@
       "Gender"
     ],
     "code": "SE.PRM.UNER.MA",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Children out of school, primary, male"
   },
@@ -7407,7 +7407,7 @@
       "Gender"
     ],
     "code": "SE.SEC.PROG.FE.ZS",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Progression to secondary school, female (%)"
   },
@@ -7417,7 +7417,7 @@
       "Gender"
     ],
     "code": "SE.SEC.PROG.MA.ZS",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Progression to secondary school, male (%)"
   },
@@ -7866,7 +7866,7 @@
       "Social Development"
     ],
     "code": "SG.GEN.PARL.ZS",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Proportion of seats held by women in national parliaments (%)"
   },
@@ -8207,7 +8207,6 @@
   {
     "categories": [
       "Aid Effectiveness",
-      "Climate Change",
       "Health"
     ],
     "code": "SH.DYN.MORT",
@@ -8354,7 +8353,7 @@
       "Social Development"
     ],
     "code": "SH.HIV.1524.FE.ZS",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Prevalence of HIV, female (% ages 15-24)"
   },
@@ -8365,7 +8364,7 @@
       "Social Development"
     ],
     "code": "SH.HIV.1524.MA.ZS",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Prevalence of HIV, male (% ages 15-24)"
   },
@@ -8652,7 +8651,7 @@
       "Health"
     ],
     "code": "SH.STA.ANVC.ZS",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Pregnant women receiving prenatal care (%)"
   },
@@ -8808,7 +8807,7 @@
       "Health"
     ],
     "code": "SH.STA.MMRT",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Maternal mortality ratio (modeled estimate, per 100,000 live births)"
   },
@@ -9018,7 +9017,7 @@
       "Urban Development"
     ],
     "code": "SH.STA.TRAF.P5",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Mortality caused by road traffic injury (per 100,000 people)"
   },
@@ -9110,7 +9109,7 @@
       "Health"
     ],
     "code": "SH.TBS.INCD",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Incidence of tuberculosis (per 100,000 people)"
   },
@@ -9443,7 +9442,7 @@
       "Poverty"
     ],
     "code": "SI.DST.FRST.10",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Income share held by lowest 10%"
   },
@@ -9453,7 +9452,7 @@
       "Poverty"
     ],
     "code": "SI.DST.FRST.20",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Income share held by lowest 20%"
   },
@@ -9482,7 +9481,7 @@
       "Poverty"
     ],
     "code": "SI.POV.GINI",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "GINI index (World Bank estimate)"
   },
@@ -9509,7 +9508,7 @@
       "Poverty"
     ],
     "code": "SI.POV.NAGP",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Poverty gap at national poverty lines (%)"
   },
@@ -9528,7 +9527,7 @@
       "Poverty"
     ],
     "code": "SI.POV.RUGP",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Rural poverty gap at national poverty lines (%)"
   },
@@ -9566,7 +9565,7 @@
       "Urban Development"
     ],
     "code": "SI.POV.URGP",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Urban poverty gap at national poverty lines (%)"
   },
@@ -10159,7 +10158,7 @@
       "Social Protection & Labor"
     ],
     "code": "SL.TLF.0714.FE.ZS",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Children in employment, female (% of female children ages 7-14)"
   },
@@ -10170,7 +10169,7 @@
       "Social Protection & Labor"
     ],
     "code": "SL.TLF.0714.MA.ZS",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Children in employment, male (% of male children ages 7-14)"
   },
@@ -10298,7 +10297,7 @@
       "Social Protection & Labor"
     ],
     "code": "SL.TLF.0714.ZS",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Children in employment, total (% of children ages 7-14)"
   },
@@ -10588,7 +10587,6 @@
   },
   {
     "categories": [
-      "Education",
       "Social Protection & Labor"
     ],
     "code": "SL.TLF.TOTL.IN",
@@ -10855,7 +10853,7 @@
       "Health"
     ],
     "code": "SM.POP.NETM",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Net migration"
   },
@@ -10933,7 +10931,7 @@
       "Social Development"
     ],
     "code": "SP.ADO.TFRT",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Adolescent fertility rate (births per 1,000 women ages 15-19)"
   },
@@ -11028,7 +11026,7 @@
       "Social Development"
     ],
     "code": "SP.DYN.LE00.FE.IN",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Life expectancy at birth, female (years)"
   },
@@ -11048,7 +11046,7 @@
       "Social Development"
     ],
     "code": "SP.DYN.LE00.MA.IN",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Life expectancy at birth, male (years)"
   },
@@ -11653,7 +11651,7 @@
       "Science & Technology"
     ],
     "code": "SP.POP.SCIE.RD.P6",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Researchers in R&D (per million people)"
   },
@@ -11662,7 +11660,7 @@
       "Science & Technology"
     ],
     "code": "SP.POP.TECH.RD.P6",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Technicians in R&D (per million people)"
   },
@@ -11938,7 +11936,7 @@
       "Trade"
     ],
     "code": "TG.VAL.TOTL.GD.ZS",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Merchandise trade (% of GDP)"
   },
@@ -12282,7 +12280,7 @@
       "Trade"
     ],
     "code": "TM.VAL.MRCH.CD.WT",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Merchandise imports (current US$)"
   },
@@ -12536,7 +12534,7 @@
       "Trade"
     ],
     "code": "TX.VAL.MMTL.ZS.UN",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Ores and metals exports (% of merchandise exports)"
   },
@@ -12556,7 +12554,7 @@
       "Trade"
     ],
     "code": "TX.VAL.MRCH.CD.WT",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "Merchandise exports (current US$)"
   },
@@ -12707,7 +12705,7 @@
       "Trade"
     ],
     "code": "TX.VAL.TECH.CD",
-    "default": false,
+    "default": true,
     "featured": true,
     "name": "High-technology exports (current US$)"
   },
