@@ -16,20 +16,22 @@ export function addIndicatorsPanel() {
   head += "<h1 id='name'>Indicators by Category</h1>"
   head += "<div class='axes-box'>"
 
+  let scelection = "x"
+
   if (plotType == "Map") {
 
-    head += "<div id='x-box' class='axis'><h3 id='x-key'>X</h3></div>"
+    head += "<div id='x-box' class='axis scelection'><h3 id='x-key'>X</h3></div>"
 
   } else if (plotType == "Poly2") {
 
     head += "<div id='r-box' class='axis'><h3 id='r-key'>R</h3></div>"
-    head += "<div id='x-box' class='axis'><h3 id='x-key'>X</h3></div>"
+    head += "<div id='x-box' class='axis scelection'><h3 id='x-key'>X</h3></div>"
     head += "<div id='y-box' class='axis'><h3 id='y-key'>Y</h3></div>"
 
   } else if (plotType == "Poly3") {
 
     head += "<div id='r-box' class='axis'><h3 id='r-key'>R</h3></div>"
-    head += "<div id='x-box' class='axis'><h3 id='x-key'>X</h3></div>"
+    head += "<div id='x-box' class='axis scelection'><h3 id='x-key'>X</h3></div>"
     head += "<div id='y-box' class='axis'><h3 id='y-key'>Y</h3></div>"
     head += "<div id='z-box' class='axis'><h3 id='z-key'>Z</h3></div>"
 
@@ -38,6 +40,15 @@ export function addIndicatorsPanel() {
   head += "</div></div>"
 
   panel.append(head)
+
+  $(".axis").click(function() {
+
+    scelection = this.id[0]
+
+    $(".axis").removeClass("scelection")
+    $(this).addClass("scelection")
+
+  })
 
   socket.emit("get_indicators")
 
@@ -119,6 +130,7 @@ export function addIndicatorsPanel() {
 
   socket.on("new_indicator", function(indicator) {
 
+    console.log(scelection)
     console.log(indicator)
 
   })
