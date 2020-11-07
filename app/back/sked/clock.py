@@ -7,8 +7,8 @@ every_minute = 60
 every_hour = 3600
 every_day = 86400
 every_week = 604800
-every_month = 2592000
-every_year = 31536000
+every_month = 2419200
+every_year = 29030400
 
 def now():
 
