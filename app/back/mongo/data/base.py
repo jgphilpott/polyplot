@@ -1,6 +1,6 @@
-from back.mongo.client import find_client
+from back.mongo.client import mongo_client
 
-client = find_client()
+client = mongo_client()
 database = client.polyplot
 
 def find_database():
