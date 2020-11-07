@@ -48,6 +48,7 @@ alias maps="fire find_maps"
 
 # Meta
 alias meta="fire find_meta"
+alias metas="fire find_metas"
 
 # Styling
 alias sass="fire compile_sass app/front"
