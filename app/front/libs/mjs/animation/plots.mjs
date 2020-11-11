@@ -82,10 +82,15 @@ export function clearAnimation() {
   clearInterval(plot.animation.interval)
   plot.animation.status = "inactive"
 
+  plot.animation.speedMultiplier = 1
+
   $("#playForward").css({"visibility": "visible"})
   $("#playBackward").css({"visibility": "visible"})
 
   $("#pauseLeft").css({"visibility": "hidden"})
   $("#pauseRight").css({"visibility": "hidden"})
+
+  $("#fastForward").attr("src", "/front/imgs/panels/time/fastForward.svg")
+  $("#fastBackward").attr("src", "/front/imgs/panels/time/fastBackward.svg")
 
 }

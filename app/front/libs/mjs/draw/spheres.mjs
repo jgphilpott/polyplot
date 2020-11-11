@@ -19,7 +19,7 @@ export function drawSphere(sphere, plotType=plot.type) {
     y = plot.y.scale(y)
     z = plot.z.scale(z)
 
-    let geometry = new THREE.SphereGeometry(r, 42, 42)
+    let geometry = new THREE.SphereGeometry(r, 10, 10)
     let material = new THREE.MeshStandardMaterial({"color": regionsColourSwitch(sphere.region)})
     let mesh = new THREE.Mesh(geometry, material)
 
