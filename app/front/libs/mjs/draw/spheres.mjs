@@ -30,11 +30,11 @@ export function drawSphere(sphere, plotType=plot.type) {
 
     plot.core.scene.add(mesh)
 
-    sphere.object = mesh
+    return mesh
 
   } else {
 
-    sphere.object = null
+    return null
 
   }
 

@@ -33,7 +33,7 @@ export function animateCircles(duration) {
         .append("circle")
         .data([plots[i]])
         .attr("id", plots[i].code)
-        .attr("class", "plot")
+        .attr("class", "circle")
         .attr("r", plot.r.scale(rNew))
         .attr("cx", plot.x.scale(xNew))
         .attr("cy", plot.y.scale(yNew))

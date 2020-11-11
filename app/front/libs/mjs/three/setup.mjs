@@ -21,6 +21,7 @@ export function setup() {
 
   // Camera
   core.camera = addCamera()
+  core.frameRate = 60
 
   // Action
   core.controls = addControls()
