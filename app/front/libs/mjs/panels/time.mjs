@@ -91,18 +91,18 @@ export function addTimePanel() {
 
           break
 
-  //       case "playForward":
-  //
-  //         startAnimation("forward")
-  //
-  //         break
-  //
-  //       case "pauseLeft":
-  //
-  //         clearAnimation()
-  //
-  //         break
-  //
+        case "playForward":
+
+          startAnimation("forward")
+
+          break
+
+        case "pauseLeft":
+
+          clearAnimation()
+
+          break
+
   //       case "fastForward":
   //
   //         toggleSpeed("forward")
@@ -114,18 +114,18 @@ export function addTimePanel() {
   //         toggleSpeed("backward")
   //
   //         break
-  //
-  //       case "playBackward":
-  //
-  //         startAnimation("backward")
-  //
-  //         break
-  //
-  //       case "pauseRight":
-  //
-  //         clearAnimation()
-  //
-  //         break
+
+        case "pauseRight":
+
+          clearAnimation()
+
+          break
+
+        case "playBackward":
+
+          startAnimation("backward")
+
+          break
 
         case "skipForward":
 
@@ -139,23 +139,23 @@ export function addTimePanel() {
 
   }
 
-  // $("body").on("keypress", function(event) {
-  //
-  //   if (event.keyCode == 32) {
-  //
-  //     if (plot.animation.status == "inactive") {
-  //
-  //       startAnimation()
-  //
-  //     } else if (plot.animation.status == "active") {
-  //
-  //       clearAnimation()
-  //
-  //     }
-  //
-  //   }
-  //
-  // })
+  $("body").on("keypress", function(event) {
+
+    if (event.keyCode == 32) {
+
+      if (plot.animation.status == "inactive") {
+
+        startAnimation()
+
+      } else if (plot.animation.status == "active") {
+
+        clearAnimation()
+
+      }
+
+    }
+
+  })
 
   let offset = $("#timeline")[0].offsetLeft + $("#minCap")[0].width + plot.t.scale(plot.t.year)
 
