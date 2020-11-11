@@ -1,3 +1,5 @@
+import {scaleT} from "../scales/axes.mjs"
+
 import {startAnimation} from "../animation/plots.mjs"
 import {clearAnimation} from "../animation/plots.mjs"
 
@@ -5,8 +7,6 @@ import {animateMaps} from "../animation/types/maps.mjs"
 import {animateCircles} from "../animation/types/circles.mjs"
 import {animateSpheres} from "../animation/types/spheres.mjs"
 import {animateTimeline} from "../animation/types/timeline.mjs"
-
-import {scaleT} from "../scales/axes.mjs"
 
 import {makeDragable} from "./events/drag.mjs"
 import {addPanelEvents} from "./events/all.mjs"
@@ -103,17 +103,17 @@ export function addTimePanel() {
 
           break
 
-  //       case "fastForward":
-  //
-  //         toggleSpeed("forward")
-  //
-  //         break
-  //
-  //       case "fastBackward":
-  //
-  //         toggleSpeed("backward")
-  //
-  //         break
+        case "fastForward":
+
+          toggleSpeed("forward")
+
+          break
+
+        case "fastBackward":
+
+          toggleSpeed("backward")
+
+          break
 
         case "pauseRight":
 
@@ -200,41 +200,41 @@ export function skip(direction) {
 
 export function toggleSpeed(direction) {
 
-//   if (plot.animation.speedMultiplier != 1) {
-//
-//     if (plot.animation.direction == direction) {
-//
-//       plot.animation.speedMultiplier = 1
-//
-//     } else {
-//
-//       plot.animation.direction = direction
-//
-//     }
-//
-//   } else {
-//
-//     plot.animation.direction = direction
-//     plot.animation.speedMultiplier = 3
-//
-//   }
-//
-//   if (plot.animation.status == "active") {
-//
-//     clearInterval(plot.animation.interval)
-//     startAnimation(direction)
-//
-//   }
-//
-//   if (direction == "forward") {
-//
-//     $("#fastBackward").attr("src", "/front/imgs/panels/time/fastBackward.svg")
-//
-//   } else if (direction == "backward") {
-//
-//     $("#fastForward").attr("src", "/front/imgs/panels/time/fastForward.svg")
-//
-//   }
+  if (plot.animation.speedMultiplier == 1) {
+
+    plot.animation.direction = direction
+    plot.animation.speedMultiplier = 3
+
+  } else {
+
+    if (plot.animation.direction == direction) {
+
+      plot.animation.speedMultiplier = 1
+
+    } else {
+
+      plot.animation.direction = direction
+
+    }
+
+  }
+
+  if (plot.animation.status == "active") {
+
+    clearInterval(plot.animation.interval)
+    startAnimation(direction)
+
+  }
+
+  if (direction == "forward") {
+
+    $("#fastBackward").attr("src", "/front/imgs/panels/time/fastBackward.svg")
+
+  } else if (direction == "backward") {
+
+    $("#fastForward").attr("src", "/front/imgs/panels/time/fastForward.svg")
+
+  }
 
 }
 
