@@ -55,42 +55,42 @@ export function addTimePanel() {
 
   let buttons = $(".button")
 
-  // for (let i = 0; i < buttons.length; i++) {
-  //
-  //   let button = $("#" + buttons[i].id)
-  //
-  //   button.mouseover(function() {
-  //
-  //     button.attr("src", "/front/imgs/panels/time/hover/" + buttons[i].id + ".svg")
-  //
-  //   }).mouseout(function() {
-  //
-  //     if (!((buttons[i].id == "fastForward" || buttons[i].id == "fastBackward") && plot.animation.speedMultiplier != 1)) {
-  //
-  //       button.attr("src", "/front/imgs/panels/time/" + buttons[i].id + ".svg")
-  //
-  //     } else if (buttons[i].id == "fastForward" && plot.animation.direction != "forward") {
-  //
-  //       button.attr("src", "/front/imgs/panels/time/" + buttons[i].id + ".svg")
-  //
-  //     } else if (buttons[i].id == "fastBackward" && plot.animation.direction != "backward") {
-  //
-  //       button.attr("src", "/front/imgs/panels/time/" + buttons[i].id + ".svg")
-  //
-  //     }
-  //
-  //   })
-  //
-  //   button.click(function() {
-  //
-  //     switch (buttons[i].id) {
-  //
-  //       case "skipBackward":
-  //
-  //         skip("backward")
-  //
-  //         break
-  //
+  for (let i = 0; i < buttons.length; i++) {
+
+    let button = $("#" + buttons[i].id)
+
+    button.mouseover(function() {
+
+      button.attr("src", "/front/imgs/panels/time/hover/" + buttons[i].id + ".svg")
+
+    }).mouseout(function() {
+
+      if (!((buttons[i].id == "fastForward" || buttons[i].id == "fastBackward") && plot.animation.speedMultiplier != 1)) {
+
+        button.attr("src", "/front/imgs/panels/time/" + buttons[i].id + ".svg")
+
+      } else if (buttons[i].id == "fastForward" && plot.animation.direction != "forward") {
+
+        button.attr("src", "/front/imgs/panels/time/" + buttons[i].id + ".svg")
+
+      } else if (buttons[i].id == "fastBackward" && plot.animation.direction != "backward") {
+
+        button.attr("src", "/front/imgs/panels/time/" + buttons[i].id + ".svg")
+
+      }
+
+    })
+
+    button.click(function() {
+
+      switch (buttons[i].id) {
+
+        case "skipBackward":
+
+          skip("backward")
+
+          break
+
   //       case "playForward":
   //
   //         startAnimation("forward")
@@ -126,19 +126,19 @@ export function addTimePanel() {
   //         clearAnimation()
   //
   //         break
-  //
-  //       case "skipForward":
-  //
-  //         skip("forward")
-  //
-  //         break
-  //
-  //     }
-  //
-  //   })
-  //
-  // }
-  //
+
+        case "skipForward":
+
+          skip("forward")
+
+          break
+
+      }
+
+    })
+
+  }
+
   // $("body").on("keypress", function(event) {
   //
   //   if (event.keyCode == 32) {
@@ -168,33 +168,33 @@ export function addTimePanel() {
 
 export function skip(direction) {
 
-//   clearAnimation()
-//
-//   if (direction == "forward") {
-//
-//     plot.t.year = plot.t.maxCap
-//
-//   } else if (direction == "backward") {
-//
-//     plot.t.year = plot.t.minCap
-//
-//   }
-//
-//   animateTimeline(0)
-//
-//   if (plotType == "Map") {
-//
-//     animateMaps(0)
-//
-//   } else if (plotType == "Poly2") {
-//
-//     animateCircles(0)
-//
-//   } else if (plotType == "Poly3") {
-//
-//     animateSpheres(0)
-//
-//   }
+  clearAnimation()
+
+  if (direction == "forward") {
+
+    plot.t.year = plot.t.maxCap
+
+  } else if (direction == "backward") {
+
+    plot.t.year = plot.t.minCap
+
+  }
+
+  animateTimeline(0)
+
+  if (plotType == "Map") {
+
+    animateMaps(0)
+
+  } else if (plotType == "Poly2") {
+
+    animateCircles(0)
+
+  } else if (plotType == "Poly3") {
+
+    animateSpheres(0)
+
+  }
 
 }
 
