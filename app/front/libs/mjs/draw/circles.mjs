@@ -4,8 +4,12 @@ import {updateMetaPanel, clearMetaPanel} from "../panels/meta.mjs"
 let plot = data.plot
 let plots = plot.plots.sort(function(a, b) {
 
-  a = a.r.find(date => date.year == plot.t.year).value
-  b = b.r.find(date => date.year == plot.t.year).value
+  if (a.r && b.r) {
+
+    a = a.r.find(date => date.year == plot.t.year).value
+    b = b.r.find(date => date.year == plot.t.year).value
+
+  }
 
   if (a > b) {
 
