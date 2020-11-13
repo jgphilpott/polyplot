@@ -1,6 +1,13 @@
 import {addPanelEvents} from "./events/all.mjs"
 
+import {scaleR, scaleX, scaleY, scaleZ} from "../scales/axes.mjs"
+
+import {animateMaps} from "../animation/types/maps.mjs"
+import {animateCircles} from "../animation/types/circles.mjs"
+import {animateSpheres} from "../animation/types/spheres.mjs"
+
 let plot = data.plot
+let plots = plot.plots
 let plotType = plot.type
 
 export function addIndicatorsPanel() {
@@ -130,8 +137,57 @@ export function addIndicatorsPanel() {
 
   socket.on("new_indicator", function(indicator) {
 
-    console.log(scelection)
-    console.log(indicator)
+    let legendKey = $("#" + scelection + "-data")
+    legendKey.text(indicator.name)
+    legendKey.parent().attr("id", indicator.code)
+
+    for (let i = 0; i < plots.length; i++) {
+
+      for (let j = 0; j < indicator.geographies.length; j++) {
+
+        if (plots[i].code == indicator.geographies[j].code) {
+
+          plots[i][scelection] = indicator.geographies[j].history
+
+        }
+
+      }
+
+    }
+
+    if (scelection == "r") {
+
+      scaleR(plotType)
+
+    } else if (scelection == "x") {
+
+      scaleX(plotType)
+
+    } else if (scelection == "y") {
+
+      scaleY(plotType)
+
+    } else if (scelection == "z") {
+
+      scaleZ(plotType)
+
+    }
+
+    let speed = plot.animation.speed / plot.animation.speedMultiplier
+
+    if (plotType == "Map") {
+
+      animateMaps(speed)
+
+    } else if (plotType == "Poly2") {
+
+      animateCircles(speed)
+
+    } else if (plotType == "Poly3") {
+
+      animateSpheres(speed)
+
+    }
 
   })
 
