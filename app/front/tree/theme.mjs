@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
   let plot = data.plot
+  let plotType = plot.type
 
   $("#nav #menu").click(function() {
 
@@ -24,15 +25,19 @@ $(document).ready(function() {
 
   })
 
-  $("#nav, #forkme").mouseover(function() {
+  if (plotType != "Home" && plotType != "Error") {
 
-    $(".crosshair").remove()
-    plot.animation.showCrosshair = false
+    $("#nav, #forkme").mouseover(function() {
 
-  }).mouseout(function() {
+      $(".crosshair").remove()
+      plot.animation.showCrosshair = false
 
-    plot.animation.showCrosshair = true
+    }).mouseout(function() {
 
-  })
+      plot.animation.showCrosshair = true
+
+    })
+
+  }
 
 })

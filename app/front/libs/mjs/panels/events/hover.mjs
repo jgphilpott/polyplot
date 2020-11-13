@@ -1,6 +1,7 @@
 import {grayGlass, darkGrayGlass} from "../../colors/glass/grayscale.mjs"
 
 let plot = data.plot
+let plotType = plot.type
 
 export function addPanelHover(panel) {
 
@@ -9,8 +10,12 @@ export function addPanelHover(panel) {
 
   panel.mouseover(function() {
 
-    $(".crosshair").remove()
-    plot.animation.showCrosshair = false
+    if (plotType != "Home" && plotType != "Error") {
+
+      $(".crosshair").remove()
+      plot.animation.showCrosshair = false
+
+    }
 
     panel.css("z-index", 10)
     panel.animate({"backgroundColor": darkGrayGlass}, {"duration": 1500, "queue": false})
@@ -19,7 +24,11 @@ export function addPanelHover(panel) {
 
   }).mouseout(function() {
 
-    plot.animation.showCrosshair = true
+    if (plotType != "Home" && plotType != "Error") {
+
+      plot.animation.showCrosshair = true
+
+    }
 
     $(".panel").css("z-index", 0)
 

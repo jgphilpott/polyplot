@@ -5,6 +5,6 @@ def register_home_route(app):
     @app.route("/")
     def home():
 
-        data = None
+        data = {"plot": {"type": "Home"}}
 
         return render_template("tree/home/page.html", data=data)
