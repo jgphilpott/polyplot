@@ -25,7 +25,7 @@ export function addTimePanel() {
   plot.t.minCap = plot.t.minYear
   plot.t.maxCap = plot.t.maxYear
 
-  plot.animation = {"direction": "forward", "speed": 600, "speedMultiplier": 1, "status": "inactive", "interval": null}
+  plot.animation = {"direction": "forward", "speed": 600, "speedMultiplier": 1, "status": "inactive", "showCrosshair": true}
 
   panel.append("<h1 id='years'><span id='minYear'>" + plot.t.minCap + "</span> - <span id='maxYear'>" + plot.t.maxCap + "</span></h1>")
 

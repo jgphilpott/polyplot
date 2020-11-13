@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+  let plot = data.plot
+
   $("#nav #menu").click(function() {
 
     let error = $("#error.panel")
@@ -19,6 +21,17 @@ $(document).ready(function() {
       menu.css("visibility", "hidden")
 
     }
+
+  })
+
+  $("#nav, #forkme").mouseover(function() {
+
+    $(".crosshair").remove()
+    plot.animation.showCrosshair = false
+
+  }).mouseout(function() {
+
+    plot.animation.showCrosshair = true
 
   })
 
