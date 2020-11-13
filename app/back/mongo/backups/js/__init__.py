@@ -29,8 +29,9 @@ def load_js(path):
     camalize = get("https://gist.githubusercontent.com/jgphilpott/19e7a94cdf6d6d4cd868cc18e628026c/raw/2c5d68bb84f0d4e14478bcac359a77137f6a25f5/camalize.js").content.decode("utf-8")
     rotation = get("https://gist.githubusercontent.com/jgphilpott/1bc17b82063f14fabb8f3e38825f6f10/raw/b5ddf5f386213f47ac4fd4b9f41bc116b37f29a3/rotation.js").content.decode("utf-8")
     scaling = get("https://gist.githubusercontent.com/jgphilpott/6332dc7f5636db9ba455e1575407c496/raw/b72589532af0b7c63e321b15254acbb848248209/scaling.js").content.decode("utf-8")
+    d3Sorting = get("https://gist.githubusercontent.com/jgphilpott/cf12c05f7c30844a4d7fa70ec9a7945a/raw/284edcf4d44050d1b70cc21230433097b2d19cfd/d3Sorting.js").content.decode("utf-8")
 
-    tools = particleWeb + "\n" + camalize + "\n" + rotation + "\n" + scaling
+    tools = particleWeb + "\n" + camalize + "\n" + rotation + "\n" + scaling + "\n" + d3Sorting
 
     with open(path + "/tools.js", "w") as file:
 
