@@ -1,6 +1,4 @@
-import {event} from "../../three/x.mjs"
-import {regionsColourSwitch} from "../../colors/switches/regions.mjs"
-import {updateMetaPanel, clearMetaPanel} from "../../panels/meta.mjs"
+import {drawSphere} from "../../draw/spheres.mjs"
 
 let plot = data.plot
 let plots = plot.plots
@@ -18,15 +16,15 @@ export function animateSpheres(duration) {
 
     if (sphere && (typeof(rNew) == "number" && typeof(xNew) == "number" && typeof(yNew) == "number" && typeof(zNew) == "number")) {
 
-      let rNow = sphere.geometry.parameters.radius * sphere.scale.x
-      let xNow = sphere.position.x
-      let yNow = sphere.position.y
-      let zNow = sphere.position.z
-
       rNew = plot.r.scale(rNew)
       xNew = plot.x.scale(xNew)
       yNew = plot.y.scale(yNew)
       zNew = plot.z.scale(zNew)
+
+      let rNow = sphere.geometry.parameters.radius * sphere.scale.x
+      let xNow = sphere.position.x
+      let yNow = sphere.position.y
+      let zNow = sphere.position.z
 
       let rDiff = (rNew / rNow) - 1
       let xDiff = xNew - xNow
@@ -85,23 +83,7 @@ export function animateSpheres(duration) {
 
     } else if (!sphere && (typeof(rNew) == "number" && typeof(xNew) == "number" && typeof(yNew) == "number" && typeof(zNew) == "number")) {
 
-      rNew = plot.r.scale(rNew)
-      xNew = plot.x.scale(xNew)
-      yNew = plot.y.scale(yNew)
-      zNew = plot.z.scale(zNew)
-
-      let geometry = new THREE.SphereGeometry(rNew, 10, 10)
-      let material = new THREE.MeshStandardMaterial({"color": regionsColourSwitch(plots[i].region)})
-      let mesh = new THREE.Mesh(geometry, material)
-
-      mesh.position.set(xNew, yNew, zNew)
-
-      event(mesh, "mouseover", updateMetaPanel, plots[i].code)
-      event(mesh, "mouseout", clearMetaPanel)
-
-      plot.core.scene.add(mesh)
-
-      plots[i].object = mesh
+      plots[i].object = drawSphere(plots[i], rNew, xNew, yNew, zNew)
 
     }
 

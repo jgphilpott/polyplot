@@ -1,4 +1,4 @@
-import {regionsColourSwitch} from "../../colors/switches/regions.mjs"
+import {drawCircle} from "../../draw/circles.mjs"
 
 let plot = data.plot
 let plots = plot.plots
@@ -29,15 +29,7 @@ export function animateCircles(duration) {
 
     } else if (!circle && (typeof(rNew) == "number" && typeof(xNew) == "number" && typeof(yNew) == "number")) {
 
-      d3.select("#canvas")
-        .append("circle")
-        .data([plots[i]])
-        .attr("id", plots[i].code)
-        .attr("class", "circle")
-        .attr("r", plot.r.scale(rNew))
-        .attr("cx", plot.x.scale(xNew))
-        .attr("cy", plot.y.scale(yNew))
-        .attr("fill", regionsColourSwitch(plots[i].region))
+      drawCircle(plots[i], rNew, xNew, yNew)
 
     }
 

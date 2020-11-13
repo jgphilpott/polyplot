@@ -5,12 +5,7 @@ import {updateMetaPanel, clearMetaPanel} from "../panels/meta.mjs"
 let plot = data.plot
 let plots = plot.plots
 
-export function drawSphere(sphere, plotType=plot.type) {
-
-  let r = sphere.r.find(date => date.year == plot.t.year).value
-  let x = sphere.x.find(date => date.year == plot.t.year).value
-  let y = sphere.y.find(date => date.year == plot.t.year).value
-  let z = sphere.z.find(date => date.year == plot.t.year).value
+export function drawSphere(sphere, r, x, y, z, plotType=plot.type) {
 
   if (typeof(r) == "number" && typeof(x) == "number" && typeof(y) == "number" && typeof(z) == "number") {
 
@@ -44,7 +39,12 @@ export function drawSpheres(plotType=plot.type) {
 
   for (let i = 0; i < plots.length; i++) {
 
-    plots[i].object = drawSphere(plots[i])
+    let r = plots[i].r.find(date => date.year == plot.t.year).value
+    let x = plots[i].x.find(date => date.year == plot.t.year).value
+    let y = plots[i].y.find(date => date.year == plot.t.year).value
+    let z = plots[i].z.find(date => date.year == plot.t.year).value
+
+    plots[i].object = drawSphere(plots[i], r, x, y, z)
 
   }
 

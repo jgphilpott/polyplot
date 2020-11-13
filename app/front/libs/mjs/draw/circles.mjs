@@ -23,13 +23,9 @@ let plots = plot.plots.sort(function(a, b) {
 
 })
 
-export function drawCircle(circle, plotType=plot.type) {
+export function drawCircle(circle, r, x, y, plotType=plot.type) {
 
   let canvas = d3.select("#canvas")
-
-  let r = circle.r.find(date => date.year == plot.t.year).value
-  let x = circle.x.find(date => date.year == plot.t.year).value
-  let y = circle.y.find(date => date.year == plot.t.year).value
 
   if (typeof(r) == "number" && typeof(x) == "number" && typeof(y) == "number") {
 
@@ -60,7 +56,11 @@ export function drawCircles(plotType=plot.type) {
 
   for (let i = 0; i < plots.length; i++) {
 
-    drawCircle(plots[i])
+    let r = plots[i].r.find(date => date.year == plot.t.year).value
+    let x = plots[i].x.find(date => date.year == plot.t.year).value
+    let y = plots[i].y.find(date => date.year == plot.t.year).value
+
+    drawCircle(plots[i], r, x, y)
 
   }
 
