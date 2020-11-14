@@ -33,11 +33,28 @@ export function addMenuPanel() {
 
   $("#main").width(mainWidth).height(mainHeight)
 
-  panel.append("<div id='settings-panel' class='sub-panel'><p>Settings</p></div>")
-  panel.append("<div id='sources-panel' class='sub-panel'><p>Sources</p></div>")
+  panel.append("<div id='settings-panel' class='sub-panel'><h1>Settings</h1></div>")
+  panel.append("<div id='sources-panel' class='sub-panel'><h1>Sources</h1></div>")
 
-  panel.append("<div id='signup-panel' class='sub-panel'><p>Sign Up</p></div>")
-  panel.append("<div id='login-panel' class='sub-panel'><p>Login</p></div>")
+  let signup = "<div id='signup-panel' class='sub-panel'><h1>Sign Up</h1>"
+
+  signup += "<input id='email' type='email' placeholder='Email'>"
+  signup += "<input id='password' type='password' placeholder='Password'>"
+  signup += "<input id='retype-password' type='password' placeholder='Retype Password'>"
+  signup += "<input id='submit' type='submit' placeholder='Submit'>"
+
+  signup += "</div>"
+
+  panel.append(signup)
+
+  let login = "<div id='login-panel' class='sub-panel'><h1>Login</h1>"
+
+  login += "</div>"
+
+  panel.append(login)
+
+  $("input").click(function(event) {event.stopPropagation(); this.focus()})
+  $(document).click(function() {$("input").blur()})
 
   $("#settings").click(function() {
     togglePanel($("#settings-panel"))
