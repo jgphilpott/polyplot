@@ -6,47 +6,58 @@
   position: fixed
   visibility: hidden
 
-  top: 50%
+  top: 25%
   left: 50%
 
-  transform: translate(-50%, -50%)
+  transform: translate(-50%, -25%)
 
-  #head
+  #main
 
-    display: flex
-    align-items: center
-    justify-content: center
+    float: left
 
-    padding: 10px
+    #head
 
-    #logo
+      display: flex
+      align-items: center
+      justify-content: center
 
-      width: 65px
-      height: 65px
+      padding: 10px
+
+      #logo
+
+        width: 65px
+        height: 65px
+
+        float: left
+
+      #name
+
+        font-size: 28px
+
+        float: left
+
+    .option
+
+      text-align: center
+
+      border: 1px solid $black
+      border-radius: 5px
+
+      margin: 10px
+
+    .option:hover
+
+      cursor: pointer
+
+    .opt
+
+      width: 40%
+      margin-top: 5px
 
       float: left
 
-    #title
+  .sub-panel
 
-      font-size: 28px
-
-      float: left
-
-  .option
-
-    text-align: center
-
-    border: 1px solid $black
-    border-radius: 5px
-
-    margin: 10px
-
-  .option:hover
-
-    cursor: pointer
-
-  .opt
-
-    width: 40%
+    display: none
 
     float: left
