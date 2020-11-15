@@ -3,6 +3,14 @@ from back.mongo.data.collect.clients.object import Client
 
 collection = find_collection("clients")
 
+def new_client(client):
+
+    return str(collection.insert_one(client).inserted_id)
+
+def new_clients(clients):
+
+    return str(collection.insert_many(clients).inserted_ids)
+
 def find_client(query={}, filter={"_id": 0}):
 
     return dict(collection.find_one(query, filter))
