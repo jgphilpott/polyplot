@@ -11,10 +11,20 @@ def new_clients(clients):
 
     return str(collection.insert_many(clients).inserted_ids)
 
-def find_client(query={}, filter={"_id": 0}):
+def find_client(query={}, filter={"_id": 0, "id": 0, "password": 0}):
 
     return dict(collection.find_one(query, filter))
 
-def find_clients(query={}, filter={"_id": 0}):
+def find_clients(query={}, filter={"_id": 0, "id": 0, "password": 0}):
 
     return list(collection.find(query, filter))
+
+def valid_client(id):
+
+    try:
+
+        return find_client({"id": id})
+
+    except:
+
+        return None
