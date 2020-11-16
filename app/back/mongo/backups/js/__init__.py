@@ -30,8 +30,10 @@ def load_js(path):
     rotation = get("https://gist.githubusercontent.com/jgphilpott/1bc17b82063f14fabb8f3e38825f6f10/raw/b5ddf5f386213f47ac4fd4b9f41bc116b37f29a3/rotation.js").content.decode("utf-8")
     scaling = get("https://gist.githubusercontent.com/jgphilpott/6332dc7f5636db9ba455e1575407c496/raw/b72589532af0b7c63e321b15254acbb848248209/scaling.js").content.decode("utf-8")
     d3Sorting = get("https://gist.githubusercontent.com/jgphilpott/cf12c05f7c30844a4d7fa70ec9a7945a/raw/284edcf4d44050d1b70cc21230433097b2d19cfd/d3Sorting.js").content.decode("utf-8")
+    cookieFuncs = get("https://gist.githubusercontent.com/jgphilpott/b9ce64b9ef8b04c5ac58902b133b1a28/raw/8931a5cd26c48945e932a7399f853b593687f557/cookieFunctions.js").content.decode("utf-8")
+    validEmail = get("https://gist.githubusercontent.com/jgphilpott/a1ffedea1d1a70320b8075597df1943a/raw/29b8f25b2a439a117783523f209ba42ef5e9cf9d/validEmail.js").content.decode("utf-8")
 
-    tools = particleWeb + "\n" + camalize + "\n" + rotation + "\n" + scaling + "\n" + d3Sorting
+    tools = particleWeb + "\n" + camalize + "\n" + rotation + "\n" + scaling + "\n" + d3Sorting + "\n" + cookieFuncs + "\n" + validEmail
 
     with open(path + "/tools.js", "w") as file:
 
