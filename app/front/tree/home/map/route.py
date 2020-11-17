@@ -1,5 +1,6 @@
 from flask import render_template, request
 
+from back.mongo.data.collect.clients import valid_client
 from back.mongo.data.collect.countries import find_countries
 from back.mongo.data.collect.indicators import find_indicator
 from back.mongo.data.collect.maps import find_maps
@@ -10,6 +11,8 @@ def register_map_route(app):
     def map():
 
         data = {"plot": {"title": "World Bank Development Indicators", "type": "Map"}}
+
+        if "id" in request.cookies: data["client"] = valid_client(request.cookies.get("id"))
 
         x = find_indicator({"code": request.args["x"]}) if "x" in request.args else find_indicator({"code": "SP.DYN.LE00.IN"})
 

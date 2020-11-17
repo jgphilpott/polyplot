@@ -1,5 +1,6 @@
 from flask import render_template, request
 
+from back.mongo.data.collect.clients import valid_client
 from back.mongo.data.collect.countries import find_countries
 from back.mongo.data.collect.indicators import find_indicator
 
@@ -9,6 +10,8 @@ def register_poly3_route(app):
     def poly3():
 
         data = {"plot": {"title": "World Bank Development Indicators", "type": "Poly3"}}
+
+        if "id" in request.cookies: data["client"] = valid_client(request.cookies.get("id"))
 
         r = find_indicator({"code": request.args["r"]}) if "r" in request.args else find_indicator({"code": "SP.POP.TOTL"})
         x = find_indicator({"code": request.args["x"]}) if "x" in request.args else find_indicator({"code": "SP.DYN.LE00.IN"})

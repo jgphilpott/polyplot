@@ -21,11 +21,9 @@
 
       console.log("Welcome to Polyplot!")
 
-      const session = {{ session | tojson | safe }}
+      const socket = io()
 
       const data = {{ data | tojson | safe }}
-
-      const socket = io()
 
     </script>
 
@@ -43,11 +41,15 @@
 
     </div>
 
-    <a href="https://github.com/jgphilpott/polyplot">
+    {% if not "client" in data %}
 
-      <img id="forkme" src="{{ url_for('static', filename='imgs/theme/forkme/right/red.png') }}">
+      <a href="https://github.com/jgphilpott/polyplot">
 
-    </a>
+        <img id="forkme" src="{{ url_for('static', filename='imgs/theme/forkme/right/red.png') }}">
+
+      </a>
+
+    {% endif %}
 
     {% block content %}
     {% endblock %}
