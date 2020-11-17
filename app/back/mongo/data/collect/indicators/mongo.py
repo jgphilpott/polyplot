@@ -11,14 +11,12 @@ def find_indicators(query={}, filter={"_id": 0}):
 
     return list(collection.find(query, filter))
 
-def update_indicator(code):
+def update_indicator(indicator):
 
-    indicator = Indicator(find_indicator({"code": code})).update()
-
-    collection.update_one({"code": indicator.code}, {"$set": indicator.__dict__})
+    return collection.update_one({"code": indicator["code"]}, {"$set": indicator})
 
 def update_indicators():
 
-    for indicator in find_indicators():
+    for indicator in find_indicators({}, {"_id": 0}):
 
-        update_indicator(indicator["code"])
+        update_indicator(indicator)

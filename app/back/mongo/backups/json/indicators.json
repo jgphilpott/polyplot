@@ -9508,7 +9508,7 @@
       "Poverty"
     ],
     "code": "SI.POV.NAGP",
-    "default": true,
+    "default": false,
     "featured": true,
     "name": "Poverty gap at national poverty lines (%)"
   },
@@ -9527,7 +9527,7 @@
       "Poverty"
     ],
     "code": "SI.POV.RUGP",
-    "default": true,
+    "default": false,
     "featured": true,
     "name": "Rural poverty gap at national poverty lines (%)"
   },
@@ -9565,7 +9565,7 @@
       "Urban Development"
     ],
     "code": "SI.POV.URGP",
-    "default": true,
+    "default": false,
     "featured": true,
     "name": "Urban poverty gap at national poverty lines (%)"
   },

@@ -1,7 +1,7 @@
 from json import load
 
 from back.mongo.data.collect.ions import find_collection, find_collections
-from back.mongo.data.collect.indicators.mongo import find_indicators, update_indicator
+from back.mongo.data.collect.indicators.mongo import Indicator, find_indicators, update_indicator
 
 collections = find_collections()
 
@@ -23,8 +23,8 @@ def load_json(path):
                 data = load(list)
                 collection.insert_many(data)
 
-    for indicator in find_indicators():
+    for indicator in find_indicators({}, {"_id": 0}):
 
         if indicator["default"] == True:
 
-            update_indicator(indicator["code"])
+            update_indicator(Indicator(indicator).update().__dict__)
