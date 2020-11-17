@@ -38,10 +38,10 @@ export function addMenuPanel() {
 
   let signup = "<div id='signup-panel' class='sub-panel'><h1>Sign Up</h1>"
 
-  signup += "<input id='email' type='email' placeholder='Email'>"
-  signup += "<input id='password' type='password' placeholder='Password'>"
-  signup += "<input id='retype-password' type='password' placeholder='Retype Password'>"
-  signup += "<input id='submit' type='submit' placeholder='Submit'>"
+  signup += "<input class='email' type='email' placeholder='Email'>"
+  signup += "<input class='password' type='password' placeholder='Password'>"
+  signup += "<input class='retype-password' type='password' placeholder='Retype Password'>"
+  signup += "<input class='submit' type='submit' placeholder='Submit'>"
 
   signup += "</div>"
 
@@ -49,12 +49,70 @@ export function addMenuPanel() {
 
   let login = "<div id='login-panel' class='sub-panel'><h1>Login</h1>"
 
+  login += "<input class='email' type='email' placeholder='Email'>"
+  login += "<input class='password' type='password' placeholder='Password'>"
+  login += "<input class='submit' type='submit' placeholder='Submit'>"
+
   login += "</div>"
 
   panel.append(login)
 
-  $("input").click(function(event) {event.stopPropagation(); this.focus()})
-  $(document).click(function() {$("input").blur()})
+  $("input").click(function(event) { event.stopPropagation(); this.focus() })
+  $(document).click(function() { $("input").blur() })
+
+  $("#signup-panel .submit").click(function() {
+
+    if (validEmail($("#signup-panel .email").val()) && $("#signup-panel .password").val() === $("#signup-panel .retype-password").val() && $("#signup-panel .password").val().length > 0) {
+
+      socket.emit("signup", {"email": $("#signup-panel .email").val(), "password": sha256($("#signup-panel .password").val())})
+
+    } else {
+
+      alert("Invalid, please try again.")
+
+    }
+
+  })
+
+  socket.on("signup_failed", function() {
+
+    alert("Email already exists.")
+
+  })
+
+  socket.on("signup_success", function(id) {
+
+    writeCookie("id", id)
+    location.reload()
+
+  })
+
+  $("#login-panel .submit").click(function() {
+
+    if (validEmail($("#login-panel .email").val()) && $("#login-panel .password").val().length > 0) {
+
+      socket.emit("login", {"email": $("#login-panel .email").val(), "password": sha256($("#login-panel .password").val())})
+
+    } else {
+
+      alert("Invalid, please try again.")
+
+    }
+
+  })
+
+  socket.on("login_failed", function() {
+
+    alert("Invalid, please try again.")
+
+  })
+
+  socket.on("login_success", function(id) {
+
+    writeCookie("id", id)
+    location.reload()
+
+  })
 
   $("#settings").click(function() {
     togglePanel($("#settings-panel"))
