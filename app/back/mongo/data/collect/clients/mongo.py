@@ -19,6 +19,16 @@ def find_clients(query={}, filter={"_id": 0, "id": 0, "password": 0}):
 
     return list(collection.find(query, filter))
 
+def update_client(client):
+
+    return collection.update_one({"email": client["email"]}, {"$set": client})
+
+def update_clients():
+
+    for client in find_clients({}, {"_id": 0}):
+
+        update_client(client)
+
 def valid_client(id):
 
     try:
