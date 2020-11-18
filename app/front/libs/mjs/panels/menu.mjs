@@ -56,7 +56,14 @@ export function addMenuPanel() {
 
   function appendSources() {
 
-    panel.append("<div id='sources-panel' class='sub-panel'><h1>Sources</h1></div>")
+    let sources = "<div id='sources-panel' class='sub-panel'><h1>Sources</h1>"
+
+    sources += "<h3>Indicators</h3><a href='https://data.worldbank.org/indicator'><p>World Bank</p></a>"
+    sources += "<h3>Maps</h3><a href='http://www.naturalearthdata.com'><p>Natural Earth</p></a>"
+
+    sources += "</div>"
+
+    panel.append(sources)
 
     $("#sources").click(function() {
       togglePanel($("#sources-panel"))
