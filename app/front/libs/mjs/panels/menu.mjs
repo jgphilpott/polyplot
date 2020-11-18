@@ -164,7 +164,14 @@ export function addMenuPanel() {
 
   function appendProfile() {
 
-    panel.append("<div id='profile-panel' class='sub-panel'><h1>Profile</h1></div>")
+    let profile = "<div id='profile-panel' class='sub-panel'><h1>Profile</h1>"
+
+    profile += "<img src='/front/imgs/panels/menu/profile.png'>"
+    profile += "<h3>Email</h3><p>" + client.email + "</p>"
+
+    profile += "</div>"
+
+    panel.append(profile)
 
     $("#profile").click(function() {
       togglePanel($("#profile-panel"))
