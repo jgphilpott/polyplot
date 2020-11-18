@@ -1,5 +1,7 @@
 import {addPanelEvents} from "./events/all.mjs"
 
+let client = data.client
+
 export function addMenuPanel() {
 
   $("body").append("<div id='menu' class='panel'></div>")
@@ -16,8 +18,17 @@ export function addMenuPanel() {
   main += "<div id='sources' class='option'><h3>Sources</h3></div>"
   main += "<a href='https://github.com/jgphilpott/polyplot/blob/master/docs/api/README.md'><div id='api' class='option'><h3>API</h3></div></a>"
 
-  main += "<div id='signup' class='option opt'><h3>Sign Up</h3></div>"
-  main += "<div id='login' class='option opt'><h3>Login</h3></div>"
+  if (!client) {
+
+    main += "<div id='signup' class='option opt'><h3>Sign Up</h3></div>"
+    main += "<div id='login' class='option opt'><h3>Login</h3></div>"
+
+  } else {
+
+    main += "<div id='profile' class='option opt'><h3>Profile</h3></div>"
+    main += "<div id='logout' class='option opt'><h3>Logout</h3></div>"
+
+  }
 
   main += "</div>"
 
@@ -33,102 +44,152 @@ export function addMenuPanel() {
 
   $("#main").width(mainWidth).height(mainHeight)
 
-  panel.append("<div id='settings-panel' class='sub-panel'><h1>Settings</h1></div>")
-  panel.append("<div id='sources-panel' class='sub-panel'><h1>Sources</h1></div>")
+  function appendSettings() {
 
-  let signup = "<div id='signup-panel' class='sub-panel'><h1>Sign Up</h1>"
+    panel.append("<div id='settings-panel' class='sub-panel'><h1>Settings</h1></div>")
 
-  signup += "<input class='email' type='email' placeholder='Email'>"
-  signup += "<input class='password' type='password' placeholder='Password'>"
-  signup += "<input class='retype-password' type='password' placeholder='Retype Password'>"
-  signup += "<input class='submit' type='submit' placeholder='Submit'>"
+    $("#settings").click(function() {
+      togglePanel($("#settings-panel"))
+    })
 
-  signup += "</div>"
+  }
 
-  panel.append(signup)
+  function appendSources() {
 
-  let login = "<div id='login-panel' class='sub-panel'><h1>Login</h1>"
+    panel.append("<div id='sources-panel' class='sub-panel'><h1>Sources</h1></div>")
 
-  login += "<input class='email' type='email' placeholder='Email'>"
-  login += "<input class='password' type='password' placeholder='Password'>"
-  login += "<input class='submit' type='submit' placeholder='Submit'>"
+    $("#sources").click(function() {
+      togglePanel($("#sources-panel"))
+    })
 
-  login += "</div>"
+  }
 
-  panel.append(login)
+  function appendSignup() {
 
-  $("input").click(function(event) { event.stopPropagation(); this.focus() })
-  $(document).click(function() { $("input").blur() })
+    let signup = "<div id='signup-panel' class='sub-panel'><h1>Sign Up</h1>"
 
-  $("#signup-panel .submit").click(function() {
+    signup += "<input class='email' type='email' placeholder='Email'>"
+    signup += "<input class='password' type='password' placeholder='Password'>"
+    signup += "<input class='retype-password' type='password' placeholder='Retype Password'>"
+    signup += "<input class='submit' type='submit' placeholder='Submit'>"
 
-    if (validEmail($("#signup-panel .email").val()) && $("#signup-panel .password").val() === $("#signup-panel .retype-password").val() && $("#signup-panel .password").val().length > 0) {
+    signup += "</div>"
 
-      socket.emit("signup", {"email": $("#signup-panel .email").val(), "password": sha256($("#signup-panel .password").val())})
+    panel.append(signup)
 
-    } else {
+    $("#signup").click(function() {
+      togglePanel($("#signup-panel"))
+    })
+
+    $("#signup-panel .submit").click(function() {
+
+      if (validEmail($("#signup-panel .email").val()) && $("#signup-panel .password").val() === $("#signup-panel .retype-password").val() && $("#signup-panel .password").val().length > 0) {
+
+        socket.emit("signup", {"email": $("#signup-panel .email").val(), "password": sha256($("#signup-panel .password").val())})
+
+      } else {
+
+        alert("Invalid, please try again.")
+
+      }
+
+    })
+
+    socket.on("signup_failed", function() {
+
+      alert("Email already exists.")
+
+    })
+
+    socket.on("signup_success", function(id) {
+
+      writeCookie("id", id)
+      location.reload()
+
+    })
+
+  }
+
+  function appendLogin() {
+
+    let login = "<div id='login-panel' class='sub-panel'><h1>Login</h1>"
+
+    login += "<input class='email' type='email' placeholder='Email'>"
+    login += "<input class='password' type='password' placeholder='Password'>"
+    login += "<input class='submit' type='submit' placeholder='Submit'>"
+
+    login += "</div>"
+
+    panel.append(login)
+
+    $("#login").click(function() {
+      togglePanel($("#login-panel"))
+    })
+
+    $("#login-panel .submit").click(function() {
+
+      if (validEmail($("#login-panel .email").val()) && $("#login-panel .password").val().length > 0) {
+
+        socket.emit("login", {"email": $("#login-panel .email").val(), "password": sha256($("#login-panel .password").val())})
+
+      } else {
+
+        alert("Invalid, please try again.")
+
+      }
+
+    })
+
+    socket.on("login_failed", function() {
 
       alert("Invalid, please try again.")
 
-    }
+    })
 
-  })
+    socket.on("login_success", function(id) {
 
-  socket.on("signup_failed", function() {
+      writeCookie("id", id)
+      location.reload()
 
-    alert("Email already exists.")
+    })
 
-  })
+  }
 
-  socket.on("signup_success", function(id) {
+  function appendProfile() {
 
-    writeCookie("id", id)
-    location.reload()
+    panel.append("<div id='profile-panel' class='sub-panel'><h1>Profile</h1></div>")
 
-  })
+    $("#profile").click(function() {
+      togglePanel($("#profile-panel"))
+    })
 
-  $("#login-panel .submit").click(function() {
+  }
 
-    if (validEmail($("#login-panel .email").val()) && $("#login-panel .password").val().length > 0) {
+  function appendLogout() {
 
-      socket.emit("login", {"email": $("#login-panel .email").val(), "password": sha256($("#login-panel .password").val())})
+    $("#logout").click(function() {
 
-    } else {
+      deleteCookie("id")
+      location.reload()
 
-      alert("Invalid, please try again.")
+    })
 
-    }
+  }
 
-  })
+  appendSettings()
+  appendSources()
 
-  socket.on("login_failed", function() {
+  if (!client) {
 
-    alert("Invalid, please try again.")
+    appendSignup()
+    appendLogin()
 
-  })
+  } else {
 
-  socket.on("login_success", function(id) {
+    appendProfile()
+    appendLogout()
 
-    writeCookie("id", id)
-    location.reload()
-
-  })
-
-  $("#settings").click(function() {
-    togglePanel($("#settings-panel"))
-  })
-
-  $("#sources").click(function() {
-    togglePanel($("#sources-panel"))
-  })
-
-  $("#signup").click(function() {
-    togglePanel($("#signup-panel"))
-  })
-
-  $("#login").click(function() {
-    togglePanel($("#login-panel"))
-  })
+  }
 
   function togglePanel(panel) {
 
@@ -155,6 +216,10 @@ export function addMenuPanel() {
     }
 
   }
+
+  $("input").click(function(event) { event.stopPropagation(); this.focus() })
+  $("input").keypress(function(event) { event.stopPropagation() })
+  $(document).click(function() { $("input").blur() })
 
   addPanelEvents(panel)
 
