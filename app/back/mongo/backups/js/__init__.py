@@ -32,8 +32,9 @@ def load_js(path):
     d3Sorting = get("https://gist.githubusercontent.com/jgphilpott/cf12c05f7c30844a4d7fa70ec9a7945a/raw/284edcf4d44050d1b70cc21230433097b2d19cfd/d3Sorting.js").content.decode("utf-8")
     cookieFuncs = get("https://gist.githubusercontent.com/jgphilpott/b9ce64b9ef8b04c5ac58902b133b1a28/raw/8931a5cd26c48945e932a7399f853b593687f557/cookieFunctions.js").content.decode("utf-8")
     validEmail = get("https://gist.githubusercontent.com/jgphilpott/a1ffedea1d1a70320b8075597df1943a/raw/29b8f25b2a439a117783523f209ba42ef5e9cf9d/validEmail.js").content.decode("utf-8")
+    localStorage = get("https://gist.githubusercontent.com/jgphilpott/e26b92eb41b64e9565032d5c4d3c2878/raw/3dd45e6f7aa29ec2cfc3fda239c9d58b605abfd9/localStorage.js").content.decode("utf-8")
 
-    tools = particleWeb + "\n" + camalize + "\n" + rotation + "\n" + scaling + "\n" + d3Sorting + "\n" + cookieFuncs + "\n" + validEmail
+    tools = particleWeb + "\n" + camalize + "\n" + rotation + "\n" + scaling + "\n" + d3Sorting + "\n" + cookieFuncs + "\n" + validEmail + "\n" + localStorage
 
     with open(path + "/tools.js", "w") as file:
 
