@@ -25,6 +25,7 @@ def connect_clients(app):
         try:
 
             find_client({"email": client["email"]})
+
             emit("signup_failed")
 
         except:
@@ -33,6 +34,7 @@ def connect_clients(app):
             client = Client(client).refresh_id()
 
             new_client(client.__dict__)
+
             emit("signup_success", client.id)
 
     @app.on("login")
@@ -40,13 +42,14 @@ def connect_clients(app):
 
         try:
 
-            match = find_client({"email": client["email"]}, {"_id": 0})
+            match = find_client({"email": client["email"]})
 
             if match["password"] == sha256(client["password"].encode("utf-8")).hexdigest():
 
                 client = Client(match).refresh_id()
 
                 update_client(client.__dict__)
+
                 emit("login_success", client.id)
 
             else:
@@ -56,3 +59,18 @@ def connect_clients(app):
         except:
 
             emit("login_failed")
+
+    @app.on("settings_update")
+    def settings_update(update):
+
+        try:
+
+            client = Client(find_client({"id": update["id"]})).settings_update(update["setting"], update["value"])
+
+            update_client(client.__dict__)
+
+            emit("settings_updated", {"setting": update["setting"], "value": update["value"]})
+
+        except:
+
+            pass
