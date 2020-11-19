@@ -46,10 +46,73 @@ export function addMenuPanel() {
 
   function appendSettings() {
 
-    panel.append("<div id='settings-panel' class='sub-panel'><h1>Settings</h1></div>")
+    let settings = "<div id='settings-panel' class='sub-panel'><h1>Settings</h1>"
+
+    settings += "<input id='crosshairs' class='checkbox' type='checkbox'><label>Show Crosshairs</label>"
+
+    settings += "</div>"
+
+    panel.append(settings)
 
     $("#settings").click(function() {
       togglePanel($("#settings-panel"))
+    })
+
+    if (client) {
+
+      let clientSettings = client.settings
+
+      $("#crosshairs").prop("checked", clientSettings.crosshairs)
+
+      localWrite("settings", clientSettings)
+
+    } else if (localKeys().includes("settings")) {
+
+      let localSettings = localRead("settings")
+
+      $("#crosshairs").prop("checked", localSettings.crosshairs)
+
+    } else {
+
+      let defaultSettings = {"crosshairs": true}
+
+      $("#crosshairs").prop("checked", defaultSettings.crosshairs)
+
+      localWrite("settings", defaultSettings)
+
+    }
+
+    $(".checkbox").click(function(event) {
+
+      let checkbox = $("#" + this.id)
+
+      if (client) {
+
+        event.preventDefault()
+        event.stopPropagation()
+
+        socket.emit("settings_update", {"id": readCookie("id"), "setting": this.id, "value": checkbox.is(":checked")})
+
+        socket.on("settings_updated", function(update) {
+
+          client.settings[update.setting] = update.value
+
+          let settings = localRead("settings")
+          settings[update.setting] = update.value
+          localWrite("settings", settings)
+
+          checkbox.prop("checked", update.value)
+
+        })
+
+      } else {
+
+        let settings = localRead("settings")
+        settings[this.id] = checkbox.is(":checked")
+        localWrite("settings", settings)
+
+      }
+
     })
 
   }
