@@ -17,6 +17,6 @@ def update_indicator(indicator):
 
 def update_indicators():
 
-    for indicator in find_indicators({}, {"_id": 0}):
+    for indicator in find_indicators():
 
         update_indicator(indicator)
