@@ -11,11 +11,11 @@ def new_clients(clients):
 
     return str(collection.insert_many(clients).inserted_ids)
 
-def find_client(query={}, filter={"_id": 0, "id": 0, "password": 0}):
+def find_client(query={}, filter={"_id": 0}):
 
     return dict(collection.find_one(query, filter))
 
-def find_clients(query={}, filter={"_id": 0, "id": 0, "password": 0}):
+def find_clients(query={}, filter={"_id": 0}):
 
     return list(collection.find(query, filter))
 
@@ -25,7 +25,7 @@ def update_client(client):
 
 def update_clients():
 
-    for client in find_clients({}, {"_id": 0}):
+    for client in find_clients():
 
         update_client(client)
 
@@ -33,7 +33,7 @@ def valid_client(id):
 
     try:
 
-        return find_client({"id": id})
+        return find_client({"id": id}, {"_id": 0, "id": 0, "password": 0})
 
     except:
 
