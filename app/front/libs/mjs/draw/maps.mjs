@@ -1,4 +1,6 @@
+import {contextMenu} from "../env/context.mjs"
 import {width, height} from "../env/window.mjs"
+
 import {regionsColourSwitch} from "../colors/switches/regions.mjs"
 
 import {makeZoomable} from "../cartography/zoom.mjs"
@@ -67,19 +69,21 @@ export function drawMaps(plotType=plot.type, λ=0, φ=0, γ=0) {
 
     let maps = $(".map")
 
-    for (let i = 0; i < maps.length; i++) {
+    maps.mouseenter(function() {
 
-      $("#" + maps[i].id + ".map").mouseenter(function() {
+      updateMetaPanel(this.id)
 
-        updateMetaPanel(maps[i].id)
+    }).mouseleave(function() {
 
-      }).mouseleave(function() {
+      clearMetaPanel()
 
-        clearMetaPanel()
+    })
 
-      })
+    maps.contextmenu(function() {
 
-    }
+      contextMenu(this.id)
+
+    })
 
     makeZoomable(canvas)
 

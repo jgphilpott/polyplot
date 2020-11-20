@@ -1,3 +1,4 @@
+import {contextMenu} from "../env/context.mjs"
 import {regionsColourSwitch} from "../colors/switches/regions.mjs"
 import {updateMetaPanel, clearMetaPanel} from "../panels/meta.mjs"
 
@@ -55,6 +56,12 @@ export function drawCircle(circle, r, x, y, plotType=plot.type) {
     plot.animation.hover = false
 
     clearMetaPanel()
+
+  })
+
+  $("#" + circle.code + ".circle").contextmenu(function() {
+
+    contextMenu(circle.code)
 
   })
 

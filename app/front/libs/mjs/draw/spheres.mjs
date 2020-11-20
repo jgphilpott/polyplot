@@ -1,4 +1,5 @@
 import {event} from "../three/x.mjs"
+import {contextMenu} from "../env/context.mjs"
 import {regionsColourSwitch} from "../colors/switches/regions.mjs"
 import {updateMetaPanel, clearMetaPanel} from "../panels/meta.mjs"
 
@@ -22,6 +23,8 @@ export function drawSphere(sphere, r, x, y, z, plotType=plot.type) {
 
     event(mesh, "mouseover", updateMetaPanel, sphere.code)
     event(mesh, "mouseout", clearMetaPanel)
+
+    event(mesh, "contextmenu", contextMenu, sphere.code)
 
     plot.core.scene.add(mesh)
 
