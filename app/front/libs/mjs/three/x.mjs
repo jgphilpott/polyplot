@@ -4,7 +4,7 @@ export function event(obj, type, callback, args=null) {
 
   if (type == "click") {
 
-    events.addEventListener(obj, "click", function(event){
+    events.addEventListener(obj, "click", function(event) {
 
       if (args) {
         callback(args)
@@ -16,7 +16,19 @@ export function event(obj, type, callback, args=null) {
 
   } else if (type == "dblclick") {
 
-    events.addEventListener(obj, "dblclick", function(event){
+    events.addEventListener(obj, "dblclick", function(event) {
+
+      if (args) {
+        callback(args)
+      } else {
+        callback()
+      }
+
+    }, false)
+
+  } else if (type == "contextmenu") {
+
+    events.addEventListener(obj, "contextmenu", function(event) {
 
       if (args) {
         callback(args)
@@ -28,7 +40,7 @@ export function event(obj, type, callback, args=null) {
 
   } else if (type == "mousedown") {
 
-    events.addEventListener(obj, "mousedown", function(event){
+    events.addEventListener(obj, "mousedown", function(event) {
 
       if (args) {
         callback(args)
@@ -40,7 +52,7 @@ export function event(obj, type, callback, args=null) {
 
   } else if (type == "mouseup") {
 
-    events.addEventListener(obj, "mouseup", function(event){
+    events.addEventListener(obj, "mouseup", function(event) {
 
       if (args) {
         callback(args)
@@ -52,7 +64,7 @@ export function event(obj, type, callback, args=null) {
 
   } else if (type == "mouseover") {
 
-    events.addEventListener(obj, "mouseover", function(event){
+    events.addEventListener(obj, "mouseover", function(event) {
 
       if (args) {
         callback(args)
@@ -64,7 +76,7 @@ export function event(obj, type, callback, args=null) {
 
   } else if (type == "mouseout") {
 
-    events.addEventListener(obj, "mouseout", function(event){
+    events.addEventListener(obj, "mouseout", function(event) {
 
       if (args) {
         callback(args)
