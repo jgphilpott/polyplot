@@ -1,5 +1,9 @@
 export function newCanvas() {
 
-  return document.body.appendChild(data.plot.core.renderer.domElement)
+  let canvas = document.body.appendChild(data.plot.core.renderer.domElement)
+
+  canvas.setAttribute("id", "canvas")
+
+  return canvas
 
 }
