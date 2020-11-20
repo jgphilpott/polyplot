@@ -10,12 +10,7 @@ export function addPanelHover(panel) {
 
   panel.mouseover(function() {
 
-    if (plotType != "Home" && plotType != "Error") {
-
-      $(".crosshair").remove()
-      plot.animation.showCrosshair = false
-
-    }
+    $(".crosshair").remove()
 
     panel.css("z-index", 10)
     panel.animate({"backgroundColor": darkGrayGlass}, {"duration": 1500, "queue": false})
@@ -23,12 +18,6 @@ export function addPanelHover(panel) {
     close.animate({"opacity": 0.8}, {"duration": 800, "queue": false})
 
   }).mouseout(function() {
-
-    if (plotType != "Home" && plotType != "Error") {
-
-      plot.animation.showCrosshair = true
-
-    }
 
     $(".panel").css("z-index", 0)
 

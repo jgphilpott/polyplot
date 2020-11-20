@@ -25,19 +25,10 @@ $(document).ready(function() {
 
   })
 
-  if (plotType != "Home" && plotType != "Error") {
+  $("#nav, #forkme").mouseover(function() {
 
-    $("#nav, #forkme").mouseover(function() {
+    $(".crosshair").remove()
 
-      $(".crosshair").remove()
-      plot.animation.showCrosshair = false
-
-    }).mouseout(function() {
-
-      plot.animation.showCrosshair = true
-
-    })
-
-  }
+  })
 
 })

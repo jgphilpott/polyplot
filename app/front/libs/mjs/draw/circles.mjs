@@ -46,14 +46,13 @@ export function drawCircle(circle, r, x, y, plotType=plot.type) {
 
   $("#" + circle.code + ".circle").mouseenter(function() {
 
-    $(".crosshair").remove()
-    plot.animation.showCrosshair = false
+    plot.animation.hover = true
 
     updateMetaPanel(circle.code)
 
   }).mouseleave(function() {
 
-    plot.animation.showCrosshair = true
+    plot.animation.hover = false
 
     clearMetaPanel()
 

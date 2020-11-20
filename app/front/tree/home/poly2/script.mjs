@@ -18,7 +18,7 @@ $(document).ready(function() {
 
     $(".crosshair").remove()
 
-    if (plot.animation.showCrosshair) {
+    if (localRead("settings").crosshairs && !plot.animation.hover) {
 
       let canvas = d3.select("#canvas")
 
@@ -40,6 +40,10 @@ $(document).ready(function() {
 
       d3.selectAll(".crosshair").setAsBackLayer()
       d3.selectAll(".axis").setAsBackLayer()
+
+    } else {
+
+      $("#canvas").css("cursor", "default")
 
     }
 
