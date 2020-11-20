@@ -24,6 +24,26 @@ $(document).ready(function() {
 
       $("#canvas").css("cursor", "crosshair")
 
+      $("body").append("<div id='tooltip' class='panel crosshair'><p><b>X:</b> " + plot.x.scale.invert(event.pageX).toFixed(2) + "</p><p><b>Y:</b> " + plot.y.scale.invert(event.pageY).toFixed(2) + "</p></div>")
+
+      let tooltip = $("#tooltip")
+      let tooltipMargin = 10
+
+      let tooltipWidth = tooltip.outerWidth()
+      let tooltipHeight = tooltip.outerHeight()
+
+      if (event.pageX >= width() / 2) {
+        tooltip.css("left", event.pageX - tooltipWidth - tooltipMargin)
+      } else if (event.pageX < width() / 2) {
+        tooltip.css("left", event.pageX + tooltipMargin)
+      }
+
+      if (event.pageY >= height() / 2) {
+        tooltip.css("top", event.pageY - tooltipHeight - tooltipMargin)
+      } else if (event.pageY < height() / 2) {
+        tooltip.css("top", event.pageY + tooltipMargin)
+      }
+
       canvas.append("line")
             .attr("class", "crosshair")
             .attr("x1", 0)

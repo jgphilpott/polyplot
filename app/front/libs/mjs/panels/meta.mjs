@@ -47,6 +47,12 @@ export function updateMetaPanel(code) {
 
   let plot = plots.find(plot => plot.code == code)
 
+  $("#meta #name").text(plot.name)
+
+  $("#meta #flag").attr("src", "/front/imgs/flags/" + code + ".png")
+
+  $("#meta #region").text(plot.region)
+
   let r, x, y, z = null
   let year = data.plot.t.year
 
@@ -54,11 +60,17 @@ export function updateMetaPanel(code) {
 
     x = plot.x.find(date => date.year == year).value
 
+    $("#meta #x-data").text(x.toFixed(2))
+
   } else if (plotType == "Poly2") {
 
     r = plot.r.find(date => date.year == year).value
     x = plot.x.find(date => date.year == year).value
     y = plot.y.find(date => date.year == year).value
+
+    $("#meta #r-data").text(r.toFixed(2))
+    $("#meta #x-data").text(x.toFixed(2))
+    $("#meta #y-data").text(y.toFixed(2))
 
   } else if (plotType == "Poly3") {
 
@@ -67,18 +79,12 @@ export function updateMetaPanel(code) {
     y = plot.y.find(date => date.year == year).value
     z = plot.z.find(date => date.year == year).value
 
+    $("#meta #r-data").text(r.toFixed(2))
+    $("#meta #x-data").text(x.toFixed(2))
+    $("#meta #y-data").text(y.toFixed(2))
+    $("#meta #z-data").text(z.toFixed(2))
+
   }
-
-  $("#meta #name").text(plot.name)
-
-  $("#meta #flag").attr("src", "/front/imgs/flags/" + code + ".png")
-
-  $("#meta #region").text(plot.region)
-
-  $("#meta #r-data").text(r)
-  $("#meta #x-data").text(x)
-  $("#meta #y-data").text(y)
-  $("#meta #z-data").text(z)
 
 }
 
