@@ -11,6 +11,7 @@ export function addPanelHover(panel) {
   panel.mouseover(function() {
 
     $(".crosshair").remove()
+    $("#contextMenu").remove()
 
     panel.css("z-index", 10)
     panel.animate({"backgroundColor": darkGrayGlass}, {"duration": 1500, "queue": false})

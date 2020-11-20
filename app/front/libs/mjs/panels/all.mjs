@@ -34,4 +34,10 @@ export function addPanels() {
 
   }
 
+  $("#canvas").mousemove(function() {
+
+    $("#contextMenu").remove()
+
+  })
+
 }
