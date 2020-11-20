@@ -59,9 +59,9 @@ export function drawCircle(circle, r, x, y, plotType=plot.type) {
 
   })
 
-  $("#" + circle.code + ".circle").contextmenu(function() {
+  $("#" + circle.code + ".circle").contextmenu(function(event) {
 
-    contextMenu(circle.code)
+    contextMenu(circle.code, event)
 
   })
 

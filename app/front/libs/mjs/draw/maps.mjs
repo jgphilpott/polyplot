@@ -79,9 +79,9 @@ export function drawMaps(plotType=plot.type, λ=0, φ=0, γ=0) {
 
     })
 
-    maps.contextmenu(function() {
+    maps.contextmenu(function(event) {
 
-      contextMenu(this.id)
+      contextMenu(this.id, event)
 
     })
 

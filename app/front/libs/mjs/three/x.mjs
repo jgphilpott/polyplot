@@ -1,4 +1,4 @@
-export function event(obj, type, callback, args=null) {
+export function event(obj, type, callback, args=null, origEvent=null) {
 
   let events = data.plot.core.events
 
@@ -6,11 +6,7 @@ export function event(obj, type, callback, args=null) {
 
     events.addEventListener(obj, "click", function(event) {
 
-      if (args) {
-        callback(args)
-      } else {
-        callback()
-      }
+      eventLogic(callback, args, origEvent, event.origDomEvent)
 
     }, false)
 
@@ -18,11 +14,7 @@ export function event(obj, type, callback, args=null) {
 
     events.addEventListener(obj, "dblclick", function(event) {
 
-      if (args) {
-        callback(args)
-      } else {
-        callback()
-      }
+      eventLogic(callback, args, origEvent, event.origDomEvent)
 
     }, false)
 
@@ -30,11 +22,7 @@ export function event(obj, type, callback, args=null) {
 
     events.addEventListener(obj, "contextmenu", function(event) {
 
-      if (args) {
-        callback(args)
-      } else {
-        callback()
-      }
+      eventLogic(callback, args, origEvent, event.origDomEvent)
 
     }, false)
 
@@ -42,11 +30,7 @@ export function event(obj, type, callback, args=null) {
 
     events.addEventListener(obj, "mousedown", function(event) {
 
-      if (args) {
-        callback(args)
-      } else {
-        callback()
-      }
+      eventLogic(callback, args, origEvent, event.origDomEvent)
 
     }, false)
 
@@ -54,11 +38,7 @@ export function event(obj, type, callback, args=null) {
 
     events.addEventListener(obj, "mouseup", function(event) {
 
-      if (args) {
-        callback(args)
-      } else {
-        callback()
-      }
+      eventLogic(callback, args, origEvent, event.origDomEvent)
 
     }, false)
 
@@ -66,11 +46,7 @@ export function event(obj, type, callback, args=null) {
 
     events.addEventListener(obj, "mouseover", function(event) {
 
-      if (args) {
-        callback(args)
-      } else {
-        callback()
-      }
+      eventLogic(callback, args, origEvent, event.origDomEvent)
 
     }, false)
 
@@ -78,13 +54,27 @@ export function event(obj, type, callback, args=null) {
 
     events.addEventListener(obj, "mouseout", function(event) {
 
-      if (args) {
-        callback(args)
-      } else {
-        callback()
-      }
+      eventLogic(callback, args, origEvent, event.origDomEvent)
 
     }, false)
+
+  }
+
+}
+
+function eventLogic(callback, args, origEvent, origDomEvent) {
+
+  if (args && origEvent) {
+
+    callback(args, origDomEvent)
+
+  } else if (args) {
+
+    callback(args)
+
+  } else {
+
+    callback()
 
   }
 
