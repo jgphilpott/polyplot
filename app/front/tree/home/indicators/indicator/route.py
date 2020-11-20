@@ -1,15 +1,21 @@
-from flask import render_template, request
+from flask import render_template, request, abort
 
 from back.mongo.data.collect.clients import valid_client
 from back.mongo.data.collect.indicators import find_indicator
 
 def register_indicator_route(app):
 
-    @app.route("/indicators/indicator")
-    def indicator():
+    @app.route("/indicators/<indicator>")
+    def indicator(indicator):
 
-        data = {"plot": {"type": None}}
+        try:
 
-        if "id" in request.cookies: data["client"] = valid_client(request.cookies.get("id"))
+            data = {"plot": {"type": None}, "indicator": find_indicator({"code": indicator})}
 
-        return render_template("tree/home/indicators/indicator/page.html", data=data)
+            if "id" in request.cookies: data["client"] = valid_client(request.cookies.get("id"))
+
+            return render_template("tree/home/indicators/indicator/page.html", data=data)
+
+        except:
+
+            abort(404)
