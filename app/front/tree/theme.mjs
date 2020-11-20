@@ -1,33 +1,50 @@
 $(document).ready(function() {
 
-  let plot = data.plot
-  let plotType = plot.type
-
   $("#nav #menu").click(function() {
 
-    let error = $("#error.panel")
-    let home = $("#home.panel")
-    let menu = $("#menu.panel")
+    toggleMenu()
 
-    if (menu.css("visibility") == "hidden") {
+  })
 
-      error.css("visibility", "hidden")
-      home.css("visibility", "hidden")
-      menu.css("visibility", "visible")
+  $(document).keypress(function(event) {
 
-    } else {
+    if (event.keyCode == 13) {
 
-      error.css("visibility", "visible")
-      home.css("visibility", "visible")
-      menu.css("visibility", "hidden")
+      event.preventDefault()
+      event.stopPropagation()
+
+      toggleMenu()
 
     }
 
   })
 
+  function toggleMenu() {
+
+    let menu = $("#menu.panel")
+    let home = $("#home.panel")
+    let error = $("#error.panel")
+
+    if (menu.css("visibility") == "hidden") {
+
+      menu.css("visibility", "visible")
+      home.css("visibility", "hidden")
+      error.css("visibility", "hidden")
+
+    } else {
+
+      menu.css("visibility", "hidden")
+      home.css("visibility", "visible")
+      error.css("visibility", "visible")
+
+    }
+
+  }
+
   $("#nav, #forkme").mouseover(function() {
 
     $(".crosshair").remove()
+    $("#contextMenu").remove()
 
   })
 
