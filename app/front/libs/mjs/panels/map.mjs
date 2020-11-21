@@ -12,7 +12,11 @@ export function addMapPanel() {
 
   panel.append("<img class='close' src='/front/imgs/panels/all/close.png'>")
 
+  panel.append("<img id='rotationIcon' src='/front/imgs/panels/map/rotation-light.png'>")
+
   panel.append("<svg id='miniMap'></svg>")
+
+  panel.append("<h1 id='name'>Geographic Regions<h1>")
 
   socket.emit("get_maps")
 
@@ -24,7 +28,7 @@ export function addMapPanel() {
 
     drawMaps("miniMap")
 
-    rotateMap()
+    // rotateMap()
 
   })
 
