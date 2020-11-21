@@ -7,7 +7,7 @@ export function animateCircles(duration) {
 
   for (let i = 0; i < plots.length; i++) {
 
-    let circle = $("#" + plots[i].code).length
+    let circle = $("#" + plots[i].code + ".circle").length
 
     let rNew = plots[i].r.find(item => item.year == data.plot.t.year).value
     let xNew = plots[i].x.find(item => item.year == data.plot.t.year).value
@@ -15,7 +15,7 @@ export function animateCircles(duration) {
 
     if (circle && (typeof(rNew) == "number" && typeof(xNew) == "number" && typeof(yNew) == "number")) {
 
-      d3.select("#" + plots[i].code)
+      d3.select("#" + plots[i].code + ".circle")
         .transition()
         .ease(d3.easeLinear)
         .duration(duration)
@@ -25,7 +25,7 @@ export function animateCircles(duration) {
 
     } else if (circle && !(typeof(rNew) == "number" && typeof(xNew) == "number" && typeof(yNew) == "number")) {
 
-      $("#" + plots[i].code).remove()
+      $("#" + plots[i].code + ".circle").remove()
 
     } else if (!circle && (typeof(rNew) == "number" && typeof(xNew) == "number" && typeof(yNew) == "number")) {
 
