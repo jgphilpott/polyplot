@@ -63,7 +63,7 @@ export function addIndicatorsPanel() {
 
     socket.emit("get_meta", "categories")
 
-    socket.on("new_meta", function(categories) {
+    socket.on("new_categories", function(categories) {
 
       for (let i = 0; i < categories.length; i++) {
 

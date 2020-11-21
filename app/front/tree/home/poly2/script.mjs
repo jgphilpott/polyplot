@@ -32,6 +32,8 @@ $(document).ready(function() {
       let tooltipWidth = tooltip.outerWidth()
       let tooltipHeight = tooltip.outerHeight()
 
+      tooltip.css("z-index", tooltipMargin)
+
       if (event.pageX >= width() / 2) {
         tooltip.css("left", event.pageX - tooltipWidth - tooltipMargin)
       } else if (event.pageX < width() / 2) {
