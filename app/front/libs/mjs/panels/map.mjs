@@ -16,7 +16,7 @@ export function addMapPanel() {
 
   panel.append("<svg id='miniMap'></svg>")
 
-  panel.append("<h1 id='name'>Geographic Regions<h1>")
+  panel.append("<h1 id='name'>Geographic Regions</h1>")
 
   socket.emit("get_maps")
 
@@ -24,11 +24,25 @@ export function addMapPanel() {
 
     plot.GeoJSON = {"type": "FeatureCollection", "features": maps}
 
-    panel.css("visibility", "visible")
-
     drawMaps("miniMap")
 
     // rotateMap()
+
+    socket.emit("get_meta", "regions")
+
+    socket.on("new_regions", function(regions) {
+
+      for (let i = 0; i < regions.length; i++) {
+
+        panel.append("<div class='region-box'><div id='" + camalize(regions[i]) + "' class='region-key'></div><p class='region-name'><b>" + regions[i] + "</b></p></div>")
+
+      }
+
+      panel.append("<p id='countriesLink'>View All Countries</p>")
+
+      panel.css("visibility", "visible")
+
+    })
 
   })
 

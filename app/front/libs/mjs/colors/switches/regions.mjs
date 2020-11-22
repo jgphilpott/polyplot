@@ -21,15 +21,15 @@ export function regionsColourSwitch(region, plotType=null) {
 
   }
 
-  if (region == "Europe & Central Asia") {
+  if (region == "East Asia & Pacific") {
 
     return rainbow[0]
 
-  } else if (region == "Latin America & Caribbean") {
+  } else if (region == "Europe & Central Asia") {
 
     return rainbow[1]
 
-  } else if (region == "South Asia") {
+  } else if (region == "Latin America & Caribbean") {
 
     return rainbow[2]
 
@@ -37,11 +37,11 @@ export function regionsColourSwitch(region, plotType=null) {
 
     return rainbow[3]
 
-  } else if (region == "East Asia & Pacific") {
+  } else if (region == "North America") {
 
     return rainbow[4]
 
-  } else if (region == "North America") {
+  } else if (region == "South Asia") {
 
     return rainbow[5]
 

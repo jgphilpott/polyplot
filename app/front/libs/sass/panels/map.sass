@@ -1,8 +1,7 @@
 @import "all.sass"
+@import "../colors/solid/rainbow.sass"
 
 #map.panel
-
-  text-align: center
 
   visibility: hidden
 
@@ -29,5 +28,60 @@
     height: 15px
 
   #rotationIcon:hover
+
+    cursor: pointer
+
+  h1
+
+    text-align: center
+
+  .region-box
+
+    display: flex
+    align-items: center
+
+    .region-key
+
+      margin: 5px
+
+      width: 15px
+      height: 15px
+
+      border: 1px solid $black
+      border-radius: 5px
+
+    #eastAsiaPacific
+
+      background-color: $red
+
+    #europeCentralAsia
+
+      background-color: $orange
+
+    #latinAmericaCaribbean
+
+      background-color: $yellow
+
+    #midleEastNorthAfrica
+
+      background-color: $green
+
+    #northAmerica
+
+      background-color: $blue
+
+    #southAsia
+
+      background-color: $purple
+
+    #subSaharanAfrica
+
+      background-color: $pink
+
+  #countriesLink
+
+    text-align: center
+
+  #countriesLink:hover
 
     cursor: pointer
