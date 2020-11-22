@@ -38,7 +38,7 @@ export function addMapPanel() {
 
       }
 
-      panel.append("<p id='countriesLink'>View All Countries</p>")
+      panel.append("<p id='countriesLink'>Toggle Countries Panel</p>")
 
       $("#countriesLink").click(function() {
 

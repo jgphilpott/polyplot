@@ -253,6 +253,7 @@ export function addMenuPanel() {
 
     $("#logout").click(function() {
 
+      localDelete("settings")
       deleteCookie("id")
       location.reload()
 
