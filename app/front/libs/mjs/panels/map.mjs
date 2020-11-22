@@ -40,6 +40,22 @@ export function addMapPanel() {
 
       panel.append("<p id='countriesLink'>View All Countries</p>")
 
+      $("#countriesLink").click(function() {
+
+        let countriesPanel = $("#countries.panel")
+
+        if (countriesPanel.css("visibility") == "hidden") {
+
+          countriesPanel.css("visibility", "visible")
+
+        } else {
+
+          countriesPanel.css("visibility", "hidden")
+
+        }
+
+      })
+
       panel.css("visibility", "visible")
 
     })

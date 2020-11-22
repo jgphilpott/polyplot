@@ -64,7 +64,7 @@ export function addMenuPanel() {
       let clientSettings = client.settings
 
       $("#crosshairs").prop("checked", clientSettings.crosshairs)
-      $("#crosshairs").prop("checked", clientSettings.rotation)
+      $("#rotation").prop("checked", clientSettings.rotation)
 
       localWrite("settings", clientSettings)
 
@@ -73,7 +73,7 @@ export function addMenuPanel() {
       let localSettings = localRead("settings")
 
       $("#crosshairs").prop("checked", localSettings.crosshairs)
-      $("#crosshairs").prop("checked", localSettings.rotation)
+      $("#rotation").prop("checked", localSettings.rotation)
 
     } else {
 
@@ -83,7 +83,7 @@ export function addMenuPanel() {
       }
 
       $("#crosshairs").prop("checked", defaultSettings.crosshairs)
-      $("#crosshairs").prop("checked", defaultSettings.rotation)
+      $("#rotation").prop("checked", defaultSettings.rotation)
 
       localWrite("settings", defaultSettings)
 
@@ -91,7 +91,7 @@ export function addMenuPanel() {
 
     $(".checkbox").click(function(event) {
 
-      let checkbox = $("#" + this.id)
+      let checkbox = $("#" + this.id + ".checkbox")
 
       if (client) {
 
@@ -108,7 +108,7 @@ export function addMenuPanel() {
           settings[update.setting] = update.value
           localWrite("settings", settings)
 
-          checkbox.prop("checked", update.value)
+          $("#" + update.setting + ".checkbox").prop("checked", update.value)
 
         })
 
