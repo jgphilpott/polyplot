@@ -48,7 +48,8 @@ export function addMenuPanel() {
 
     let settings = "<div id='settings-panel' class='sub-panel'><h1>Settings</h1>"
 
-    settings += "<input id='crosshairs' class='checkbox' type='checkbox'><label>Show Crosshairs</label>"
+    settings += "<div><input id='crosshairs' class='checkbox' type='checkbox'><label>Show Crosshairs</label></div>"
+    settings += "<div><input id='rotation' class='checkbox' type='checkbox'><label>Rotate miniMap</label></div>"
 
     settings += "</div>"
 
@@ -63,6 +64,7 @@ export function addMenuPanel() {
       let clientSettings = client.settings
 
       $("#crosshairs").prop("checked", clientSettings.crosshairs)
+      $("#crosshairs").prop("checked", clientSettings.rotation)
 
       localWrite("settings", clientSettings)
 
@@ -71,12 +73,17 @@ export function addMenuPanel() {
       let localSettings = localRead("settings")
 
       $("#crosshairs").prop("checked", localSettings.crosshairs)
+      $("#crosshairs").prop("checked", localSettings.rotation)
 
     } else {
 
-      let defaultSettings = {"crosshairs": true}
+      let defaultSettings = {
+        "crosshairs": true,
+        "rotation": false
+      }
 
       $("#crosshairs").prop("checked", defaultSettings.crosshairs)
+      $("#crosshairs").prop("checked", defaultSettings.rotation)
 
       localWrite("settings", defaultSettings)
 

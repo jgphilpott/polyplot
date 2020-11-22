@@ -17,7 +17,10 @@ class Client():
 
         else:
 
-            self.settings = {"crosshairs": True}
+            self.settings = {
+                "crosshairs": True,
+                "rotation": False
+            }
 
     def refresh_id(self):
 
