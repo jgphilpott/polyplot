@@ -6,8 +6,6 @@ export function animatePlot() {
 
     requestAnimationFrame(animate)
 
-    core.controls.update()
-
     core.renderer.render(core.scene, core.camera)
 
   }
