@@ -14,9 +14,9 @@ def register_poly3_route(app):
         if "id" in request.cookies: data["client"] = valid_client(request.cookies.get("id"))
 
         r = find_indicator({"code": request.args["r"]}) if "r" in request.args else find_indicator({"code": "SP.POP.TOTL"})
-        x = find_indicator({"code": request.args["x"]}) if "x" in request.args else find_indicator({"code": "SP.DYN.LE00.IN"})
-        y = find_indicator({"code": request.args["y"]}) if "y" in request.args else find_indicator({"code": "SP.DYN.TFRT.IN"})
-        z = find_indicator({"code": request.args["z"]}) if "z" in request.args else find_indicator({"code": "NY.GDP.PCAP.KD.ZG"})
+        x = find_indicator({"code": request.args["x"]}) if "x" in request.args else find_indicator({"code": "NY.GDP.PCAP.KD.ZG"})
+        y = find_indicator({"code": request.args["y"]}) if "y" in request.args else find_indicator({"code": "SP.DYN.LE00.IN"})
+        z = find_indicator({"code": request.args["z"]}) if "z" in request.args else find_indicator({"code": "SP.DYN.TFRT.IN"})
 
         data["plot"]["r"] = {"name": r["name"], "code": r["code"]}
         data["plot"]["x"] = {"name": x["name"], "code": x["code"]}
