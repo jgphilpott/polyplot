@@ -1,5 +1,6 @@
 import {width, height} from "./window.mjs"
 import {updateMetaPanel} from "../panels/meta.mjs"
+import {addPoltPanel} from "../panels/plot.mjs"
 
 export function contextMenu(code, domEvent) {
 
@@ -13,6 +14,10 @@ export function contextMenu(code, domEvent) {
   menu += "</div>"
 
   $("body").append(menu)
+
+  $("#openPanel").click(function() {
+    addPoltPanel(code)
+  })
 
   let contextMenu = $("#contextMenu")
   let contextMenuIndex = 5
