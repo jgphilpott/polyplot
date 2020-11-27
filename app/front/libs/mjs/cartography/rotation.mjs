@@ -1,20 +1,24 @@
 import {drawMaps} from "../draw/maps.mjs"
 
-export function rotateMap() {
+export function startRotation() {
 
-  let λ = 0
-  let φ = 0
-  let γ = 0
+  let map = data.plot.GeoJSON.properties
 
   function rotate() {
 
-    λ += 1
+    map.λ += 1
 
     $(".map").remove()
-    drawMaps("miniMap", λ, φ, γ)
+    drawMaps("miniMap", map.λ, map.φ, map.γ)
 
   }
 
-  setInterval(rotate, 100)
+  map.rotation = setInterval(rotate, 100)
+
+}
+
+export function stopRotation() {
+
+  clearInterval(data.plot.GeoJSON.properties.rotation)
 
 }

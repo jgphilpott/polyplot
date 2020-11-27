@@ -18,7 +18,7 @@ def register_map_route(app):
 
         data["plot"]["x"] = {"name": x["name"], "code": x["code"]}
         data["plot"]["t"] = {"minYear": 1960, "year": 1970, "maxYear": 2018}
-        data["plot"]["GeoJSON"] = {"type": "FeatureCollection", "features": find_maps(detail="high")}
+        data["plot"]["GeoJSON"] = {"type": "FeatureCollection", "features": find_maps(detail="high"), "properties": {"λ": 0, "φ": 0, "γ": 0}}
 
         countries = find_countries()
 
