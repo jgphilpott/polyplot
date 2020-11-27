@@ -1,5 +1,6 @@
 import {drawMaps} from "../draw/maps.mjs"
-import {rotateMap} from "../cartography/rotation.mjs"
+import {startRotation} from "../cartography/rotation.mjs"
+import {toggleCheckbox} from "./menu.mjs"
 import {addPanelEvents} from "./events/all.mjs"
 
 let plot = data.plot
@@ -10,9 +11,19 @@ export function addMapPanel() {
 
   let panel = $("#map.panel")
 
+  let rotation = localRead("settings").rotation
+
   panel.append("<img class='close' src='/front/imgs/panels/all/close.png'>")
 
-  panel.append("<img id='rotationIcon' src='/front/imgs/panels/map/rotation-light.png'>")
+  if (rotation) {
+
+    panel.append("<img id='rotationIcon' src='/front/imgs/panels/map/rotation-dark.png'>")
+
+  } else {
+
+    panel.append("<img id='rotationIcon' src='/front/imgs/panels/map/rotation-light.png'>")
+
+  }
 
   panel.append("<svg id='miniMap'></svg>")
 
@@ -22,11 +33,17 @@ export function addMapPanel() {
 
   socket.on("new_maps", function(maps) {
 
-    plot.GeoJSON = {"type": "FeatureCollection", "features": maps}
+    plot.GeoJSON = {"type": "FeatureCollection", "features": maps, "properties": {"λ": 0, "φ": 0, "γ": 0}}
 
     drawMaps("miniMap")
 
-    // rotateMap()
+    if (rotation) { startRotation() }
+
+    $("#rotationIcon").click(function(event) {
+
+      toggleCheckbox("rotation", event)
+
+    })
 
     socket.emit("get_meta", "regions")
 
