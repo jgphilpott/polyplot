@@ -1,4 +1,5 @@
 import {addPanelEvents} from "./events/all.mjs"
+import {startRotation, stopRotation} from "../cartography/rotation.mjs"
 
 let client = data.client
 
@@ -90,36 +91,7 @@ export function addMenuPanel() {
     }
 
     $(".checkbox").click(function(event) {
-
-      let checkbox = $("#" + this.id + ".checkbox")
-
-      if (client) {
-
-        event.preventDefault()
-        event.stopPropagation()
-
-        socket.emit("settings_update", {"id": readCookie("id"), "setting": this.id, "value": checkbox.is(":checked")})
-
-        socket.on("settings_updated", function(update) {
-
-          client.settings[update.setting] = update.value
-
-          let settings = localRead("settings")
-          settings[update.setting] = update.value
-          localWrite("settings", settings)
-
-          $("#" + update.setting + ".checkbox").prop("checked", update.value)
-
-        })
-
-      } else {
-
-        let settings = localRead("settings")
-        settings[this.id] = checkbox.is(":checked")
-        localWrite("settings", settings)
-
-      }
-
+      toggleCheckbox(this.id, event)
     })
 
   }
@@ -307,5 +279,66 @@ export function addMenuPanel() {
   $(document).click(function() { $("input").blur() })
 
   addPanelEvents(panel)
+
+}
+
+export function toggleCheckbox(id, event) {
+
+  let settings = localRead("settings")
+  let setting = settings[id]
+  settings[id] = !setting
+
+  if (client) {
+
+    event.preventDefault()
+    event.stopPropagation()
+
+    socket.emit("settings_update", {"id": readCookie("id"), "setting": id, "value": settings[id]})
+
+    socket.on("settings_updated", function(update) {
+
+      $("#" + update.setting + ".checkbox").prop("checked", update.value)
+
+      client.settings[update.setting] = update.value
+
+      localWrite("settings", settings)
+
+    })
+
+    settingSwitch(id)
+
+  } else {
+
+    $("#" + id + ".checkbox").prop("checked", settings[id])
+
+    localWrite("settings", settings)
+
+    settingSwitch(id)
+
+  }
+
+  function settingSwitch(id) {
+
+    switch (id) {
+
+      case "rotation":
+
+        if (settings.rotation) {
+
+          startRotation()
+          $("#rotationIcon").attr("src", "/front/imgs/panels/map/rotation-dark.png")
+
+        } else {
+
+          stopRotation()
+          $("#rotationIcon").attr("src", "/front/imgs/panels/map/rotation-light.png")
+
+        }
+
+        break
+
+    }
+
+  }
 
 }

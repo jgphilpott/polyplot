@@ -8,7 +8,7 @@ export function startRotation() {
 
     map.λ += 1
 
-    $(".map").remove()
+    $("#miniMap .map").remove()
     drawMaps("miniMap", map.λ, map.φ, map.γ)
 
   }
