@@ -34,8 +34,9 @@ def load_js(path):
     localStorage = get("https://gist.githubusercontent.com/jgphilpott/e26b92eb41b64e9565032d5c4d3c2878/raw/593ae1721ca986210862da158db663f21dec42af/localStorage.js").content.decode("utf-8")
     angles = get("https://gist.githubusercontent.com/jgphilpott/092c0f3e1bcfa75f543e8485b9b23e7d/raw/813b2b7ac4c3cbcfc5caec5eec3600bba3bf5edc/angleConverter.js").content.decode("utf-8")
     trig = get("https://gist.githubusercontent.com/jgphilpott/1378cc2cccde6d65c5fb2b6111b5a98f/raw/587408f905ba1da6fcc970cb095bdf129ffa308b/trigonometry.js").content.decode("utf-8")
+    format = get("https://gist.githubusercontent.com/jgphilpott/787659ac4ea57a9971da58a76191079b/raw/aa02b0fef92e1d626f2d36dbec70e37ff3a6b5aa/numberFormater.js").content.decode("utf-8")
 
-    tools = particleWeb + "\n" + camalize + "\n" + rotation + "\n" + scaling + "\n" + d3Sorting + "\n" + cookieFuncs + "\n" + validEmail + "\n" + localStorage + "\n" + angles + "\n" + trig
+    tools = particleWeb + "\n" + camalize + "\n" + rotation + "\n" + scaling + "\n" + d3Sorting + "\n" + cookieFuncs + "\n" + validEmail + "\n" + localStorage + "\n" + angles + "\n" + trig + "\n" + format
 
     with open(path + "/tools.js", "w") as file:
 
