@@ -1,6 +1,6 @@
 import {width, height} from "./window.mjs"
-import {updateMetaPanel} from "../panels/meta.mjs"
 import {addPoltPanel} from "../panels/plot.mjs"
+import {updateMetaPanel, clearMetaPanel} from "../panels/meta.mjs"
 
 export function contextMenu(code, domEvent) {
 
@@ -16,7 +16,9 @@ export function contextMenu(code, domEvent) {
   $("body").append(menu)
 
   $("#openPanel").click(function() {
+
     addPoltPanel(code)
+
   })
 
   let contextMenu = $("#contextMenu")
@@ -39,6 +41,14 @@ export function contextMenu(code, domEvent) {
     contextMenu.css("top", domEvent.pageY - contextMenuIndex)
   }
 
-  contextMenu.mouseover(function() { updateMetaPanel(code) })
+  contextMenu.mouseover(function() {
+
+    updateMetaPanel(code)
+
+  }).mouseout(function() {
+
+    clearMetaPanel()
+
+  })
 
 }
