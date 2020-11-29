@@ -60,7 +60,7 @@ export function updateMetaPanel(code) {
 
     x = plot.x.find(date => date.year == year).value
 
-    $("#meta #x-data").text(x.toFixed(2))
+    $("#meta #x-data").text(format(x))
 
   } else if (plotType == "Poly2") {
 
@@ -68,9 +68,9 @@ export function updateMetaPanel(code) {
     x = plot.x.find(date => date.year == year).value
     y = plot.y.find(date => date.year == year).value
 
-    $("#meta #r-data").text(r.toFixed(2))
-    $("#meta #x-data").text(x.toFixed(2))
-    $("#meta #y-data").text(y.toFixed(2))
+    $("#meta #r-data").text(format(r))
+    $("#meta #x-data").text(format(x))
+    $("#meta #y-data").text(format(y))
 
   } else if (plotType == "Poly3") {
 
@@ -79,10 +79,10 @@ export function updateMetaPanel(code) {
     y = plot.y.find(date => date.year == year).value
     z = plot.z.find(date => date.year == year).value
 
-    $("#meta #r-data").text(r.toFixed(2))
-    $("#meta #x-data").text(x.toFixed(2))
-    $("#meta #y-data").text(y.toFixed(2))
-    $("#meta #z-data").text(z.toFixed(2))
+    $("#meta #r-data").text(format(r))
+    $("#meta #x-data").text(format(x))
+    $("#meta #y-data").text(format(y))
+    $("#meta #z-data").text(format(z))
 
   }
 

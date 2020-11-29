@@ -26,7 +26,7 @@ export function addPoltPanel(code) {
 
     let x = country.x.find(date => date.year == year).value
 
-    panel.append("<p id='" + plot.x.code + "'><strong id='x-key'>X:</strong> <span id='x-data'>" + x.toFixed(2) + "</span></p>")
+    panel.append("<p id='" + plot.x.code + "'><strong id='x-key'>X:</strong> <span id='x-data'>" + format(x) + "</span></p>")
 
   } else if (plotType == "Poly2") {
 
@@ -34,9 +34,9 @@ export function addPoltPanel(code) {
     let x = country.x.find(date => date.year == year).value
     let y = country.y.find(date => date.year == year).value
 
-    panel.append("<p id='" + plot.r.code + "'><strong id='r-key'>R:</strong> <span id='r-data'>" + r.toFixed(2) + "</span></p>")
-    panel.append("<p id='" + plot.x.code + "'><strong id='x-key'>X:</strong> <span id='x-data'>" + x.toFixed(2) + "</span></p>")
-    panel.append("<p id='" + plot.y.code + "'><strong id='y-key'>Y:</strong> <span id='y-data'>" + y.toFixed(2) + "</span></p>")
+    panel.append("<p id='" + plot.r.code + "'><strong id='r-key'>R:</strong> <span id='r-data'>" + format(r) + "</span></p>")
+    panel.append("<p id='" + plot.x.code + "'><strong id='x-key'>X:</strong> <span id='x-data'>" + format(x) + "</span></p>")
+    panel.append("<p id='" + plot.y.code + "'><strong id='y-key'>Y:</strong> <span id='y-data'>" + format(y) + "</span></p>")
 
   } else if (plotType == "Poly3") {
 
@@ -45,10 +45,10 @@ export function addPoltPanel(code) {
     let y = country.y.find(date => date.year == year).value
     let z = country.z.find(date => date.year == year).value
 
-    panel.append("<p id='" + plot.r.code + "'><strong id='r-key'>R:</strong> <span id='r-data'>" + r.toFixed(2) + "</span></p>")
-    panel.append("<p id='" + plot.x.code + "'><strong id='x-key'>X:</strong> <span id='x-data'>" + x.toFixed(2) + "</span></p>")
-    panel.append("<p id='" + plot.y.code + "'><strong id='y-key'>Y:</strong> <span id='y-data'>" + y.toFixed(2) + "</span></p>")
-    panel.append("<p id='" + plot.z.code + "'><strong id='z-key'>Z:</strong> <span id='z-data'>" + z.toFixed(2) + "</span></p>")
+    panel.append("<p id='" + plot.r.code + "'><strong id='r-key'>R:</strong> <span id='r-data'>" + format(r) + "</span></p>")
+    panel.append("<p id='" + plot.x.code + "'><strong id='x-key'>X:</strong> <span id='x-data'>" + format(x) + "</span></p>")
+    panel.append("<p id='" + plot.y.code + "'><strong id='y-key'>Y:</strong> <span id='y-data'>" + format(y) + "</span></p>")
+    panel.append("<p id='" + plot.z.code + "'><strong id='z-key'>Z:</strong> <span id='z-data'>" + format(z) + "</span></p>")
 
   }
 
