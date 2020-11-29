@@ -1,8 +1,5 @@
 import {grayGlass, darkGrayGlass} from "../../colors/glass/grayscale.mjs"
 
-let plot = data.plot
-let plotType = plot.type
-
 export function addPanelHover(panel) {
 
   let id = panel.attr("id")
@@ -26,12 +23,6 @@ export function addPanelHover(panel) {
     panel.animate({"backgroundColor": grayGlass}, {"duration": 1500, "queue": false})
 
     close.animate({"opacity": 0}, {"duration": 800, "queue": false})
-
-  })
-
-  close.click(function() {
-
-    panel.css({"visibility": "hidden"})
 
   })
 
