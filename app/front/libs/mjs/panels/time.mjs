@@ -4,6 +4,7 @@ import {startAnimation} from "../animation/plots.mjs"
 import {clearAnimation} from "../animation/plots.mjs"
 
 import {animateMaps} from "../animation/types/maps.mjs"
+import {animatePanels} from "../animation/types/panels.mjs"
 import {animateCircles} from "../animation/types/circles.mjs"
 import {animateSpheres} from "../animation/types/spheres.mjs"
 import {animateTimeline} from "../animation/types/timeline.mjs"
@@ -180,6 +181,7 @@ export function skip(direction) {
 
   }
 
+  animatePanels()
   animateTimeline(0)
 
   if (plotType == "Map") {
@@ -263,6 +265,7 @@ export function dragTimeControls(controller, eventCoordinates) {
     plot.t.year = Math.floor(data.plot.t.scale.invert(point - pointWidth - minOffset))
 
     clearAnimation()
+    animatePanels()
 
     if (plotType == "Map") {
 

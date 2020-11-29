@@ -1,4 +1,5 @@
 import {animateMaps} from "./types/maps.mjs"
+import {animatePanels} from "./types/panels.mjs"
 import {animateCircles} from "./types/circles.mjs"
 import {animateSpheres} from "./types/spheres.mjs"
 import {animateTimeline} from "./types/timeline.mjs"
@@ -33,6 +34,7 @@ export function updatePlots(speed=(plot.animation.speed / plot.animation.speedMu
 
   if (updateYear()) {
 
+    animatePanels()
     animateTimeline(speed)
 
     if (plotType == "Map") {
@@ -80,8 +82,8 @@ export function updateYear() {
 export function clearAnimation() {
 
   clearInterval(plot.animation.interval)
-  plot.animation.status = "inactive"
 
+  plot.animation.status = "inactive"
   plot.animation.speedMultiplier = 1
 
   $("#playForward").css({"visibility": "visible"})

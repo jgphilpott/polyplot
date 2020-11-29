@@ -3,6 +3,7 @@ import {addPanelEvents} from "./events/all.mjs"
 import {scaleR, scaleX, scaleY, scaleZ} from "../scales/axes.mjs"
 
 import {animateMaps} from "../animation/types/maps.mjs"
+import {animatePanels} from "../animation/types/panels.mjs"
 import {animateCircles} from "../animation/types/circles.mjs"
 import {animateSpheres} from "../animation/types/spheres.mjs"
 
@@ -172,6 +173,8 @@ export function addIndicatorsPanel() {
       scaleZ(plotType)
 
     }
+
+    animatePanels()
 
     let speed = plot.animation.speed / plot.animation.speedMultiplier
 
