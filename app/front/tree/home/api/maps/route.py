@@ -1,4 +1,4 @@
-from flask import jsonify
+from flask import jsonify, request
 
 def register_api_maps_route(app):
 
