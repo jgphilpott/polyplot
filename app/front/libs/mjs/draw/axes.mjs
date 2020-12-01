@@ -1,4 +1,4 @@
-import {addLine} from "./lines.mjs"
+import {drawLine} from "./lines.mjs"
 import {red, green, blue} from "../colors/three/rainbow.mjs"
 import {min, max, width, height} from "../env/window.mjs"
 
@@ -29,9 +29,9 @@ export function drawAxes(plotType=plot.type) {
 
   } else if (plotType == "Poly3") {
 
-    addLine([[max, min, min], [-max, min, min]], red)
-    addLine([[min, max, min], [min, -max, min]], green)
-    addLine([[min, min, max], [min, min, -max]], blue)
+    drawLine([[max, min, min], [-max, min, min]], red)
+    drawLine([[min, max, min], [min, -max, min]], green)
+    drawLine([[min, min, max], [min, min, -max]], blue)
 
   }
 

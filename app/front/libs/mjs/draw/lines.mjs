@@ -26,7 +26,7 @@ export function newLine(vertices=[], color=black, linewidth=1) {
 
 }
 
-export function addLine(vertices=[], color=black, linewidth=1) {
+export function drawLine(vertices=[], color=black, linewidth=1) {
 
   return data.plot.core.scene.add(newLine(vertices, color, linewidth))
 

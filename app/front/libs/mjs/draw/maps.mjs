@@ -1,3 +1,5 @@
+import {drawLayers} from "./layers.mjs"
+
 import {contextMenu} from "../env/context.mjs"
 import {width, height} from "../env/window.mjs"
 
@@ -28,6 +30,8 @@ export function drawMaps(plotType=plot.type, λ=0, φ=0, γ=0) {
     path = d3.geoPath().projection(projection.rotate([λ, φ, γ]))
 
   }
+
+  plot.GeoJSON.properties.projection = projection
 
   canvas.selectAll(".map")
         .data(plot.GeoJSON.features)
@@ -85,6 +89,7 @@ export function drawMaps(plotType=plot.type, λ=0, φ=0, γ=0) {
 
     })
 
+    drawLayers(1)
     makeZoomable(canvas)
 
   }
