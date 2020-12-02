@@ -6,6 +6,7 @@ app/front/libs/sass/vendor
 
 # Notes
 *.ipynb_checkpoints
+*.txt
 
 # Python Cache
 __pycache__
