@@ -9,7 +9,7 @@ def load_json(path):
 
     path = "/root/app/back/mongo/backups/json"
 
-    datasets = ["airports", "clients", "countries", "indicators", "maps", "meta"]
+    datasets = ["airports", "clients", "countries", "indicators", "maps", "meta", "ports"]
 
     for dataset in datasets:
 
