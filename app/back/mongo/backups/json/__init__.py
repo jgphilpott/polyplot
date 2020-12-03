@@ -23,7 +23,7 @@ def load_json(path):
                 data = load(list)
                 collection.insert_many(data)
 
-    for indicator in find_indicators({}, {"_id": 0}):
+    for indicator in find_indicators():
 
         if indicator["default"] == True:
 
