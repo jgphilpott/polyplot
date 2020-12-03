@@ -1,4 +1,4 @@
-import {drawLayers} from "./layers.mjs"
+import {drawLayers} from "./layers/all.mjs"
 
 import {contextMenu} from "../env/context.mjs"
 import {width, height} from "../env/window.mjs"
