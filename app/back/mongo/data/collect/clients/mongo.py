@@ -15,9 +15,9 @@ def find_client(query={}, filter={"_id": 0}):
 
     return dict(collection.find_one(query, filter))
 
-def find_clients(query={}, filter={"_id": 0}):
+def find_clients(query={}, filter={"_id": 0}, sort=[("email", 1)]):
 
-    return list(collection.find(query, filter))
+    return list(collection.find(query, filter).sort(sort))
 
 def update_client(client):
 

@@ -7,6 +7,6 @@ def find_airport(query={}, filter={"_id": 0}):
 
     return dict(collection.find_one(query, filter))
 
-def find_airports(query={}, filter={"_id": 0}):
+def find_airports(query={}, filter={"_id": 0}, sort=[("flow", -1), ("code", 1)]):
 
-    return list(collection.find(query, filter))
+    return list(collection.find(query, filter).sort(sort))

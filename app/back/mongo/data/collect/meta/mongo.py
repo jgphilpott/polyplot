@@ -7,6 +7,6 @@ def find_meta(query={}, filter={"_id": 0}):
 
     return dict(collection.find_one(query, filter))
 
-def find_metas(query={}, filter={"_id": 0}):
+def find_metas(query={}, filter={"_id": 0}, sort=[("code", 1)]):
 
-    return list(collection.find(query, filter))
+    return list(collection.find(query, filter).sort(sort))

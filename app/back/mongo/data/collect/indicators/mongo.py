@@ -1,3 +1,5 @@
+from operator import itemgetter
+
 from back.mongo.data.collect.ions import find_collection
 from back.mongo.data.collect.indicators.object import Indicator
 
@@ -7,9 +9,9 @@ def find_indicator(query={}, filter={"_id": 0}):
 
     return dict(collection.find_one(query, filter))
 
-def find_indicators(query={}, filter={"_id": 0}):
+def find_indicators(query={}, filter={"_id": 0}, sort=[("code", False)]):
 
-    return list(collection.find(query, filter))
+    return sorted(list(collection.find(query, filter)), key=itemgetter(sort[0][0]), reverse=sort[0][1])
 
 def update_indicator(indicator):
 
