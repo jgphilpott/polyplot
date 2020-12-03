@@ -18,7 +18,7 @@ from front.tree.home.poly3.route import register_poly3_route
 from front.tree.errors._404_.route import register_404_error_route
 from front.tree.errors._500_.route import register_500_error_route
 
-def register(app):
+def register_routes(app):
 
     register_home_route(app)
 
