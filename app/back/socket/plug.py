@@ -6,6 +6,7 @@ from back.socket.countries import connect_countries
 from back.socket.indicators import connect_indicators
 from back.socket.maps import connect_maps
 from back.socket.meta import connect_meta
+from back.socket.ports import connect_ports
 
 def plugin(app):
 
@@ -17,6 +18,7 @@ def plugin(app):
     connect_indicators(app)
     connect_maps(app)
     connect_meta(app)
+    connect_ports(app)
 
     return app
 
