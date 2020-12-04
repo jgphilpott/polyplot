@@ -7,4 +7,5 @@ class River():
         self.name = river["name"]
         self.number = river["number"]
         self.rank = river["rank"]
+        self.type = river["type"]
         self.wiki = river["wiki"]
