@@ -1,5 +1,6 @@
 import {drawAirports} from "./airports.mjs"
 import {drawPorts} from "./ports.mjs"
+import {drawRivers} from "./rivers.mjs"
 
 let plot = data.plot
 
@@ -54,12 +55,28 @@ export function drawLayers(zoom) {
 
   }
 
+  if (!("rivers" in layers)) {
+
+    layers.rivers = {}
+
+    socket.emit("get_rivers")
+
+    socket.on("new_rivers", function(rivers) {
+
+      layers.rivers = rivers
+      drawRivers(canvas)
+
+    })
+
+  }
+
   for (let i = 1; i < layers.checkpoints.length; i++) {
 
     if ((zoom >= layers.checkpoints[i - 1] && zoom <= layers.checkpoints[i]) && !(layers.lastDraw >= layers.checkpoints[i - 1] && layers.lastDraw <= layers.checkpoints[i])) {
 
       layers.checkpoint = i
 
+      drawRivers(canvas)
       drawAirports(canvas)
       drawPorts(canvas)
 
