@@ -1,4 +1,5 @@
 import {drawAirports} from "./airports.mjs"
+import {drawLakes} from "./lakes.mjs"
 import {drawPorts} from "./ports.mjs"
 import {drawRivers} from "./rivers.mjs"
 
@@ -35,6 +36,21 @@ export function drawLayers(zoom) {
 
       layers.airports = airports
       drawAirports(canvas)
+
+    })
+
+  }
+
+  if (!("lakes" in layers)) {
+
+    layers.lakes = {}
+
+    socket.emit("get_lakes")
+
+    socket.on("new_lakes", function(lakes) {
+
+      layers.lakes = lakes
+      drawLakes(canvas)
 
     })
 
@@ -77,6 +93,7 @@ export function drawLayers(zoom) {
       layers.checkpoint = i
 
       drawRivers(canvas)
+      drawLakes(canvas)
       drawAirports(canvas)
       drawPorts(canvas)
 
