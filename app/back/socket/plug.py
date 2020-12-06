@@ -3,6 +3,7 @@ from flask_socketio import SocketIO
 from back.socket.airports import connect_airports
 from back.socket.clients import connect_clients
 from back.socket.countries import connect_countries
+from back.socket.graticules import connect_graticules
 from back.socket.indicators import connect_indicators
 from back.socket.lakes import connect_lakes
 from back.socket.maps import connect_maps
@@ -17,6 +18,7 @@ def plugin(app):
     connect_airports(app)
     connect_clients(app)
     connect_countries(app)
+    connect_graticules(app)
     connect_indicators(app)
     connect_lakes(app)
     connect_maps(app)
