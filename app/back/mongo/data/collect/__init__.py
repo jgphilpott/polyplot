@@ -1,6 +1,7 @@
 from back.mongo.data.collect.airports import *
 from back.mongo.data.collect.clients import *
 from back.mongo.data.collect.countries import *
+from back.mongo.data.collect.graticules import *
 from back.mongo.data.collect.indicators import *
 from back.mongo.data.collect.lakes import *
 from back.mongo.data.collect.maps import *
