@@ -1,4 +1,5 @@
 import {drawAirports} from "./airports.mjs"
+import {drawGraticules} from "./graticules.mjs"
 import {drawLakes} from "./lakes.mjs"
 import {drawPorts} from "./ports.mjs"
 import {drawRivers} from "./rivers.mjs"
@@ -28,8 +29,6 @@ export function drawLayers(zoom) {
 
   if (!("airports" in layers)) {
 
-    layers.airports = {}
-
     socket.emit("get_airports")
 
     socket.on("new_airports", function(airports) {
@@ -41,9 +40,20 @@ export function drawLayers(zoom) {
 
   }
 
-  if (!("lakes" in layers)) {
+  if (!("graticules" in layers)) {
 
-    layers.lakes = {}
+    socket.emit("get_graticules", [10, 20, 30])
+
+    socket.on("new_graticules", function(graticules) {
+
+      layers.graticules = graticules
+      drawGraticules(canvas)
+
+    })
+
+  }
+
+  if (!("lakes" in layers)) {
 
     socket.emit("get_lakes")
 
@@ -58,8 +68,6 @@ export function drawLayers(zoom) {
 
   if (!("ports" in layers)) {
 
-    layers.ports = {}
-
     socket.emit("get_ports")
 
     socket.on("new_ports", function(ports) {
@@ -72,8 +80,6 @@ export function drawLayers(zoom) {
   }
 
   if (!("rivers" in layers)) {
-
-    layers.rivers = {}
 
     socket.emit("get_rivers")
 
@@ -92,6 +98,7 @@ export function drawLayers(zoom) {
 
       layers.checkpoint = i
 
+      drawGraticules(canvas)
       drawRivers(canvas)
       drawLakes(canvas)
       drawAirports(canvas)
