@@ -1,6 +1,6 @@
-import {drawMaps} from "../draw/maps.mjs"
-
 export function startRotation() {
+
+  let canvas = d3.select("#miniMap")
 
   let map = data.plot.GeoJSON.properties
 
@@ -8,8 +8,15 @@ export function startRotation() {
 
     map.λ += 1
 
-    $("#miniMap .map").remove()
-    drawMaps("miniMap", map.λ, map.φ, map.γ)
+    let rotation = d3.geoPath().projection(map.projection.rotate([map.λ, map.φ, map.γ]))
+
+    canvas.selectAll(".map").attr("d", function(feature) {
+      return rotation(feature)
+    })
+
+    canvas.selectAll(".graticule").attr("d", function(feature) {
+      return rotation(feature)
+    })
 
   }
 

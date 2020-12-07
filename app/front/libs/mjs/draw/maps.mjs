@@ -92,6 +92,26 @@ export function drawMaps(plotType=plot.type, λ=0, φ=0, γ=0) {
     drawLayers(1)
     makeZoomable(canvas)
 
+  } else if (plotType == "miniMap") {
+
+    socket.emit("get_graticule", 30)
+
+    socket.on("new_graticule", function(graticule) {
+
+      canvas.selectAll(".graticule")
+            .data(graticule.grid)
+            .enter()
+            .append("path")
+            .attr("d", path)
+            .attr("class", "graticule")
+            .style("fill", "none")
+            .style("stroke", "gray")
+            .style("stroke-width", 1)
+
+      d3.selectAll(".graticule").setAsBackLayer()
+
+    })
+
   }
 
 }
