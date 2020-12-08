@@ -7,6 +7,6 @@ def find_lake(query={}, filter={"_id": 0}):
 
     return dict(collection.find_one(query, filter))
 
-def find_lakes(query={}, filter={"_id": 0}, sort=[("rank", 1), ("name", 1), ("id", 1)]):
+def find_lakes(query={}, filter={"_id": 0}, sort=[("id", 1)]):
 
     return list(collection.find(query, filter).sort(sort))
