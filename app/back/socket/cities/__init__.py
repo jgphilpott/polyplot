@@ -10,6 +10,6 @@ def connect_cities(app):
         emit("new_city", find_city({"id": id}))
 
     @app.on("get_cities")
-    def get_cities():
+    def get_cities(limit):
 
-        emit("new_cities", find_cities())
+        emit("new_cities", find_cities(limit))
