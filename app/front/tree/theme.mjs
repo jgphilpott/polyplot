@@ -1,4 +1,8 @@
+import {addMenuPanel} from "../libs/mjs/panels/menu.mjs"
+
 $(document).ready(function() {
+
+  addMenuPanel()
 
   $("#nav #menu").click(function() {
 
