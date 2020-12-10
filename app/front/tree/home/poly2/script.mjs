@@ -18,7 +18,7 @@ $(document).ready(function() {
 
     $(".crosshair").remove()
 
-    if (localRead("settings").crosshairs && !plot.animation.hover) {
+    if (localRead("settings").poly2.crosshairs && !plot.animation.hover) {
 
       let canvas = d3.select("#canvas")
 

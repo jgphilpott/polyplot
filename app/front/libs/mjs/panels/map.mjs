@@ -11,7 +11,7 @@ export function addMapPanel() {
 
   let panel = $("#map.panel")
 
-  let rotation = localRead("settings").rotation
+  let rotation = localRead("settings").general.rotation
 
   panel.append("<img class='close' src='/front/imgs/panels/all/close.png'>")
 
@@ -41,7 +41,7 @@ export function addMapPanel() {
 
     $("#rotationIcon").click(function(event) {
 
-      toggleCheckbox("rotation", event)
+      toggleCheckbox("general", "rotation", event)
 
     })
 

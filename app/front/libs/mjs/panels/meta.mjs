@@ -37,7 +37,7 @@ export function addMetaPanel() {
 
   }
 
-  panel.css("top", $("#legend").position().top - 10)
+  panel.css("top", $("#legend.panel").position().top - 10)
 
   addPanelEvents(panel)
 
