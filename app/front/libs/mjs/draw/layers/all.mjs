@@ -1,4 +1,5 @@
 import {drawAirports} from "./airports.mjs"
+import {drawCities} from "./cities.mjs"
 import {drawGraticules} from "./graticules.mjs"
 import {drawLakes} from "./lakes.mjs"
 import {drawPorts} from "./ports.mjs"
@@ -35,6 +36,19 @@ export function drawLayers(zoom) {
 
       layers.airports = airports
       drawAirports(canvas)
+
+    })
+
+  }
+
+  if (!("cities" in layers)) {
+
+    socket.emit("get_cities", {"rank": {"$lte": 6}})
+
+    socket.on("new_cities", function(cities) {
+
+      layers.cities = cities
+      drawCities(canvas)
 
     })
 
@@ -101,6 +115,7 @@ export function drawLayers(zoom) {
       drawGraticules(canvas)
       drawRivers(canvas)
       drawLakes(canvas)
+      drawCities(canvas)
       drawAirports(canvas)
       drawPorts(canvas)
 

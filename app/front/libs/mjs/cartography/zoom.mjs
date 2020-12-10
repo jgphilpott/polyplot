@@ -13,6 +13,7 @@ export function makeZoomable(canvas) {
                  drawLayers(d3.event.transform.k)
 
                  d3.selectAll(".airport").attr("transform", d3.event.transform)
+                 d3.selectAll(".city").attr("transform", d3.event.transform)
                  d3.selectAll(".graticule").attr("transform", d3.event.transform)
                  d3.selectAll(".lake").attr("transform", d3.event.transform)
                  d3.selectAll(".map").attr("transform", d3.event.transform)
