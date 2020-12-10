@@ -60,16 +60,16 @@ def connect_clients(app):
 
             emit("login_failed")
 
-    @app.on("settings_update")
-    def settings_update(update):
+    @app.on("update_settings")
+    def update_settings(update):
 
         try:
 
-            client = Client(find_client({"id": update["id"]})).settings_update(update["setting"], update["value"])
+            client = Client(find_client({"id": update["id"]})).update_settings(update["category"], update["setting"], update["value"])
 
             update_client(client.__dict__)
 
-            emit("settings_updated", {"setting": update["setting"], "value": update["value"]})
+            emit("updated_settings", {"category": update["category"], "setting": update["setting"], "value": update["value"]})
 
         except:
 

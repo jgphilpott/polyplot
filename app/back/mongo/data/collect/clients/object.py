@@ -18,8 +18,35 @@ class Client():
         else:
 
             self.settings = {
-                "crosshairs": True,
-                "rotation": False
+
+                "panels": {
+                    "countries": False,
+                    "indicators": False,
+                    "layers": False,
+                    "legend": True,
+                    "line": True,
+                    "map": True,
+                    "meta": True,
+                    "time": True,
+                    "title": True
+                },
+
+                "general": {
+                    "rotation": False
+                },
+
+                "poly3": {
+
+                },
+
+                "poly2": {
+                    "crosshairs": True
+                },
+
+                "map": {
+
+                }
+
             }
 
     def refresh_id(self):
@@ -28,8 +55,8 @@ class Client():
 
         return self
 
-    def settings_update(self, setting, value):
+    def update_settings(self, category, setting, value):
 
-        self.settings[setting] = value
+        self.settings[category][setting] = value
 
         return self
