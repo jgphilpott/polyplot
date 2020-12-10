@@ -15,6 +15,7 @@ export function addMenuPanel() {
 
   main += "<div id='head'><a href='/'><img id='logo' src='/front/imgs/theme/logo.png'></a><h1 id='name'>Polyplot</h1></div>"
 
+  main += "<div id='panels' class='option'><h3>Panels</h3></div>"
   main += "<div id='settings' class='option'><h3>Settings</h3></div>"
   main += "<div id='sources' class='option'><h3>Sources</h3></div>"
   main += "<a href='https://github.com/jgphilpott/polyplot/blob/master/docs/api/README.md'><div id='api' class='option'><h3>API</h3></div></a>"
@@ -43,14 +44,42 @@ export function addMenuPanel() {
 
   let buffer = (mainBorder * 2) + (mainPadding * 2)
 
-  $("#main").width(mainWidth).height(mainHeight)
+  $("#menu.panel #main").width(mainWidth).height(mainHeight)
+
+  function appendPanels() {
+
+    let panels = "<div id='panels-panel' class='sub-panel'><h1>Panels</h1>"
+
+    panels += "<div class='setting'><input id='countries' class='checkbox' type='checkbox'><label>Countries Panel</label></div>"
+    panels += "<div class='setting'><input id='indicators' class='checkbox' type='checkbox'><label>Indicators Panel</label></div>"
+    panels += "<div class='setting'><input id='layers' class='checkbox' type='checkbox'><label>Layers Panel</label></div>"
+    panels += "<div class='setting'><input id='legend' class='checkbox' type='checkbox'><label>Legend Panel</label></div>"
+    panels += "<div class='setting'><input id='line' class='checkbox' type='checkbox'><label>Line Panel</label></div>"
+    panels += "<div class='setting'><input id='map' class='checkbox' type='checkbox'><label>Map Panel</label></div>"
+    panels += "<div class='setting'><input id='meta' class='checkbox' type='checkbox'><label>Meta Panel</label></div>"
+    panels += "<div class='setting'><input id='time' class='checkbox' type='checkbox'><label>Time Panel</label></div>"
+    panels += "<div class='setting'><input id='title' class='checkbox' type='checkbox'><label>Title Panel</label></div>"
+
+    panels += "</div>"
+
+    panel.append(panels)
+
+    $("#panels").click(function() {
+      togglePanel($("#panels-panel"))
+    })
+
+    $("#panels-panel .checkbox").click(function(event) {
+      toggleCheckbox("panels", this.id, event)
+    })
+
+  }
 
   function appendSettings() {
 
     let settings = "<div id='settings-panel' class='sub-panel'><h1>Settings</h1>"
 
-    settings += "<div><input id='crosshairs' class='checkbox' type='checkbox'><label>Show Crosshairs</label></div>"
-    settings += "<div><input id='rotation' class='checkbox' type='checkbox'><label>Rotate miniMap</label></div>"
+    settings += "<div id='general'><div class='setting'><input id='rotation' class='checkbox' type='checkbox'><label>Rotate miniMap</label></div></div>"
+    settings += "<div id='poly2'><div class='setting'><input id='crosshairs' class='checkbox' type='checkbox'><label>Show Crosshairs</label></div></div>"
 
     settings += "</div>"
 
@@ -64,34 +93,74 @@ export function addMenuPanel() {
 
       let clientSettings = client.settings
 
-      $("#crosshairs").prop("checked", clientSettings.crosshairs)
-      $("#rotation").prop("checked", clientSettings.rotation)
-
+      checkCheckboxes(clientSettings)
       localWrite("settings", clientSettings)
 
     } else if (localKeys().includes("settings")) {
 
       let localSettings = localRead("settings")
 
-      $("#crosshairs").prop("checked", localSettings.crosshairs)
-      $("#rotation").prop("checked", localSettings.rotation)
+      checkCheckboxes(localSettings)
 
     } else {
 
       let defaultSettings = {
-        "crosshairs": true,
-        "rotation": false
+
+        "panels": {
+          "countries": false,
+          "indicators": false,
+          "layers": false,
+          "legend": true,
+          "line": true,
+          "map": true,
+          "meta": true,
+          "time": true,
+          "title": true
+        },
+
+        "general": {
+          "rotation": false
+        },
+
+        "poly3": {
+
+        },
+
+        "poly2": {
+          "crosshairs": true
+        },
+
+        "map": {
+
+        }
+
       }
 
-      $("#crosshairs").prop("checked", defaultSettings.crosshairs)
-      $("#rotation").prop("checked", defaultSettings.rotation)
-
+      checkCheckboxes(defaultSettings)
       localWrite("settings", defaultSettings)
 
     }
 
-    $(".checkbox").click(function(event) {
-      toggleCheckbox(this.id, event)
+    function checkCheckboxes(settings) {
+
+      $(".setting #countries").prop("checked", settings.panels.countries)
+      $(".setting #indicators").prop("checked", settings.panels.indicators)
+      $(".setting #layers").prop("checked", settings.panels.layers)
+      $(".setting #legend").prop("checked", settings.panels.legend)
+      $(".setting #line").prop("checked", settings.panels.line)
+      $(".setting #map").prop("checked", settings.panels.map)
+      $(".setting #meta").prop("checked", settings.panels.meta)
+      $(".setting #time").prop("checked", settings.panels.time)
+      $(".setting #title").prop("checked", settings.panels.title)
+
+      $(".setting #rotation").prop("checked", settings.general.rotation)
+
+      $(".setting #crosshairs").prop("checked", settings.poly2.crosshairs)
+
+    }
+
+    $("#settings-panel .checkbox").click(function(event) {
+      toggleCheckbox(this.parentElement.parentElement.id, this.id, event)
     })
 
   }
@@ -233,6 +302,7 @@ export function addMenuPanel() {
 
   }
 
+  appendPanels()
   appendSettings()
   appendSources()
 
@@ -282,48 +352,50 @@ export function addMenuPanel() {
 
 }
 
-export function toggleCheckbox(id, event) {
+export function toggleCheckbox(type, key, event) {
 
   let settings = localRead("settings")
-  let setting = settings[id]
-  settings[id] = !setting
+  let category = settings[type]
+  let setting = category[key]
+
+  category[key] = !setting
 
   if (client) {
 
     event.preventDefault()
     event.stopPropagation()
 
-    socket.emit("settings_update", {"id": readCookie("id"), "setting": id, "value": settings[id]})
+    socket.emit("update_settings", {"id": readCookie("id"), "category": type, "setting": key, "value": category[key]})
 
-    socket.on("settings_updated", function(update) {
+    socket.on("updated_settings", function(update) {
 
       $("#" + update.setting + ".checkbox").prop("checked", update.value)
 
-      client.settings[update.setting] = update.value
+      client.settings[update.category][update.setting] = update.value
 
       localWrite("settings", settings)
 
     })
 
-    settingSwitch(id)
+    settingSwitch(key)
 
   } else {
 
-    $("#" + id + ".checkbox").prop("checked", settings[id])
+    $("#" + key + ".checkbox").prop("checked", category[key])
 
     localWrite("settings", settings)
 
-    settingSwitch(id)
+    settingSwitch(key)
 
   }
 
-  function settingSwitch(id) {
+  function settingSwitch(key) {
 
-    switch (id) {
+    switch (key) {
 
       case "rotation":
 
-        if (settings.rotation) {
+        if (category[key]) {
 
           startRotation()
           $("#rotationIcon").attr("src", "/front/imgs/panels/map/rotation-dark.png")
