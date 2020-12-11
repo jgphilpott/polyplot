@@ -15,7 +15,7 @@ import {addPanelEvents} from "./events/all.mjs"
 let plot = data.plot
 let plotType = plot.type
 
-export function addTimePanel() {
+export function addTimePanel(panelSetting) {
 
   $("body").append("<div id='time' class='panel'></div>")
 
@@ -164,6 +164,8 @@ export function addTimePanel() {
   $("#year").css({"left": offset + "px"})
 
   addPanelEvents(panel)
+
+  if (panelSetting) { panel.css("visibility", "visible") } else { panel.css("visibility", "hidden") }
 
 }
 

@@ -2,7 +2,7 @@ import {addPanelEvents} from "./events/all.mjs"
 
 let plot = data.plot
 
-export function addLegendPanel() {
+export function addLegendPanel(panelSetting) {
 
   $("body").append("<div id='legend' class='panel'></div>")
 
@@ -48,5 +48,7 @@ export function addLegendPanel() {
   })
 
   addPanelEvents(panel)
+
+  if (panelSetting) { panel.css("visibility", "visible") } else { panel.css("visibility", "hidden") }
 
 }

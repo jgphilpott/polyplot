@@ -1,6 +1,6 @@
 import {addPanelEvents} from "./events/all.mjs"
 
-export function addTitlePanel() {
+export function addTitlePanel(panelSetting) {
 
   $("body").append("<div id='title' class='panel'></div>")
 
@@ -11,5 +11,7 @@ export function addTitlePanel() {
   panel.append("<h1 id='name'>" + data.plot.title + "</h1>")
 
   addPanelEvents(panel)
+
+  if (panelSetting) { panel.css("visibility", "visible") } else { panel.css("visibility", "hidden") }
 
 }

@@ -11,7 +11,7 @@ let plot = data.plot
 let plots = plot.plots
 let plotType = plot.type
 
-export function addIndicatorsPanel() {
+export function addIndicatorsPanel(panelSetting) {
 
   $("body").append("<div id='indicators' class='panel'></div>")
 
@@ -195,5 +195,7 @@ export function addIndicatorsPanel() {
   })
 
   addPanelEvents(panel)
+
+  if (panelSetting) { panel.css("visibility", "visible") } else { panel.css("visibility", "hidden") }
 
 }

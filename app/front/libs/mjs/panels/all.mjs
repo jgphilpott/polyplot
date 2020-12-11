@@ -9,24 +9,26 @@ import {addTitlePanel} from "./title.mjs"
 
 export function addPanels() {
 
-  addCountriesPanel()
-  addIndicatorsPanel()
-  addLegendPanel()
-  addMetaPanel()
-  addTimePanel()
-  addTitlePanel()
+  let panelSettings = localRead("settings").panels
+
+  addCountriesPanel(panelSettings.countries)
+  addIndicatorsPanel(panelSettings.indicators)
+  addLegendPanel(panelSettings.legend)
+  addMetaPanel(panelSettings.meta)
+  addTimePanel(panelSettings.time)
+  addTitlePanel(panelSettings.title)
 
   if (data.plot.type == "Map") {
 
-    addLinePanel()
+    addLinePanel(panelSettings.line)
 
   } else if (data.plot.type == "Poly2") {
 
-    addMapPanel()
+    addMapPanel(panelSettings.map)
 
   } else if (data.plot.type == "Poly3") {
 
-    addMapPanel()
+    addMapPanel(panelSettings.map)
 
   }
 

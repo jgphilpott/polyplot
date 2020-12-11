@@ -4,7 +4,7 @@ let plot = data.plot
 let plots = plot.plots
 let plotType = plot.type
 
-export function addMetaPanel() {
+export function addMetaPanel(panelSetting) {
 
   $("body").append("<div id='meta' class='panel'></div>")
 
@@ -40,6 +40,8 @@ export function addMetaPanel() {
   panel.css("top", $("#legend.panel").position().top - 10)
 
   addPanelEvents(panel)
+
+  if (panelSetting) { panel.css("visibility", "visible") } else { panel.css("visibility", "hidden") }
 
 }
 

@@ -1,6 +1,6 @@
 import {addPanelEvents} from "./events/all.mjs"
 
-export function addCountriesPanel() {
+export function addCountriesPanel(panelSetting) {
 
   $("body").append("<div id='countries' class='panel'></div>")
 
@@ -11,5 +11,7 @@ export function addCountriesPanel() {
   panel.append("<h1 id='name'>Countries by Region</h1>")
 
   addPanelEvents(panel)
+
+  if (panelSetting) { panel.css("visibility", "visible") } else { panel.css("visibility", "hidden") }
 
 }

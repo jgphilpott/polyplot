@@ -5,7 +5,7 @@ import {addPanelEvents} from "./events/all.mjs"
 
 let plot = data.plot
 
-export function addMapPanel() {
+export function addMapPanel(panelSetting) {
 
   $("body").append("<div id='map' class='panel'></div>")
 
@@ -73,7 +73,7 @@ export function addMapPanel() {
 
       })
 
-      panel.css("visibility", "visible")
+      if (panelSetting) { panel.css("visibility", "visible") } else { panel.css("visibility", "hidden") }
 
     })
 
