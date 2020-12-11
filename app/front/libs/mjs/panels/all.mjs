@@ -1,5 +1,6 @@
 import {addCountriesPanel} from "./countries.mjs"
 import {addIndicatorsPanel} from "./indicators.mjs"
+import {addLayersPanel} from "./layers.mjs"
 import {addLegendPanel} from "./legend.mjs"
 import {addLinePanel} from "./line.mjs"
 import {addMapPanel} from "./map.mjs"
@@ -20,6 +21,7 @@ export function addPanels() {
 
   if (data.plot.type == "Map") {
 
+    addLayersPanel(panelSettings.layers)
     addLinePanel(panelSettings.line)
 
   } else if (data.plot.type == "Poly2") {
