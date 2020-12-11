@@ -377,7 +377,7 @@ export function toggleCheckbox(type, key, event) {
 
     })
 
-    settingSwitch(key)
+    settingSwitch(type, key)
 
   } else {
 
@@ -385,27 +385,51 @@ export function toggleCheckbox(type, key, event) {
 
     localWrite("settings", settings)
 
-    settingSwitch(key)
+    settingSwitch(type, key)
 
   }
 
-  function settingSwitch(key) {
+  function settingSwitch(type, key) {
 
-    switch (key) {
+    switch (type) {
 
-      case "rotation":
+      case "panels":
 
-        if (category[key]) {
+        let panel = $("#" + key + ".panel")
 
-          startRotation()
-          $("#rotationIcon").attr("src", "/front/imgs/panels/map/rotation-dark.png")
+        if (category[key]) { panel.css("visibility", "visible") } else { panel.css("visibility", "hidden") }
 
-        } else {
+        break
 
-          stopRotation()
-          $("#rotationIcon").attr("src", "/front/imgs/panels/map/rotation-light.png")
+      case "general":
+
+        if (key == "rotation") {
+
+          if (category[key]) {
+
+            startRotation()
+            $("#rotationIcon").attr("src", "/front/imgs/panels/map/rotation-dark.png")
+
+          } else {
+
+            stopRotation()
+            $("#rotationIcon").attr("src", "/front/imgs/panels/map/rotation-light.png")
+
+          }
 
         }
+
+        break
+
+      case "poly3":
+
+        break
+
+      case "poly2":
+
+        break
+
+      case "map":
 
         break
 

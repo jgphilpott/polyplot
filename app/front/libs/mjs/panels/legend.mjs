@@ -1,3 +1,4 @@
+import {toggleCheckbox} from "./menu.mjs"
 import {addPanelEvents} from "./events/all.mjs"
 
 let plot = data.plot
@@ -31,19 +32,9 @@ export function addLegendPanel(panelSetting) {
 
   }
 
-  $("#search").click(function() {
+  $("#search").click(function(event) {
 
-    let indicators = $("#indicators.panel")
-
-    if (indicators.css("visibility") == "hidden") {
-
-      indicators.css("visibility", "visible")
-
-    } else {
-
-      indicators.css("visibility", "hidden")
-
-    }
+    toggleCheckbox("panels", "indicators", event)
 
   })
 

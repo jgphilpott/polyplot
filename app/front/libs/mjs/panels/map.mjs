@@ -55,21 +55,11 @@ export function addMapPanel(panelSetting) {
 
       }
 
-      panel.append("<p id='countriesLink'>Toggle Countries Panel</p>")
+      panel.append("<p id='countriesToggle'>Toggle Countries Panel</p>")
 
-      $("#countriesLink").click(function() {
+      $("#countriesToggle").click(function(event) {
 
-        let countriesPanel = $("#countries.panel")
-
-        if (countriesPanel.css("visibility") == "hidden") {
-
-          countriesPanel.css("visibility", "visible")
-
-        } else {
-
-          countriesPanel.css("visibility", "hidden")
-
-        }
+        toggleCheckbox("panels", "countries", event)
 
       })
 
