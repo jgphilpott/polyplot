@@ -6,7 +6,16 @@ export function animateTimeline(duration) {
   let pointWidth = $("#point")[0].width
 
   let easement = d3.easeLinear
+
+  let scaledMinCap = plot.t.scale(plot.t.minCap)
   let scaledYear = plot.t.scale(plot.t.year)
+  let scaledMaxCap = plot.t.scale(plot.t.maxCap)
+
+  d3.select("#minCap")
+    .transition()
+    .ease(easement)
+    .duration(duration)
+    .style("left", offset + scaledMinCap + "px")
 
   d3.select("#point")
     .transition()
@@ -19,6 +28,12 @@ export function animateTimeline(duration) {
     .ease(easement)
     .duration(duration)
     .style("left", offset + pointWidth + scaledYear + "px")
+
+  d3.select("#maxCap")
+    .transition()
+    .ease(easement)
+    .duration(duration)
+    .style("left", offset + (pointWidth * 2) + scaledMaxCap + "px")
 
   $("#year").text(plot.t.year)
 

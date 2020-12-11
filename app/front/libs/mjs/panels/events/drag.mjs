@@ -55,6 +55,8 @@ export function makeDragable(element, events=[]) {
 
     if (element.hasClass("controller")) {
 
+      events[1](0)
+
       element.css("cursor", "ew-resize")
 
     } else if (element.hasClass("panel")) {

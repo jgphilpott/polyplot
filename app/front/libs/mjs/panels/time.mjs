@@ -48,9 +48,9 @@ export function addTimePanel(panelSetting) {
 
   scaleT(plotType)
 
-  makeDragable($("#minCap"), [dragTimeControls])
-  makeDragable($("#point"), [dragTimeControls])
-  makeDragable($("#maxCap"), [dragTimeControls])
+  makeDragable($("#minCap"), [dragTimeControls, animateTimeline])
+  makeDragable($("#point"), [dragTimeControls, animateTimeline])
+  makeDragable($("#maxCap"), [dragTimeControls, animateTimeline])
 
   let buttons = $(".button")
 
@@ -252,7 +252,7 @@ export function dragTimeControls(controller, eventCoordinates) {
 
   let maxCap = $("#maxCap")[0].offsetLeft
 
-  if (controller[0].id == "minCap" && eventCoordinates[0] >= minOffset && eventCoordinates[0] <= point - pointWidth) {
+  if (controller[0].id == "minCap" && eventCoordinates[0] >= minOffset && eventCoordinates[0] < point - pointWidth) {
 
     plot.t.minCap = Math.floor(data.plot.t.scale.invert(minCap - minOffset))
 
@@ -260,7 +260,7 @@ export function dragTimeControls(controller, eventCoordinates) {
 
     $("#minYear").text(plot.t.minCap)
 
-  } else if (controller[0].id == "point" && eventCoordinates[0] >= minCap + pointWidth && eventCoordinates[0] <= maxCap - pointWidth) {
+  } else if (controller[0].id == "point" && eventCoordinates[0] > minCap + pointWidth && eventCoordinates[0] < maxCap - pointWidth) {
 
     plot.t.year = Math.floor(data.plot.t.scale.invert(point - pointWidth - minOffset))
 
@@ -286,7 +286,7 @@ export function dragTimeControls(controller, eventCoordinates) {
     $("#year").css({"left": eventCoordinates[0]})
     $("#year").text(plot.t.year)
 
-  } else if (controller[0].id == "maxCap" && eventCoordinates[0] <= maxOffset && eventCoordinates[0] >= point + pointWidth) {
+  } else if (controller[0].id == "maxCap" && eventCoordinates[0] <= maxOffset + 1 && eventCoordinates[0] > point + pointWidth) {
 
     plot.t.maxCap = Math.floor(data.plot.t.scale.invert(maxCap - (pointWidth * 2) - minOffset))
 
