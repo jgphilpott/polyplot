@@ -132,6 +132,8 @@ export function addIndicatorsPanel(panelSetting) {
 
       })
 
+      if (panelSetting) { panel.css("visibility", "visible") } else { panel.css("visibility", "hidden") }
+
     })
 
   })
@@ -195,7 +197,5 @@ export function addIndicatorsPanel(panelSetting) {
   })
 
   addPanelEvents(panel)
-
-  if (panelSetting) { panel.css("visibility", "visible") } else { panel.css("visibility", "hidden") }
 
 }
