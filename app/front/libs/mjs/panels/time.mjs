@@ -258,7 +258,9 @@ export function dragTimeControls(controller, eventCoordinates) {
 
   if (controller[0].id == "minCap" && eventCoordinates[0] >= minOffset && eventCoordinates[0] < point - pointWidth) {
 
-    plot.t.minCap = Math.floor(data.plot.t.scale.invert(minCap - minOffset))
+    clearAnimation()
+
+    plot.t.minCap = Math.floor(plot.t.scale.invert(minCap - minOffset))
 
     controller.css({"left": eventCoordinates[0]})
 
@@ -266,7 +268,7 @@ export function dragTimeControls(controller, eventCoordinates) {
 
   } else if (controller[0].id == "point" && eventCoordinates[0] > minCap + pointWidth && eventCoordinates[0] < maxCap - pointWidth) {
 
-    plot.t.year = Math.floor(data.plot.t.scale.invert(point - pointWidth - minOffset))
+    plot.t.year = Math.floor(plot.t.scale.invert(point - pointWidth - minOffset))
 
     clearAnimation()
     animatePanels()
@@ -292,7 +294,9 @@ export function dragTimeControls(controller, eventCoordinates) {
 
   } else if (controller[0].id == "maxCap" && eventCoordinates[0] <= maxOffset + 1 && eventCoordinates[0] > point + pointWidth) {
 
-    plot.t.maxCap = Math.floor(data.plot.t.scale.invert(maxCap - (pointWidth * 2) - minOffset))
+    clearAnimation()
+
+    plot.t.maxCap = Math.floor(plot.t.scale.invert(maxCap - (pointWidth * 2) - minOffset))
 
     controller.css({"left": eventCoordinates[0]})
 
