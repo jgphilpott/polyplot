@@ -11,11 +11,8 @@ export function startAnimation(direction) {
 
   animatePlots(direction)
 
-  $("#playForward").css({"visibility": "hidden"})
-  $("#playBackward").css({"visibility": "hidden"})
-
-  $("#pauseLeft").css({"visibility": "visible"})
-  $("#pauseRight").css({"visibility": "visible"})
+  $("#playForward").attr("src", "/front/imgs/panels/time/pauseLeft.svg")
+  $("#playBackward").attr("src", "/front/imgs/panels/time/pauseRight.svg")
 
 }
 
@@ -86,11 +83,8 @@ export function clearAnimation() {
   plot.animation.status = "inactive"
   plot.animation.speedMultiplier = 1
 
-  $("#playForward").css({"visibility": "visible"})
-  $("#playBackward").css({"visibility": "visible"})
-
-  $("#pauseLeft").css({"visibility": "hidden"})
-  $("#pauseRight").css({"visibility": "hidden"})
+  $("#playForward").attr("src", "/front/imgs/panels/time/playForward.svg")
+  $("#playBackward").attr("src", "/front/imgs/panels/time/playBackward.svg")
 
   $("#fastForward").attr("src", "/front/imgs/panels/time/fastForward.svg")
   $("#fastBackward").attr("src", "/front/imgs/panels/time/fastBackward.svg")

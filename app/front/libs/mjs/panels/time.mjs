@@ -34,7 +34,6 @@ export function addTimePanel(panelSetting) {
 
   panel.append("<img id='skipBackward' class='button' src='/front/imgs/panels/time/skipBackward.svg'>")
   panel.append("<img id='playForward' class='button' src='/front/imgs/panels/time/playForward.svg'>")
-  panel.append("<img id='pauseLeft' class='button' src='/front/imgs/panels/time/pauseLeft.svg'>")
   panel.append("<img id='fastForward' class='button' src='/front/imgs/panels/time/fastForward.svg'>")
 
   panel.append("<img id='minCap' class='controller' src='/front/imgs/panels/time/cap.svg'>")
@@ -42,7 +41,6 @@ export function addTimePanel(panelSetting) {
   panel.append("<img id='maxCap' class='controller' src='/front/imgs/panels/time/cap.svg'>")
 
   panel.append("<img id='fastBackward' class='button' src='/front/imgs/panels/time/fastBackward.svg'>")
-  panel.append("<img id='pauseRight' class='button' src='/front/imgs/panels/time/pauseRight.svg'>")
   panel.append("<img id='playBackward' class='button' src='/front/imgs/panels/time/playBackward.svg'>")
   panel.append("<img id='skipForward' class='button' src='/front/imgs/panels/time/skipForward.svg'>")
 
