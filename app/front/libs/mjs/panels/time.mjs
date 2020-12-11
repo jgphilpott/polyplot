@@ -60,13 +60,21 @@ export function addTimePanel(panelSetting) {
 
     button.mouseover(function() {
 
-      button.attr("src", "/front/imgs/panels/time/hover/" + buttons[i].id + ".svg")
+      if ((buttons[i].id == "playForward" || buttons[i].id == "playBackward") && plot.animation.status == "active") {
+        button.attr("src", "/front/imgs/panels/time/hover/pause.svg")
+      } else {
+        button.attr("src", "/front/imgs/panels/time/hover/" + buttons[i].id + ".svg")
+      }
 
     }).mouseout(function() {
 
       if (!((buttons[i].id == "fastForward" || buttons[i].id == "fastBackward") && plot.animation.speedMultiplier != 1)) {
 
-        button.attr("src", "/front/imgs/panels/time/" + buttons[i].id + ".svg")
+        if ((buttons[i].id == "playForward" || buttons[i].id == "playBackward") && plot.animation.status == "active") {
+          button.attr("src", "/front/imgs/panels/time/pause.svg")
+        } else {
+          button.attr("src", "/front/imgs/panels/time/" + buttons[i].id + ".svg")
+        }
 
       } else if (buttons[i].id == "fastForward" && plot.animation.direction != "forward") {
 
@@ -92,13 +100,11 @@ export function addTimePanel(panelSetting) {
 
         case "playForward":
 
-          startAnimation("forward")
-
-          break
-
-        case "pauseLeft":
-
-          clearAnimation()
+          if (plot.animation.status == "inactive") {
+            startAnimation("forward")
+          } else {
+            clearAnimation()
+          }
 
           break
 
@@ -114,15 +120,13 @@ export function addTimePanel(panelSetting) {
 
           break
 
-        case "pauseRight":
-
-          clearAnimation()
-
-          break
-
         case "playBackward":
 
-          startAnimation("backward")
+          if (plot.animation.status == "inactive") {
+            startAnimation("backward")
+          } else {
+            clearAnimation()
+          }
 
           break
 

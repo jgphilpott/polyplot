@@ -11,8 +11,8 @@ export function startAnimation(direction) {
 
   animatePlots(direction)
 
-  $("#playForward").attr("src", "/front/imgs/panels/time/pauseLeft.svg")
-  $("#playBackward").attr("src", "/front/imgs/panels/time/pauseRight.svg")
+  $("#playForward").attr("src", "/front/imgs/panels/time/pause.svg")
+  $("#playBackward").attr("src", "/front/imgs/panels/time/pause.svg")
 
 }
 
