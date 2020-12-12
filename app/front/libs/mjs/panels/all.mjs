@@ -12,7 +12,6 @@ export function addPanels() {
 
   let panelSettings = localRead("settings").panels
 
-  addCountriesPanel(panelSettings.countries)
   addIndicatorsPanel(panelSettings.indicators)
   addLegendPanel(panelSettings.legend)
   addMetaPanel(panelSettings.meta)
@@ -26,10 +25,12 @@ export function addPanels() {
 
   } else if (data.plot.type == "Poly2") {
 
+    addCountriesPanel(panelSettings.countries)
     addMapPanel(panelSettings.map)
 
   } else if (data.plot.type == "Poly3") {
 
+    addCountriesPanel(panelSettings.countries)
     addMapPanel(panelSettings.map)
 
   }
