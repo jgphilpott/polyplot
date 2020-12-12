@@ -131,7 +131,12 @@ export function addMenuPanel() {
         },
 
         "map": {
-
+          "airports": false,
+          "cities": true,
+          "graticules": false,
+          "lakes": true,
+          "ports": false,
+          "rivers": true
         }
 
       }

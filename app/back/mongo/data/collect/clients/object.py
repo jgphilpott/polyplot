@@ -44,7 +44,12 @@ class Client():
                 },
 
                 "map": {
-
+                    "airports": False,
+                    "cities": True,
+                    "graticules": False,
+                    "lakes": True,
+                    "ports": False,
+                    "rivers": True
                 }
 
             }

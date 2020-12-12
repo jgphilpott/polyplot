@@ -27,6 +27,17 @@ export function addLayersPanel(panelSetting) {
   naturalCategory.append("<div class='setting'><input id='lakes' class='checkbox' type='checkbox'><label>Lakes Layer</label></div>")
   naturalCategory.append("<div class='setting'><input id='rivers' class='checkbox' type='checkbox'><label>Rivers Layer</label></div>")
 
+  let mapSettings = localRead("settings").map
+
+  $(".setting #cities").prop("checked", mapSettings.cities)
+
+  $(".setting #airports").prop("checked", mapSettings.airports)
+  $(".setting #ports").prop("checked", mapSettings.ports)
+
+  $(".setting #graticules").prop("checked", mapSettings.graticules)
+  $(".setting #lakes").prop("checked", mapSettings.lakes)
+  $(".setting #rivers").prop("checked", mapSettings.rivers)
+
   addPanelEvents(panel)
 
   if (panelSetting) { panel.css("visibility", "visible") } else { panel.css("visibility", "hidden") }
