@@ -1,4 +1,5 @@
 import {addPanelEvents} from "./events/all.mjs"
+import {drawLayers, deleteLayers} from "../draw/layers/all.mjs"
 import {startRotation, stopRotation} from "../cartography/rotation.mjs"
 
 let client = data.client
@@ -435,6 +436,16 @@ export function toggleCheckbox(type, key, event) {
         break
 
       case "map":
+
+        if (category[key]) {
+
+          drawLayers()
+
+        } else {
+
+          deleteLayers(key)
+
+        }
 
         break
 
