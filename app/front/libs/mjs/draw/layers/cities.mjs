@@ -16,6 +16,7 @@ export function drawCities(canvas, cities=plot.GeoJSON.properties.layers.cities)
         .enter()
         .append("circle")
         .attr("class", "city cityPoint")
+        .attr("transform", geoProperties.zoom)
         .attr("cx", function(city) {
 
           return geoProperties.projection([city.longitude, city.latitude])[0]
@@ -48,6 +49,7 @@ export function drawCities(canvas, cities=plot.GeoJSON.properties.layers.cities)
 
         })
         .attr("class", "city cityLabel")
+        .attr("transform", geoProperties.zoom)
         .attr("font-size", function(city) {
 
           let textSizes = [10, 5, 2.5, 1.25, 0.625, 0.3125]

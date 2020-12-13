@@ -30,6 +30,7 @@ export function drawPorts(canvas, ports=plot.GeoJSON.properties.layers.ports) {
         .append("svg:image")
         .attr("xlink:href", "/front/imgs/layers/port.png")
         .attr("class", "port")
+        .attr("transform", geoProperties.zoom)
         .attr("x", function(port) {
 
           return geoProperties.projection([port.longitude, port.latitude])[0] - (size / 2)

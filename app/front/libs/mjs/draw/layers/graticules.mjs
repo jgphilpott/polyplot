@@ -23,6 +23,7 @@ export function drawGraticules(canvas, graticules=plot.GeoJSON.properties.layers
         .append("path")
         .attr("d", d3.geoPath().projection(geoProperties.projection))
         .attr("class", "graticule")
+        .attr("transform", geoProperties.zoom)
         .style("fill", "none")
         .style("stroke", "gray")
         .style("stroke-width", function() {

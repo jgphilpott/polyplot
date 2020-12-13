@@ -7,10 +7,10 @@ import {drawRivers} from "./rivers.mjs"
 
 let plot = data.plot
 
-export function drawLayers(zoom) {
+export function drawLayers() {
 
   let canvas = d3.select("#canvas")
-
+  let mapSettings = localRead("settings").map
   let geoProperties = plot.GeoJSON.properties
 
   if (!("layers" in geoProperties)) {
@@ -28,7 +28,7 @@ export function drawLayers(zoom) {
 
   let layers = geoProperties.layers
 
-  if (!("airports" in layers)) {
+  if (mapSettings.airports && !("airports" in layers)) {
 
     socket.emit("get_airports")
 
@@ -41,7 +41,7 @@ export function drawLayers(zoom) {
 
   }
 
-  if (!("cities" in layers)) {
+  if (mapSettings.cities && !("cities" in layers)) {
 
     socket.emit("get_cities", {"rank": {"$lte": 6}})
 
@@ -54,7 +54,7 @@ export function drawLayers(zoom) {
 
   }
 
-  if (!("graticules" in layers)) {
+  if (mapSettings.graticules && !("graticules" in layers)) {
 
     socket.emit("get_graticules", [10, 20, 30])
 
@@ -67,7 +67,7 @@ export function drawLayers(zoom) {
 
   }
 
-  if (!("lakes" in layers)) {
+  if (mapSettings.lakes && !("lakes" in layers)) {
 
     socket.emit("get_lakes")
 
@@ -80,7 +80,7 @@ export function drawLayers(zoom) {
 
   }
 
-  if (!("ports" in layers)) {
+  if (mapSettings.ports && !("ports" in layers)) {
 
     socket.emit("get_ports")
 
@@ -93,7 +93,7 @@ export function drawLayers(zoom) {
 
   }
 
-  if (!("rivers" in layers)) {
+  if (mapSettings.rivers && !("rivers" in layers)) {
 
     socket.emit("get_rivers")
 
@@ -103,25 +103,6 @@ export function drawLayers(zoom) {
       drawRivers(canvas)
 
     })
-
-  }
-
-  for (let i = 1; i < layers.checkpoints.length; i++) {
-
-    if ((zoom >= layers.checkpoints[i - 1] && zoom <= layers.checkpoints[i]) && !(layers.lastDraw >= layers.checkpoints[i - 1] && layers.lastDraw <= layers.checkpoints[i])) {
-
-      layers.checkpoint = i
-
-      drawGraticules(canvas)
-      drawRivers(canvas)
-      drawLakes(canvas)
-      drawCities(canvas)
-      drawAirports(canvas)
-      drawPorts(canvas)
-
-      layers.lastDraw = zoom
-
-    }
 
   }
 
@@ -146,5 +127,46 @@ export function drawLayers(zoom) {
     }
 
   }
+
+}
+
+export function updateLayers(zoom) {
+
+  let canvas = d3.select("#canvas")
+  let layers = plot.GeoJSON.properties.layers
+
+  for (let i = 1; i < layers.checkpoints.length; i++) {
+
+    if ((zoom >= layers.checkpoints[i - 1] && zoom <= layers.checkpoints[i]) && !(layers.lastDraw >= layers.checkpoints[i - 1] && layers.lastDraw <= layers.checkpoints[i])) {
+
+      layers.checkpoint = i
+
+      if (layers.graticules) { drawGraticules(canvas) }
+      if (layers.rivers) { drawRivers(canvas) }
+      if (layers.lakes) { drawLakes(canvas) }
+      if (layers.cities) { drawCities(canvas) }
+      if (layers.airports) { drawAirports(canvas) }
+      if (layers.ports) { drawPorts(canvas) }
+
+      layers.lastDraw = zoom
+
+    }
+
+  }
+
+}
+
+export function deleteLayers(layer) {
+
+  let layers = plot.GeoJSON.properties.layers
+
+  delete layers[layer]
+
+  if (!("airports" in layers)) { $(".airport").remove() }
+  if (!("cities" in layers)) { $(".city").remove() }
+  if (!("graticules" in layers)) { $(".graticule").remove() }
+  if (!("lakes" in layers)) { $(".lake").remove() }
+  if (!("ports" in layers)) { $(".port").remove() }
+  if (!("rivers" in layers)) { $(".river").remove() }
 
 }

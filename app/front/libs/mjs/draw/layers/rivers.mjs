@@ -10,25 +10,14 @@ export function drawRivers(canvas, rivers=plot.GeoJSON.properties.layers.rivers)
   canvas.selectAll(".river")
         .data(rivers.filter(function(river) {
 
-          if (checkpoint == 1) {
-            return river.rank <= 2
-          } else if (checkpoint == 2) {
-            return river.rank <= 4
-          } else if (checkpoint == 3) {
-            return river.rank <= 6
-          } else if (checkpoint == 4) {
-            return river.rank <= 8
-          } else if (checkpoint == 5) {
-            return river.rank <= 10
-          } else if (checkpoint == 6) {
-            return river.rank
-          }
+          return river.rank <= checkpoint * 2
 
         }))
         .enter()
         .append("path")
         .attr("d", d3.geoPath().projection(geoProperties.projection))
         .attr("class", "river")
+        .attr("transform", geoProperties.zoom)
         .style("fill", "none")
         .style("stroke", "lightblue")
         .style("stroke-width", function(river) {

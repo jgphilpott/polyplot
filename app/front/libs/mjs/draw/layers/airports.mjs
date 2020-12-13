@@ -30,6 +30,7 @@ export function drawAirports(canvas, airports=plot.GeoJSON.properties.layers.air
         .append("svg:image")
         .attr("xlink:href", "/front/imgs/layers/airport.png")
         .attr("class", "airport")
+        .attr("transform", geoProperties.zoom)
         .attr("x", function(airport) {
 
           return geoProperties.projection([airport.longitude, airport.latitude])[0] - (size / 2)
