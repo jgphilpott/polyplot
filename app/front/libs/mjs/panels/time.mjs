@@ -256,7 +256,7 @@ export function dragTimeControls(controller, eventCoordinates) {
 
   let maxCap = $("#maxCap")[0].offsetLeft
 
-  if (controller[0].id == "minCap" && eventCoordinates[0] >= minOffset && eventCoordinates[0] < point - pointWidth) {
+  if (controller[0].id == "minCap" && eventCoordinates[0] > minOffset && eventCoordinates[0] < point - pointWidth + 1) {
 
     clearAnimation()
 
@@ -266,7 +266,7 @@ export function dragTimeControls(controller, eventCoordinates) {
 
     $("#minYear").text(plot.t.minCap)
 
-  } else if (controller[0].id == "point" && eventCoordinates[0] > minCap + pointWidth && eventCoordinates[0] < maxCap - pointWidth) {
+  } else if (controller[0].id == "point" && eventCoordinates[0] > minCap + pointWidth && eventCoordinates[0] < maxCap - pointWidth + 1) {
 
     plot.t.year = Math.floor(plot.t.scale.invert(point - pointWidth - minOffset))
 
@@ -292,7 +292,7 @@ export function dragTimeControls(controller, eventCoordinates) {
     $("#year").css({"left": eventCoordinates[0]})
     $("#year").text(plot.t.year)
 
-  } else if (controller[0].id == "maxCap" && eventCoordinates[0] <= maxOffset + 1 && eventCoordinates[0] > point + pointWidth) {
+  } else if (controller[0].id == "maxCap" && eventCoordinates[0] > point + pointWidth && eventCoordinates[0] < maxOffset + 1) {
 
     clearAnimation()
 
