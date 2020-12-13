@@ -89,7 +89,7 @@ export function drawMaps(plotType=plot.type, λ=0, φ=0, γ=0) {
 
     })
 
-    drawLayers(1)
+    drawLayers()
     makeZoomable(canvas)
 
   } else if (plotType == "miniMap") {

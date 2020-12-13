@@ -1,3 +1,4 @@
+import {toggleCheckbox} from "./menu.mjs"
 import {addPanelEvents} from "./events/all.mjs"
 
 export function addLayersPanel(panelSetting) {
@@ -37,6 +38,12 @@ export function addLayersPanel(panelSetting) {
   $(".setting #graticules").prop("checked", mapSettings.graticules)
   $(".setting #lakes").prop("checked", mapSettings.lakes)
   $(".setting #rivers").prop("checked", mapSettings.rivers)
+
+  $("#layers.panel .checkbox").click(function(event) {
+
+    toggleCheckbox("map", this.id, event)
+
+  })
 
   addPanelEvents(panel)
 
