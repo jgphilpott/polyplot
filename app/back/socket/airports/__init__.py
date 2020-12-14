@@ -10,6 +10,6 @@ def connect_airports(app):
         emit("new_airport", find_airport({"code": code}))
 
     @app.on("get_airports")
-    def get_airports():
+    def get_airports(limit):
 
-        emit("new_airports", find_airports())
+        emit("new_airports", find_airports(limit))

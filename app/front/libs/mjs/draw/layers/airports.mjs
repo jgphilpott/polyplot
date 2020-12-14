@@ -4,26 +4,16 @@ export function drawAirports(canvas, airports=plot.GeoJSON.properties.layers.air
 
   let geoProperties = plot.GeoJSON.properties
   let checkpoint = geoProperties.layers.checkpoint
-  let size = geoProperties.layers.sizeSwitch()
+  let size = [12, 6, 3, 1.5, 0.75, 0.375][checkpoint - 1]
 
   $(".airport").remove()
 
   canvas.selectAll(".airport")
         .data(airports.filter(function(airport) {
 
-          if (checkpoint == 1) {
-            return airport.flow > 10000000
-          } else if (checkpoint == 2) {
-            return airport.flow > 1000000
-          } else if (checkpoint == 3) {
-            return airport.flow > 100000
-          } else if (checkpoint == 4) {
-            return airport.flow > 10000
-          } else if (checkpoint == 5) {
-            return airport.flow > 1000
-          } else if (checkpoint == 6) {
-            return airport.flow
-          }
+          let airportFlows = [10000000, 2500000, 625000, 156250, 39062.5, 9765.625]
+
+          return airport.flow >= airportFlows[checkpoint - 1]
 
         }))
         .enter()

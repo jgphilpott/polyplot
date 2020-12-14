@@ -10,6 +10,6 @@ def connect_ports(app):
         emit("new_port", find_port({"code": code}))
 
     @app.on("get_ports")
-    def get_ports():
+    def get_ports(limit):
 
-        emit("new_ports", find_ports())
+        emit("new_ports", find_ports(limit))

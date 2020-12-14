@@ -22,15 +22,13 @@ export function drawLayers() {
     geoProperties.layers.checkpoint = 1
     geoProperties.layers.checkpoints = [1, 2, 4, 8, 16, 32, 64]
 
-    geoProperties.layers.sizeSwitch = sizeSwitch
-
   }
 
   let layers = geoProperties.layers
 
   if (mapSettings.airports && !("airports" in layers)) {
 
-    socket.emit("get_airports")
+    socket.emit("get_airports", {"flow": {"$gte": 10000}})
 
     socket.on("new_airports", function(airports) {
 
@@ -82,7 +80,7 @@ export function drawLayers() {
 
   if (mapSettings.ports && !("ports" in layers)) {
 
-    socket.emit("get_ports")
+    socket.emit("get_ports", {"flow": {"$gte": 20000}})
 
     socket.on("new_ports", function(ports) {
 
@@ -103,28 +101,6 @@ export function drawLayers() {
       drawRivers(canvas)
 
     })
-
-  }
-
-  function sizeSwitch() {
-
-    let checkpoint = layers.checkpoint
-
-    if (checkpoint == 1) {
-      return 12
-    } else if (checkpoint == 2) {
-      return 6
-    } else if (checkpoint == 3) {
-      return 3
-    } else if (checkpoint == 4) {
-      return 1.5
-    } else if (checkpoint == 5) {
-      return 0.75
-    } else if (checkpoint == 6) {
-      return 0.375
-    } else {
-      return 0
-    }
 
   }
 
