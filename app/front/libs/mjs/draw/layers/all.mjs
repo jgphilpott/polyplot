@@ -69,7 +69,7 @@ export function drawLayers() {
 
   if (mapSettings.lakes && !("lakes" in layers)) {
 
-    socket.emit("get_lakes")
+    socket.emit("get_lakes", {"rank": {"$lte": 6}})
 
     socket.on("new_lakes", function(lakes) {
 
@@ -95,7 +95,7 @@ export function drawLayers() {
 
   if (mapSettings.rivers && !("rivers" in layers)) {
 
-    socket.emit("get_rivers")
+    socket.emit("get_rivers", {"rank": {"$lte": 6}})
 
     socket.on("new_rivers", function(rivers) {
 

@@ -10,7 +10,7 @@ export function drawRivers(canvas, rivers=plot.GeoJSON.properties.layers.rivers)
   canvas.selectAll(".river")
         .data(rivers.filter(function(river) {
 
-          return river.rank <= checkpoint * 2
+          return river.rank <= checkpoint
 
         }))
         .enter()

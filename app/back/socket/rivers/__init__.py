@@ -10,6 +10,6 @@ def connect_rivers(app):
         emit("new_river", find_river({"id": id}))
 
     @app.on("get_rivers")
-    def get_rivers():
+    def get_rivers(limit):
 
-        emit("new_rivers", find_rivers())
+        emit("new_rivers", find_rivers(limit))

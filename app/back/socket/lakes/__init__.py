@@ -10,6 +10,6 @@ def connect_lakes(app):
         emit("new_lake", find_lake({"id": id}))
 
     @app.on("get_lakes")
-    def get_lakes():
+    def get_lakes(limit):
 
-        emit("new_lakes", find_lakes())
+        emit("new_lakes", find_lakes(limit))

@@ -10,7 +10,7 @@ export function drawLakes(canvas, lakes=plot.GeoJSON.properties.layers.lakes) {
   canvas.selectAll(".lake")
         .data(lakes.filter(function(lake) {
 
-          return lake.rank <= checkpoint * 2
+          return lake.rank <= checkpoint
 
         }))
         .enter()
