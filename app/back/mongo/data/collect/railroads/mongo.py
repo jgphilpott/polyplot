@@ -7,6 +7,6 @@ def find_railroad(query={}, filter={"_id": 0}):
 
     return dict(collection.find_one(query, filter))
 
-def find_railroads(query={}, filter={"_id": 0}, sort=[("id", 1)]):
+def find_railroads(query={}, filter={"_id": 0}):
 
-    return list(collection.find(query, filter).sort(sort))
+    return list(collection.find(query, filter))
