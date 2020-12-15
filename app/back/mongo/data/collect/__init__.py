@@ -8,4 +8,6 @@ from back.mongo.data.collect.lakes import *
 from back.mongo.data.collect.maps import *
 from back.mongo.data.collect.meta import *
 from back.mongo.data.collect.ports import *
+from back.mongo.data.collect.railroads import *
 from back.mongo.data.collect.rivers import *
+from back.mongo.data.collect.roads import *
