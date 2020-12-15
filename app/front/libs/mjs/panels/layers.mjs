@@ -23,6 +23,8 @@ export function addLayersPanel(panelSetting) {
 
   infrastructureCategory.append("<div class='setting'><input id='airports' class='checkbox' type='checkbox'><label>Airports Layer</label></div>")
   infrastructureCategory.append("<div class='setting'><input id='ports' class='checkbox' type='checkbox'><label>Ports Layer</label></div>")
+  infrastructureCategory.append("<div class='setting'><input id='railroads' class='checkbox' type='checkbox'><label>Railroads Layer</label></div>")
+  infrastructureCategory.append("<div class='setting'><input id='roads' class='checkbox' type='checkbox'><label>Roads Layer</label></div>")
 
   naturalCategory.append("<div class='setting'><input id='graticules' class='checkbox' type='checkbox'><label>Graticules Layer</label></div>")
   naturalCategory.append("<div class='setting'><input id='lakes' class='checkbox' type='checkbox'><label>Lakes Layer</label></div>")
@@ -34,6 +36,8 @@ export function addLayersPanel(panelSetting) {
 
   $(".setting #airports").prop("checked", mapSettings.airports)
   $(".setting #ports").prop("checked", mapSettings.ports)
+  $(".setting #railroads").prop("checked", mapSettings.railroads)
+  $(".setting #roads").prop("checked", mapSettings.roads)
 
   $(".setting #graticules").prop("checked", mapSettings.graticules)
   $(".setting #lakes").prop("checked", mapSettings.lakes)

@@ -18,7 +18,9 @@ export function makeZoomable(canvas) {
                  d3.selectAll(".lake").attr("transform", d3.event.transform)
                  d3.selectAll(".map").attr("transform", d3.event.transform)
                  d3.selectAll(".port").attr("transform", d3.event.transform)
+                 d3.selectAll(".railroad").attr("transform", d3.event.transform)
                  d3.selectAll(".river").attr("transform", d3.event.transform)
+                 d3.selectAll(".road").attr("transform", d3.event.transform)
 
                })
 
