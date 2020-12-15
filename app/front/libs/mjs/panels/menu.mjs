@@ -137,7 +137,9 @@ export function addMenuPanel() {
           "graticules": false,
           "lakes": true,
           "ports": false,
-          "rivers": true
+          "railroads": false,
+          "rivers": true,
+          "roads": false
         }
 
       }

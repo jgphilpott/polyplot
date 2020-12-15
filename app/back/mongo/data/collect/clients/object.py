@@ -49,7 +49,9 @@ class Client():
                     "graticules": False,
                     "lakes": True,
                     "ports": False,
-                    "rivers": True
+                    "railroads": False,
+                    "rivers": True,
+                    "roads": False
                 }
 
             }
