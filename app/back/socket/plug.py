@@ -10,7 +10,9 @@ from back.socket.lakes import connect_lakes
 from back.socket.maps import connect_maps
 from back.socket.meta import connect_meta
 from back.socket.ports import connect_ports
+from back.socket.railroads import connect_railroads
 from back.socket.rivers import connect_rivers
+from back.socket.roads import connect_roads
 
 def plugin(app):
 
@@ -26,7 +28,9 @@ def plugin(app):
     connect_maps(app)
     connect_meta(app)
     connect_ports(app)
+    connect_railroads(app)
     connect_rivers(app)
+    connect_roads(app)
 
     return app
 
