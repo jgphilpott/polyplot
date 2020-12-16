@@ -3,7 +3,9 @@ import {drawCities} from "./cities.mjs"
 import {drawGraticules} from "./graticules.mjs"
 import {drawLakes} from "./lakes.mjs"
 import {drawPorts} from "./ports.mjs"
+import {drawRailroads} from "./railroads.mjs"
 import {drawRivers} from "./rivers.mjs"
+import {drawRoads} from "./roads.mjs"
 
 let plot = data.plot
 
@@ -91,6 +93,19 @@ export function drawLayers() {
 
   }
 
+  if (mapSettings.railroads && !("railroads" in layers)) {
+
+    socket.emit("get_railroads", {"rank": {"$lte": 7}})
+
+    socket.on("new_railroads", function(railroads) {
+
+      layers.railroads = railroads
+      drawRailroads(canvas)
+
+    })
+
+  }
+
   if (mapSettings.rivers && !("rivers" in layers)) {
 
     socket.emit("get_rivers", {"rank": {"$lte": 6}})
@@ -99,6 +114,19 @@ export function drawLayers() {
 
       layers.rivers = rivers
       drawRivers(canvas)
+
+    })
+
+  }
+
+  if (mapSettings.roads && !("roads" in layers)) {
+
+    socket.emit("get_roads", {"category": {"$in": ["Major Highway", "Secondary Highway", "Road"]}, "rank": {"$lte": 4}})
+
+    socket.on("new_roads", function(roads) {
+
+      layers.roads = roads
+      drawRoads(canvas)
 
     })
 
@@ -122,7 +150,9 @@ export function updateLayers(zoom) {
       if (layers.lakes) { drawLakes(canvas) }
       if (layers.cities) { drawCities(canvas) }
       if (layers.airports) { drawAirports(canvas) }
+      if (layers.railroads) { drawRailroads(canvas) }
       if (layers.ports) { drawPorts(canvas) }
+      if (layers.roads) { drawRoads(canvas) }
 
       layers.lastDraw = zoom
 
@@ -143,6 +173,8 @@ export function deleteLayers(layer) {
   if (!("graticules" in layers)) { $(".graticule").remove() }
   if (!("lakes" in layers)) { $(".lake").remove() }
   if (!("ports" in layers)) { $(".port").remove() }
+  if (!("railroads" in layers)) { $(".railroad").remove() }
   if (!("rivers" in layers)) { $(".river").remove() }
+  if (!("roads" in layers)) { $(".road").remove() }
 
 }
