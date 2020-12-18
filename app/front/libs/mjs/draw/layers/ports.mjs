@@ -11,9 +11,7 @@ export function drawPorts(canvas, ports=plot.GeoJSON.properties.layers.ports) {
   canvas.selectAll(".port")
         .data(ports.filter(function(port) {
 
-          let portFlows = [20000000, 5000000, 1250000, 312500, 78125, 19531.25]
-
-          return port.flow >= portFlows[checkpoint - 1]
+          return port.flow >= [20000000, 5000000, 1250000, 312500, 78125, 19531.25][checkpoint - 1]
 
         }))
         .enter()

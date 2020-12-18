@@ -26,9 +26,7 @@ export function drawRoads(canvas, roads=plot.GeoJSON.properties.layers.roads) {
         .style("stroke", "gray")
         .style("stroke-width", function(road) {
 
-          let roadWidths = [0.5, 0.25, 0.125, 0.0625, 0.03125, 0.015625]
-
-          return roadWidths[checkpoint - 1]
+          return [0.5, 0.25, 0.125, 0.0625, 0.03125, 0.015625][checkpoint - 1]
 
         })
 

@@ -28,9 +28,7 @@ export function drawRailroads(canvas, railroads=plot.GeoJSON.properties.layers.r
         .style("stroke", "red")
         .style("stroke-width", function(railroad) {
 
-          let railroadWidths = [0.5, 0.25, 0.125, 0.0625, 0.03125, 0.015625]
-
-          return railroadWidths[checkpoint - 1]
+          return [0.5, 0.25, 0.125, 0.0625, 0.03125, 0.015625][checkpoint - 1]
 
         })
 

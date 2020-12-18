@@ -28,13 +28,9 @@ export function drawGraticules(canvas, graticules=plot.GeoJSON.properties.layers
         .style("stroke", "gray")
         .style("stroke-width", function() {
 
-          let graticuleWidths = [1, 0.5, 0.25, 0.125, 0.0625, 0.03125]
-
-          return graticuleWidths[checkpoint - 1]
+          return [1, 0.5, 0.25, 0.125, 0.0625, 0.03125][checkpoint - 1]
 
         })
         .style("stroke-dasharray", ("5, 5, 5, 5, 5, 5, 10, 5, 10, 5, 10, 5"))
-
-  d3.selectAll(".graticule").setAsBackLayer()
 
 }

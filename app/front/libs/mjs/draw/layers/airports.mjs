@@ -11,9 +11,7 @@ export function drawAirports(canvas, airports=plot.GeoJSON.properties.layers.air
   canvas.selectAll(".airport")
         .data(airports.filter(function(airport) {
 
-          let airportFlows = [10000000, 2500000, 625000, 156250, 39062.5, 9765.625]
-
-          return airport.flow >= airportFlows[checkpoint - 1]
+          return airport.flow >= [10000000, 2500000, 625000, 156250, 39062.5, 9765.625][checkpoint - 1]
 
         }))
         .enter()

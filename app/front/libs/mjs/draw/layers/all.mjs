@@ -19,6 +19,8 @@ export function drawLayers() {
 
     geoProperties.layers = {}
 
+    geoProperties.layers.sort = sort
+
     geoProperties.layers.lastDraw = 1
 
     geoProperties.layers.checkpoint = 1
@@ -36,6 +38,7 @@ export function drawLayers() {
 
       layers.airports = airports
       drawAirports(canvas)
+      layers.sort()
 
     })
 
@@ -49,6 +52,7 @@ export function drawLayers() {
 
       layers.cities = cities
       drawCities(canvas)
+      layers.sort()
 
     })
 
@@ -62,6 +66,7 @@ export function drawLayers() {
 
       layers.graticules = graticules
       drawGraticules(canvas)
+      layers.sort()
 
     })
 
@@ -75,6 +80,7 @@ export function drawLayers() {
 
       layers.lakes = lakes
       drawLakes(canvas)
+      layers.sort()
 
     })
 
@@ -88,6 +94,7 @@ export function drawLayers() {
 
       layers.ports = ports
       drawPorts(canvas)
+      layers.sort()
 
     })
 
@@ -101,6 +108,7 @@ export function drawLayers() {
 
       layers.railroads = railroads
       drawRailroads(canvas)
+      layers.sort()
 
     })
 
@@ -114,6 +122,7 @@ export function drawLayers() {
 
       layers.rivers = rivers
       drawRivers(canvas)
+      layers.sort()
 
     })
 
@@ -127,8 +136,23 @@ export function drawLayers() {
 
       layers.roads = roads
       drawRoads(canvas)
+      layers.sort()
 
     })
+
+  }
+
+  function sort() {
+
+    d3.selectAll(".port").setAsBackLayer()
+    d3.selectAll(".airport").setAsBackLayer()
+    d3.selectAll(".city").setAsBackLayer()
+    d3.selectAll(".railroad").setAsBackLayer()
+    d3.selectAll(".road").setAsBackLayer()
+    d3.selectAll(".lake").setAsBackLayer()
+    d3.selectAll(".river").setAsBackLayer()
+    d3.selectAll(".map").setAsBackLayer()
+    d3.selectAll(".graticule").setAsBackLayer()
 
   }
 
@@ -145,16 +169,17 @@ export function updateLayers(zoom) {
 
       layers.checkpoint = i
 
-      if (layers.graticules) { drawGraticules(canvas) }
-      if (layers.rivers) { drawRivers(canvas) }
-      if (layers.lakes) { drawLakes(canvas) }
-      if (layers.cities) { drawCities(canvas) }
       if (layers.airports) { drawAirports(canvas) }
-      if (layers.railroads) { drawRailroads(canvas) }
+      if (layers.cities) { drawCities(canvas) }
+      if (layers.graticules) { drawGraticules(canvas) }
+      if (layers.lakes) { drawLakes(canvas) }
       if (layers.ports) { drawPorts(canvas) }
+      if (layers.railroads) { drawRailroads(canvas) }
+      if (layers.rivers) { drawRivers(canvas) }
       if (layers.roads) { drawRoads(canvas) }
 
       layers.lastDraw = zoom
+      layers.sort()
 
     }
 
