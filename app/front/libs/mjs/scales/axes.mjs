@@ -1,8 +1,24 @@
+import {drawAxes} from "../draw/axes.mjs"
 import {findDomain} from "./domain.mjs"
-import {min, max, width, height} from "./range.mjs"
 import {red, yellow, green} from "../colors/solid/rainbow.mjs"
+import {min, max, width, height} from "./range.mjs"
 
 let plot = data.plot
+
+export function scaleT(plotType=plot.type) {
+
+  let timeline = $("#timeline")[0].width
+
+  let minCap = $("#minCap")[0].width
+  let point = $("#point")[0].width
+  let maxCap = $("#maxCap")[0].width
+
+  let range = [0, timeline - (minCap / 2) - point - (maxCap / 2)]
+  let domain = [plot.t.minYear, plot.t.maxYear]
+
+  plot.t.scale = d3.scaleLinear().range(range).domain(domain)
+
+}
 
 export function scaleR(plotType=plot.type) {
 
@@ -32,7 +48,7 @@ export function scaleX(plotType=plot.type) {
 
   if (plotType == "Map") {
 
-    plot.x.scale = d3.scaleLinear().range([red, yellow, green]).domain([plot.x.min, plot.x.max / 2, plot.x.max])
+    plot.x.scale = d3.scaleLinear().range([red, yellow, green]).domain([plot.x.min, (plot.x.min + plot.x.max) / 2, plot.x.max])
 
   } else if (plotType == "Poly2") {
 
@@ -76,26 +92,7 @@ export function scaleZ(plotType=plot.type) {
   plot.z.min = 0
   plot.z.max = absMaxValue(domain)
 
-  if (plotType == "Poly3") {
-
-    plot.z.scale = d3.scaleLinear().range([-max, max]).domain([-plot.z.max, plot.z.max])
-
-  }
-
-}
-
-export function scaleT(plotType=plot.type) {
-
-  let timeline = $("#timeline")[0].width
-
-  let minCap = $("#minCap")[0].width
-  let point = $("#point")[0].width
-  let maxCap = $("#maxCap")[0].width
-
-  let range = [0, timeline - (minCap / 2) - point - (maxCap / 2)]
-  let domain = [plot.t.minYear, plot.t.maxYear]
-
-  plot.t.scale = d3.scaleLinear().range(range).domain(domain)
+  plot.z.scale = d3.scaleLinear().range([-max, max]).domain([-plot.z.max, plot.z.max])
 
 }
 
@@ -115,5 +112,7 @@ export function scaleAxes(plotType=plot.type) {
     scaleZ(plotType)
 
   }
+
+  drawAxes(plotType)
 
 }

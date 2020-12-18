@@ -1,4 +1,4 @@
-import {scaleT} from "../scales/axes.mjs"
+import {scaleT, scaleAxes} from "../scales/axes.mjs"
 
 import {startAnimation} from "../animation/plots.mjs"
 import {clearAnimation} from "../animation/plots.mjs"
@@ -46,7 +46,8 @@ export function addTimePanel(panelSetting) {
 
   panel.append("<p id='year'>" + plot.t.year + "</p>")
 
-  scaleT(plotType)
+  scaleT()
+  scaleAxes()
 
   makeDragable($("#minCap"), [dragTimeControls, animateTimeline])
   makeDragable($("#point"), [dragTimeControls, animateTimeline])
@@ -189,17 +190,11 @@ export function skip(direction) {
   animateTimeline(0)
 
   if (plotType == "Map") {
-
     animateMaps(0)
-
   } else if (plotType == "Poly2") {
-
     animateCircles(0)
-
   } else if (plotType == "Poly3") {
-
     animateSpheres(0)
-
   }
 
 }
@@ -266,6 +261,16 @@ export function dragTimeControls(controller, eventCoordinates) {
 
     $("#minYear").text(plot.t.minCap)
 
+    scaleAxes()
+
+    if (plotType == "Map") {
+      animateMaps(0)
+    } else if (plotType == "Poly2") {
+      animateCircles(0)
+    } else if (plotType == "Poly3") {
+      animateSpheres(0)
+    }
+
   } else if (controller[0].id == "point" && eventCoordinates[0] > minCap + pointWidth && eventCoordinates[0] < maxCap - pointWidth + 1) {
 
     plot.t.year = Math.floor(plot.t.scale.invert(point - pointWidth - minOffset))
@@ -274,17 +279,11 @@ export function dragTimeControls(controller, eventCoordinates) {
     animatePanels()
 
     if (plotType == "Map") {
-
       animateMaps(0)
-
     } else if (plotType == "Poly2") {
-
       animateCircles(0)
-
     } else if (plotType == "Poly3") {
-
       animateSpheres(0)
-
     }
 
     controller.css({"left": eventCoordinates[0]})
@@ -301,6 +300,16 @@ export function dragTimeControls(controller, eventCoordinates) {
     controller.css({"left": eventCoordinates[0]})
 
     $("#maxYear").text(plot.t.maxCap)
+
+    scaleAxes()
+
+    if (plotType == "Map") {
+      animateMaps(0)
+    } else if (plotType == "Poly2") {
+      animateCircles(0)
+    } else if (plotType == "Poly3") {
+      animateSpheres(0)
+    }
 
   }
 

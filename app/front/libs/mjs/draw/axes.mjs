@@ -9,6 +9,8 @@ export function drawAxes(plotType=plot.type) {
 
   if (plotType == "Poly2") {
 
+    $(".axis").remove()
+
     let canvas = d3.select("#canvas")
 
     canvas.append("g")
@@ -27,11 +29,17 @@ export function drawAxes(plotType=plot.type) {
                   .tickSize(-width())
                   .ticks(7))
 
+    d3.selectAll(".axis").setAsBackLayer()
+
   } else if (plotType == "Poly3") {
 
-    drawLine([[max, min, min], [-max, min, min]], red)
-    drawLine([[min, max, min], [min, -max, min]], green)
-    drawLine([[min, min, max], [min, min, -max]], blue)
+    plot.core.scene.remove(plot.x.axis)
+    plot.core.scene.remove(plot.y.axis)
+    plot.core.scene.remove(plot.z.axis)
+
+    plot.x.axis = drawLine([[max, min, min], [-max, min, min]], red)
+    plot.y.axis = drawLine([[min, max, min], [min, -max, min]], green)
+    plot.z.axis = drawLine([[min, min, max], [min, min, -max]], blue)
 
   }
 
