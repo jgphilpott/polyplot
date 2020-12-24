@@ -1,4 +1,4 @@
-web:
+app:
   container_name: polyplot
   build: .
   volumes:
