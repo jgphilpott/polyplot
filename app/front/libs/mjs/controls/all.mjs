@@ -1,29 +1,11 @@
-import {addOrbitControls} from "./orbit.mjs"
+import {addDragControls} from "./drag.mjs"
+import {addFlyControls} from "./fly.mjs"
+import {addZoomControls} from "./zoom.mjs"
 
 export function addControls() {
 
-  let controls = addOrbitControls()
-
-  return controls
+  addDragControls()
+  addFlyControls()
+  addZoomControls()
 
 }
-
-// $(document).keypress(function(event) {
-//
-//   if (event.keyCode == 119) { // W
-//
-//     camera.target.z += 1
-//     camera.lookAt(camera.target.x, camera.target.y, camera.target.z)
-//
-//   } else if (event.keyCode == 115) { // S
-//
-//     camera.target.z -= 1
-//     camera.lookAt(camera.target.x, camera.target.y, camera.target.z)
-//
-//   } else if (event.keyCode == 97) { // A
-//
-//   } else if (event.keyCode == 100) { // D
-//
-//   }
-//
-// })

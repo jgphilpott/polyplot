@@ -22,7 +22,6 @@ def load_js(path):
 
         urlretrieve("https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js", path + "/three.js")
         urlretrieve("https://raw.githubusercontent.com/jeromeetienne/threex.domevents/1100828c40df668a82a97c811895918088cc607f/threex.domevents.js", path + "/threeX.js")
-        urlretrieve("https://raw.githubusercontent.com/mrdoob/three.js/23f814719b2d199e324448751862f2a5fc7d27a5/examples/js/controls/OrbitControls.js", path + "/orbitControls.js")
 
         particleWeb = get("https://raw.githubusercontent.com/jgphilpott/particleWeb/bd00fb4eaf1b8abeb0f3f720f3f938f9d5b5c772/particleWeb.js").content.decode("utf-8")
         camalize = get("https://gist.githubusercontent.com/jgphilpott/19e7a94cdf6d6d4cd868cc18e628026c/raw/2c5d68bb84f0d4e14478bcac359a77137f6a25f5/camalize.js").content.decode("utf-8")
