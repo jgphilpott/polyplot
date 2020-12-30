@@ -36,7 +36,7 @@ class Client():
                 },
 
                 "poly3": {
-
+                    "caps": True
                 },
 
                 "poly2": {

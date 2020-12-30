@@ -1,3 +1,4 @@
+import {drawAxes} from "../draw/axes.mjs"
 import {addPanelEvents} from "./events/all.mjs"
 import {drawLayers, deleteLayers} from "../draw/layers/all.mjs"
 import {startRotation, stopRotation} from "../cartography/rotation.mjs"
@@ -80,6 +81,7 @@ export function addMenuPanel() {
     let settings = "<div id='settings-panel' class='sub-panel'><h1>Settings</h1>"
 
     settings += "<div id='general'><div class='setting'><input id='rotation' class='checkbox' type='checkbox'><label>Rotate miniMap</label></div></div>"
+    settings += "<div id='poly3'><div class='setting'><input id='caps' class='checkbox' type='checkbox'><label>Show Axes Caps</label></div></div>"
     settings += "<div id='poly2'><div class='setting'><input id='crosshairs' class='checkbox' type='checkbox'><label>Show Crosshairs</label></div></div>"
 
     settings += "</div>"
@@ -124,7 +126,7 @@ export function addMenuPanel() {
         },
 
         "poly3": {
-
+          "caps": true
         },
 
         "poly2": {
@@ -162,6 +164,8 @@ export function addMenuPanel() {
       $(".setting #title").prop("checked", settings.panels.title)
 
       $(".setting #rotation").prop("checked", settings.general.rotation)
+
+      $(".setting #caps").prop("checked", settings.poly3.caps)
 
       $(".setting #crosshairs").prop("checked", settings.poly2.crosshairs)
 
@@ -381,10 +385,9 @@ export function toggleCheckbox(type, key, event) {
 
       client.settings[update.category][update.setting] = update.value
 
-      localWrite("settings", settings)
-
     })
 
+    localWrite("settings", settings)
     settingSwitch(type, key)
 
   } else {
@@ -392,7 +395,6 @@ export function toggleCheckbox(type, key, event) {
     $("#" + key + ".checkbox").prop("checked", category[key])
 
     localWrite("settings", settings)
-
     settingSwitch(type, key)
 
   }
@@ -431,7 +433,7 @@ export function toggleCheckbox(type, key, event) {
 
       case "poly3":
 
-        break
+        drawAxes()
 
       case "poly2":
 

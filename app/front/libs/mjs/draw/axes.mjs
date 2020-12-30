@@ -52,13 +52,17 @@ export function drawAxes(plotType=plot.type) {
     plot.core.scene.remove(plot.z.minCap)
     plot.core.scene.remove(plot.z.maxCap)
 
-    plot.r.centroid = drawCap(black, min, min, min)
-    plot.x.minCap = drawCap(red, -max, min, min)
-    plot.x.maxCap = drawCap(green, max, min, min)
-    plot.y.minCap = drawCap(red, min, -max, min)
-    plot.y.maxCap = drawCap(green, min, max, min)
-    plot.z.minCap = drawCap(red, min, min, -max)
-    plot.z.maxCap = drawCap(green, min, min, max)
+    if (localRead("settings").poly3.caps) {
+
+      plot.r.centroid = drawCap(black, min, min, min)
+      plot.x.minCap = drawCap(red, -max, min, min)
+      plot.x.maxCap = drawCap(green, max, min, min)
+      plot.y.minCap = drawCap(red, min, -max, min)
+      plot.y.maxCap = drawCap(green, min, max, min)
+      plot.z.minCap = drawCap(red, min, min, -max)
+      plot.z.maxCap = drawCap(green, min, min, max)
+
+    }
 
     function drawCap(color, x, y, z) {
 
@@ -69,6 +73,8 @@ export function drawAxes(plotType=plot.type) {
       mesh.position.set(x, y, z)
       event(mesh, "dblclick", lookHere, mesh)
       plot.core.scene.add(mesh)
+
+      return mesh
 
     }
 
