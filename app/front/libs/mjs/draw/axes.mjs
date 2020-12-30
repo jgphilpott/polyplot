@@ -1,4 +1,7 @@
+import {event} from "../three/x.mjs"
 import {drawLine} from "./lines.mjs"
+import {lookHere} from "../cameras/all.mjs"
+import {black} from "../colors/three/grayscale.mjs"
 import {red, green, blue} from "../colors/three/rainbow.mjs"
 import {min, max, width, height} from "../env/window.mjs"
 
@@ -40,6 +43,34 @@ export function drawAxes(plotType=plot.type) {
     plot.x.axis = drawLine([[max, min, min], [-max, min, min]], red)
     plot.y.axis = drawLine([[min, max, min], [min, -max, min]], green)
     plot.z.axis = drawLine([[min, min, max], [min, min, -max]], blue)
+
+    plot.core.scene.remove(plot.r.centroid)
+    plot.core.scene.remove(plot.x.minCap)
+    plot.core.scene.remove(plot.x.maxCap)
+    plot.core.scene.remove(plot.y.minCap)
+    plot.core.scene.remove(plot.y.maxCap)
+    plot.core.scene.remove(plot.z.minCap)
+    plot.core.scene.remove(plot.z.maxCap)
+
+    plot.r.centroid = drawCap(black, min, min, min)
+    plot.x.minCap = drawCap(red, -max, min, min)
+    plot.x.maxCap = drawCap(green, max, min, min)
+    plot.y.minCap = drawCap(red, min, -max, min)
+    plot.y.maxCap = drawCap(green, min, max, min)
+    plot.z.minCap = drawCap(red, min, min, -max)
+    plot.z.maxCap = drawCap(green, min, min, max)
+
+    function drawCap(color, x, y, z) {
+
+      let geometry = new THREE.SphereGeometry(1, 10, 10)
+      let material = new THREE.MeshStandardMaterial({"color": color})
+      let mesh = new THREE.Mesh(geometry, material)
+
+      mesh.position.set(x, y, z)
+      event(mesh, "dblclick", lookHere, mesh)
+      plot.core.scene.add(mesh)
+
+    }
 
   }
 
