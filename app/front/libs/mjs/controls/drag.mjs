@@ -1,9 +1,13 @@
 export function addDragControls() {
 
   let camera = data.plot.core.camera
+  let position = camera.position
+  let target = camera.target
 
-  let dragSpeed = 7
-  let hypotenuseXY, hypotenuseYZ, angleXY, angleYZ, startX, startY = null
+  let radius3 = null
+  let dragSpeed = 10
+  let startX, startY = null
+  let horizontalAngle, verticalAngle = null
 
   function start(event) {
 
@@ -13,19 +17,20 @@ export function addDragControls() {
     startX = event.pageX
     startY = event.pageY
 
-    let diffX = Math.abs(camera.position.x - camera.target.x)
-    let diffY = Math.abs(camera.position.y - camera.target.y)
-    let diffZ = Math.abs(camera.position.z - camera.target.z)
+    radius3 = position.distanceTo(target)
 
-    hypotenuseXY = side4sides(diffX, diffY)
-    hypotenuseYZ = side4sides(diffY, diffZ)
+    let deltaX = Math.abs(position.x - target.x)
+    let deltaY = Math.abs(position.y - target.y)
+    let deltaZ = Math.abs(position.z - target.z)
 
-    angleXY = angle4sides(hypotenuseXY, diffX)
-    if (camera.position.x < camera.target.x) { angleXY = 180 - angleXY }
-    if (!(camera.position.y > camera.target.y)) { angleXY = -angleXY }
+    let radius2 = side4sides(deltaZ, null, radius3)
 
-    angleYZ = angle4sides(hypotenuseYZ, diffZ)
-    if (camera.position.z < camera.target.z) { angleYZ = 180 - angleYZ }
+    horizontalAngle = angle4sides(radius2, deltaX)
+    if (position.x < target.x) { horizontalAngle = 180 - horizontalAngle }
+    if (position.y < target.y) { horizontalAngle = -horizontalAngle }
+
+    verticalAngle = angle4sides(radius3, deltaZ)
+    if (position.z < target.z) { verticalAngle = 180 - verticalAngle }
 
     document.onmousemove = drag
     document.onmouseup = stop
@@ -37,18 +42,24 @@ export function addDragControls() {
     event.preventDefault()
     event.stopPropagation()
 
-    let newAngleXY = angleXY + ((startX - event.pageX) / dragSpeed)
-    if (newAngleXY >= 180) { newAngleXY = newAngleXY - 360 }
+    let deltaX = Math.abs(position.x - target.x)
+    let deltaY = Math.abs(position.y - target.y)
+    let deltaZ = Math.abs(position.z - target.z)
 
-    let newAngleYZ = angleYZ + ((startY - event.pageY) / dragSpeed)
-    if (newAngleYZ <= 0) { newAngleYZ = 0 } else if (newAngleYZ >= 180) { newAngleYZ = -180 }
+    let radius2 = side4sides(deltaZ, null, radius3)
 
-    let newX = side4angle(newAngleXY, hypotenuseXY, true, null)
-    let newY = side4angle(newAngleXY, hypotenuseXY, null, true)
-    let newZ = side4angle(newAngleYZ, hypotenuseYZ, true, null)
+    let newHorizontalAngle = horizontalAngle + ((startX - event.pageX) / dragSpeed)
+    if (newHorizontalAngle >= 180) { newHorizontalAngle = newHorizontalAngle - 360 }
 
-    camera.position.set(newX, newY, newZ)
-    camera.lookAt(camera.target.x, camera.target.y, camera.target.z)
+    let newVerticalAngle = verticalAngle + ((startY - event.pageY) / dragSpeed)
+    if (newVerticalAngle <= 0) { newVerticalAngle = 0.000001 } else if (newVerticalAngle >= 180) { newVerticalAngle = -180 - 0.000001 }
+
+    let newX = side4angle(newHorizontalAngle, radius2, true, null) + target.x
+    let newY = side4angle(newHorizontalAngle, radius2, null, true) + target.y
+    let newZ = side4angle(newVerticalAngle, radius3, true, null) + target.z
+
+    position.set(newX, newY, newZ)
+    camera.lookAt(target.x, target.y, target.z)
 
   }
 

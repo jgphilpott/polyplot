@@ -11,9 +11,9 @@ export function addZoomControls() {
     let position = camera.position
     let target = camera.target
 
-    let diffX = position.x - target.x
-    let diffY = position.y - target.y
-    let diffZ = position.z - target.z
+    let deltaX = position.x - target.x
+    let deltaY = position.y - target.y
+    let deltaZ = position.z - target.z
 
     // Zoom In
     if (zoomDelta > 0) {
@@ -27,9 +27,9 @@ export function addZoomControls() {
 
     function zoom() {
 
-      position.x -= diffX * zoomDelta
-      position.y -= diffY * zoomDelta
-      position.z -= diffZ * zoomDelta
+      position.x -= deltaX * zoomDelta
+      position.y -= deltaY * zoomDelta
+      position.z -= deltaZ * zoomDelta
 
     }
 
