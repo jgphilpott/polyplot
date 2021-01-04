@@ -1,10 +1,10 @@
 export function addFlyControls() {
 
-  let camera = data.plot.core.camera
-  let position = camera.position
-  let target = camera.target
-
   $(document).keydown(function(event) {
+
+    let camera = data.plot.core.camera
+    let position = camera.position
+    let target = camera.target
 
     let deltaX = Math.abs(position.x - target.x)
     let deltaY = Math.abs(position.y - target.y)
@@ -62,17 +62,69 @@ export function addFlyControls() {
 
     }
 
-    camera.lookAt(target.x, target.y, target.z)
+    deltaX = position.x - target.x
+    deltaY = position.y - target.y
+    deltaZ = position.z - target.z
 
     if (event.keyCode == 38) { // Up
 
+      let stepX = deltaX / radius3
+      let stepY = deltaY / radius3
+      let stepZ = deltaZ / radius3
+
+      position.x -= stepX
+      position.y -= stepY
+      position.z -= stepZ
+
+      target.x -= stepX
+      target.y -= stepY
+      target.z -= stepZ
+
     } else if (event.keyCode == 40) { // Down
+
+      let stepX = deltaX / radius3
+      let stepY = deltaY / radius3
+      let stepZ = deltaZ / radius3
+
+      position.x += stepX
+      position.y += stepY
+      position.z += stepZ
+
+      target.x += stepX
+      target.y += stepY
+      target.z += stepZ
 
     } else if (event.keyCode == 37) { // Left
 
+      let newHorizontalAngle = horizontalAngle + 90
+      if (newHorizontalAngle >= 180) { newHorizontalAngle = newHorizontalAngle - 360 }
+
+      let stepX = side4angle(newHorizontalAngle, 1, true, null)
+      let stepY = side4angle(newHorizontalAngle, 1, null, true)
+
+      position.x -= stepX
+      position.y -= stepY
+
+      target.x -= stepX
+      target.y -= stepY
+
     } else if (event.keyCode == 39) { // Right
 
+      let newHorizontalAngle = horizontalAngle + 90
+      if (newHorizontalAngle >= 180) { newHorizontalAngle = newHorizontalAngle - 360 }
+
+      let stepX = side4angle(newHorizontalAngle, 1, true, null)
+      let stepY = side4angle(newHorizontalAngle, 1, null, true)
+
+      position.x += stepX
+      position.y += stepY
+
+      target.x += stepX
+      target.y += stepY
+
     }
+
+    camera.lookAt(target.x, target.y, target.z)
 
   })
 
