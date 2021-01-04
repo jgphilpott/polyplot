@@ -1,6 +1,6 @@
 import {event} from "../three/x.mjs"
+import {focus} from "../controls/focus.mjs"
 import {drawLine} from "./lines.mjs"
-import {lookHere} from "../cameras/all.mjs"
 import {black} from "../colors/three/grayscale.mjs"
 import {red, green, blue} from "../colors/three/rainbow.mjs"
 import {min, max, width, height} from "../env/window.mjs"
@@ -71,7 +71,7 @@ export function drawAxes(plotType=plot.type) {
       let mesh = new THREE.Mesh(geometry, material)
 
       mesh.position.set(x, y, z)
-      event(mesh, "dblclick", lookHere, mesh)
+      event(mesh, "dblclick", focus, mesh)
       plot.core.scene.add(mesh)
 
       return mesh
