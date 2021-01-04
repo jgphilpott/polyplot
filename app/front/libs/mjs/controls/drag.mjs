@@ -17,12 +17,11 @@ export function addDragControls() {
     startX = event.pageX
     startY = event.pageY
 
-    radius3 = position.distanceTo(target)
-
     let deltaX = Math.abs(position.x - target.x)
     let deltaY = Math.abs(position.y - target.y)
     let deltaZ = Math.abs(position.z - target.z)
 
+    radius3 = position.distanceTo(target)
     let radius2 = side4sides(deltaZ, null, radius3)
 
     horizontalAngle = angle4sides(radius2, deltaX)
@@ -42,11 +41,7 @@ export function addDragControls() {
     event.preventDefault()
     event.stopPropagation()
 
-    let deltaX = Math.abs(position.x - target.x)
-    let deltaY = Math.abs(position.y - target.y)
-    let deltaZ = Math.abs(position.z - target.z)
-
-    let radius2 = side4sides(deltaZ, null, radius3)
+    let radius2 = side4sides(Math.abs(position.z - target.z), null, radius3)
 
     let newHorizontalAngle = horizontalAngle + ((startX - event.pageX) / dragSpeed)
     if (newHorizontalAngle >= 180) { newHorizontalAngle = newHorizontalAngle - 360 }

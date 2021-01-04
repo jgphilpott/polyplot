@@ -2,14 +2,14 @@ export function addZoomControls() {
 
   $("#canvas").on("wheel", function(event) {
 
+    let camera = data.plot.core.camera
+    let position = camera.position
+    let target = camera.target
+
     let zoomMin = 1
     let zoomMax = 500
     let zoomSpeed = 1000
     let zoomDelta = event.originalEvent.wheelDelta / zoomSpeed
-
-    let camera = data.plot.core.camera
-    let position = camera.position
-    let target = camera.target
 
     let deltaX = position.x - target.x
     let deltaY = position.y - target.y

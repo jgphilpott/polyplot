@@ -1,9 +1,11 @@
 export function focus(obj, duration=1000, steps=100) {
 
-  let x, y, z = null
+  let camera = data.plot.core.camera
+  let position = camera.position
+  let target = camera.target
 
   let plot = data.plot
-  let camera = plot.core.camera
+  let x, y, z = null
 
   if (obj.x && obj.y && obj.z) {
 
@@ -19,13 +21,13 @@ export function focus(obj, duration=1000, steps=100) {
 
   }
 
-  let diffX = x - camera.target.x
-  let diffY = y - camera.target.y
-  let diffZ = z - camera.target.z
+  let deltaX = x - target.x
+  let deltaY = y - target.y
+  let deltaZ = z - target.z
 
-  let stepX = diffX / steps
-  let stepY = diffY / steps
-  let stepZ = diffZ / steps
+  let stepX = deltaX / steps
+  let stepY = deltaY / steps
+  let stepZ = deltaZ / steps
 
   for (let i = 1; i <= steps; i++) {
 
@@ -35,11 +37,11 @@ export function focus(obj, duration=1000, steps=100) {
 
   function updateCameraTarget() {
 
-    camera.target.x += stepX
-    camera.target.y += stepY
-    camera.target.z += stepZ
+    target.x += stepX
+    target.y += stepY
+    target.z += stepZ
 
-    camera.lookAt(camera.target.x, camera.target.y, camera.target.z)
+    camera.lookAt(target.x, target.y, target.z)
 
   }
 
