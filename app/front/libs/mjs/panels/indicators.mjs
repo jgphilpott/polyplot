@@ -146,11 +146,11 @@ export function addIndicatorsPanel(panelSetting) {
 
     for (let i = 0; i < plots.length; i++) {
 
-      for (let j = 0; j < indicator.geographies.length; j++) {
+      for (let j = 0; j < indicator.countries.length; j++) {
 
-        if (plots[i].code == indicator.geographies[j].code) {
+        if (plots[i].code == indicator.countries[j].code) {
 
-          plots[i][scelection] = indicator.geographies[j].history
+          plots[i][scelection] = indicator.countries[j].history
 
         }
 

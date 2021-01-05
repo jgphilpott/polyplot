@@ -26,9 +26,9 @@ def register_poly2_route(app):
 
         for country in countries:
 
-            country["r"] = [indicator for indicator in r["geographies"] if indicator["code"] in [country["code"]]][0]["history"]
-            country["x"] = [indicator for indicator in x["geographies"] if indicator["code"] in [country["code"]]][0]["history"]
-            country["y"] = [indicator for indicator in y["geographies"] if indicator["code"] in [country["code"]]][0]["history"]
+            country["r"] = [indicator for indicator in r["countries"] if indicator["code"] in [country["code"]]][0]["history"]
+            country["x"] = [indicator for indicator in x["countries"] if indicator["code"] in [country["code"]]][0]["history"]
+            country["y"] = [indicator for indicator in y["countries"] if indicator["code"] in [country["code"]]][0]["history"]
 
         data["plot"]["plots"] = countries
 

@@ -24,7 +24,7 @@ def register_map_route(app):
 
         for country in countries:
 
-            country["x"] = [indicator for indicator in x["geographies"] if indicator["code"] in [country["code"]]][0]["history"]
+            country["x"] = [indicator for indicator in x["countries"] if indicator["code"] in [country["code"]]][0]["history"]
 
         data["plot"]["plots"] = countries
 

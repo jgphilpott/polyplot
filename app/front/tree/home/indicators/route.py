@@ -8,7 +8,7 @@ def register_indicators_route(app):
     @app.route("/indicators")
     def indicators():
 
-        data = {"plot": {"type": None}, "indicators": find_indicators({"geographies": {"$exists": True, "$ne": []}}, {"_id": 0, "geographies": 0})}
+        data = {"plot": {"type": None}, "indicators": find_indicators({"countries": {"$exists": True, "$ne": []}}, {"_id": 0, "countries": 0})}
 
         if "id" in request.cookies: data["client"] = valid_client(request.cookies.get("id"))
 
