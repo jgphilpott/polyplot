@@ -1,4 +1,3 @@
-import json
 from requests import get
 from datetime import datetime
 
