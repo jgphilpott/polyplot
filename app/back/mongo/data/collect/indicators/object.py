@@ -95,7 +95,7 @@ class Indicator():
                             countries.append({"code": item["countryiso3code"], "name": item["country"]["value"], "history": [obj]})
 
                 self.countries = countries
-                self.last_updated = datetime.now().strftime("%Y-%m-%d")
+                self.last_updated = datetime.utcnow().strftime("%Y-%m-%d")
                 self.calculate_completeness()
                 self.calculate_size()
 
