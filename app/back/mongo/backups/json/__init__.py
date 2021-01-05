@@ -25,6 +25,6 @@ def load_json(path):
 
     for indicator in find_indicators():
 
-        if indicator["default"] == True and "geographies" not in indicator.keys():
+        if indicator["default"] == True and "countries" not in indicator:
 
             update_indicator(Indicator(indicator).update().__dict__)

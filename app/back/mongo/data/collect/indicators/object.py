@@ -1,5 +1,6 @@
 import json
 from requests import get
+from datetime import datetime
 
 class Indicator():
 
@@ -13,61 +14,53 @@ class Indicator():
 
         self.categories = indicator["categories"]
 
-        if "completeness" in indicator:
-            self.completeness = indicator["completeness"]
-        else:
-            self.completeness = 0
+        self.completeness = indicator["completeness"]
+        self.size = indicator["size"]
 
-        if "size" in indicator:
-            self.size = indicator["size"]
+        if "countries" in indicator:
+            self.countries = indicator["countries"]
         else:
-            self.size = 0
+            self.countries = []
 
-        if "geographies" in indicator:
-            self.geographies = indicator["geographies"]
+        if "last_updated" in indicator:
+            self.last_updated = indicator["last_updated"]
         else:
-            self.geographies = []
+            self.last_updated = None
 
-    def calculate_completeness(self, country_codes):
+    def calculate_completeness(self):
 
         total_data = 0
         total_count = 0
 
-        for geography in self.geographies:
+        for country in self.countries:
 
-            if geography["code"] in country_codes:
+            data = 0
+            count = 0
 
-                data = 0
-                count = 0
+            for date in country["history"]:
 
-                for date in geography["history"]:
+                count += 1
+                total_count += 1
 
-                    count += 1
-                    total_count += 1
+                if type(date["value"]) == int or type(date["value"]) == float:
 
-                    dataType = type(date["value"])
+                    data += 1
+                    total_data += 1
 
-                    if dataType == int or dataType == float:
-
-                        data += 1
-                        total_data += 1
-
-                geography["completeness"] = (data / count) * 100
+            country["completeness"] = (data / count) * 100
 
         self.completeness = (total_data / total_count) * 100
 
         return self
 
-    def calculate_size(self, country_codes):
+    def calculate_size(self):
 
         size = 0
 
-        for geography in self.geographies:
+        for country in self.countries:
 
-            if geography["code"] in country_codes:
-
-                geography["size"] = len(str(geography["history"]).encode("utf-8"))
-                size += geography["size"]
+            country["size"] = len(str(country["history"]).encode("utf-8"))
+            size += country["size"]
 
         self.size = size
 
@@ -75,46 +68,40 @@ class Indicator():
 
     def update(self):
 
-        if not self.geographies:
+        try:
 
-            try:
+            api = "https://api.worldbank.org/v2/country/all/indicator/"
+            meta = get("{}{}?format=json&per_page=1".format(api, self.code)).json()[0]
 
-                api = "https://api.worldbank.org/v2/country/all/indicator/"
-                meta = get("{}{}?format=json".format(api, self.code)).json()[0]
+            if not self.last_updated or datetime.strptime(meta["lastupdated"], "%Y-%m-%d") >= datetime.strptime(self.last_updated, "%Y-%m-%d"):
+
                 data = get("{}{}?format=json&per_page={}".format(api, self.code, meta["total"])).json()[1]
 
-                geos = []
+                countries = []
+                country_codes = get("https://gist.githubusercontent.com/jgphilpott/a1366c890935e615f87a6843b72f541a/raw/8438cfa30979586354ceacd8579678b5da91522f/countryCodes.js").json()
 
                 for item in data:
 
-                    obj = {"year": int(item["date"]), "value": item["value"]}
-                    geo_exists = [geo for geo in geos if geo["code"] in [item["countryiso3code"]]]
+                    if item["countryiso3code"] in country_codes:
 
-                    if geo_exists:
+                        obj = {"year": int(item["date"]), "value": item["value"]}
+                        country_exists = [country for country in countries if country["code"] in [item["countryiso3code"]]]
 
-                        geo_exists[0]["history"].append(obj)
+                        if country_exists:
 
-                    else:
+                            country_exists[0]["history"].append(obj)
 
-                        geos.append({"code": item["countryiso3code"], "name": item["country"]["value"], "history": [obj]})
+                        else:
 
-                self.geographies = geos
+                            countries.append({"code": item["countryiso3code"], "name": item["country"]["value"], "history": [obj]})
 
-            except:
+                self.countries = countries
+                self.last_updated = datetime.now().strftime("%Y-%m-%d")
+                self.calculate_completeness()
+                self.calculate_size()
 
-                pass
+        except:
 
-        if self.geographies:
-
-            try:
-
-                country_codes = json.loads(get("https://gist.githubusercontent.com/jgphilpott/a1366c890935e615f87a6843b72f541a/raw/8438cfa30979586354ceacd8579678b5da91522f/countryCodes.js").content.decode("utf-8"))
-
-                self.calculate_completeness(country_codes)
-                self.calculate_size(country_codes)
-
-            except:
-
-                pass
+            pass
 
         return self

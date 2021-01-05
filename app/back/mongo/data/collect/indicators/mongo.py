@@ -9,7 +9,7 @@ def find_indicator(query={}, filter={"_id": 0}):
 
     return dict(collection.find_one(query, filter))
 
-def find_indicators(query={}, filter={"_id": 0}, sort=[("code", False)]):
+def find_indicators(query={}, filter={"_id": 0}, sort=[("completeness", True)]):
 
     return sorted(list(collection.find(query, filter)), key=itemgetter(sort[0][0]), reverse=sort[0][1])
 
