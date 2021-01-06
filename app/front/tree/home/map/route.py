@@ -1,4 +1,4 @@
-from flask import render_template, request
+from flask import request, make_response, render_template
 
 from back.mongo.data.collect.clients import valid_client
 from back.mongo.data.collect.countries import find_countries
@@ -14,7 +14,9 @@ def register_map_route(app):
 
         if "id" in request.cookies: data["client"] = valid_client(request.cookies.get("id"))
 
-        x = find_indicator({"code": request.args["x"]}) if "x" in request.args else find_indicator({"code": "SP.DYN.LE00.IN"})
+        x_code = request.args.get("x") if "x" in request.args else request.cookies.get("x") if "x" in request.cookies else "SP.DYN.LE00.IN"
+
+        x = find_indicator({"code": x_code})
 
         data["plot"]["x"] = {"name": x["name"], "code": x["code"]}
         data["plot"]["t"] = {"minYear": 1960, "year": 1970, "maxYear": 2018}
@@ -24,8 +26,12 @@ def register_map_route(app):
 
         for country in countries:
 
-            country["x"] = [indicator for indicator in x["countries"] if indicator["code"] in [country["code"]]][0]["history"]
+            country["x"] = [item for item in x["countries"] if item["code"] in [country["code"]]][0]["history"]
 
         data["plot"]["plots"] = countries
 
-        return render_template("tree/home/map/page.html", data=data)
+        response = make_response(render_template("tree/home/map/page.html", data=data))
+
+        response.set_cookie("x", x_code)
+
+        return response

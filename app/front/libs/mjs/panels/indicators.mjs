@@ -140,6 +140,8 @@ export function addIndicatorsPanel(panelSetting) {
 
   socket.on("new_indicator", function(indicator) {
 
+    writeCookie(scelection, indicator.code)
+
     let legendKey = $("#" + scelection + "-data")
     legendKey.text(indicator.name)
     legendKey.parent().attr("id", indicator.code)
