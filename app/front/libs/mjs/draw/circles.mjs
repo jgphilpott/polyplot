@@ -3,34 +3,29 @@ import {regionsColourSwitch} from "../colors/switches/regions.mjs"
 import {updateMetaPanel, clearMetaPanel} from "../panels/meta.mjs"
 
 let plot = data.plot
-let plots = plot.plots.sort(function(a, b) {
-
-  if (a.r && b.r) {
-
-    a = a.r.find(date => date.year == plot.t.year).value
-    b = b.r.find(date => date.year == plot.t.year).value
-
-  }
-
-  if (a > b) {
-
-    return -1
-
-  } else if (a < b) {
-
-    return 1
-
-  } else {
-
-    return 0
-
-  }
-
-})
+let plots = plot.plots
 
 export function drawCircle(circle, r, x, y, plotType=plot.type) {
 
   let canvas = d3.select("#canvas")
+
+  plots.sort(function(a, b) {
+
+    if (a > b) {
+
+      return -1
+
+    } else if (a < b) {
+
+      return 1
+
+    } else {
+
+      return 0
+
+    }
+
+  })
 
   if (typeof(r) == "number" && typeof(x) == "number" && typeof(y) == "number") {
 
