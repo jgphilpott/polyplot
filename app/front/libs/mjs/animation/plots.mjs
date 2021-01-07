@@ -48,6 +48,8 @@ export function updatePlots(speed=(plot.animation.speed / plot.animation.speedMu
 
     }
 
+    writeCookie("year", plot.t.year)
+
   }
 
 }

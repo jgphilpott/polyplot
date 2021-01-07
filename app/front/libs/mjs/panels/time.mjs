@@ -23,9 +23,6 @@ export function addTimePanel(panelSetting) {
 
   panel.append("<img class='close' src='/front/imgs/panels/all/close.png'>")
 
-  plot.t.minCap = plot.t.minYear
-  plot.t.maxCap = plot.t.maxYear
-
   plot.animation = {"direction": "forward", "speed": 600, "speedMultiplier": 1, "status": "inactive"}
 
   panel.append("<h1 id='years'><span id='minYear'>" + plot.t.minCap + "</span> - <span id='maxYear'>" + plot.t.maxCap + "</span></h1>")
@@ -161,10 +158,14 @@ export function addTimePanel(panelSetting) {
 
   })
 
-  let offset = $("#timeline")[0].offsetLeft + $("#minCap")[0].width + plot.t.scale(plot.t.year)
+  let offset = $("#timeline")[0].offsetLeft
 
-  $("#point").css({"left": offset + "px"})
-  $("#year").css({"left": offset + "px"})
+  $("#minCap").css({"left": offset + plot.t.scale(plot.t.minCap) + "px"})
+
+  $("#point").css({"left": offset + $("#minCap")[0].width + plot.t.scale(plot.t.year) + "px"})
+  $("#year").css({"left": offset + $("#minCap")[0].width + plot.t.scale(plot.t.year) + "px"})
+
+  $("#maxCap").css({"left": offset + $("#minCap")[0].width + $("#point")[0].width + plot.t.scale(plot.t.maxCap) + "px"})
 
   addPanelEvents(panel)
 
@@ -196,6 +197,8 @@ export function skip(direction) {
   } else if (plotType == "Poly3") {
     animateSpheres(0)
   }
+
+  writeCookie("year", plot.t.year)
 
 }
 
@@ -253,14 +256,9 @@ export function dragTimeControls(controller, eventCoordinates) {
 
   if (controller[0].id == "minCap" && eventCoordinates[0] > minOffset && eventCoordinates[0] < point - pointWidth + 1) {
 
-    clearAnimation()
-
     plot.t.minCap = Math.floor(plot.t.scale.invert(minCap - minOffset))
 
-    controller.css({"left": eventCoordinates[0]})
-
-    $("#minYear").text(plot.t.minCap)
-
+    clearAnimation()
     scaleAxes()
 
     if (plotType == "Map") {
@@ -270,6 +268,12 @@ export function dragTimeControls(controller, eventCoordinates) {
     } else if (plotType == "Poly3") {
       animateSpheres(0)
     }
+
+    controller.css({"left": eventCoordinates[0]})
+
+    $("#minYear").text(plot.t.minCap)
+
+    writeCookie("minCap", plot.t.minCap)
 
   } else if (controller[0].id == "point" && eventCoordinates[0] > minCap + pointWidth && eventCoordinates[0] < maxCap - pointWidth + 1) {
 
@@ -291,16 +295,13 @@ export function dragTimeControls(controller, eventCoordinates) {
     $("#year").css({"left": eventCoordinates[0]})
     $("#year").text(plot.t.year)
 
-  } else if (controller[0].id == "maxCap" && eventCoordinates[0] > point + pointWidth && eventCoordinates[0] < maxOffset + 1) {
+    writeCookie("year", plot.t.year)
 
-    clearAnimation()
+  } else if (controller[0].id == "maxCap" && eventCoordinates[0] > point + pointWidth && eventCoordinates[0] < maxOffset + 1) {
 
     plot.t.maxCap = Math.floor(plot.t.scale.invert(maxCap - (pointWidth * 2) - minOffset))
 
-    controller.css({"left": eventCoordinates[0]})
-
-    $("#maxYear").text(plot.t.maxCap)
-
+    clearAnimation()
     scaleAxes()
 
     if (plotType == "Map") {
@@ -310,6 +311,12 @@ export function dragTimeControls(controller, eventCoordinates) {
     } else if (plotType == "Poly3") {
       animateSpheres(0)
     }
+
+    controller.css({"left": eventCoordinates[0]})
+
+    $("#maxYear").text(plot.t.maxCap)
+
+    writeCookie("maxCap", plot.t.maxCap)
 
   }
 

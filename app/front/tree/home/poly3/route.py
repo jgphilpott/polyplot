@@ -18,6 +18,10 @@ def register_poly3_route(app):
         y_code = request.args.get("y") if "y" in request.args else request.cookies.get("y") if "y" in request.cookies else "SP.DYN.TFRT.IN"
         z_code = request.args.get("z") if "z" in request.args else request.cookies.get("z") if "z" in request.cookies else "NY.GDP.PCAP.KD.ZG"
 
+        min_cap = request.args.get("minCap") if "minCap" in request.args else request.cookies.get("minCap") if "minCap" in request.cookies else "1960"
+        year = request.args.get("year") if "year" in request.args else request.cookies.get("year") if "year" in request.cookies else "1990"
+        max_cap = request.args.get("maxCap") if "maxCap" in request.args else request.cookies.get("maxCap") if "maxCap" in request.cookies else "2020"
+
         r = find_indicator({"code": r_code})
         x = find_indicator({"code": x_code})
         y = find_indicator({"code": y_code})
@@ -27,7 +31,7 @@ def register_poly3_route(app):
         data["plot"]["x"] = {"name": x["name"], "code": x["code"]}
         data["plot"]["y"] = {"name": y["name"], "code": y["code"]}
         data["plot"]["z"] = {"name": z["name"], "code": z["code"]}
-        data["plot"]["t"] = {"minYear": 1960, "year": 1970, "maxYear": 2018}
+        data["plot"]["t"] = {"minCap": int(min_cap), "year": int(year), "maxCap": int(max_cap)}
 
         countries = find_countries()
 
@@ -46,5 +50,9 @@ def register_poly3_route(app):
         response.set_cookie("x", x_code)
         response.set_cookie("y", y_code)
         response.set_cookie("z", z_code)
+
+        response.set_cookie("minCap", min_cap)
+        response.set_cookie("year", year)
+        response.set_cookie("maxCap", max_cap)
 
         return response

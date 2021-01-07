@@ -14,7 +14,7 @@ export function scaleT(plotType=plot.type) {
   let maxCap = $("#maxCap")[0].width
 
   let range = [0, timeline - (minCap / 2) - point - (maxCap / 2)]
-  let domain = [plot.t.minYear, plot.t.maxYear]
+  let domain = [1960, 2020]
 
   plot.t.scale = d3.scaleLinear().range(range).domain(domain)
 
