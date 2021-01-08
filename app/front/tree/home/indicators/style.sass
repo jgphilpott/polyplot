@@ -1,0 +1,87 @@
+@import "../../../libs/sass/panels/all.sass"
+
+#indicators.panel
+
+  visibility: visible
+
+  top: 100px
+  left: 100px
+
+  width: calc(100% - 200px)
+
+  #name
+
+    text-align: center
+
+  .category-box
+
+    .head
+
+      display: flex
+      align-items: center
+
+      .icon
+
+        width: 20px
+        height: 20px
+
+        margin: 5px
+
+      .fold
+
+        width: 10px
+        height: 15px
+
+        padding: 3px
+
+      .icon:hover,
+      .fold:hover
+
+        cursor: pointer
+
+    .indicators-box
+
+      display: none
+
+      @media (min-width: 0px) and (max-width: 750px)
+
+        column-count: 1
+
+      @media (min-width: 751px) and (max-width: 1500px)
+
+        column-count: 2
+
+      @media (min-width: 1501px)
+
+        column-count: 3
+
+      padding-left: 42px
+
+      .indicator-box
+
+        display: flex
+        align-items: center
+
+        -webkit-column-break-inside: avoid
+        page-break-inside: avoid
+        break-inside: avoid
+
+        .completeness
+
+          width: 20px
+          height: 20px
+
+        .indicator
+
+          width: 80%
+
+          margin-top: 10px
+          margin-bottom: 10px
+
+        .indicator:hover
+
+          cursor: pointer
+
+#menu.panel
+
+  z-index: 1
