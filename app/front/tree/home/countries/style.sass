@@ -1,14 +1,17 @@
-#body
+@import "../../../libs/sass/panels/all.sass"
 
-  width: 75%
-  margin: auto
+#countries.panel
 
-  #title
+  visibility: visible
 
-    font-size: 20px
+  top: 100px
+  left: 100px
 
-    margin: 10px
-    margin-top: 100px
+  width: calc(100% - 200px)
+
+  #name
+
+    text-align: center
 
   #alphabet
 
@@ -19,3 +22,11 @@
       margin: 5px
 
       float: left
+
+    p:hover
+
+      cursor: pointer
+
+#menu.panel
+
+  z-index: 1
