@@ -33,13 +33,46 @@ $(document).ready(function() {
 
           if (indicators[j].categories.includes(categories[i])) {
 
-            indicatorsBox += "<p id='" + indicators[j].code + "' class='indicator'>" + indicators[j].name + "</p>"
+            indicatorsBox += "<div id='" + indicators[j].code.replaceAll(".", "-") + "' class='indicator-box'>"
+            indicatorsBox += "<svg class='completeness'></svg>"
+            indicatorsBox += "<a href='/indicators/" + indicators[j].code + "' class='indicator'><p>" + indicators[j].name + "</p></a></div>"
 
           }
 
         }
 
         panel.append(categoryBox + indicatorsBox + "</div></div>")
+
+        for (let j = 0; j < indicators.length; j++) {
+
+          if (indicators[j].categories.includes(categories[i])) {
+
+            let pie = d3.pie().sort(null)
+            let arc = d3.arc().innerRadius(6).outerRadius(8)
+            let svg = d3.select("#" + camalize(categories[i]) + " .indicators-box #" + indicators[j].code.replaceAll(".", "-") + " svg")
+
+            svg.selectAll(".completeness")
+               .data(pie([indicators[j].completeness, 100 - indicators[j].completeness]))
+               .enter()
+               .append("path")
+               .attr("d", arc)
+               .attr("transform", "translate(10, 10)")
+               .attr("fill-opacity", function(data) {
+
+                 return [1, 0][data.index]
+
+               })
+               .style("fill", function(data) {
+
+                 let scale = d3.scaleLinear().range(["red", "orange", "green"]).domain([0, 50, 100])
+
+                 return [scale(indicators[j].completeness), "black"][data.index]
+
+               })
+
+          }
+
+        }
 
       }
 
