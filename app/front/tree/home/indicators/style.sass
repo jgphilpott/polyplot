@@ -1,3 +1,5 @@
+@import "../../../libs/sass/colors/solid/rainbow.sass"
+
 @import "../../../libs/sass/panels/all.sass"
 
 #indicators.panel
@@ -9,9 +11,37 @@
 
   width: calc(100% - 200px)
 
-  #name
+  h1, h2
 
     text-align: center
+
+    margin: 10px
+
+  #stats, #axes
+
+    width: 50%
+
+    padding-left: 30px
+    padding-right: 30px
+
+    display: inline-block
+    vertical-align: top
+
+    #r-key
+
+      color: $black
+
+    #x-key
+
+      color: $red
+
+    #y-key
+
+      color: $green
+
+    #z-key
+
+      color: $blue
 
   .category-box
 

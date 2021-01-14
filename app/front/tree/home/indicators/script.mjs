@@ -10,13 +10,39 @@ $(document).ready(function() {
 
   let panel = $("#indicators.panel")
 
+  let stats = "<div id='stats'><h2>Stats</h2>"
+
+  stats += "<p class='categories'><b>Categories:</b> </p>"
+  stats += "<p class='indicators'><b>Indicators:</b> </p>"
+  stats += "<p class='size'><b>Size:</b> </p></div>"
+
+  let size = 0
+
+  let axes = "<div id='axes'><h2>Axes</h2>"
+
+  axes += "<p id='r'><b id='r-key'>R:</b> </p>"
+  axes += "<p id='x'><b id='x-key'>X:</b> </p>"
+  axes += "<p id='y'><b id='y-key'>Y:</b> </p>"
+  axes += "<p id='z'><b id='z-key'>Z:</b> </p></div>"
+
+  let r = readCookie("r")
+  let x = readCookie("x")
+  let y = readCookie("y")
+  let z = readCookie("z")
+
+  panel.append(stats + axes)
+
   socket.emit("get_meta", "categories")
 
   socket.on("new_categories", function(categories) {
 
+    $(".categories").append("" + categories.length + "")
+
     socket.emit("get_indicators", {})
 
     socket.on("new_indicators", function(indicators) {
+
+      $(".indicators").append("" + indicators.length + "")
 
       for (let i = 0; i < categories.length; i++) {
 
@@ -36,6 +62,26 @@ $(document).ready(function() {
             indicatorsBox += "<div id='" + indicators[j].code.replaceAll(".", "-") + "' class='indicator-box'>"
             indicatorsBox += "<svg class='completeness'></svg>"
             indicatorsBox += "<a href='/indicators/" + indicators[j].code + "' class='indicator'><p>" + indicators[j].name + "</p></a></div>"
+
+          }
+
+          if (i == 0) {
+
+            size += indicators[j].size
+
+            if (j == indicators.length - 1) {
+              $(".size").append("" + size + "")
+            }
+
+            if (indicators[j].code == r) {
+              $("#r").append("" + indicators[j].name + "")
+            } else if (indicators[j].code == x) {
+              $("#x").append("" + indicators[j].name + "")
+            } else if (indicators[j].code == y) {
+              $("#y").append("" + indicators[j].name + "")
+            } else if (indicators[j].code == z) {
+              $("#z").append("" + indicators[j].name + "")
+            }
 
           }
 
