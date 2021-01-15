@@ -1,4 +1,5 @@
 import {rainbow} from "../../../../libs/mjs/colors/solid/rainbow.mjs"
+import {regionsColourSwitch} from "../../../../libs/mjs/colors/switches/regions.mjs"
 
 $(document).ready(function() {
 
@@ -82,5 +83,80 @@ $(document).ready(function() {
       .attr("transform", "translate(60, 60)")
       .attr("text-anchor", "middle")
       .attr("dy", "1.3em")
+
+    panel.append("<svg class='graph'></svg>")
+
+    let graphWidth = panel.width() - 100
+    let graphHeight = graphWidth / 2
+    let graphMargin = 20
+
+    $(".graph").width(graphWidth).height(graphHeight)
+
+    let xDomain = []
+    let yDomain = []
+
+    for (let i = 0; i < indicator.countries.length; i++) {
+      for (let j = 0; j < indicator.countries[i].history.length; j++) {
+        if (typeof(indicator.countries[i].history[j].year) == "number" && typeof(indicator.countries[i].history[j].value) == "number") {
+
+          xDomain.push(indicator.countries[i].history[j].year)
+          yDomain.push(indicator.countries[i].history[j].value)
+
+        }
+      }
+    }
+
+    let xMin = minValue(xDomain)
+    let xMax = maxValue(xDomain)
+
+    let yMin = minValue(yDomain)
+    let yMax = maxValue(yDomain)
+
+    let xScale = d3.scaleLinear().range([0, graphWidth - (graphMargin * 2)]).domain([xMin, xMax])
+    let yScale = d3.scaleLinear().range([graphHeight - (graphMargin * 2), 0]).domain([yMin, yMax])
+
+    d3.select(".graph")
+      .append("g")
+      .attr("id", "xAxis")
+      .attr("class", "axis")
+      .attr("transform", "translate(" + graphMargin + ", " + (graphHeight - graphMargin) + ")")
+      .call(d3.axisBottom(xScale)
+              .tickSize(0)
+              .ticks(5))
+
+    d3.select(".graph")
+      .append("g")
+      .attr("id", "yAxis")
+      .attr("class", "axis")
+      .attr("transform", "translate(" + graphMargin + ", " + graphMargin + ")")
+      .call(d3.axisLeft(yScale)
+              .tickSize(0)
+              .ticks(5))
+
+    let pathGenerator = d3.line()
+                          .x(function(data) {
+                            return xScale(data.year)
+                          })
+                          .y(function(data) {
+                            return yScale(data.value)
+                          })
+
+    for (let i = 0; i < indicator.countries.length; i++) {
+
+      d3.select(".graph")
+        .selectAll(".line")
+        .data([indicator.countries[i]])
+        .enter()
+        .append("path")
+        .attr("d", function(data) {
+
+          return pathGenerator(data.history.filter(function(data) { return typeof(data.year) == "number" && typeof(data.value) == "number" }))
+
+        })
+        .attr("transform", "translate(" + graphMargin + ", " + graphMargin + ")")
+        .attr("stroke", "black")
+        .attr("fill", "none")
+
+    }
 
 })
