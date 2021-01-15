@@ -6,7 +6,7 @@ $(document).ready(function() {
 
   summonParticleWeb(42, rainbow)
 
-  $("body").append("<div id='indicators' class='panel'><h1 id='name'>Indicators by Category</h1></div>")
+  $("body").append("<div id='indicators' class='panel'><a href='/api/indicators'><h1 id='name'>Indicators by Category</h1></a></div>")
 
   let panel = $("#indicators.panel")
 
