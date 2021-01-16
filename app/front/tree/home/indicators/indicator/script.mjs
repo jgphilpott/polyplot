@@ -158,6 +158,14 @@ $(document).ready(function() {
         .attr("stroke", "black")
         .attr("fill", "none")
 
+      let country = "<div class='country'>"
+
+      country += "<img class='flag' src='/front/imgs/flags/" + indicator.countries[i].code + ".png'>"
+      country += "<a href='/countries/" + indicator.countries[i].code + "'><h3>" + indicator.countries[i].name + "</h3><a>"
+      country += "<p> - <b>" + format(indicator.countries[i].history.find(date => date.year == readCookie("year")).value) + "</b></p></div>"
+
+      panel.append(country)
+
     }
 
     makeScrollable(panel)
