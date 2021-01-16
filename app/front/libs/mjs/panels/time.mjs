@@ -43,7 +43,6 @@ export function addTimePanel(panelSetting) {
 
   panel.append("<p id='year'>" + plot.t.year + "</p>")
 
-  scaleT()
   scaleAxes()
 
   makeDragable($("#minCap"), [dragTimeControls, animateTimeline])

@@ -98,6 +98,7 @@ export function scaleZ(plotType=plot.type) {
 
 export function scaleAxes(plotType=plot.type) {
 
+  scaleT(plotType)
   scaleX(plotType)
 
   if (plotType == "Poly2") {
