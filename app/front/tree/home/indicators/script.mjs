@@ -1,4 +1,5 @@
 import {rainbow} from "../../../libs/mjs/colors/solid/rainbow.mjs"
+import {makeScrollable} from "../../../libs/mjs/panels/events/scroll.mjs"
 
 $(document).ready(function() {
 
@@ -131,12 +132,12 @@ $(document).ready(function() {
 
         if (indicatorsBox.css("display") == "none") {
 
-          $(".category-box").animate({"height": 31}, {"duration": 2000, "queue": false})
+          $(".category-box").animate({"height": 30}, {"duration": 2000, "queue": false})
           $(".indicators-box").css("display", "none")
           rotate($(".fold"), 1)
 
           indicatorsBox.css("display", "block")
-          let height = indicatorsBox.height() + 36
+          let height = indicatorsBox.height() + 35
           indicatorsBox.css("display", "none")
 
           categoryBox.animate({"height": height}, {"duration": 2000, "queue": false})
@@ -145,7 +146,7 @@ $(document).ready(function() {
 
         } else {
 
-          $(".category-box").animate({"height": 31}, {"duration": 2000, "queue": false})
+          $(".category-box").animate({"height": 30}, {"duration": 2000, "queue": false})
           $(".indicators-box").css("display", "none")
           rotate($(".fold"), 1)
 
@@ -157,26 +158,6 @@ $(document).ready(function() {
 
   })
 
-  $(document).on("wheel", function(event) {
-
-    let margin = 100
-
-    let top = panel.position().top
-    let bottom = panel.outerHeight() - $(window).height()
-
-    let wheelDelta = event.originalEvent.wheelDelta
-    let position = top + wheelDelta
-
-    if (wheelDelta > 0 && position <= margin) {
-
-      panel.css("top", position)
-
-    } else if (wheelDelta < 0 && position >= -bottom - margin) {
-
-      panel.css("top", position)
-
-    }
-
-  })
+  makeScrollable(panel)
 
 })
