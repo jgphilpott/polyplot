@@ -17,13 +17,61 @@
 
     margin: 10px
 
+    text-align: center
+
     p
 
       margin: 5px
 
-      float: left
+      display: inline-block
 
     p:hover
+
+      cursor: pointer
+
+  .region
+
+    margin: 15px
+
+    padding: 10px
+
+  .countries-box
+
+    padding-left: 30px
+
+    @media (min-width: 1px) and (max-width: 500px)
+
+      column-count: 1
+
+    @media (min-width: 501px) and (max-width: 1000px)
+
+      column-count: 2
+
+    @media (min-width: 1001px) and (max-width: 1500px)
+
+      column-count: 3
+
+    @media (min-width: 1501px)
+
+      column-count: 4
+
+    .country-box
+
+      display: flex
+      align-items: center
+
+      -webkit-column-break-inside: avoid
+      page-break-inside: avoid
+      break-inside: avoid
+
+      margin: 10px
+
+      .flag
+
+        width: 40px
+        height: 24px
+
+    .country-box:hover
 
       cursor: pointer
 
