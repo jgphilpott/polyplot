@@ -13,25 +13,55 @@
 
     text-align: center
 
-  .region
-
-    display: flex
-    align-items: center
+  .region-box
 
     margin: 5px
     padding-left: 6px
 
-    .fold
+    .head
 
-      width: 10px
-      height: 15px
+      display: flex
+      align-items: center
 
-      padding: 3px
+      .fold
 
-    .fold:hover
+        width: 10px
+        height: 15px
 
-      cursor: pointer
+        padding: 3px
 
-    .region-name
+      .fold:hover
 
-      display: inline-block
+        cursor: pointer
+
+    .countries-box
+
+      display: none
+
+      width: 782px
+
+      column-count: 3
+
+      padding-left: 16px
+
+      .country-box
+
+        display: flex
+        align-items: center
+
+        -webkit-column-break-inside: avoid
+        page-break-inside: avoid
+        break-inside: avoid
+
+        .visibility
+
+          width: 22px
+          height: 17px
+
+        .visibility:hover
+
+          cursor: pointer
+
+        .country-name:hover
+
+          font-weight: bold

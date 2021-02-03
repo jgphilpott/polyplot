@@ -91,7 +91,7 @@ export function addIndicatorsPanel(panelSetting) {
 
       }
 
-      $(".icon, .fold").click(function() {
+      $(".category-box .icon, .category-box .fold").click(function() {
 
         let id = $(this).parent().parent().attr("id")
         let fold = $("#" + id + ".category-box .fold")
@@ -101,12 +101,12 @@ export function addIndicatorsPanel(panelSetting) {
         if (indicatorsBox.css("display") == "none") {
 
           $(".category-box").animate({"width": 700}, {"duration": 1000, "queue": false})
-          $(".category-box").animate({"height": 31}, {"duration": 1000, "queue": false})
+          $(".category-box").animate({"height": 30}, {"duration": 1000, "queue": false})
           $(".indicators-box").css("display", "none")
-          rotate($(".fold"), 1)
+          rotate($(".category-box .fold"), 1)
 
           indicatorsBox.css("display", "block")
-          let height = indicatorsBox.height() + 36
+          let height = indicatorsBox.height() + 35
           indicatorsBox.css("display", "none")
 
           categoryBox.animate({"width": 700}, {"duration": 1000, "queue": false})
@@ -117,9 +117,9 @@ export function addIndicatorsPanel(panelSetting) {
         } else {
 
           $(".category-box").animate({"width": 350}, {"duration": 1000, "queue": false})
-          $(".category-box").animate({"height": 31}, {"duration": 1000, "queue": false})
+          $(".category-box").animate({"height": 30}, {"duration": 1000, "queue": false})
           $(".indicators-box").css("display", "none")
-          rotate($(".fold"), 1)
+          rotate($(".category-box .fold"), 1)
 
         }
 

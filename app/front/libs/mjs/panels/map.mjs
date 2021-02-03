@@ -51,7 +51,7 @@ export function addMapPanel(panelSetting) {
 
       for (let i = 0; i < regions.length; i++) {
 
-        panel.append("<div class='region-box'><div id='" + camalize(regions[i]) + "' class='region-key'></div><p class='region-name'><b>" + regions[i] + "</b></p></div>")
+        panel.append("<div class='regions-box'><div id='" + camalize(regions[i]) + "' class='region-key'></div><p class='region-name'><b>" + regions[i] + "</b></p></div>")
 
       }
 
