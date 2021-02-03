@@ -45,9 +45,9 @@ export function addMapPanel(panelSetting) {
 
     })
 
-    socket.emit("get_meta", "regions")
+    socket.emit("get_meta", "regions-map")
 
-    socket.on("new_regions", function(regions) {
+    socket.on("new_regions-map", function(regions) {
 
       for (let i = 0; i < regions.length; i++) {
 
