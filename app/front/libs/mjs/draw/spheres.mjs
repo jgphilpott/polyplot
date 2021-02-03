@@ -25,7 +25,7 @@ export function drawSphere(sphere, r, x, y, z, plotType=plot.type) {
     event(mesh, "mouseover", updateMetaPanel, sphere.code)
     event(mesh, "mouseout", clearMetaPanel)
     event(mesh, "contextmenu", contextMenu, sphere.code, true)
-    event(mesh, "dblclick", focus, sphere)
+    event(mesh, "dblclick", focus, mesh)
 
     plot.core.scene.add(mesh)
 
