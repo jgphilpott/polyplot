@@ -84,11 +84,19 @@
 
       padding-left: 42px
 
-      .indicator
+      .indicator-box
 
-        margin-top: 5px
-        margin-bottom: 15px
+        display: flex
+        align-items: center
 
-      .indicator:hover
+        -webkit-column-break-inside: avoid
+        page-break-inside: avoid
+        break-inside: avoid
 
-        cursor: pointer
+        .indicator
+
+          margin: 5px
+
+        .indicator:hover
+
+          cursor: pointer

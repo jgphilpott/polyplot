@@ -81,7 +81,7 @@ export function addIndicatorsPanel(panelSetting) {
 
           if (indicators[j].categories.includes(categories[i])) {
 
-            indicatorsBox += "<p id='" + indicators[j].code + "' class='indicator'>" + indicators[j].name + "</p>"
+            indicatorsBox += "<div class='indicator-box'><p id='" + indicators[j].code + "' class='indicator'>" + indicators[j].name + "</p></div>"
 
           }
 
