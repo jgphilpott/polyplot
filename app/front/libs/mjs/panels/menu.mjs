@@ -122,6 +122,8 @@ export function addMenuPanel() {
         },
 
         "general": {
+          "countryExceptions": [],
+          "indicatorExceptions": [],
           "rotation": false
         },
 
@@ -388,72 +390,97 @@ export function toggleCheckbox(type, key, event) {
     })
 
     localWrite("settings", settings)
-    settingSwitch(type, key)
+    settingSwitch(category, type, key)
 
   } else {
 
     $("#" + key + ".checkbox").prop("checked", category[key])
 
     localWrite("settings", settings)
-    settingSwitch(type, key)
+    settingSwitch(category, type, key)
 
   }
 
-  function settingSwitch(type, key) {
+}
 
-    switch (type) {
+export function updateList(type, key, value) {
 
-      case "panels":
+  let settings = localRead("settings")
+  let category = settings[type]
+  let setting = category[key]
 
-        let panel = $("#" + key + ".panel")
+  category[key] = value
 
-        if (category[key]) { panel.css("visibility", "visible") } else { panel.css("visibility", "hidden") }
+  if (client) {
 
-        break
+    socket.emit("update_settings", {"id": readCookie("id"), "category": type, "setting": key, "value": category[key]})
 
-      case "general":
+    socket.on("updated_settings", function(update) {
 
-        if (key == "rotation") {
+      client.settings[update.category][update.setting] = update.value
 
-          if (category[key]) {
+    })
 
-            startRotation()
-            $("#rotationIcon").attr("src", "/front/imgs/panels/map/rotation-dark.png")
+  }
 
-          } else {
+  localWrite("settings", settings)
+  settingSwitch(category, type, key)
 
-            stopRotation()
-            $("#rotationIcon").attr("src", "/front/imgs/panels/map/rotation-light.png")
+}
 
-          }
+function settingSwitch(category, type, key) {
 
-        }
+  switch (type) {
 
-        break
+    case "panels":
 
-      case "poly3":
+      let panel = $("#" + key + ".panel")
 
-        drawAxes()
+      if (category[key]) { panel.css("visibility", "visible") } else { panel.css("visibility", "hidden") }
 
-      case "poly2":
+      break
 
-        break
+    case "general":
 
-      case "map":
+      if (key == "rotation") {
 
         if (category[key]) {
 
-          drawLayers()
+          startRotation()
+          $("#rotationIcon").attr("src", "/front/imgs/panels/map/rotation-dark.png")
 
         } else {
 
-          deleteLayers(key)
+          stopRotation()
+          $("#rotationIcon").attr("src", "/front/imgs/panels/map/rotation-light.png")
 
         }
 
-        break
+      }
 
-    }
+      break
+
+    case "poly3":
+
+      drawAxes()
+
+    case "poly2":
+
+      break
+
+    case "map":
+
+      if (category[key]) {
+
+        drawLayers()
+
+      } else {
+
+        deleteLayers(key)
+
+      }
+
+      break
 
   }
 

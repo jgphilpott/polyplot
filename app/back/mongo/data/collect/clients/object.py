@@ -32,6 +32,8 @@ class Client():
                 },
 
                 "general": {
+                    "countryExceptions": [],
+                    "indicatorExceptions": [],
                     "rotation": False
                 },
 
