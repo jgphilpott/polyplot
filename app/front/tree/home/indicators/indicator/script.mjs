@@ -122,7 +122,9 @@ $(document).ready(function() {
       .attr("class", "axis")
       .attr("transform", "translate(" + graphMargin + ", " + (graphHeight - graphMargin) + ")")
       .call(d3.axisBottom(xScale)
-              .tickSize(0)
+              .tickFormat(d3.format("d"))
+              .tickSize(-graphHeight + (graphMargin * 2))
+              .tickSizeOuter(0)
               .ticks(5))
 
     d3.select(".graph")
@@ -131,7 +133,8 @@ $(document).ready(function() {
       .attr("class", "axis")
       .attr("transform", "translate(" + graphMargin + ", " + graphMargin + ")")
       .call(d3.axisLeft(yScale)
-              .tickSize(0)
+              .tickSize(-graphWidth + (graphMargin * 2))
+              .tickSizeOuter(0)
               .ticks(5))
 
     let pathGenerator = d3.line()
