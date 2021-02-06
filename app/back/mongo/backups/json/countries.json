@@ -1,1157 +1,1929 @@
 [
   {
+    "centroid": {
+      "latitude": 34.1834701171875,
+      "longitude": 65.95985742187501
+    },
     "code": "AFG",
     "formal_name": "Islamic Republic of Afghanistan",
     "name": "Afghanistan",
     "region": "South Asia"
   },
   {
+    "centroid": {
+      "latitude": -12.420308593749985,
+      "longitude": 17.758964843750046
+    },
     "code": "AGO",
     "formal_name": "Republic of Angola",
     "name": "Angola",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 41.17468789062501,
+      "longitude": 20.030093164062517
+    },
     "code": "ALB",
     "formal_name": "Republic of Albania",
     "name": "Albania",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 42.5425033203125,
+      "longitude": 1.5456507812500104
+    },
     "code": "AND",
     "formal_name": "Principality of Andorra",
     "name": "Andorra",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 23.535126562500015,
+      "longitude": 54.49869375000003
+    },
     "code": "ARE",
     "formal_name": "United Arab Emirates",
     "name": "United Arab Emirates",
     "region": "Midle East & North Africa"
   },
   {
+    "centroid": {
+      "latitude": -33.03414042968746,
+      "longitude": -64.154085546875
+    },
     "code": "ARG",
     "formal_name": "Argentine Republic",
     "name": "Argentina",
     "region": "Latin America & Caribbean"
   },
   {
+    "centroid": {
+      "latitude": 40.331629882812514,
+      "longitude": 44.86742500000005
+    },
     "code": "ARM",
     "formal_name": "Republic of Armenia",
     "name": "Armenia",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 17.379989648437512,
+      "longitude": -61.7937412109375
+    },
     "code": "ATG",
     "formal_name": "Antigua and Barbuda",
     "name": "Antigua and Barbuda",
     "region": "Latin America & Caribbean"
   },
   {
+    "centroid": {
+      "latitude": -24.821347656250026,
+      "longitude": 135.21064648437505
+    },
     "code": "AUS",
     "formal_name": "Commonwealth of Australia",
     "name": "Australia",
     "region": "East Asia & Pacific"
   },
   {
+    "centroid": {
+      "latitude": 47.547948242187495,
+      "longitude": 14.79937460937502
+    },
     "code": "AUT",
     "formal_name": "Republic of Austria",
     "name": "Austria",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 40.46951269531248,
+      "longitude": 47.67904296875007
+    },
     "code": "AZE",
     "formal_name": "Republic of Azerbaijan",
     "name": "Azerbaijan",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": -3.4101382812500005,
+      "longitude": 29.869935546875013
+    },
     "code": "BDI",
     "formal_name": "Republic of Burundi",
     "name": "Burundi",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 50.81584414062503,
+      "longitude": 4.675050781250006
+    },
     "code": "BEL",
     "formal_name": "Kingdom of Belgium",
     "name": "Belgium",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 10.102032714843743,
+      "longitude": 2.3359280273437553
+    },
     "code": "BEN",
     "formal_name": "Republic of Benin",
     "name": "Benin",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 12.3620716796875,
+      "longitude": -1.6621398437499881
+    },
     "code": "BFA",
     "formal_name": "Burkina Faso",
     "name": "Burkina Faso",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 24.31690283203124,
+      "longitude": 90.15410595703128
+    },
     "code": "BGD",
     "formal_name": "People's Republic of Bangladesh",
     "name": "Bangladesh",
     "region": "South Asia"
   },
   {
+    "centroid": {
+      "latitude": 42.665778124999996,
+      "longitude": 25.19007968750002
+    },
     "code": "BGR",
     "formal_name": "Republic of Bulgaria",
     "name": "Bulgaria",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 26.067938281249994,
+      "longitude": 50.553426171875
+    },
     "code": "BHR",
     "formal_name": "Kingdom of Bahrain",
     "name": "Bahrain",
     "region": "Midle East & North Africa"
   },
   {
+    "centroid": {
+      "latitude": 24.150850000000034,
+      "longitude": -75.91636210937497
+    },
     "code": "BHS",
     "formal_name": "Commonwealth of The Bahamas",
     "name": "Bahamas, The",
     "region": "Latin America & Caribbean"
   },
   {
+    "centroid": {
+      "latitude": 44.19513574218748,
+      "longitude": 17.875646484375032
+    },
     "code": "BIH",
     "formal_name": "Bosnia and Herzegovina",
     "name": "Bosnia and Herzegovina",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 53.49564648437499,
+      "longitude": 28.266871093750016
+    },
     "code": "BLR",
     "formal_name": "Republic of Belarus",
     "name": "Belarus",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 17.138812304687512,
+      "longitude": -88.75167753906246
+    },
     "code": "BLZ",
     "formal_name": "Belize",
     "name": "Belize",
     "region": "Latin America & Caribbean"
   },
   {
+    "centroid": {
+      "latitude": -17.012861718750003,
+      "longitude": -64.62517871093749
+    },
     "code": "BOL",
     "formal_name": "Plurinational State of Bolivia",
     "name": "Bolivia",
     "region": "Latin America & Caribbean"
   },
   {
+    "centroid": {
+      "latitude": -10.08727656250003,
+      "longitude": -50.405708398437504
+    },
     "code": "BRA",
     "formal_name": "Federative Republic of Brazil",
     "name": "Brazil",
     "region": "Latin America & Caribbean"
   },
   {
+    "centroid": {
+      "latitude": 13.177678906250001,
+      "longitude": -59.564237890625
+    },
     "code": "BRB",
     "formal_name": "Barbados",
     "name": "Barbados",
     "region": "Latin America & Caribbean"
   },
   {
+    "centroid": {
+      "latitude": 4.462550195312516,
+      "longitude": 114.61953906250004
+    },
     "code": "BRN",
     "formal_name": "Nation of Brunei, the Abode of Peace",
     "name": "Brunei Darussalam",
     "region": "East Asia & Pacific"
   },
   {
+    "centroid": {
+      "latitude": 27.472925781249998,
+      "longitude": 90.41777324218751
+    },
     "code": "BTN",
     "formal_name": "Kingdom of Bhutan",
     "name": "Bhutan",
     "region": "South Asia"
   },
   {
+    "centroid": {
+      "latitude": -21.982948437500006,
+      "longitude": 23.82621875000001
+    },
     "code": "BWA",
     "formal_name": "Republic of Botswana",
     "name": "Botswana",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 6.8147646484374915,
+      "longitude": 20.268627929687497
+    },
     "code": "CAF",
     "formal_name": "Central African Republic",
     "name": "Central African Republic",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 59.038240917968835,
+      "longitude": -100.89193564453127
+    },
     "code": "CAN",
     "formal_name": "Canada",
     "name": "Canada",
     "region": "North America"
   },
   {
+    "centroid": {
+      "latitude": 46.928399999999996,
+      "longitude": 8.185397265625006
+    },
     "code": "CHE",
     "formal_name": "Swiss Confederation",
     "name": "Switzerland",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": -34.548959960937495,
+      "longitude": -71.07961171875
+    },
     "code": "CHL",
     "formal_name": "Republic of Chile",
     "name": "Chile",
     "region": "Latin America & Caribbean"
   },
   {
+    "centroid": {
+      "latitude": 34.419458007812494,
+      "longitude": 105.2804443359375
+    },
     "code": "CHN",
     "formal_name": "People's Republic of China",
     "name": "China",
     "region": "East Asia & Pacific"
   },
   {
+    "centroid": {
+      "latitude": 7.6906414062500295,
+      "longitude": -5.503729882812507
+    },
     "code": "CIV",
     "formal_name": "Republic of Cote d'Ivoire",
     "name": "Cote d'Ivoire",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 5.0284954101562445,
+      "longitude": 12.563346777343758
+    },
     "code": "CMR",
     "formal_name": "Republic of Cameroon",
     "name": "Cameroon",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": -2.050452343750012,
+      "longitude": 23.76424492187501
+    },
     "code": "COD",
     "formal_name": "Congo, Democratic Republic of the",
     "name": "Congo, Democratic Republic of the",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": -0.7975617187500058,
+      "longitude": 15.710565625000012
+    },
     "code": "COG",
     "formal_name": "Congo, Republic of the",
     "name": "Congo, Republic of the",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 3.96585625,
+      "longitude": -73.050754296875
+    },
     "code": "COL",
     "formal_name": "Republic of Colombia",
     "name": "Colombia",
     "region": "Latin America & Caribbean"
   },
   {
+    "centroid": {
+      "latitude": -11.925563671874963,
+      "longitude": 43.83510585937502
+    },
     "code": "COM",
     "formal_name": "Union of the Comoros",
     "name": "Comoros",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 16.117638671875035,
+      "longitude": -24.086189453125
+    },
     "code": "CPV",
     "formal_name": "Republic of Cabo Verde",
     "name": "Cabo Verde",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 10.125029882812495,
+      "longitude": -84.04850273437496
+    },
     "code": "CRI",
     "formal_name": "Republic of Costa Rica",
     "name": "Costa Rica",
     "region": "Latin America & Caribbean"
   },
   {
+    "centroid": {
+      "latitude": 21.866961718749995,
+      "longitude": -79.01749375000004
+    },
     "code": "CUB",
     "formal_name": "Republic of Cuba",
     "name": "Cuba",
     "region": "Latin America & Caribbean"
   },
   {
+    "centroid": {
+      "latitude": 35.02561718749999,
+      "longitude": 33.212028125000025
+    },
     "code": "CYP",
     "formal_name": "Republic of Cyprus",
     "name": "Cyprus",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 49.9014015625,
+      "longitude": 15.137347265625015
+    },
     "code": "CZE",
     "formal_name": "Czech Republic",
     "name": "Czech Republic",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 51.113819921875,
+      "longitude": 10.125651757812518
+    },
     "code": "DEU",
     "formal_name": "Federal Republic of Germany",
     "name": "Germany",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 11.807128906249995,
+      "longitude": 42.498828125
+    },
     "code": "DJI",
     "formal_name": "Republic of Djibouti",
     "name": "Djibouti",
     "region": "Midle East & North Africa"
   },
   {
+    "centroid": {
+      "latitude": 15.45373720703125,
+      "longitude": -61.34582275390623
+    },
     "code": "DMA",
     "formal_name": "Commonwealth of Dominica",
     "name": "Dominica",
     "region": "Latin America & Caribbean"
   },
   {
+    "centroid": {
+      "latitude": 55.920957031250005,
+      "longitude": 9.507978125000045
+    },
     "code": "DNK",
     "formal_name": "Kingdom of Denmark",
     "name": "Denmark",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 19.00909902343749,
+      "longitude": -70.491963671875
+    },
     "code": "DOM",
     "formal_name": "Dominican Republic",
     "name": "Dominican Republic",
     "region": "Latin America & Caribbean"
   },
   {
+    "centroid": {
+      "latitude": 28.122106835937505,
+      "longitude": 2.7987291015625035
+    },
     "code": "DZA",
     "formal_name": "People's Democratic Republic of Algeria",
     "name": "Algeria",
     "region": "Midle East & North Africa"
   },
   {
+    "centroid": {
+      "latitude": -1.406727050781233,
+      "longitude": -78.26804492187499
+    },
     "code": "ECU",
     "formal_name": "Republic of Ecuador",
     "name": "Ecuador",
     "region": "Latin America & Caribbean"
   },
   {
+    "centroid": {
+      "latitude": 26.678908789062497,
+      "longitude": 29.643497265625008
+    },
     "code": "EGY",
     "formal_name": "Arab Republic of Egypt",
     "name": "Egypt",
     "region": "Midle East & North Africa"
   },
   {
+    "centroid": {
+      "latitude": 15.873194335937521,
+      "longitude": 38.16614257812497
+    },
     "code": "ERI",
     "formal_name": "State of Eritrea",
     "name": "Eritrea",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 39.97716601562503,
+      "longitude": -3.366984765624949
+    },
     "code": "ESP",
     "formal_name": "Kingdom of Spain",
     "name": "Spain",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 58.695589453125024,
+      "longitude": 25.922084179687545
+    },
     "code": "EST",
     "formal_name": "Republic of Estonia",
     "name": "Estonia",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 8.495110156249996,
+      "longitude": 39.619775000000025
+    },
     "code": "ETH",
     "formal_name": "Federal Democratic Republic of Ethiopia",
     "name": "Ethiopia",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 63.64254179687503,
+      "longitude": 26.729531250000022
+    },
     "code": "FIN",
     "formal_name": "Republic of Finland",
     "name": "Finland",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": -19.251406250000006,
+      "longitude": 179.28000000000003
+    },
     "code": "FJI",
     "formal_name": "Republic of Fiji",
     "name": "Fiji",
     "region": "East Asia & Pacific"
   },
   {
+    "centroid": {
+      "latitude": 45.02430917968749,
+      "longitude": 3.2843416015624944
+    },
     "code": "FRA",
     "formal_name": "French Republic",
     "name": "France",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 6.787058203124987,
+      "longitude": 158.2564638671875
+    },
     "code": "FSM",
     "formal_name": "Federated States of Micronesia",
     "name": "Micronesia",
     "region": "East Asia & Pacific"
   },
   {
+    "centroid": {
+      "latitude": -0.496130371093753,
+      "longitude": 11.728652832031251
+    },
     "code": "GAB",
     "formal_name": "Gabonese Republic",
     "name": "Gabon",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 52.198277539062495,
+      "longitude": -1.481227734374983
+    },
     "code": "GBR",
     "formal_name": "United Kingdom of Great Britain and Northern Ireland",
     "name": "United Kingdom",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 42.01206015624999,
+      "longitude": 43.579820507812514
+    },
     "code": "GEO",
     "formal_name": "Georgia",
     "name": "Georgia",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 7.964672851562497,
+      "longitude": -1.1436247070312446
+    },
     "code": "GHA",
     "formal_name": "Republic of Ghana",
     "name": "Ghana",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 10.991464648437491,
+      "longitude": -10.879789648437486
+    },
     "code": "GIN",
     "formal_name": "Republic of Guinea",
     "name": "Guinea",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 13.564054785156243,
+      "longitude": -15.31376445312498
+    },
     "code": "GMB",
     "formal_name": "Republic of The Gambia",
     "name": "Gambia, The",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 12.1867810546875,
+      "longitude": -14.803775781249927
+    },
     "code": "GNB",
     "formal_name": "Republic of Guinea-Bissau",
     "name": "Guinea-Bissau",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 1.5643097656250162,
+      "longitude": 10.528852929687535
+    },
     "code": "GNQ",
     "formal_name": "Republic of Equatorial Guinea",
     "name": "Equatorial Guinea",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 39.36937792968752,
+      "longitude": 22.462479687500018
+    },
     "code": "GRC",
     "formal_name": "Hellenic Republic",
     "name": "Greece",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 12.119072460937497,
+      "longitude": -61.68226201171875
+    },
     "code": "GRD",
     "formal_name": "Grenada",
     "name": "Grenada",
     "region": "Latin America & Caribbean"
   },
   {
+    "centroid": {
+      "latitude": 15.376636328124997,
+      "longitude": -90.419412890625
+    },
     "code": "GTM",
     "formal_name": "Republic of Guatemala",
     "name": "Guatemala",
     "region": "Latin America & Caribbean"
   },
   {
+    "centroid": {
+      "latitude": 4.625433300781245,
+      "longitude": -58.9074240234375
+    },
     "code": "GUY",
     "formal_name": "Co-operative Republic of Guyana",
     "name": "Guyana",
     "region": "Latin America & Caribbean"
   },
   {
+    "centroid": {
+      "latitude": 14.945168945312524,
+      "longitude": -86.59513281249998
+    },
     "code": "HND",
     "formal_name": "Republic of Honduras",
     "name": "Honduras",
     "region": "Latin America & Caribbean"
   },
   {
+    "centroid": {
+      "latitude": 44.825024414062504,
+      "longitude": 16.506152343750063
+    },
     "code": "HRV",
     "formal_name": "Republic of Croatia",
     "name": "Croatia",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 18.868109375000046,
+      "longitude": -73.022059375
+    },
     "code": "HTI",
     "formal_name": "Republic of Haiti",
     "name": "Haiti",
     "region": "Latin America & Caribbean"
   },
   {
+    "centroid": {
+      "latitude": 47.2075158203125,
+      "longitude": 19.457728906250015
+    },
     "code": "HUN",
     "formal_name": "Hungary",
     "name": "Hungary",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": -2.7759355468749836,
+      "longitude": 117.81678906250006
+    },
     "code": "IDN",
     "formal_name": "Republic of Indonesia",
     "name": "Indonesia",
     "region": "East Asia & Pacific"
   },
   {
+    "centroid": {
+      "latitude": 22.114359570312505,
+      "longitude": 79.13616093750007
+    },
     "code": "IND",
     "formal_name": "Republic of India",
     "name": "India",
     "region": "South Asia"
   },
   {
+    "centroid": {
+      "latitude": 53.19290761718752,
+      "longitude": -7.711449511718712
+    },
     "code": "IRL",
     "formal_name": "Ireland",
     "name": "Ireland",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 33.20660449218753,
+      "longitude": 54.204103125
+    },
     "code": "IRN",
     "formal_name": "Islamic Republic of Iran",
     "name": "Iran",
     "region": "Midle East & North Africa"
   },
   {
+    "centroid": {
+      "latitude": 32.98322265625,
+      "longitude": 43.445004882812505
+    },
     "code": "IRQ",
     "formal_name": "Republic of Iraq",
     "name": "Iraq",
     "region": "Midle East & North Africa"
   },
   {
+    "centroid": {
+      "latitude": 64.81350771484375,
+      "longitude": -17.792900585937485
+    },
     "code": "ISL",
     "formal_name": "Iceland",
     "name": "Iceland",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 31.573172851562493,
+      "longitude": 34.976722656250004
+    },
     "code": "ISR",
     "formal_name": "State of Israel",
     "name": "Israel",
     "region": "Midle East & North Africa"
   },
   {
+    "centroid": {
+      "latitude": 42.975931054687514,
+      "longitude": 12.485638476562535
+    },
     "code": "ITA",
     "formal_name": "Italian Republic",
     "name": "Italy",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 18.1654107421875,
+      "longitude": -77.32623554687498
+    },
     "code": "JAM",
     "formal_name": "Jamaica",
     "name": "Jamaica",
     "region": "Latin America & Caribbean"
   },
   {
+    "centroid": {
+      "latitude": 31.133719921875,
+      "longitude": 36.24469492187501
+    },
     "code": "JOR",
     "formal_name": "Hashemite Kingdom of Jordan",
     "name": "Jordan",
     "region": "Midle East & North Africa"
   },
   {
+    "centroid": {
+      "latitude": 36.70435722656246,
+      "longitude": 139.4528796875
+    },
     "code": "JPN",
     "formal_name": "Japan",
     "name": "Japan",
     "region": "East Asia & Pacific"
   },
   {
+    "centroid": {
+      "latitude": 48.731967187500004,
+      "longitude": 68.43170781250011
+    },
     "code": "KAZ",
     "formal_name": "Republic of Kazakhstan",
     "name": "Kazakhstan",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 0.7665992187499956,
+      "longitude": 37.89199218750002
+    },
     "code": "KEN",
     "formal_name": "Republic of Kenya",
     "name": "Kenya",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 41.73073632812499,
+      "longitude": 75.26646679687501
+    },
     "code": "KGZ",
     "formal_name": "Kyrgyz Republic",
     "name": "Kyrgyzstan",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 12.642726171874997,
+      "longitude": 105.00488359375001
+    },
     "code": "KHM",
     "formal_name": "Kingdom of Cambodia",
     "name": "Cambodia",
     "region": "East Asia & Pacific"
   },
   {
+    "centroid": {
+      "latitude": 17.89117265624998,
+      "longitude": -21.538780078124994
+    },
     "code": "KIR",
     "formal_name": "Republic of Kiribati",
     "name": "Kiribati",
     "region": "East Asia & Pacific"
   },
   {
+    "centroid": {
+      "latitude": 17.29350917968749,
+      "longitude": -62.69436708984373
+    },
     "code": "KNA",
     "formal_name": "Federation of Saint Christopher and Nevis",
     "name": "Saint Kitts and Nevis",
     "region": "Latin America & Caribbean"
   },
   {
+    "centroid": {
+      "latitude": 36.259478710937515,
+      "longitude": 128.0263006835938
+    },
     "code": "KOR",
     "formal_name": "Republic of Korea",
     "name": "Korea, South",
     "region": "East Asia & Pacific"
   },
   {
+    "centroid": {
+      "latitude": 29.364921289062536,
+      "longitude": 47.490784960937525
+    },
     "code": "KWT",
     "formal_name": "State of Kuwait",
     "name": "Kuwait",
     "region": "Midle East & North Africa"
   },
   {
+    "centroid": {
+      "latitude": 18.842708886718775,
+      "longitude": 103.88403320312504
+    },
     "code": "LAO",
     "formal_name": "Lao People's Democratic Republic",
     "name": "Laos",
     "region": "East Asia & Pacific"
   },
   {
+    "centroid": {
+      "latitude": 33.864373046874995,
+      "longitude": 35.8371591796875
+    },
     "code": "LBN",
     "formal_name": "Lebanese Republic",
     "name": "Lebanon",
     "region": "Midle East & North Africa"
   },
   {
+    "centroid": {
+      "latitude": 6.394270312499995,
+      "longitude": -9.252764843749992
+    },
     "code": "LBR",
     "formal_name": "Republic of Liberia",
     "name": "Liberia",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 27.2896962890625,
+      "longitude": 18.149104687500007
+    },
     "code": "LBY",
     "formal_name": "State of Libya",
     "name": "Libya",
     "region": "Midle East & North Africa"
   },
   {
+    "centroid": {
+      "latitude": 13.888182812499998,
+      "longitude": -60.977701367187485
+    },
     "code": "LCA",
     "formal_name": "Saint Lucia",
     "name": "Saint Lucia",
     "region": "Latin America & Caribbean"
   },
   {
+    "centroid": {
+      "latitude": 47.124800781249995,
+      "longitude": 9.537764648437507
+    },
     "code": "LIE",
     "formal_name": "Principality of Liechtenstein",
     "name": "Liechtenstein",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 7.626050488281284,
+      "longitude": 80.79238281249998
+    },
     "code": "LKA",
     "formal_name": "Democratic Socialist Republic of Sri Lanka",
     "name": "Sri Lanka",
     "region": "South Asia"
   },
   {
+    "centroid": {
+      "latitude": -29.54652070312502,
+      "longitude": 28.179138867187508
+    },
     "code": "LSO",
     "formal_name": "Kingdom of Lesotho",
     "name": "Lesotho",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 55.30484804687496,
+      "longitude": 24.01402050781256
+    },
     "code": "LTU",
     "formal_name": "Republic of Lithuania",
     "name": "Lithuania",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 49.7355982421875,
+      "longitude": 6.0817000000000005
+    },
     "code": "LUX",
     "formal_name": "Grand Duchy of Luxembourg",
     "name": "Luxembourg",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 56.994846484374996,
+      "longitude": 24.88160625000002
+    },
     "code": "LVA",
     "formal_name": "Republic of Latvia",
     "name": "Latvia",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 28.368017578124974,
+      "longitude": -9.980015429687477
+    },
     "code": "MAR",
     "formal_name": "Kingdom of Morocco",
     "name": "Morocco",
     "region": "Midle East & North Africa"
   },
   {
+    "centroid": {
+      "latitude": 43.753146484374994,
+      "longitude": 7.405521875000012
+    },
     "code": "MCO",
     "formal_name": "Principality of Monaco",
     "name": "Monaco",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 47.350418945312505,
+      "longitude": 28.571678125000012
+    },
     "code": "MDA",
     "formal_name": "Republic of Moldova",
     "name": "Moldova",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": -19.472612890625,
+      "longitude": 46.73501269531254
+    },
     "code": "MDG",
     "formal_name": "Republic of Madagascar",
     "name": "Madagascar",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 3.762963671875034,
+      "longitude": 73.467394921875
+    },
     "code": "MDV",
     "formal_name": "Republic of Maldives",
     "name": "Maldives",
     "region": "South Asia"
   },
   {
+    "centroid": {
+      "latitude": 23.693781250000015,
+      "longitude": -102.16836718749997
+    },
     "code": "MEX",
     "formal_name": "United Mexican States",
     "name": "Mexico",
     "region": "Latin America & Caribbean"
   },
   {
+    "centroid": {
+      "latitude": 6.8091480468750385,
+      "longitude": 170.009469140625
+    },
     "code": "MHL",
     "formal_name": "Republic of the Marshall Islands",
     "name": "Marshall Islands",
     "region": "East Asia & Pacific"
   },
   {
+    "centroid": {
+      "latitude": 41.6244845703125,
+      "longitude": 21.665779687500017
+    },
     "code": "MKD",
     "formal_name": "Republic of North Macedonia",
     "name": "North Macedonia",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 15.48850791015625,
+      "longitude": -3.626606835937481
+    },
     "code": "MLI",
     "formal_name": "Republic of Mali",
     "name": "Mali",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 35.97732187500001,
+      "longitude": 14.336250390625
+    },
     "code": "MLT",
     "formal_name": "Republic of Malta",
     "name": "Malta",
     "region": "Midle East & North Africa"
   },
   {
+    "centroid": {
+      "latitude": 20.538414648437517,
+      "longitude": 96.17874482421878
+    },
     "code": "MMR",
     "formal_name": "Republic of the Union of Myanmar",
     "name": "Myanmar",
     "region": "East Asia & Pacific"
   },
   {
+    "centroid": {
+      "latitude": 42.801279296874995,
+      "longitude": 19.185568750000012
+    },
     "code": "MNE",
     "formal_name": "Montenegro",
     "name": "Montenegro",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 46.341921484375,
+      "longitude": 103.43465156250002
+    },
     "code": "MNG",
     "formal_name": "Mongolia",
     "name": "Mongolia",
     "region": "East Asia & Pacific"
   },
   {
+    "centroid": {
+      "latitude": -18.367837499999997,
+      "longitude": 34.68049648437501
+    },
     "code": "MOZ",
     "formal_name": "Republic of Mozambique",
     "name": "Mozambique",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 19.48569912109379,
+      "longitude": -10.040364648437475
+    },
     "code": "MRT",
     "formal_name": "Islamic Republic of Mauritania",
     "name": "Mauritania",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": -20.285050000000005,
+      "longitude": 57.56425234375003
+    },
     "code": "MUS",
     "formal_name": "Republic of Mauritius",
     "name": "Mauritius",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": -13.077372265625014,
+      "longitude": 34.12687109375004
+    },
     "code": "MWI",
     "formal_name": "Republic of Malawi",
     "name": "Malawi",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 3.1650505859375104,
+      "longitude": 108.31833769531255
+    },
     "code": "MYS",
     "formal_name": "Malaysia",
     "name": "Malaysia",
     "region": "East Asia & Pacific"
   },
   {
+    "centroid": {
+      "latitude": -22.303441406250005,
+      "longitude": 17.298968750000004
+    },
     "code": "NAM",
     "formal_name": "Republic of Namibia",
     "name": "Namibia",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 16.627522460937506,
+      "longitude": 8.853491210937518
+    },
     "code": "NER",
     "formal_name": "Republic of Niger",
     "name": "Niger",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 9.528884375000017,
+      "longitude": 7.605773828125061
+    },
     "code": "NGA",
     "formal_name": "Federal Republic of Nigeria",
     "name": "Nigeria",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 12.808527050781253,
+      "longitude": -84.98965400390624
+    },
     "code": "NIC",
     "formal_name": "Republic of Nicaragua",
     "name": "Nicaragua",
     "region": "Latin America & Caribbean"
   },
   {
+    "centroid": {
+      "latitude": 51.99010214843751,
+      "longitude": 5.651998046875031
+    },
     "code": "NLD",
     "formal_name": "Kingdom of the Netherlands",
     "name": "Netherlands",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 65.74567939453125,
+      "longitude": 16.11074560546874
+    },
     "code": "NOR",
     "formal_name": "Kingdom of Norway",
     "name": "Norway",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 28.227923828125,
+      "longitude": 84.00927343750001
+    },
     "code": "NPL",
     "formal_name": "Federal Democratic Republic of Nepal",
     "name": "Nepal",
     "region": "South Asia"
   },
   {
+    "centroid": {
+      "latitude": -0.5199455078125029,
+      "longitude": 166.93308339843753
+    },
     "code": "NRU",
     "formal_name": "Republic of Nauru",
     "name": "Nauru",
     "region": "East Asia & Pacific"
   },
   {
+    "centroid": {
+      "latitude": -44.773753906249965,
+      "longitude": 172.1393205078125
+    },
     "code": "NZL",
     "formal_name": "New Zealand",
     "name": "New Zealand",
     "region": "East Asia & Pacific"
   },
   {
+    "centroid": {
+      "latitude": 20.434492675781232,
+      "longitude": 56.37355039062501
+    },
     "code": "OMN",
     "formal_name": "Sultanate of Oman",
     "name": "Oman",
     "region": "Midle East & North Africa"
   },
   {
+    "centroid": {
+      "latitude": 29.92025,
+      "longitude": 69.59268359375001
+    },
     "code": "PAK",
     "formal_name": "Islamic Republic of Pakistan",
     "name": "Pakistan",
     "region": "South Asia"
   },
   {
+    "centroid": {
+      "latitude": 8.747178125000024,
+      "longitude": -80.22829687499997
+    },
     "code": "PAN",
     "formal_name": "Republic of Panama",
     "name": "Panama",
     "region": "Latin America & Caribbean"
   },
   {
+    "centroid": {
+      "latitude": -10.218692773437505,
+      "longitude": -74.75468349609373
+    },
     "code": "PER",
     "formal_name": "Republic of Peru",
     "name": "Peru",
     "region": "Latin America & Caribbean"
   },
   {
+    "centroid": {
+      "latitude": 11.84605859374999,
+      "longitude": 122.63362226562512
+    },
     "code": "PHL",
     "formal_name": "Republic of the Philippines",
     "name": "Philippines",
     "region": "East Asia & Pacific"
   },
   {
+    "centroid": {
+      "latitude": 7.496358593749983,
+      "longitude": 134.58575000000005
+    },
     "code": "PLW",
     "formal_name": "Republic of Palau",
     "name": "Palau",
     "region": "East Asia & Pacific"
   },
   {
+    "centroid": {
+      "latitude": -6.159797656249974,
+      "longitude": 144.4851796875
+    },
     "code": "PNG",
     "formal_name": "Independent State of Papua New Guinea",
     "name": "Papua New Guinea",
     "region": "East Asia & Pacific"
   },
   {
+    "centroid": {
+      "latitude": 52.188873632812495,
+      "longitude": 19.55618203125001
+    },
     "code": "POL",
     "formal_name": "Republic of Poland",
     "name": "Poland",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 40.26985234374999,
+      "longitude": 126.82071484374998
+    },
     "code": "PRK",
     "formal_name": "Democratic People's Republic of Korea",
     "name": "Korea, North",
     "region": "East Asia & Pacific"
   },
   {
+    "centroid": {
+      "latitude": 39.548906152343775,
+      "longitude": -8.117854882812502
+    },
     "code": "PRT",
     "formal_name": "Portuguese Republic",
     "name": "Portugal",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": -23.100470703125005,
+      "longitude": -58.36229492187499
+    },
     "code": "PRY",
     "formal_name": "Republic of Paraguay",
     "name": "Paraguay",
     "region": "Latin America & Caribbean"
   },
   {
+    "centroid": {
+      "latitude": 25.298592285156246,
+      "longitude": 51.20080175781251
+    },
     "code": "QAT",
     "formal_name": "State of Qatar",
     "name": "Qatar",
     "region": "Midle East & North Africa"
   },
   {
+    "centroid": {
+      "latitude": 45.94821054687499,
+      "longitude": 25.011684375000005
+    },
     "code": "ROU",
     "formal_name": "Romania",
     "name": "Romania",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 61.52673339843751,
+      "longitude": 102.24000000000001
+    },
     "code": "RUS",
     "formal_name": "Russian Federation",
     "name": "Russia",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": -1.9237261718750025,
+      "longitude": 29.84690039062501
+    },
     "code": "RWA",
     "formal_name": "Republic of Rwanda",
     "name": "Rwanda",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 24.079946093750006,
+      "longitude": 45.04451406249998
+    },
     "code": "SAU",
     "formal_name": "Kingdom of Saudi Arabia",
     "name": "Saudi Arabia",
     "region": "Midle East & North Africa"
   },
   {
+    "centroid": {
+      "latitude": 16.34037890625,
+      "longitude": 30.116677734375
+    },
     "code": "SDN",
     "formal_name": "Republic of the Sudan",
     "name": "Sudan",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 14.848047265624999,
+      "longitude": -15.04974257812499
+    },
     "code": "SEN",
     "formal_name": "Republic of Senegal",
     "name": "Senegal",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 1.3589951171874946,
+      "longitude": 103.82121386718748
+    },
     "code": "SGP",
     "formal_name": "Republic of Singapore",
     "name": "Singapore",
     "region": "East Asia & Pacific"
   },
   {
+    "centroid": {
+      "latitude": -8.74798691406251,
+      "longitude": 159.45809687500002
+    },
     "code": "SLB",
     "formal_name": "Solomon Islands",
     "name": "Solomon Islands",
     "region": "East Asia & Pacific"
   },
   {
+    "centroid": {
+      "latitude": 8.476258007812493,
+      "longitude": -11.750859570312464
+    },
     "code": "SLE",
     "formal_name": "Republic of Sierra Leone",
     "name": "Sierra Leone",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 13.692373242187498,
+      "longitude": -88.843683984375
+    },
     "code": "SLV",
     "formal_name": "Republic of El Salvador",
     "name": "El Salvador",
     "region": "Latin America & Caribbean"
   },
   {
+    "centroid": {
+      "latitude": 43.941683398437505,
+      "longitude": 12.45953046875
+    },
     "code": "SMR",
     "formal_name": "Republic of San Marino",
     "name": "San Marino",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 6.074361718749992,
+      "longitude": 45.602825585937495
+    },
     "code": "SOM",
     "formal_name": "Federal Republic of Somalia",
     "name": "Somalia",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 44.0460220703125,
+      "longitude": 20.795759082031235
+    },
     "code": "SRB",
     "formal_name": "Republic of Serbia",
     "name": "Serbia",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 7.256375390624997,
+      "longitude": 30.35287910156252
+    },
     "code": "SSD",
     "formal_name": "Republic of South Sudan",
     "name": "South Sudan",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 0.978954687500009,
+      "longitude": 7.059359375000021
+    },
     "code": "STP",
     "formal_name": "Democratic Republic of Sao Tome and Principe",
     "name": "Sao Tome and Principe",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 4.175222363281243,
+      "longitude": -55.93946093749999
+    },
     "code": "SUR",
     "formal_name": "Republic of Suriname",
     "name": "Suriname",
     "region": "Latin America & Caribbean"
   },
   {
+    "centroid": {
+      "latitude": 48.714622265624996,
+      "longitude": 19.496348437500014
+    },
     "code": "SVK",
     "formal_name": "Slovak Republic",
     "name": "Slovakia",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 46.070513476562496,
+      "longitude": 14.802869335937514
+    },
     "code": "SVN",
     "formal_name": "Republic of Slovenia",
     "name": "Slovenia",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 63.06781660156251,
+      "longitude": 15.789413281250047
+    },
     "code": "SWE",
     "formal_name": "Kingdom of Sweden",
     "name": "Sweden",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": -26.586010546875002,
+      "longitude": 31.500339062499997
+    },
     "code": "SWZ",
     "formal_name": "Kingdom of Eswatini",
     "name": "Eswatini",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": -4.659923046875007,
+      "longitude": 55.48540585937501
+    },
     "code": "SYC",
     "formal_name": "Republic of Seychelles",
     "name": "Seychelles",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 35.05787128906248,
+      "longitude": 38.46825097656251
+    },
     "code": "SYR",
     "formal_name": "Syrian Arab Republic",
     "name": "Syria",
     "region": "Midle East & North Africa"
   },
   {
+    "centroid": {
+      "latitude": 14.9172765625,
+      "longitude": 18.8435796875
+    },
     "code": "TCD",
     "formal_name": "Republic of Chad",
     "name": "Chad",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 8.612567089843743,
+      "longitude": 1.0851306640625151
+    },
     "code": "TGO",
     "formal_name": "Togolese Republic",
     "name": "Togo",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 14.538930761718754,
+      "longitude": 101.0934166015625
+    },
     "code": "THA",
     "formal_name": "Kingdom of Thailand",
     "name": "Thailand",
     "region": "East Asia & Pacific"
   },
   {
+    "centroid": {
+      "latitude": 38.890646874999966,
+      "longitude": 71.20310312499997
+    },
     "code": "TJK",
     "formal_name": "Republic of Tajikistan",
     "name": "Tajikistan",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 39.200800976562505,
+      "longitude": 59.618114062500055
+    },
     "code": "TKM",
     "formal_name": "Turkmenistan",
     "name": "Turkmenistan",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": -8.786810546875,
+      "longitude": 125.94003125000008
+    },
     "code": "TLS",
     "formal_name": "Democratic Republic of Timor-Leste",
     "name": "Timor-Leste",
     "region": "East Asia & Pacific"
   },
   {
+    "centroid": {
+      "latitude": -19.79445019531253,
+      "longitude": -174.53247460937496
+    },
     "code": "TON",
     "formal_name": "Kingdom of Tonga",
     "name": "Tonga",
     "region": "East Asia & Pacific"
   },
   {
+    "centroid": {
+      "latitude": 10.440986328124996,
+      "longitude": -61.27102050781253
+    },
     "code": "TTO",
     "formal_name": "Republic of Trinidad and Tobago",
     "name": "Trinidad and Tobago",
     "region": "Latin America & Caribbean"
   },
   {
+    "centroid": {
+      "latitude": 34.01243925781249,
+      "longitude": 9.146000195312537
+    },
     "code": "TUN",
     "formal_name": "Republic of Tunisia",
     "name": "Tunisia",
     "region": "Midle East & North Africa"
   },
   {
+    "centroid": {
+      "latitude": 39.268725390624994,
+      "longitude": 35.39625234375001
+    },
     "code": "TUR",
     "formal_name": "Republic of Turkey",
     "name": "Turkey",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": -8.05580641075984,
+      "longitude": 178.84036754652013
+    },
     "code": "TUV",
     "formal_name": "Tuvalu",
     "name": "Tuvalu",
     "region": "East Asia & Pacific"
   },
   {
+    "centroid": {
+      "latitude": -6.065922851562504,
+      "longitude": 34.915786132812535
+    },
     "code": "TZA",
     "formal_name": "United Republic of Tanzania",
     "name": "Tanzania",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 1.193062109374994,
+      "longitude": 32.46353300781251
+    },
     "code": "UGA",
     "formal_name": "Republic of Uganda",
     "name": "Uganda",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": 49.30639824218746,
+      "longitude": 31.382028906250056
+    },
     "code": "UKR",
     "formal_name": "Ukraine",
     "name": "Ukraine",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": -32.878196679687505,
+      "longitude": -56.026237597656255
+    },
     "code": "URY",
     "formal_name": "Oriental Republic of Uruguay",
     "name": "Uruguay",
     "region": "Latin America & Caribbean"
   },
   {
+    "centroid": {
+      "latitude": 37.115338476562506,
+      "longitude": -98.72418964843745
+    },
     "code": "USA",
     "formal_name": "United States of America",
     "name": "United States",
     "region": "North America"
   },
   {
+    "centroid": {
+      "latitude": 42.15321054687502,
+      "longitude": 62.805853320312565
+    },
     "code": "UZB",
     "formal_name": "Republic of Uzbekistan",
     "name": "Uzbekistan",
     "region": "Europe & Central Asia"
   },
   {
+    "centroid": {
+      "latitude": 13.106415039062485,
+      "longitude": -61.212208984374996
+    },
     "code": "VCT",
     "formal_name": "Saint Vincent and the Grenadines",
     "name": "Saint Vincent and the Grenadines",
     "region": "Latin America & Caribbean"
   },
   {
+    "centroid": {
+      "latitude": 7.353471289062517,
+      "longitude": -66.0019171875
+    },
     "code": "VEN",
     "formal_name": "Bolivarian Republic of Venezuela",
     "name": "Venezuela",
     "region": "Latin America & Caribbean"
   },
   {
+    "centroid": {
+      "latitude": 16.141376953125015,
+      "longitude": 106.05189697265624
+    },
     "code": "VNM",
     "formal_name": "Socialist Republic of Vietnam",
     "name": "Vietnam",
     "region": "East Asia & Pacific"
   },
   {
+    "centroid": {
+      "latitude": -17.080151953124997,
+      "longitude": 168.14585839843755
+    },
     "code": "VUT",
     "formal_name": "Republic of Vanuatu",
     "name": "Vanuatu",
     "region": "East Asia & Pacific"
   },
   {
+    "centroid": {
+      "latitude": -13.790802832031238,
+      "longitude": -172.0927748046875
+    },
     "code": "WSM",
     "formal_name": "Independent State of Samoa",
     "name": "Samoa",
     "region": "East Asia & Pacific"
   },
   {
+    "centroid": {
+      "latitude": 15.490098828125037,
+      "longitude": 47.69273046875005
+    },
     "code": "YEM",
     "formal_name": "Republic of Yemen",
     "name": "Yemen",
     "region": "Midle East & North Africa"
   },
   {
+    "centroid": {
+      "latitude": -29.442369921875006,
+      "longitude": 25.430464843750013
+    },
     "code": "ZAF",
     "formal_name": "Republic of South Africa",
     "name": "South Africa",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": -13.281134765625003,
+      "longitude": 27.82021484375002
+    },
     "code": "ZMB",
     "formal_name": "Republic of Zambia",
     "name": "Zambia",
     "region": "Sub-Saharan Africa"
   },
   {
+    "centroid": {
+      "latitude": -19.178212890625005,
+      "longitude": 29.971479492187523
+    },
     "code": "ZWE",
     "formal_name": "Republic of Zimbabwe",
     "name": "Zimbabwe",
