@@ -1,6 +1,6 @@
 import {rainbow} from "../../../libs/mjs/colors/solid/rainbow.mjs"
-import {regionsColourSwitch} from "../../../libs/mjs/colors/switches/regions.mjs"
 import {makeScrollable} from "../../../libs/mjs/panels/events/scroll.mjs"
+import {regionsColourSwitch} from "../../../libs/mjs/colors/switches/regions.mjs"
 
 $(document).ready(function() {
 
