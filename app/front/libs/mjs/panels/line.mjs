@@ -14,6 +14,21 @@ export function addLinePanel(panelSetting) {
 
   panel.append("<h1 id='name'>" + plot.x.name + "</h1>")
 
+  let regression = ""
+
+  regression += "<input type='radio' id='lin-reg' class='reg-radio' name='reg' value='1'>"
+  regression += "<label for='lin-reg'>linReg</label>"
+  regression += "<input type='radio' id='poly-reg-2' class='reg-radio' name='reg' value='2'>"
+  regression += "<label for='poly-reg-2'>polyReg2</label>"
+  regression += "<input type='radio' id='poly-reg-3' class='reg-radio' name='reg' value='3'>"
+  regression += "<label for='poly-reg-3'>polyReg3</label>"
+
+  let tangent = "<input type='checkbox' id='tan' class='tan-chk'><label>Show Tangent</label>"
+
+  panel.append("<div id='reg-and-tan'>" + regression + tangent + "</div>")
+
+  regression = $("input[name=reg]:checked").val()
+
   panel.append("<svg id='lineGraph'></svg>")
 
   let graphWidth = 500
@@ -52,6 +67,9 @@ export function addLinePanel(panelSetting) {
                           return yScale(data.value)
                         })
 
+  let xRegVals = []
+  let yRegVals = []
+
   for (let i = 0; i < plots.length; i++) {
 
     d3.select("#lineGraph")
@@ -61,7 +79,18 @@ export function addLinePanel(panelSetting) {
       .append("path")
       .attr("d", function(data) {
 
-        return pathGenerator(data.x.filter(function(data) { return typeof(data.year) == "number" && typeof(data.value) == "number" }))
+        let dataVals = data.x.filter(function(data) {
+          if (typeof(data.year) == "number" && typeof(data.value) == "number") {
+
+            xRegVals.push(data.year)
+            yRegVals.push(data.value)
+
+            return data
+
+          }
+        })
+
+        return pathGenerator(dataVals)
 
       })
       .attr("transform", "translate(" + graphMargin + ", " + graphMargin + ")")
@@ -73,6 +102,47 @@ export function addLinePanel(panelSetting) {
       .attr("fill", "none")
 
   }
+
+  $(".reg-radio").click(function(event) {
+
+    $(".regLine").remove()
+
+    if (this.value == regression) {
+
+      this.checked = false
+
+    } else {
+
+      let coefficients = polyfit(xRegVals, yRegVals, parseInt(this.value))
+
+      d3.select("#lineGraph")
+        .selectAll(".regLine")
+        .data([0])
+        .enter()
+        .append("path")
+        .attr("class", "regLine")
+        .attr("d", function() {
+
+          let regVals = []
+
+          for (let i = plot.t.minCap; i <= plot.t.maxCap; i++) {
+
+            regVals.push({"year": i, "value": predict(i, coefficients)})
+
+          }
+
+          return pathGenerator(regVals)
+
+        })
+        .attr("transform", "translate(" + graphMargin + ", " + graphMargin + ")")
+        .attr("stroke", "black")
+        .attr("fill", "none")
+
+    }
+
+    regression = $("input[name=reg]:checked").val()
+
+  })
 
   addPanelEvents(panel)
 
