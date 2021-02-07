@@ -7,7 +7,8 @@
     "code": "AFG",
     "formal_name": "Islamic Republic of Afghanistan",
     "name": "Afghanistan",
-    "region": "South Asia"
+    "region": "South Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Afghanistan"
   },
   {
     "centroid": {
@@ -17,7 +18,8 @@
     "code": "AGO",
     "formal_name": "Republic of Angola",
     "name": "Angola",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Angola"
   },
   {
     "centroid": {
@@ -27,7 +29,8 @@
     "code": "ALB",
     "formal_name": "Republic of Albania",
     "name": "Albania",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Albania"
   },
   {
     "centroid": {
@@ -37,7 +40,8 @@
     "code": "AND",
     "formal_name": "Principality of Andorra",
     "name": "Andorra",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Andorra"
   },
   {
     "centroid": {
@@ -47,7 +51,8 @@
     "code": "ARE",
     "formal_name": "United Arab Emirates",
     "name": "United Arab Emirates",
-    "region": "Midle East & North Africa"
+    "region": "Midle East & North Africa",
+    "wiki": "https://en.wikipedia.org/wiki/United_Arab_Emirates"
   },
   {
     "centroid": {
@@ -57,7 +62,8 @@
     "code": "ARG",
     "formal_name": "Argentine Republic",
     "name": "Argentina",
-    "region": "Latin America & Caribbean"
+    "region": "Latin America & Caribbean",
+    "wiki": "https://en.wikipedia.org/wiki/Argentina"
   },
   {
     "centroid": {
@@ -67,7 +73,8 @@
     "code": "ARM",
     "formal_name": "Republic of Armenia",
     "name": "Armenia",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Armenia"
   },
   {
     "centroid": {
@@ -77,7 +84,8 @@
     "code": "ATG",
     "formal_name": "Antigua and Barbuda",
     "name": "Antigua and Barbuda",
-    "region": "Latin America & Caribbean"
+    "region": "Latin America & Caribbean",
+    "wiki": "https://en.wikipedia.org/wiki/Antigua_and_Barbuda"
   },
   {
     "centroid": {
@@ -87,7 +95,8 @@
     "code": "AUS",
     "formal_name": "Commonwealth of Australia",
     "name": "Australia",
-    "region": "East Asia & Pacific"
+    "region": "East Asia & Pacific",
+    "wiki": "https://en.wikipedia.org/wiki/Australia"
   },
   {
     "centroid": {
@@ -97,7 +106,8 @@
     "code": "AUT",
     "formal_name": "Republic of Austria",
     "name": "Austria",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Austria"
   },
   {
     "centroid": {
@@ -107,7 +117,8 @@
     "code": "AZE",
     "formal_name": "Republic of Azerbaijan",
     "name": "Azerbaijan",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Azerbaijan"
   },
   {
     "centroid": {
@@ -117,7 +128,8 @@
     "code": "BDI",
     "formal_name": "Republic of Burundi",
     "name": "Burundi",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Burundi"
   },
   {
     "centroid": {
@@ -127,7 +139,8 @@
     "code": "BEL",
     "formal_name": "Kingdom of Belgium",
     "name": "Belgium",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Belgium"
   },
   {
     "centroid": {
@@ -137,7 +150,8 @@
     "code": "BEN",
     "formal_name": "Republic of Benin",
     "name": "Benin",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Benin"
   },
   {
     "centroid": {
@@ -147,7 +161,8 @@
     "code": "BFA",
     "formal_name": "Burkina Faso",
     "name": "Burkina Faso",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Burkina_Faso"
   },
   {
     "centroid": {
@@ -157,7 +172,8 @@
     "code": "BGD",
     "formal_name": "People's Republic of Bangladesh",
     "name": "Bangladesh",
-    "region": "South Asia"
+    "region": "South Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Bangladesh"
   },
   {
     "centroid": {
@@ -167,7 +183,8 @@
     "code": "BGR",
     "formal_name": "Republic of Bulgaria",
     "name": "Bulgaria",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Bulgaria"
   },
   {
     "centroid": {
@@ -177,7 +194,8 @@
     "code": "BHR",
     "formal_name": "Kingdom of Bahrain",
     "name": "Bahrain",
-    "region": "Midle East & North Africa"
+    "region": "Midle East & North Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Bahrain"
   },
   {
     "centroid": {
@@ -187,7 +205,8 @@
     "code": "BHS",
     "formal_name": "Commonwealth of The Bahamas",
     "name": "Bahamas, The",
-    "region": "Latin America & Caribbean"
+    "region": "Latin America & Caribbean",
+    "wiki": "https://en.wikipedia.org/wiki/The_Bahamas"
   },
   {
     "centroid": {
@@ -197,7 +216,8 @@
     "code": "BIH",
     "formal_name": "Bosnia and Herzegovina",
     "name": "Bosnia and Herzegovina",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Bosnia_and_Herzegovina"
   },
   {
     "centroid": {
@@ -207,7 +227,8 @@
     "code": "BLR",
     "formal_name": "Republic of Belarus",
     "name": "Belarus",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Belarus"
   },
   {
     "centroid": {
@@ -217,7 +238,8 @@
     "code": "BLZ",
     "formal_name": "Belize",
     "name": "Belize",
-    "region": "Latin America & Caribbean"
+    "region": "Latin America & Caribbean",
+    "wiki": "https://en.wikipedia.org/wiki/Belize"
   },
   {
     "centroid": {
@@ -227,7 +249,8 @@
     "code": "BOL",
     "formal_name": "Plurinational State of Bolivia",
     "name": "Bolivia",
-    "region": "Latin America & Caribbean"
+    "region": "Latin America & Caribbean",
+    "wiki": "https://en.wikipedia.org/wiki/Bolivia"
   },
   {
     "centroid": {
@@ -237,7 +260,8 @@
     "code": "BRA",
     "formal_name": "Federative Republic of Brazil",
     "name": "Brazil",
-    "region": "Latin America & Caribbean"
+    "region": "Latin America & Caribbean",
+    "wiki": "https://en.wikipedia.org/wiki/Brazil"
   },
   {
     "centroid": {
@@ -247,7 +271,8 @@
     "code": "BRB",
     "formal_name": "Barbados",
     "name": "Barbados",
-    "region": "Latin America & Caribbean"
+    "region": "Latin America & Caribbean",
+    "wiki": "https://en.wikipedia.org/wiki/Barbados"
   },
   {
     "centroid": {
@@ -257,7 +282,8 @@
     "code": "BRN",
     "formal_name": "Nation of Brunei, the Abode of Peace",
     "name": "Brunei Darussalam",
-    "region": "East Asia & Pacific"
+    "region": "East Asia & Pacific",
+    "wiki": "https://en.wikipedia.org/wiki/Brunei"
   },
   {
     "centroid": {
@@ -267,7 +293,8 @@
     "code": "BTN",
     "formal_name": "Kingdom of Bhutan",
     "name": "Bhutan",
-    "region": "South Asia"
+    "region": "South Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Bhutan"
   },
   {
     "centroid": {
@@ -277,7 +304,8 @@
     "code": "BWA",
     "formal_name": "Republic of Botswana",
     "name": "Botswana",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Botswana"
   },
   {
     "centroid": {
@@ -287,7 +315,8 @@
     "code": "CAF",
     "formal_name": "Central African Republic",
     "name": "Central African Republic",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Central_African_Republic"
   },
   {
     "centroid": {
@@ -297,7 +326,8 @@
     "code": "CAN",
     "formal_name": "Canada",
     "name": "Canada",
-    "region": "North America"
+    "region": "North America",
+    "wiki": "https://en.wikipedia.org/wiki/Canada"
   },
   {
     "centroid": {
@@ -307,7 +337,8 @@
     "code": "CHE",
     "formal_name": "Swiss Confederation",
     "name": "Switzerland",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Switzerland"
   },
   {
     "centroid": {
@@ -317,7 +348,8 @@
     "code": "CHL",
     "formal_name": "Republic of Chile",
     "name": "Chile",
-    "region": "Latin America & Caribbean"
+    "region": "Latin America & Caribbean",
+    "wiki": "https://en.wikipedia.org/wiki/Chile"
   },
   {
     "centroid": {
@@ -327,7 +359,8 @@
     "code": "CHN",
     "formal_name": "People's Republic of China",
     "name": "China",
-    "region": "East Asia & Pacific"
+    "region": "East Asia & Pacific",
+    "wiki": "https://en.wikipedia.org/wiki/China"
   },
   {
     "centroid": {
@@ -337,7 +370,8 @@
     "code": "CIV",
     "formal_name": "Republic of Cote d'Ivoire",
     "name": "Cote d'Ivoire",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Ivory_Coast"
   },
   {
     "centroid": {
@@ -347,7 +381,8 @@
     "code": "CMR",
     "formal_name": "Republic of Cameroon",
     "name": "Cameroon",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Cameroon"
   },
   {
     "centroid": {
@@ -357,7 +392,8 @@
     "code": "COD",
     "formal_name": "Congo, Democratic Republic of the",
     "name": "Congo, Democratic Republic of the",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Democratic_Republic_of_the_Congo"
   },
   {
     "centroid": {
@@ -367,7 +403,8 @@
     "code": "COG",
     "formal_name": "Congo, Republic of the",
     "name": "Congo, Republic of the",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Republic_of_the_Congo"
   },
   {
     "centroid": {
@@ -377,7 +414,8 @@
     "code": "COL",
     "formal_name": "Republic of Colombia",
     "name": "Colombia",
-    "region": "Latin America & Caribbean"
+    "region": "Latin America & Caribbean",
+    "wiki": "https://en.wikipedia.org/wiki/Colombia"
   },
   {
     "centroid": {
@@ -387,7 +425,8 @@
     "code": "COM",
     "formal_name": "Union of the Comoros",
     "name": "Comoros",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Comoros"
   },
   {
     "centroid": {
@@ -397,7 +436,8 @@
     "code": "CPV",
     "formal_name": "Republic of Cabo Verde",
     "name": "Cabo Verde",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Cape_Verde"
   },
   {
     "centroid": {
@@ -407,7 +447,8 @@
     "code": "CRI",
     "formal_name": "Republic of Costa Rica",
     "name": "Costa Rica",
-    "region": "Latin America & Caribbean"
+    "region": "Latin America & Caribbean",
+    "wiki": "https://en.wikipedia.org/wiki/Costa_Rica"
   },
   {
     "centroid": {
@@ -417,7 +458,8 @@
     "code": "CUB",
     "formal_name": "Republic of Cuba",
     "name": "Cuba",
-    "region": "Latin America & Caribbean"
+    "region": "Latin America & Caribbean",
+    "wiki": "https://en.wikipedia.org/wiki/Cuba"
   },
   {
     "centroid": {
@@ -427,7 +469,8 @@
     "code": "CYP",
     "formal_name": "Republic of Cyprus",
     "name": "Cyprus",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Cyprus"
   },
   {
     "centroid": {
@@ -437,7 +480,8 @@
     "code": "CZE",
     "formal_name": "Czech Republic",
     "name": "Czech Republic",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Czech_Republic"
   },
   {
     "centroid": {
@@ -447,7 +491,8 @@
     "code": "DEU",
     "formal_name": "Federal Republic of Germany",
     "name": "Germany",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Germany"
   },
   {
     "centroid": {
@@ -457,7 +502,8 @@
     "code": "DJI",
     "formal_name": "Republic of Djibouti",
     "name": "Djibouti",
-    "region": "Midle East & North Africa"
+    "region": "Midle East & North Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Djibouti"
   },
   {
     "centroid": {
@@ -467,7 +513,8 @@
     "code": "DMA",
     "formal_name": "Commonwealth of Dominica",
     "name": "Dominica",
-    "region": "Latin America & Caribbean"
+    "region": "Latin America & Caribbean",
+    "wiki": "https://en.wikipedia.org/wiki/Dominica"
   },
   {
     "centroid": {
@@ -477,7 +524,8 @@
     "code": "DNK",
     "formal_name": "Kingdom of Denmark",
     "name": "Denmark",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Denmark"
   },
   {
     "centroid": {
@@ -487,7 +535,8 @@
     "code": "DOM",
     "formal_name": "Dominican Republic",
     "name": "Dominican Republic",
-    "region": "Latin America & Caribbean"
+    "region": "Latin America & Caribbean",
+    "wiki": "https://en.wikipedia.org/wiki/Dominican_Republic"
   },
   {
     "centroid": {
@@ -497,7 +546,8 @@
     "code": "DZA",
     "formal_name": "People's Democratic Republic of Algeria",
     "name": "Algeria",
-    "region": "Midle East & North Africa"
+    "region": "Midle East & North Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Algeria"
   },
   {
     "centroid": {
@@ -507,7 +557,8 @@
     "code": "ECU",
     "formal_name": "Republic of Ecuador",
     "name": "Ecuador",
-    "region": "Latin America & Caribbean"
+    "region": "Latin America & Caribbean",
+    "wiki": "https://en.wikipedia.org/wiki/Ecuador"
   },
   {
     "centroid": {
@@ -517,7 +568,8 @@
     "code": "EGY",
     "formal_name": "Arab Republic of Egypt",
     "name": "Egypt",
-    "region": "Midle East & North Africa"
+    "region": "Midle East & North Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Egypt"
   },
   {
     "centroid": {
@@ -527,7 +579,8 @@
     "code": "ERI",
     "formal_name": "State of Eritrea",
     "name": "Eritrea",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Eritrea"
   },
   {
     "centroid": {
@@ -537,7 +590,8 @@
     "code": "ESP",
     "formal_name": "Kingdom of Spain",
     "name": "Spain",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Spain"
   },
   {
     "centroid": {
@@ -547,7 +601,8 @@
     "code": "EST",
     "formal_name": "Republic of Estonia",
     "name": "Estonia",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Estonia"
   },
   {
     "centroid": {
@@ -557,7 +612,8 @@
     "code": "ETH",
     "formal_name": "Federal Democratic Republic of Ethiopia",
     "name": "Ethiopia",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Ethiopia"
   },
   {
     "centroid": {
@@ -567,7 +623,8 @@
     "code": "FIN",
     "formal_name": "Republic of Finland",
     "name": "Finland",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Finland"
   },
   {
     "centroid": {
@@ -577,7 +634,8 @@
     "code": "FJI",
     "formal_name": "Republic of Fiji",
     "name": "Fiji",
-    "region": "East Asia & Pacific"
+    "region": "East Asia & Pacific",
+    "wiki": "https://en.wikipedia.org/wiki/Fiji"
   },
   {
     "centroid": {
@@ -587,7 +645,8 @@
     "code": "FRA",
     "formal_name": "French Republic",
     "name": "France",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/France"
   },
   {
     "centroid": {
@@ -597,7 +656,8 @@
     "code": "FSM",
     "formal_name": "Federated States of Micronesia",
     "name": "Micronesia",
-    "region": "East Asia & Pacific"
+    "region": "East Asia & Pacific",
+    "wiki": "https://en.wikipedia.org/wiki/Micronesia"
   },
   {
     "centroid": {
@@ -607,7 +667,8 @@
     "code": "GAB",
     "formal_name": "Gabonese Republic",
     "name": "Gabon",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Gabon"
   },
   {
     "centroid": {
@@ -617,7 +678,8 @@
     "code": "GBR",
     "formal_name": "United Kingdom of Great Britain and Northern Ireland",
     "name": "United Kingdom",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/United_Kingdom"
   },
   {
     "centroid": {
@@ -627,7 +689,8 @@
     "code": "GEO",
     "formal_name": "Georgia",
     "name": "Georgia",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Georgia_(country)"
   },
   {
     "centroid": {
@@ -637,7 +700,8 @@
     "code": "GHA",
     "formal_name": "Republic of Ghana",
     "name": "Ghana",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Ghana"
   },
   {
     "centroid": {
@@ -647,7 +711,8 @@
     "code": "GIN",
     "formal_name": "Republic of Guinea",
     "name": "Guinea",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Guinea"
   },
   {
     "centroid": {
@@ -657,7 +722,8 @@
     "code": "GMB",
     "formal_name": "Republic of The Gambia",
     "name": "Gambia, The",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/The_Gambia"
   },
   {
     "centroid": {
@@ -667,7 +733,8 @@
     "code": "GNB",
     "formal_name": "Republic of Guinea-Bissau",
     "name": "Guinea-Bissau",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Guinea-Bissau"
   },
   {
     "centroid": {
@@ -677,7 +744,8 @@
     "code": "GNQ",
     "formal_name": "Republic of Equatorial Guinea",
     "name": "Equatorial Guinea",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Equatorial_Guinea"
   },
   {
     "centroid": {
@@ -687,7 +755,8 @@
     "code": "GRC",
     "formal_name": "Hellenic Republic",
     "name": "Greece",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Greece"
   },
   {
     "centroid": {
@@ -697,7 +766,8 @@
     "code": "GRD",
     "formal_name": "Grenada",
     "name": "Grenada",
-    "region": "Latin America & Caribbean"
+    "region": "Latin America & Caribbean",
+    "wiki": "https://en.wikipedia.org/wiki/Grenada"
   },
   {
     "centroid": {
@@ -707,7 +777,8 @@
     "code": "GTM",
     "formal_name": "Republic of Guatemala",
     "name": "Guatemala",
-    "region": "Latin America & Caribbean"
+    "region": "Latin America & Caribbean",
+    "wiki": "https://en.wikipedia.org/wiki/Guatemala"
   },
   {
     "centroid": {
@@ -717,7 +788,8 @@
     "code": "GUY",
     "formal_name": "Co-operative Republic of Guyana",
     "name": "Guyana",
-    "region": "Latin America & Caribbean"
+    "region": "Latin America & Caribbean",
+    "wiki": "https://en.wikipedia.org/wiki/Guyana"
   },
   {
     "centroid": {
@@ -727,7 +799,8 @@
     "code": "HND",
     "formal_name": "Republic of Honduras",
     "name": "Honduras",
-    "region": "Latin America & Caribbean"
+    "region": "Latin America & Caribbean",
+    "wiki": "https://en.wikipedia.org/wiki/Honduras"
   },
   {
     "centroid": {
@@ -737,7 +810,8 @@
     "code": "HRV",
     "formal_name": "Republic of Croatia",
     "name": "Croatia",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Croatia"
   },
   {
     "centroid": {
@@ -747,7 +821,8 @@
     "code": "HTI",
     "formal_name": "Republic of Haiti",
     "name": "Haiti",
-    "region": "Latin America & Caribbean"
+    "region": "Latin America & Caribbean",
+    "wiki": "https://en.wikipedia.org/wiki/Haiti"
   },
   {
     "centroid": {
@@ -757,7 +832,8 @@
     "code": "HUN",
     "formal_name": "Hungary",
     "name": "Hungary",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Hungary"
   },
   {
     "centroid": {
@@ -767,7 +843,8 @@
     "code": "IDN",
     "formal_name": "Republic of Indonesia",
     "name": "Indonesia",
-    "region": "East Asia & Pacific"
+    "region": "East Asia & Pacific",
+    "wiki": "https://en.wikipedia.org/wiki/Indonesia"
   },
   {
     "centroid": {
@@ -777,7 +854,8 @@
     "code": "IND",
     "formal_name": "Republic of India",
     "name": "India",
-    "region": "South Asia"
+    "region": "South Asia",
+    "wiki": "https://en.wikipedia.org/wiki/India"
   },
   {
     "centroid": {
@@ -787,7 +865,8 @@
     "code": "IRL",
     "formal_name": "Ireland",
     "name": "Ireland",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Ireland"
   },
   {
     "centroid": {
@@ -797,7 +876,8 @@
     "code": "IRN",
     "formal_name": "Islamic Republic of Iran",
     "name": "Iran",
-    "region": "Midle East & North Africa"
+    "region": "Midle East & North Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Iran"
   },
   {
     "centroid": {
@@ -807,7 +887,8 @@
     "code": "IRQ",
     "formal_name": "Republic of Iraq",
     "name": "Iraq",
-    "region": "Midle East & North Africa"
+    "region": "Midle East & North Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Iraq"
   },
   {
     "centroid": {
@@ -817,7 +898,8 @@
     "code": "ISL",
     "formal_name": "Iceland",
     "name": "Iceland",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Iceland"
   },
   {
     "centroid": {
@@ -827,7 +909,8 @@
     "code": "ISR",
     "formal_name": "State of Israel",
     "name": "Israel",
-    "region": "Midle East & North Africa"
+    "region": "Midle East & North Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Israel"
   },
   {
     "centroid": {
@@ -837,7 +920,8 @@
     "code": "ITA",
     "formal_name": "Italian Republic",
     "name": "Italy",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Italy"
   },
   {
     "centroid": {
@@ -847,7 +931,8 @@
     "code": "JAM",
     "formal_name": "Jamaica",
     "name": "Jamaica",
-    "region": "Latin America & Caribbean"
+    "region": "Latin America & Caribbean",
+    "wiki": "https://en.wikipedia.org/wiki/Jamaica"
   },
   {
     "centroid": {
@@ -857,7 +942,8 @@
     "code": "JOR",
     "formal_name": "Hashemite Kingdom of Jordan",
     "name": "Jordan",
-    "region": "Midle East & North Africa"
+    "region": "Midle East & North Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Jordan"
   },
   {
     "centroid": {
@@ -867,7 +953,8 @@
     "code": "JPN",
     "formal_name": "Japan",
     "name": "Japan",
-    "region": "East Asia & Pacific"
+    "region": "East Asia & Pacific",
+    "wiki": "https://en.wikipedia.org/wiki/Japan"
   },
   {
     "centroid": {
@@ -877,7 +964,8 @@
     "code": "KAZ",
     "formal_name": "Republic of Kazakhstan",
     "name": "Kazakhstan",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Kazakhstan"
   },
   {
     "centroid": {
@@ -887,7 +975,8 @@
     "code": "KEN",
     "formal_name": "Republic of Kenya",
     "name": "Kenya",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Kenya"
   },
   {
     "centroid": {
@@ -897,7 +986,8 @@
     "code": "KGZ",
     "formal_name": "Kyrgyz Republic",
     "name": "Kyrgyzstan",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Kyrgyzstan"
   },
   {
     "centroid": {
@@ -907,7 +997,8 @@
     "code": "KHM",
     "formal_name": "Kingdom of Cambodia",
     "name": "Cambodia",
-    "region": "East Asia & Pacific"
+    "region": "East Asia & Pacific",
+    "wiki": "https://en.wikipedia.org/wiki/Cambodia"
   },
   {
     "centroid": {
@@ -917,7 +1008,8 @@
     "code": "KIR",
     "formal_name": "Republic of Kiribati",
     "name": "Kiribati",
-    "region": "East Asia & Pacific"
+    "region": "East Asia & Pacific",
+    "wiki": "https://en.wikipedia.org/wiki/Kiribati"
   },
   {
     "centroid": {
@@ -927,7 +1019,8 @@
     "code": "KNA",
     "formal_name": "Federation of Saint Christopher and Nevis",
     "name": "Saint Kitts and Nevis",
-    "region": "Latin America & Caribbean"
+    "region": "Latin America & Caribbean",
+    "wiki": "https://en.wikipedia.org/wiki/Saint_Kitts_and_Nevis"
   },
   {
     "centroid": {
@@ -937,7 +1030,8 @@
     "code": "KOR",
     "formal_name": "Republic of Korea",
     "name": "Korea, South",
-    "region": "East Asia & Pacific"
+    "region": "East Asia & Pacific",
+    "wiki": "https://en.wikipedia.org/wiki/South_Korea"
   },
   {
     "centroid": {
@@ -947,7 +1041,8 @@
     "code": "KWT",
     "formal_name": "State of Kuwait",
     "name": "Kuwait",
-    "region": "Midle East & North Africa"
+    "region": "Midle East & North Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Kuwait"
   },
   {
     "centroid": {
@@ -957,7 +1052,8 @@
     "code": "LAO",
     "formal_name": "Lao People's Democratic Republic",
     "name": "Laos",
-    "region": "East Asia & Pacific"
+    "region": "East Asia & Pacific",
+    "wiki": "https://en.wikipedia.org/wiki/Laos"
   },
   {
     "centroid": {
@@ -967,7 +1063,8 @@
     "code": "LBN",
     "formal_name": "Lebanese Republic",
     "name": "Lebanon",
-    "region": "Midle East & North Africa"
+    "region": "Midle East & North Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Lebanon"
   },
   {
     "centroid": {
@@ -977,7 +1074,8 @@
     "code": "LBR",
     "formal_name": "Republic of Liberia",
     "name": "Liberia",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Liberia"
   },
   {
     "centroid": {
@@ -987,7 +1085,8 @@
     "code": "LBY",
     "formal_name": "State of Libya",
     "name": "Libya",
-    "region": "Midle East & North Africa"
+    "region": "Midle East & North Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Libya"
   },
   {
     "centroid": {
@@ -997,7 +1096,8 @@
     "code": "LCA",
     "formal_name": "Saint Lucia",
     "name": "Saint Lucia",
-    "region": "Latin America & Caribbean"
+    "region": "Latin America & Caribbean",
+    "wiki": "https://en.wikipedia.org/wiki/Saint_Lucia"
   },
   {
     "centroid": {
@@ -1007,7 +1107,8 @@
     "code": "LIE",
     "formal_name": "Principality of Liechtenstein",
     "name": "Liechtenstein",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Liechtenstein"
   },
   {
     "centroid": {
@@ -1017,7 +1118,8 @@
     "code": "LKA",
     "formal_name": "Democratic Socialist Republic of Sri Lanka",
     "name": "Sri Lanka",
-    "region": "South Asia"
+    "region": "South Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Sri_Lanka"
   },
   {
     "centroid": {
@@ -1027,7 +1129,8 @@
     "code": "LSO",
     "formal_name": "Kingdom of Lesotho",
     "name": "Lesotho",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Lesotho"
   },
   {
     "centroid": {
@@ -1037,7 +1140,8 @@
     "code": "LTU",
     "formal_name": "Republic of Lithuania",
     "name": "Lithuania",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Lithuania"
   },
   {
     "centroid": {
@@ -1047,7 +1151,8 @@
     "code": "LUX",
     "formal_name": "Grand Duchy of Luxembourg",
     "name": "Luxembourg",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Luxembourg"
   },
   {
     "centroid": {
@@ -1057,7 +1162,8 @@
     "code": "LVA",
     "formal_name": "Republic of Latvia",
     "name": "Latvia",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Latvia"
   },
   {
     "centroid": {
@@ -1067,7 +1173,8 @@
     "code": "MAR",
     "formal_name": "Kingdom of Morocco",
     "name": "Morocco",
-    "region": "Midle East & North Africa"
+    "region": "Midle East & North Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Morocco"
   },
   {
     "centroid": {
@@ -1077,7 +1184,8 @@
     "code": "MCO",
     "formal_name": "Principality of Monaco",
     "name": "Monaco",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Monaco"
   },
   {
     "centroid": {
@@ -1087,7 +1195,8 @@
     "code": "MDA",
     "formal_name": "Republic of Moldova",
     "name": "Moldova",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Moldova"
   },
   {
     "centroid": {
@@ -1097,7 +1206,8 @@
     "code": "MDG",
     "formal_name": "Republic of Madagascar",
     "name": "Madagascar",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Madagascar"
   },
   {
     "centroid": {
@@ -1107,7 +1217,8 @@
     "code": "MDV",
     "formal_name": "Republic of Maldives",
     "name": "Maldives",
-    "region": "South Asia"
+    "region": "South Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Maldives"
   },
   {
     "centroid": {
@@ -1117,7 +1228,8 @@
     "code": "MEX",
     "formal_name": "United Mexican States",
     "name": "Mexico",
-    "region": "Latin America & Caribbean"
+    "region": "Latin America & Caribbean",
+    "wiki": "https://en.wikipedia.org/wiki/Mexico"
   },
   {
     "centroid": {
@@ -1127,7 +1239,8 @@
     "code": "MHL",
     "formal_name": "Republic of the Marshall Islands",
     "name": "Marshall Islands",
-    "region": "East Asia & Pacific"
+    "region": "East Asia & Pacific",
+    "wiki": "https://en.wikipedia.org/wiki/Marshall_Islands"
   },
   {
     "centroid": {
@@ -1137,7 +1250,8 @@
     "code": "MKD",
     "formal_name": "Republic of North Macedonia",
     "name": "North Macedonia",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/North_Macedonia"
   },
   {
     "centroid": {
@@ -1147,7 +1261,8 @@
     "code": "MLI",
     "formal_name": "Republic of Mali",
     "name": "Mali",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Mali"
   },
   {
     "centroid": {
@@ -1157,7 +1272,8 @@
     "code": "MLT",
     "formal_name": "Republic of Malta",
     "name": "Malta",
-    "region": "Midle East & North Africa"
+    "region": "Midle East & North Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Malta"
   },
   {
     "centroid": {
@@ -1167,7 +1283,8 @@
     "code": "MMR",
     "formal_name": "Republic of the Union of Myanmar",
     "name": "Myanmar",
-    "region": "East Asia & Pacific"
+    "region": "East Asia & Pacific",
+    "wiki": "https://en.wikipedia.org/wiki/Myanmar"
   },
   {
     "centroid": {
@@ -1177,7 +1294,8 @@
     "code": "MNE",
     "formal_name": "Montenegro",
     "name": "Montenegro",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Montenegro"
   },
   {
     "centroid": {
@@ -1187,7 +1305,8 @@
     "code": "MNG",
     "formal_name": "Mongolia",
     "name": "Mongolia",
-    "region": "East Asia & Pacific"
+    "region": "East Asia & Pacific",
+    "wiki": "https://en.wikipedia.org/wiki/Mongolia"
   },
   {
     "centroid": {
@@ -1197,7 +1316,8 @@
     "code": "MOZ",
     "formal_name": "Republic of Mozambique",
     "name": "Mozambique",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Mozambique"
   },
   {
     "centroid": {
@@ -1207,7 +1327,8 @@
     "code": "MRT",
     "formal_name": "Islamic Republic of Mauritania",
     "name": "Mauritania",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Mauritania"
   },
   {
     "centroid": {
@@ -1217,7 +1338,8 @@
     "code": "MUS",
     "formal_name": "Republic of Mauritius",
     "name": "Mauritius",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Mauritius"
   },
   {
     "centroid": {
@@ -1227,7 +1349,8 @@
     "code": "MWI",
     "formal_name": "Republic of Malawi",
     "name": "Malawi",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Malawi"
   },
   {
     "centroid": {
@@ -1237,7 +1360,8 @@
     "code": "MYS",
     "formal_name": "Malaysia",
     "name": "Malaysia",
-    "region": "East Asia & Pacific"
+    "region": "East Asia & Pacific",
+    "wiki": "https://en.wikipedia.org/wiki/Malaysia"
   },
   {
     "centroid": {
@@ -1247,7 +1371,8 @@
     "code": "NAM",
     "formal_name": "Republic of Namibia",
     "name": "Namibia",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Namibia"
   },
   {
     "centroid": {
@@ -1257,7 +1382,8 @@
     "code": "NER",
     "formal_name": "Republic of Niger",
     "name": "Niger",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Niger"
   },
   {
     "centroid": {
@@ -1267,7 +1393,8 @@
     "code": "NGA",
     "formal_name": "Federal Republic of Nigeria",
     "name": "Nigeria",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Nigeria"
   },
   {
     "centroid": {
@@ -1277,7 +1404,8 @@
     "code": "NIC",
     "formal_name": "Republic of Nicaragua",
     "name": "Nicaragua",
-    "region": "Latin America & Caribbean"
+    "region": "Latin America & Caribbean",
+    "wiki": "https://en.wikipedia.org/wiki/Nicaragua"
   },
   {
     "centroid": {
@@ -1287,7 +1415,8 @@
     "code": "NLD",
     "formal_name": "Kingdom of the Netherlands",
     "name": "Netherlands",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Netherlands"
   },
   {
     "centroid": {
@@ -1297,7 +1426,8 @@
     "code": "NOR",
     "formal_name": "Kingdom of Norway",
     "name": "Norway",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Norway"
   },
   {
     "centroid": {
@@ -1307,7 +1437,8 @@
     "code": "NPL",
     "formal_name": "Federal Democratic Republic of Nepal",
     "name": "Nepal",
-    "region": "South Asia"
+    "region": "South Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Nepal"
   },
   {
     "centroid": {
@@ -1317,7 +1448,8 @@
     "code": "NRU",
     "formal_name": "Republic of Nauru",
     "name": "Nauru",
-    "region": "East Asia & Pacific"
+    "region": "East Asia & Pacific",
+    "wiki": "https://en.wikipedia.org/wiki/Nauru"
   },
   {
     "centroid": {
@@ -1327,7 +1459,8 @@
     "code": "NZL",
     "formal_name": "New Zealand",
     "name": "New Zealand",
-    "region": "East Asia & Pacific"
+    "region": "East Asia & Pacific",
+    "wiki": "https://en.wikipedia.org/wiki/New_Zealand"
   },
   {
     "centroid": {
@@ -1337,7 +1470,8 @@
     "code": "OMN",
     "formal_name": "Sultanate of Oman",
     "name": "Oman",
-    "region": "Midle East & North Africa"
+    "region": "Midle East & North Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Oman"
   },
   {
     "centroid": {
@@ -1347,7 +1481,8 @@
     "code": "PAK",
     "formal_name": "Islamic Republic of Pakistan",
     "name": "Pakistan",
-    "region": "South Asia"
+    "region": "South Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Pakistan"
   },
   {
     "centroid": {
@@ -1357,7 +1492,8 @@
     "code": "PAN",
     "formal_name": "Republic of Panama",
     "name": "Panama",
-    "region": "Latin America & Caribbean"
+    "region": "Latin America & Caribbean",
+    "wiki": "https://en.wikipedia.org/wiki/Panama"
   },
   {
     "centroid": {
@@ -1367,7 +1503,8 @@
     "code": "PER",
     "formal_name": "Republic of Peru",
     "name": "Peru",
-    "region": "Latin America & Caribbean"
+    "region": "Latin America & Caribbean",
+    "wiki": "https://en.wikipedia.org/wiki/Peru"
   },
   {
     "centroid": {
@@ -1377,7 +1514,8 @@
     "code": "PHL",
     "formal_name": "Republic of the Philippines",
     "name": "Philippines",
-    "region": "East Asia & Pacific"
+    "region": "East Asia & Pacific",
+    "wiki": "https://en.wikipedia.org/wiki/Philippines"
   },
   {
     "centroid": {
@@ -1387,7 +1525,8 @@
     "code": "PLW",
     "formal_name": "Republic of Palau",
     "name": "Palau",
-    "region": "East Asia & Pacific"
+    "region": "East Asia & Pacific",
+    "wiki": "https://en.wikipedia.org/wiki/Palau"
   },
   {
     "centroid": {
@@ -1397,7 +1536,8 @@
     "code": "PNG",
     "formal_name": "Independent State of Papua New Guinea",
     "name": "Papua New Guinea",
-    "region": "East Asia & Pacific"
+    "region": "East Asia & Pacific",
+    "wiki": "https://en.wikipedia.org/wiki/Papua_New_Guinea"
   },
   {
     "centroid": {
@@ -1407,7 +1547,8 @@
     "code": "POL",
     "formal_name": "Republic of Poland",
     "name": "Poland",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Poland"
   },
   {
     "centroid": {
@@ -1417,7 +1558,8 @@
     "code": "PRK",
     "formal_name": "Democratic People's Republic of Korea",
     "name": "Korea, North",
-    "region": "East Asia & Pacific"
+    "region": "East Asia & Pacific",
+    "wiki": "https://en.wikipedia.org/wiki/North_Korea"
   },
   {
     "centroid": {
@@ -1427,7 +1569,8 @@
     "code": "PRT",
     "formal_name": "Portuguese Republic",
     "name": "Portugal",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Portugal"
   },
   {
     "centroid": {
@@ -1437,7 +1580,8 @@
     "code": "PRY",
     "formal_name": "Republic of Paraguay",
     "name": "Paraguay",
-    "region": "Latin America & Caribbean"
+    "region": "Latin America & Caribbean",
+    "wiki": "https://en.wikipedia.org/wiki/Paraguay"
   },
   {
     "centroid": {
@@ -1447,7 +1591,8 @@
     "code": "QAT",
     "formal_name": "State of Qatar",
     "name": "Qatar",
-    "region": "Midle East & North Africa"
+    "region": "Midle East & North Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Qatar"
   },
   {
     "centroid": {
@@ -1457,7 +1602,8 @@
     "code": "ROU",
     "formal_name": "Romania",
     "name": "Romania",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Romania"
   },
   {
     "centroid": {
@@ -1467,7 +1613,8 @@
     "code": "RUS",
     "formal_name": "Russian Federation",
     "name": "Russia",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Russia"
   },
   {
     "centroid": {
@@ -1477,7 +1624,8 @@
     "code": "RWA",
     "formal_name": "Republic of Rwanda",
     "name": "Rwanda",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Rwanda"
   },
   {
     "centroid": {
@@ -1487,7 +1635,8 @@
     "code": "SAU",
     "formal_name": "Kingdom of Saudi Arabia",
     "name": "Saudi Arabia",
-    "region": "Midle East & North Africa"
+    "region": "Midle East & North Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Saudi_Arabia"
   },
   {
     "centroid": {
@@ -1497,7 +1646,8 @@
     "code": "SDN",
     "formal_name": "Republic of the Sudan",
     "name": "Sudan",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Sudan"
   },
   {
     "centroid": {
@@ -1507,7 +1657,8 @@
     "code": "SEN",
     "formal_name": "Republic of Senegal",
     "name": "Senegal",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Senegal"
   },
   {
     "centroid": {
@@ -1517,7 +1668,8 @@
     "code": "SGP",
     "formal_name": "Republic of Singapore",
     "name": "Singapore",
-    "region": "East Asia & Pacific"
+    "region": "East Asia & Pacific",
+    "wiki": "https://en.wikipedia.org/wiki/Singapore"
   },
   {
     "centroid": {
@@ -1527,7 +1679,8 @@
     "code": "SLB",
     "formal_name": "Solomon Islands",
     "name": "Solomon Islands",
-    "region": "East Asia & Pacific"
+    "region": "East Asia & Pacific",
+    "wiki": "https://en.wikipedia.org/wiki/Solomon_Islands"
   },
   {
     "centroid": {
@@ -1537,7 +1690,8 @@
     "code": "SLE",
     "formal_name": "Republic of Sierra Leone",
     "name": "Sierra Leone",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Sierra_Leone"
   },
   {
     "centroid": {
@@ -1547,7 +1701,8 @@
     "code": "SLV",
     "formal_name": "Republic of El Salvador",
     "name": "El Salvador",
-    "region": "Latin America & Caribbean"
+    "region": "Latin America & Caribbean",
+    "wiki": "https://en.wikipedia.org/wiki/El_Salvador"
   },
   {
     "centroid": {
@@ -1557,7 +1712,8 @@
     "code": "SMR",
     "formal_name": "Republic of San Marino",
     "name": "San Marino",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/San_Marino"
   },
   {
     "centroid": {
@@ -1567,7 +1723,8 @@
     "code": "SOM",
     "formal_name": "Federal Republic of Somalia",
     "name": "Somalia",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Somalia"
   },
   {
     "centroid": {
@@ -1577,7 +1734,8 @@
     "code": "SRB",
     "formal_name": "Republic of Serbia",
     "name": "Serbia",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Serbia"
   },
   {
     "centroid": {
@@ -1587,7 +1745,8 @@
     "code": "SSD",
     "formal_name": "Republic of South Sudan",
     "name": "South Sudan",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/South_Sudan"
   },
   {
     "centroid": {
@@ -1597,7 +1756,8 @@
     "code": "STP",
     "formal_name": "Democratic Republic of Sao Tome and Principe",
     "name": "Sao Tome and Principe",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/S%C3%A3o_Tom%C3%A9_and_Pr%C3%ADncipe"
   },
   {
     "centroid": {
@@ -1607,7 +1767,8 @@
     "code": "SUR",
     "formal_name": "Republic of Suriname",
     "name": "Suriname",
-    "region": "Latin America & Caribbean"
+    "region": "Latin America & Caribbean",
+    "wiki": "https://en.wikipedia.org/wiki/Suriname"
   },
   {
     "centroid": {
@@ -1617,7 +1778,8 @@
     "code": "SVK",
     "formal_name": "Slovak Republic",
     "name": "Slovakia",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Slovakia"
   },
   {
     "centroid": {
@@ -1627,7 +1789,8 @@
     "code": "SVN",
     "formal_name": "Republic of Slovenia",
     "name": "Slovenia",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Slovenia"
   },
   {
     "centroid": {
@@ -1637,7 +1800,8 @@
     "code": "SWE",
     "formal_name": "Kingdom of Sweden",
     "name": "Sweden",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Sweden"
   },
   {
     "centroid": {
@@ -1647,7 +1811,8 @@
     "code": "SWZ",
     "formal_name": "Kingdom of Eswatini",
     "name": "Eswatini",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Eswatini"
   },
   {
     "centroid": {
@@ -1657,7 +1822,8 @@
     "code": "SYC",
     "formal_name": "Republic of Seychelles",
     "name": "Seychelles",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Seychelles"
   },
   {
     "centroid": {
@@ -1667,7 +1833,8 @@
     "code": "SYR",
     "formal_name": "Syrian Arab Republic",
     "name": "Syria",
-    "region": "Midle East & North Africa"
+    "region": "Midle East & North Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Syria"
   },
   {
     "centroid": {
@@ -1677,7 +1844,8 @@
     "code": "TCD",
     "formal_name": "Republic of Chad",
     "name": "Chad",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Chad"
   },
   {
     "centroid": {
@@ -1687,7 +1855,8 @@
     "code": "TGO",
     "formal_name": "Togolese Republic",
     "name": "Togo",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Togo"
   },
   {
     "centroid": {
@@ -1697,7 +1866,8 @@
     "code": "THA",
     "formal_name": "Kingdom of Thailand",
     "name": "Thailand",
-    "region": "East Asia & Pacific"
+    "region": "East Asia & Pacific",
+    "wiki": "https://en.wikipedia.org/wiki/Thailand"
   },
   {
     "centroid": {
@@ -1707,7 +1877,8 @@
     "code": "TJK",
     "formal_name": "Republic of Tajikistan",
     "name": "Tajikistan",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Tajikistan"
   },
   {
     "centroid": {
@@ -1717,7 +1888,8 @@
     "code": "TKM",
     "formal_name": "Turkmenistan",
     "name": "Turkmenistan",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Turkmenistan"
   },
   {
     "centroid": {
@@ -1727,7 +1899,8 @@
     "code": "TLS",
     "formal_name": "Democratic Republic of Timor-Leste",
     "name": "Timor-Leste",
-    "region": "East Asia & Pacific"
+    "region": "East Asia & Pacific",
+    "wiki": "https://en.wikipedia.org/wiki/East_Timor"
   },
   {
     "centroid": {
@@ -1737,7 +1910,8 @@
     "code": "TON",
     "formal_name": "Kingdom of Tonga",
     "name": "Tonga",
-    "region": "East Asia & Pacific"
+    "region": "East Asia & Pacific",
+    "wiki": "https://en.wikipedia.org/wiki/Tonga"
   },
   {
     "centroid": {
@@ -1747,7 +1921,8 @@
     "code": "TTO",
     "formal_name": "Republic of Trinidad and Tobago",
     "name": "Trinidad and Tobago",
-    "region": "Latin America & Caribbean"
+    "region": "Latin America & Caribbean",
+    "wiki": "https://en.wikipedia.org/wiki/Trinidad_and_Tobago"
   },
   {
     "centroid": {
@@ -1757,7 +1932,8 @@
     "code": "TUN",
     "formal_name": "Republic of Tunisia",
     "name": "Tunisia",
-    "region": "Midle East & North Africa"
+    "region": "Midle East & North Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Tunisia"
   },
   {
     "centroid": {
@@ -1767,7 +1943,8 @@
     "code": "TUR",
     "formal_name": "Republic of Turkey",
     "name": "Turkey",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Turkey"
   },
   {
     "centroid": {
@@ -1777,7 +1954,8 @@
     "code": "TUV",
     "formal_name": "Tuvalu",
     "name": "Tuvalu",
-    "region": "East Asia & Pacific"
+    "region": "East Asia & Pacific",
+    "wiki": "https://en.wikipedia.org/wiki/Tuvalu"
   },
   {
     "centroid": {
@@ -1787,7 +1965,8 @@
     "code": "TZA",
     "formal_name": "United Republic of Tanzania",
     "name": "Tanzania",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Tanzania"
   },
   {
     "centroid": {
@@ -1797,7 +1976,8 @@
     "code": "UGA",
     "formal_name": "Republic of Uganda",
     "name": "Uganda",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Uganda"
   },
   {
     "centroid": {
@@ -1807,7 +1987,8 @@
     "code": "UKR",
     "formal_name": "Ukraine",
     "name": "Ukraine",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Ukraine"
   },
   {
     "centroid": {
@@ -1817,7 +1998,8 @@
     "code": "URY",
     "formal_name": "Oriental Republic of Uruguay",
     "name": "Uruguay",
-    "region": "Latin America & Caribbean"
+    "region": "Latin America & Caribbean",
+    "wiki": "https://en.wikipedia.org/wiki/Uruguay"
   },
   {
     "centroid": {
@@ -1827,7 +2009,8 @@
     "code": "USA",
     "formal_name": "United States of America",
     "name": "United States",
-    "region": "North America"
+    "region": "North America",
+    "wiki": "https://en.wikipedia.org/wiki/United_States"
   },
   {
     "centroid": {
@@ -1837,7 +2020,8 @@
     "code": "UZB",
     "formal_name": "Republic of Uzbekistan",
     "name": "Uzbekistan",
-    "region": "Europe & Central Asia"
+    "region": "Europe & Central Asia",
+    "wiki": "https://en.wikipedia.org/wiki/Uzbekistan"
   },
   {
     "centroid": {
@@ -1847,7 +2031,8 @@
     "code": "VCT",
     "formal_name": "Saint Vincent and the Grenadines",
     "name": "Saint Vincent and the Grenadines",
-    "region": "Latin America & Caribbean"
+    "region": "Latin America & Caribbean",
+    "wiki": "https://en.wikipedia.org/wiki/Saint_Vincent_and_the_Grenadines"
   },
   {
     "centroid": {
@@ -1857,7 +2042,8 @@
     "code": "VEN",
     "formal_name": "Bolivarian Republic of Venezuela",
     "name": "Venezuela",
-    "region": "Latin America & Caribbean"
+    "region": "Latin America & Caribbean",
+    "wiki": "https://en.wikipedia.org/wiki/Venezuela"
   },
   {
     "centroid": {
@@ -1867,7 +2053,8 @@
     "code": "VNM",
     "formal_name": "Socialist Republic of Vietnam",
     "name": "Vietnam",
-    "region": "East Asia & Pacific"
+    "region": "East Asia & Pacific",
+    "wiki": "https://en.wikipedia.org/wiki/Vietnam"
   },
   {
     "centroid": {
@@ -1877,7 +2064,8 @@
     "code": "VUT",
     "formal_name": "Republic of Vanuatu",
     "name": "Vanuatu",
-    "region": "East Asia & Pacific"
+    "region": "East Asia & Pacific",
+    "wiki": "https://en.wikipedia.org/wiki/Vanuatu"
   },
   {
     "centroid": {
@@ -1887,7 +2075,8 @@
     "code": "WSM",
     "formal_name": "Independent State of Samoa",
     "name": "Samoa",
-    "region": "East Asia & Pacific"
+    "region": "East Asia & Pacific",
+    "wiki": "https://en.wikipedia.org/wiki/Samoa"
   },
   {
     "centroid": {
@@ -1897,7 +2086,8 @@
     "code": "YEM",
     "formal_name": "Republic of Yemen",
     "name": "Yemen",
-    "region": "Midle East & North Africa"
+    "region": "Midle East & North Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Yemen"
   },
   {
     "centroid": {
@@ -1907,7 +2097,8 @@
     "code": "ZAF",
     "formal_name": "Republic of South Africa",
     "name": "South Africa",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/South_Africa"
   },
   {
     "centroid": {
@@ -1917,7 +2108,8 @@
     "code": "ZMB",
     "formal_name": "Republic of Zambia",
     "name": "Zambia",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Zambia"
   },
   {
     "centroid": {
@@ -1927,6 +2119,7 @@
     "code": "ZWE",
     "formal_name": "Republic of Zimbabwe",
     "name": "Zimbabwe",
-    "region": "Sub-Saharan Africa"
+    "region": "Sub-Saharan Africa",
+    "wiki": "https://en.wikipedia.org/wiki/Zimbabwe"
   }
 ]
