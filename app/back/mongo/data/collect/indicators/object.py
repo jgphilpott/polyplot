@@ -13,6 +13,11 @@ class Indicator():
 
         self.categories = indicator["categories"]
 
+        self.description = indicator["description"]
+        self.limitations = indicator["limitations"]
+        self.methodology = indicator["methodology"]
+        self.relevance = indicator["relevance"]
+
         self.completeness = indicator["completeness"]
         self.size = indicator["size"]
 
