@@ -1,5 +1,3 @@
-from operator import itemgetter
-
 from back.mongo.data.collect.ions import find_collection
 from back.mongo.data.collect.maps.object import Map
 
@@ -9,11 +7,13 @@ def find_map(query={}, filter={"_id": 0}, detail="micro"):
 
     return dict(collection.find_one(query, filter))["detail"][detail]
 
-def find_maps(query={}, filter={"_id": 0}, sort=[("code", False)], detail="micro"):
+def find_maps(query={}, filter={"_id": 0}, sort=[("code", 1)], detail="micro"):
 
     maps = []
 
-    for map in sorted(list(collection.find(query, filter)), key=itemgetter(sort[0][0]), reverse=sort[0][1]):
+    collection.create_index(sort)
+
+    for map in list(collection.find(query, filter).sort(sort)):
 
         maps.append(map["detail"][detail])
 
