@@ -5,11 +5,11 @@ from front.tree.home.api.countries.route import register_api_countries_route
 from front.tree.home.api.indicators.route import register_api_indicators_route
 from front.tree.home.api.maps.route import register_api_maps_route
 
-from front.tree.home.countries.country.route import register_country_route
 from front.tree.home.countries.route import register_countries_route
+from front.tree.home.countries.country.route import register_country_route
 
-from front.tree.home.indicators.indicator.route import register_indicator_route
 from front.tree.home.indicators.route import register_indicators_route
+from front.tree.home.indicators.indicator.route import register_indicator_route
 
 from front.tree.home.map.route import register_map_route
 from front.tree.home.poly2.route import register_poly2_route
@@ -27,11 +27,11 @@ def register_routes(app):
     register_api_indicators_route(app)
     register_api_maps_route(app)
 
-    register_country_route(app)
     register_countries_route(app)
+    register_country_route(app)
 
-    register_indicator_route(app)
     register_indicators_route(app)
+    register_indicator_route(app)
 
     register_map_route(app)
     register_poly2_route(app)
