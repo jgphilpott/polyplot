@@ -1,0 +1,38 @@
+### Graticules ###
+
+Step 1 = 16.2 MB
+Step 5 = 2.4 MB
+Step 10 = 1.1 MB
+Step 15 = 722.9 KB
+Step 20 = 563.0 KB
+Step 30 = 342.4 KB
+
+### Lakes  ###
+
+Massive = 6.0 MB
+Huge = 3.1 MB
+Large = 1.8 MB
+Medium = 1.2 MB
+Small = 825.0 KB
+Tiny = 661.3 KB
+Micro = 579.2 KB
+
+### Maps ###
+
+Massive = 21.5 MB
+Huge = 10.5 MB
+Large = 5.4 MB
+Medium = 2.8 MB
+Small = 1.5 MB
+Tiny = 777.5 KB
+Micro = 431.4 KB
+
+### Railroads ###
+
+Massive = 31.1 MB
+Huge = 18.2 MB
+Large = 11.7 MB
+Medium = 8.5 MB
+Small = 6.9 MB
+Tiny = 6.1 KB
+Micro = 5.7 KB

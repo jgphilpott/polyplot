@@ -1,0 +1,7 @@
+Cell Towers: https://datacatalog.worldbank.org/dataset/global-opencellid-cell-tower-map
+Solar Stations: https://datacatalog.worldbank.org/dataset/world-solar-stations-inventory-2017
+Wind Masts: https://datacatalog.worldbank.org/dataset/world-wind-masts-inventory-2017
+Power Plants: https://datacatalog.worldbank.org/dataset/worldwide-power-plants
+Dams: https://datacatalog.worldbank.org/dataset/worldwide-reservoir-and-dams
+Internet Exchange Points: https://datacatalog.worldbank.org/dataset/internet-exchange-points
+Mineral Deposits: https://catalog.data.gov/dataset/major-mineral-deposits-of-the-world

@@ -1,16 +1,15 @@
+# Notes
+*.ipynb_checkpoints
+todo
+
+# Python Cache
+__pycache__
+
 # JavaScript Libs
 app/front/libs/mjs/vendor
 
 # Sass Libs
 app/front/libs/sass/vendor
-
-# Notes
-*.ipynb_checkpoints
-*.txt
-todo
-
-# Python Cache
-__pycache__
 
 # CSS
 *.css
