@@ -8,7 +8,7 @@ from back.socket.graticules import connect_graticules
 from back.socket.indicators import connect_indicators
 from back.socket.lakes import connect_lakes
 from back.socket.maps import connect_maps
-from back.socket.meta import connect_meta
+from back.socket.metas import connect_metas
 from back.socket.ports import connect_ports
 from back.socket.railroads import connect_railroads
 from back.socket.rivers import connect_rivers
@@ -26,7 +26,7 @@ def plugin(app):
     connect_indicators(app)
     connect_lakes(app)
     connect_maps(app)
-    connect_meta(app)
+    connect_metas(app)
     connect_ports(app)
     connect_railroads(app)
     connect_rivers(app)

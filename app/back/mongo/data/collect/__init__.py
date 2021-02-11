@@ -6,7 +6,7 @@ from back.mongo.data.collect.graticules import *
 from back.mongo.data.collect.indicators import *
 from back.mongo.data.collect.lakes import *
 from back.mongo.data.collect.maps import *
-from back.mongo.data.collect.meta import *
+from back.mongo.data.collect.metas import *
 from back.mongo.data.collect.ports import *
 from back.mongo.data.collect.railroads import *
 from back.mongo.data.collect.rivers import *

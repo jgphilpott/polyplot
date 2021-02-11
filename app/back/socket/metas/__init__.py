@@ -1,13 +1,13 @@
 from flask_socketio import emit
 
-from back.mongo.data.collect.meta.mongo import find_meta, find_metas
+from back.mongo.data.collect.metas.mongo import find_meta, find_metas
 
-def connect_meta(app):
+def connect_metas(app):
 
     @app.on("get_meta")
     def get_meta(code):
 
-        emit("new_" + code, find_meta({"code": code.split("-")[0]})["value"])
+        emit("new_" + code, find_meta({"code": code.split("_")[0]})["value"])
 
     @app.on("get_metas")
     def get_metas():
