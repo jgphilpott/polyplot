@@ -3,7 +3,6 @@ class City():
     def __init__(self, city):
 
         self.country = city["country"]
-        self.id = city["id"]
         self.latitude = city["latitude"]
         self.longitude = city["longitude"]
         self.name = city["name"]
