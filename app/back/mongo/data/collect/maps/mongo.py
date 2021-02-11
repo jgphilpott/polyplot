@@ -9,12 +9,6 @@ def find_map(query={}, filter={"_id": 0}, detail="micro"):
 
 def find_maps(query={}, filter={"_id": 0}, sort=[("code", 1)], detail="micro"):
 
-    maps = []
-
     collection.create_index(sort)
 
-    for map in list(collection.find(query, filter).sort(sort)):
-
-        maps.append(map["detail"][detail])
-
-    return maps
+    return [map["detail"][detail] for map in list(collection.find(query, filter).sort(sort))]
