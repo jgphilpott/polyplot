@@ -17,6 +17,8 @@ def find_client(query={}, filter={"_id": 0}):
 
 def find_clients(query={}, filter={"_id": 0}, sort=[("email", 1)]):
 
+    collection.create_index(sort)
+
     return list(collection.find(query, filter).sort(sort))
 
 def update_client(client):
