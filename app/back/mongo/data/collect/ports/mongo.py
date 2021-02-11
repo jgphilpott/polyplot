@@ -9,4 +9,6 @@ def find_port(query={}, filter={"_id": 0}):
 
 def find_ports(query={}, filter={"_id": 0}, sort=[("flow", -1), ("code", 1)]):
 
+    collection.create_index(sort)
+
     return list(collection.find(query, filter).sort(sort))
