@@ -1,5 +1,3 @@
-from operator import itemgetter
-
 from back.mongo.data.collect.ions import find_collection
 from back.mongo.data.collect.indicators.object import Indicator
 
@@ -9,9 +7,11 @@ def find_indicator(query={}, filter={"_id": 0}):
 
     return dict(collection.find_one(query, filter))
 
-def find_indicators(query={}, filter={"_id": 0}, sort=[("name", False)]):
+def find_indicators(query={}, filter={"_id": 0}, sort=[("completeness", -1), ("name", 1)]):
 
-    return sorted(list(collection.find(query, filter)), key=itemgetter(sort[0][0]), reverse=sort[0][1])
+    collection.create_index(sort)
+
+    return list(collection.find(query, filter).sort(sort))
 
 def update_indicator(indicator):
 

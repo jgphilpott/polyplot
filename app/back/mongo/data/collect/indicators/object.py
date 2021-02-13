@@ -18,18 +18,18 @@ class Indicator():
         self.methodology = indicator["methodology"]
         self.relevance = indicator["relevance"]
 
+        self.countries = indicator["countries"] if "countries" in indicator else []
+
+        self.min_year = indicator["min_year"] if "min_year" in indicator else None
+        self.max_year = indicator["max_year"] if "max_year" in indicator else None
+
+        self.min_value = indicator["min_value"] if "min_value" in indicator else None
+        self.max_value = indicator["max_value"] if "max_value" in indicator else None
+
+        self.last_updated = indicator["last_updated"] if "last_updated" in indicator else None
+
         self.completeness = indicator["completeness"]
         self.size = indicator["size"]
-
-        if "countries" in indicator:
-            self.countries = indicator["countries"]
-        else:
-            self.countries = []
-
-        if "last_updated" in indicator:
-            self.last_updated = indicator["last_updated"]
-        else:
-            self.last_updated = None
 
     def calculate_completeness(self):
 
@@ -77,19 +77,33 @@ class Indicator():
             api = "https://api.worldbank.org/v2/country/all/indicator/"
             meta = get("{}{}?format=json&per_page=1".format(api, self.code)).json()[0]
 
-            if not self.last_updated or datetime.strptime(meta["lastupdated"], "%Y-%m-%d") >= datetime.strptime(self.last_updated, "%Y-%m-%d"):
+            if not self.last_updated or datetime.strptime(meta["lastupdated"], "%Y-%m-%d") > datetime.strptime(self.last_updated, "%Y-%m-%d"):
 
                 data = get("{}{}?format=json&per_page={}".format(api, self.code, meta["total"])).json()[1]
-
-                countries = []
-                country_codes = get("https://gist.githubusercontent.com/jgphilpott/a1366c890935e615f87a6843b72f541a/raw/8438cfa30979586354ceacd8579678b5da91522f/countryCodes.js").json()
+                country_codes = get("https://gist.githubusercontent.com/jgphilpott/a1366c890935e615f87a6843b72f541a/raw/5d67a813152060738513a77b363720c5fc76dbe9/countryCodes.js").json()
 
                 for item in data:
 
                     if item["countryiso3code"] in country_codes:
 
+                        if int(item["date"]):
+
+                            if not self.min_year: self.min_year = int(item["date"])
+                            if not self.max_year: self.max_year = int(item["date"])
+
+                            if int(item["date"]) < self.min_year: self.min_year = int(item["date"])
+                            if int(item["date"]) > self.max_year: self.max_year = int(item["date"])
+
+                        if item["value"]:
+
+                            if not self.min_value: self.min_value = item["value"]
+                            if not self.max_value: self.max_value = item["value"]
+
+                            if item["value"] < self.min_value: self.min_value = item["value"]
+                            if item["value"] > self.max_value: self.max_value = item["value"]
+
                         obj = {"year": int(item["date"]), "value": item["value"]}
-                        country_exists = [country for country in countries if country["code"] in [item["countryiso3code"]]]
+                        country_exists = [country for country in self.countries if country["code"] in [item["countryiso3code"]]]
 
                         if country_exists:
 
@@ -97,9 +111,8 @@ class Indicator():
 
                         else:
 
-                            countries.append({"code": item["countryiso3code"], "name": item["country"]["value"], "history": [obj]})
+                            self.countries.append({"code": item["countryiso3code"], "region": country_codes[item["countryiso3code"]], "name": item["country"]["value"], "history": [obj]})
 
-                self.countries = countries
                 self.last_updated = datetime.utcnow().strftime("%Y-%m-%d")
                 self.calculate_completeness()
                 self.calculate_size()
