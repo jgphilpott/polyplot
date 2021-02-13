@@ -1,14 +1,16 @@
-from operator import itemgetter
-
 from back.mongo.data.collect.ions import find_collection
 from back.mongo.data.collect.roads.object import Road
 
-collection = find_collection("roads")
+def find_road(query={}, filter={"_id": 0}, detail="micro"):
 
-def find_road(query={}, filter={"_id": 0}):
+    collection = find_collection("roads_" + detail)
 
     return dict(collection.find_one(query, filter))
 
-def find_roads(query={}, filter={"_id": 0}, sort=[("id", False)]):
+def find_roads(query={}, filter={"_id": 0}, sort=[("properties.id", 1)], detail="micro"):
 
-    return sorted(list(collection.find(query, filter)), key=itemgetter(sort[0][0]), reverse=sort[0][1])
+    collection = find_collection("roads_" + detail)
+
+    collection.create_index(sort)
+
+    return list(collection.find(query, filter).sort(sort))
