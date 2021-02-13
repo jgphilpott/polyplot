@@ -1,12 +1,16 @@
 from back.mongo.data.collect.ions import find_collection
 from back.mongo.data.collect.rivers.object import River
 
-collection = find_collection("rivers")
+def find_river(query={}, filter={"_id": 0}, detail="micro"):
 
-def find_river(query={}, filter={"_id": 0}):
+    collection = find_collection("rivers_" + detail)
 
     return dict(collection.find_one(query, filter))
 
-def find_rivers(query={}, filter={"_id": 0}, sort=[("id", 1)]):
+def find_rivers(query={}, filter={"_id": 0}, sort=[("properties.id", 1)], detail="micro"):
+
+    collection = find_collection("rivers_" + detail)
+
+    collection.create_index(sort)
 
     return list(collection.find(query, filter).sort(sort))
