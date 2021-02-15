@@ -31,6 +31,19 @@ class Indicator():
         self.completeness = indicator["completeness"]
         self.size = indicator["size"]
 
+    def calculate_size(self):
+
+        size = 0
+
+        for country in self.countries:
+
+            country["size"] = len(str(country["history"]).encode("utf-8"))
+            size += country["size"]
+
+        self.size = size
+
+        return self
+
     def calculate_completeness(self):
 
         total_data = 0
@@ -54,19 +67,6 @@ class Indicator():
             country["completeness"] = (data / count) * 100
 
         self.completeness = (total_data / total_count) * 100
-
-        return self
-
-    def calculate_size(self):
-
-        size = 0
-
-        for country in self.countries:
-
-            country["size"] = len(str(country["history"]).encode("utf-8"))
-            size += country["size"]
-
-        self.size = size
 
         return self
 
@@ -113,9 +113,9 @@ class Indicator():
 
                             self.countries.append({"code": item["countryiso3code"], "region": country_codes[item["countryiso3code"]], "name": item["country"]["value"], "history": [obj]})
 
-                self.last_updated = datetime.utcnow().strftime("%Y-%m-%d")
-                self.calculate_completeness()
                 self.calculate_size()
+                self.calculate_completeness()
+                self.last_updated = datetime.utcnow().strftime("%Y-%m-%d")
 
         except:
 

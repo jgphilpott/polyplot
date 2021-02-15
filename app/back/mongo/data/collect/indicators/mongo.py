@@ -7,7 +7,7 @@ def find_indicator(query={}, filter={"_id": 0}):
 
     return dict(collection.find_one(query, filter))
 
-def find_indicators(query={}, filter={"_id": 0}, sort=[("completeness", -1), ("name", 1)]):
+def find_indicators(query={}, filter={"_id": 0}, sort=[("name", 1)]):
 
     collection.create_index(sort)
 
