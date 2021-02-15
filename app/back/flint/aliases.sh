@@ -28,6 +28,14 @@ alias col="fire find_collection"
 alias cols="fire find_collections"
 alias col-drop="fire drop_collection"
 
+# Airports
+alias air="fire find_airport"
+alias airs="fire find_airports"
+
+# Cities
+alias cit="fire find_city"
+alias cits="fire find_cities"
+
 # Clients
 alias cent="fire find_client"
 alias cents="fire find_clients"
@@ -36,19 +44,41 @@ alias cents="fire find_clients"
 alias coun="fire find_country"
 alias couns="fire find_countries"
 
+# Graticules
+alias grat="fire find_graticule"
+alias grats="fire find_graticules"
+
 # Indicators
 alias ind="fire find_indicator"
 alias inds="fire find_indicators"
-alias ind-upd="fire update_indicator"
-alias inds-upd="fire update_indicators"
+
+# Lakes
+alias lake="fire find_lake"
+alias lakes="fire find_lakes"
 
 # Maps
 alias map="fire find_map"
 alias maps="fire find_maps"
 
-# Meta
+# Metas
 alias meta="fire find_meta"
 alias metas="fire find_metas"
+
+# Ports
+alias port="fire find_port"
+alias ports="fire find_ports"
+
+# Railroads
+alias rail="fire find_railroad"
+alias rails="fire find_railroads"
+
+# Rivers
+alias riv="fire find_river"
+alias rivs="fire find_rivers"
+
+# Roads
+alias road="fire find_road"
+alias roads="fire find_roads"
 
 # Styling
 alias sass="fire compile_sass app/front"
