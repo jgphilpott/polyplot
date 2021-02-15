@@ -1,3 +1,19 @@
+### Airports ###
+
+413.0 KB
+
+### Cities ###
+
+2.0 MB
+
+### Clients ###
+
+130 bytes
+
+### Countries ###
+
+576.3 KB
+
 ### Graticules ###
 
 Step 1 = 16.2 MB
@@ -7,32 +23,64 @@ Step 15 = 722.9 KB
 Step 20 = 563.0 KB
 Step 30 = 342.4 KB
 
+### Indicators ###
+
+3.4 MB
+
 ### Lakes  ###
 
 Massive = 6.0 MB
-Huge = 3.1 MB
-Large = 1.8 MB
+Huge = 3.3 MB
+Large = 1.9 MB
 Medium = 1.2 MB
-Small = 825.0 KB
-Tiny = 661.3 KB
-Micro = 579.2 KB
+Small = 880.4 KB
+Tiny = 708.4 KB
+Micro = 622.1 KB
 
 ### Maps ###
 
 Massive = 21.5 MB
-Huge = 10.5 MB
-Large = 5.4 MB
-Medium = 2.8 MB
-Small = 1.5 MB
-Tiny = 777.5 KB
-Micro = 431.4 KB
+Huge = 11.0 MB
+Large = 5.7 MB
+Medium = 3.0 MB
+Small = 1.6 MB
+Tiny = 838.2 KB
+Micro = 474.4 KB
+
+### Metas ###
+
+798 bytes
+
+### Ports ###
+
+165.4 KB
 
 ### Railroads ###
 
-Massive = 31.1 MB
-Huge = 18.2 MB
-Large = 11.7 MB
-Medium = 8.5 MB
-Small = 6.9 MB
-Tiny = 6.1 KB
-Micro = 5.7 KB
+Massive = 59.8 MB
+Huge = 32.9 MB
+Large = 19.3 MB
+Medium = 12.5 MB
+Small = 9.1 MB
+Tiny = 7.4 MB
+Micro = 6.6 MB
+
+### Rivers ###
+
+Massive = 10.8 MB
+Huge = 5.6 MB
+Large = 3.1 MB
+Medium = 1.8 MB
+Small = 1.1 MB
+Tiny = 777.3 KB
+Micro = 615.0 KB
+
+### Roads ###
+
+Massive = 41.9 MB
+Huge = 29.7 MB
+Large = 23.7 MB
+Medium = 20.6 MB
+Small = 19.1 MB
+Tiny = 18.3 MB
+Micro = 17.9 MB
