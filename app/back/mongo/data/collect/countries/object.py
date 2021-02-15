@@ -1,3 +1,4 @@
+from numbers import Number
 from datetime import datetime
 
 from back.mongo.data.collect.indicators.mongo import find_indicators
@@ -28,8 +29,28 @@ class Country():
 
                     if country["code"] == self.code:
 
-                        country["indicator"] = indicator["name"]
+                        del country["code"]
+                        del country["name"]
+                        del country["region"]
+
+                        country["code"] = indicator["code"]
+                        country["name"] = indicator["name"]
                         country["categories"] = indicator["categories"]
+
+                        years = [item["year"] for item in country["history"] if isinstance(item["year"], Number)]
+                        values = [item["value"] for item in country["history"] if isinstance(item["value"], Number)]
+
+                        country["min_year"] = min(years) if years else None
+                        country["max_year"] = max(years) if years else None
+
+                        country["min_value"] = min(values) if values else None
+                        country["max_value"] = max(values) if values else None
+
+                        country["min_year_total"] = indicator["min_year"]
+                        country["max_year_total"] = indicator["max_year"]
+
+                        country["min_value_total"] = indicator["min_value"]
+                        country["max_value_total"] = indicator["max_value"]
 
                         self.indicators[indicator["code"].replace(".", "-")] = country
 
