@@ -33,6 +33,9 @@ class Country():
                         del country["name"]
                         del country["region"]
 
+                        country["size_total"] = indicator["size"]
+                        country["completeness_total"] = indicator["completeness"]
+
                         country["code"] = indicator["code"]
                         country["name"] = indicator["name"]
                         country["categories"] = indicator["categories"]
