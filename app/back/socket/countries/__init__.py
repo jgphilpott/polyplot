@@ -5,11 +5,11 @@ from back.mongo.data.collect.countries.mongo import find_country, find_countries
 def connect_countries(app):
 
     @app.on("get_country")
-    def get_country(code):
+    def get_country(query={}, filter={"_id": 0, "indicators": 0, "description": 0}):
 
-        emit("new_country", find_country({"code": code}))
+        emit("new_country", find_country(query, filter))
 
     @app.on("get_countries")
-    def get_countries():
+    def get_countries(query={}, filter={"_id": 0, "indicators": 0, "description": 0}, sort=[("code", 1)]):
 
-        emit("new_countries", find_countries())
+        emit("new_countries", find_countries(query, filter, [tuple(item) for item in sort]))
