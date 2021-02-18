@@ -5,11 +5,11 @@ from back.mongo.data.collect.graticules.mongo import find_graticule, find_gratic
 def connect_graticules(app):
 
     @app.on("get_graticule")
-    def get_graticule(step=15):
+    def get_graticule(query={}, filter={"_id": 0}):
 
-        emit("new_graticule", find_graticule({"step": step}))
+        emit("new_graticule", find_graticule(query, filter))
 
     @app.on("get_graticules")
-    def get_graticules(steps=[10, 20, 30]):
+    def get_graticules(query={}, filter={"_id": 0}, sort=[("step", -1)]):
 
-        emit("new_graticules", find_graticules({"step": {"$in": steps}}))
+        emit("new_graticules", find_graticules(query, filter, [tuple(item) for item in sort]))
