@@ -5,11 +5,11 @@ from back.mongo.data.collect.indicators.mongo import find_indicator, find_indica
 def connect_indicators(app):
 
     @app.on("get_indicator")
-    def get_indicator(code):
+    def get_indicator(query={"countries": {"$exists": True, "$ne": []}}, filter={"_id": 0, "countries": 0}):
 
-        emit("new_indicator", find_indicator({"code": code}))
+        emit("new_indicator", find_indicator(query, filter))
 
     @app.on("get_indicators")
-    def get_indicators(query={"countries": {"$exists": True, "$ne": []}}, filter={"_id": 0, "countries": 0}):
+    def get_indicators(query={"countries": {"$exists": True, "$ne": []}}, filter={"_id": 0, "countries": 0}, sort=[("name", 1)]):
 
-        emit("new_indicators", find_indicators(query, filter))
+        emit("new_indicators", find_indicators(query, filter, [tuple(item) for item in sort]))
