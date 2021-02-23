@@ -1,0 +1,18 @@
+<html>
+  <head>
+
+    <title>Home</title>
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='imgs/theme/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='tree/home/style.css') }}">
+
+  </head>
+  <body>
+    {% extends "tree/theme.html" %}
+    {% block content %}
+
+      <script src="{{ url_for('static', filename='tree/home/script.mjs') }}" type="module"></script>
+
+    {% endblock %}
+  </body>
+</html>
