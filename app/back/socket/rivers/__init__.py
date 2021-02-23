@@ -10,6 +10,6 @@ def connect_rivers(app):
         emit("new_river", find_river(query, filter, detail))
 
     @app.on("get_rivers")
-    def get_rivers(query={}, filter={"_id": 0}, sort=[("properties.id", 1)], detail="micro"):
+    def get_rivers(query={}, filter={"_id": 0}, sort=[("properties.id", 1)], limit=0, detail="micro"):
 
-        emit("new_rivers", find_rivers(query, filter, [tuple(item) for item in sort], detail))
+        emit("new_rivers", find_rivers(query, filter, [tuple(item) for item in sort], limit, detail))

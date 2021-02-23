@@ -10,6 +10,6 @@ def connect_lakes(app):
         emit("new_lake", find_lake(query, filter, detail))
 
     @app.on("get_lakes")
-    def get_lakes(query={}, filter={"_id": 0}, sort=[("properties.id", 1)], detail="micro"):
+    def get_lakes(query={}, filter={"_id": 0}, sort=[("properties.id", 1)], limit=0, detail="micro"):
 
-        emit("new_lakes", find_lakes(query, filter, [tuple(item) for item in sort], detail))
+        emit("new_lakes", find_lakes(query, filter, [tuple(item) for item in sort], limit, detail))

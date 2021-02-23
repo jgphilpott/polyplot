@@ -10,6 +10,6 @@ def connect_maps(app):
         emit("new_map", find_map(query, filter, detail))
 
     @app.on("get_maps")
-    def get_maps(query={}, filter={"_id": 0}, sort=[("properties.code", 1)], detail="micro"):
+    def get_maps(query={}, filter={"_id": 0}, sort=[("properties.code", 1)], limit=0, detail="micro"):
 
-        emit("new_maps", find_maps(query, filter, [tuple(item) for item in sort], detail))
+        emit("new_maps", find_maps(query, filter, [tuple(item) for item in sort], limit, detail))

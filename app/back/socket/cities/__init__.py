@@ -10,6 +10,6 @@ def connect_cities(app):
         emit("new_city", find_city(query, filter))
 
     @app.on("get_cities")
-    def get_cities(query={}, filter={"_id": 0}, sort=[("properties.rank", 1), ("properties.pop_avg", -1), ("properties.name", 1)]):
+    def get_cities(query={}, filter={"_id": 0}, sort=[("properties.rank", 1), ("properties.pop_avg", -1), ("properties.name", 1)], limit=0):
 
-        emit("new_cities", find_cities(query, filter, [tuple(item) for item in sort]))
+        emit("new_cities", find_cities(query, filter, [tuple(item) for item in sort], limit))

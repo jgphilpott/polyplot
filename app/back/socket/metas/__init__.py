@@ -10,6 +10,6 @@ def connect_metas(app):
         emit("new_" + code, find_meta({"code": code.split("_")[0]})["value"])
 
     @app.on("get_metas")
-    def get_metas():
+    def get_metas(query={}, filter={"_id": 0}, sort=[("code", 1)], limit=0):
 
-        emit("new_metas", find_metas())
+        emit("new_metas", find_metas(query, filter, [tuple(item) for item in sort], limit))

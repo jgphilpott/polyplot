@@ -10,6 +10,6 @@ def connect_ports(app):
         emit("new_port", find_port(query, filter))
 
     @app.on("get_ports")
-    def get_ports(query={}, filter={"_id": 0}, sort=[("properties.flow", -1), ("properties.code", 1)]):
+    def get_ports(query={}, filter={"_id": 0}, sort=[("properties.flow", -1), ("properties.code", 1)], limit=0):
 
-        emit("new_ports", find_ports(query, filter, [tuple(item) for item in sort]))
+        emit("new_ports", find_ports(query, filter, [tuple(item) for item in sort], limit))

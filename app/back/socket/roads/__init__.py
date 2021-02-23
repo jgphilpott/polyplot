@@ -10,6 +10,6 @@ def connect_roads(app):
         emit("new_road", find_road(query, filter, detail))
 
     @app.on("get_roads")
-    def get_roads(query={}, filter={"_id": 0}, sort=[("properties.id", 1)], detail="micro"):
+    def get_roads(query={}, filter={"_id": 0}, sort=[("properties.id", 1)], limit=0, detail="micro"):
 
-        emit("new_roads", find_roads(query, filter, [tuple(item) for item in sort], detail))
+        emit("new_roads", find_roads(query, filter, [tuple(item) for item in sort], limit, detail))

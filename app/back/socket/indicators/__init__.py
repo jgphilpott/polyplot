@@ -10,6 +10,6 @@ def connect_indicators(app):
         emit("new_indicator", find_indicator(query, filter))
 
     @app.on("get_indicators")
-    def get_indicators(query={"countries": {"$exists": True, "$ne": []}}, filter={"_id": 0, "countries": 0}, sort=[("name", 1)]):
+    def get_indicators(query={"countries": {"$exists": True, "$ne": []}}, filter={"_id": 0, "countries": 0}, sort=[("name", 1)], limit=0):
 
-        emit("new_indicators", find_indicators(query, filter, [tuple(item) for item in sort]))
+        emit("new_indicators", find_indicators(query, filter, [tuple(item) for item in sort], limit))
