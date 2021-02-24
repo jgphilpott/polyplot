@@ -12,14 +12,17 @@ $(document).ready(function() {
 
   let panel = $("#countries.panel")
 
+  let countries = data.countries
+  let countryExceptions = localRead("settings")["general"]["countryExceptions"]
+
   panel.append("<a href='/api/countries'><img id='api' src='/front/imgs/panels/countries/api.png'></a>")
 
-  let alphabetBox = "<div id='alphabet'><p id='all'>All</p>"
+  let alphabetBox = "<div id='alphabet'><p id='all' class='alphabet'>All</p>"
   let alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 
   for (let i = 0; i < alphabet.length; i++) {
 
-    alphabetBox += "<p id=" + alphabet[i].toLowerCase() + ">" + alphabet[i] + "</p>"
+    alphabetBox += "<p id=" + alphabet[i].toLowerCase() + " class='alphabet'>" + alphabet[i] + "</p>"
 
   }
 
@@ -28,9 +31,6 @@ $(document).ready(function() {
   socket.emit("get_meta", "regions")
 
   socket.on("new_regions", function(regions) {
-
-    let countries = data.countries
-    let countryExceptions = localRead("settings")["general"]["countryExceptions"]
 
     for (let i = 0; i < regions.length; i++) {
 
@@ -70,6 +70,32 @@ $(document).ready(function() {
       countryBox += "<p>" + countries[i].formal_name + "</p></div></a></div>"
 
       countriesBox.append(countryBox)
+
+    }
+
+  })
+
+  $(".alphabet").click(function(event) {
+
+    if (this.id == "all") {
+
+      $(".country-box").show()
+
+    } else {
+
+      for (let i = 0; i < countries.length; i++) {
+
+        if (countries[i].name[0].toLowerCase() == this.id) {
+
+          $("#" + countries[i].code + ".country-box").show()
+
+        } else {
+
+          $("#" + countries[i].code + ".country-box").hide()
+
+        }
+
+      }
 
     }
 
