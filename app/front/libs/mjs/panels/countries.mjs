@@ -201,35 +201,39 @@ export function toggleRegionVisibility(element) {
 
   if (value == "visible") {
 
+    $("#" + code + " .region-name").css("color", "gray")
     $(element).attr("src", "/front/imgs/panels/countries/hidden.png")
+
     countryExceptions.push(code)
 
   } else if (value == "hidden") {
 
+    $("#" + code + " .region-name").css("color", "black")
     $(element).attr("src", "/front/imgs/panels/countries/visible.png")
+
     countryExceptions = countryExceptions.filter(item => item != code)
 
   }
 
   for (let i = 0; i < plots.length; i++) {
 
-    if (camalize(plots[i].region) == code) {
+    if (code == camalize(plots[i].region)) {
 
       if (value == "visible") {
 
-        $("#" + plots[i].code + " .country-visibility").attr("src", "/front/imgs/panels/countries/hidden.png")
-        countryExceptions.push(plots[i].code)
-
+        $("#" + plots[i].code + ".country-box .country-visibility").attr("src", "/front/imgs/panels/countries/hidden.png")
         $("#" + plots[i].code + ".country-box .country-name").css("color", "gray")
         $("#" + plots[i].code + ".country-box .country-formal-name").css("color", "gray")
 
+        countryExceptions.push(plots[i].code)
+
       } else if (value == "hidden") {
 
-        $("#" + plots[i].code + " .country-visibility").attr("src", "/front/imgs/panels/countries/visible.png")
-        countryExceptions = countryExceptions.filter(item => item != plots[i].code)
-
+        $("#" + plots[i].code + ".country-box .country-visibility").attr("src", "/front/imgs/panels/countries/visible.png")
         $("#" + plots[i].code + ".country-box .country-name").css("color", "black")
         $("#" + plots[i].code + ".country-box .country-formal-name").css("color", "black")
+
+        countryExceptions = countryExceptions.filter(item => item != plots[i].code)
 
       }
 
@@ -244,26 +248,36 @@ export function toggleRegionVisibility(element) {
 export function toggleCountryVisibility(element) {
 
   let code = $(element).parent().attr("id")
+  let region = $(element).parent().parent().parent().attr("id")
   let value = $(element).attr("src").split("/").pop().split(".")[0]
 
   if (value == "visible") {
 
     $(element).attr("src", "/front/imgs/panels/countries/hidden.png")
-    countryExceptions.push(code)
-
     $("#" + code + ".country-box .country-name").css("color", "gray")
     $("#" + code + ".country-box .country-formal-name").css("color", "gray")
+
+    countryExceptions.push(code)
+
+    if (subset(plots.filter(plot => camalize(plot.region) == region).map(plot => plot.code), countryExceptions)) {
+
+      $("#" + region + " .region-name").css("color", "gray")
+      $("#" + region + " .region-visibility").attr("src", "/front/imgs/panels/countries/hidden.png")
+
+      countryExceptions.push(region)
+
+    }
 
   } else if (value == "hidden") {
 
     $(element).attr("src", "/front/imgs/panels/countries/visible.png")
-    countryExceptions = countryExceptions.filter(item => item != code)
-
     $("#" + code + ".country-box .country-name").css("color", "black")
     $("#" + code + ".country-box .country-formal-name").css("color", "black")
 
-    let region = $(element).parent().parent().parent().attr("id")
+    $("#" + region + " .region-name").css("color", "black")
     $("#" + region + " .region-visibility").attr("src", "/front/imgs/panels/countries/visible.png")
+
+    countryExceptions = countryExceptions.filter(item => item != code)
     countryExceptions = countryExceptions.filter(item => item != region)
 
   }
