@@ -9,92 +9,26 @@ let countryExceptions = localRead("settings")["general"]["countryExceptions"]
 
 export function addCountriesPanel(panelSetting) {
 
-  $("body").append("<div id='countries' class='panel'></div>")
+  $("body").append("<div id='countries' class='panel'><h1 id='name'>Countries by Region</h1></div>")
 
   let panel = $("#countries.panel")
 
   panel.append("<img class='close' src='/front/imgs/panels/all/close.png'>")
 
-  panel.append("<h1 id='name'>Countries by Region</h1>")
-
   socket.emit("get_meta", "regions_countries")
 
   socket.on("new_regions_countries", function(regions) {
 
-    for (let i = 0; i < regions.length; i++) {
+    addRegionBoxes(regions)
+    addCountryBoxes(plots)
 
-      let regionBox = "<div id='" + camalize(regions[i]) + "' class='region-box'><div class='head'>"
+    let panelWidth = panel.width()
+    let panelHeight = panel.height()
 
-      regionBox += "<img class='fold' src='/front/imgs/panels/indicators/fold.png'>"
-      regionBox += "<h3 class='region-name'>" + regions[i] + "</h3>"
+    panel.width(panelWidth).height(panelHeight)
 
-      if (countryExceptions.includes(camalize(regions[i]))) {
-        regionBox += "<img class='region-visibility' src='/front/imgs/panels/countries/hidden.png'></div>"
-      } else {
-        regionBox += "<img class='region-visibility' src='/front/imgs/panels/countries/visible.png'></div>"
-      }
-
-      regionBox += "<div class='countries-box'></div>"
-
-      panel.append(regionBox + "</div>")
-
-      $("#" + camalize(regions[i]) + "").css("border-left", "5px solid " + regionsColourSwitch(regions[i]) + "")
-
-    }
-
-    for (let i = 0; i < plots.length; i++) {
-
-      let countriesBox = $("#" + camalize(plots[i].region) + " .countries-box")
-
-      let countryBox = "<div id='" + plots[i].code + "' class='country-box'>"
-
-      if (countryExceptions.includes(plots[i].code)) {
-        countryBox += "<img class='country-visibility' src='/front/imgs/panels/countries/hidden.png'>"
-      } else {
-        countryBox += "<img class='country-visibility' src='/front/imgs/panels/countries/visible.png'>"
-      }
-
-      countryBox += "<p class='country-name'>" + plots[i].name + "</p>"
-
-      countriesBox.append(countryBox + "</div>")
-
-    }
-
-    $(".region-box .fold").click(function() {
-
-      let id = $(this).parent().parent().attr("id")
-      let fold = $("#" + id + ".region-box .fold")
-      let regionBox = $("#" + id + ".region-box")
-      let countriesBox = $("#" + id + ".region-box .countries-box")
-
-      if (countriesBox.css("display") == "none") {
-
-        $(".region-visibility").css("display", "none")
-        $(".region-box").animate({"width": 782}, {"duration": 1000, "queue": false})
-        $(".region-box").animate({"height": 30}, {"duration": 1000, "queue": false})
-        $(".countries-box").css("display", "none")
-        rotate($(".region-box .fold"), 1)
-
-        countriesBox.css("display", "block")
-        let height = countriesBox.height() + 35
-        countriesBox.css("display", "none")
-
-        $("#" + id + " .region-visibility").delay(1000).queue(function(next) { $(this).css("display", "block"); next() })
-        regionBox.animate({"width": 782}, {"duration": 1000, "queue": false})
-        regionBox.animate({"height": height}, {"duration": 1000, "queue": false})
-        countriesBox.css("display", "block")
-        rotate(fold, 90)
-
-      } else {
-
-        $(".region-visibility").css("display", "none")
-        $(".region-box").animate({"width": 225}, {"duration": 1000, "queue": false})
-        $(".region-box").animate({"height": 30}, {"duration": 1000, "queue": false})
-        $(".countries-box").css("display", "none")
-        rotate($(".region-box .fold"), 1)
-
-      }
-
+    $(".region-fold").click(function() {
+      toggleFold(this, panel, panelWidth, panelHeight)
     })
 
     $(".region-visibility").click(function() {
@@ -110,6 +44,140 @@ export function addCountriesPanel(panelSetting) {
   addPanelEvents(panel)
 
   if (panelSetting) { panel.css("visibility", "visible") } else { panel.css("visibility", "hidden") }
+
+}
+
+export function toggleFold(element, panel, panelWidth=null, panelHeight=null) {
+
+  let duration = 1000
+
+  let id = $(element).parent().parent().attr("id")
+  let fold = $("#" + id + ".region-box .region-fold")
+  let regionBox = $("#" + id + ".region-box")
+  let headHeight = $("#" + id + ".region-box .region-head").height() + Number(regionBox.css("padding").replace(/[a-z]/gi, "")) * 2
+  let countriesBox = $("#" + id + ".region-box .countries-box")
+
+  if (countriesBox.css("display") == "none") {
+
+    if (plot.type == "Countries") {
+
+      countriesBox.css("display", "block")
+      let height = countriesBox.height()
+
+      regionBox.animate({height: height + headHeight}, {duration: duration, complete: function() { regionBox.height("auto") }})
+      rotate(fold, 90, duration)
+
+    } else {
+
+      panel.width("auto").height("auto")
+
+      countriesBox.css("display", "block")
+      let width = countriesBox.width()
+      let height = countriesBox.height()
+      countriesBox.css("display", "none")
+
+      $(".region-box").animate({width: width}, {duration: duration, queue: false})
+      $(".region-box").animate({height: headHeight}, {duration: duration, queue: false})
+      $(".countries-box").css("display", "none")
+      rotate($(".region-fold"), 0, duration)
+
+      regionBox.animate({width: width}, {duration: duration, queue: false})
+      regionBox.animate({height: height + headHeight}, {duration: duration, queue: false})
+      countriesBox.css("display", "block")
+      rotate(fold, 90)
+
+    }
+
+  } else {
+
+    if (plot.type == "Countries") {
+
+      regionBox.animate({height: headHeight}, {duration: duration, complete: function() { countriesBox.css("display", "none") }})
+      rotate(fold, 0, duration)
+
+    } else {
+
+      $(".region-box").animate({width: panelWidth}, {duration: duration, queue: false})
+      $(".region-box").animate({height: headHeight}, {duration: duration, queue: false})
+      $(".countries-box").css("display", "none")
+      rotate(fold, 0, duration)
+
+    }
+
+  }
+
+}
+
+export function addRegionBoxes(regions) {
+
+  let panel = $("#countries.panel")
+
+  for (let i = 0; i < regions.length; i++) {
+
+    let regionBox = "<div id='" + camalize(regions[i]) + "' class='region-box'><div class='region-head'>"
+
+    regionBox += "<img class='region-fold' src='/front/imgs/panels/countries/fold.png'>"
+    regionBox += "<h3 class='region-name'>" + regions[i] + "</h3>"
+
+    if (countryExceptions.includes(camalize(regions[i]))) {
+
+      regionBox += "<img class='region-visibility' src='/front/imgs/panels/countries/hidden.png'></div>"
+
+    } else {
+
+      regionBox += "<img class='region-visibility' src='/front/imgs/panels/countries/visible.png'></div>"
+
+    }
+
+    regionBox += "<div class='countries-box'></div></div>"
+
+    panel.append(regionBox)
+
+    $("#" + camalize(regions[i]) + ".region-box").css("border-left", "5px solid " + regionsColourSwitch(regions[i]) + "")
+
+  }
+
+}
+
+export function addCountryBoxes(countries) {
+
+  for (let i = 0; i < countries.length; i++) {
+
+    let countriesBox = $("#" + camalize(countries[i].region) + " .countries-box")
+    let countryBox = "<div id='" + countries[i].code + "' class='country-box'>"
+
+    if (countryExceptions.includes(countries[i].code)) {
+
+      countryBox += "<img class='country-visibility' src='/front/imgs/panels/countries/hidden.png'>"
+
+    } else {
+
+      countryBox += "<img class='country-visibility' src='/front/imgs/panels/countries/visible.png'>"
+
+    }
+
+    if (plot.type == "Countries") {
+
+      countryBox += "<img class='country-flag' src='/front/imgs/flags/" + countries[i].code + ".png'>"
+      countryBox += "<a href='/countries/" + countries[i].code + "'><div><p class='country-name'>" + countries[i].name + "</p>"
+      countryBox += "<p class='country-formal-name'>" + countries[i].formal_name + "</p></div></a></div>"
+
+    } else {
+
+      countryBox += "<a href='/countries/" + countries[i].code + "'><p class='country-name'>" + countries[i].name + "</p></a></div>"
+
+    }
+
+    countriesBox.append(countryBox)
+
+    if (countryExceptions.includes(countries[i].code)) {
+
+      $("#" + countries[i].code + ".country-box .country-name").css("color", "gray")
+      $("#" + countries[i].code + ".country-box .country-formal-name").css("color", "gray")
+
+    }
+
+  }
 
 }
 
