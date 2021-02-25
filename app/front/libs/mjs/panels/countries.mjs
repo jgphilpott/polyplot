@@ -32,7 +32,7 @@ export function addCountriesPanel(panelSetting) {
     })
 
     $(".region-visibility").click(function() {
-      toggleRegionVisibility(this, plots)
+      toggleRegionVisibility(this)
     })
 
     $(".country-visibility").click(function() {
@@ -181,7 +181,7 @@ export function addCountryBoxes(countries) {
 
 }
 
-export function toggleRegionVisibility(element, countries) {
+export function toggleRegionVisibility(element) {
 
   let code = $(element).parent().parent().attr("id")
   let value = $(element).attr("src").split("/").pop().split(".")[0]
@@ -198,25 +198,25 @@ export function toggleRegionVisibility(element, countries) {
 
   }
 
-  for (let i = 0; i < countries.length; i++) {
+  for (let i = 0; i < plots.length; i++) {
 
-    if (camalize(countries[i].region) == code) {
+    if (camalize(plots[i].region) == code) {
 
       if (value == "visible") {
 
-        $("#" + countries[i].code + " .country-visibility").attr("src", "/front/imgs/panels/countries/hidden.png")
-        countryExceptions.push(countries[i].code)
+        $("#" + plots[i].code + " .country-visibility").attr("src", "/front/imgs/panels/countries/hidden.png")
+        countryExceptions.push(plots[i].code)
 
-        $("#" + countries[i].code + ".country-box .country-name").css("color", "gray")
-        $("#" + countries[i].code + ".country-box .country-formal-name").css("color", "gray")
+        $("#" + plots[i].code + ".country-box .country-name").css("color", "gray")
+        $("#" + plots[i].code + ".country-box .country-formal-name").css("color", "gray")
 
       } else if (value == "hidden") {
 
-        $("#" + countries[i].code + " .country-visibility").attr("src", "/front/imgs/panels/countries/visible.png")
-        countryExceptions = countryExceptions.filter(item => item != countries[i].code)
+        $("#" + plots[i].code + " .country-visibility").attr("src", "/front/imgs/panels/countries/visible.png")
+        countryExceptions = countryExceptions.filter(item => item != plots[i].code)
 
-        $("#" + countries[i].code + ".country-box .country-name").css("color", "black")
-        $("#" + countries[i].code + ".country-box .country-formal-name").css("color", "black")
+        $("#" + plots[i].code + ".country-box .country-name").css("color", "black")
+        $("#" + plots[i].code + ".country-box .country-formal-name").css("color", "black")
 
       }
 

@@ -5,7 +5,9 @@ import {toggleFold} from "../../../libs/mjs/panels/countries.mjs"
 import {addRegionBoxes, addCountryBoxes} from "../../../libs/mjs/panels/countries.mjs"
 import {toggleRegionVisibility, toggleCountryVisibility} from "../../../libs/mjs/panels/countries.mjs"
 
-let countries = data.countries
+let plot = data.plot
+let plots = plot.plots
+
 let countryExceptions = localRead("settings")["general"]["countryExceptions"]
 
 $(document).ready(function() {
@@ -36,16 +38,16 @@ $(document).ready(function() {
   socket.on("new_regions", function(regions) {
 
     addRegionBoxes(regions)
-    addCountryBoxes(countries)
+    addCountryBoxes(plots)
 
     rotate($(".region-fold"), 90, 0)
 
-    $(".region-fold").click(function(event) {
+    $(".region-fold").click(function() {
       toggleFold(this, panel)
     })
 
     $(".region-visibility").click(function() {
-      toggleRegionVisibility(this, countries)
+      toggleRegionVisibility(this)
     })
 
     $(".country-visibility").click(function() {
@@ -68,15 +70,15 @@ $(document).ready(function() {
 
     } else {
 
-      for (let i = 0; i < countries.length; i++) {
+      for (let i = 0; i < plots.length; i++) {
 
-        if (this.id == countries[i].name[0].toLowerCase()) {
+        if (this.id == plots[i].name[0].toLowerCase()) {
 
-          $("#" + countries[i].code + ".country-box").show()
+          $("#" + plots[i].code + ".country-box").show()
 
         } else {
 
-          $("#" + countries[i].code + ".country-box").hide()
+          $("#" + plots[i].code + ".country-box").hide()
 
         }
 

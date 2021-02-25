@@ -8,7 +8,7 @@ def register_countries_route(app):
     @app.route("/countries")
     def countries():
 
-        data = {"plot": {"type": "Countries"}, "countries": find_countries({}, {"_id": 0, "code": 1, "name": 1, "formal_name": 1, "region": 1}, [("region", 1), ("name", 1)])}
+        data = {"plot": {"plots": find_countries({}, {"_id": 0, "code": 1, "name": 1, "formal_name": 1, "region": 1}, [("region", 1), ("name", 1)]), "type": "Countries"}}
 
         if "id" in request.cookies: data["client"] = valid_client(request.cookies.get("id"))
 
