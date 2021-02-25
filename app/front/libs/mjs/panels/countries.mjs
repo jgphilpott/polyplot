@@ -9,7 +9,7 @@ let countryExceptions = localRead("settings")["general"]["countryExceptions"]
 
 export function addCountriesPanel(panelSetting) {
 
-  $("body").append("<div id='countries' class='panel'><h1 id='name'>Countries by Region</h1></div>")
+  $("body").append("<div id='countries' class='panel'><a href='/countries'><h1 id='name'>Countries by Region</h1></a></div>")
 
   let panel = $("#countries.panel")
 
@@ -69,22 +69,24 @@ export function toggleFold(element, panel, panelWidth=null, panelHeight=null) {
 
     } else {
 
-      panel.width("auto").height("auto")
+      let folds = $(".region-fold")
 
-      countriesBox.css("display", "block")
       let width = countriesBox.width()
       let height = countriesBox.height()
-      countriesBox.css("display", "none")
+
+      panel.width("auto").height("auto")
 
       $(".region-box").animate({width: width}, {duration: duration, queue: false})
       $(".region-box").animate({height: headHeight}, {duration: duration, queue: false})
       $(".countries-box").css("display", "none")
-      rotate($(".region-fold"), 0, duration)
+
+      for (let i = 0; i < folds.length; i++) { rotate($(folds[i]), 0, duration) }
 
       regionBox.animate({width: width}, {duration: duration, queue: false})
       regionBox.animate({height: height + headHeight}, {duration: duration, queue: false})
       countriesBox.css("display", "block")
-      rotate(fold, 90)
+
+      rotate(fold, 90, duration)
 
     }
 
@@ -100,6 +102,7 @@ export function toggleFold(element, panel, panelWidth=null, panelHeight=null) {
       $(".region-box").animate({width: panelWidth}, {duration: duration, queue: false})
       $(".region-box").animate({height: headHeight}, {duration: duration, queue: false})
       $(".countries-box").css("display", "none")
+
       rotate(fold, 0, duration)
 
     }
