@@ -53,6 +53,8 @@ $(document).ready(function() {
 
     }
 
+    rotate($(".region-box .fold"), 90, 0)
+
     for (let i = 0; i < countries.length; i++) {
 
       let countriesBox = $("#" + camalize(countries[i].region) + " .countries-box")
@@ -73,9 +75,45 @@ $(document).ready(function() {
 
     }
 
+    $(".fold").click(function(event) {
+
+      let duration = 1000
+
+      let id = $(this).parent().parent().attr("id")
+      let fold = $("#" + id + ".region-box .fold")
+      let regionBox = $("#" + id + ".region-box")
+      let headHeight = $("#" + id + ".region-box .head").height() + Number(regionBox.css("padding").replace(/[a-z]/gi, "")) * 2
+      let countriesBox = $("#" + id + ".region-box .countries-box")
+
+      if (countriesBox.css("display") == "none") {
+
+        countriesBox.css("display", "block")
+        let height = countriesBox.height() + headHeight
+
+        regionBox.animate({height: height}, {duration: duration, complete: function() { regionBox.height("auto") }})
+        rotate(fold, 90, duration)
+
+      } else {
+
+        regionBox.animate({height: headHeight}, {duration: duration, complete: function() { countriesBox.css("display", "none") }})
+        rotate(fold, 0, duration)
+
+      }
+
+    })
+
+    $(".region-visibility").click(function(event) {})
+    $(".country-visibility").click(function(event) {})
+
   })
 
   $(".alphabet").click(function(event) {
+
+    $(".alphabet").css("font-weight", "normal")
+    $(".alphabet").css("border-bottom", "3px solid rgba(224, 58, 62, 0)")
+
+    $(this).css("font-weight", "bold")
+    $(this).css("border-bottom", "3px solid rgba(224, 58, 62, 1)")
 
     if (this.id == "all") {
 
