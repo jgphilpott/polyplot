@@ -1,6 +1,11 @@
 import {rainbow} from "../../../libs/mjs/colors/solid/rainbow.mjs"
 import {makeScrollable} from "../../../libs/mjs/panels/events/scroll.mjs"
 import {regionsColourSwitch} from "../../../libs/mjs/colors/switches/regions.mjs"
+import {toggleRegionVisibility} from "../../../libs/mjs/panels/countries.mjs"
+import {toggleCountryVisibility} from "../../../libs/mjs/panels/countries.mjs"
+
+let countries = data.countries
+let countryExceptions = localRead("settings")["general"]["countryExceptions"]
 
 $(document).ready(function() {
 
@@ -11,9 +16,6 @@ $(document).ready(function() {
   $("body").append("<div id='countries' class='panel'><h1 id='name'>Countries by Region</h1></div>")
 
   let panel = $("#countries.panel")
-
-  let countries = data.countries
-  let countryExceptions = localRead("settings")["general"]["countryExceptions"]
 
   panel.append("<a href='/api/countries'><img id='api' src='/front/imgs/panels/countries/api.png'></a>")
 
@@ -68,10 +70,17 @@ $(document).ready(function() {
       }
 
       countryBox += "<img class='flag' src='/front/imgs/flags/" + countries[i].code + ".png'>"
-      countryBox += "<a href='/countries/" + countries[i].code + "'><div><p><b>" + countries[i].name + "</b></p>"
-      countryBox += "<p>" + countries[i].formal_name + "</p></div></a></div>"
+      countryBox += "<a href='/countries/" + countries[i].code + "'><div><p class='country-name'><b>" + countries[i].name + "</b></p>"
+      countryBox += "<p class='country-formal-name'>" + countries[i].formal_name + "</p></div></a></div>"
 
       countriesBox.append(countryBox)
+
+      if (countryExceptions.includes(countries[i].code)) {
+
+        $("#" + countries[i].code + ".country-box .country-name").css("color", "gray")
+        $("#" + countries[i].code + ".country-box .country-formal-name").css("color", "gray")
+
+      }
 
     }
 
@@ -102,8 +111,13 @@ $(document).ready(function() {
 
     })
 
-    $(".region-visibility").click(function(event) {})
-    $(".country-visibility").click(function(event) {})
+    $(".region-visibility").click(function() {
+      toggleRegionVisibility(this, countries)
+    })
+
+    $(".country-visibility").click(function() {
+      toggleCountryVisibility(this)
+    })
 
   })
 
