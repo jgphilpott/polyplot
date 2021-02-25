@@ -36,9 +36,9 @@ $(document).ready(function() {
 
     for (let i = 0; i < regions.length; i++) {
 
-      let regionBox = "<div id='" + camalize(regions[i]) + "' class='region-box'><div class='head'>"
+      let regionBox = "<div id='" + camalize(regions[i]) + "' class='region-box'><div class='region-head'>"
 
-      regionBox += "<img class='fold' src='/front/imgs/panels/countries/fold.png'>"
+      regionBox += "<img class='region-fold' src='/front/imgs/panels/countries/fold.png'>"
       regionBox += "<h3 class='region-name'>" + regions[i] + "</h3>"
 
       if (countryExceptions.includes(camalize(regions[i]))) {
@@ -47,20 +47,19 @@ $(document).ready(function() {
         regionBox += "<img class='region-visibility' src='/front/imgs/panels/countries/visible.png'></div>"
       }
 
-      regionBox += "<div class='countries-box'></div>"
+      regionBox += "<div class='countries-box'></div></div>"
 
-      panel.append(regionBox + "</div>")
+      panel.append(regionBox)
 
-      $("#" + camalize(regions[i]) + "").css("border-left", "5px solid " + regionsColourSwitch(regions[i]) + "")
+      $("#" + camalize(regions[i]) + ".region-box").css("border-left", "5px solid " + regionsColourSwitch(regions[i]) + "")
 
     }
 
-    rotate($(".region-box .fold"), 90, 0)
+    rotate($(".region-fold"), 90, 0)
 
     for (let i = 0; i < countries.length; i++) {
 
       let countriesBox = $("#" + camalize(countries[i].region) + " .countries-box")
-
       let countryBox = "<div id='" + countries[i].code + "' class='country-box'>"
 
       if (countryExceptions.includes(countries[i].code)) {
@@ -69,8 +68,8 @@ $(document).ready(function() {
         countryBox += "<img class='country-visibility' src='/front/imgs/panels/countries/visible.png'>"
       }
 
-      countryBox += "<img class='flag' src='/front/imgs/flags/" + countries[i].code + ".png'>"
-      countryBox += "<a href='/countries/" + countries[i].code + "'><div><p class='country-name'><b>" + countries[i].name + "</b></p>"
+      countryBox += "<img class='country-flag' src='/front/imgs/flags/" + countries[i].code + ".png'>"
+      countryBox += "<a href='/countries/" + countries[i].code + "'><div><p class='country-name'>" + countries[i].name + "</p>"
       countryBox += "<p class='country-formal-name'>" + countries[i].formal_name + "</p></div></a></div>"
 
       countriesBox.append(countryBox)
@@ -84,14 +83,14 @@ $(document).ready(function() {
 
     }
 
-    $(".fold").click(function(event) {
+    $(".region-fold").click(function(event) {
 
       let duration = 1000
 
       let id = $(this).parent().parent().attr("id")
-      let fold = $("#" + id + ".region-box .fold")
+      let fold = $("#" + id + ".region-box .region-fold")
       let regionBox = $("#" + id + ".region-box")
-      let headHeight = $("#" + id + ".region-box .head").height() + Number(regionBox.css("padding").replace(/[a-z]/gi, "")) * 2
+      let headHeight = $("#" + id + ".region-box .region-head").height() + Number(regionBox.css("padding").replace(/[a-z]/gi, "")) * 2
       let countriesBox = $("#" + id + ".region-box .countries-box")
 
       if (countriesBox.css("display") == "none") {
@@ -137,7 +136,7 @@ $(document).ready(function() {
 
       for (let i = 0; i < countries.length; i++) {
 
-        if (countries[i].name[0].toLowerCase() == this.id) {
+        if (this.id == countries[i].name[0].toLowerCase()) {
 
           $("#" + countries[i].code + ".country-box").show()
 

@@ -28,7 +28,7 @@
 
   #alphabet
 
-    margin: 10px
+    margin: 12px
 
     text-align: center
 
@@ -43,33 +43,35 @@
 
       padding: 5px
       font-size: 18px
+
+      font-weight: normal
       border-bottom: 3px solid rgba(224, 58, 62, 0)
 
     p:hover
 
+      cursor: pointer !important
+
       font-weight: bold !important
       border-bottom: 3px solid rgba(224, 58, 62, 1) !important
 
-      cursor: pointer
-
   .region-box
 
-    margin: 15px
+    margin: 12px
     padding: 5px
 
-    .head
+    .region-head
 
       display: flex
       align-items: center
 
-      .fold
+      .region-fold
 
         margin: 5px
 
         width: 10px
         height: 15px
 
-      .fold:hover
+      .region-fold:hover
 
         cursor: pointer
 
@@ -83,8 +85,8 @@
 
         margin: 5px
 
-        width: 22px
-        height: 17px
+        width: 25px
+        height: 20px
 
       .region-visibility:hover
 
@@ -92,24 +94,23 @@
 
     .countries-box
 
-      // padding-left: 30px
-      // display: none
-
-      @media (min-width: 1px) and (max-width: 500px)
+      @media (min-width: 1px) and (max-width: 1000px)
 
         column-count: 1
 
-      @media (min-width: 501px) and (max-width: 1000px)
+      @media (min-width: 1001px) and (max-width: 1500px)
 
         column-count: 2
 
-      @media (min-width: 1001px) and (max-width: 1500px)
+      @media (min-width: 1501px) and (max-width: 1750px)
 
         column-count: 3
 
-      @media (min-width: 1501px)
+      @media (min-width: 1751px)
 
         column-count: 4
+
+      padding-left: 10px
 
       .country-box
 
@@ -130,14 +131,26 @@
           width: 22px
           height: 17px
 
-        .flag
+        .country-visibility:hover
 
-          width: 40px
-          height: 24px
+          cursor: pointer
 
-      // .country-box:hover
-      //
-      //   cursor: pointer
+        .country-flag
+
+          margin: 5px
+
+          width: 60px
+          height: 36px
+
+        .country-name
+
+          font-size: 16px
+          font-weight: bold
+
+        .country-formal-name
+
+          font-size: 14px
+          font-weight: normal
 
 #menu.panel
 
