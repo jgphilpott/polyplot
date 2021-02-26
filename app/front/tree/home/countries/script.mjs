@@ -8,8 +8,6 @@ import {toggleRegionVisibility, toggleCountryVisibility} from "../../../libs/mjs
 let plot = data.plot
 let plots = plot.plots
 
-let countryExceptions = localRead("settings")["general"]["countryExceptions"]
-
 $(document).ready(function() {
 
   $("body").append("<canvas id='canvas'></canvas>")
