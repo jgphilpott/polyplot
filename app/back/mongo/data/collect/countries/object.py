@@ -23,41 +23,38 @@ class Country():
 
         try:
 
-            for indicator in find_indicators({"countries": {"$exists": True, "$ne": []}}):
+            for indicator in find_indicators({"countries": {"$exists": True, "$ne": []}}, {"_id": 0, "code": 1, "name": 1, "categories": 1, "min_year": 1, "max_year": 1, "min_value": 1, "max_value": 1, "size": 1, "completeness": 1, "countries": {"$elemMatch": {"code": self.code}}}):
 
-                for country in indicator["countries"]:
+                del indicator["countries"][0]["code"]
+                del indicator["countries"][0]["name"]
+                del indicator["countries"][0]["formal_name"]
+                del indicator["countries"][0]["region"]
+                del indicator["countries"][0]["factbook"]
+                del indicator["countries"][0]["wiki"]
 
-                    if country["code"] == self.code:
+                indicator["countries"][0]["code"] = indicator["code"]
+                indicator["countries"][0]["name"] = indicator["name"]
+                indicator["countries"][0]["categories"] = indicator["categories"]
 
-                        del country["code"]
-                        del country["name"]
-                        del country["region"]
+                indicator["countries"][0]["size_total"] = indicator["size"]
+                indicator["countries"][0]["completeness_total"] = indicator["completeness"]
 
-                        country["size_total"] = indicator["size"]
-                        country["completeness_total"] = indicator["completeness"]
+                years = [item["year"] for item in indicator["countries"][0]["history"] if isinstance(item["year"], Number)]
+                values = [item["value"] for item in indicator["countries"][0]["history"] if isinstance(item["value"], Number)]
 
-                        country["code"] = indicator["code"]
-                        country["name"] = indicator["name"]
-                        country["categories"] = indicator["categories"]
+                indicator["countries"][0]["min_year"] = min(years) if years else None
+                indicator["countries"][0]["max_year"] = max(years) if years else None
 
-                        years = [item["year"] for item in country["history"] if isinstance(item["year"], Number)]
-                        values = [item["value"] for item in country["history"] if isinstance(item["value"], Number)]
+                indicator["countries"][0]["min_value"] = min(values) if values else None
+                indicator["countries"][0]["max_value"] = max(values) if values else None
 
-                        country["min_year"] = min(years) if years else None
-                        country["max_year"] = max(years) if years else None
+                indicator["countries"][0]["min_year_total"] = indicator["min_year"]
+                indicator["countries"][0]["max_year_total"] = indicator["max_year"]
 
-                        country["min_value"] = min(values) if values else None
-                        country["max_value"] = max(values) if values else None
+                indicator["countries"][0]["min_value_total"] = indicator["min_value"]
+                indicator["countries"][0]["max_value_total"] = indicator["max_value"]
 
-                        country["min_year_total"] = indicator["min_year"]
-                        country["max_year_total"] = indicator["max_year"]
-
-                        country["min_value_total"] = indicator["min_value"]
-                        country["max_value_total"] = indicator["max_value"]
-
-                        self.indicators[indicator["code"].replace(".", "-")] = country
-
-                        break
+                self.indicators[indicator["code"].replace(".", "-")] = indicator["countries"][0]
 
             self.last_updated = datetime.utcnow().strftime("%Y-%m-%d")
 
