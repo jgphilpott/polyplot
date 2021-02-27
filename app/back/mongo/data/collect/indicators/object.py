@@ -1,6 +1,6 @@
 from numbers import Number
-from requests import get
 from datetime import datetime
+from requests import get
 
 class Indicator():
 
@@ -100,16 +100,16 @@ class Indicator():
                             if item["value"] < self.min_value: self.min_value = item["value"]
                             if item["value"] > self.max_value: self.max_value = item["value"]
 
-                        date = {"year": int(item["date"]), "value": item["value"]}
+                        year = {"year": int(item["date"]), "value": item["value"]}
                         country = [country for country in self.countries if country["code"] in [item["countryiso3code"]]]
 
                         if country:
 
-                            country[0]["history"].append(date)
+                            country[0]["history"].append(year)
 
                         else:
 
-                            self.countries.append({"code": item["countryiso3code"], "name": countries[item["countryiso3code"]]["name"], "formal_name": countries[item["countryiso3code"]]["formal_name"], "region": countries[item["countryiso3code"]]["region"], "factbook": countries[item["countryiso3code"]]["factbook"], "wiki": countries[item["countryiso3code"]]["wiki"], "history": [date]})
+                            self.countries.append({"code": item["countryiso3code"], "name": countries[item["countryiso3code"]]["name"], "formal_name": countries[item["countryiso3code"]]["formal_name"], "region": countries[item["countryiso3code"]]["region"], "factbook": countries[item["countryiso3code"]]["factbook"], "wiki": countries[item["countryiso3code"]]["wiki"], "history": [year]})
 
                 self.calculate_size()
                 self.calculate_completeness()

@@ -30,7 +30,7 @@ def load_json(path):
 
     for indicator in find_indicators():
 
-        if indicator["default"] == True and "last_updated" not in indicator:
+        if "last_updated" not in indicator:
 
             update_indicator(Indicator(indicator).update().__dict__)
 

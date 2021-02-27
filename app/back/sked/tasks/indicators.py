@@ -4,7 +4,7 @@ from back.mongo.data.collect.indicators.mongo import Indicator, find_indicators,
 
 def update_indicators():
 
-    for indicator in find_indicators({"countries": {"$exists": True, "$ne": []}}):
+    for indicator in find_indicators():
 
         update_indicator(Indicator(indicator).update().__dict__)
 
