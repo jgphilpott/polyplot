@@ -7,7 +7,7 @@ def find_country(query={}, filter={"_id": 0}):
 
     return dict(collection.find_one(query, filter))
 
-def find_countries(query={}, filter={"_id": 0}, sort=[("code", 1)], limit=0):
+def find_countries(query={}, filter={"_id": 0}, sort=[("name", 1)], limit=0):
 
     collection.create_index(sort)
 
