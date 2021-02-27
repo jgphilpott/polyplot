@@ -1,3 +1,4 @@
+from numbers import Number
 from requests import get
 from datetime import datetime
 
@@ -7,10 +8,7 @@ class Indicator():
 
         self.code = indicator["code"]
         self.name = indicator["name"]
-
-        self.default = indicator["default"]
         self.featured = indicator["featured"]
-
         self.categories = indicator["categories"]
 
         self.description = indicator["description"]
@@ -28,8 +26,8 @@ class Indicator():
 
         self.last_updated = indicator["last_updated"] if "last_updated" in indicator else None
 
-        self.completeness = indicator["completeness"]
-        self.size = indicator["size"]
+        self.completeness = indicator["completeness"] if "completeness" in indicator else 0
+        self.size = indicator["size"] if "size" in indicator else 0
 
     def calculate_size(self):
 
@@ -59,7 +57,7 @@ class Indicator():
                 count += 1
                 total_count += 1
 
-                if type(date["value"]) == int or type(date["value"]) == float:
+                if isinstance(date["value"], Number):
 
                     data += 1
                     total_data += 1
@@ -80,11 +78,11 @@ class Indicator():
             if not self.last_updated or datetime.strptime(meta["lastupdated"], "%Y-%m-%d") > datetime.strptime(self.last_updated, "%Y-%m-%d"):
 
                 data = get("{}{}?format=json&per_page={}".format(api, self.code, meta["total"])).json()[1]
-                country_codes = get("https://gist.githubusercontent.com/jgphilpott/a1366c890935e615f87a6843b72f541a/raw/5d67a813152060738513a77b363720c5fc76dbe9/countryCodes.js").json()
+                countries = get("https://gist.githubusercontent.com/jgphilpott/a1366c890935e615f87a6843b72f541a/raw/878e2f31aebde8cf20832f1a0e61a9bc433101ec/countryCodes.js").json()
 
                 for item in data:
 
-                    if item["countryiso3code"] in country_codes:
+                    if item["countryiso3code"] in countries:
 
                         if int(item["date"]):
 
@@ -94,7 +92,7 @@ class Indicator():
                             if int(item["date"]) < self.min_year: self.min_year = int(item["date"])
                             if int(item["date"]) > self.max_year: self.max_year = int(item["date"])
 
-                        if item["value"]:
+                        if isinstance(item["value"], Number):
 
                             if not self.min_value: self.min_value = item["value"]
                             if not self.max_value: self.max_value = item["value"]
@@ -102,16 +100,16 @@ class Indicator():
                             if item["value"] < self.min_value: self.min_value = item["value"]
                             if item["value"] > self.max_value: self.max_value = item["value"]
 
-                        obj = {"year": int(item["date"]), "value": item["value"]}
-                        country_exists = [country for country in self.countries if country["code"] in [item["countryiso3code"]]]
+                        date = {"year": int(item["date"]), "value": item["value"]}
+                        country = [country for country in self.countries if country["code"] in [item["countryiso3code"]]]
 
-                        if country_exists:
+                        if country:
 
-                            country_exists[0]["history"].append(obj)
+                            country[0]["history"].append(date)
 
                         else:
 
-                            self.countries.append({"code": item["countryiso3code"], "region": country_codes[item["countryiso3code"]], "name": item["country"]["value"], "history": [obj]})
+                            self.countries.append({"code": item["countryiso3code"], "name": countries[item["countryiso3code"]]["name"], "formal_name": countries[item["countryiso3code"]]["formal_name"], "region": countries[item["countryiso3code"]]["region"], "factbook": countries[item["countryiso3code"]]["factbook"], "wiki": countries[item["countryiso3code"]]["wiki"], "history": [date]})
 
                 self.calculate_size()
                 self.calculate_completeness()
