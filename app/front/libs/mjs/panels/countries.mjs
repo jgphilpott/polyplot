@@ -112,7 +112,7 @@ export function toggleFold(element, panel, panelWidth=null, panelHeight=null) {
 export function addRegionBoxes(regions) {
 
   let panel = $("#countries.panel")
-  let countryExceptions = localRead("settings")["general"]["countryExceptions"]
+  let countryExceptions = localRead("settings").general.countryExceptions
 
   for (let i = 0; i < regions.length; i++) {
 
@@ -152,7 +152,7 @@ export function addRegionBoxes(regions) {
 export function addCountryBoxes(countries) {
 
   countries.sort((a, b) => a.name.localeCompare(b.name))
-  let countryExceptions = localRead("settings")["general"]["countryExceptions"]
+  let countryExceptions = localRead("settings").general.countryExceptions
 
   for (let i = 0; i < countries.length; i++) {
 
@@ -200,7 +200,7 @@ export function toggleRegionVisibility(element) {
 
   let code = $(element).parent().parent().attr("id")
   let value = $(element).attr("src").split("/").pop().split(".")[0]
-  let countryExceptions = localRead("settings")["general"]["countryExceptions"]
+  let countryExceptions = localRead("settings").general.countryExceptions
 
   if (value == "visible") {
 
@@ -253,7 +253,7 @@ export function toggleCountryVisibility(element) {
   let code = $(element).parent().attr("id")
   let region = $(element).parent().parent().parent().attr("id")
   let value = $(element).attr("src").split("/").pop().split(".")[0]
-  let countryExceptions = localRead("settings")["general"]["countryExceptions"]
+  let countryExceptions = localRead("settings").general.countryExceptions
 
   if (value == "visible") {
 
