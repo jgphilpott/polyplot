@@ -101,7 +101,7 @@ class Indicator():
                             if item["value"] > self.max_value: self.max_value = item["value"]
 
                         year = {"year": int(item["date"]), "value": item["value"]}
-                        country = [country for country in self.countries if country["code"] in [item["countryiso3code"]]]
+                        country = [country for country in self.countries if country["code"] == item["countryiso3code"]]
 
                         if country:
 
@@ -109,7 +109,15 @@ class Indicator():
 
                         else:
 
-                            self.countries.append({"code": item["countryiso3code"], "name": countries[item["countryiso3code"]]["name"], "formal_name": countries[item["countryiso3code"]]["formal_name"], "region": countries[item["countryiso3code"]]["region"], "factbook": countries[item["countryiso3code"]]["factbook"], "wiki": countries[item["countryiso3code"]]["wiki"], "history": [year]})
+                            country = countries[item["countryiso3code"]]
+
+                            name = country["name"]
+                            formal_name = country["formal_name"]
+                            region = country["region"]
+                            factbook = country["factbook"]
+                            wiki = country["wiki"]
+
+                            self.countries.append({"code": item["countryiso3code"], "name": name, "formal_name": formal_name, "region": region, "factbook": factbook, "wiki": wiki, "history": [year]})
 
                 self.calculate_size()
                 self.calculate_completeness()

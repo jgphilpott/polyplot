@@ -23,7 +23,10 @@ class Country():
 
         try:
 
-            for indicator in find_indicators({"countries": {"$exists": True, "$ne": []}}, {"_id": 0, "code": 1, "name": 1, "categories": 1, "min_year": 1, "max_year": 1, "min_value": 1, "max_value": 1, "size": 1, "completeness": 1, "countries": {"$elemMatch": {"code": self.code}}}):
+            query= {"countries": {"$exists": True, "$ne": []}, "completeness": {"$gt": 0}}
+            filter = {"_id": 0, "code": 1, "name": 1, "categories": 1, "min_year": 1, "max_year": 1, "min_value": 1, "max_value": 1, "size": 1, "completeness": 1, "countries": {"$elemMatch": {"code": self.code}}}
+
+            for indicator in find_indicators(query, filter):
 
                 del indicator["countries"][0]["code"]
                 del indicator["countries"][0]["factbook"]
