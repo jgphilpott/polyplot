@@ -158,7 +158,7 @@ export function addCountryBoxes(countries) {
 
     let exception = countryExceptions.includes(countries[i].code)
 
-    let countriesBox = $("#" + camalize(countries[i].region) + " .countries-box")
+    let countriesBox = $("#" + camalize(countries[i].region) + ".region-box .countries-box")
     let countryBox = "<div id='" + countries[i].code + "' class='country-box'>"
 
     if (exception) {
