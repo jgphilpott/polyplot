@@ -28,13 +28,13 @@ def load_json(path):
 
                 collection.insert_many(load(list))
 
-    for indicator in find_indicators():
+    for indicator in find_indicators({}, {"_id": 0, "countries": 0}):
 
         if "last_updated" not in indicator:
 
             update_indicator(Indicator(indicator).update().__dict__)
 
-    for country in find_countries():
+    for country in find_countries({}, {"_id": 0, "indicators": 0}):
 
         if "last_updated" not in country:
 

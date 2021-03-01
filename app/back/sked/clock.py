@@ -1,4 +1,5 @@
-from threading import Timer
+from threading import Thread, Timer
+from multiprocessing import Process
 
 second = 1
 minute = 60
@@ -8,11 +9,11 @@ week = 604800
 month = 2629800
 year = 31557600
 
-def set_interval(function, interval):
+def Interval(function, interval):
 
     def wrapper():
 
-        set_interval(function, interval)
+        Interval(function, interval)
         function()
 
     Timer(interval, wrapper).start()
