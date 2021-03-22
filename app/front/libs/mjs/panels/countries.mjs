@@ -124,13 +124,9 @@ export function addRegionBoxes(regions) {
     regionBox += "<h3 class='region-name'>" + regions[i] + "</h3>"
 
     if (exception) {
-
       regionBox += "<img class='region-visibility' src='/front/imgs/panels/countries/hidden.png'></div>"
-
     } else {
-
       regionBox += "<img class='region-visibility' src='/front/imgs/panels/countries/visible.png'></div>"
-
     }
 
     regionBox += "<div class='countries-box'></div></div>"
@@ -138,9 +134,7 @@ export function addRegionBoxes(regions) {
     panel.append(regionBox)
 
     if (exception) {
-
       $("#" + camalize(regions[i]) + " .region-name").css("color", "gray")
-
     }
 
     $("#" + camalize(regions[i]) + ".region-box").css("border-left", "5px solid " + regionsColourSwitch(regions[i]) + "")
@@ -162,34 +156,24 @@ export function addCountryBoxes(countries) {
     let countryBox = "<div id='" + countries[i].code + "' class='country-box'>"
 
     if (exception) {
-
       countryBox += "<img class='country-visibility' src='/front/imgs/panels/countries/hidden.png'>"
-
     } else {
-
       countryBox += "<img class='country-visibility' src='/front/imgs/panels/countries/visible.png'>"
-
     }
 
     if (plot.type == "Countries") {
-
       countryBox += "<img class='country-flag' src='/front/imgs/flags/" + countries[i].code + ".png'>"
       countryBox += "<a href='/countries/" + countries[i].code + "'><div><p class='country-name'>" + countries[i].name + "</p>"
       countryBox += "<p class='country-formal-name'>" + countries[i].formal_name + "</p></div></a></div>"
-
     } else {
-
       countryBox += "<a href='/countries/" + countries[i].code + "'><p class='country-name'>" + countries[i].name + "</p></a></div>"
-
     }
 
     countriesBox.append(countryBox)
 
     if (exception) {
-
       $("#" + countries[i].code + ".country-box .country-name").css("color", "gray")
       $("#" + countries[i].code + ".country-box .country-formal-name").css("color", "gray")
-
     }
 
   }

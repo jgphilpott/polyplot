@@ -228,98 +228,86 @@ export function addCategoryBoxes(categories) {
 
 export function addIndicatorBoxes(indicators) {
 
-  // let size = 0
-  //
-  // let r = readCookie("r")
-  // let x = readCookie("x")
-  // let y = readCookie("y")
-  // let z = readCookie("z")
-  //
-  // let indicatorExceptions = localRead("settings").general.indicatorExceptions
-  //
-  // for (let i = 0; i < indicators.length; i++) {
-  //
-  //   let exception = indicatorExceptions.includes(indicators[i].code)
-  //
-  //   for (let j = 0; j < indicators[i].categories.length; j++) {
-  //
-  //     let indicatorsBox = $("#" + camalize(indicators[i].categories[j]) + ".category-box .indicators-box")
-  //     let indicatorBox = "<div id='" + indicators[i].code.replaceAll(".", "-") + "' class='indicator-box'>"
-  //
-  //     if (exception) {
-  //
-  //       indicatorBox += "<img class='indicator-visibility' src='/front/imgs/panels/indicators/visible.png'>"
-  //
-  //
-  //     } else {
-  //
-  //       indicatorBox += "<img class='indicator-visibility' src='/front/imgs/panels/indicators/hidden.png'>"
-  //
-  //     }
-  //
-  //     if (plot.type == "Indicators") {
-  //
-  //       indicatorBox += "<svg class='indicator-completeness'></svg>"
-  //       indicatorBox += "<a href='/indicators/" + indicators[i].code + "'><p class='indicator-name'>" + indicators[i].name + "</p></a></div>"
-  //
-  //     } else {
-  //
-  //       indicatorBox += "<p class='indicator-name'>" + indicators[i].name + "</p></div>"
-  //
-  //     }
-  //
-  //     indicatorsBox.append(indicatorBox)
-  //
-  //     let pie = d3.pie().sort(null)
-  //     let arc = d3.arc().innerRadius(6).outerRadius(8)
-  //     let svg = d3.select("#" + camalize(indicators[i].categories[j]) + " .indicators-box #" + indicators[i].code.replaceAll(".", "-") + ".indicator-box svg")
-  //
-  //     svg.selectAll(".indicator-completeness")
-  //        .data(pie([indicators[i].completeness, 100 - indicators[i].completeness]))
-  //        .enter()
-  //        .append("path")
-  //        .attr("d", arc)
-  //        .attr("transform", "translate(10, 10)")
-  //        .attr("fill-opacity", function(data) {
-  //
-  //          return [1, 0][data.index]
-  //
-  //        })
-  //        .style("fill", function(data) {
-  //
-  //          let scale = d3.scaleLinear().range(["red", "orange", "green"]).domain([0, 50, 100])
-  //
-  //          return [scale(indicators[i].completeness), "black"][data.index]
-  //
-  //        })
-  //
-  //     if (!exception) {
-  //
-  //       $("#" + camalize(indicators[i].categories[j]) + " .indicators-box #" + indicators[i].code.replaceAll(".", "-") + ".indicator-box .indicator-name").css("color", "gray")
-  //
-  //     }
-  //
-  //   }
-  //
-  //   if (plot.type == "Indicators") {
-  //
-  //     size += indicators[i].size
-  //
-  //     if (indicators[i].code == r) {
-  //       $("#r").append("" + indicators[i].name + "")
-  //     } else if (indicators[i].code == x) {
-  //       $("#x").append("" + indicators[i].name + "")
-  //     } else if (indicators[i].code == y) {
-  //       $("#y").append("" + indicators[i].name + "")
-  //     } else if (indicators[i].code == z) {
-  //       $("#z").append("" + indicators[i].name + "")
-  //     }
-  //
-  //   }
-  //
-  // }
-  //
-  // $("#size-stat").append("" + format(size, "data") + "")
+  let size = 0
+
+  let r = readCookie("r")
+  let x = readCookie("x")
+  let y = readCookie("y")
+  let z = readCookie("z")
+
+  let indicatorExceptions = localRead("settings").general.indicatorExceptions
+
+  for (let i = 0; i < indicators.length; i++) {
+
+    let exception = indicatorExceptions.includes(indicators[i].code)
+
+    for (let j = 0; j < indicators[i].categories.length; j++) {
+
+      let indicatorsBox = $("#" + camalize(indicators[i].categories[j]) + ".category-box .indicators-box")
+      let indicatorBox = "<div id='" + indicators[i].code.replaceAll(".", "-") + "' class='indicator-box'>"
+
+      if (exception) {
+        indicatorBox += "<img class='indicator-visibility' src='/front/imgs/panels/indicators/visible.png'>"
+      } else {
+        indicatorBox += "<img class='indicator-visibility' src='/front/imgs/panels/indicators/hidden.png'>"
+      }
+
+      if (plot.type == "Indicators") {
+        indicatorBox += "<svg class='indicator-completeness'></svg>"
+        indicatorBox += "<a href='/indicators/" + indicators[i].code + "'><p class='indicator-name'>" + indicators[i].name + "</p></a></div>"
+      } else {
+        indicatorBox += "<p class='indicator-name'>" + indicators[i].name + "</p></div>"
+      }
+
+      indicatorsBox.append(indicatorBox)
+
+      if (!exception) {
+        $("#" + camalize(indicators[i].categories[j]) + " .indicators-box #" + indicators[i].code.replaceAll(".", "-") + ".indicator-box .indicator-name").css("color", "gray")
+      }
+
+      if (plot.type == "Indicators") {
+
+        let pie = d3.pie().sort(null)
+        let arc = d3.arc().innerRadius(6).outerRadius(8)
+        let svg = d3.select("#" + camalize(indicators[i].categories[j]) + " .indicators-box #" + indicators[i].code.replaceAll(".", "-") + ".indicator-box svg")
+
+        svg.selectAll(".indicator-completeness")
+           .data(pie([indicators[i].completeness, 100 - indicators[i].completeness]))
+           .enter()
+           .append("path")
+           .attr("d", arc)
+           .attr("transform", "translate(10, 10)")
+           .style("fill", function(data) {
+
+             let scale = d3.scaleLinear().range(["red", "orange", "green"]).domain([0, 50, 100])
+
+             return [scale(indicators[i].completeness), "none"][data.index]
+
+           })
+
+      }
+
+    }
+
+    if (plot.type == "Indicators") {
+
+      size += indicators[i].size
+
+      if (indicators[i].code == r) {
+        $("#r").append("" + indicators[i].name + "")
+      } else if (indicators[i].code == x) {
+        $("#x").append("" + indicators[i].name + "")
+      } else if (indicators[i].code == y) {
+        $("#y").append("" + indicators[i].name + "")
+      } else if (indicators[i].code == z) {
+        $("#z").append("" + indicators[i].name + "")
+      }
+
+    }
+
+  }
+
+  $("#size-stat").append("" + format(size, "data") + "")
 
 }
 
