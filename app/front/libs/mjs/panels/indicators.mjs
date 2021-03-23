@@ -146,8 +146,10 @@ export function toggleFold(element, panel) {
   let duration = 1000
 
   let id = $(element).parent().parent().attr("id")
+
   let fold = $("#" + id + ".category-box .category-fold")
   let folds = $(".category-fold")
+
   let categoryBox = $("#" + id + ".category-box")
   let headHeight = $("#" + id + ".category-box .category-head").height() + Number(categoryBox.css("padding").replace(/[a-z]/gi, "")) * 2
   let indicatorsBox = $("#" + id + ".category-box .indicators-box")
@@ -240,15 +242,13 @@ export function addIndicatorBoxes(indicators) {
 
       indicatorsBox.append(indicatorBox)
 
-      if (!exception) {
-        $("#" + camalize(indicators[i].categories[j]) + " .indicators-box #" + indicators[i].code.replaceAll(".", "-") + ".indicator-box .indicator-name").css("color", "gray")
-      }
+      if (!exception) { $("#" + camalize(indicators[i].categories[j]) + ".category-box .indicators-box #" + indicators[i].code.replaceAll(".", "-") + ".indicator-box .indicator-name").css("color", "gray") }
 
       if (plot.type == "Indicators") {
 
         let pie = d3.pie().sort(null)
         let arc = d3.arc().innerRadius(6).outerRadius(8)
-        let svg = d3.select("#" + camalize(indicators[i].categories[j]) + " .indicators-box #" + indicators[i].code.replaceAll(".", "-") + ".indicator-box svg")
+        let svg = d3.select("#" + camalize(indicators[i].categories[j]) + ".category-box .indicators-box #" + indicators[i].code.replaceAll(".", "-") + ".indicator-box svg")
 
         svg.selectAll(".indicator-completeness")
            .data(pie([indicators[i].completeness, 100 - indicators[i].completeness]))
@@ -272,15 +272,10 @@ export function addIndicatorBoxes(indicators) {
 
       size += indicators[i].size
 
-      if (indicators[i].code == r) {
-        $("#r").append("" + indicators[i].name + "")
-      } else if (indicators[i].code == x) {
-        $("#x").append("" + indicators[i].name + "")
-      } else if (indicators[i].code == y) {
-        $("#y").append("" + indicators[i].name + "")
-      } else if (indicators[i].code == z) {
-        $("#z").append("" + indicators[i].name + "")
-      }
+      if (indicators[i].code == r) { $("#r").append("<a href='/indicators/" + indicators[i].code + "'>" + indicators[i].name + "</a>") }
+      if (indicators[i].code == x) { $("#x").append("<a href='/indicators/" + indicators[i].code + "'>" + indicators[i].name + "</a>") }
+      if (indicators[i].code == y) { $("#y").append("<a href='/indicators/" + indicators[i].code + "'>" + indicators[i].name + "</a>") }
+      if (indicators[i].code == z) { $("#z").append("<a href='/indicators/" + indicators[i].code + "'>" + indicators[i].name + "</a>") }
 
     }
 
@@ -293,7 +288,6 @@ export function addIndicatorBoxes(indicators) {
 export function toggleIndicatorVisibility(element) {
 
     let code = $(element).parent().attr("id")
-    let category = $(element).parent().parent().parent().attr("id")
     let value = $(element).attr("src").split("/").pop().split(".")[0]
     let indicatorExceptions = localRead("settings").general.indicatorExceptions
 
