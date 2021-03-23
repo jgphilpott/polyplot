@@ -292,6 +292,27 @@ export function addIndicatorBoxes(indicators) {
 
 export function toggleIndicatorVisibility(element) {
 
-  console.log(element)
+    let code = $(element).parent().attr("id")
+    let category = $(element).parent().parent().parent().attr("id")
+    let value = $(element).attr("src").split("/").pop().split(".")[0]
+    let indicatorExceptions = localRead("settings").general.indicatorExceptions
+
+    if (value == "visible") {
+
+      $("#" + code + ".indicator-box .indicator-visibility").attr("src", "/front/imgs/panels/indicators/hidden.png")
+      $("#" + code + ".indicator-box .indicator-name").css("color", "gray")
+
+      indicatorExceptions = indicatorExceptions.filter(item => item != code.replaceAll("-", "."))
+
+    } else if (value == "hidden") {
+
+      $("#" + code + ".indicator-box .indicator-visibility").attr("src", "/front/imgs/panels/indicators/visible.png")
+      $("#" + code + ".indicator-box .indicator-name").css("color", "black")
+
+      indicatorExceptions.push(code.replaceAll("-", "."))
+
+    }
+
+    updateList("general", "indicatorExceptions", indicatorExceptions)
 
 }
