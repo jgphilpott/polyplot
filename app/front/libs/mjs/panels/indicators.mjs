@@ -158,15 +158,19 @@ export function toggleFold(element, panel) {
 
   if (indicatorsBox.css("display") == "none") {
 
-    $(".category-box").animate({height: headHeight}, {duration: duration, queue: false})
-    $(".indicators-box").css("display", "none")
-    for (let i = 0; i < folds.length; i++) { rotate($(folds[i]), 0, duration) }
+    if (plot.type != "Indicators") {
+
+      $(".category-box").animate({height: headHeight}, {duration: duration, queue: false})
+      $(".indicators-box").css("display", "none")
+      categoryBox.animate({width: 700}, {duration: duration, queue: false})
+      for (let i = 0; i < folds.length; i++) { rotate($(folds[i]), 0, duration) }
+
+    }
 
     indicatorsBox.css("display", "block")
     let height = indicatorsBox.height()
     indicatorsBox.css("display", "none")
 
-    if (plot.type != "Indicators") { categoryBox.animate({width: 700}, {duration: duration, queue: false}) }
     categoryBox.animate({height: height + headHeight}, {duration: duration, queue: false})
     indicatorsBox.css("display", "block")
     rotate(fold, 90, duration)
