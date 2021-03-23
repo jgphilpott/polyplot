@@ -73,10 +73,6 @@ export function addIndicatorsPanel(panelSetting) {
         toggleFold(this, panel)
       })
 
-      $(".indicator-visibility").click(function() {
-        toggleIndicatorVisibility(this)
-      })
-
       $(".indicator-name").click(function() {
         socket.emit("get_indicator", {"code": $(this).parent().attr("id").replaceAll("-", ".")}, {"_id": 0, "code": 1, "name": 1, "countries": 1, "min_value": 1, "max_value": 1})
       })
@@ -225,17 +221,21 @@ export function addIndicatorBoxes(indicators) {
       let indicatorsBox = $("#" + camalize(indicators[i].categories[j]) + ".category-box .indicators-box")
       let indicatorBox = "<div id='" + indicators[i].code.replaceAll(".", "-") + "' class='indicator-box'>"
 
-      if (exception) {
-        indicatorBox += "<img class='indicator-visibility' src='/front/imgs/panels/indicators/visible.png'>"
-      } else {
-        indicatorBox += "<img class='indicator-visibility' src='/front/imgs/panels/indicators/hidden.png'>"
-      }
-
       if (plot.type == "Indicators") {
+
+        if (exception) {
+          indicatorBox += "<img class='indicator-visibility' src='/front/imgs/panels/indicators/visible.png'>"
+        } else {
+          indicatorBox += "<img class='indicator-visibility' src='/front/imgs/panels/indicators/hidden.png'>"
+        }
+
         indicatorBox += "<svg class='indicator-completeness'></svg>"
         indicatorBox += "<a href='/indicators/" + indicators[i].code + "'><p class='indicator-name'>" + indicators[i].name + "</p></a></div>"
+
       } else {
+
         indicatorBox += "<p class='indicator-name'>" + indicators[i].name + "</p></div>"
+
       }
 
       indicatorsBox.append(indicatorBox)
@@ -292,6 +292,6 @@ export function addIndicatorBoxes(indicators) {
 
 export function toggleIndicatorVisibility(element) {
 
-  // console.log(element)
+  console.log(element)
 
 }
