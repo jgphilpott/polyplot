@@ -81,6 +81,10 @@ export function addIndicatorsPanel(panelSetting) {
         socket.emit("get_indicator", {"code": $(this).parent().attr("id").replaceAll("-", ".")}, {"_id": 0, "code": 1, "name": 1, "countries": 1, "min_value": 1, "max_value": 1})
       })
 
+      addPanelEvents(panel)
+
+      if (panelSetting) { panel.css("visibility", "visible") } else { panel.css("visibility", "hidden") }
+
     })
 
   })
@@ -139,70 +143,41 @@ export function addIndicatorsPanel(panelSetting) {
 
   })
 
-  addPanelEvents(panel)
-
-  if (panelSetting) { panel.css("visibility", "visible") } else { panel.css("visibility", "hidden") }
-
 }
 
 export function toggleFold(element, panel) {
 
-//   let id = $(element).parent().parent().attr("id")
-//   let fold = $("#" + id + ".category-box .category-fold")
-//   let categoryBox = $("#" + id + ".category-box")
-//   let indicatorsBox = $("#" + id + ".category-box .indicators-box")
-//
-//   if (indicatorsBox.css("display") == "none") {
-//
-//     $(".category-box").animate({"height": 30}, {"duration": 2000, "queue": false})
-//     $(".indicators-box").css("display", "none")
-//     rotate($(".category-fold"), 1)
-//
-//     indicatorsBox.css("display", "block")
-//     let height = indicatorsBox.height() + 35
-//     indicatorsBox.css("display", "none")
-//
-//     categoryBox.animate({"height": height}, {"duration": 2000, "queue": false})
-//     indicatorsBox.css("display", "block")
-//     rotate(fold, 90)
-//
-//   } else {
-//
-//     $(".category-box").animate({"height": 30}, {"duration": 2000, "queue": false})
-//     $(".indicators-box").css("display", "none")
-//     rotate($(".category-fold"), 1)
-//
-//   }
-//
-//   // let id = $(this).parent().parent().attr("id")
-//   // let fold = $("#" + id + ".category-box .fold")
-//   // let categoryBox = $("#" + id + ".category-box")
-//   // let indicatorsBox = $("#" + id + ".category-box .indicators-box")
-//   //
-//   // if (indicatorsBox.css("display") == "none") {
-//   //
-//   //   $(".category-box").animate({"width": 700}, {"duration": 1000, "queue": false})
-//   //   $(".category-box").animate({"height": 30}, {"duration": 1000, "queue": false})
-//   //   $(".indicators-box").css("display", "none")
-//   //   rotate($(".category-box .fold"), 1)
-//   //
-//   //   indicatorsBox.css("display", "block")
-//   //   let height = indicatorsBox.height() + 35
-//   //   indicatorsBox.css("display", "none")
-//   //
-//   //   categoryBox.animate({"width": 700}, {"duration": 1000, "queue": false})
-//   //   categoryBox.animate({"height": height}, {"duration": 1000, "queue": false})
-//   //   indicatorsBox.css("display", "block")
-//   //   rotate(fold, 90)
-//   //
-//   // } else {
-//   //
-//   //   $(".category-box").animate({"width": 350}, {"duration": 1000, "queue": false})
-//   //   $(".category-box").animate({"height": 30}, {"duration": 1000, "queue": false})
-//   //   $(".indicators-box").css("display", "none")
-//   //   rotate($(".category-box .fold"), 1)
-//   //
-//   // }
+  let duration = 1000
+
+  let id = $(element).parent().parent().attr("id")
+  let fold = $("#" + id + ".category-box .category-fold")
+  let folds = $(".category-fold")
+  let categoryBox = $("#" + id + ".category-box")
+  let headHeight = $("#" + id + ".category-box .category-head").height() + Number(categoryBox.css("padding").replace(/[a-z]/gi, "")) * 2
+  let indicatorsBox = $("#" + id + ".category-box .indicators-box")
+
+  if (indicatorsBox.css("display") == "none") {
+
+    $(".category-box").animate({height: headHeight}, {duration: duration, queue: false})
+    $(".indicators-box").css("display", "none")
+    for (let i = 0; i < folds.length; i++) { rotate($(folds[i]), 0, duration) }
+
+    indicatorsBox.css("display", "block")
+    let height = indicatorsBox.height()
+    indicatorsBox.css("display", "none")
+
+    if (plot.type != "Indicators") { categoryBox.animate({width: 700}, {duration: duration, queue: false}) }
+    categoryBox.animate({height: height + headHeight}, {duration: duration, queue: false})
+    indicatorsBox.css("display", "block")
+    rotate(fold, 90, duration)
+
+  } else {
+
+    if (plot.type != "Indicators") { $(".category-box").animate({width: 350}, {duration: duration, queue: false}) }
+    categoryBox.animate({height: headHeight}, {duration: duration, complete: function() { indicatorsBox.css("display", "none") }})
+    rotate(fold, 0, duration)
+
+  }
 
 }
 

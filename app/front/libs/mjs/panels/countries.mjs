@@ -37,11 +37,11 @@ export function addCountriesPanel(panelSetting) {
       toggleCountryVisibility(this)
     })
 
+    addPanelEvents(panel)
+
+    if (panelSetting) { panel.css("visibility", "visible") } else { panel.css("visibility", "hidden") }
+
   })
-
-  addPanelEvents(panel)
-
-  if (panelSetting) { panel.css("visibility", "visible") } else { panel.css("visibility", "hidden") }
 
 }
 
