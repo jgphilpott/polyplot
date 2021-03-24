@@ -232,13 +232,10 @@ export function addIndicatorBoxes(indicators) {
         }
 
         indicatorBox += "<svg class='indicator-completeness'></svg>"
-        indicatorBox += "<a href='/indicators/" + indicators[i].code + "'><p class='indicator-name'>" + indicators[i].name + "</p></a></div>"
-
-      } else {
-
-        indicatorBox += "<p class='indicator-name'>" + indicators[i].name + "</p></div>"
 
       }
+
+      indicatorBox += "<p class='indicator-name'>" + indicators[i].name + "</p></div>"
 
       indicatorsBox.append(indicatorBox)
 
@@ -246,8 +243,10 @@ export function addIndicatorBoxes(indicators) {
 
       if (plot.type == "Indicators") {
 
+        $("#" + camalize(indicators[i].categories[j]) + ".category-box .indicators-box #" + indicators[i].code.replaceAll(".", "-") + ".indicator-box .indicator-name").on("click", function() { window.location = "/indicators/" + indicators[i].code + "" })
+
         let pie = d3.pie().sort(null)
-        let arc = d3.arc().innerRadius(6).outerRadius(8)
+        let arc = d3.arc().innerRadius(8).outerRadius(12)
         let svg = d3.select("#" + camalize(indicators[i].categories[j]) + ".category-box .indicators-box #" + indicators[i].code.replaceAll(".", "-") + ".indicator-box svg")
 
         svg.selectAll(".indicator-completeness")
@@ -255,7 +254,7 @@ export function addIndicatorBoxes(indicators) {
            .enter()
            .append("path")
            .attr("d", arc)
-           .attr("transform", "translate(10, 10)")
+           .attr("transform", "translate(14, 14)")
            .style("fill", function(data) {
 
              let scale = d3.scaleLinear().range(["red", "orange", "green"]).domain([0, 50, 100])

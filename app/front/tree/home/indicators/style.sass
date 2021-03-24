@@ -1,0 +1,169 @@
+@import "../../../libs/sass/colors/solid/rainbow.sass"
+
+@import "../../../libs/sass/panels/all.sass"
+
+#indicators.panel
+
+  visibility: visible
+
+  top: 100px
+  left: 100px
+
+  width: calc(100% - 200px)
+
+  #name
+
+    margin: 12px
+    font-size: 28px
+
+    text-align: center
+
+  #api
+
+    position: absolute
+
+    top: 15px
+    left: 15px
+
+    width: 30px
+    height: 30px
+
+  #stats-box, #axes-box
+
+    width: 50%
+
+    padding: 25px
+
+    display: inline-block
+    vertical-align: top
+
+    h2
+
+      margin: 10px
+      font-size: 22px
+
+      text-align: center
+
+    p
+
+      margin: 8px
+      font-size: 18px
+
+      .stat-label, .axis-label
+
+        font-weight: bold
+
+      #r-key
+
+        color: $black
+
+      #x-key
+
+        color: $red
+
+      #y-key
+
+        color: $green
+
+      #z-key
+
+        color: $blue
+
+  .category-box
+
+    margin: 12px
+    padding: 5px
+
+    .category-head
+
+      display: flex
+      align-items: center
+
+      .category-icon
+
+        margin: 8px
+
+        width: 28px
+        height: 28px
+
+      .category-fold
+
+        margin: 5px
+
+        width: 10px
+        height: 15px
+
+      .category-icon:hover,
+      .category-fold:hover
+
+        cursor: pointer
+
+      .category-name
+
+        margin: 5px
+
+        font-size: 20px
+
+    .indicators-box
+
+      display: none
+
+      @media (min-width: 0px) and (max-width: 1000px)
+
+        column-count: 1
+
+      @media (min-width: 1001px) and (max-width: 1500px)
+
+        column-count: 2
+
+      @media (min-width: 1501px)
+
+        column-count: 3
+
+      padding-left: 60px
+
+      .indicator-box
+
+        display: inline-flex
+        align-items: center
+
+        -webkit-column-break-inside: avoid
+        page-break-inside: avoid
+        break-inside: avoid
+
+        margin: 10px
+        width: 100%
+
+        .indicator-visibility
+
+          margin: 5px
+
+          width: 25px
+          height: 20px
+
+        .indicator-visibility:hover
+
+          cursor: pointer
+
+        .indicator-completeness
+
+          margin: 5px
+
+          width: 28px
+          height: 28px
+
+        .indicator-name
+
+          margin: 5px
+
+          width: 80%
+          font-size: 18px
+
+        .indicator-name:hover
+
+          cursor: pointer
+          font-weight: bold
+
+#menu.panel
+
+  z-index: 1
