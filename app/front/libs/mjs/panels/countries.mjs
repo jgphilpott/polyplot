@@ -234,8 +234,20 @@ export function toggleRegionVisibility(element) {
 
 export function toggleCountryVisibility(element) {
 
-  let code = $(element).parent().attr("id")
-  let region = $(element).parent().parent().parent().attr("id")
+  let code, region = null
+
+  if (plot.type == "Country") {
+
+    code = plots.code
+    region = camalize(plots.region)
+
+  } else {
+
+    code = $(element).parent().attr("id")
+    region = $(element).parent().parent().parent().attr("id")
+
+  }
+
   let value = $(element).attr("src").split("/").pop().split(".")[0]
   let countryExceptions = localRead("settings").general.countryExceptions
 
@@ -247,7 +259,12 @@ export function toggleCountryVisibility(element) {
 
     countryExceptions.push(code)
 
-    if (subset(plots.filter(plot => camalize(plot.region) == region).map(plot => plot.code), countryExceptions)) {
+    let fullset = null
+
+    if (plot.type = "Country") { fullset = subset(plots.GeoJSON.features.filter(plot => camalize(plot.properties.region) == region).map(plot => plot.properties.code), countryExceptions) }
+    else { fullset =  subset(plots.filter(plot => camalize(plot.region) == region).map(plot => plot.code), countryExceptions) }
+
+    if (fullset) {
 
       $("#" + region + " .region-name").css("color", "gray")
       $("#" + region + " .region-visibility").attr("src", "/front/imgs/panels/countries/hidden.png")
