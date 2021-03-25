@@ -1,0 +1,108 @@
+@import "all.sass"
+
+#indicators.panel
+
+  visibility: hidden
+
+  top: 50%
+  left: 50%
+
+  transform: translate(-50%, -50%)
+
+  .indicators-head
+
+    display: flex
+    align-items: center
+
+    #axes-box
+
+      position: fixed
+
+      right: 15px
+      float: right
+
+      .axis-selector
+
+        display: inline-flex
+        align-items: center
+        justify-content: center
+
+        border: 1px solid $black
+        border-radius: 5px
+
+        margin: 5px
+
+        width: 20px
+        height: 20px
+
+      .axis-selector:hover
+
+        cursor: pointer
+
+      .scelection
+
+        background-color: $black-glass
+
+        h3
+
+          color: $white
+
+  .category-box
+
+    width: 350px
+
+    .category-head
+
+      display: flex
+      align-items: center
+
+      .category-icon
+
+        margin: 5px
+
+        width: 20px
+        height: 20px
+
+      .category-fold
+
+        padding: 3px
+
+        width: 10px
+        height: 15px
+
+      .category-icon:hover,
+      .category-fold:hover
+
+        cursor: pointer
+
+    .indicators-box
+
+      display: none
+
+      column-count: 2
+
+      width: 700px
+      padding-left: 42px
+
+      .indicator-box
+
+        display: flex
+        align-items: center
+
+        -webkit-column-break-inside: avoid
+        page-break-inside: avoid
+        break-inside: avoid
+
+        .indicator-visibility
+
+          width: 22px
+          height: 17px
+
+        .indicator-visibility:hover
+
+          cursor: pointer
+
+        .indicator-name:hover
+
+          cursor: pointer
+          font-weight: bold
