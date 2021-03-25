@@ -16,12 +16,17 @@ class Country():
         self.region = country["region"]
         self.wiki = country["wiki"]
 
+        self.min_year = country["min_year"] if "min_year" in country else None
+        self.max_year = country["max_year"] if "max_year" in country else None
+
         self.indicators = country["indicators"] if "indicators" in country else {}
         self.last_updated = country["last_updated"] if "last_updated" in country else None
 
     def update(self):
 
         try:
+
+            time_range = []
 
             query= {"countries": {"$exists": True, "$ne": []}, "completeness": {"$gt": 0}}
             filter = {"_id": 0, "code": 1, "name": 1, "categories": 1, "min_year": 1, "max_year": 1, "min_value": 1, "max_value": 1, "size": 1, "completeness": 1, "countries": {"$elemMatch": {"code": self.code}}}
@@ -51,6 +56,9 @@ class Country():
                 indicator["countries"][0]["min_year_total"] = indicator["min_year"]
                 indicator["countries"][0]["max_year_total"] = indicator["max_year"]
 
+                if type(indicator["min_year"]) == int: time_range.append(indicator["min_year"])
+                if type(indicator["max_year"]) == int: time_range.append(indicator["max_year"])
+
                 indicator["countries"][0]["min_value_total"] = indicator["min_value"]
                 indicator["countries"][0]["max_value_total"] = indicator["max_value"]
 
@@ -58,6 +66,9 @@ class Country():
                 indicator["countries"][0]["completeness_total"] = indicator["completeness"]
 
                 self.indicators[indicator["code"].replace(".", "-")] = indicator["countries"][0]
+
+            self.min_year = min(time_range)
+            self.max_year = max(time_range)
 
             self.last_updated = datetime.utcnow().strftime("%Y-%m-%d")
 
