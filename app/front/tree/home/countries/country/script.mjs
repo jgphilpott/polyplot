@@ -31,7 +31,7 @@ $(document).ready(function() {
     toggleCountryVisibility(this)
   })
 
-  panel.append("<svg id='miniMap'></svg>")
+  panel.append("<svg id='globe'></svg>")
 
   panel.append("<img id='flag' src='/front/imgs/flags/" + country.code + ".png'>")
   panel.append("<p><b>Formal Name:</b> " + country.formal_name + "</p>")
@@ -50,7 +50,7 @@ $(document).ready(function() {
   socket.on("new_maps", function(maps) {
 
     let centroid = country.centroid
-    let canvas = d3.select("#miniMap")
+    let canvas = d3.select("#globe")
     let projection = orthographic.scale(150).translate([150, 150])
     let path = d3.geoPath().projection(projection.rotate([-centroid[0], -centroid[1], 0]))
 
@@ -87,6 +87,8 @@ $(document).ready(function() {
     canvas.call(d3.drag()
                   .on("drag", function drag() {
 
+                    $("#globe").css("cursor", "grabbing")
+
                     let rotate = projection.rotate()
                     let scale = 75 / projection.scale()
 
@@ -100,7 +102,9 @@ $(document).ready(function() {
                     canvas.selectAll(".graticule").attr("d", pathGenerator)
                     canvas.selectAll(".map").attr("d", pathGenerator)
 
-                  }))
+                  })
+                  .on("end", function end() { $("#globe").css("cursor", "grab") })
+                )
 
   })
 
