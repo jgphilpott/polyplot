@@ -1,7 +1,7 @@
 <html>
   <head>
 
-    <title>Country</title>
+    <title>{{ data.plot.plots.name | safe }}</title>
 
     <link rel="shortcut icon" href="{{ url_for('static', filename='imgs/theme/favicon.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='tree/home/countries/country/style.css') }}">
