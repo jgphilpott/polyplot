@@ -261,7 +261,7 @@ export function toggleCountryVisibility(element) {
 
     let fullset = null
 
-    if (plot.type = "Country") { fullset = subset(plots.GeoJSON.features.filter(plot => camalize(plot.properties.region) == region).map(plot => plot.properties.code), countryExceptions) }
+    if (plot.type == "Country") { fullset = subset(plots.GeoJSON.features.filter(plot => camalize(plot.properties.region) == region).map(plot => plot.properties.code), countryExceptions) }
     else { fullset =  subset(plots.filter(plot => camalize(plot.region) == region).map(plot => plot.code), countryExceptions) }
 
     if (fullset) {
