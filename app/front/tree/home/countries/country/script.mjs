@@ -33,7 +33,7 @@ $(document).ready(function() {
 
   panel.append("<svg id='miniMap'></svg>")
 
-  panel.append("<img class='flag' src='/front/imgs/flags/" + country.code + ".png'>")
+  panel.append("<img id='flag' src='/front/imgs/flags/" + country.code + ".png'>")
   panel.append("<p><b>Formal Name:</b> " + country.formal_name + "</p>")
   panel.append("<p><b>Region:</b> " + country.region + "</p>")
   panel.append("<br><p><b>Description:</b> <a href='" + country.factbook + "'>Factbook</a></p><br>")
@@ -45,13 +45,13 @@ $(document).ready(function() {
 
   }
 
-  socket.emit("get_maps")
+  socket.emit("get_maps", {}, {"_id": 0}, [["properties.code", 1]], 0, "micro")
 
   socket.on("new_maps", function(maps) {
 
     let centroid = country.centroid
     let canvas = d3.select("#miniMap")
-    let projection = orthographic.scale(175).translate([200, 200])
+    let projection = orthographic.scale(150).translate([150, 150])
     let path = d3.geoPath().projection(projection.rotate([-centroid[0], -centroid[1], 0]))
 
     let graticule = d3.geoGraticule()
@@ -77,7 +77,7 @@ $(document).ready(function() {
           .style("fill", function(feature) {
 
             if (feature.properties.code == country.code) {
-              return rainbow[0]
+              return regionsColourSwitch(country.region)
             } else {
               return "gray"
             }
