@@ -1,4 +1,5 @@
 import {rainbow} from "../../../../libs/mjs/colors/solid/rainbow.mjs"
+import {toggleTextbox} from "../../../../libs/mjs/tools/textbox.mjs"
 import {makeScrollable} from "../../../../libs/mjs/panels/events/scroll.mjs"
 import {regionsColourSwitch} from "../../../../libs/mjs/colors/switches/regions.mjs"
 import {toggleIndicatorVisibility} from "../../../../libs/mjs/panels/indicators.mjs"
@@ -97,24 +98,65 @@ $(document).ready(function() {
     .attr("dy", "1.5em")
 
   if (indicator.description) {
-    panel.append("<p><b>Description:</b></p>")
-    panel.append("<p>" + indicator.description + "</p><br>")
+
+    let description = "<div id='indicatorDescription' class='textbox'><div class='textbox-head'>"
+
+    description += "<img class='textbox-fold' src='/front/imgs/panels/indicators/fold.png'>"
+    description += "<p><b>Description:</b></p></div>"
+    description += "<div class='textbox-body'><p>" + indicator.description + "</p><br></div></div>"
+
+    panel.append(description)
+
   }
 
   if (indicator.relevance) {
-    panel.append("<p><b>Relevance:</b></p>")
-    panel.append("<p>" + indicator.relevance + "</p><br>")
+
+    let relevance = "<div id='indicatorRelevance' class='textbox'><div class='textbox-head'>"
+
+    relevance += "<img class='textbox-fold' src='/front/imgs/panels/indicators/fold.png'>"
+    relevance += "<p><b>Relevance:</b></p></div>"
+    relevance += "<div class='textbox-body'><p>" + indicator.relevance + "</p><br></div></div>"
+
+    panel.append(relevance)
+
   }
 
   if (indicator.methodology) {
-    panel.append("<p><b>Methodology:</b></p>")
-    panel.append("<p>" + indicator.methodology + "</p><br>")
+
+    let methodology = "<div id='indicatorMethodology' class='textbox'><div class='textbox-head'>"
+
+    methodology += "<img class='textbox-fold' src='/front/imgs/panels/indicators/fold.png'>"
+    methodology += "<p><b>Methodology:</b></p></div>"
+    methodology += "<div class='textbox-body'><p>" + indicator.methodology + "</p><br></div></div>"
+
+    panel.append(methodology)
+
   }
 
   if (indicator.limitations) {
-    panel.append("<p><b>Limitations:</b></p>")
-    panel.append("<p>" + indicator.limitations + "</p><br>")
+
+    let limitations = "<div id='indicatorLimitations' class='textbox'><div class='textbox-head'>"
+
+    limitations += "<img class='textbox-fold' src='/front/imgs/panels/indicators/fold.png'>"
+    limitations += "<p><b>Limitations:</b></p></div>"
+    limitations += "<div class='textbox-body'><p>" + indicator.limitations + "</p><br></div></div>"
+
+    panel.append(limitations)
+
   }
+
+  for (let i = 0; i < $(".textbox").length; i++) {
+
+    let id = $(".textbox")[i].id
+    let fold = $("#" + id + ".textbox .textbox-fold")
+
+    rotate(fold, 90, 0)
+
+  }
+
+  $(".textbox-fold").click(function() {
+    toggleTextbox(this)
+  })
 
     // panel.append("<svg class='graph'></svg>")
 

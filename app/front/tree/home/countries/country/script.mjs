@@ -1,4 +1,5 @@
 import {rainbow} from "../../../../libs/mjs/colors/solid/rainbow.mjs"
+import {toggleTextbox} from "../../../../libs/mjs/tools/textbox.mjs"
 import {orthographic} from "../../../../libs/mjs/cartography/projections.mjs"
 import {makeScrollable} from "../../../../libs/mjs/panels/events/scroll.mjs"
 import {regionsColourSwitch} from "../../../../libs/mjs/colors/switches/regions.mjs"
@@ -36,14 +37,27 @@ $(document).ready(function() {
   panel.append("<img id='flag' src='/front/imgs/flags/" + country.code + ".png'>")
   panel.append("<p><b>Formal Name:</b> " + country.formal_name + "</p>")
   panel.append("<p><b>Region:</b> " + country.region + "</p>")
-  panel.append("<br><p><b>Description:</b> <a href='" + country.factbook + "'>Factbook</a></p><br>")
+
+  let description = "<div id='countryDescription' class='textbox'><div class='textbox-head'>"
+
+  description += "<img class='textbox-fold' src='/front/imgs/panels/countries/fold.png'>"
+  description += "<p><b>Description:</b> <a href='" + country.factbook + "'>Factbook</a></p></div>"
+  description += "<div class='textbox-body'>"
 
   for (let i = 0; i < country.description.length; i++) {
 
-    panel.append("<p>" + country.description[i] + "</p>")
-    panel.append("<br>")
+    description += "<p>" + country.description[i] + "</p>"
+    description += "<br>"
 
   }
+
+  panel.append(description + "</div></div>")
+
+  rotate($(".textbox-fold"), 90, 0)
+
+  $(".textbox-fold").click(function() {
+    toggleTextbox(this)
+  })
 
   socket.emit("get_maps", {}, {"_id": 0}, [["properties.code", 1]], 0, "micro")
 
