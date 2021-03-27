@@ -1,5 +1,30 @@
 import {updateSettings} from "../panels/menu.mjs"
 
+export function addTextbox(type, id, text) {
+
+  let textbox = "<div id='" + type + id + "' class='textbox'><div class='textbox-head'>"
+
+  if (data.plot.type == "Country") {
+
+    textbox += "<img class='textbox-fold' src='/front/imgs/panels/countries/fold.png'>"
+    textbox += "<p><b>" + id + ":</b> <a href='" + data.plot.plots.factbook + "'>Factbook</a></p></div><div class='textbox-body'>"
+
+    for (let i = 0; i < text.length; i++) {
+      textbox += "<p>" + text[i] + "</p><br>"
+    }
+
+  } else if (data.plot.type == "Indicator") {
+
+    textbox += "<img class='textbox-fold' src='/front/imgs/panels/indicators/fold.png'>"
+    textbox += "<p><b>" + id + ":</b></p></div>"
+    textbox += "<div class='textbox-body'><p>" + text + "</p><br>"
+
+  }
+
+  return textbox + "</div></div>"
+
+}
+
 export function toggleTextbox(element, duration=1000) {
 
   let id = $(element).parent().parent().attr("id")

@@ -1,9 +1,9 @@
 import {rainbow} from "../../../../libs/mjs/colors/solid/rainbow.mjs"
-import {toggleTextbox} from "../../../../libs/mjs/tools/textbox.mjs"
 import {orthographic} from "../../../../libs/mjs/cartography/projections.mjs"
 import {makeScrollable} from "../../../../libs/mjs/panels/events/scroll.mjs"
 import {regionsColourSwitch} from "../../../../libs/mjs/colors/switches/regions.mjs"
 import {toggleCountryVisibility} from "../../../../libs/mjs/panels/countries.mjs"
+import {toggleTextbox, addTextbox} from "../../../../libs/mjs/tools/textbox.mjs"
 
 $(document).ready(function() {
 
@@ -40,22 +40,9 @@ $(document).ready(function() {
   panel.append("<p><b>Formal Name:</b> " + country.formal_name + "</p>")
   panel.append("<p><b>Region:</b> " + country.region + "</p>")
 
-  let description = "<div id='countryDescription' class='textbox'><div class='textbox-head'>"
+  panel.append(addTextbox("country", "Description", country.description))
 
-  description += "<img class='textbox-fold' src='/front/imgs/panels/countries/fold.png'>"
-  description += "<p><b>Description:</b> <a href='" + country.factbook + "'>Factbook</a></p></div>"
-  description += "<div class='textbox-body'>"
-
-  for (let i = 0; i < country.description.length; i++) {
-
-    description += "<p>" + country.description[i] + "</p>"
-    description += "<br>"
-
-  }
-
-  panel.append(description + "</div></div>")
-
-  rotate($(".textbox-fold"), 90, 0)
+  rotate($("#countryDescription.textbox .textbox-fold"), 90, 0)
 
   if (!generalSettings["countryDescription"]) {
     toggleTextbox($("#countryDescription.textbox .textbox-fold"), 0)
