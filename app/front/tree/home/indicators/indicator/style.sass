@@ -1,0 +1,134 @@
+@import "../../../../libs/sass/panels/all.sass"
+
+#indicator.panel
+
+  visibility: visible
+
+  top: 100px
+  left: 100px
+
+  width: calc(100% - 200px)
+
+  border: 2px solid $black
+
+  #name
+
+    margin: 12px
+    font-size: 28px
+
+    text-align: center
+
+  #api
+
+    position: absolute
+
+    top: 15px
+    left: 15px
+
+    width: 30px
+    height: 30px
+
+  #link
+
+    position: absolute
+
+    top: 15px
+    left: 60px
+
+    width: 30px
+    height: 30px
+
+  #visibility
+
+    position: absolute
+
+    top: 14px
+    left: 105px
+
+    width: 44px
+    height: 34px
+
+  #api:hover,
+  #link:hover,
+  #visibility:hover
+
+    cursor: pointer
+
+  #stats-box, #categories-box
+
+    width: 50%
+
+    padding: 25px
+
+    display: inline-block
+    vertical-align: top
+
+    h2
+
+      margin: 10px
+      font-size: 22px
+
+      text-align: center
+
+    p
+
+      margin: 8px
+      font-size: 18px
+
+    #completeness
+
+      margin-right: 25px
+
+      width: 150px
+      height: 150px
+
+      float: left
+
+    .category-box
+
+      display: flex
+      align-items: center
+
+      .category-icon
+
+        margin: 8px
+
+        width: 28px
+        height: 28px
+
+  // .graph
+  //
+  //   margin: 50px
+  //
+  //   .axis path
+  //
+  //     stroke: $black
+  //     shape-rendering: crispEdges
+  //
+  //   .tick line
+  //
+  //     stroke: $gray
+  //     shape-rendering: crispEdges
+  //
+  // .country
+  //
+  //   display: flex
+  //   align-items: center
+  //
+  //   padding: 5px
+  //
+  //   margin: 10px
+  //   margin-left: 50px
+  //   margin-right: 50px
+  //
+  //   border: 1px solid $black
+  //   border-radius: 10px
+  //
+  //   .flag
+  //
+  //     width: 30px
+  //     height: 18px
+
+#menu.panel
+
+  z-index: 1
