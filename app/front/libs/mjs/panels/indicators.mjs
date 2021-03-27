@@ -286,11 +286,20 @@ export function addIndicatorBoxes(indicators) {
 
 export function toggleIndicatorVisibility(element) {
 
-    let code = $(element).parent().attr("id")
+    let code = null
+
+    if (plot.type == "Indicator") {
+      code = plots.code
+    } else {
+      code = $(element).parent().attr("id")
+    }
+
     let value = $(element).attr("src").split("/").pop().split(".")[0]
     let indicatorExceptions = localRead("settings").general.indicatorExceptions
 
     if (value == "visible") {
+
+      if (plot.type == "Indicator") { $(element).attr("src", "/front/imgs/panels/indicators/hidden.png") }
 
       $("#" + code + ".indicator-box .indicator-visibility").attr("src", "/front/imgs/panels/indicators/hidden.png")
       $("#" + code + ".indicator-box .indicator-name").css("color", "gray")
@@ -298,6 +307,8 @@ export function toggleIndicatorVisibility(element) {
       indicatorExceptions = indicatorExceptions.filter(item => item != code.replaceAll("-", "."))
 
     } else if (value == "hidden") {
+
+      if (plot.type == "Indicator") { $(element).attr("src", "/front/imgs/panels/indicators/visible.png") }
 
       $("#" + code + ".indicator-box .indicator-visibility").attr("src", "/front/imgs/panels/indicators/visible.png")
       $("#" + code + ".indicator-box .indicator-name").css("color", "black")
