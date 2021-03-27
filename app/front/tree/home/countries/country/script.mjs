@@ -17,12 +17,14 @@ $(document).ready(function() {
 
   let panel = $("#country.panel")
 
+  let generalSettings = localRead("settings").general
+
   panel.css("border", "2px solid " + regionsColourSwitch(country.region) + "")
 
   panel.append("<a href='/api/countries/" + country.code + "'><img id='api' src='/front/imgs/panels/countries/api.png'></a>")
   panel.append("<a href='" + country.wiki + "'><img id='wiki' src='/front/imgs/panels/countries/wiki.png'></a>")
 
-  if (localRead("settings").general.countryExceptions.includes(country.code)) {
+  if (generalSettings.countryExceptions.includes(country.code)) {
     panel.append("<img id='visibility' src='/front/imgs/panels/countries/hidden.png'>")
   } else {
     panel.append("<img id='visibility' src='/front/imgs/panels/countries/visible.png'>")
@@ -54,6 +56,10 @@ $(document).ready(function() {
   panel.append(description + "</div></div>")
 
   rotate($(".textbox-fold"), 90, 0)
+
+  if (!generalSettings["countryDescription"]) {
+    toggleTextbox($("#countryDescription.textbox .textbox-fold"), 0)
+  }
 
   $(".textbox-fold").click(function() {
     toggleTextbox(this)

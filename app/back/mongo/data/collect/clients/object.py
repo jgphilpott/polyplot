@@ -32,6 +32,11 @@ class Client():
                 "general": {
                     "countryExceptions": [],
                     "indicatorExceptions": ["SP.POP.TOTL", "SP.DYN.LE00.IN", "SP.DYN.TFRT.IN", "NY.GDP.PCAP.KD.ZG"],
+                    "countryDescription": True,
+                    "indicatorDescription": True,
+                    "indicatorRelevance": True,
+                    "indicatorMethodology": True,
+                    "indicatorLimitations": True,
                     "rotation": False
                 },
 

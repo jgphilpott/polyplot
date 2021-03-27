@@ -1,6 +1,6 @@
-export function toggleTextbox(element) {
+import {updateSettings} from "../panels/menu.mjs"
 
-  let duration = 1000
+export function toggleTextbox(element, duration=1000) {
 
   let id = $(element).parent().parent().attr("id")
   let textbox = $("#" + id + ".textbox")
@@ -13,6 +13,8 @@ export function toggleTextbox(element) {
 
     rotate($(element), 0, duration)
 
+    updateSettings("general", id, false)
+
   } else if (getRotation($(element)) == 0) {
 
     textboxBody.css("display", "block")
@@ -21,6 +23,8 @@ export function toggleTextbox(element) {
     textbox.animate({height: height + headHeight}, {duration: duration, queue: false})
 
     rotate($(element), 90, duration)
+
+    updateSettings("general", id, true)
 
   }
 

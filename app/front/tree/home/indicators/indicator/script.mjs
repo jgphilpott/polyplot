@@ -16,10 +16,12 @@ $(document).ready(function() {
 
   let panel = $("#indicator.panel")
 
+  let generalSettings = localRead("settings").general
+
   panel.append("<a href='/api/indicators/" + indicator.code + "'><img id='api' src='/front/imgs/panels/indicators/api.png'></a>")
   panel.append("<a href='https://data.worldbank.org/indicator/" + indicator.code + "'><img id='link' src='/front/imgs/panels/indicators/link.png'></a>")
 
-  if (localRead("settings").general.indicatorExceptions.includes(indicator.code)) {
+  if (generalSettings.indicatorExceptions.includes(indicator.code)) {
     panel.append("<img id='visibility' src='/front/imgs/panels/indicators/visible.png'>")
   } else {
     panel.append("<img id='visibility' src='/front/imgs/panels/indicators/hidden.png'>")
@@ -151,6 +153,10 @@ $(document).ready(function() {
     let fold = $("#" + id + ".textbox .textbox-fold")
 
     rotate(fold, 90, 0)
+
+    if (!generalSettings[id]) {
+      toggleTextbox($("#" + id + ".textbox .textbox-fold"), 0)
+    }
 
   }
 
