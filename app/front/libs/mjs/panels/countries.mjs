@@ -1,4 +1,4 @@
-import {updateList} from "./menu.mjs"
+import {updateSettings} from "./menu.mjs"
 import {addPanelEvents} from "./events/all.mjs"
 import {regionsColourSwitch} from "../colors/switches/regions.mjs"
 
@@ -228,7 +228,7 @@ export function toggleRegionVisibility(element) {
 
   }
 
-  updateList("general", "countryExceptions", countryExceptions)
+  updateSettings("general", "countryExceptions", countryExceptions)
 
 }
 
@@ -287,6 +287,6 @@ export function toggleCountryVisibility(element) {
 
   }
 
-  updateList("general", "countryExceptions", countryExceptions)
+  updateSettings("general", "countryExceptions", countryExceptions)
 
 }

@@ -96,6 +96,26 @@ $(document).ready(function() {
     .style("text-anchor", "middle")
     .attr("dy", "1.5em")
 
+  if (indicator.description) {
+    panel.append("<p><b>Description:</b></p>")
+    panel.append("<p>" + indicator.description + "</p><br>")
+  }
+
+  if (indicator.relevance) {
+    panel.append("<p><b>Relevance:</b></p>")
+    panel.append("<p>" + indicator.relevance + "</p><br>")
+  }
+
+  if (indicator.methodology) {
+    panel.append("<p><b>Methodology:</b></p>")
+    panel.append("<p>" + indicator.methodology + "</p><br>")
+  }
+
+  if (indicator.limitations) {
+    panel.append("<p><b>Limitations:</b></p>")
+    panel.append("<p>" + indicator.limitations + "</p><br>")
+  }
+
     // panel.append("<svg class='graph'></svg>")
 
   //   let graphWidth = panel.width() - 100

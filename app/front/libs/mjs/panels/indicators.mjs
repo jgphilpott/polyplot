@@ -1,4 +1,4 @@
-import {updateList} from "./menu.mjs"
+import {updateSettings} from "./menu.mjs"
 import {addPanelEvents} from "./events/all.mjs"
 
 import {animateMaps} from "../animation/types/maps.mjs"
@@ -317,6 +317,6 @@ export function toggleIndicatorVisibility(element) {
 
     }
 
-    updateList("general", "indicatorExceptions", indicatorExceptions)
+    updateSettings("general", "indicatorExceptions", indicatorExceptions)
 
 }
