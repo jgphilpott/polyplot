@@ -1,5 +1,5 @@
 from back.mongo.data.collect.ions import find_collection
-from back.mongo.data.collect.railroads.object import Railroad
+from back.mongo.data.collect.railroads.model import Railroad
 
 def find_railroad(query={}, filter={"_id": 0}, detail="micro"):
 

@@ -1,5 +1,5 @@
 from back.mongo.data.collect.ions import find_collection
-from back.mongo.data.collect.lakes.object import Lake
+from back.mongo.data.collect.lakes.model import Lake
 
 def find_lake(query={}, filter={"_id": 0}, detail="micro"):
 

@@ -1,5 +1,5 @@
 from back.mongo.data.collect.ions import find_collection
-from back.mongo.data.collect.maps.object import Map
+from back.mongo.data.collect.maps.model import Map
 
 def find_map(query={}, filter={"_id": 0}, detail="micro"):
 

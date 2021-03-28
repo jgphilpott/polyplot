@@ -1,5 +1,5 @@
 from back.mongo.data.collect.ions import find_collection
-from back.mongo.data.collect.roads.object import Road
+from back.mongo.data.collect.roads.model import Road
 
 def find_road(query={}, filter={"_id": 0}, detail="micro"):
 

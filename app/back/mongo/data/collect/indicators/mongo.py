@@ -1,5 +1,5 @@
 from back.mongo.data.collect.ions import find_collection
-from back.mongo.data.collect.indicators.object import Indicator
+from back.mongo.data.collect.indicators.model import Indicator
 
 collection = find_collection("indicators")
 

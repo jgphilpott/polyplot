@@ -1,5 +1,5 @@
 from back.mongo.data.collect.ions import find_collection
-from back.mongo.data.collect.airports.object import Airport
+from back.mongo.data.collect.airports.model import Airport
 
 collection = find_collection("airports")
 

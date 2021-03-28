@@ -1,5 +1,5 @@
 from back.mongo.data.collect.ions import find_collection
-from back.mongo.data.collect.ports.object import Port
+from back.mongo.data.collect.ports.model import Port
 
 collection = find_collection("ports")
 

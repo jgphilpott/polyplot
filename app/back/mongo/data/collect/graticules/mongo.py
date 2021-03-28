@@ -1,5 +1,5 @@
 from back.mongo.data.collect.ions import find_collection
-from back.mongo.data.collect.graticules.object import Graticule
+from back.mongo.data.collect.graticules.model import Graticule
 
 collection = find_collection("graticules")
 

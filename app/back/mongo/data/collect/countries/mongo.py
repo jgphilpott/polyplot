@@ -1,5 +1,5 @@
 from back.mongo.data.collect.ions import find_collection
-from back.mongo.data.collect.countries.object import Country
+from back.mongo.data.collect.countries.model import Country
 
 collection = find_collection("countries")
 

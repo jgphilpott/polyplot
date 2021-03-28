@@ -1,5 +1,5 @@
 from back.mongo.data.collect.ions import find_collection
-from back.mongo.data.collect.metas.object import Meta
+from back.mongo.data.collect.metas.model import Meta
 
 collection = find_collection("metas")
 

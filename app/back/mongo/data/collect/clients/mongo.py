@@ -1,5 +1,5 @@
 from back.mongo.data.collect.ions import find_collection
-from back.mongo.data.collect.clients.object import Client
+from back.mongo.data.collect.clients.model import Client
 
 collection = find_collection("clients")
 

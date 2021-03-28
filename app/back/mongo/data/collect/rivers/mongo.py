@@ -1,5 +1,5 @@
 from back.mongo.data.collect.ions import find_collection
-from back.mongo.data.collect.rivers.object import River
+from back.mongo.data.collect.rivers.model import River
 
 def find_river(query={}, filter={"_id": 0}, detail="micro"):
 
