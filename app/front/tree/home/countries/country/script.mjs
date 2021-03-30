@@ -2,6 +2,8 @@ import {rainbow} from "../../../../libs/mjs/colors/solid/rainbow.mjs"
 import {orthographic} from "../../../../libs/mjs/cartography/projections.mjs"
 import {makeScrollable} from "../../../../libs/mjs/panels/events/scroll.mjs"
 import {regionsColourSwitch} from "../../../../libs/mjs/colors/switches/regions.mjs"
+
+import {addCategoryBoxes} from "../../../../libs/mjs/panels/indicators.mjs"
 import {toggleCountryVisibility} from "../../../../libs/mjs/panels/countries.mjs"
 import {toggleTextbox, addTextbox} from "../../../../libs/mjs/tools/textbox.mjs"
 
@@ -112,6 +114,16 @@ $(document).ready(function() {
                   })
                   .on("end", function end() { $("#globe").css("cursor", "grab") })
                 )
+
+  })
+
+  socket.emit("get_meta", "categories")
+
+  socket.on("new_categories", function(categories) {
+
+    panel.append("<a href='/indicators'><h1>Indicators by Category</h1></a>")
+
+    addCategoryBoxes(categories)
 
   })
 

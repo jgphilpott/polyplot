@@ -1,6 +1,7 @@
 import {rainbow} from "../../../../libs/mjs/colors/solid/rainbow.mjs"
 import {makeScrollable} from "../../../../libs/mjs/panels/events/scroll.mjs"
 import {regionsColourSwitch} from "../../../../libs/mjs/colors/switches/regions.mjs"
+
 import {toggleIndicatorVisibility} from "../../../../libs/mjs/panels/indicators.mjs"
 import {toggleTextbox, addTextbox} from "../../../../libs/mjs/tools/textbox.mjs"
 

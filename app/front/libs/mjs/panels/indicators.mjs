@@ -185,7 +185,13 @@ export function toggleFold(element, panel) {
 
 export function addCategoryBoxes(categories) {
 
-  let panel = $("#indicators.panel")
+  let panel = null
+
+  if (plot.type == "Country") {
+    panel = $("#country.panel")
+  } else {
+    panel = $("#indicators.panel")
+  }
 
   for (let i = 0; i < categories.length; i++) {
 
