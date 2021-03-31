@@ -152,6 +152,58 @@
 
         font-size: 20px
 
+    .indicators-box
+
+      display: none
+
+      padding-left: 60px
+
+      .indicator-box
+
+        display: inline-flex
+        align-items: center
+
+        -webkit-column-break-inside: avoid
+        page-break-inside: avoid
+        break-inside: avoid
+
+        margin: 10px
+        width: 100%
+
+        .indicator-completeness
+
+          margin: 5px
+
+          width: 28px
+          height: 28px
+
+        .indicator-name
+
+          margin: 5px
+
+          width: 40%
+          font-size: 18px
+
+        .indicator-name:hover
+
+          cursor: pointer
+          font-weight: bold
+
+        .indicator-value
+
+          margin: auto
+
+        .indicator-link
+
+          margin: 5px
+
+          width: 28px
+          height: 28px
+
+      .indicator-box:hover
+
+        background-color: $gray-glass
+
 #menu.panel
 
   z-index: 1

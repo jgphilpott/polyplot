@@ -3,9 +3,9 @@ import {orthographic} from "../../../../libs/mjs/cartography/projections.mjs"
 import {makeScrollable} from "../../../../libs/mjs/panels/events/scroll.mjs"
 import {regionsColourSwitch} from "../../../../libs/mjs/colors/switches/regions.mjs"
 
-import {addCategoryBoxes} from "../../../../libs/mjs/panels/indicators.mjs"
 import {toggleCountryVisibility} from "../../../../libs/mjs/panels/countries.mjs"
 import {toggleTextbox, addTextbox} from "../../../../libs/mjs/tools/textbox.mjs"
+import {toggleFold, addCategoryBoxes, addIndicatorBoxes} from "../../../../libs/mjs/panels/indicators.mjs"
 
 $(document).ready(function() {
 
@@ -123,7 +123,15 @@ $(document).ready(function() {
 
     panel.append("<a href='/indicators'><h1>Indicators by Category</h1></a>")
 
+    let indicators = Object.keys(country.indicators).filter(key => generalSettings.indicatorExceptions.includes(key.replaceAll("-", ".")))
+    indicators = Object.values(indicators.reduce((obj, key) => { obj[key] = country.indicators[key]; return obj }, {}))
+
     addCategoryBoxes(categories)
+    addIndicatorBoxes(indicators)
+
+    $(".category-icon, .category-fold").click(function() {
+      toggleFold(this, panel)
+    })
 
   })
 

@@ -156,7 +156,7 @@ export function toggleFold(element, panel) {
 
   if (indicatorsBox.css("display") == "none") {
 
-    if (plot.type != "Indicators") {
+    if (plot.type != "Indicators" && plot.type != "Country") {
 
       $(".category-box").animate({height: headHeight}, {duration: duration, queue: false})
       $(".indicators-box").css("display", "none")
@@ -175,7 +175,7 @@ export function toggleFold(element, panel) {
 
   } else {
 
-    if (plot.type != "Indicators") { $(".category-box").animate({width: 350}, {duration: duration, queue: false}) }
+    if (plot.type != "Indicators" && plot.type != "Country") { $(".category-box").animate({width: 350}, {duration: duration, queue: false}) }
     categoryBox.animate({height: headHeight}, {duration: duration, complete: function() { indicatorsBox.css("display", "none") }})
     rotate(fold, 0, duration)
 
@@ -212,6 +212,7 @@ export function addCategoryBoxes(categories) {
 export function addIndicatorBoxes(indicators) {
 
   let size = 0
+  let year = readCookie("year")
 
   let r = readCookie("r")
   let x = readCookie("x")
@@ -239,15 +240,26 @@ export function addIndicatorBoxes(indicators) {
 
         indicatorBox += "<svg class='indicator-completeness'></svg>"
 
+      } else if (plot.type == "Country") {
+
+        indicatorBox += "<svg class='indicator-completeness'></svg>"
+
       }
 
-      indicatorBox += "<p class='indicator-name'>" + indicators[i].name + "</p></div>"
+      indicatorBox += "<p class='indicator-name'>" + indicators[i].name + "</p>"
 
-      indicatorsBox.append(indicatorBox)
+      if (plot.type == "Country") {
+
+        indicatorBox += "<p class='indicator-value'>" + format(indicators[i].history.find(date => date.year == Number(year)).value, "oodles") + "</p>"
+        indicatorBox += "<a href='https://data.worldbank.org/indicator/" + indicators[i].code + "'><img class='indicator-link' src='/front/imgs/panels/indicators/link.png'></a>"
+
+      }
+
+      indicatorsBox.append(indicatorBox + "</div>")
 
       if (!exception) { $("#" + camalize(indicators[i].categories[j]) + ".category-box .indicators-box #" + indicators[i].code.replaceAll(".", "-") + ".indicator-box .indicator-name").css("color", "gray") }
 
-      if (plot.type == "Indicators") {
+      if (plot.type == "Indicators" || plot.type == "Country") {
 
         $("#" + camalize(indicators[i].categories[j]) + ".category-box .indicators-box #" + indicators[i].code.replaceAll(".", "-") + ".indicator-box .indicator-name").on("click", function() { window.location = "/indicators/" + indicators[i].code + "" })
 
