@@ -5,6 +5,10 @@ import {regionsColourSwitch} from "../../../../libs/mjs/colors/switches/regions.
 import {toggleIndicatorVisibility} from "../../../../libs/mjs/panels/indicators.mjs"
 import {toggleTextbox, addTextbox} from "../../../../libs/mjs/tools/textbox.mjs"
 
+import {toggleFold} from "../../../../libs/mjs/panels/countries.mjs"
+import {addRegionBoxes, addCountryBoxes} from "../../../../libs/mjs/panels/countries.mjs"
+import {toggleRegionVisibility, toggleCountryVisibility} from "../../../../libs/mjs/panels/countries.mjs"
+
 $(document).ready(function() {
 
   $("body").append("<canvas id='canvas'></canvas>")
@@ -120,6 +124,29 @@ $(document).ready(function() {
 
   $(".textbox-fold").click(function() {
     toggleTextbox(this)
+  })
+
+  socket.emit("get_meta", "regions")
+
+  socket.on("new_regions", function(regions) {
+
+    panel.append("<a href='/countries'><h1>Countries by Region</h1>")
+
+    addRegionBoxes(regions)
+    addCountryBoxes(indicator.countries)
+
+    $(".region-fold").click(function() {
+      toggleFold(this, panel)
+    })
+
+    $(".region-visibility").click(function() {
+      toggleRegionVisibility(this)
+    })
+
+    $(".country-visibility").click(function() {
+      toggleCountryVisibility(this)
+    })
+
   })
 
     // panel.append("<svg class='graph'></svg>")

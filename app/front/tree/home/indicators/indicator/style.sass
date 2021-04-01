@@ -96,6 +96,12 @@
         width: 28px
         height: 28px
 
+  h1
+
+    font-size: 24px
+
+    text-align: center
+
   p
 
     font-size: 18px
@@ -129,6 +135,107 @@
     .textbox-body
 
       margin-left: 18px
+
+  .region-box
+
+    margin: 12px
+    margin-left: 28px
+
+    padding: 5px
+
+    .region-head
+
+      display: flex
+      align-items: center
+
+      .region-fold
+
+        margin: 5px
+
+        width: 10px
+        height: 15px
+
+      .region-fold:hover
+
+        cursor: pointer
+
+      .region-name
+
+        margin: 5px
+
+        font-size: 20px
+
+      .region-visibility
+
+        margin: 5px
+
+        width: 25px
+        height: 20px
+
+      .region-visibility:hover
+
+        cursor: pointer
+
+    .countries-box
+
+      padding-left: 10px
+
+      .country-box
+
+        display: inline-flex
+        align-items: center
+
+        -webkit-column-break-inside: avoid
+        page-break-inside: avoid
+        break-inside: avoid
+
+        margin: 10px
+        width: 100%
+
+        .country-visibility
+
+          margin: 5px
+
+          width: 22px
+          height: 17px
+
+        .country-visibility:hover
+
+          cursor: pointer
+
+        .country-completeness
+
+          margin: 5px
+
+          width: 28px
+          height: 28px
+
+        .country-name
+
+          margin: 5px
+
+          width: 40%
+          font-size: 18px
+
+        .country-name:hover
+
+          cursor: pointer
+          font-weight: bold
+
+        .country-value
+
+          margin: auto
+
+        .country-wiki
+
+          margin: 5px
+
+          width: 28px
+          height: 28px
+
+      .country-box:hover
+
+        background-color: $gray-glass
 
   // .graph
   //
