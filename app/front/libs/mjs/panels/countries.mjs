@@ -45,19 +45,18 @@ export function addCountriesPanel(panelSetting) {
 
 }
 
-export function toggleFold(element, panel, panelWidth=null, panelHeight=null) {
-
-  let duration = 1000
+export function toggleFold(element, panel, panelWidth=null, panelHeight=null, duration=1000) {
 
   let id = $(element).parent().parent().attr("id")
   let fold = $("#" + id + ".region-box .region-fold")
+
   let regionBox = $("#" + id + ".region-box")
   let headHeight = $("#" + id + ".region-box .region-head").height() + Number(regionBox.css("padding").replace(/[a-z]/gi, "")) * 2
   let countriesBox = $("#" + id + ".region-box .countries-box")
 
   if (countriesBox.css("display") == "none") {
 
-    if (plot.type == "Countries") {
+    if (plot.type == "Countries" || plot.type == "Indicator") {
 
       countriesBox.css("display", "block")
       let height = countriesBox.height()
@@ -90,7 +89,7 @@ export function toggleFold(element, panel, panelWidth=null, panelHeight=null) {
 
   } else {
 
-    if (plot.type == "Countries") {
+    if (plot.type == "Countries" || plot.type == "Indicator") {
 
       regionBox.animate({height: headHeight}, {duration: duration, complete: function() { countriesBox.css("display", "none") }})
       rotate(fold, 0, duration)
@@ -142,6 +141,10 @@ export function addRegionBoxes(regions) {
 
     if (exception) {
       $("#" + camalize(regions[i]) + " .region-name").css("color", "gray")
+    }
+
+    if (plot.type == "Indicator") {
+      toggleFold($("#" + camalize(regions[i]) + ".region-box .region-fold"), panel)
     }
 
     $("#" + camalize(regions[i]) + ".region-box").css("border-left", "5px solid " + regionsColourSwitch(regions[i]) + "")

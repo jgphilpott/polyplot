@@ -141,9 +141,7 @@ export function addIndicatorsPanel(panelSetting) {
 
 }
 
-export function toggleFold(element, panel) {
-
-  let duration = 1000
+export function toggleFold(element, panel, duration=1000) {
 
   let id = $(element).parent().parent().attr("id")
 
