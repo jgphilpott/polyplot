@@ -152,6 +152,8 @@ export function addRegionBoxes(regions) {
 
 export function addCountryBoxes(countries) {
 
+  let year = readCookie("year")
+
   countries.sort((a, b) => a.name.localeCompare(b.name))
   let countryExceptions = localRead("settings").general.countryExceptions
 
@@ -169,18 +171,53 @@ export function addCountryBoxes(countries) {
     }
 
     if (plot.type == "Countries") {
+
       countryBox += "<img class='country-flag' src='/front/imgs/flags/" + countries[i].code + ".png'>"
       countryBox += "<a href='/countries/" + countries[i].code + "'><div><p class='country-name'>" + countries[i].name + "</p>"
-      countryBox += "<p class='country-formal-name'>" + countries[i].formal_name + "</p></div></a></div>"
+      countryBox += "<p class='country-formal-name'>" + countries[i].formal_name + "</p></div></a>"
+
+    } else if (plot.type == "Indicator") {
+
+      countryBox += "<svg class='country-completeness'></svg>"
+      countryBox += "<p class='country-name'>" + countries[i].name + "</p>"
+      countryBox += "<p class='country-value'>" + format(countries[i].history.find(date => date.year == Number(year)).value, "oodles") + "</p>"
+      countryBox += "<a href='" + countries[i].wiki + "'><img class='country-wiki' src='/front/imgs/panels/countries/wiki.png'></a>"
+
     } else {
-      countryBox += "<a href='/countries/" + countries[i].code + "'><p class='country-name'>" + countries[i].name + "</p></a></div>"
+
+      countryBox += "<a href='/countries/" + countries[i].code + "'><p class='country-name'>" + countries[i].name + "</p></a>"
+
     }
 
-    countriesBox.append(countryBox)
+    countriesBox.append(countryBox + "</div>")
 
     if (exception) {
       $("#" + countries[i].code + ".country-box .country-name").css("color", "gray")
       $("#" + countries[i].code + ".country-box .country-formal-name").css("color", "gray")
+    }
+
+    if (plot.type == "Indicator") {
+
+      $("#" + camalize(countries[i].region) + ".region-box .countries-box #" + countries[i].code + ".country-box .country-name").on("click", function() { window.location = "/countries/" + countries[i].code + "" })
+
+      let pie = d3.pie().sort(null)
+      let arc = d3.arc().innerRadius(8).outerRadius(12)
+      let svg = d3.select("#" + camalize(countries[i].region) + ".region-box .countries-box #" + countries[i].code + ".country-box svg")
+
+      svg.selectAll(".country-completeness")
+         .data(pie([countries[i].completeness, 100 - countries[i].completeness]))
+         .enter()
+         .append("path")
+         .attr("d", arc)
+         .attr("transform", "translate(14, 14)")
+         .style("fill", function(data) {
+
+           let scale = d3.scaleLinear().range(["red", "orange", "green"]).domain([0, 50, 100])
+
+           return [scale(countries[i].completeness), "none"][data.index]
+
+         })
+
     }
 
   }
@@ -276,8 +313,13 @@ export function toggleCountryVisibility(element) {
 
     let fullset = null
 
-    if (plot.type == "Country") { fullset = subset(plots.GeoJSON.features.filter(plot => camalize(plot.properties.region) == region).map(plot => plot.properties.code), countryExceptions) }
-    else { fullset =  subset(plots.filter(plot => camalize(plot.region) == region).map(plot => plot.code), countryExceptions) }
+    if (plot.type == "Country") {
+      fullset = subset(plots.GeoJSON.features.filter(plot => camalize(plot.properties.region) == region).map(plot => plot.properties.code), countryExceptions)
+    } else if (plot.type == "Indicator") {
+      fullset = subset(plots.countries.filter(plot => camalize(plot.region) == region).map(plot => plot.code), countryExceptions)
+    } else {
+      fullset = subset(plots.filter(plot => camalize(plot.region) == region).map(plot => plot.code), countryExceptions)
+    }
 
     if (fullset) {
 
