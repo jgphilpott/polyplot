@@ -111,7 +111,14 @@ export function toggleFold(element, panel, panelWidth=null, panelHeight=null) {
 
 export function addRegionBoxes(regions) {
 
-  let panel = $("#countries.panel")
+  let panel = null
+
+  if (plot.type == "Indicator") {
+    panel = $("#indicator.panel")
+  } else {
+    panel = $("#countries.panel")
+  }
+
   let countryExceptions = localRead("settings").general.countryExceptions
 
   for (let i = 0; i < regions.length; i++) {
@@ -182,6 +189,14 @@ export function addCountryBoxes(countries) {
 
 export function toggleRegionVisibility(element) {
 
+  let countries = null
+
+  if (plot.type == "Indicator") {
+    countries = plots.countries
+  } else {
+    countries = plots
+  }
+
   let code = $(element).parent().parent().attr("id")
   let value = $(element).attr("src").split("/").pop().split(".")[0]
   let countryExceptions = localRead("settings").general.countryExceptions
@@ -202,25 +217,25 @@ export function toggleRegionVisibility(element) {
 
   }
 
-  for (let i = 0; i < plots.length; i++) {
+  for (let i = 0; i < countries.length; i++) {
 
-    if (code == camalize(plots[i].region)) {
+    if (code == camalize(countries[i].region)) {
 
       if (value == "visible") {
 
-        $("#" + plots[i].code + ".country-box .country-visibility").attr("src", "/front/imgs/panels/countries/hidden.png")
-        $("#" + plots[i].code + ".country-box .country-name").css("color", "gray")
-        $("#" + plots[i].code + ".country-box .country-formal-name").css("color", "gray")
+        $("#" + countries[i].code + ".country-box .country-visibility").attr("src", "/front/imgs/panels/countries/hidden.png")
+        $("#" + countries[i].code + ".country-box .country-name").css("color", "gray")
+        $("#" + countries[i].code + ".country-box .country-formal-name").css("color", "gray")
 
-        countryExceptions.push(plots[i].code)
+        countryExceptions.push(countries[i].code)
 
       } else if (value == "hidden") {
 
-        $("#" + plots[i].code + ".country-box .country-visibility").attr("src", "/front/imgs/panels/countries/visible.png")
-        $("#" + plots[i].code + ".country-box .country-name").css("color", "black")
-        $("#" + plots[i].code + ".country-box .country-formal-name").css("color", "black")
+        $("#" + countries[i].code + ".country-box .country-visibility").attr("src", "/front/imgs/panels/countries/visible.png")
+        $("#" + countries[i].code + ".country-box .country-name").css("color", "black")
+        $("#" + countries[i].code + ".country-box .country-formal-name").css("color", "black")
 
-        countryExceptions = countryExceptions.filter(item => item != plots[i].code)
+        countryExceptions = countryExceptions.filter(item => item != countries[i].code)
 
       }
 
