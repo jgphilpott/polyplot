@@ -1,4 +1,5 @@
 import {rainbow} from "../../../libs/mjs/colors/solid/rainbow.mjs"
+import {addAlphabetBox} from "../../../libs/mjs/tools/alphabet.mjs"
 import {makeScrollable} from "../../../libs/mjs/panels/events/scroll.mjs"
 
 import {toggleFold} from "../../../libs/mjs/panels/countries.mjs"
@@ -20,21 +21,11 @@ $(document).ready(function() {
 
   panel.append("<a href='/api/countries'><img id='api' src='/front/imgs/panels/countries/api.png'></a>")
 
-  let alphabetBox = "<div id='alphabet'><p id='all' class='alphabet'>All</p>"
-  let alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-
-  for (let i = 0; i < alphabet.length; i++) {
-
-    alphabetBox += "<p id=" + alphabet[i].toLowerCase() + " class='alphabet'>" + alphabet[i] + "</p>"
-
-  }
-
-  panel.append(alphabetBox + "</div>")
-
   socket.emit("get_meta", "regions")
 
   socket.on("new_regions", function(regions) {
 
+    addAlphabetBox(panel, plots)
     addRegionBoxes(regions)
     addCountryBoxes(plots)
 
@@ -51,38 +42,6 @@ $(document).ready(function() {
     $(".country-visibility").click(function() {
       toggleCountryVisibility(this)
     })
-
-  })
-
-  $(".alphabet").click(function(event) {
-
-    $(".alphabet").css("font-weight", "normal")
-    $(".alphabet").css("border-bottom", "3px solid rgba(224, 58, 62, 0)")
-
-    $(this).css("font-weight", "bold")
-    $(this).css("border-bottom", "3px solid rgba(224, 58, 62, 1)")
-
-    if (this.id == "all") {
-
-      $(".country-box").show()
-
-    } else {
-
-      for (let i = 0; i < plots.length; i++) {
-
-        if (this.id == plots[i].name[0].toLowerCase()) {
-
-          $("#" + plots[i].code + ".country-box").show()
-
-        } else {
-
-          $("#" + plots[i].code + ".country-box").hide()
-
-        }
-
-      }
-
-    }
 
   })
 

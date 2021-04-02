@@ -1,4 +1,5 @@
 import {rainbow} from "../../../../libs/mjs/colors/solid/rainbow.mjs"
+import {addAlphabetBox} from "../../../../libs/mjs/tools/alphabet.mjs"
 import {makeScrollable} from "../../../../libs/mjs/panels/events/scroll.mjs"
 import {regionsColourSwitch} from "../../../../libs/mjs/colors/switches/regions.mjs"
 
@@ -132,6 +133,7 @@ $(document).ready(function() {
 
     panel.append("<a href='/countries'><h1>Countries by Region</h1>")
 
+    addAlphabetBox(panel, indicator.countries)
     addRegionBoxes(regions)
     addCountryBoxes(indicator.countries)
 
