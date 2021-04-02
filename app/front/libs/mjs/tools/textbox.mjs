@@ -1,6 +1,8 @@
 import {updateSettings} from "../panels/menu.mjs"
 
-export function addTextbox(type, id, text) {
+export function addTextbox(panel, type, id, text) {
+
+  let generalSettings = localRead("settings").general
 
   let textbox = "<div id='" + type + id + "' class='textbox'><div class='textbox-head'>"
 
@@ -21,7 +23,20 @@ export function addTextbox(type, id, text) {
 
   }
 
-  return textbox + "</div></div>"
+  panel.append(textbox + "</div></div>")
+
+  for (let i = 0; i < $(".textbox").length; i++) {
+
+    let id = $(".textbox")[i].id
+    let fold = $("#" + id + ".textbox .textbox-fold")
+
+    rotate(fold, 90, 0)
+
+    if (!generalSettings[id]) {
+      toggleTextbox(fold, 0)
+    }
+
+  }
 
 }
 

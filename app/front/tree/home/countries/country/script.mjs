@@ -39,16 +39,10 @@ $(document).ready(function() {
   panel.append("<svg id='globe'></svg>")
 
   panel.append("<img id='flag' src='/front/imgs/flags/" + country.code + ".png'>")
-  panel.append("<p><b>Formal Name:</b> " + country.formal_name + "</p>")
-  panel.append("<p><b>Region:</b> " + country.region + "</p>")
+  panel.append("<p class='stat'><b>Formal Name:</b> " + country.formal_name + "</p>")
+  panel.append("<p class='stat'><b>Region:</b> " + country.region + "</p>")
 
-  panel.append(addTextbox("country", "Description", country.description))
-
-  rotate($("#countryDescription.textbox .textbox-fold"), 90, 0)
-
-  if (!generalSettings["countryDescription"]) {
-    toggleTextbox($("#countryDescription.textbox .textbox-fold"), 0)
-  }
+  addTextbox(panel, "country", "Description", country.description)
 
   $(".textbox-fold").click(function() {
     toggleTextbox(this)

@@ -105,23 +105,10 @@ $(document).ready(function() {
     .style("text-anchor", "middle")
     .attr("dy", "1.5em")
 
-  if (indicator.description) { panel.append(addTextbox("indicator", "Description", indicator.description)) }
-  if (indicator.relevance) { panel.append(addTextbox("indicator", "Relevance", indicator.relevance)) }
-  if (indicator.methodology) { panel.append(addTextbox("indicator", "Methodology", indicator.methodology)) }
-  if (indicator.limitations) { panel.append(addTextbox("indicator", "Limitations", indicator.limitations)) }
-
-  for (let i = 0; i < $(".textbox").length; i++) {
-
-    let id = $(".textbox")[i].id
-    let fold = $("#" + id + ".textbox .textbox-fold")
-
-    rotate(fold, 90, 0)
-
-    if (!generalSettings[id]) {
-      toggleTextbox(fold, 0)
-    }
-
-  }
+  if (indicator.description) { addTextbox(panel, "indicator", "Description", indicator.description) }
+  if (indicator.relevance) { addTextbox(panel, "indicator", "Relevance", indicator.relevance) }
+  if (indicator.methodology) { addTextbox(panel, "indicator", "Methodology", indicator.methodology) }
+  if (indicator.limitations) { addTextbox(panel, "indicator", "Limitations", indicator.limitations) }
 
   $(".textbox-fold").click(function() {
     toggleTextbox(this)
