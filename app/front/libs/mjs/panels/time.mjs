@@ -93,7 +93,7 @@ export function addTimePanel(panelSetting, parentPanel=null) {
       switch (button.attr("id")) {
 
         case "skip-backward":
-          skip("backward")
+          skip("backward", button)
           break
 
         case "play-forward":
@@ -101,11 +101,11 @@ export function addTimePanel(panelSetting, parentPanel=null) {
           break
 
         case "fast-forward":
-          speed("forward")
+          speed("forward", button)
           break
 
         case "fast-backward":
-          speed("backward")
+          speed("backward", button)
           break
 
         case "play-backward":
@@ -113,7 +113,7 @@ export function addTimePanel(panelSetting, parentPanel=null) {
           break
 
         case "skip-forward":
-          skip("forward")
+          skip("forward", button)
           break
 
       }
@@ -178,6 +178,15 @@ export function play(direction, button=null) {
 
   if (plot.animation.status == "inactive") {
 
+    if (plot.animation.speedMultiplier != 1 && plot.animation.direction != direction) {
+
+      plot.animation.speedMultiplier = 1
+
+      $("#fast-forward").attr("src", "/front/imgs/panels/time/fast-forward.svg")
+      $("#fast-backward").attr("src", "/front/imgs/panels/time/fast-backward.svg")
+
+    }
+
     startAnimation(direction)
     button.attr("src", "/front/imgs/panels/time/hover/pause.svg")
 
@@ -194,15 +203,23 @@ export function speed(direction, button=null) {
 
   if (plot.animation.speedMultiplier == 1) {
 
-    plot.animation.direction = direction
     plot.animation.speedMultiplier = 3
+    plot.animation.direction = direction
+
+    button.attr("src", "/front/imgs/panels/time/hover/" + button.attr("id") + ".svg")
 
   } else {
 
     if (plot.animation.direction == direction) {
+
       plot.animation.speedMultiplier = 1
+
+      button.attr("src", "/front/imgs/panels/time/" + button.attr("id") + ".svg")
+
     } else {
+
       plot.animation.direction = direction
+
     }
 
   }
