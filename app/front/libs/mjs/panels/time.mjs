@@ -48,126 +48,100 @@ export function addTimePanel(panelSetting, parentPanel=null) {
 
   scaleAxes()
 
-  // makeDragable($("#minCap"), [dragTimeControls, animateTimeline])
-  // makeDragable($("#point"), [dragTimeControls, animateTimeline])
-  // makeDragable($("#maxCap"), [dragTimeControls, animateTimeline])
-  //
-  // let buttons = $(".button")
-  //
-  // for (let i = 0; i < buttons.length; i++) {
-  //
-  //   let button = $("#" + buttons[i].id)
-  //
-  //   button.mouseover(function() {
-  //
-  //     if ((buttons[i].id == "playForward" || buttons[i].id == "playBackward") && plot.animation.status == "active") {
-  //       button.attr("src", "/front/imgs/panels/time/hover/pause.svg")
-  //     } else {
-  //       button.attr("src", "/front/imgs/panels/time/hover/" + buttons[i].id + ".svg")
-  //     }
-  //
-  //   }).mouseout(function() {
-  //
-  //     if (!((buttons[i].id == "fastForward" || buttons[i].id == "fastBackward") && plot.animation.speedMultiplier != 1)) {
-  //
-  //       if ((buttons[i].id == "playForward" || buttons[i].id == "playBackward") && plot.animation.status == "active") {
-  //         button.attr("src", "/front/imgs/panels/time/pause.svg")
-  //       } else {
-  //         button.attr("src", "/front/imgs/panels/time/" + buttons[i].id + ".svg")
-  //       }
-  //
-  //     } else if (buttons[i].id == "fastForward" && plot.animation.direction != "forward") {
-  //
-  //       button.attr("src", "/front/imgs/panels/time/" + buttons[i].id + ".svg")
-  //
-  //     } else if (buttons[i].id == "fastBackward" && plot.animation.direction != "backward") {
-  //
-  //       button.attr("src", "/front/imgs/panels/time/" + buttons[i].id + ".svg")
-  //
-  //     }
-  //
-  //   })
-  //
-  //   button.click(function() {
-  //
-  //     switch (buttons[i].id) {
-  //
-  //       case "skipBackward":
-  //
-  //         skip("backward")
-  //
-  //         break
-  //
-  //       case "playForward":
-  //
-  //         if (plot.animation.status == "inactive") {
-  //           startAnimation("forward")
-  //         } else {
-  //           clearAnimation()
-  //         }
-  //
-  //         break
-  //
-  //       case "fastForward":
-  //
-  //         toggleSpeed("forward")
-  //
-  //         break
-  //
-  //       case "fastBackward":
-  //
-  //         toggleSpeed("backward")
-  //
-  //         break
-  //
-  //       case "playBackward":
-  //
-  //         if (plot.animation.status == "inactive") {
-  //           startAnimation("backward")
-  //         } else {
-  //           clearAnimation()
-  //         }
-  //
-  //         break
-  //
-  //       case "skipForward":
-  //
-  //         skip("forward")
-  //
-  //         break
-  //
-  //     }
-  //
-  //   })
-  //
-  // }
-  //
-  // $("body").on("keypress", function(event) {
-  //
-  //   if (event.keyCode == 32) {
-  //
-  //     if (plot.animation.status == "inactive") {
-  //
-  //       startAnimation()
-  //
-  //     } else if (plot.animation.status == "active") {
-  //
-  //       clearAnimation()
-  //
-  //     }
-  //
-  //   }
-  //
-  // })
-  //
-  // let offset = $("#timeline")[0].offsetLeft
-  //
-  // $("#minCap").css({"left": offset + plot.t.scale(plot.t.minCap) + "px"})
-  //
-  // $("#point").css({"left": offset + $("#minCap")[0].width + plot.t.scale(plot.t.year) + "px"})
-  // $("#year").css({"left": offset + $("#minCap")[0].width + plot.t.scale(plot.t.year) + "px"})
-  //
-  // $("#maxCap").css({"left": offset + $("#minCap")[0].width + $("#point")[0].width + plot.t.scale(plot.t.maxCap) + "px"})
+  makeDragable($("#min-cap"), [dragController, animateTimeline])
+  makeDragable($("#point"), [dragController, animateTimeline])
+  makeDragable($("#max-cap"), [dragController, animateTimeline])
+
+  let buttons = $(".button")
+
+  for (let i = 0; i < buttons.length; i++) {
+
+    let button = $("#" + buttons[i].id)
+
+    button.mouseover(function() {
+
+      if ((buttons[i].id == "play-forward" || buttons[i].id == "play-backward") && plot.animation.status == "active") {
+        button.attr("src", "/front/imgs/panels/time/hover/pause.svg")
+      } else {
+        button.attr("src", "/front/imgs/panels/time/hover/" + buttons[i].id + ".svg")
+      }
+
+    }).mouseout(function() {
+
+      if (!((buttons[i].id == "fast-forward" || buttons[i].id == "fast-backward") && plot.animation.speedMultiplier != 1)) {
+
+        if ((buttons[i].id == "play-forward" || buttons[i].id == "play-backward") && plot.animation.status == "active") {
+          button.attr("src", "/front/imgs/panels/time/pause.svg")
+        } else {
+          button.attr("src", "/front/imgs/panels/time/" + buttons[i].id + ".svg")
+        }
+
+      } else if (buttons[i].id == "fast-forward" && plot.animation.direction != "forward") {
+
+        button.attr("src", "/front/imgs/panels/time/" + buttons[i].id + ".svg")
+
+      } else if (buttons[i].id == "fast-backward" && plot.animation.direction != "backward") {
+
+        button.attr("src", "/front/imgs/panels/time/" + buttons[i].id + ".svg")
+
+      }
+
+    })
+
+    button.click(function() {
+
+      switch (button.attr("id")) {
+
+        case "skip-backward":
+          skip("backward")
+          break
+
+        case "play-forward":
+          play("forward", button)
+          break
+
+        case "fast-forward":
+          speed("forward")
+          break
+
+        case "fast-backward":
+          speed("backward")
+          break
+
+        case "play-backward":
+          play("backward", button)
+          break
+
+        case "skip-forward":
+          skip("forward")
+          break
+
+      }
+
+    })
+
+  }
+
+  $("body").on("keypress", function(event) {
+
+    if (event.keyCode == 32) {
+
+      if (plot.animation.status == "inactive") {
+        startAnimation()
+      } else if (plot.animation.status == "active") {
+        clearAnimation()
+      }
+
+    }
+
+  })
+
+  let offset = $("#timeline")[0].offsetLeft
+
+  $("#min-cap").css({"left": offset + plot.t.scale(plot.t.minCap) + "px"})
+  $("#point").css({"left": offset + $("#min-cap")[0].width + plot.t.scale(plot.t.year) + "px"})
+  $("#year").css({"left": offset + $("#min-cap")[0].width + plot.t.scale(plot.t.year) + "px"})
+  $("#max-cap").css({"left": offset + $("#min-cap")[0].width + $("#point")[0].width + plot.t.scale(plot.t.maxCap) + "px"})
 
   if (floatingPanel) { addPanelEvents(panel) }
 
@@ -175,7 +149,7 @@ export function addTimePanel(panelSetting, parentPanel=null) {
 
 }
 
-export function skip(direction) {
+export function skip(direction, button=null) {
 
   // clearAnimation()
   //
@@ -204,7 +178,23 @@ export function skip(direction) {
 
 }
 
-export function toggleSpeed(direction) {
+export function play(direction, button=null) {
+
+  // if (plot.animation.status == "inactive") {
+  //
+  //   startAnimation(direction)
+  //   button.attr("src", "/front/imgs/panels/time/hover/pause.svg")
+  //
+  // } else {
+  //
+  //   clearAnimation()
+  //   button.attr("src", "/front/imgs/panels/time/hover/" + button.attr("id") + ".svg")
+  //
+  // }
+
+}
+
+export function speed(direction, button=null) {
 
   // if (plot.animation.speedMultiplier == 1) {
   //
@@ -244,7 +234,7 @@ export function toggleSpeed(direction) {
 
 }
 
-export function dragTimeControls(controller, eventCoordinates) {
+export function dragController(controller, eventCoordinates) {
 
   // let minOffset = $("#timeline")[0].offsetLeft
   // let maxOffset = minOffset + $("#timeline")[0].offsetWidth
