@@ -180,17 +180,17 @@ export function skip(direction, button=null) {
 
 export function play(direction, button=null) {
 
-  // if (plot.animation.status == "inactive") {
-  //
-  //   startAnimation(direction)
-  //   button.attr("src", "/front/imgs/panels/time/hover/pause.svg")
-  //
-  // } else {
-  //
-  //   clearAnimation()
-  //   button.attr("src", "/front/imgs/panels/time/hover/" + button.attr("id") + ".svg")
-  //
-  // }
+  if (plot.animation.status == "inactive") {
+
+    startAnimation(direction)
+    button.attr("src", "/front/imgs/panels/time/hover/pause.svg")
+
+  } else {
+
+    clearAnimation()
+    button.attr("src", "/front/imgs/panels/time/hover/" + button.attr("id") + ".svg")
+
+  }
 
 }
 
