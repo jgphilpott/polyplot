@@ -7,6 +7,7 @@ import {toggleIndicatorVisibility} from "../../../../libs/mjs/panels/indicators.
 import {toggleTextbox, addTextbox} from "../../../../libs/mjs/tools/textbox.mjs"
 
 import {toggleFold} from "../../../../libs/mjs/panels/countries.mjs"
+import {addTimePanel} from "../../../../libs/mjs/panels/time.mjs"
 import {addRegionBoxes, addCountryBoxes} from "../../../../libs/mjs/panels/countries.mjs"
 import {toggleRegionVisibility, toggleCountryVisibility} from "../../../../libs/mjs/panels/countries.mjs"
 
@@ -113,6 +114,8 @@ $(document).ready(function() {
   $(".textbox-fold").click(function() {
     toggleTextbox(this)
   })
+
+  addTimePanel(true, panel)
 
   socket.emit("get_meta", "regions")
 

@@ -3,6 +3,7 @@ import {orthographic} from "../../../../libs/mjs/cartography/projections.mjs"
 import {makeScrollable} from "../../../../libs/mjs/panels/events/scroll.mjs"
 import {regionsColourSwitch} from "../../../../libs/mjs/colors/switches/regions.mjs"
 
+import {addTimePanel} from "../../../../libs/mjs/panels/time.mjs"
 import {toggleCountryVisibility} from "../../../../libs/mjs/panels/countries.mjs"
 import {toggleTextbox, addTextbox} from "../../../../libs/mjs/tools/textbox.mjs"
 import {toggleFold, addCategoryBoxes, addIndicatorBoxes} from "../../../../libs/mjs/panels/indicators.mjs"
@@ -47,6 +48,8 @@ $(document).ready(function() {
   $(".textbox-fold").click(function() {
     toggleTextbox(this)
   })
+
+  addTimePanel(true, panel)
 
   socket.emit("get_maps", {}, {"_id": 0}, [["properties.code", 1]], 0, "micro")
 

@@ -18,6 +18,8 @@ def register_country_route(app):
             year = request.args.get("year") if "year" in request.args else request.cookies.get("year") if "year" in request.cookies else round((data["plot"]["plots"]["min_year"] + data["plot"]["plots"]["max_year"]) / 2)
             max_cap = request.args.get("maxCap") if "maxCap" in request.args else request.cookies.get("maxCap") if "maxCap" in request.cookies else data["plot"]["plots"]["max_year"]
 
+            data["plot"]["t"] = {"minCap": int(min_cap), "year": int(year), "maxCap": int(max_cap)}
+
             response = make_response(render_template("tree/home/countries/country/page.html", data=data))
 
             response.set_cookie("minCap", str(min_cap))
