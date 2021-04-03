@@ -192,41 +192,33 @@ export function play(direction, button=null) {
 
 export function speed(direction, button=null) {
 
-  // if (plot.animation.speedMultiplier == 1) {
-  //
-  //   plot.animation.direction = direction
-  //   plot.animation.speedMultiplier = 3
-  //
-  // } else {
-  //
-  //   if (plot.animation.direction == direction) {
-  //
-  //     plot.animation.speedMultiplier = 1
-  //
-  //   } else {
-  //
-  //     plot.animation.direction = direction
-  //
-  //   }
-  //
-  // }
-  //
-  // if (plot.animation.status == "active") {
-  //
-  //   clearInterval(plot.animation.interval)
-  //   startAnimation(direction)
-  //
-  // }
-  //
-  // if (direction == "forward") {
-  //
-  //   $("#fastBackward").attr("src", "/front/imgs/panels/time/fastBackward.svg")
-  //
-  // } else if (direction == "backward") {
-  //
-  //   $("#fastForward").attr("src", "/front/imgs/panels/time/fastForward.svg")
-  //
-  // }
+  if (plot.animation.speedMultiplier == 1) {
+
+    plot.animation.direction = direction
+    plot.animation.speedMultiplier = 3
+
+  } else {
+
+    if (plot.animation.direction == direction) {
+      plot.animation.speedMultiplier = 1
+    } else {
+      plot.animation.direction = direction
+    }
+
+  }
+
+  if (plot.animation.status == "active") {
+
+    clearInterval(plot.animation.interval)
+    startAnimation(direction)
+
+  }
+
+  if (direction == "forward") {
+    $("#fast-backward").attr("src", "/front/imgs/panels/time/fast-backward.svg")
+  } else if (direction == "backward") {
+    $("#fast-forward").attr("src", "/front/imgs/panels/time/fast-forward.svg")
+  }
 
 }
 
