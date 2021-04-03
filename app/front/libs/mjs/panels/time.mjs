@@ -151,30 +151,26 @@ export function addTimePanel(panelSetting, parentPanel=null) {
 
 export function skip(direction, button=null) {
 
-  // clearAnimation()
-  //
-  // if (direction == "forward") {
-  //
-  //   plot.t.year = plot.t.maxCap
-  //
-  // } else if (direction == "backward") {
-  //
-  //   plot.t.year = plot.t.minCap
-  //
-  // }
-  //
-  // animatePanels()
-  // animateTimeline(0)
-  //
-  // if (plotType == "Map") {
-  //   animateMaps(0)
-  // } else if (plotType == "Poly2") {
-  //   animateCircles(0)
-  // } else if (plotType == "Poly3") {
-  //   animateSpheres(0)
-  // }
-  //
-  // writeCookie("year", plot.t.year)
+  clearAnimation()
+
+  if (direction == "forward") {
+    plot.t.year = plot.t.maxCap
+  } else if (direction == "backward") {
+    plot.t.year = plot.t.minCap
+  }
+
+  animatePanels()
+  animateTimeline(0)
+
+  if (plotType == "Map") {
+    animateMaps(0)
+  } else if (plotType == "Poly2") {
+    animateCircles(0)
+  } else if (plotType == "Poly3") {
+    animateSpheres(0)
+  }
+
+  writeCookie("year", plot.t.year)
 
 }
 
