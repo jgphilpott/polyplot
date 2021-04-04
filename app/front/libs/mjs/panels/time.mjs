@@ -48,9 +48,9 @@ export function addTimePanel(panelSetting, parentPanel=null) {
 
   scaleAxes()
 
-  makeDragable($("#min-cap"), [dragController, animateTimeline])
-  makeDragable($("#point"), [dragController, animateTimeline])
-  makeDragable($("#max-cap"), [dragController, animateTimeline])
+  makeDragable($("#min-cap"), [dragController])
+  makeDragable($("#point"), [dragController])
+  makeDragable($("#max-cap"), [dragController])
 
   let buttons = $(".button")
 
@@ -241,80 +241,80 @@ export function speed(direction, button=null) {
 
 export function dragController(controller, eventCoordinates) {
 
-  // let minOffset = $("#timeline")[0].offsetLeft
-  // let maxOffset = minOffset + $("#timeline")[0].offsetWidth
-  //
-  // let minCap = $("#minCap")[0].offsetLeft
-  //
-  // let point = $("#point")[0].offsetLeft
-  // let pointWidth = $("#point")[0].width
-  //
-  // let maxCap = $("#maxCap")[0].offsetLeft
-  //
-  // if (controller[0].id == "minCap" && eventCoordinates[0] > minOffset && eventCoordinates[0] < point - pointWidth + 1) {
-  //
-  //   plot.t.minCap = Math.floor(plot.t.scale.invert(minCap - minOffset))
-  //
-  //   clearAnimation()
-  //   scaleAxes()
-  //
-  //   if (plotType == "Map") {
-  //     animateMaps(0)
-  //   } else if (plotType == "Poly2") {
-  //     animateCircles(0)
-  //   } else if (plotType == "Poly3") {
-  //     animateSpheres(0)
-  //   }
-  //
-  //   controller.css({"left": eventCoordinates[0]})
-  //
-  //   $("#minYear").text(plot.t.minCap)
-  //
-  //   writeCookie("minCap", plot.t.minCap)
-  //
-  // } else if (controller[0].id == "point" && eventCoordinates[0] > minCap + pointWidth && eventCoordinates[0] < maxCap - pointWidth + 1) {
-  //
-  //   plot.t.year = Math.floor(plot.t.scale.invert(point - pointWidth - minOffset))
-  //
-  //   clearAnimation()
-  //   animatePanels()
-  //
-  //   if (plotType == "Map") {
-  //     animateMaps(0)
-  //   } else if (plotType == "Poly2") {
-  //     animateCircles(0)
-  //   } else if (plotType == "Poly3") {
-  //     animateSpheres(0)
-  //   }
-  //
-  //   controller.css({"left": eventCoordinates[0]})
-  //
-  //   $("#year").css({"left": eventCoordinates[0]})
-  //   $("#year").text(plot.t.year)
-  //
-  //   writeCookie("year", plot.t.year)
-  //
-  // } else if (controller[0].id == "maxCap" && eventCoordinates[0] > point + pointWidth && eventCoordinates[0] < maxOffset + 1) {
-  //
-  //   plot.t.maxCap = Math.floor(plot.t.scale.invert(maxCap - (pointWidth * 2) - minOffset))
-  //
-  //   clearAnimation()
-  //   scaleAxes()
-  //
-  //   if (plotType == "Map") {
-  //     animateMaps(0)
-  //   } else if (plotType == "Poly2") {
-  //     animateCircles(0)
-  //   } else if (plotType == "Poly3") {
-  //     animateSpheres(0)
-  //   }
-  //
-  //   controller.css({"left": eventCoordinates[0]})
-  //
-  //   $("#maxYear").text(plot.t.maxCap)
-  //
-  //   writeCookie("maxCap", plot.t.maxCap)
-  //
-  // }
+  let minOffset = $("#timeline")[0].offsetLeft
+  let maxOffset = minOffset + $("#timeline")[0].offsetWidth
+
+  let minCap = $("#min-cap")[0].offsetLeft
+
+  let point = $("#point")[0].offsetLeft
+  let pointWidth = $("#point")[0].width
+
+  let maxCap = $("#max-cap")[0].offsetLeft
+
+  if (controller[0].id == "min-cap" && eventCoordinates[0] > minOffset && eventCoordinates[0] < point - pointWidth + 1) {
+
+    plot.t.minCap = Math.floor(plot.t.scale.invert(minCap - minOffset))
+
+    clearAnimation()
+    scaleAxes()
+
+    if (plotType == "Map") {
+      animateMaps(0)
+    } else if (plotType == "Poly2") {
+      animateCircles(0)
+    } else if (plotType == "Poly3") {
+      animateSpheres(0)
+    }
+
+    controller.css({"left": eventCoordinates[0]})
+
+    $("#min-year").text(plot.t.minCap)
+
+    writeCookie("minCap", plot.t.minCap)
+
+  } else if (controller[0].id == "point" && eventCoordinates[0] > minCap + pointWidth && eventCoordinates[0] < maxCap - pointWidth + 1) {
+
+    plot.t.year = Math.floor(plot.t.scale.invert(point - pointWidth - minOffset))
+
+    clearAnimation()
+    animatePanels()
+
+    if (plotType == "Map") {
+      animateMaps(0)
+    } else if (plotType == "Poly2") {
+      animateCircles(0)
+    } else if (plotType == "Poly3") {
+      animateSpheres(0)
+    }
+
+    controller.css({"left": eventCoordinates[0]})
+
+    $("#year").css({"left": eventCoordinates[0]})
+    $("#year").text(plot.t.year)
+
+    writeCookie("year", plot.t.year)
+
+  } else if (controller[0].id == "max-cap" && eventCoordinates[0] > point + pointWidth && eventCoordinates[0] < maxOffset + 1) {
+
+    plot.t.maxCap = Math.floor(plot.t.scale.invert(maxCap - (pointWidth * 2) - minOffset))
+
+    clearAnimation()
+    scaleAxes()
+
+    if (plotType == "Map") {
+      animateMaps(0)
+    } else if (plotType == "Poly2") {
+      animateCircles(0)
+    } else if (plotType == "Poly3") {
+      animateSpheres(0)
+    }
+
+    controller.css({"left": eventCoordinates[0]})
+
+    $("#max-year").text(plot.t.maxCap)
+
+    writeCookie("maxCap", plot.t.maxCap)
+
+  }
 
 }
