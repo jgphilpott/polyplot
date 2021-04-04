@@ -122,9 +122,7 @@ export function addIndicatorsPanel(panelSetting) {
       scaleZ(plot.type)
     }
 
-    let speed = plot.animation.speed / plot.animation.speedMultiplier
-
-    animationSwitch(speed)
+    animationSwitch(plot.animation.speed / plot.animation.speedMultiplier)
 
   })
 

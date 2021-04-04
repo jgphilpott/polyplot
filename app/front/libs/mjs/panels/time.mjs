@@ -155,10 +155,10 @@ export function skip(direction, button=null) {
     plot.t.year = plot.t.minCap
   }
 
+  writeCookie("year", plot.t.year)
+
   animateTimeline(0)
   animationSwitch(0)
-
-  writeCookie("year", plot.t.year)
 
 }
 
@@ -243,43 +243,43 @@ export function dragController(controller, eventCoordinates) {
 
     plot.t.minCap = Math.floor(plot.t.scale.invert(minCap - minOffset))
 
+    writeCookie("minCap", plot.t.minCap)
+
+    $("#min-year").text(plot.t.minCap)
+
     clearAnimation()
     scaleAxes()
     animationSwitch(0)
 
     controller.css({"left": eventCoordinates[0]})
-
-    $("#min-year").text(plot.t.minCap)
-
-    writeCookie("minCap", plot.t.minCap)
 
   } else if (controller[0].id == "point" && eventCoordinates[0] > minCap + pointWidth && eventCoordinates[0] < maxCap - pointWidth + 1) {
 
     plot.t.year = Math.floor(plot.t.scale.invert(point - pointWidth - minOffset))
 
+    writeCookie("year", plot.t.year)
+
+    $("#year").css({"left": eventCoordinates[0]})
+    $("#year").text(plot.t.year)
+
     clearAnimation()
     animationSwitch(0)
 
     controller.css({"left": eventCoordinates[0]})
 
-    $("#year").css({"left": eventCoordinates[0]})
-    $("#year").text(plot.t.year)
-
-    writeCookie("year", plot.t.year)
-
   } else if (controller[0].id == "max-cap" && eventCoordinates[0] > point + pointWidth && eventCoordinates[0] < maxOffset + 1) {
 
     plot.t.maxCap = Math.floor(plot.t.scale.invert(maxCap - (pointWidth * 2) - minOffset))
+
+    writeCookie("maxCap", plot.t.maxCap)
+
+    $("#max-year").text(plot.t.maxCap)
 
     clearAnimation()
     scaleAxes()
     animationSwitch(0)
 
     controller.css({"left": eventCoordinates[0]})
-
-    $("#max-year").text(plot.t.maxCap)
-
-    writeCookie("maxCap", plot.t.maxCap)
 
   }
 
