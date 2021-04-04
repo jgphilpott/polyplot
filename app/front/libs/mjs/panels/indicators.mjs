@@ -1,10 +1,7 @@
 import {updateSettings} from "./menu.mjs"
 import {addPanelEvents} from "./events/all.mjs"
 
-import {animateMaps} from "../animation/types/maps.mjs"
-import {animatePanels} from "../animation/types/panels.mjs"
-import {animateCircles} from "../animation/types/circles.mjs"
-import {animateSpheres} from "../animation/types/spheres.mjs"
+import {animationSwitch} from "../animation/plots.mjs"
 
 import {scaleR, scaleX, scaleY, scaleZ} from "../scales/axes.mjs"
 
@@ -127,15 +124,7 @@ export function addIndicatorsPanel(panelSetting) {
 
     let speed = plot.animation.speed / plot.animation.speedMultiplier
 
-    animatePanels()
-
-    if (plot.type == "Map") {
-      animateMaps(speed)
-    } else if (plot.type == "Poly2") {
-      animateCircles(speed)
-    } else if (plot.type == "Poly3") {
-      animateSpheres(speed)
-    }
+    animationSwitch(speed)
 
   })
 

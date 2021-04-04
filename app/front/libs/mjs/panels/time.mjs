@@ -2,11 +2,7 @@ import {scaleAxes} from "../scales/axes.mjs"
 
 import {startAnimation} from "../animation/plots.mjs"
 import {clearAnimation} from "../animation/plots.mjs"
-
-import {animateMaps} from "../animation/types/maps.mjs"
-import {animatePanels} from "../animation/types/panels.mjs"
-import {animateCircles} from "../animation/types/circles.mjs"
-import {animateSpheres} from "../animation/types/spheres.mjs"
+import {animationSwitch} from "../animation/plots.mjs"
 import {animateTimeline} from "../animation/types/timeline.mjs"
 
 import {makeDragable} from "./events/drag.mjs"
@@ -159,16 +155,8 @@ export function skip(direction, button=null) {
     plot.t.year = plot.t.minCap
   }
 
-  animatePanels()
   animateTimeline(0)
-
-  if (plotType == "Map") {
-    animateMaps(0)
-  } else if (plotType == "Poly2") {
-    animateCircles(0)
-  } else if (plotType == "Poly3") {
-    animateSpheres(0)
-  }
+  animationSwitch(0)
 
   writeCookie("year", plot.t.year)
 
@@ -257,14 +245,7 @@ export function dragController(controller, eventCoordinates) {
 
     clearAnimation()
     scaleAxes()
-
-    if (plotType == "Map") {
-      animateMaps(0)
-    } else if (plotType == "Poly2") {
-      animateCircles(0)
-    } else if (plotType == "Poly3") {
-      animateSpheres(0)
-    }
+    animationSwitch(0)
 
     controller.css({"left": eventCoordinates[0]})
 
@@ -277,15 +258,7 @@ export function dragController(controller, eventCoordinates) {
     plot.t.year = Math.floor(plot.t.scale.invert(point - pointWidth - minOffset))
 
     clearAnimation()
-    animatePanels()
-
-    if (plotType == "Map") {
-      animateMaps(0)
-    } else if (plotType == "Poly2") {
-      animateCircles(0)
-    } else if (plotType == "Poly3") {
-      animateSpheres(0)
-    }
+    animationSwitch(0)
 
     controller.css({"left": eventCoordinates[0]})
 
@@ -300,14 +273,7 @@ export function dragController(controller, eventCoordinates) {
 
     clearAnimation()
     scaleAxes()
-
-    if (plotType == "Map") {
-      animateMaps(0)
-    } else if (plotType == "Poly2") {
-      animateCircles(0)
-    } else if (plotType == "Poly3") {
-      animateSpheres(0)
-    }
+    animationSwitch(0)
 
     controller.css({"left": eventCoordinates[0]})
 
