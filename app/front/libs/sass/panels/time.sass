@@ -1,13 +1,15 @@
+@import "all.sass"
+
 #time.panel
 
-  position: relative
   visibility: visible
 
-  margin: 25px
-  width: calc(100% - 50px)
+  padding: 0px
 
-  border: 0px
-  background: rgba(204, 204, 204, 0)
+  top: calc(100% - 10px)
+  left: 50%
+
+  transform: translate(-50%, -100%)
 
   #years
 
@@ -22,23 +24,23 @@
 
   #timeline
 
-    width: 50%
-    height: 5px
+    width: 500px
+    height: 3px
 
-    margin-top: 55px
-    margin-bottom: 45px
+    margin-top: 42px
+    margin-bottom: 35px
 
-    margin-left: 25%
-    margin-right: 25%
+    margin-left: 110px
+    margin-right: 110px
 
   .button, .controller
 
     position: absolute
 
-    top: 43px
+    top: 31.5px
 
-    width: 36px
-    height: 36px
+    width: 24px
+    height: 24px
 
     transform: translate(-50%, 0%)
 
@@ -52,19 +54,19 @@
 
   #skip-backward
 
-    left: calc(25% - 162px)
+    left: 20px
 
   #play-forward
 
-    left: calc(25% - 108px)
+    left: 50px
 
   #fast-forward
 
-    left: calc(25% - 54px)
+    left: 80px
 
   #min-cap
 
-    left: 25%
+    left: 110px
 
   #point
 
@@ -72,19 +74,19 @@
 
   #max-cap
 
-    left: calc(75%)
+    left: calc(100% - 110px)
 
   #fast-backward
 
-    left: calc(75% + 54px)
+    left: calc(100% - 80px)
 
   #play-backward
 
-    left: calc(75% + 108px)
+    left: calc(100% - 50px)
 
   #skip-forward
 
-    left: calc(75% + 162px)
+    left: calc(100% - 20px)
 
   #year
 
