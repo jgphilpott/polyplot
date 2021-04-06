@@ -107,8 +107,7 @@ $(document).ready(function() {
                     canvas.selectAll(".map").attr("d", pathGenerator)
 
                   })
-                  .on("end", function end() { $("#globe").css("cursor", "grab") })
-                )
+                  .on("end", function end() { $("#globe").css("cursor", "grab") }))
 
   })
 
