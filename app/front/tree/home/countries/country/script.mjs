@@ -49,8 +49,6 @@ $(document).ready(function() {
     toggleTextbox(this)
   })
 
-  addTimePanel(true, panel)
-
   socket.emit("get_maps", {}, {"_id": 0}, [["properties.code", 1]], 0, "micro")
 
   socket.on("new_maps", function(maps) {
@@ -131,6 +129,8 @@ $(document).ready(function() {
     })
 
   })
+
+  addTimePanel(true, panel)
 
   makeScrollable(panel)
 

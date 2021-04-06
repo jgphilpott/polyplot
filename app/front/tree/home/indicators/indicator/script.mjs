@@ -7,6 +7,7 @@ import {toggleIndicatorVisibility} from "../../../../libs/mjs/panels/indicators.
 import {toggleTextbox, addTextbox} from "../../../../libs/mjs/tools/textbox.mjs"
 
 import {toggleFold} from "../../../../libs/mjs/panels/countries.mjs"
+import {addLinePanel} from "../../../../libs/mjs/panels/line.mjs"
 import {addTimePanel} from "../../../../libs/mjs/panels/time.mjs"
 import {addRegionBoxes, addCountryBoxes} from "../../../../libs/mjs/panels/countries.mjs"
 import {toggleRegionVisibility, toggleCountryVisibility} from "../../../../libs/mjs/panels/countries.mjs"
@@ -115,8 +116,6 @@ $(document).ready(function() {
     toggleTextbox(this)
   })
 
-  addTimePanel(true, panel)
-
   socket.emit("get_meta", "regions")
 
   socket.on("new_regions", function(regions) {
@@ -141,91 +140,8 @@ $(document).ready(function() {
 
   })
 
-    // panel.append("<svg class='graph'></svg>")
-
-  //   let graphWidth = panel.width() - 100
-  //   let graphHeight = graphWidth / 2
-  //   let graphMargin = 20
-  //
-  //   $(".graph").width(graphWidth).height(graphHeight)
-  //
-  //   let xDomain = []
-  //   let yDomain = []
-  //
-  //   for (let i = 0; i < indicator.countries.length; i++) {
-  //     for (let j = 0; j < indicator.countries[i].history.length; j++) {
-  //       if (typeof(indicator.countries[i].history[j].year) == "number" && typeof(indicator.countries[i].history[j].value) == "number") {
-  //
-  //         xDomain.push(indicator.countries[i].history[j].year)
-  //         yDomain.push(indicator.countries[i].history[j].value)
-  //
-  //       }
-  //     }
-  //   }
-  //
-  //   let xMin = minValue(xDomain)
-  //   let xMax = maxValue(xDomain)
-  //
-  //   let yMin = minValue(yDomain)
-  //   let yMax = maxValue(yDomain)
-  //
-  //   let xScale = d3.scaleLinear().range([0, graphWidth - (graphMargin * 2)]).domain([xMin, xMax])
-  //   let yScale = d3.scaleLinear().range([graphHeight - (graphMargin * 2), 0]).domain([yMin, yMax])
-  //
-  //   d3.select(".graph")
-  //     .append("g")
-  //     .attr("id", "xAxis")
-  //     .attr("class", "axis")
-  //     .attr("transform", "translate(" + graphMargin + ", " + (graphHeight - graphMargin) + ")")
-  //     .call(d3.axisBottom(xScale)
-  //             .tickFormat(d3.format("d"))
-  //             .tickSize(-graphHeight + (graphMargin * 2))
-  //             .tickSizeOuter(0)
-  //             .ticks(5))
-  //
-  //   d3.select(".graph")
-  //     .append("g")
-  //     .attr("id", "yAxis")
-  //     .attr("class", "axis")
-  //     .attr("transform", "translate(" + graphMargin + ", " + graphMargin + ")")
-  //     .call(d3.axisLeft(yScale)
-  //             .tickSize(-graphWidth + (graphMargin * 2))
-  //             .tickSizeOuter(0)
-  //             .ticks(5))
-  //
-  //   let pathGenerator = d3.line()
-  //                         .x(function(data) {
-  //                           return xScale(data.year)
-  //                         })
-  //                         .y(function(data) {
-  //                           return yScale(data.value)
-  //                         })
-  //
-  //   for (let i = 0; i < indicator.countries.length; i++) {
-  //
-  //     d3.select(".graph")
-  //       .selectAll(".line")
-  //       .data([indicator.countries[i]])
-  //       .enter()
-  //       .append("path")
-  //       .attr("d", function(data) {
-  //
-  //         return pathGenerator(data.history.filter(function(data) { return typeof(data.year) == "number" && typeof(data.value) == "number" }))
-  //
-  //       })
-  //       .attr("transform", "translate(" + graphMargin + ", " + graphMargin + ")")
-  //       .attr("stroke", "black")
-  //       .attr("fill", "none")
-  //
-  //     let country = "<div class='country'>"
-  //
-  //     country += "<img class='flag' src='/front/imgs/flags/" + indicator.countries[i].code + ".png'>"
-  //     country += "<a href='/countries/" + indicator.countries[i].code + "'><h3>" + indicator.countries[i].name + "</h3><a>"
-  //     country += "<p> - <b>" + format(indicator.countries[i].history.find(date => date.year == readCookie("year")).value) + "</b></p></div>"
-  //
-  //     panel.append(country)
-  //
-  //   }
+  addLinePanel(true, panel)
+  addTimePanel(true, panel)
 
   makeScrollable(panel)
 
