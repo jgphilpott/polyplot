@@ -1,14 +1,17 @@
-@import "../colors/solid/grayscale.sass"
+@import "all.sass"
 
 #line.panel
 
-  position: relative
   visibility: visible
 
-  margin: 25px
+  top: calc(100% - 10px)
+  left: calc(100% - 10px)
 
-  border: 0px
-  background: rgba(204, 204, 204, 0)
+  transform: translate(-100%, -100%)
+
+  #name
+
+    text-align: center
 
   #reg-and-tan
 
@@ -20,19 +23,15 @@
 
       margin: 5px
 
-      width: 20px
-      height: 20px
-
     label
 
-      font-size: 18px
-      margin-right: 15px
+      margin-right: 5px
 
   #lineplot,
   #linezone
 
-    width: 100%
-    height: 70vh
+    width: 500px
+    height: 300px
 
   #lineplot
 
@@ -41,18 +40,16 @@
     .axis path
 
       stroke: $black
-      stroke-width: 2px
       shape-rendering: crispEdges
 
     .tick line
 
       stroke: $gray
-      stroke-width: 2px
       shape-rendering: crispEdges
 
     .tick text
 
-      font-size: 16px
+      font-size: 12px
 
     #x-axis .tick text
 
@@ -66,8 +63,4 @@
 
     position: relative
 
-    padding: 5vw
-
-    .line
-
-      stroke-width: 2px
+    padding: 50px

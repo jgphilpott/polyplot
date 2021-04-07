@@ -1,4 +1,4 @@
-import {scaleAxes} from "../scales/axes.mjs"
+import {scaleT, scaleAxes} from "../scales/axes.mjs"
 
 import {startAnimation} from "../animation/plots.mjs"
 import {clearAnimation} from "../animation/plots.mjs"
@@ -42,7 +42,7 @@ export function addTimePanel(panelSetting, parentPanel=null) {
 
   panel.append("<p id='year'>" + readCookie("year") + "</p>")
 
-  scaleAxes()
+  scaleT()
 
   makeDragable($("#min-cap"), [dragController])
   makeDragable($("#point"), [dragController])

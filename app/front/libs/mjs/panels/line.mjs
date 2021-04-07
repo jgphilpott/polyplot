@@ -1,4 +1,7 @@
-import {findDomain} from "../scales/domain.mjs"
+import {drawAxes} from "../draw/axes.mjs"
+import {scaleLine} from "../scales/axes.mjs"
+import {drawLine2} from "../draw/lines2.mjs"
+
 import {addPanelEvents} from "./events/all.mjs"
 import {regionsColourSwitch} from "../colors/switches/regions.mjs"
 
@@ -37,84 +40,35 @@ export function addLinePanel(panelSetting, parentPanel=null) {
   panel.append("<svg id='lineplot'></svg>")
   panel.append("<svg id='linezone'></svg>")
 
-  let lineplot = $("svg#lineplot")
-  let linezone = $("svg#linezone")
+  scaleLine(plotType)
+  drawAxes(plotType)
 
-  let graphWidth = linezone.width()
-  let graphHeight = linezone.height()
-  let graphMargin = Number(linezone.css("padding").replace(/[a-z]/gi, ""))
+  let xRegVals = []
+  let yRegVals = []
 
-  let domain = (floatingPanel) ? (findDomain("x", plots)) : (findDomain("history", plots.countries))
+  let countries = (plotType != "Indicator") ? (plots) : (plots.countries)
 
-  let xScale = d3.scaleLinear().range([0, graphWidth]).domain([plot.t.minCap, plot.t.maxCap])
-  let yScale = d3.scaleLinear().range([graphHeight, 0]).domain([domain[0], domain[1]])
+  for (let i = 0; i < countries.length; i++) {
 
-  d3.select("#lineplot")
-    .append("g")
-    .attr("id", "x-axis")
-    .attr("class", "axis")
-    .attr("transform", "translate(" + graphMargin + ", " + (graphHeight + graphMargin) + ")")
-    .call(d3.axisBottom(xScale)
-            .tickFormat(d3.format("d"))
-            .tickSize(-graphHeight)
-            .tickSizeOuter(0)
-            .ticks(7))
+    let vertices = (plotType != "Indicator") ? (countries[i].x) : (countries[i].history)
 
-  d3.select("#lineplot")
-    .append("g")
-    .attr("id", "y-axis")
-    .attr("class", "axis")
-    .attr("transform", "translate(" + graphMargin + ", " + graphMargin + ")")
-    .call(d3.axisLeft(yScale)
-            .tickFormat(function(tick) { return format(tick, "oodles") })
-            .tickSize(-graphWidth)
-            .tickSizeOuter(0)
-            .ticks(7))
+    vertices = vertices.filter(function(vertex) {
+      if (typeof(vertex.year) == "number" && typeof(vertex.value) == "number") {
 
-  let pathGenerator = d3.line()
-                        .x(function(data) {
-                          return xScale(data.year)
-                        })
-                        .y(function(data) {
-                          return yScale(data.value)
-                        })
+        xRegVals.push(data.year)
+        yRegVals.push(data.value)
 
-  // let xRegVals = []
-  // let yRegVals = []
-  //
-  // for (let i = 0; i < plots.length; i++) {
-  //
-  //   d3.select("#lineGraph")
-  //     .selectAll(".line")
-  //     .data([plots[i]])
-  //     .enter()
-  //     .append("path")
-  //     .attr("d", function(data) {
-  //
-  //       let dataVals = data.x.filter(function(data) {
-  //         if (typeof(data.year) == "number" && typeof(data.value) == "number") {
-  //
-  //           xRegVals.push(data.year)
-  //           yRegVals.push(data.value)
-  //
-  //           return data
-  //
-  //         }
-  //       })
-  //
-  //       return pathGenerator(dataVals)
-  //
-  //     })
-  //     .attr("transform", "translate(" + graphMargin + ", " + graphMargin + ")")
-  //     .attr("stroke", function(data) {
-  //
-  //       return regionsColourSwitch(data.region)
-  //
-  //     })
-  //     .attr("fill", "none")
-  //
-  // }
-  //
+        return vertex
+
+      }
+    })
+
+    drawLine2(vertices, regionsColourSwitch(countries[i].region), countries[i].code)
+
+  }
+
+  drawLine2([{"year": plot.t.year, "value": plot.line.min}, {"year": plot.t.year, "value": plot.line.max}], regionsColourSwitch(null), "track")
+
   // $(".reg-radio").click(function(event) {
   //
   //   $(".regLine").remove()
