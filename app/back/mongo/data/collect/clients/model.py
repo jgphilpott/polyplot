@@ -37,6 +37,8 @@ class Client():
                     "indicatorRelevance": False,
                     "indicatorMethodology": False,
                     "indicatorLimitations": False,
+                    "regression": None,
+                    "tangent": False,
                     "rotation": False
                 },
 
