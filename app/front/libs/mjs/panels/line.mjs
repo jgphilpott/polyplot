@@ -1,22 +1,25 @@
 import {drawAxes} from "../draw/axes.mjs"
 import {scaleLine} from "../scales/axes.mjs"
-import {drawLine2} from "../draw/lines2.mjs"
 
+import {drawLine2} from "../draw/lines2.mjs"
+import {getVertices, newRegression} from "../tools/lineplot.mjs"
+
+import {updateSettings} from "./menu.mjs"
 import {addPanelEvents} from "./events/all.mjs"
 import {regionsColourSwitch} from "../colors/switches/regions.mjs"
 
 let plot = data.plot
 let plots = plot.plots
-let plotType = plot.type
 
 export function addLinePanel(panelSetting, parentPanel=null) {
 
   let linePanel = "<div id='line' class='panel'></div>"
-  let floatingPanel = (plotType != "Indicator")
+  let floatingPanel = (plot.type != "Indicator")
 
   if (floatingPanel) { $("body").append(linePanel) } else { parentPanel.append(linePanel) }
 
   let panel = $("#line.panel")
+  let generalSettings = localRead("settings").general
 
   panel.append("<img class='close' src='/front/imgs/panels/all/close.png'>")
 
@@ -35,80 +38,56 @@ export function addLinePanel(panelSetting, parentPanel=null) {
 
   panel.append("<div id='reg-and-tan'>" + regression + tangent + "</div>")
 
-  regression = $("input[name=reg]:checked").val()
+  let reg = (generalSettings.regression == "1") ? ("#lin-reg") : (generalSettings.regression == "2") ? ("#poly-reg-2") : (generalSettings.regression == "3") ? ("#poly-reg-3") : (null)
+
+  if (reg) { $(reg).prop("checked", true) }
 
   panel.append("<svg id='lineplot'></svg>")
   panel.append("<svg id='linezone'></svg>")
 
-  scaleLine(plotType)
-  drawAxes(plotType)
+  scaleLine(plot.type)
+  drawAxes(plot.type)
 
-  let xRegVals = []
-  let yRegVals = []
+  plot.line.xRegVals = []
+  plot.line.yRegVals = []
 
-  let countries = (plotType != "Indicator") ? (plots) : (plots.countries)
+  let lines = (plot.type != "Indicator") ? (plots) : (plots.countries)
 
-  for (let i = 0; i < countries.length; i++) {
+  for (let i = 0; i < lines.length; i++) {
 
-    let vertices = (plotType != "Indicator") ? (countries[i].x) : (countries[i].history)
-
-    vertices = vertices.filter(function(vertex) {
-      if (typeof(vertex.year) == "number" && typeof(vertex.value) == "number") {
-
-        xRegVals.push(data.year)
-        yRegVals.push(data.value)
-
-        return vertex
-
-      }
-    })
-
-    drawLine2(vertices, regionsColourSwitch(countries[i].region), countries[i].code)
+    drawLine2(getVertices(lines[i]), regionsColourSwitch(lines[i].region), lines[i].code)
 
   }
 
   drawLine2([{"year": plot.t.year, "value": plot.line.min}, {"year": plot.t.year, "value": plot.line.max}], regionsColourSwitch(null), "track")
 
-  // $(".reg-radio").click(function(event) {
-  //
-  //   $(".regLine").remove()
-  //
-  //   if (this.value == regression) {
-  //
-  //     this.checked = false
-  //
-  //   } else {
-  //
-  //     let coefficients = polyfit(xRegVals, yRegVals, parseInt(this.value))
-  //
-  //     d3.select("#lineGraph")
-  //       .selectAll(".regLine")
-  //       .data([0])
-  //       .enter()
-  //       .append("path")
-  //       .attr("class", "regLine")
-  //       .attr("d", function() {
-  //
-  //         let regVals = []
-  //
-  //         for (let i = plot.t.minCap; i <= plot.t.maxCap; i++) {
-  //
-  //           regVals.push({"year": i, "value": predict(i, coefficients)})
-  //
-  //         }
-  //
-  //         return pathGenerator(regVals)
-  //
-  //       })
-  //       .attr("transform", "translate(" + graphMargin + ", " + graphMargin + ")")
-  //       .attr("stroke", "black")
-  //       .attr("fill", "none")
-  //
-  //   }
-  //
-  //   regression = $("input[name=reg]:checked").val()
-  //
-  // })
+  if (generalSettings.regression) {
+
+    drawLine2(newRegression(generalSettings.regression), regionsColourSwitch(null), "regression")
+
+  }
+
+  $(".reg-radio").click(function(event) {
+
+    $("#regression.line").remove()
+
+    generalSettings = localRead("settings").general
+
+    if (this.value == generalSettings.regression) {
+
+      this.checked = false
+
+      updateSettings("general", "regression", null)
+
+    } else {
+
+      drawLine2(newRegression(this.value), regionsColourSwitch(null), "regression")
+
+      updateSettings("general", "regression", this.value)
+
+    }
+
+  })
 
   if (floatingPanel) { addPanelEvents(panel) }
 
