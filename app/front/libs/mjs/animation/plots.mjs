@@ -1,4 +1,6 @@
 import {animateMaps} from "./types/maps.mjs"
+import {animateLines2} from "./types/lines2.mjs"
+import {animateLines3} from "./types/lines3.mjs"
 import {animatePanels} from "./types/panels.mjs"
 import {animateCircles} from "./types/circles.mjs"
 import {animateSpheres} from "./types/spheres.mjs"
@@ -73,6 +75,7 @@ export function animationSwitch(speed) {
 
     case "Map":
       animateMaps(speed)
+      animateLines2(speed)
       break
 
     case "Poly2":
@@ -81,6 +84,10 @@ export function animationSwitch(speed) {
 
     case "Poly3":
       animateSpheres(speed)
+      break
+
+    case "Indicator":
+      animateLines2(speed)
       break
 
   }
