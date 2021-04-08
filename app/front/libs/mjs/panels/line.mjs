@@ -2,7 +2,8 @@ import {drawAxes} from "../draw/axes.mjs"
 import {scaleLine} from "../scales/axes.mjs"
 
 import {drawLine2} from "../draw/lines2.mjs"
-import {getVertices, newRegression} from "../tools/lineplot.mjs"
+import {animateLines2} from "../animation/types/lines2.mjs"
+import {getVertices, newRegression, newTangent} from "../tools/lineplot.mjs"
 
 import {updateSettings} from "./menu.mjs"
 import {addPanelEvents} from "./events/all.mjs"
@@ -39,8 +40,10 @@ export function addLinePanel(panelSetting, parentPanel=null) {
   panel.append("<div id='reg-and-tan'>" + regression + tangent + "</div>")
 
   let reg = (generalSettings.regression == "1") ? ("#lin-reg") : (generalSettings.regression == "2") ? ("#poly-reg-2") : (generalSettings.regression == "3") ? ("#poly-reg-3") : (null)
+  let tan = (generalSettings.tangent) ? ("#tan") : (false)
 
   if (reg) { $(reg).prop("checked", true) }
+  if (tan) { $(tan).prop("checked", true) }
 
   panel.append("<svg id='lineplot'></svg>")
   panel.append("<svg id='linezone'></svg>")
@@ -65,11 +68,20 @@ export function addLinePanel(panelSetting, parentPanel=null) {
 
     drawLine2(newRegression(generalSettings.regression), regionsColourSwitch(null), "regression")
 
+    if (generalSettings.tangent) {
+
+      drawLine2(newTangent(), regionsColourSwitch(null), "tangent")
+
+    }
+
   }
 
   $(".reg-radio").click(function(event) {
 
+    animateLines2(0)
+
     $("#regression.line").remove()
+    $("#tangent.line").remove()
 
     generalSettings = localRead("settings").general
 
@@ -83,7 +95,31 @@ export function addLinePanel(panelSetting, parentPanel=null) {
 
       drawLine2(newRegression(this.value), regionsColourSwitch(null), "regression")
 
+      if (generalSettings.tangent) { drawLine2(newTangent(), regionsColourSwitch(null), "tangent") }
+
       updateSettings("general", "regression", this.value)
+
+    }
+
+  })
+
+  $(".tan-chk").click(function(event) {
+
+    animateLines2(0)
+
+    $("#tangent.line").remove()
+
+    generalSettings = localRead("settings").general
+
+    if (generalSettings.tangent) {
+
+      updateSettings("general", "tangent", false)
+
+    } else {
+
+      if (generalSettings.regression) { drawLine2(newTangent(), regionsColourSwitch(null), "tangent") }
+
+      updateSettings("general", "tangent", true)
 
     }
 
