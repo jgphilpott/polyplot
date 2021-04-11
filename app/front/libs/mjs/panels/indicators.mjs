@@ -136,7 +136,7 @@ export function addIndicatorsPanel(panelSetting) {
     axisBox.css("visibility", "hidden")
     legendPanel.width(originalWidth)
 
-    legendPanel.animate({width: newWidth}, {duration: 1000, complete: function() { if (panelSettings.legend) { axisBox.css("visibility", "visible") } }})
+    legendPanel.animate({width: newWidth}, {duration: plot.animation.speed / plot.animation.speedMultiplier, complete: function() { if (panelSettings.legend) { axisBox.css("visibility", "visible") } }})
 
   })
 
