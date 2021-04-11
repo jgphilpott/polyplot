@@ -21,6 +21,7 @@ export function drawAxes(plotType=plot.type) {
 
     let linezone = $("svg#linezone")
 
+    let setback = 1
     let plotWidth = linezone.width()
     let plotHeight = linezone.height()
     let plotMargin = Number(linezone.css("padding").replace(/[a-z]/gi, ""))
@@ -28,20 +29,20 @@ export function drawAxes(plotType=plot.type) {
     canvas.append("g")
           .attr("id", "x-axis")
           .attr("class", "axis")
-          .attr("transform", "translate(" + plotMargin + ", " + (plotHeight + plotMargin) + ")")
+          .attr("transform", "translate(" + plotMargin + ", " + (plotHeight + plotMargin + setback) + ")")
           .call(d3.axisBottom(plot.line.x)
                   .tickFormat(d3.format("d"))
-                  .tickSize(-plotHeight)
+                  .tickSize(-plotHeight - setback)
                   .tickSizeOuter(0)
                   .ticks((plot.t.maxCap - plot.t.minCap < ticks) ? (plot.t.maxCap - plot.t.minCap) : (ticks)))
 
     canvas.append("g")
           .attr("id", "y-axis")
           .attr("class", "axis")
-          .attr("transform", "translate(" + plotMargin + ", " + plotMargin + ")")
+          .attr("transform", "translate(" + (plotMargin - setback) + ", " + plotMargin + ")")
           .call(d3.axisLeft(plot.line.y)
                   .tickFormat(function(tick) { return format(tick, "oodles") })
-                  .tickSize(-plotWidth)
+                  .tickSize(-plotWidth - setback)
                   .tickSizeOuter(0)
                   .ticks(ticks))
 
