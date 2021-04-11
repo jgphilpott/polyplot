@@ -48,7 +48,7 @@ export function addTimePanel(panelSetting, parentPanel=null) {
   makeDragable($("#point"), [dragController])
   makeDragable($("#max-cap"), [dragController])
 
-  let buttons = $(".button")
+  let buttons = $("#time.panel .button")
 
   for (let i = 0; i < buttons.length; i++) {
 

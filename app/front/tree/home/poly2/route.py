@@ -26,9 +26,9 @@ def register_poly2_route(app):
         year = request.args.get("year") if "year" in request.args else request.cookies.get("year") if "year" in request.cookies else round((countries[0]["min_year"] + countries[0]["max_year"]) / 2)
         max_cap = request.args.get("maxCap") if "maxCap" in request.args else request.cookies.get("maxCap") if "maxCap" in request.cookies else countries[0]["max_year"]
 
-        data["plot"]["r"] = {"name": countries[0]["indicators"][r_dash_code]["name"], "code": r_code}
-        data["plot"]["x"] = {"name": countries[0]["indicators"][x_dash_code]["name"], "code": x_code}
-        data["plot"]["y"] = {"name": countries[0]["indicators"][y_dash_code]["name"], "code": y_code}
+        data["plot"]["r"] = {"code": r_code, "name": countries[0]["indicators"][r_dash_code]["name"], "categories": countries[0]["indicators"][r_dash_code]["categories"]}
+        data["plot"]["x"] = {"code": x_code, "name": countries[0]["indicators"][x_dash_code]["name"], "categories": countries[0]["indicators"][x_dash_code]["categories"]}
+        data["plot"]["y"] = {"code": y_code, "name": countries[0]["indicators"][y_dash_code]["name"], "categories": countries[0]["indicators"][y_dash_code]["categories"]}
         data["plot"]["t"] = {"minCap": int(min_cap), "year": int(year), "maxCap": int(max_cap)}
 
         for country in countries:

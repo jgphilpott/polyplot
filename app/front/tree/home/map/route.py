@@ -23,7 +23,7 @@ def register_map_route(app):
         year = request.args.get("year") if "year" in request.args else request.cookies.get("year") if "year" in request.cookies else round((countries[0]["min_year"] + countries[0]["max_year"]) / 2)
         max_cap = request.args.get("maxCap") if "maxCap" in request.args else request.cookies.get("maxCap") if "maxCap" in request.cookies else countries[0]["max_year"]
 
-        data["plot"]["x"] = {"name": countries[0]["indicators"][x_dash_code]["name"], "code": x_code}
+        data["plot"]["x"] = {"code": x_code, "name": countries[0]["indicators"][x_dash_code]["name"], "categories": countries[0]["indicators"][x_dash_code]["categories"]}
         data["plot"]["t"] = {"minCap": int(min_cap), "year": int(year), "maxCap": int(max_cap)}
         data["plot"]["GeoJSON"] = {"type": "FeatureCollection", "features": find_maps(detail="huge"), "properties": {"λ": 0, "φ": 0, "γ": 0}}
 

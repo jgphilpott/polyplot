@@ -67,7 +67,7 @@ export function updateYear() {
 
 }
 
-export function animationSwitch(speed) {
+export function animationSwitch(speed=(plot.animation.speed / plot.animation.speedMultiplier)) {
 
   animatePanels(speed)
 

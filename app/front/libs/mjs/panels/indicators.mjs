@@ -1,9 +1,8 @@
 import {updateSettings} from "./menu.mjs"
 import {addPanelEvents} from "./events/all.mjs"
 
+import {scaleAxes} from "../scales/axes.mjs"
 import {animationSwitch} from "../animation/plots.mjs"
-
-import {scaleR, scaleX, scaleY, scaleZ} from "../scales/axes.mjs"
 
 let plot = data.plot
 let plots = plot.plots
@@ -71,7 +70,7 @@ export function addIndicatorsPanel(panelSetting) {
       })
 
       $(".indicator-name").click(function() {
-        socket.emit("get_indicator", {"code": $(this).parent().attr("id").replaceAll("-", ".")}, {"_id": 0, "code": 1, "name": 1, "countries": 1, "min_value": 1, "max_value": 1})
+        socket.emit("get_indicator", {"code": $(this).parent().attr("id").replaceAll("-", ".")}, {"_id": 0, "code": 1, "name": 1, "categories": 1, "countries": 1, "min_value": 1, "max_value": 1})
       })
 
       addPanelEvents(panel)
@@ -86,12 +85,26 @@ export function addIndicatorsPanel(panelSetting) {
 
     writeCookie(scelection, indicator.code)
 
-    let legendKey = $("#" + scelection + "-data")
-    legendKey.text(indicator.name)
-    legendKey.parent().attr("id", indicator.code)
+    let panelSettings = localRead("settings").panels
+
+    let legendPanel = $("#legend.panel")
+    let axisBox = $("#legend.panel #" + scelection + "-axis.axis-box")
+
+    let originalWidth = legendPanel.width()
+
+    $("#legend.panel #" + scelection + "-axis p").attr("id", indicator.code)
+    $("#legend.panel #" + scelection + "-axis a").attr("href", "/indicators/" + indicator.code + "")
+    $("#legend.panel #" + scelection + "-axis #" + scelection + "-data").text(indicator.name)
+    $("#legend.panel #" + scelection + "-axis .category-icon").remove()
+
+    for (let i = 0; i < indicator.categories.length; i++) { axisBox.append("<img class='category-icon' src='/front/imgs/panels/indicators/categories/" + camalize(indicator.categories[i]) + ".png'>") }
+
+    $("#line.panel #name").parent().attr("href", "/indicators/" + indicator.code + "")
+    $("#line.panel #name").text(indicator.name)
 
     plot[scelection].code = indicator.code
     plot[scelection].name = indicator.name
+    plot[scelection].categories = indicator.categories
 
     plot[scelection].min = indicator.min_value
     plot[scelection].max = indicator.max_value
@@ -112,17 +125,18 @@ export function addIndicatorsPanel(panelSetting) {
 
     }
 
-    if (scelection == "r") {
-      scaleR(plot.type)
-    } else if (scelection == "x") {
-      scaleX(plot.type)
-    } else if (scelection == "y") {
-      scaleY(plot.type)
-    } else if (scelection == "z") {
-      scaleZ(plot.type)
-    }
+    scaleAxes()
+    animationSwitch()
 
-    animationSwitch(plot.animation.speed / plot.animation.speedMultiplier)
+    $("#legend.panel").css("width", "auto")
+
+    let newWidth = legendPanel.width() + Number(legendPanel.css("padding").replace(/[a-z]/gi, "")) * 2 + 2
+
+    axisBox.height(axisBox.height())
+    axisBox.css("visibility", "hidden")
+    legendPanel.width(originalWidth)
+
+    legendPanel.animate({width: newWidth}, {duration: 1000, complete: function() { if (panelSettings.legend) { axisBox.css("visibility", "visible") } }})
 
   })
 

@@ -1,0 +1,51 @@
+@import "all.sass"
+
+#legend.panel
+
+  visibility: visible
+
+  top: calc(100% - 10px)
+  left: 10px
+
+  transform: translate(0%, -100%)
+
+  .head
+
+    display: flex
+    align-items: center
+
+    #name
+
+      margin: 6px auto
+      text-align: center
+
+    img
+
+      margin: 6px
+
+      width: 24px
+      height: 24px
+
+    img:hover
+
+      cursor: pointer
+
+  .axis-box
+
+    display: flex
+    align-items: center
+
+    #r-data:hover,
+    #x-data:hover,
+    #y-data:hover,
+    #z-data:hover
+
+        cursor: pointer
+        font-weight: bold
+
+    .category-icon
+
+      margin: 5px
+
+      width: 20px
+      height: 20px
