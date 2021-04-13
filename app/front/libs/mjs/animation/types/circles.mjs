@@ -9,9 +9,9 @@ export function animateCircles(duration) {
 
     let circle = $("#" + plots[i].code + ".circle").length
 
-    let r = plots[i].r.find(item => item.year == data.plot.t.year).value
-    let x = plots[i].x.find(item => item.year == data.plot.t.year).value
-    let y = plots[i].y.find(item => item.year == data.plot.t.year).value
+    let r = plots[i].r.find(date => date.year == plot.t.year).value
+    let x = plots[i].x.find(date => date.year == plot.t.year).value
+    let y = plots[i].y.find(date => date.year == plot.t.year).value
 
     if (circle && (typeof(r) == "number" && typeof(x) == "number" && typeof(y) == "number")) {
 
