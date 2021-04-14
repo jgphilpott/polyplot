@@ -59,44 +59,42 @@ export function addPoltPanel(code, plotType=plot.type) {
 
 export function updatePoltPanel(code, plotType=plot.type) {
 
-  // let point = plots.find(plot => plot.code == code)
-  //
-  // $("#" + code + ".panel #name").text(point.name)
-  //
-  // $("#" + code + ".panel #flag").attr("src", "/front/imgs/flags/" + code + ".png")
-  //
-  // $("#" + code + ".panel #region").text(point.region)
-  //
-  // let year = plot.t.year
-  //
-  // if (plotType == "Map") {
-  //
-  //   let x = point.x.find(date => date.year == year).value
-  //
-  //   $("#" + code + ".panel #x-data").text(format(x))
-  //
-  // } else if (plotType == "Poly2") {
-  //
-  //   let r = point.r.find(date => date.year == year).value
-  //   let x = point.x.find(date => date.year == year).value
-  //   let y = point.y.find(date => date.year == year).value
-  //
-  //   $("#" + code + ".panel #r-data").text(format(r))
-  //   $("#" + code + ".panel #x-data").text(format(x))
-  //   $("#" + code + ".panel #y-data").text(format(y))
-  //
-  // } else if (plotType == "Poly3") {
-  //
-  //   let r = point.r.find(date => date.year == year).value
-  //   let x = point.x.find(date => date.year == year).value
-  //   let y = point.y.find(date => date.year == year).value
-  //   let z = point.z.find(date => date.year == year).value
-  //
-  //   $("#" + code + ".panel #r-data").text(format(r))
-  //   $("#" + code + ".panel #x-data").text(format(x))
-  //   $("#" + code + ".panel #y-data").text(format(y))
-  //   $("#" + code + ".panel #z-data").text(format(z))
-  //
-  // }
+  let country = plots.find(plot => plot.code == code)
+
+  $("#" + code + ".panel #name").text(country.name)
+  $("#" + code + ".panel #flag").attr("src", "/front/imgs/flags/" + country.code + ".png")
+  $("#" + code + ".panel #region").text(country.region)
+
+  let year = plot.t.year
+
+  if (plotType == "Map") {
+
+    let x = country.x.find(date => date.year == year).value
+
+    $("#" + code + ".panel #x-data").text(format(x, "oodles"))
+
+  } else if (plotType == "Poly2") {
+
+    let r = country.r.find(date => date.year == year).value
+    let x = country.x.find(date => date.year == year).value
+    let y = country.y.find(date => date.year == year).value
+
+    $("#" + code + ".panel #r-data").text(format(r, "oodles"))
+    $("#" + code + ".panel #x-data").text(format(x, "oodles"))
+    $("#" + code + ".panel #y-data").text(format(y, "oodles"))
+
+  } else if (plotType == "Poly3") {
+
+    let r = country.r.find(date => date.year == year).value
+    let x = country.x.find(date => date.year == year).value
+    let y = country.y.find(date => date.year == year).value
+    let z = country.z.find(date => date.year == year).value
+
+    $("#" + code + ".panel #r-data").text(format(r, "oodles"))
+    $("#" + code + ".panel #x-data").text(format(x, "oodles"))
+    $("#" + code + ".panel #y-data").text(format(y, "oodles"))
+    $("#" + code + ".panel #z-data").text(format(z, "oodles"))
+
+  }
 
 }
