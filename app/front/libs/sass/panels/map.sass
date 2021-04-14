@@ -1,0 +1,59 @@
+@import "all.sass"
+
+#map.panel
+
+  visibility: hidden
+
+  top: calc(100% - 10px)
+  left: calc(100% - 10px)
+
+  transform: translate(-100%, -100%)
+
+  #mini-map
+
+    margin: 15px
+
+    width: 250px
+    height: 250px
+
+  #rotation-icon
+
+    position: fixed
+
+    top: 7px
+    left: 7px
+
+    width: 15px
+    height: 15px
+
+  #rotation-icon:hover
+
+    cursor: pointer
+
+  h1
+
+    text-align: center
+
+  .regions-box
+
+    display: flex
+    align-items: center
+
+    .region-key
+
+      margin: 5px
+
+      width: 15px
+      height: 15px
+
+      border: 1px solid $black
+      border-radius: 5px
+
+  #countries-toggle
+
+    text-align: center
+
+  #countries-toggle:hover
+
+    cursor: pointer
+    font-weight: bold
