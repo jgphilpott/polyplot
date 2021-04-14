@@ -48,9 +48,9 @@ export function addLinePanel(panelSetting, parentPanel=null) {
   panel.append("<svg id='lineplot'></svg>")
   panel.append("<svg id='linezone'></svg>")
 
-  if (plot.type != "Indicator") { panel.append("<p id='countries' class='button'>Toggle Countries Panel</p>") }
+  if (plot.type != "Indicator") { panel.append("<p id='countries-toggle'>Toggle Countries Panel</p>") }
 
-  $("#countries.button").click(function(event) {
+  $("#countries-toggle").click(function(event) {
     ($("#countries.panel").css("visibility") == "visible") ? (updateSettings("panels", "countries", false)) : (updateSettings("panels", "countries", true))
   })
 
