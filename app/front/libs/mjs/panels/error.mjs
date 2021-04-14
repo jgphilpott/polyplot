@@ -11,8 +11,8 @@ export function addErrorPanel() {
   panel.append("<h1 id='code'>" + data.code + "</h1>")
   panel.append("<h3 id='message'>" + data.message + "</h3>")
 
-  panel.width(panel.width()).height(panel.height())
-
   addPanelEvents(panel)
+
+  panel.width(panel.width()).height(panel.height())
 
 }

@@ -53,9 +53,9 @@ export function addLegendPanel(panelSetting) {
     ($("#layers.panel").css("visibility") == "visible") ? (updateSettings("panels", "layers", false)) : (updateSettings("panels", "layers", true))
   })
 
-  panel.width(panel.width()).height(panel.height())
-
   addPanelEvents(panel)
+
+  panel.width(panel.width()).height(panel.height())
 
   if (panelSetting) { panel.css("visibility", "visible") } else { panel.css("visibility", "hidden") }
 
