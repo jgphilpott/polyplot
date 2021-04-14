@@ -11,7 +11,7 @@ export function findDomain(axis, plots=plot.plots) {
       let year = plots[i][axis][j].year
       let value = plots[i][axis][j].value
 
-      if (year >= plot.t.minCap && year <= plot.t.maxCap && typeof(value) == "number") {
+      if (typeof(value) == "number" && year >= plot.t.minCap && year <= plot.t.maxCap) {
         domain.push(value)
       }
 
