@@ -60,7 +60,7 @@ export function drawLayers() {
 
   if (mapSettings.graticules && !("graticules" in layers)) {
 
-    socket.emit("get_graticules", {"step": {"$in": [10, 20, 30]}}, {"_id": 0}, [["step", 1]], 0)
+    socket.emit("get_graticules", {"step": {"$in": [10, 20, 30]}}, {"_id": 0}, [["step", -1]], 0)
 
     socket.on("new_graticules", function(graticules) {
 

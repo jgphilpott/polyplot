@@ -23,7 +23,7 @@ export function drawCities(canvas, cities=plot.GeoJSON.properties.layers.cities)
           return geoProperties.projection([city.geometry.coordinates[0], city.geometry.coordinates[1]])[1]
 
         })
-        .attr("r", function() { return [1, 0.5, 0.25, 0.125, 0.0625, 0.03125][checkpoint - 1] })
+        .attr("r", function(city) { return [1, 0.5, 0.25, 0.125, 0.0625, 0.03125][checkpoint - 1] })
 
   canvas.selectAll(".city-label")
         .data(cities.filter(function(city) { return city.properties.rank <= checkpoint }))
