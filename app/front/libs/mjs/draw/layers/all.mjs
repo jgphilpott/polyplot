@@ -160,46 +160,46 @@ export function drawLayers() {
 
 export function updateLayers(zoom) {
 
-  // let canvas = d3.select("#canvas")
-  // let layers = plot.GeoJSON.properties.layers
-  //
-  // for (let i = 1; i < layers.checkpoints.length; i++) {
-  //
-  //   if ((zoom >= layers.checkpoints[i - 1] && zoom <= layers.checkpoints[i]) && !(layers.lastDraw >= layers.checkpoints[i - 1] && layers.lastDraw <= layers.checkpoints[i])) {
-  //
-  //     layers.checkpoint = i
-  //
-  //     if (layers.airports) { drawAirports(canvas) }
-  //     if (layers.cities) { drawCities(canvas) }
-  //     if (layers.graticules) { drawGraticules(canvas) }
-  //     if (layers.lakes) { drawLakes(canvas) }
-  //     if (layers.ports) { drawPorts(canvas) }
-  //     if (layers.railroads) { drawRailroads(canvas) }
-  //     if (layers.rivers) { drawRivers(canvas) }
-  //     if (layers.roads) { drawRoads(canvas) }
-  //
-  //     layers.lastDraw = zoom
-  //     layers.sort()
-  //
-  //   }
-  //
-  // }
+  let canvas = d3.select("#canvas")
+  let layers = plot.GeoJSON.properties.layers
+
+  for (let i = 1; i < layers.checkpoints.length; i++) {
+
+    if ((zoom >= layers.checkpoints[i - 1] && zoom <= layers.checkpoints[i]) && !(layers.lastDraw >= layers.checkpoints[i - 1] && layers.lastDraw <= layers.checkpoints[i])) {
+
+      layers.checkpoint = i
+
+      if (layers.airports) { drawAirports(canvas) }
+      if (layers.cities) { drawCities(canvas) }
+      if (layers.graticules) { drawGraticules(canvas) }
+      if (layers.lakes) { drawLakes(canvas) }
+      if (layers.ports) { drawPorts(canvas) }
+      if (layers.railroads) { drawRailroads(canvas) }
+      if (layers.rivers) { drawRivers(canvas) }
+      if (layers.roads) { drawRoads(canvas) }
+
+      layers.lastDraw = zoom
+      layers.sort()
+
+    }
+
+  }
 
 }
 
 export function deleteLayers(layer) {
 
-  // let layers = plot.GeoJSON.properties.layers
-  //
-  // delete layers[layer]
-  //
-  // if (!("airports" in layers)) { $(".airport").remove() }
-  // if (!("cities" in layers)) { $(".city").remove() }
-  // if (!("graticules" in layers)) { $(".graticule").remove() }
-  // if (!("lakes" in layers)) { $(".lake").remove() }
-  // if (!("ports" in layers)) { $(".port").remove() }
-  // if (!("railroads" in layers)) { $(".railroad").remove() }
-  // if (!("rivers" in layers)) { $(".river").remove() }
-  // if (!("roads" in layers)) { $(".road").remove() }
+  let layers = plot.GeoJSON.properties.layers
+
+  delete layers[layer]
+
+  if (!("airports" in layers)) { $(".airport").remove() }
+  if (!("cities" in layers)) { $(".city").remove() }
+  if (!("graticules" in layers)) { $(".graticule").remove() }
+  if (!("lakes" in layers)) { $(".lake").remove() }
+  if (!("ports" in layers)) { $(".port").remove() }
+  if (!("railroads" in layers)) { $(".railroad").remove() }
+  if (!("rivers" in layers)) { $(".river").remove() }
+  if (!("roads" in layers)) { $(".road").remove() }
 
 }
