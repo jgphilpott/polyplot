@@ -8,9 +8,9 @@ export function addCrosshairTool() {
 
     $(".crosshair").remove()
 
-    let client = data.client
+    let clientSettings = data.client.settings
 
-    if (client.settings.poly2.crosshairs && !plot.animation.hover) {
+    if (clientSettings.poly2.crosshairs && !plot.animation.hover) {
 
       $("#canvas").css("cursor", "crosshair")
 
@@ -20,7 +20,7 @@ export function addCrosshairTool() {
       let tooltip = $("#tooltip")
       let tooltipMargin = 10
 
-      tooltip.css("z-index", tooltipMargin)
+      tooltip.css("z-index", clientSettings.panels.zIndex + 1)
 
       let tooltipWidth = tooltip.outerWidth()
       let tooltipHeight = tooltip.outerHeight()
