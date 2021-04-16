@@ -36,45 +36,53 @@ export function addMenuPanel() {
 
   panel.append(main + "</div>")
 
-// HERE //
-
-  let mainWidth = panel.width()
-  let mainHeight = panel.height()
-
-  let mainBorder = Number(panel.css("border-width")[0])
-  let mainPadding = Number(panel.css("padding")[0])
-
-  let buffer = (mainBorder * 2) + (mainPadding * 2)
-
-  $("#menu.panel #main").width(mainWidth).height(mainHeight)
-
   function appendPanels() {
 
     let panels = "<div id='panels-panel' class='sub-panel'><h1>Panels</h1>"
 
-    panels += "<div class='setting'><input id='countries' class='checkbox' type='checkbox'><label>Countries Panel</label></div>"
-    panels += "<div class='setting'><input id='indicators' class='checkbox' type='checkbox'><label>Indicators Panel</label></div>"
-    panels += "<div class='setting'><input id='layers' class='checkbox' type='checkbox'><label>Layers Panel</label></div>"
-    panels += "<div class='setting'><input id='legend' class='checkbox' type='checkbox'><label>Legend Panel</label></div>"
-    panels += "<div class='setting'><input id='line' class='checkbox' type='checkbox'><label>Line Panel</label></div>"
-    panels += "<div class='setting'><input id='map' class='checkbox' type='checkbox'><label>Map Panel</label></div>"
-    panels += "<div class='setting'><input id='meta' class='checkbox' type='checkbox'><label>Meta Panel</label></div>"
-    panels += "<div class='setting'><input id='time' class='checkbox' type='checkbox'><label>Time Panel</label></div>"
-    panels += "<div class='setting'><input id='title' class='checkbox' type='checkbox'><label>Title Panel</label></div>"
+    let columnOne = "<div class='column'>"
 
-    panels += "</div>"
+    columnOne += "<h3>General</h3>"
 
-    panel.append(panels)
+    columnOne += "<div class='setting'><input id='countries' class='checkbox' type='checkbox'><label>Countries Panel</label></div>"
+    columnOne += "<div class='setting'><input id='indicators' class='checkbox' type='checkbox'><label>Indicators Panel</label></div>"
+    columnOne += "<div class='setting'><input id='legend' class='checkbox' type='checkbox'><label>Legend Panel</label></div>"
+    columnOne += "<div class='setting'><input id='meta' class='checkbox' type='checkbox'><label>Meta Panel</label></div>"
+    columnOne += "<div class='setting'><input id='time' class='checkbox' type='checkbox'><label>Time Panel</label></div>"
+    columnOne += "<div class='setting'><input id='title' class='checkbox' type='checkbox'><label>Title Panel</label></div>"
+
+    columnOne += "</div>"
+
+    let columnTwo = "<div class='column'>"
+
+    columnTwo += "<h3>Poly3</h3>"
+
+    columnTwo += "<div class='setting'><input id='map' class='checkbox' type='checkbox'><label>Map Panel</label></div>"
+
+    columnTwo += "<h3>Poly2</h3>"
+
+    columnTwo += "<div class='setting'><input id='map' class='checkbox' type='checkbox'><label>Map Panel</label></div>"
+
+    columnTwo += "<h3>Map</h3>"
+
+    columnTwo += "<div class='setting'><input id='layers' class='checkbox' type='checkbox'><label>Layers Panel</label></div>"
+    columnTwo += "<div class='setting'><input id='line' class='checkbox' type='checkbox'><label>Line Panel</label></div>"
+
+    columnTwo += "</div>"
+
+    panel.append(panels + columnOne + columnTwo + "</div>")
 
     $("#panels").click(function() {
       togglePanel($("#panels-panel"))
     })
 
-    $("#panels-panel .checkbox").click(function(event) {
-      toggleCheckbox("panels", this.id, event)
+    $("#panels-panel .checkbox").click(function() {
+      updateSettings("panels", this.id, $(this).is(":checked"))
     })
 
   }
+
+// HERE //
 
   function appendSettings() {
 
@@ -348,6 +356,16 @@ export function addMenuPanel() {
     appendLogout()
 
   }
+
+  let mainWidth = panel.width()
+  let mainHeight = panel.height()
+
+  let mainBorder = Number(panel.css("border-width")[0])
+  let mainPadding = Number(panel.css("padding")[0])
+
+  let buffer = (mainBorder * 2) + (mainPadding * 2)
+
+  // $("#menu.panel #main").width(mainWidth).height(mainHeight)
 
   function togglePanel(panel) {
 
