@@ -39,7 +39,7 @@ class Client():
                     "indicatorLimitations": False,
                     "regression": None,
                     "tangent": False,
-                    "rotation": False
+                    "rotation": True
                 },
 
                 "poly3": {
@@ -51,6 +51,7 @@ class Client():
                 },
 
                 "map": {
+                    "projection": "equirectangular",
                     "airports": False,
                     "cities": True,
                     "graticules": False,

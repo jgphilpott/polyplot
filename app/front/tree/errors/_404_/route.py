@@ -7,7 +7,7 @@ def register_404_error_route(app):
     @app.errorhandler(404)
     def page_not_found(error):
 
-        data = {"plot": {"type": None}, "code": 404, "message": "Page Not Found"}
+        data = {"plot": {"type": "404"}, "code": 404, "message": "Page Not Found"}
 
         if "id" in request.cookies: data["client"] = valid_client(request.cookies.get("id"))
 
