@@ -3,6 +3,8 @@ import {addPanelEvents} from "./events/all.mjs"
 import {drawLayers, deleteLayers} from "../draw/layers/all.mjs"
 import {startRotation, stopRotation} from "../cartography/rotation.mjs"
 
+let plot = data.plot
+let plots = plot.plots
 let client = data.client
 
 export function addMenuPanel() {
@@ -38,6 +40,8 @@ export function addMenuPanel() {
 
   function appendPanels() {
 
+    $("#panels").click(function() { togglePanel($("#panels-panel")) })
+
     let panels = "<div id='panels-panel' class='sub-panel'><h1>Panels</h1>"
 
     let columnOne = "<div class='column'>"
@@ -72,32 +76,66 @@ export function addMenuPanel() {
 
     panel.append(panels + columnOne + columnTwo + "</div>")
 
-    $("#panels").click(function() {
-      togglePanel($("#panels-panel"))
-    })
-
     $("#panels-panel .checkbox").click(function() {
       updateSettings("panels", this.id, $(this).is(":checked"))
     })
 
   }
 
-// HERE //
-
   function appendSettings() {
+
+    $("#settings").click(function() { togglePanel($("#settings-panel")) })
 
     let settings = "<div id='settings-panel' class='sub-panel'><h1>Settings</h1>"
 
-    settings += "<div id='general'><div class='setting'><input id='rotation' class='checkbox' type='checkbox'><label>Rotate miniMap</label></div></div>"
-    settings += "<div id='poly3'><div class='setting'><input id='caps' class='checkbox' type='checkbox'><label>Show Axes Caps</label></div></div>"
-    settings += "<div id='poly2'><div class='setting'><input id='crosshairs' class='checkbox' type='checkbox'><label>Show Crosshairs</label></div></div>"
+    settings += "<div id='poly3-settings' class='settings-category'><h3>Poly3</h3></div>"
+    settings += "<div id='poly2-settings' class='settings-category'><h3>Poly2</h3></div>"
+    settings += "<div id='map-settings' class='settings-category'><h3>Map</h3></div>"
 
-    settings += "</div>"
+    let poly3Settings = "<div id='poly3-settings' class='settings-box'>"
 
-    panel.append(settings)
+    poly3Settings += "<div class='setting'><input id='rotation' class='general-setting checkbox' type='checkbox'><label>Rotate miniMap</label></div>"
+    poly3Settings += "<div class='setting'><input id='caps' class='poly3-setting checkbox' type='checkbox'><label>Show Axes Caps</label></div>"
 
-    $("#settings").click(function() {
-      togglePanel($("#settings-panel"))
+    poly3Settings += "</div>"
+
+    let poly2Settings = "<div id='poly2-settings' class='settings-box'>"
+
+    poly2Settings += "<div class='setting'><input id='rotation' class='general-setting checkbox' type='checkbox'><label>Rotate miniMap</label></div>"
+    poly2Settings += "<div class='setting'><input id='crosshairs' class='poly2-setting checkbox' type='checkbox'><label>Show Crosshairs</label></div>"
+
+    poly2Settings += "</div>"
+
+    let mapSettings = "<div id='map-settings' class='settings-box'>"
+
+    mapSettings += "<div class='setting'><input id='projection' class='map-setting equirectangular radio' type='radio' name='projection' value='equirectangular'><label for='equirectangular'>Equirectangular</label></div>"
+    mapSettings += "<div class='setting'><input id='projection' class='map-setting orthographic radio' type='radio' name='projection' value='orthographic'><label for='orthographic'>Orthographic</label></div>"
+
+    mapSettings += "</div>"
+
+    panel.append(settings + poly3Settings + poly2Settings + mapSettings + "</div>")
+
+    if (["poly3", "poly2", "map"].includes(plot.type.toLowerCase())) {
+      $("#" + plot.type.toLowerCase() + "-settings.settings-box").css("display", "block")
+    } else {
+      $("#general-settings.settings-box").css("display", "block")
+    }
+
+    $(".settings-category").click(function() {
+
+      $(".settings-box").css("display", "none")
+      $("#" + this.id + ".settings-box").css("display", "block")
+
+    })
+
+    $("#settings-panel .checkbox, #settings-panel .radio").click(function() {
+
+      let category = $(this).prop("classList")[0].split("-")[0]
+      let setting = this.id
+      let value = ($(this).attr("type") == "radio") ? (this.value) : ($(this).is(":checked"))
+
+      updateSettings(category, setting, value)
+
     })
 
     if (client) {
@@ -109,17 +147,14 @@ export function addMenuPanel() {
 
     } else if (localKeys().includes("settings")) {
 
-      data.client = {email: "guest@polyplot.app"}
-
       let localSettings = localRead("settings")
 
+      data.client = {email: "guest@polyplot.app"}
       data.client.settings = localSettings
 
       checkCheckboxes(localSettings)
 
     } else {
-
-      data.client = {email: "guest@polyplot.app"}
 
       let defaultSettings = {
 
@@ -145,7 +180,7 @@ export function addMenuPanel() {
           "indicatorLimitations": false,
           "regression": null,
           "tangent": false,
-          "rotation": false
+          "rotation": true
         },
 
         "poly3": {
@@ -157,6 +192,7 @@ export function addMenuPanel() {
         },
 
         "map": {
+          "projection": "equirectangular",
           "airports": false,
           "cities": true,
           "graticules": false,
@@ -169,12 +205,15 @@ export function addMenuPanel() {
 
       }
 
+      data.client = {email: "guest@polyplot.app"}
       data.client.settings = defaultSettings
 
       checkCheckboxes(defaultSettings)
       localWrite("settings", defaultSettings)
 
     }
+
+    data.client.settings.panels.zIndex = 0
 
     function checkCheckboxes(settings) {
 
@@ -194,15 +233,13 @@ export function addMenuPanel() {
 
       $(".setting #crosshairs").prop("checked", settings.poly2.crosshairs)
 
+      $(".setting ." + settings.map.projection + "").prop("checked", true)
+
     }
 
-    $("#settings-panel .checkbox").click(function(event) {
-      toggleCheckbox(this.parentElement.parentElement.id, this.id, event)
-    })
-
-    data.client.settings.panels.zIndex = 0
-
   }
+
+// HERE //
 
   function appendSources() {
 
@@ -511,13 +548,13 @@ function settingSwitch(category, type, key) {
 
     case "map":
 
-      if (category[key]) {
+      if (key != "projection") {
 
-        drawLayers()
-
-      } else {
-
-        deleteLayers(key)
+        if (category[key]) {
+          drawLayers()
+        } else {
+          deleteLayers(key)
+        }
 
       }
 
