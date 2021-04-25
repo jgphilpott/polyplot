@@ -239,24 +239,34 @@ export function addMenuPanel() {
 
   }
 
-// HERE //
+// Start //
 
   function appendSources() {
 
+    $("#sources").click(function() { togglePanel($("#sources-panel")) })
+
     let sources = "<div id='sources-panel' class='sub-panel'><h1>Sources</h1>"
 
-    sources += "<h3>Indicators</h3><a href='https://data.worldbank.org/indicator'><p>World Bank</p></a>"
-    sources += "<h3>Maps</h3><a href='http://www.naturalearthdata.com'><p>Natural Earth</p></a>"
+    sources += "<h3>Indicators</h3>"
+
+    sources += "<a href='https://datahelpdesk.worldbank.org/knowledgebase/articles/898581-api-basic-call-structures'><p>World Bank</p></a>"
+
+    sources += "<h3>GeoJSON</h3>"
+
+    sources += "<a href='https://www.geonames.org'><p>GeoNames</p></a>"
+    sources += "<a href='https://www.naturalearthdata.com'><p>Natural Earth</p></a>"
+
+    sources += "<h3>Other</h3>"
+
+    sources += "<a href='https://www.wikipedia.org'><p>Wikipedia</p></a>"
 
     sources += "</div>"
 
     panel.append(sources)
 
-    $("#sources").click(function() {
-      togglePanel($("#sources-panel"))
-    })
-
   }
+
+// End //
 
   function appendSignup() {
 
