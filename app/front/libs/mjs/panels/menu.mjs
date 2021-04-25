@@ -5,6 +5,7 @@ import {startRotation, stopRotation} from "../cartography/rotation.mjs"
 
 let plot = data.plot
 let plots = plot.plots
+
 let client = data.client
 
 export function addMenuPanel() {
@@ -329,18 +330,16 @@ export function addMenuPanel() {
 
   function appendProfile() {
 
+    $("#profile").click(function() { togglePanel($("#profile-panel")) })
+
     let profile = "<div id='profile-panel' class='sub-panel'><h1>Profile</h1>"
 
     profile += "<img src='/front/imgs/panels/menu/profile.png'>"
-    profile += "<h3>Email</h3><p>" + client.email + "</p>"
 
-    profile += "</div>"
+    profile += "<h3>Email</h3>"
+    profile += "<p>" + client.email + "</p>"
 
-    panel.append(profile)
-
-    $("#profile").click(function() {
-      togglePanel($("#profile-panel"))
-    })
+    panel.append(profile + "</div>")
 
   }
 
@@ -355,6 +354,8 @@ export function addMenuPanel() {
     })
 
   }
+
+// HERE
 
   appendPanels()
   appendSettings()
