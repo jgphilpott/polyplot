@@ -372,9 +372,7 @@ export function addMenuPanel() {
   let mainWidth = mainPanel.outerWidth()
   let mainHeight = mainPanel.outerHeight()
 
-  function togglePanel(panel) {
-
-    let duration = 1000
+  function togglePanel(panel, duration=1000) {
 
     if (panel.css("display") == "none") {
 
@@ -399,8 +397,6 @@ export function addMenuPanel() {
     }
 
   }
-
-// here
 
   $("input").click(function(event) { event.stopPropagation(); this.focus() })
   $("input").keypress(function(event) { event.stopPropagation() })
