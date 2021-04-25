@@ -355,23 +355,19 @@ export function addMenuPanel() {
 
   }
 
-// HERE
-
   appendPanels()
   appendSettings()
   appendSources()
 
-  if (!client) {
-
-    appendSignup()
-    appendLogin()
-
-  } else {
-
+  if (client) {
     appendProfile()
     appendLogout()
-
+  } else {
+    appendSignup()
+    appendLogin()
   }
+
+// HERE
 
   let mainWidth = panel.width()
   let mainHeight = panel.height()
