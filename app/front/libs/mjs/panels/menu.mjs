@@ -367,43 +367,40 @@ export function addMenuPanel() {
     appendLogin()
   }
 
-// HERE
+  let mainPanel = panel
 
-  let mainWidth = panel.width()
-  let mainHeight = panel.height()
-
-  let mainBorder = Number(panel.css("border-width")[0])
-  let mainPadding = Number(panel.css("padding")[0])
-
-  let buffer = (mainBorder * 2) + (mainPadding * 2)
-
-  // $("#menu.panel #main").width(mainWidth).height(mainHeight)
+  let mainWidth = mainPanel.outerWidth()
+  let mainHeight = mainPanel.outerHeight()
 
   function togglePanel(panel) {
+
+    let duration = 1000
 
     if (panel.css("display") == "none") {
 
       $(".sub-panel").css("display", "none")
 
       panel.css("display", "block")
-      let panelWidth = panel.width() + buffer
+      let panelWidth = panel.outerWidth()
       panel.css("display", "none")
 
-      $("#menu.panel").animate({"width": mainWidth + panelWidth}, {"duration": 1000, "queue": false})
-      $("#menu.panel").animate({"height": mainHeight + buffer}, {"duration": 1000, "queue": false})
+      mainPanel.animate({width: mainWidth + panelWidth}, {duration: duration, queue: false})
+      mainPanel.animate({height: mainHeight}, {duration: duration, queue: false})
 
       panel.css("display", "block")
 
     } else {
 
-      $("#menu.panel").animate({"width": mainWidth + buffer}, {"duration": 1000, "queue": false})
-      $("#menu.panel").animate({"height": mainHeight + buffer}, {"duration": 1000, "queue": false})
+      mainPanel.animate({width: mainWidth}, {duration: duration, queue: false})
+      mainPanel.animate({height: mainHeight}, {duration: duration, queue: false})
 
       panel.css("display", "none")
 
     }
 
   }
+
+// here
 
   $("input").click(function(event) { event.stopPropagation(); this.focus() })
   $("input").keypress(function(event) { event.stopPropagation() })
