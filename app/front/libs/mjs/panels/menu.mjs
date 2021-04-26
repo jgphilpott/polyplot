@@ -406,89 +406,44 @@ export function addMenuPanel() {
 
 }
 
-export function toggleCheckbox(type, key, event) {
+export function updateSettings(category, setting, value) {
 
-  let settings = localRead("settings")
-  let category = settings[type]
-  let setting = category[key]
+  let settings = data.client.settings
 
-  category[key] = !setting
+  if (client) { socket.emit("update_settings", {id: readCookie("id"), category: category, setting: setting, value: value}) }
 
-  if (client) {
+  $("#" + setting + ".checkbox").prop("checked", value)
 
-    event.preventDefault()
-    event.stopPropagation()
-
-    socket.emit("update_settings", {"id": readCookie("id"), "category": type, "setting": key, "value": category[key]})
-
-    socket.on("updated_settings", function(update) {
-
-      $("#" + update.setting + ".checkbox").prop("checked", update.value)
-
-      client.settings[update.category][update.setting] = update.value
-
-    })
-
-  } else {
-
-    $("#" + key + ".checkbox").prop("checked", category[key])
-
-    data.client.settings[type][key] = category[key]
-
-  }
-
+  settings[category][setting] = value
   localWrite("settings", settings)
-  settingSwitch(category, type, key)
+
+  settingSwitch(category, setting, value)
 
 }
 
-export function updateSettings(type, key, value) {
+// here
 
-  let settings = localRead("settings")
-  let category = settings[type]
+function settingSwitch(category, setting, value) {
 
-  category[key] = value
+  console.log(category);
+  console.log(setting);
+  console.log(value);
 
-  if (client) {
-
-    socket.emit("update_settings", {"id": readCookie("id"), "category": type, "setting": key, "value": category[key]})
-
-    socket.on("updated_settings", function(update) {
-
-      client.settings[update.category][update.setting] = update.value
-
-    })
-
-  } else {
-
-    data.client.settings[type][key] = value
-
-  }
-
-  $("#" + key + ".checkbox").prop("checked", value)
-
-  localWrite("settings", settings)
-  settingSwitch(category, type, key)
-
-}
-
-function settingSwitch(category, type, key) {
-
-  switch (type) {
+  switch (category) {
 
     case "panels":
 
-      let panel = $("#" + key + ".panel")
+      let panel = $("#" + setting + ".panel")
 
-      if (category[key]) { panel.css("visibility", "visible") } else { panel.css("visibility", "hidden") }
+      if (value) { panel.css("visibility", "visible") } else { panel.css("visibility", "hidden") }
 
       break
 
     case "general":
 
-      if (key == "rotation") {
+      if (setting == "rotation") {
 
-        if (category[key]) {
+        if (value) {
 
           startRotation()
           $("#rotation-icon").attr("src", "/front/imgs/panels/map/rotation-dark.png")
@@ -516,12 +471,12 @@ function settingSwitch(category, type, key) {
 
     case "map":
 
-      if (key != "projection") {
+      if (setting != "projection") {
 
-        if (category[key]) {
+        if (value) {
           drawLayers()
         } else {
-          deleteLayers(key)
+          deleteLayers(setting)
         }
 
       }
