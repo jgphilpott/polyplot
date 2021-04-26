@@ -10,7 +10,7 @@ import {drawRoads} from "./roads.mjs"
 let plot = data.plot
 let plots = plot.plots
 
-export function drawLayers() {
+export function drawLayers(layer=null) {
 
   let canvas = d3.select("#canvas")
   let mapSettings = localRead("settings").map

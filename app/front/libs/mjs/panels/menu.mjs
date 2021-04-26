@@ -408,12 +408,11 @@ export function addMenuPanel() {
 
 export function updateSettings(category, setting, value) {
 
-  let settings = data.client.settings
-
   if (client) { socket.emit("update_settings", {id: readCookie("id"), category: category, setting: setting, value: value}) }
 
   $("#" + setting + ".checkbox").prop("checked", value)
 
+  let settings = data.client.settings
   settings[category][setting] = value
   localWrite("settings", settings)
 
@@ -421,13 +420,7 @@ export function updateSettings(category, setting, value) {
 
 }
 
-// here
-
 function settingSwitch(category, setting, value) {
-
-  console.log(category);
-  console.log(setting);
-  console.log(value);
 
   switch (category) {
 
@@ -471,15 +464,7 @@ function settingSwitch(category, setting, value) {
 
     case "map":
 
-      if (setting != "projection") {
-
-        if (value) {
-          drawLayers()
-        } else {
-          deleteLayers(setting)
-        }
-
-      }
+      if (setting != "projection") { if (value) { drawLayers(setting) } else { deleteLayers(setting) } }
 
       break
 
