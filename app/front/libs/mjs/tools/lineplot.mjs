@@ -2,20 +2,24 @@ let plot = data.plot
 
 export function getVertices(line) {
 
-  let vertices = (plot.type != "Indicator") ? (line.x) : (line.history)
+  if (data.client.settings.general.countryExceptions.includes(line.code) != true) {
 
-  vertices = vertices.filter(function(vertex) {
-    if (typeof(vertex.year) == "number" && typeof(vertex.value) == "number" && vertex.year >= plot.t.minCap && vertex.year <= plot.t.maxCap) {
+    let vertices = (plot.type != "Indicator") ? (line.x) : (line.history)
 
-      plot.line.xRegVals.push(vertex.year)
-      plot.line.yRegVals.push(vertex.value)
+    return vertices.filter(function(vertex) {
 
-      return vertex
+      if (typeof(vertex.year) == "number" && typeof(vertex.value) == "number" && vertex.year >= plot.t.minCap && vertex.year <= plot.t.maxCap) {
 
-    }
-  })
+        plot.line.xRegVals.push(vertex.year)
+        plot.line.yRegVals.push(vertex.value)
 
-  return vertices
+        return vertex
+
+      }
+
+    })
+
+  }
 
 }
 

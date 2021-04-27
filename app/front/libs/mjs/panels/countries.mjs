@@ -118,7 +118,7 @@ export function addRegionBoxes(regions) {
     panel = $("#countries.panel")
   }
 
-  let countryExceptions = localRead("settings").general.countryExceptions
+  let countryExceptions = data.client.settings.general.countryExceptions
 
   for (let i = 0; i < regions.length; i++) {
 
@@ -158,7 +158,7 @@ export function addCountryBoxes(countries) {
   let year = readCookie("year")
 
   countries.sort((a, b) => a.name.localeCompare(b.name))
-  let countryExceptions = localRead("settings").general.countryExceptions
+  let countryExceptions = data.client.settings.general.countryExceptions
 
   for (let i = 0; i < countries.length; i++) {
 
@@ -239,7 +239,7 @@ export function toggleRegionVisibility(element) {
 
   let code = $(element).parent().parent().attr("id")
   let value = $(element).attr("src").split("/").pop().split(".")[0]
-  let countryExceptions = localRead("settings").general.countryExceptions
+  let countryExceptions = data.client.settings.general.countryExceptions
 
   if (value == "visible") {
 
@@ -304,7 +304,7 @@ export function toggleCountryVisibility(element) {
   }
 
   let value = $(element).attr("src").split("/").pop().split(".")[0]
-  let countryExceptions = localRead("settings").general.countryExceptions
+  let countryExceptions = data.client.settings.general.countryExceptions
 
   if (value == "visible") {
 
