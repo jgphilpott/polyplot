@@ -39,9 +39,9 @@ export function drawCircle(circle, r, x, y, plotType=plot.type) {
       contextMenu(circle.code, event)
     })
 
-    return circle
+    return true
 
-  } else { return null }
+  } else { return false }
 
 }
 

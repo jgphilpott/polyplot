@@ -1,5 +1,8 @@
 import {drawAxes} from "../draw/axes.mjs"
+import {scaleAxes} from "../scales/axes.mjs"
+
 import {addPanelEvents} from "./events/all.mjs"
+import {animationSwitch} from "../animation/plots.mjs"
 import {drawLayers, deleteLayers} from "../draw/layers/all.mjs"
 import {startRotation, stopRotation} from "../cartography/rotation.mjs"
 
@@ -434,7 +437,12 @@ function settingSwitch(category, setting, value) {
 
     case "general":
 
-      if (setting == "rotation") {
+      if (setting == "countryExceptions") {
+
+        scaleAxes()
+        animationSwitch()
+
+      } else if (setting == "rotation") {
 
         if (value) {
 
