@@ -55,7 +55,7 @@ export function drawMaps(plotType=plot.type, λ=0, φ=0, γ=0) {
         .attr("class", "map")
         .style("fill", function(map) {
 
-          if (plotType == "Map") {
+          if (plotType == "Map" && data.client.settings.general.countryExceptions.includes(map.properties.code) != true) {
 
             let history = plots.find(plot => plot.code == map.properties.code).x
             let value = history.find(date => date.year == plot.t.year).value
@@ -70,7 +70,7 @@ export function drawMaps(plotType=plot.type, λ=0, φ=0, γ=0) {
               return regionsColourSwitch(map.properties.region)
             }
 
-          }
+          } else { return "gray" }
 
         })
 

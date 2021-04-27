@@ -7,9 +7,12 @@ let plots = plot.plots
 
 export function drawCircle(circle, r, x, y, plotType=plot.type) {
 
-  let canvas = d3.select("#canvas")
+  let visibility = (data.client.settings.general.countryExceptions.includes(circle.code) != true)
+  let numbers = (typeof(r) == "number" && typeof(x) == "number" && typeof(y) == "number")
 
-  if (typeof(r) == "number" && typeof(x) == "number" && typeof(y) == "number") {
+  if (visibility && numbers) {
+
+    let canvas = d3.select("#canvas")
 
     canvas.append("circle")
           .data([circle])
@@ -36,7 +39,9 @@ export function drawCircle(circle, r, x, y, plotType=plot.type) {
       contextMenu(circle.code, event)
     })
 
-  }
+    return circle
+
+  } else { return null }
 
 }
 

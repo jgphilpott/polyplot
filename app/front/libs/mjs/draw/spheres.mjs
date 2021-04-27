@@ -10,7 +10,10 @@ let plots = plot.plots
 
 export function drawSphere(sphere, r, x, y, z, plotType=plot.type) {
 
-  if (typeof(r) == "number" && typeof(x) == "number" && typeof(y) == "number" && typeof(z) == "number") {
+  let visibility = (data.client.settings.general.countryExceptions.includes(sphere.code) != true)
+  let numbers = (typeof(r) == "number" && typeof(x) == "number" && typeof(y) == "number" && typeof(z) == "number")
+
+  if (visibility && numbers) {
 
     r = plot.r.scale(r)
     x = plot.x.scale(x)
@@ -32,11 +35,7 @@ export function drawSphere(sphere, r, x, y, z, plotType=plot.type) {
 
     return mesh
 
-  } else {
-
-    return null
-
-  }
+  } else { return null }
 
 }
 
