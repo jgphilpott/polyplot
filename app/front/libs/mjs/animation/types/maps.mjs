@@ -8,10 +8,14 @@ export function animateMaps(duration) {
     .duration(duration)
     .style("fill", function(map) {
 
-      let history = plots.find(plot => plot.code == map.properties.code).x
-      let value = history.find(date => date.year == plot.t.year).value
+      if (data.client.settings.general.countryExceptions.includes(map.properties.code) != true) {
 
-      if (typeof(value) == "number") { return plot.x.scale(value) } else { return "gray" }
+        let history = plots.find(plot => plot.code == map.properties.code).x
+        let value = history.find(date => date.year == plot.t.year).value
+
+        if (typeof(value) == "number") { return plot.x.scale(value) } else { return "gray" }
+
+      } else { return "gray" }
 
     })
 

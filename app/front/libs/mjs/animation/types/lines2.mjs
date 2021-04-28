@@ -7,7 +7,7 @@ let plots = plot.plots
 
 export function animateLines2(duration) {
 
-  let generalSettings = localRead("settings").general
+  let generalSettings = data.client.settings.general
 
   plot.line.generator = d3.line()
                           .x(function(vertex) { return plot.line.x(vertex.year) })
@@ -26,11 +26,27 @@ export function animateLines2(duration) {
 
   for (let i = 0; i < lines.length; i++) {
 
-    d3.select("#" + lines[i].code + ".line")
-      .transition()
-      .ease(d3.easeLinear)
-      .duration(duration)
-      .attr("d", plot.line.generator(getVertices(lines[i])))
+    if (generalSettings.countryExceptions.includes(lines[i].code) != true) {
+
+      if ($("#" + lines[i].code + ".line").length) {
+
+        d3.select("#" + lines[i].code + ".line")
+          .transition()
+          .ease(d3.easeLinear)
+          .duration(duration)
+          .attr("d", plot.line.generator(getVertices(lines[i])))
+
+      } else {
+
+        drawLine2(getVertices(lines[i]), regionsColourSwitch(lines[i].region), lines[i].code)
+
+        d3.select("#track.line").setAsFrontLayer()
+        d3.select("#regression.line").setAsFrontLayer()
+        d3.select("#tangent.line").setAsFrontLayer()
+
+      }
+
+    } else { $("#" + lines[i].code + ".line").remove() }
 
   }
 
