@@ -14,11 +14,11 @@ def load_js(path):
 
         urlretrieve("https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js", path + "/sha256.js")
 
-        urlretrieve("https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js", path + "/socket.js")
+        urlretrieve("https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.4.0/socket.io.min.js", path + "/socket.js")
 
-        urlretrieve("https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js", path + "/jQuery.js")
+        urlretrieve("https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js", path + "/jQuery.js")
 
-        urlretrieve("https://cdnjs.cloudflare.com/ajax/libs/d3/5.15.0/d3.min.js", path + "/d3.js")
+        urlretrieve("https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.min.js", path + "/d3.js")
 
         urlretrieve("https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js", path + "/three.js")
         urlretrieve("https://raw.githubusercontent.com/jeromeetienne/threex.domevents/1100828c40df668a82a97c811895918088cc607f/threex.domevents.js", path + "/threeX.js")
