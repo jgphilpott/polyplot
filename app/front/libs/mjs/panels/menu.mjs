@@ -92,9 +92,16 @@ export function addMenuPanel() {
 
     let settings = "<div id='settings-panel' class='sub-panel'><h1>Settings</h1>"
 
+    settings += "<div id='general-settings' class='settings-category'><h3>General</h3></div>"
     settings += "<div id='poly3-settings' class='settings-category'><h3>Poly3</h3></div>"
     settings += "<div id='poly2-settings' class='settings-category'><h3>Poly2</h3></div>"
     settings += "<div id='map-settings' class='settings-category'><h3>Map</h3></div>"
+
+    let generalSettings = "<div id='general-settings' class='settings-box'>"
+
+    generalSettings += "<div class='setting'><input id='opacity' class='general-setting slider' type='range' min='0' max='100' value='50'></div>"
+
+    generalSettings += "</div>"
 
     let poly3Settings = "<div id='poly3-settings' class='settings-box'>"
 
@@ -117,7 +124,7 @@ export function addMenuPanel() {
 
     mapSettings += "</div>"
 
-    panel.append(settings + poly3Settings + poly2Settings + mapSettings + "</div>")
+    panel.append(settings + generalSettings + poly3Settings + poly2Settings + mapSettings + "</div>")
 
     if (["poly3", "poly2", "map"].includes(plot.type.toLowerCase())) {
       $("#" + plot.type.toLowerCase() + "-settings.settings-box").css("display", "block")
