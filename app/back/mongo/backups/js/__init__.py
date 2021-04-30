@@ -17,6 +17,7 @@ def load_js(path):
         urlretrieve("https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.4.0/socket.io.min.js", path + "/socket.js")
 
         urlretrieve("https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js", path + "/jQuery.js")
+        urlretrieve("https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js", path + "/jQueryUI.js")
 
         urlretrieve("https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.min.js", path + "/d3.js")
 
