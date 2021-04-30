@@ -434,13 +434,28 @@ export function updateSettings(category, setting, value) {
 
 function settingSwitch(category, setting, value) {
 
+  let settings = data.client.settings
+
   switch (category) {
 
     case "panels":
 
       let panel = $("#" + setting + ".panel")
 
-      if (value) { panel.css("visibility", "visible") } else { panel.css("visibility", "hidden") }
+      if (value) {
+
+        panel.css("visibility", "visible")
+        panel.children().css("visibility", "visible")
+
+        settings.panels.zIndex += 1
+        panel.css("z-index", settings.panels.zIndex)
+
+      } else {
+
+        panel.children().css("visibility", "hidden")
+        panel.css("visibility", "hidden")
+
+      }
 
       break
 

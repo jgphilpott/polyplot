@@ -31,11 +31,17 @@ $(document).ready(function() {
     let home = $("#home.panel")
     let error = $("#error.panel")
 
+    let settings = data.client.settings
+
     if (menu.css("visibility") == "hidden") {
+
+      settings.panels.zIndex += 1
 
       menu.css("visibility", "visible")
       home.css("visibility", "hidden")
       error.css("visibility", "hidden")
+
+      menu.css("z-index", settings.panels.zIndex)
 
     } else {
 

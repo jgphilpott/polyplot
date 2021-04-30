@@ -6,6 +6,8 @@ export function contextMenu(code, domEvent) {
 
   $("#context-menu.panel").remove()
 
+  let settings = data.client.settings
+
   let menu = "<div id='context-menu' class='panel'>"
 
   menu += "<a href='/countries/" + code + "'><p id='view-page'>View Page</p></a>"
@@ -17,6 +19,9 @@ export function contextMenu(code, domEvent) {
 
   let offset = 5
   let contextMenu = $("#context-menu")
+
+  contextMenu.css("z-index", settings.panels.zIndex + 1)
+  setBackground(contextMenu, settings.general.opacity)
 
   let contextMenuWidth = contextMenu.outerWidth()
   let contextMenuHeight = contextMenu.outerHeight()
@@ -32,8 +37,6 @@ export function contextMenu(code, domEvent) {
   } else if (domEvent.pageY < height() / 2) {
     contextMenu.css("top", domEvent.pageY - offset)
   }
-
-  contextMenu.css("z-index", data.client.settings.panels.zIndex + 1)
 
   $("#open-panel").click(function() { addPoltPanel(code) })
 
