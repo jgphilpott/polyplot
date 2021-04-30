@@ -99,7 +99,7 @@ export function addMenuPanel() {
 
     let generalSettings = "<div id='general-settings' class='settings-box'>"
 
-    generalSettings += "<div class='setting'><input id='opacity' class='general-setting slider' type='range' min='0' max='100' value='50'></div>"
+    generalSettings += "<div class='setting'><input id='opacity' class='general-setting slider' type='range' min='1' max='100' value='50'></div>"
 
     generalSettings += "</div>"
 
@@ -191,7 +191,8 @@ export function addMenuPanel() {
           "indicatorLimitations": false,
           "regression": null,
           "tangent": false,
-          "rotation": true
+          "rotation": true,
+          "opacity": 0.75
         },
 
         "poly3": {
@@ -238,6 +239,7 @@ export function addMenuPanel() {
       $(".setting #time").prop("checked", settings.panels.time)
       $(".setting #title").prop("checked", settings.panels.title)
 
+      $(".setting #opacity").val(settings.general.opacity * 100)
       $(".setting #rotation").prop("checked", settings.general.rotation)
 
       $(".setting #caps").prop("checked", settings.poly3.caps)

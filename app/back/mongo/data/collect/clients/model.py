@@ -39,7 +39,8 @@ class Client():
                     "indicatorLimitations": False,
                     "regression": None,
                     "tangent": False,
-                    "rotation": True
+                    "rotation": True,
+                    "opacity": 0.75
                 },
 
                 "poly3": {
