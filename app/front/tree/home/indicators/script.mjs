@@ -1,5 +1,5 @@
 import {rainbow} from "../../../libs/mjs/colors/solid/rainbow.mjs"
-import {makeScrollable} from "../../../libs/mjs/panels/events/scroll.mjs"
+import {addPanelEvents} from "../../../libs/mjs/panels/events/all.mjs"
 
 import {toggleFold} from "../../../libs/mjs/panels/indicators.mjs"
 import {addCategoryBoxes, addIndicatorBoxes} from "../../../libs/mjs/panels/indicators.mjs"
@@ -55,6 +55,6 @@ $(document).ready(function() {
 
   })
 
-  makeScrollable(panel)
+  addPanelEvents(panel, true)
 
 })

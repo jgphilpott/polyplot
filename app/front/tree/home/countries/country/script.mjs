@@ -1,6 +1,6 @@
 import {rainbow} from "../../../../libs/mjs/colors/solid/rainbow.mjs"
 import {orthographic} from "../../../../libs/mjs/cartography/projections.mjs"
-import {makeScrollable} from "../../../../libs/mjs/panels/events/scroll.mjs"
+import {addPanelEvents} from "../../../../libs/mjs/panels/events/all.mjs"
 import {regionsColourSwitch} from "../../../../libs/mjs/colors/switches/regions.mjs"
 
 import {drawMaps} from "../../../../libs/mjs/draw/maps.mjs"
@@ -83,6 +83,6 @@ $(document).ready(function() {
 
   addTimePanel(true, panel)
 
-  makeScrollable(panel)
+  addPanelEvents(panel, true)
 
 })

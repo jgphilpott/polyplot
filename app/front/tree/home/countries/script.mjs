@@ -1,6 +1,6 @@
 import {rainbow} from "../../../libs/mjs/colors/solid/rainbow.mjs"
 import {addAlphabetBox} from "../../../libs/mjs/tools/alphabet.mjs"
-import {makeScrollable} from "../../../libs/mjs/panels/events/scroll.mjs"
+import {addPanelEvents} from "../../../libs/mjs/panels/events/all.mjs"
 
 import {toggleFold} from "../../../libs/mjs/panels/countries.mjs"
 import {addRegionBoxes, addCountryBoxes} from "../../../libs/mjs/panels/countries.mjs"
@@ -45,6 +45,6 @@ $(document).ready(function() {
 
   })
 
-  makeScrollable(panel)
+  addPanelEvents(panel, true)
 
 })

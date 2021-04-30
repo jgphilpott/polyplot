@@ -47,7 +47,8 @@ def load_js(path):
             localStorage = get("https://gist.githubusercontent.com/jgphilpott/e26b92eb41b64e9565032d5c4d3c2878/raw/593ae1721ca986210862da158db663f21dec42af/localStorage.js").content.decode("utf-8")
             format = get("https://gist.githubusercontent.com/jgphilpott/787659ac4ea57a9971da58a76191079b/raw/d87c450947083ab134999408cec38fb70756593a/numberFormater.js").content.decode("utf-8")
             subset = get("https://gist.githubusercontent.com/jgphilpott/a1367ca419ac2807ed4340d69356b7f1/raw/48ad3970a6a370853d18157142421ab02b1e2398/subset.js").content.decode("utf-8")
+            background = get("https://gist.githubusercontent.com/jgphilpott/bfae397ee7d483b49754291b29db87e0/raw/62abb7a1736f78c1c0800b68f9d45beeddb90020/panelBackground.js").content.decode("utf-8")
 
-            tools = particleWeb + "\n" + camalize + "\n" + rotation + "\n" + d3Sorting + "\n" + cookieFuncs + "\n" + validEmail + "\n" + localStorage + "\n" + format + "\n" + subset
+            tools = particleWeb + "\n" + camalize + "\n" + rotation + "\n" + d3Sorting + "\n" + cookieFuncs + "\n" + validEmail + "\n" + localStorage + "\n" + format + "\n" + subset + "\n" + background
 
             file.write(tools)

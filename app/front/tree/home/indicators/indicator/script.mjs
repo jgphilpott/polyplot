@@ -1,6 +1,6 @@
 import {rainbow} from "../../../../libs/mjs/colors/solid/rainbow.mjs"
 import {addAlphabetBox} from "../../../../libs/mjs/tools/alphabet.mjs"
-import {makeScrollable} from "../../../../libs/mjs/panels/events/scroll.mjs"
+import {addPanelEvents} from "../../../../libs/mjs/panels/events/all.mjs"
 import {regionsColourSwitch} from "../../../../libs/mjs/colors/switches/regions.mjs"
 
 import {toggleIndicatorVisibility} from "../../../../libs/mjs/panels/indicators.mjs"
@@ -143,6 +143,6 @@ $(document).ready(function() {
   addLinePanel(true, panel)
   addTimePanel(true, panel)
 
-  makeScrollable(panel)
+  addPanelEvents(panel, true)
 
 })
