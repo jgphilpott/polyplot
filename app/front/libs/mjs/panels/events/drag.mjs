@@ -1,10 +1,11 @@
+import {updateSettings} from "../menu.mjs"
+
 export function makeDragable(element, events=[]) {
 
   let xOffset, yOffset = 0
 
   function start(event) {
 
-    event.preventDefault()
     event.stopPropagation()
 
     if (element.css("transform") != "none") {
@@ -28,21 +29,29 @@ export function makeDragable(element, events=[]) {
 
   function drag(event) {
 
-    event.preventDefault()
     event.stopPropagation()
+    if (!$(event.srcElement).hasClass("slider")) { event.preventDefault() }
 
     let eventX = event.clientX - xOffset
     let eventY = event.clientY - yOffset
 
-    element.css("cursor", "grabbing")
-
     if (element.hasClass("controller")) {
+
+      element.css("cursor", "grabbing")
 
       events[0](element, [eventX, eventY])
 
+    } else if ($(event.srcElement).hasClass("slider")) {
+
+      $(event.srcElement).css("cursor", "grabbing")
+
+      setBackground($(".panel"), document.querySelector('#opacity.slider').value / 100)
+
     } else if (element.hasClass("panel")) {
 
-      element.css({"top": eventY, "left": eventX})
+      element.css("cursor", "grabbing")
+
+      element.css({top: eventY, left: eventX})
 
     }
 
@@ -50,12 +59,17 @@ export function makeDragable(element, events=[]) {
 
   function stop(event) {
 
-    event.preventDefault()
     event.stopPropagation()
 
     if (element.hasClass("controller")) {
 
       element.css("cursor", "ew-resize")
+
+    } else if ($(event.srcElement).hasClass("slider")) {
+
+      $(event.srcElement).css("cursor", "ew-resize")
+
+      updateSettings("general", "opacity", document.querySelector('#opacity.slider').value / 100)
 
     } else if (element.hasClass("panel")) {
 
