@@ -1,5 +1,6 @@
 import {drawAxes} from "../draw/axes.mjs"
 import {scaleAxes} from "../scales/axes.mjs"
+import {polymorph} from "../cartography/projections.mjs"
 
 import {addPanelEvents} from "./events/all.mjs"
 import {animationSwitch} from "../animation/plots.mjs"
@@ -496,7 +497,15 @@ function settingSwitch(category, setting, value) {
 
     case "map":
 
-      if (setting != "projection") { if (value) { drawLayers(setting) } else { deleteLayers(setting) } }
+      if (setting == "projection") {
+
+        polymorph(value)
+
+      } else {
+
+        if (value) { drawLayers(setting) } else { deleteLayers(setting) }
+
+      }
 
       break
 

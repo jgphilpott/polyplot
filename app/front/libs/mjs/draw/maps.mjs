@@ -5,7 +5,7 @@ import {width, height} from "../env/window.mjs"
 import {regionsColourSwitch} from "../colors/switches/regions.mjs"
 
 import {makeZoomable} from "../cartography/zoom.mjs"
-import {orthographic, equirectangular} from "../cartography/projections.mjs"
+import {equirectangular, mercator, orthographic} from "../cartography/projections.mjs"
 
 import {updateMetaPanel, clearMetaPanel} from "../panels/meta.mjs"
 
@@ -17,21 +17,35 @@ export function drawMaps(plotType=plot.type, λ=0, φ=0, γ=0) {
   let GeoJSON = plot.GeoJSON
   let features = GeoJSON.features
   let properties = GeoJSON.properties
+  let projectionSetting = data.client.settings.map.projection
+  let projections = {equirectangular: equirectangular, mercator: mercator, orthographic: orthographic}
 
-  let graticule = d3.geoGraticule().step([15, 15])
   let canvas, size, projection, path = null
+  let graticule = d3.geoGraticule().step([15, 15])
+
+  let buffer = projectionSetting == "orthographic" ? 0.85 : 1
+  let clipAngle = projectionSetting == "orthographic" ? 90 : null
 
   if (plotType == "Map") {
 
     canvas = d3.select("#canvas")
-    projection = equirectangular.fitSize([width(), height()], plot.GeoJSON)
+
+    projection = projections[projectionSetting].fitExtent([[0, 0], [width() * buffer, height() * buffer]], {type: "Sphere"})
+                                               .clipExtent([[0, 0], [width(), height()]])
+                                               .translate([width() / 2, height() / 2])
+                                               .clipAngle(clipAngle)
+                                               .rotate([0, 0])
+
     path = d3.geoPath().projection(projection)
 
   } else if (plotType == "mini-map") {
 
     canvas = d3.select("#mini-map")
+
     size = (plot.type != "Country") ? (125) : (150)
+
     projection = orthographic.scale(size).translate([size, size])
+
     path = (plot.type != "Country") ? (d3.geoPath().projection(projection.rotate([λ, φ, γ]))) : (d3.geoPath().projection(projection.rotate([-properties.centroid[0], -properties.centroid[1], 0])))
 
     canvas.append("g")
