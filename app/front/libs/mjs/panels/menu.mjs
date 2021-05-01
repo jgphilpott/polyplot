@@ -423,7 +423,7 @@ export function updateSettings(category, setting, value) {
 
   let settings = data.client.settings
 
-  if (value != settings[category][setting]) {
+  if (value != settings[category][setting] || category == "panels") {
 
     if (client) { socket.emit("update_settings", {id: readCookie("id"),
                                                   category: category,

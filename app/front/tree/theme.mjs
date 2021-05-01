@@ -1,14 +1,17 @@
-import {addMenuPanel} from "../libs/mjs/panels/menu.mjs"
+import {addMenuPanel, updateSettings} from "../libs/mjs/panels/menu.mjs"
+
+console.log("Welcome to Polyplot!")
 
 $(document).ready(function() {
 
-  console.log("Welcome to Polyplot!")
-
   addMenuPanel()
 
-  $("#nav #menu").click(function() {
+  $("#nav #menu").click(function() { toggleMenu() })
 
-    toggleMenu()
+  $("#nav, #forkme").mouseover(function() {
+
+    $(".crosshair").remove()
+    $("#context-menu").remove()
 
   })
 
@@ -35,29 +38,26 @@ $(document).ready(function() {
 
     if (menu.css("visibility") == "hidden") {
 
-      settings.panels.zIndex += 1
+      updateSettings("panels", "menu", true)
 
-      menu.css("visibility", "visible")
       home.css("visibility", "hidden")
       error.css("visibility", "hidden")
 
-      menu.css("z-index", settings.panels.zIndex)
+      home.children().css("visibility", "hidden")
+      error.children().css("visibility", "hidden")
 
     } else {
 
-      menu.css("visibility", "hidden")
+      updateSettings("panels", "menu", false)
+
       home.css("visibility", "visible")
       error.css("visibility", "visible")
+
+      home.children().css("visibility", "visible")
+      error.children().css("visibility", "visible")
 
     }
 
   }
-
-  $("#nav, #forkme").mouseover(function() {
-
-    $(".crosshair").remove()
-    $("#context-menu").remove()
-
-  })
 
 })
