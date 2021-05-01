@@ -4,8 +4,8 @@ import {contextMenu} from "../env/context.mjs"
 import {width, height} from "../env/window.mjs"
 import {regionsColourSwitch} from "../colors/switches/regions.mjs"
 
+import {projections} from "../cartography/projections.mjs"
 import {makeZoomable} from "../cartography/zoom.mjs"
-import {equirectangular, mercator, orthographic} from "../cartography/projections.mjs"
 
 import {updateMetaPanel, clearMetaPanel} from "../panels/meta.mjs"
 
@@ -18,12 +18,11 @@ export function drawMaps(plotType=plot.type, λ=0, φ=0, γ=0) {
   let features = GeoJSON.features
   let properties = GeoJSON.properties
   let projectionSetting = data.client.settings.map.projection
-  let projections = {equirectangular: equirectangular, mercator: mercator, orthographic: orthographic}
 
   let canvas, size, projection, path = null
   let graticule = d3.geoGraticule().step([15, 15])
 
-  let buffer = projectionSetting == "orthographic" ? 0.85 : 1
+  let buffer = projectionSetting == "orthographic" ? 0.9 : 1
   let clipAngle = projectionSetting == "orthographic" ? 90 : null
 
   if (plotType == "Map") {
@@ -34,7 +33,7 @@ export function drawMaps(plotType=plot.type, λ=0, φ=0, γ=0) {
                                                .clipExtent([[0, 0], [width(), height()]])
                                                .translate([width() / 2, height() / 2])
                                                .clipAngle(clipAngle)
-                                               .rotate([0, 0])
+                                               .rotate([λ, φ])
 
     path = d3.geoPath().projection(projection)
 

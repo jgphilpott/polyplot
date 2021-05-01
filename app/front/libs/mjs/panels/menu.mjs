@@ -421,15 +421,22 @@ export function addMenuPanel() {
 
 export function updateSettings(category, setting, value) {
 
-  if (client) { socket.emit("update_settings", {id: readCookie("id"), category: category, setting: setting, value: value}) }
-
-  $("#" + setting + ".checkbox").prop("checked", value)
-
   let settings = data.client.settings
-  settings[category][setting] = value
-  localWrite("settings", settings)
 
-  settingSwitch(category, setting, value)
+  if (value != settings[category][setting]) {
+
+    if (client) { socket.emit("update_settings", {id: readCookie("id"),
+                                                  category: category,
+                                                  setting: setting,
+                                                  value: value}) }
+
+    settings[category][setting] = value
+    $("#" + setting + ".checkbox").prop("checked", value)
+
+    localWrite("settings", settings)
+    settingSwitch(category, setting, value)
+
+  }
 
 }
 
