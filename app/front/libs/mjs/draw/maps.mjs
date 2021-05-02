@@ -22,7 +22,7 @@ export function drawMaps(plotType=plot.type, λ=0, φ=0, γ=0) {
   let canvas, size, projection, path = null
   let graticule = d3.geoGraticule().step([15, 15])
 
-  let buffer = projectionSetting == "orthographic" ? 0.9 : 1
+  let buffer = projectionSetting == "orthographic" ? 0.95 : 1
   let clipAngle = projectionSetting == "orthographic" ? 90 : null
 
   if (plotType == "Map") {
@@ -43,7 +43,7 @@ export function drawMaps(plotType=plot.type, λ=0, φ=0, γ=0) {
 
     size = (plot.type != "Country") ? (125) : (150)
 
-    projection = orthographic.scale(size).translate([size, size])
+    projection = projections["orthographic"].scale(size).translate([size, size])
 
     path = (plot.type != "Country") ? (d3.geoPath().projection(projection.rotate([λ, φ, γ]))) : (d3.geoPath().projection(projection.rotate([-properties.centroid[0], -properties.centroid[1], 0])))
 
