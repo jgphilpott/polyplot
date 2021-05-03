@@ -8,7 +8,7 @@ export function addTitlePanel(panelSetting) {
 
   panel.append("<img class='close' src='/front/imgs/panels/all/close.png'>")
 
-  panel.append("<a href='https://data.worldbank.org/indicator'><h1 id='name'>" + data.plot.title + "</h1></a>")
+  panel.append("<h1 id='name'><a href='https://data.worldbank.org/indicator'>" + data.plot.title + "</a></h1>")
 
   addPanelEvents(panel)
 

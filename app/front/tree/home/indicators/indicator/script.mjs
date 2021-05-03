@@ -120,7 +120,7 @@ $(document).ready(function() {
 
   socket.on("new_regions", function(regions) {
 
-    panel.append("<a href='/countries'><h1>Countries by Region</h1>")
+    panel.append("<h1><a href='/countries'>Countries by Region</a></h1>")
 
     addAlphabetBox(panel, indicator.countries)
     addRegionBoxes(regions)

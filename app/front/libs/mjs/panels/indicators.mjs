@@ -17,7 +17,7 @@ export function addIndicatorsPanel(panelSetting) {
 
   let head = "<div class='indicators-head'>"
 
-  head += "<a href='/indicators'><h1 id='name'>Indicators by Category</h1></a>"
+  head += "<h1 id='name'><a href='/indicators'>Indicators by Category</a></h1>"
   head += "<div id='axes-box'>"
 
   let scelection = "x"
@@ -245,7 +245,7 @@ export function addIndicatorBoxes(indicators) {
 
       }
 
-      indicatorBox += "<p class='indicator-name'>" + indicators[i].name + "</p>"
+      indicatorBox += "<p class='indicator-name'><span>" + indicators[i].name + "</span></p>"
 
       if (plot.type == "Country") {
 
@@ -262,7 +262,7 @@ export function addIndicatorBoxes(indicators) {
 
       if (plot.type == "Indicators" || plot.type == "Country") {
 
-        $("#" + camalize(indicators[i].categories[j]) + ".category-box .indicators-box #" + indicators[i].code.replaceAll(".", "-") + ".indicator-box .indicator-name").on("click", function() { window.location = "/indicators/" + indicators[i].code + "" })
+        $("#" + camalize(indicators[i].categories[j]) + ".category-box .indicators-box #" + indicators[i].code.replaceAll(".", "-") + ".indicator-box .indicator-name span").on("click", function() { window.location = "/indicators/" + indicators[i].code + "" })
 
         let pie = d3.pie().sort(null)
         let arc = d3.arc().innerRadius(8).outerRadius(12)

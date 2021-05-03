@@ -67,7 +67,7 @@ $(document).ready(function() {
 
   socket.on("new_categories", function(categories) {
 
-    panel.append("<a href='/indicators'><h1>Indicators by Category</h1></a>")
+    panel.append("<h1><a href='/indicators'>Indicators by Category</a></h1>")
 
     let indicators = Object.keys(country.indicators).filter(key => generalSettings.indicatorExceptions.includes(key.replaceAll("-", ".")))
     indicators = Object.values(indicators.reduce((obj, key) => { obj[key] = country.indicators[key]; return obj }, {})).sort((a, b) => a.name.localeCompare(b.name))

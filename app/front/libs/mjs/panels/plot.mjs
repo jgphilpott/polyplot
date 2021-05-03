@@ -15,7 +15,7 @@ export function addPoltPanel(code, plotType=plot.type) {
 
     panel.append("<img class='close' src='/front/imgs/panels/all/close.png'>")
 
-    panel.append("<a href='/countries/" + country.code + "'><h1 id='name'>" + country.name + "</h1></a>")
+    panel.append("<h1 id='name'><a href='/countries/" + country.code + "'>" + country.name + "</a></h1>")
     panel.append("<img id='flag' src='/front/imgs/flags/" + country.code + ".png'>")
     panel.append("<h3 id='region'>" + country.region + "</h3>")
 

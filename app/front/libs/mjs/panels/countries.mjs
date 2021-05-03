@@ -7,7 +7,7 @@ let plots = plot.plots
 
 export function addCountriesPanel(panelSetting) {
 
-  $("body").append("<div id='countries' class='panel'><a href='/countries'><h1 id='name'>Countries by Region</h1></a></div>")
+  $("body").append("<div id='countries' class='panel'><h1 id='name'><a href='/countries'>Countries by Region</a></h1></div>")
 
   let panel = $("#countries.panel")
 
@@ -176,7 +176,7 @@ export function addCountryBoxes(countries) {
     if (plot.type == "Countries") {
 
       countryBox += "<img class='country-flag' src='/front/imgs/flags/" + countries[i].code + ".png'>"
-      countryBox += "<a href='/countries/" + countries[i].code + "'><div><p class='country-name'>" + countries[i].name + "</p>"
+      countryBox += "<a href='/countries/" + countries[i].code + "'><div><p class='country-name'><span>" + countries[i].name + "</span></p>"
       countryBox += "<p class='country-formal-name'>" + countries[i].formal_name + "</p></div></a>"
 
     } else if (plot.type == "Indicator") {
@@ -184,13 +184,13 @@ export function addCountryBoxes(countries) {
       let value = countries[i].history.find(date => date.year == Number(year)).value
 
       countryBox += "<svg class='country-completeness'></svg>"
-      countryBox += "<p class='country-name'>" + countries[i].name + "</p>"
+      countryBox += "<p class='country-name'><span>" + countries[i].name + "</span></p>"
       countryBox += "<p class='country-value'>" + (typeof(value) == "number" ? format(value, "oodles") : "None") + "</p>"
       countryBox += "<a href='" + countries[i].wiki + "'><img class='country-wiki' src='/front/imgs/panels/countries/wiki.png'></a>"
 
     } else {
 
-      countryBox += "<a href='/countries/" + countries[i].code + "'><p class='country-name'>" + countries[i].name + "</p></a>"
+      countryBox += "<p class='country-name'><a href='/countries/" + countries[i].code + "'>" + countries[i].name + "</a></p>"
 
     }
 
@@ -203,7 +203,7 @@ export function addCountryBoxes(countries) {
 
     if (plot.type == "Indicator") {
 
-      $("#" + camalize(countries[i].region) + ".region-box .countries-box #" + countries[i].code + ".country-box .country-name").on("click", function() { window.location = "/countries/" + countries[i].code + "" })
+      $("#" + camalize(countries[i].region) + ".region-box .countries-box #" + countries[i].code + ".country-box .country-name span").on("click", function() { window.location = "/countries/" + countries[i].code + "" })
 
       let pie = d3.pie().sort(null)
       let arc = d3.arc().innerRadius(8).outerRadius(12)

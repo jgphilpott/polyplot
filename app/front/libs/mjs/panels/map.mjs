@@ -54,9 +54,9 @@ export function addMapPanel(panelSetting) {
 
       }
 
-      panel.append("<p id='countries-toggle'>Toggle Countries Panel</p>")
+      panel.append("<p id='countries-toggle'><span>Toggle Countries Panel</span></p>")
 
-      $("#countries-toggle").click(function(event) {
+      $("#countries-toggle span").click(function(event) {
         ($("#countries.panel").css("visibility") == "visible") ? (updateSettings("panels", "countries", false)) : (updateSettings("panels", "countries", true))
       })
 

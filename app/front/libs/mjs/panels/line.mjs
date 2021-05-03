@@ -24,7 +24,7 @@ export function addLinePanel(panelSetting, parentPanel=null) {
 
   panel.append("<img class='close' src='/front/imgs/panels/all/close.png'>")
 
-  if (floatingPanel) { panel.append("<a href='/indicators/" + plot.x.code + "'><h1 id='name'>" + plot.x.name + "</h1></a>") }
+  if (floatingPanel) { panel.append("<h1 id='name'><a href='/indicators/" + plot.x.code + "'>" + plot.x.name + "</a></h1>") }
 
   let regression = ""
 
@@ -48,9 +48,9 @@ export function addLinePanel(panelSetting, parentPanel=null) {
   panel.append("<svg id='lineplot'></svg>")
   panel.append("<svg id='linezone'></svg>")
 
-  if (plot.type != "Indicator") { panel.append("<p id='countries-toggle'>Toggle Countries Panel</p>") }
+  if (plot.type != "Indicator") { panel.append("<p id='countries-toggle'><span>Toggle Countries Panel</span></p>") }
 
-  $("#countries-toggle").click(function(event) {
+  $("#countries-toggle span").click(function(event) {
     ($("#countries.panel").css("visibility") == "visible") ? (updateSettings("panels", "countries", false)) : (updateSettings("panels", "countries", true))
   })
 

@@ -93,10 +93,10 @@ export function addMenuPanel() {
 
     let settings = "<div id='settings-panel' class='sub-panel'><h1>Settings</h1>"
 
-    settings += "<div id='general-settings' class='settings-category'><h3>General</h3></div>"
-    settings += "<div id='poly3-settings' class='settings-category'><h3>Poly3</h3></div>"
-    settings += "<div id='poly2-settings' class='settings-category'><h3>Poly2</h3></div>"
-    settings += "<div id='map-settings' class='settings-category'><h3>Map</h3></div>"
+    settings += "<div id='general-settings' class='settings-category'><h3><span>General</span></h3></div>"
+    settings += "<div id='poly3-settings' class='settings-category'><h3><span>Poly3</span></h3></div>"
+    settings += "<div id='poly2-settings' class='settings-category'><h3><span>Poly2</span></h3></div>"
+    settings += "<div id='map-settings' class='settings-category'><h3><span>Map</span></h3></div>"
 
     let generalSettings = "<div id='general-settings' class='settings-box'>"
 
@@ -133,10 +133,10 @@ export function addMenuPanel() {
       $("#general-settings.settings-box").css("display", "block")
     }
 
-    $(".settings-category").click(function() {
+    $(".settings-category span").click(function() {
 
       $(".settings-box").css("display", "none")
-      $("#" + this.id + ".settings-box").css("display", "block")
+      $("#" + $(this).parent().parent().attr("id") + ".settings-box").css("display", "block")
 
     })
 
@@ -261,16 +261,16 @@ export function addMenuPanel() {
 
     sources += "<h3>Indicators</h3>"
 
-    sources += "<a href='https://datahelpdesk.worldbank.org/knowledgebase/articles/898581-api-basic-call-structures'><p>World Bank</p></a>"
+    sources += "<p><a href='https://datahelpdesk.worldbank.org/knowledgebase/articles/898581-api-basic-call-structures'>World Bank</a></p>"
 
     sources += "<h3>GeoJSON</h3>"
 
-    sources += "<a href='https://www.geonames.org'><p>GeoNames</p></a>"
-    sources += "<a href='https://www.naturalearthdata.com'><p>Natural Earth</p></a>"
+    sources += "<p><a href='https://www.geonames.org'>GeoNames</a></p>"
+    sources += "<p><a href='https://www.naturalearthdata.com'>Natural Earth</a></p>"
 
     sources += "<h3>Other</h3>"
 
-    sources += "<a href='https://www.wikipedia.org'><p>Wikipedia</p></a>"
+    sources += "<p><a href='https://www.wikipedia.org'>Wikipedia</a></p>"
 
     sources += "</div>"
 
