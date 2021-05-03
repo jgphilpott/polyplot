@@ -249,7 +249,9 @@ export function addIndicatorBoxes(indicators) {
 
       if (plot.type == "Country") {
 
-        indicatorBox += "<p class='indicator-value'>" + format(indicators[i].history.find(date => date.year == Number(year)).value, "oodles") + "</p>"
+        let value = indicators[i].history.find(date => date.year == Number(year)).value
+
+        indicatorBox += "<p class='indicator-value'>" + (typeof(value) == "number" ? format(value, "oodles") : "None") + "</p>"
         indicatorBox += "<a href='https://data.worldbank.org/indicator/" + indicators[i].code + "'><img class='indicator-link' src='/front/imgs/panels/indicators/link.png'></a>"
 
       }

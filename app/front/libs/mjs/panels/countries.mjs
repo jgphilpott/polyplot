@@ -181,9 +181,11 @@ export function addCountryBoxes(countries) {
 
     } else if (plot.type == "Indicator") {
 
+      let value = countries[i].history.find(date => date.year == Number(year)).value
+
       countryBox += "<svg class='country-completeness'></svg>"
       countryBox += "<p class='country-name'>" + countries[i].name + "</p>"
-      countryBox += "<p class='country-value'>" + format(countries[i].history.find(date => date.year == Number(year)).value, "oodles") + "</p>"
+      countryBox += "<p class='country-value'>" + (typeof(value) == "number" ? format(value, "oodles") : "None") + "</p>"
       countryBox += "<a href='" + countries[i].wiki + "'><img class='country-wiki' src='/front/imgs/panels/countries/wiki.png'></a>"
 
     } else {

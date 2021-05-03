@@ -6,8 +6,8 @@ let plotType = plot.type
 
 export function animatePanels(duration) {
 
-  let year = readCookie("year")
-  let generalSettings = localRead("settings").general
+  let year = plot.t.year
+  let generalSettings = data.client.settings.general
 
   if (plotType == "Country") {
 
@@ -16,7 +16,11 @@ export function animatePanels(duration) {
     indicators = Object.values(indicators.reduce((obj, key) => { obj[key] = country.indicators[key]; return obj }, {}))
 
     for (let i = 0; i < indicators.length; i++) {
-      $("#" + indicators[i].code.replaceAll(".", "-") + ".indicator-box .indicator-value").text(format(indicators[i].history.find(date => date.year == Number(year)).value, "oodles"))
+
+      let value = indicators[i].history.find(date => date.year == Number(year)).value
+
+      $("#" + indicators[i].code.replaceAll(".", "-") + ".indicator-box .indicator-value").text(typeof(value) == "number" ? format(value, "oodles") : "None")
+
     }
 
   } else if (plotType == "Indicator") {
@@ -25,7 +29,11 @@ export function animatePanels(duration) {
     let countries = indicator.countries
 
     for (let i = 0; i < countries.length; i++) {
-      $("#" + countries[i].code + ".country-box .country-value").text(format(countries[i].history.find(date => date.year == Number(year)).value, "oodles"))
+
+      let value = countries[i].history.find(date => date.year == Number(year)).value
+
+      $("#" + countries[i].code + ".country-box .country-value").text(typeof(value) == "number" ? format(value, "oodles") : "None")
+
     }
 
   } else {

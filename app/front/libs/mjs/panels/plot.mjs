@@ -25,7 +25,7 @@ export function addPoltPanel(code, plotType=plot.type) {
 
       let x = country.x.find(date => date.year == year).value
 
-      panel.append("<p id='" + plot.x.code + "'><strong id='x-key'>X:</strong> <span id='x-data'>" + format(x, "oodles") + "</span></p>")
+      panel.append("<p id='" + plot.x.code + "'><strong id='x-key'>X:</strong> <span id='x-data'>" + (typeof(x) == "number" ? format(x, "oodles") : "None") + "</span></p>")
 
     } else if (plotType == "Poly2") {
 
@@ -33,9 +33,9 @@ export function addPoltPanel(code, plotType=plot.type) {
       let x = country.x.find(date => date.year == year).value
       let y = country.y.find(date => date.year == year).value
 
-      panel.append("<p id='" + plot.r.code + "'><strong id='r-key'>R:</strong> <span id='r-data'>" + format(r, "oodles") + "</span></p>")
-      panel.append("<p id='" + plot.x.code + "'><strong id='x-key'>X:</strong> <span id='x-data'>" + format(x, "oodles") + "</span></p>")
-      panel.append("<p id='" + plot.y.code + "'><strong id='y-key'>Y:</strong> <span id='y-data'>" + format(y, "oodles") + "</span></p>")
+      panel.append("<p id='" + plot.r.code + "'><strong id='r-key'>R:</strong> <span id='r-data'>" + (typeof(r) == "number" ? format(r, "oodles") : "None") + "</span></p>")
+      panel.append("<p id='" + plot.x.code + "'><strong id='x-key'>X:</strong> <span id='x-data'>" + (typeof(x) == "number" ? format(x, "oodles") : "None") + "</span></p>")
+      panel.append("<p id='" + plot.y.code + "'><strong id='y-key'>Y:</strong> <span id='y-data'>" + (typeof(y) == "number" ? format(y, "oodles") : "None") + "</span></p>")
 
     } else if (plotType == "Poly3") {
 
@@ -44,10 +44,10 @@ export function addPoltPanel(code, plotType=plot.type) {
       let y = country.y.find(date => date.year == year).value
       let z = country.z.find(date => date.year == year).value
 
-      panel.append("<p id='" + plot.r.code + "'><strong id='r-key'>R:</strong> <span id='r-data'>" + format(r, "oodles") + "</span></p>")
-      panel.append("<p id='" + plot.x.code + "'><strong id='x-key'>X:</strong> <span id='x-data'>" + format(x, "oodles") + "</span></p>")
-      panel.append("<p id='" + plot.y.code + "'><strong id='y-key'>Y:</strong> <span id='y-data'>" + format(y, "oodles") + "</span></p>")
-      panel.append("<p id='" + plot.z.code + "'><strong id='z-key'>Z:</strong> <span id='z-data'>" + format(z, "oodles") + "</span></p>")
+      panel.append("<p id='" + plot.r.code + "'><strong id='r-key'>R:</strong> <span id='r-data'>" + (typeof(r) == "number" ? format(r, "oodles") : "None") + "</span></p>")
+      panel.append("<p id='" + plot.x.code + "'><strong id='x-key'>X:</strong> <span id='x-data'>" + (typeof(x) == "number" ? format(x, "oodles") : "None") + "</span></p>")
+      panel.append("<p id='" + plot.y.code + "'><strong id='y-key'>Y:</strong> <span id='y-data'>" + (typeof(y) == "number" ? format(y, "oodles") : "None") + "</span></p>")
+      panel.append("<p id='" + plot.z.code + "'><strong id='z-key'>Z:</strong> <span id='z-data'>" + (typeof(z) == "number" ? format(z, "oodles") : "None") + "</span></p>")
 
     }
 
@@ -71,7 +71,7 @@ export function updatePoltPanel(code, plotType=plot.type) {
 
     let x = country.x.find(date => date.year == year).value
 
-    $("#" + code + ".panel #x-data").text(format(x, "oodles"))
+    $("#" + code + ".panel #x-data").text(typeof(x) == "number" ? format(x, "oodles") : "None")
 
   } else if (plotType == "Poly2") {
 
@@ -79,9 +79,9 @@ export function updatePoltPanel(code, plotType=plot.type) {
     let x = country.x.find(date => date.year == year).value
     let y = country.y.find(date => date.year == year).value
 
-    $("#" + code + ".panel #r-data").text(format(r, "oodles"))
-    $("#" + code + ".panel #x-data").text(format(x, "oodles"))
-    $("#" + code + ".panel #y-data").text(format(y, "oodles"))
+    $("#" + code + ".panel #r-data").text(typeof(r) == "number" ? format(r, "oodles") : "None")
+    $("#" + code + ".panel #x-data").text(typeof(x) == "number" ? format(x, "oodles") : "None")
+    $("#" + code + ".panel #y-data").text(typeof(y) == "number" ? format(y, "oodles") : "None")
 
   } else if (plotType == "Poly3") {
 
@@ -90,10 +90,10 @@ export function updatePoltPanel(code, plotType=plot.type) {
     let y = country.y.find(date => date.year == year).value
     let z = country.z.find(date => date.year == year).value
 
-    $("#" + code + ".panel #r-data").text(format(r, "oodles"))
-    $("#" + code + ".panel #x-data").text(format(x, "oodles"))
-    $("#" + code + ".panel #y-data").text(format(y, "oodles"))
-    $("#" + code + ".panel #z-data").text(format(z, "oodles"))
+    $("#" + code + ".panel #r-data").text(typeof(r) == "number" ? format(r, "oodles") : "None")
+    $("#" + code + ".panel #x-data").text(typeof(x) == "number" ? format(x, "oodles") : "None")
+    $("#" + code + ".panel #y-data").text(typeof(y) == "number" ? format(y, "oodles") : "None")
+    $("#" + code + ".panel #z-data").text(typeof(z) == "number" ? format(z, "oodles") : "None")
 
   }
 

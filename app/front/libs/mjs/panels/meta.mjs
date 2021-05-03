@@ -56,7 +56,7 @@ export function updateMetaPanel(code, plotType=plot.type) {
 
     let x = country.x.find(date => date.year == year).value
 
-    $("#meta #x-data").text(format(x, "oodles"))
+    $("#meta #x-data").text(typeof(x) == "number" ? format(x, "oodles") : "None")
 
   } else if (plotType == "Poly2") {
 
@@ -64,9 +64,9 @@ export function updateMetaPanel(code, plotType=plot.type) {
     let x = country.x.find(date => date.year == year).value
     let y = country.y.find(date => date.year == year).value
 
-    $("#meta #r-data").text(format(r, "oodles"))
-    $("#meta #x-data").text(format(x, "oodles"))
-    $("#meta #y-data").text(format(y, "oodles"))
+    $("#meta #r-data").text(typeof(r) == "number" ? format(r, "oodles") : "None")
+    $("#meta #x-data").text(typeof(x) == "number" ? format(x, "oodles") : "None")
+    $("#meta #y-data").text(typeof(y) == "number" ? format(y, "oodles") : "None")
 
   } else if (plotType == "Poly3") {
 
@@ -75,10 +75,10 @@ export function updateMetaPanel(code, plotType=plot.type) {
     let y = country.y.find(date => date.year == year).value
     let z = country.z.find(date => date.year == year).value
 
-    $("#meta #r-data").text(format(r, "oodles"))
-    $("#meta #x-data").text(format(x, "oodles"))
-    $("#meta #y-data").text(format(y, "oodles"))
-    $("#meta #z-data").text(format(z, "oodles"))
+    $("#meta #r-data").text(typeof(r) == "number" ? format(r, "oodles") : "None")
+    $("#meta #x-data").text(typeof(x) == "number" ? format(x, "oodles") : "None")
+    $("#meta #y-data").text(typeof(y) == "number" ? format(y, "oodles") : "None")
+    $("#meta #z-data").text(typeof(z) == "number" ? format(z, "oodles") : "None")
 
   }
 
