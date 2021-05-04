@@ -112,7 +112,8 @@ export function drawMaps(plotType=plot.type, λ=0, φ=0, γ=0) {
     if (plot.type == "Country") {
 
       canvas.call(d3.drag()
-                    .on("drag", function drag() {
+                    .on("start", function(event) {})
+                    .on("drag", function drag(event) {
 
                       $("#mini-map").css("cursor", "grabbing")
 
@@ -130,7 +131,7 @@ export function drawMaps(plotType=plot.type, λ=0, φ=0, γ=0) {
                       canvas.selectAll(".map").attr("d", pathGenerator)
 
                     })
-                    .on("end", function end() { $("#mini-map").css("cursor", "grab") }))
+                    .on("end", function end(event) { $("#mini-map").css("cursor", "grab") }))
 
     }
 
