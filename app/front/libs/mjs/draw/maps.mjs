@@ -4,6 +4,7 @@ import {contextMenu} from "../env/context.mjs"
 import {width, height} from "../env/window.mjs"
 import {regionsColourSwitch} from "../colors/switches/regions.mjs"
 
+import {makePanable} from "../cartography/pan.mjs"
 import {projections} from "../cartography/projections.mjs"
 import {makeZoomable} from "../cartography/zoom.mjs"
 
@@ -33,7 +34,7 @@ export function drawMaps(plotType=plot.type, λ=0, φ=0, γ=0) {
                                                .clipExtent([[0, 0], [width(), height()]])
                                                .translate([width() / 2, height() / 2])
                                                .clipAngle(clipAngle)
-                                               .rotate([λ, φ])
+                                               .rotate([λ, φ, γ])
 
     path = d3.geoPath().projection(projection)
 
@@ -41,11 +42,11 @@ export function drawMaps(plotType=plot.type, λ=0, φ=0, γ=0) {
 
     canvas = d3.select("#mini-map")
 
-    size = (plot.type != "Country") ? (125) : (150)
+    size = plot.type != "Country" ? 125 : 150
 
-    projection = projections["orthographic"].scale(size).translate([size, size])
+    projection = projections["orthographic"].translate([size, size]).scale(size)
 
-    path = (plot.type != "Country") ? (d3.geoPath().projection(projection.rotate([λ, φ, γ]))) : (d3.geoPath().projection(projection.rotate([-properties.centroid[0], -properties.centroid[1], 0])))
+    path = plot.type != "Country" ? d3.geoPath().projection(projection.rotate([λ, φ, γ])) : d3.geoPath().projection(projection.rotate([-properties.centroid[0], -properties.centroid[1], 0]))
 
     canvas.append("g")
           .append("path")
@@ -101,8 +102,10 @@ export function drawMaps(plotType=plot.type, λ=0, φ=0, γ=0) {
       contextMenu(this.id, event)
     })
 
-    makeZoomable()
     drawLayers()
+
+    makePanable(canvas)
+    makeZoomable(canvas)
 
   } else if (plotType == "mini-map") {
 
