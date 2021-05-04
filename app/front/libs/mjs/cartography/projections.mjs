@@ -25,7 +25,7 @@ export function polymorph(projection, duration=1000) {
                                       .clipExtent([[0, 0], [width(), height()]])
                                       .translate([width() / 2, height() / 2])
                                       .clipAngle(clipAngle)
-                                      .rotate([0, 0])
+                                      .rotate([0, 0, 0])
 
   let projectionOne = mapProperties.projection
   let projectionTwo = projection
@@ -53,7 +53,7 @@ export function polymorph(projection, duration=1000) {
                             .clipExtent([[0, 0], [width(), height()]])
                             .translate([width() / 2, height() / 2])
                             .preclip(function(preclip) { return d3.geoClipCircle(clip)(d3.geoClipAntimeridian(preclip)) })
-                            .rotate([0, 0])
+                            .rotate([0, 0, 0])
 
     function project(λ, φ) {
 

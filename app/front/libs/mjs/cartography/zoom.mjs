@@ -1,7 +1,7 @@
 import {updateLayers} from "../draw/layers/all.mjs"
 import {width, height} from "../env/window.mjs"
 
-export function makeZoomable() {
+export function makeZoomable(canvas) {
 
   let zoom = d3.zoom()
                .scaleExtent([1, 64])
@@ -11,12 +11,11 @@ export function makeZoomable() {
 
                  data.plot.GeoJSON.properties.zoom = d3.event.transform
 
-                 updateLayers(d3.event.transform.k)
-                 transform(d3.event.transform)
+                 updateLayers("zoom", d3.event.transform.k)
 
                })
 
-  d3.select("#canvas").call(zoom)
+  canvas.call(zoom)
 
 }
 
