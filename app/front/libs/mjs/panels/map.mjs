@@ -32,7 +32,7 @@ export function addMapPanel(panelSetting) {
 
   socket.on("new_maps", function(maps) {
 
-    plot.GeoJSON = {"type": "FeatureCollection", "features": maps, "properties": {"λ": 0, "φ": 0, "γ": 0}}
+    plot.GeoJSON = {"type": "FeatureCollection", "features": maps, "properties": {}}
 
     drawMaps("mini-map")
 

@@ -25,7 +25,7 @@ def register_map_route(app):
 
         data["plot"]["x"] = {"code": x_code, "name": countries[0]["indicators"][x_dash_code]["name"], "categories": countries[0]["indicators"][x_dash_code]["categories"]}
         data["plot"]["t"] = {"minCap": int(min_cap), "year": int(year), "maxCap": int(max_cap)}
-        data["plot"]["GeoJSON"] = {"type": "FeatureCollection", "features": find_maps(detail="micro"), "properties": {"λ": 0, "φ": 0, "γ": 0}}
+        data["plot"]["GeoJSON"] = {"type": "FeatureCollection", "features": find_maps(detail="micro"), "properties": {}}
 
         for country in countries:
 

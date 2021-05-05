@@ -57,7 +57,7 @@ $(document).ready(function() {
 
   socket.on("new_maps", function(maps) {
 
-    plot.GeoJSON = {"type": "FeatureCollection", "features": maps, "properties": {"λ": 0, "φ": 0, "γ": 0, "centroid": country.centroid}}
+    plot.GeoJSON = {"type": "FeatureCollection", "features": maps, "properties": {"centroid": country.centroid}}
 
     drawMaps("mini-map")
 
