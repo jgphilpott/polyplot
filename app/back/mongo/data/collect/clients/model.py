@@ -53,6 +53,12 @@ class Client():
 
                 "map": {
                     "projection": "equirectangular",
+                    "orientation": {"λ": 0, "φ": 0, "γ": 0},
+                    "transform": {"k": 1, "x": 0, "y": 0},
+                    "polarResistance": 1,
+                    "tiltLimit": 66.5,
+                    "panSpeed": 0.5,
+                    "zoomSpeed": 0.5,
                     "airports": False,
                     "cities": True,
                     "graticules": False,

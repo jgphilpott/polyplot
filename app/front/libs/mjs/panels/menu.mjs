@@ -206,6 +206,12 @@ export function addMenuPanel() {
 
         "map": {
           "projection": "equirectangular",
+          "orientation": {λ: 0, φ: 0, γ: 0},
+          "transform": {k: 1, x: 0, y: 0},
+          "polarResistance": 1,
+          "tiltLimit": 66.5,
+          "panSpeed": 0.5,
+          "zoomSpeed": 0.5,
           "airports": false,
           "cities": true,
           "graticules": false,
@@ -508,11 +514,13 @@ function settingSwitch(category, setting, value) {
 
     case "map":
 
+      let layers = ["airports", "cities", "graticules", "lakes", "ports", "railroads", "rivers", "roads"]
+
       if (setting == "projection") {
 
         polymorph(value)
 
-      } else {
+      } else if (layers.includes(setting)) {
 
         if (value) { drawLayers(setting) } else { deleteLayers(setting) }
 
