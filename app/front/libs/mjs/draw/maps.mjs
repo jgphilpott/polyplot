@@ -5,20 +5,26 @@ import {width, height} from "../env/window.mjs"
 import {regionsColourSwitch} from "../colors/switches/regions.mjs"
 
 import {makePanable} from "../cartography/pan.mjs"
-import {projections} from "../cartography/projections.mjs"
 import {makeZoomable} from "../cartography/zoom.mjs"
+import {projections, polymorph} from "../cartography/projections.mjs"
 
 import {updateMetaPanel, clearMetaPanel} from "../panels/meta.mjs"
 
 let plot = data.plot
 let plots = plot.plots
 
-export function drawMaps(plotType=plot.type, λ=0, φ=0, γ=0) {
+export function drawMaps(plotType=plot.type) {
 
   let GeoJSON = plot.GeoJSON
   let features = GeoJSON.features
   let properties = GeoJSON.properties
-  let projectionSetting = data.client.settings.map.projection
+
+  let mapSettings = data.client.settings.map
+  let projectionSetting = mapSettings.projection
+
+  let λ = mapSettings.orientation.λ
+  let φ = mapSettings.orientation.φ
+  let γ = mapSettings.orientation.γ
 
   let canvas, size, projection, path = null
   let graticule = d3.geoGraticule().step([15, 15])
@@ -46,7 +52,7 @@ export function drawMaps(plotType=plot.type, λ=0, φ=0, γ=0) {
 
     projection = projections["orthographic"].translate([size, size]).scale(size)
 
-    path = plot.type != "Country" ? d3.geoPath().projection(projection.rotate([λ, φ, γ])) : d3.geoPath().projection(projection.rotate([-properties.centroid[0], -properties.centroid[1], 0]))
+    path = plot.type != "Country" ? d3.geoPath().projection(projection.rotate([λ, 0, 0])) : d3.geoPath().projection(projection.rotate([-properties.centroid[0], -properties.centroid[1], 0]))
 
     canvas.append("g")
           .append("path")
@@ -107,33 +113,11 @@ export function drawMaps(plotType=plot.type, λ=0, φ=0, γ=0) {
     makePanable(canvas)
     makeZoomable(canvas)
 
+    polymorph(projectionSetting, 0)
+
   } else if (plotType == "mini-map") {
 
-    if (plot.type == "Country") {
-
-      canvas.call(d3.drag()
-                    .on("start", function(event) {})
-                    .on("drag", function drag(event) {
-
-                      $("#mini-map").css("cursor", "grabbing")
-
-                      let rotate = projection.rotate()
-                      let scale = 75 / projection.scale()
-
-                      projection.rotate([
-                        rotate[0] + d3.event.dx * scale,
-                        rotate[1] - d3.event.dy * scale
-                      ])
-
-                      let pathGenerator = d3.geoPath().projection(projection)
-
-                      canvas.selectAll(".graticule").attr("d", pathGenerator)
-                      canvas.selectAll(".map").attr("d", pathGenerator)
-
-                    })
-                    .on("end", function end(event) { $("#mini-map").css("cursor", "grab") }))
-
-    }
+    plot.type == "Country" ? makePanable(canvas) : null
 
   }
 
