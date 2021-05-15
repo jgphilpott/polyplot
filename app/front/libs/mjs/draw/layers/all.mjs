@@ -192,30 +192,32 @@ export function updateLayers(type, update) {
         if (layers.rivers) { drawRivers(canvas) }
         if (layers.roads) { drawRoads(canvas) }
 
-        layers.lastDraw = zoom
-        layers.sort()
+        geoProperties.lastDraw = zoom
+        geoProperties.sortLayers()
 
       }
 
     }
 
+  } else {
+
+    let layerKeys = Object.keys(layers)
+
+    for (let i = 0; i < layerKeys.length; i++) { drawLayer(layerKeys[i]) }
+
+    // geoProperties.sortLayers()
+
   }
 
 }
 
-export function deleteLayers(layer) {
+export function deleteLayer(layer=null) {
 
-  let layers = plot.GeoJSON.properties.layers
+  delete plot.GeoJSON.properties.layers[layer]
 
-  delete layers[layer]
+  // Singularize: https://stackoverflow.com/a/796421/1544937
+  if (layer == "cities") { layer = "city" } else { layer = layer.slice(0, -1) }
 
-  if (!("airports" in layers)) { $(".airport").remove() }
-  if (!("cities" in layers)) { $(".city").remove() }
-  if (!("graticules" in layers)) { $(".graticule").remove() }
-  if (!("lakes" in layers)) { $(".lake").remove() }
-  if (!("ports" in layers)) { $(".port").remove() }
-  if (!("railroads" in layers)) { $(".railroad").remove() }
-  if (!("rivers" in layers)) { $(".river").remove() }
-  if (!("roads" in layers)) { $(".road").remove() }
+  $("." + layer + "").remove()
 
 }

@@ -4,7 +4,7 @@ import {polymorph} from "../cartography/projections.mjs"
 
 import {addPanelEvents} from "./events/all.mjs"
 import {animationSwitch} from "../animation/plots.mjs"
-import {drawLayers, deleteLayers} from "../draw/layers/all.mjs"
+import {drawLayers, deleteLayer} from "../draw/layers/all.mjs"
 import {startRotation, stopRotation} from "../cartography/rotation.mjs"
 
 let plot = data.plot
@@ -522,7 +522,7 @@ function settingSwitch(category, setting, value) {
 
       } else if (layers.includes(setting)) {
 
-        if (value) { drawLayers(setting) } else { deleteLayers(setting) }
+        if (value) { drawLayers(setting) } else { deleteLayer(setting) }
 
       }
 
