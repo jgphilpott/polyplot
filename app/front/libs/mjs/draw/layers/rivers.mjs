@@ -3,7 +3,7 @@ let plot = data.plot
 export function drawRivers(canvas, rivers=plot.GeoJSON.properties.layers.rivers) {
 
   let geoProperties = plot.GeoJSON.properties
-  let checkpoint = geoProperties.layers.checkpoint
+  let checkpoint = geoProperties.checkpoint
 
   $(".river").remove()
 

@@ -3,7 +3,7 @@ let plot = data.plot
 export function drawPorts(canvas, ports=plot.GeoJSON.properties.layers.ports) {
 
   let geoProperties = plot.GeoJSON.properties
-  let checkpoint = geoProperties.layers.checkpoint
+  let checkpoint = geoProperties.checkpoint
   let size = [12, 6, 3, 1.5, 0.75, 0.375][checkpoint - 1]
 
   $(".port").remove()

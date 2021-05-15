@@ -3,7 +3,7 @@ let plot = data.plot
 export function drawRailroads(canvas, railroads=plot.GeoJSON.properties.layers.railroads) {
 
   let geoProperties = plot.GeoJSON.properties
-  let checkpoint = geoProperties.layers.checkpoint
+  let checkpoint = geoProperties.checkpoint
 
   $(".railroad").remove()
 
