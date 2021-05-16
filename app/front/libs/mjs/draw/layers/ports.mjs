@@ -1,4 +1,4 @@
-import {newProjection} from "../../cartography/projections.mjs"
+import {newProjection, isProjected} from "../../cartography/projections.mjs"
 
 let plot = data.plot
 
@@ -39,5 +39,6 @@ export function drawPorts(canvas, ports=plot.GeoJSON.properties.layers.ports) {
         })
         .style("width", size)
         .style("height", size)
+        .style("visibility", function(port) { return isProjected(port, projection) })
 
 }

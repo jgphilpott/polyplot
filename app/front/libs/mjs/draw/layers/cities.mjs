@@ -1,4 +1,4 @@
-import {newProjection} from "../../cartography/projections.mjs"
+import {newProjection, isProjected} from "../../cartography/projections.mjs"
 
 let plot = data.plot
 
@@ -31,6 +31,7 @@ export function drawCities(canvas, cities=plot.GeoJSON.properties.layers.cities)
 
         })
         .attr("r", function(city) { return [1, 0.5, 0.25, 0.125, 0.0625, 0.03125][checkpoint - 1] })
+        .style("visibility", function(city) { return isProjected(city, projection) })
 
   canvas.selectAll(".city-label")
         .data(cities.filter(function(city) { return city.properties.rank <= checkpoint }))
@@ -59,5 +60,6 @@ export function drawCities(canvas, cities=plot.GeoJSON.properties.layers.cities)
         })
         .attr("text-anchor", "middle")
         .attr("dy", "-0.5em")
+        .style("visibility", function(city) { return isProjected(city, projection) })
 
 }
