@@ -6,7 +6,7 @@ import {regionsColourSwitch} from "../colors/switches/regions.mjs"
 
 import {makePanable} from "../cartography/pan.mjs"
 import {makeZoomable} from "../cartography/zoom.mjs"
-import {projections, polymorph} from "../cartography/projections.mjs"
+import {projections, newProjection, polymorph} from "../cartography/projections.mjs"
 
 import {updateMetaPanel, clearMetaPanel} from "../panels/meta.mjs"
 
@@ -21,26 +21,20 @@ export function drawMaps(plotType=plot.type) {
 
   let mapSettings = data.client.settings.map
   let projectionSetting = mapSettings.projection
+  let orientationSetting = mapSettings.orientation
 
-  let λ = mapSettings.orientation.λ
-  let φ = mapSettings.orientation.φ
-  let γ = mapSettings.orientation.γ
+  let λ = orientationSetting.λ
+  let φ = orientationSetting.φ
+  let γ = orientationSetting.γ
 
   let canvas, size, projection, path = null
   let graticule = d3.geoGraticule().step([15, 15])
-
-  let buffer = projectionSetting == "orthographic" ? 0.95 : 1
-  let clipAngle = projectionSetting == "orthographic" ? 90 : null
 
   if (plotType == "Map") {
 
     canvas = d3.select("#canvas")
 
-    projection = projections[projectionSetting].fitExtent([[0, 0], [width() * buffer, height() * buffer]], {type: "Sphere"})
-                                               .clipExtent([[0, 0], [width(), height()]])
-                                               .translate([width() / 2, height() / 2])
-                                               .clipAngle(clipAngle)
-                                               .rotate([λ, φ, γ])
+    projection = newProjection(projectionSetting, [λ, φ, γ])
 
     path = d3.geoPath().projection(projection)
 

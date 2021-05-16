@@ -1,10 +1,17 @@
+import {newProjection} from "../../cartography/projections.mjs"
+
 let plot = data.plot
 
 export function drawAirports(canvas, airports=plot.GeoJSON.properties.layers.airports) {
 
   let geoProperties = plot.GeoJSON.properties
   let checkpoint = geoProperties.checkpoint
+  let transform = geoProperties.transform
   let size = [12, 6, 3, 1.5, 0.75, 0.375][checkpoint - 1]
+
+  let mapSettings = data.client.settings.map
+  let orientation = mapSettings.orientation
+  let projection = newProjection(mapSettings.projection, [orientation.λ, orientation.φ, orientation.γ])
 
   $(".airport").remove()
 
@@ -19,15 +26,15 @@ export function drawAirports(canvas, airports=plot.GeoJSON.properties.layers.air
         .attr("xlink:href", "/front/imgs/layers/airport.png")
         .attr("id", function(airport) { return airport.properties.code })
         .attr("class", "airport")
-        .attr("transform", geoProperties.zoom)
+        .attr("transform", transform ? transform : "translate(0, 0)")
         .attr("x", function(airport) {
 
-          return geoProperties.projection([airport.geometry.coordinates[0] , airport.geometry.coordinates[1]])[0] - (size / 2)
+          return projection([airport.geometry.coordinates[0] , airport.geometry.coordinates[1]])[0] - (size / 2)
 
         })
         .attr("y", function(airport) {
 
-          return geoProperties.projection([airport.geometry.coordinates[0], airport.geometry.coordinates[1]])[1] - size
+          return projection([airport.geometry.coordinates[0], airport.geometry.coordinates[1]])[1] - size
 
         })
         .style("width", size)

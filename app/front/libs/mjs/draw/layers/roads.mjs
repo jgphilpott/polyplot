@@ -1,9 +1,16 @@
+import {newProjection} from "../../cartography/projections.mjs"
+
 let plot = data.plot
 
 export function drawRoads(canvas, roads=plot.GeoJSON.properties.layers.roads) {
 
   let geoProperties = plot.GeoJSON.properties
   let checkpoint = geoProperties.checkpoint
+  let transform = geoProperties.transform
+
+  let mapSettings = data.client.settings.map
+  let orientation = mapSettings.orientation
+  let projection = mapSettings.projection
 
   $(".road").remove()
 
@@ -11,9 +18,9 @@ export function drawRoads(canvas, roads=plot.GeoJSON.properties.layers.roads) {
         .data(roads.filter(function(road) { return road.properties.rank - 1 <= checkpoint }))
         .enter()
         .append("path")
-        .attr("d", d3.geoPath().projection(geoProperties.projection))
+        .attr("d", d3.geoPath().projection(newProjection(projection, [orientation.λ, orientation.φ, orientation.γ])))
         .attr("class", "road")
-        .attr("transform", geoProperties.zoom)
+        .attr("transform", transform ? transform : "translate(0, 0)")
         .style("fill", "none")
         .style("stroke", "gray")
         .style("stroke-width", function(road) {
