@@ -144,8 +144,8 @@ export function drawLayers(layer=null) {
     socket.on("new_rivers", function(rivers) {
 
       layers.rivers = rivers
-      drawRivers(canvas)
-      layers.sort()
+      geoProperties.drawLayer("rivers")
+      geoProperties.updateLayers()
 
     })
 
@@ -158,33 +158,34 @@ export function drawLayers(layer=null) {
     socket.on("new_roads", function(roads) {
 
       layers.roads = roads
-      drawRoads(canvas)
-      layers.sort()
+      geoProperties.drawLayer("roads")
+      geoProperties.updateLayers()
 
     })
 
   }
 
-  function sort() {
+}
 
-    d3.selectAll(".port").setAsBackLayer()
-    d3.selectAll(".airport").setAsBackLayer()
-    d3.selectAll(".city").setAsBackLayer()
-    d3.selectAll(".railroad").setAsBackLayer()
-    d3.selectAll(".road").setAsBackLayer()
-    d3.selectAll(".lake").setAsBackLayer()
-    d3.selectAll(".river").setAsBackLayer()
-    d3.selectAll(".map").setAsBackLayer()
-    d3.selectAll(".graticule").setAsBackLayer()
+export function sortLayers() {
 
-  }
+  d3.selectAll(".port").setAsBackLayer()
+  d3.selectAll(".airport").setAsBackLayer()
+  d3.selectAll(".city").setAsBackLayer()
+  d3.selectAll(".railroad").setAsBackLayer()
+  d3.selectAll(".road").setAsBackLayer()
+  d3.selectAll(".lake").setAsBackLayer()
+  d3.selectAll(".river").setAsBackLayer()
+  d3.selectAll(".map").setAsBackLayer()
+  d3.selectAll(".graticule").setAsBackLayer()
 
 }
 
-export function updateLayers(type, update) {
+export function updateLayers(type=null, update=null) {
 
   let canvas = d3.select("#canvas")
-  let layers = plot.GeoJSON.properties.layers
+  let geoProperties = plot.GeoJSON.properties
+  let layers = geoProperties.layers
 
   if (type == "pan") {
 
