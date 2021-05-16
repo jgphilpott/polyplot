@@ -430,7 +430,7 @@ export function updateSettings(category, setting, value) {
   let settings = data.client.settings
 
   let categoryException = (["panels"].includes(category))
-  let settingException = (["countryExceptions", "indicatorExceptions"].includes(setting))
+  let settingException = (["countryExceptions", "indicatorExceptions", "orientation"].includes(setting))
   let valueException = (value != settings[category][setting])
 
   if (categoryException || settingException || valueException) {
