@@ -6,7 +6,7 @@ export function startRotation() {
 
   let canvas = d3.select("#mini-map")
 
-  let properties = plot.GeoJSON.properties
+  let mapProperties = plot.GeoJSON.properties
   let mapSettings = data.client.settings.map
   let orientation = mapSettings.orientation
 
@@ -14,7 +14,7 @@ export function startRotation() {
 
     orientation.λ += 1
 
-    let rotation = d3.geoPath().projection(properties.projection.rotate([orientation.λ, 0, 0]))
+    let rotation = d3.geoPath().projection(mapProperties.projection.rotate([orientation.λ, 0, 0]))
 
     canvas.selectAll(".graticule").attr("d", function(graticule) { return rotation(graticule) })
     canvas.selectAll(".map").attr("d", function(map) { return rotation(map) })
@@ -23,8 +23,8 @@ export function startRotation() {
 
   function updateOrientation() { updateSettings("map", "orientation", orientation) }
 
-  properties.rotation = setInterval(rotate, 100)
-  properties.update = setInterval(updateOrientation, 1000)
+  mapProperties.rotation = setInterval(rotate, 100)
+  mapProperties.update = setInterval(updateOrientation, 1000)
 
 }
 
