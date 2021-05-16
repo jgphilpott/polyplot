@@ -1,3 +1,5 @@
+import {polymorph} from "../../cartography/projections.mjs"
+
 import {drawAirports} from "./airports.mjs"
 import {drawCities} from "./cities.mjs"
 import {drawGraticules} from "./graticules.mjs"
@@ -10,21 +12,42 @@ import {drawRoads} from "./roads.mjs"
 let plot = data.plot
 let plots = plot.plots
 
+export function drawLayer(layer=null) {
+
+  let canvas = d3.select("#canvas")
+
+  let drawFunctions = {airports: drawAirports,
+                       cities: drawCities,
+                       graticules: drawGraticules,
+                       lakes: drawLakes,
+                       ports: drawPorts,
+                       railroads: drawRailroads,
+                       rivers: drawRivers,
+                       roads: drawRoads}
+
+  drawFunctions[layer](canvas)
+
+}
+
 export function drawLayers(layer=null) {
 
   let canvas = d3.select("#canvas")
-  let mapSettings = localRead("settings").map
+
+  let mapSettings = data.client.settings.map
   let geoProperties = plot.GeoJSON.properties
 
   if (!("layers" in geoProperties)) {
 
     geoProperties.layers = {}
 
-    geoProperties.layers.sort = sort
+    geoProperties.drawLayer = drawLayer
+    geoProperties.sortLayers = sortLayers
+    geoProperties.updateLayers = updateLayers
+    geoProperties.deleteLayer = deleteLayer
 
-    geoProperties.layers.lastDraw = 1
-    geoProperties.layers.checkpoint = 1
-    geoProperties.layers.checkpoints = [1, 2, 4, 8, 16, 32, 64]
+    geoProperties.lastDraw = 1
+    geoProperties.checkpoint = 1
+    geoProperties.checkpoints = [1, 2, 4, 8, 16, 32, 64]
 
   }
 
@@ -37,8 +60,8 @@ export function drawLayers(layer=null) {
     socket.on("new_airports", function(airports) {
 
       layers.airports = airports
-      drawAirports(canvas)
-      layers.sort()
+      geoProperties.drawLayer("airports")
+      geoProperties.updateLayers()
 
     })
 
@@ -51,8 +74,8 @@ export function drawLayers(layer=null) {
     socket.on("new_cities", function(cities) {
 
       layers.cities = cities
-      drawCities(canvas)
-      layers.sort()
+      geoProperties.drawLayer("cities")
+      geoProperties.updateLayers()
 
     })
 
@@ -65,8 +88,8 @@ export function drawLayers(layer=null) {
     socket.on("new_graticules", function(graticules) {
 
       layers.graticules = graticules
-      drawGraticules(canvas)
-      layers.sort()
+      geoProperties.drawLayer("graticules")
+      geoProperties.updateLayers()
 
     })
 
@@ -79,8 +102,8 @@ export function drawLayers(layer=null) {
     socket.on("new_lakes", function(lakes) {
 
       layers.lakes = lakes
-      drawLakes(canvas)
-      layers.sort()
+      geoProperties.drawLayer("lakes")
+      geoProperties.updateLayers()
 
     })
 
@@ -93,8 +116,8 @@ export function drawLayers(layer=null) {
     socket.on("new_ports", function(ports) {
 
       layers.ports = ports
-      drawPorts(canvas)
-      layers.sort()
+      geoProperties.drawLayer("ports")
+      geoProperties.updateLayers()
 
     })
 
@@ -107,8 +130,8 @@ export function drawLayers(layer=null) {
     socket.on("new_railroads", function(railroads) {
 
       layers.railroads = railroads
-      drawRailroads(canvas)
-      layers.sort()
+      geoProperties.drawLayer("railroads")
+      geoProperties.updateLayers()
 
     })
 
