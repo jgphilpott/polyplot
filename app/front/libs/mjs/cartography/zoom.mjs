@@ -1,6 +1,8 @@
 import {width, height} from "../env/window.mjs"
 
 import {updateLayers} from "../draw/layers/all.mjs"
+import {transformLayers} from "./transform.mjs"
+
 import {updateSettings} from "../panels/menu.mjs"
 
 export function makeZoomable(canvas) {
@@ -10,19 +12,7 @@ export function makeZoomable(canvas) {
   let zoom = d3.zoom()
                .scaleExtent([1, 64])
                .translateExtent([[0, 0], [width(), height()]])
-               .on("zoom", function(event) {
-
-                 d3.selectAll(".airport").attr("transform", d3.event.transform)
-                 d3.selectAll(".city").attr("transform", d3.event.transform)
-                 d3.selectAll(".graticule").attr("transform", d3.event.transform)
-                 d3.selectAll(".lake").attr("transform", d3.event.transform)
-                 d3.selectAll(".map").attr("transform", d3.event.transform)
-                 d3.selectAll(".port").attr("transform", d3.event.transform)
-                 d3.selectAll(".railroad").attr("transform", d3.event.transform)
-                 d3.selectAll(".river").attr("transform", d3.event.transform)
-                 d3.selectAll(".road").attr("transform", d3.event.transform)
-
-               })
+               .on("zoom", function(event) { transformLayers(d3.event) })
                .on("end", function(event) {
 
                  data.plot.GeoJSON.properties.transform = d3.event.transform
