@@ -5,7 +5,7 @@ import {polymorph} from "../cartography/projections.mjs"
 import {addPanelEvents} from "./events/all.mjs"
 import {animationSwitch} from "../animation/plots.mjs"
 import {drawLayers, deleteLayer} from "../draw/layers/all.mjs"
-import {startRotation, stopRotation} from "../cartography/rotation.mjs"
+import {startRotation, stopRotation} from "../cartography/rotate.mjs"
 
 let plot = data.plot
 let plots = plot.plots

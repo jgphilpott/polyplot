@@ -183,29 +183,19 @@ export function sortLayers() {
 
 export function updateLayers(type=null, update=null) {
 
-  let canvas = d3.select("#canvas")
   let geoProperties = plot.GeoJSON.properties
-  let layers = geoProperties.layers
 
-  if (type == "pan") {
+  if (type == "zoom") {
 
-    let pan = update
+    let canvas = d3.select("#canvas")
+    let layers = geoProperties.layers
 
-    if (layers.airports) { drawAirports(canvas) }
-    if (layers.cities) { drawCities(canvas) }
-    if (layers.ports) { drawPorts(canvas) }
+    for (let i = 1; i <= geoProperties.checkpoints.length; i++) {
 
-    layers.sort()
+      if ((update >= geoProperties.checkpoints[i - 1] && update <= geoProperties.checkpoints[i]) && !(geoProperties.lastDraw >= geoProperties.checkpoints[i - 1] && geoProperties.lastDraw <= geoProperties.checkpoints[i])) {
 
-  } else if (type == "zoom") {
-
-    let zoom = update
-
-    for (let i = 1; i < layers.checkpoints.length; i++) {
-
-      if ((zoom >= layers.checkpoints[i - 1] && zoom <= layers.checkpoints[i]) && !(layers.lastDraw >= layers.checkpoints[i - 1] && layers.lastDraw <= layers.checkpoints[i])) {
-
-        layers.checkpoint = i
+        geoProperties.checkpoint = i
+        geoProperties.lastDraw = update
 
         if (layers.airports) { drawAirports(canvas) }
         if (layers.cities) { drawCities(canvas) }
@@ -216,22 +206,15 @@ export function updateLayers(type=null, update=null) {
         if (layers.rivers) { drawRivers(canvas) }
         if (layers.roads) { drawRoads(canvas) }
 
-        geoProperties.lastDraw = zoom
-        geoProperties.sortLayers()
-
       }
 
     }
 
-  } else {
-
-    let layerKeys = Object.keys(layers)
-
-    for (let i = 0; i < layerKeys.length; i++) { drawLayer(layerKeys[i]) }
-
-    // geoProperties.sortLayers()
-
   }
+
+  polymorph(data.client.settings.map.projection, 0)
+
+  geoProperties.sortLayers()
 
 }
 

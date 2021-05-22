@@ -1,5 +1,5 @@
 import {drawMaps} from "../draw/maps.mjs"
-import {startRotation} from "../cartography/rotation.mjs"
+import {startRotation} from "../cartography/rotate.mjs"
 import {regionsColourSwitch} from "../colors/switches/regions.mjs"
 
 import {updateSettings} from "./menu.mjs"

@@ -1,4 +1,4 @@
-import {updateLayers} from "../draw/layers/all.mjs"
+import {polymorph} from "./projections.mjs"
 import {translateLayers} from "./translate.mjs"
 
 import {updateSettings} from "../panels/menu.mjs"
@@ -50,7 +50,7 @@ export function makePanable(canvas) {
 
                  updateSettings("map", "orientation", {λ: λ, φ: φ, γ: γ})
 
-                 if (data.plot.type == "Country") { $("#mini-map").css("cursor", "grab") } else { updateLayers("pan", {λ: λ, φ: φ, γ: γ}) }
+                 if (data.plot.type == "Country") { $("#mini-map").css("cursor", "grab") } else { polymorph(data.client.settings.map.projection, 0) }
 
                })
 
