@@ -38,6 +38,15 @@ export function drawMaps(plotType=plot.type) {
 
     path = d3.geoPath().projection(projection)
 
+    canvas.selectAll("#ocean")
+          .data([{type: "Feature", geometry: {type: "Sphere"}}])
+          .enter()
+          .append("path")
+          .attr("d", path)
+          .attr("id", "ocean")
+          .attr("class", "water")
+          .style("fill", "lightblue")
+
   } else if (plotType == "mini-map") {
 
     canvas = d3.select("#mini-map")

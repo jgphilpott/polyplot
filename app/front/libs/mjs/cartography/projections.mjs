@@ -38,6 +38,12 @@ export function polymorph(name, duration=1000) {
   let steps = 10
   let progress = 0
 
+  let white = "#ffffff"
+  let lightblue = "#add8e6"
+  let backgroundColor = name == "orthographic" ? white : lightblue
+
+  $("#canvas").animate({backgroundColor: backgroundColor}, {duration: duration, queue: false})
+
   let mapProperties = data.plot.GeoJSON.properties
   let mapSettings = data.client.settings.map
 

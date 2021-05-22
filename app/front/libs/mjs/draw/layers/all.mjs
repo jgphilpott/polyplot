@@ -178,6 +178,7 @@ export function sortLayers() {
   d3.selectAll(".river").setAsBackLayer()
   d3.selectAll(".map").setAsBackLayer()
   d3.selectAll(".graticule").setAsBackLayer()
+  d3.selectAll("#ocean").setAsBackLayer()
 
 }
 
