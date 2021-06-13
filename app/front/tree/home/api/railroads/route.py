@@ -1,11 +1,11 @@
 from ast import literal_eval
 from flask import jsonify, request
-from back.mongo.data.collect.lakes.mongo import find_lakes
+from back.mongo.data.collect.railroads.mongo import find_railroads
 
-def register_api_lakes_route(app):
+def register_api_railroads_route(app):
 
-    @app.route("/api/lakes")
-    def api_lakes():
+    @app.route("/api/railroads")
+    def api_railroads():
 
         query = literal_eval(request.args.get("query")) if "query" in request.args else {}
         filter = literal_eval(request.args.get("filter")) if "filter" in request.args else {"_id": 0}
@@ -13,6 +13,6 @@ def register_api_lakes_route(app):
         limit = literal_eval(request.args.get("limit")) if "limit" in request.args else 0
         detail = literal_eval(request.args.get("detail")) if "detail" in request.args else "micro"
 
-        data = find_lakes(query, filter, sort, limit, detail)
+        data = find_railroads(query, filter, sort, limit, detail)
 
         return jsonify(data)

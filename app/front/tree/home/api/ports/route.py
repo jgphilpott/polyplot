@@ -12,6 +12,6 @@ def register_api_ports_route(app):
         sort = literal_eval(request.args.get("sort")) if "sort" in request.args else [("properties.flow", -1), ("properties.code", 1)]
         limit = literal_eval(request.args.get("limit")) if "limit" in request.args else 0
 
-        data = find_maps(query, filter, sort, limit)
+        data = find_ports(query, filter, sort, limit)
 
         return jsonify(data)
