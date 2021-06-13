@@ -5,6 +5,7 @@ from front.tree.home.api.route import register_api_route
 from front.tree.home.api.airports.route import register_api_airports_route
 from front.tree.home.api.cities.route import register_api_cities_route
 from front.tree.home.api.countries.route import register_api_countries_route
+from front.tree.home.api.graticules.route import register_api_graticules_route
 from front.tree.home.api.indicators.route import register_api_indicators_route
 from front.tree.home.api.maps.route import register_api_maps_route
 
@@ -30,6 +31,7 @@ def register_routes(app):
     register_api_airports_route(app)
     register_api_cities_route(app)
     register_api_countries_route(app)
+    register_api_graticules_route(app)
     register_api_indicators_route(app)
     register_api_maps_route(app)
 
