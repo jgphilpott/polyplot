@@ -12,6 +12,7 @@ from front.tree.home.api.maps.route import register_api_maps_route
 from front.tree.home.api.ports.route import register_api_ports_route
 from front.tree.home.api.railroads.route import register_api_railroads_route
 from front.tree.home.api.rivers.route import register_api_rivers_route
+from front.tree.home.api.roads.route import register_api_roads_route
 
 from front.tree.home.countries.route import register_countries_route
 from front.tree.home.countries.country.route import register_country_route
@@ -42,6 +43,7 @@ def register_routes(app):
     register_api_ports_route(app)
     register_api_railroads_route(app)
     register_api_rivers_route(app)
+    register_api_roads_route(app)
 
     register_countries_route(app)
     register_country_route(app)
