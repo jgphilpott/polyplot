@@ -2,9 +2,18 @@
 
 # Intro
 
-Polyplot is a data exploration application inspired by [Ola Rosling](https://github.com/olarosling)'s [Trendalyzer](https://en.wikipedia.org/wiki/Trendalyzer) software. In March 2007 Trendalyzer was acquired by Google and is now available online as [Google Public Data](https://www.google.com/publicdata). The software features an animated scatter plot where the data points represent the countries of the world and the axes can be set to any combination of development indicators with the data animating through time. The data is also available in line and bar charts as well as a map view.
+Polyplot is a data exploration application inspired by [Ola Rosling](https://github.com/olarosling)'s [Trendalyzer](https://en.wikipedia.org/wiki/Trendalyzer) software. In March 2007 Trendalyzer was acquired by Google and is now available online as [Google Public Data](https://www.google.com/publicdata). The software features an animated scatter plot where the data points represent the countries of the world and the axes can be set to any combination of development indicators with the data animating through time. The data is also available in line and bar charts as well as a map view. **The goal of Polyplot is to be a better and sexier version of Google Public Data.** This objective is achieved in a variety of ways listed below.
 
-The goal of Polyplot is ...
+### Open Source
+
+Polyplot was built on GitHub from day one! The power of git and open source is that it enables the internet hive mind to collaborate on a project in a way that's impossible for a small closed group of developers to compete with. **You are encouraged to clone, fork and modify the code in any way you like!**
+
+### 3D View
+### Improved Map
+### Improved UI
+### API
+### Auto Updates
+### Notebooks
 
 # Quick Start
 
