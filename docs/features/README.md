@@ -28,4 +28,4 @@ Polyplot uses [docker compose](https://docs.docker.com/compose) to connect its s
 
 ### ~ Auto Updates
 
-...
+Polyplot never falls behind the times, the world is changing everyday and so is Polyplot! The backend connects to several APIs and scrapes various websites across the web everyday for fresh data. New APIs and sites are being added all the time, **connecting a new API or writing a scraper is a great way to contribute!**
