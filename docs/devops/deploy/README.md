@@ -4,7 +4,7 @@ Polyplot is deployed using [docker compose](https://docs.docker.com/compose), if
 
 # Deploy
 
-To begin clone the Polyplot repository:
+To begin, clone the Polyplot repository:
 
 ```
 git clone https://github.com/jgphilpott/polyplot.git
@@ -28,14 +28,24 @@ The build will take some time but once it’s done you can view the application 
 Ctrl + Shift + C
 ```
 
-... in future deployments you can simply use the command:
+... in future deployments you can simply use the commands:
 
 ```
-docker-compose up
+docker-compose start
+```
+
+... and:
+
+```
+docker-compose stop
 ```
 
 :warning: ~ **The first deployment will take more time because the app needs to download several GB of data and write a few GB of data to the database but this is only necessary once.**
 
 # Notes
 
-...
+The compose commands mentioned above will launch three containers; a MongoDB container on port `27017`, a Jupyter Notebook container on port `8888` and the main Polyplot container on port `5000`. If you want to view the status of your containers use:
+
+```
+docker container ls
+```
