@@ -23,4 +23,9 @@ Polyplot is a masterpiece of digital cartography! The base map has the countries
 Polyplot uses a document-oriented ([NoSQL](https://en.wikipedia.org/wiki/NoSQL)) database called [MongoDB](https://www.mongodb.com), all of Polyplots data is available in an API connected to this database. The APIs primary routes correlate with collections in the database and the nested secondary routes correlate with a single document in that collection. You can also add a custom query, filter, sort and limit to the API route. Read the [API documentation](https://github.com/jgphilpott/polyplot/blob/master/docs/api/README.md) for more detailed instructions.
 
 ### ~ Notebooks
+
+Polyplot uses [docker compose](https://docs.docker.com/compose) to connect its services, if everything deployed correctly then you should be able to view a Jupyter Notebook container on port `8888`. Notebooks can be used as a sandbox to develop and test new code or explore the database. Polyplot comes preloaded with a [set of notes](https://github.com/jgphilpott/polyplot/tree/master/notes/collections) that correspond to the collections in the database and can be used as a starting point. For more information on how to use the Jupyter Notebook service read [this documentation](https://github.com/jgphilpott/polyplot/blob/master/docs/notes/README.md).
+
 ### ~ Auto Updates
+
+...
