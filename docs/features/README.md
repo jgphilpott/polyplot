@@ -15,6 +15,9 @@ Polyplot raises the bar and takes data exploration to another dimension, literal
 Polyplot has a uniquely lucid interface that creates a smoother experience for users and developers. Rather than having a fixed/static layout Polyplot expands the plotting area to fullscreen and pops out the controls/tools onto floating panels that can be placed anywhere and toggled on/off. For users this creates a more custom experience that makes better use of screen space. For developers it makes it easier to build new features in isolation without needing to worry about the overall architecture of the application.
 
 ### ~ Custom Map
+
+Polyplot is a masterpiece of digital cartography! The base map has the countries of the world coloured by a time series indicator and can be morphed between different projections. You can also build and add custom layers of geospatial data. This mixture of time series and geospatial data can be a powerful catalyst in the discovery process!
+
 ### ~ API
 ### ~ Notebooks
 ### ~ Auto Updates
