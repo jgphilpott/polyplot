@@ -4,7 +4,7 @@
 
 ### ~ Open Source
 
-Polyplot has been built on GitHub from day one! The power of git and open source is that it enables the internet hive mind to collaborate on a project in a way that's impossible for a small closed group of developers. **You are encouraged to clone, fork and modify the code in any way you like!** If you find any bugs or have an idea for a new feature please [open an issue](https://github.com/jgphilpott/polyplot/issues).
+Polyplot has been built on GitHub from day one! The power of git and open source is that it enables the internet hive mind to collaborate on a project in a way that's impossible for a small closed group of developers. **You are encouraged to clone, fork and modify the code in any way you like!** If you notice any bugs or have an idea for a new feature please [open an issue](https://github.com/jgphilpott/polyplot/issues).
 
 ### ~ 3D View
 
