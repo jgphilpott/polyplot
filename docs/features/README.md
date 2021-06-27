@@ -16,8 +16,11 @@ Polyplot has a uniquely lucid interface that creates a smoother experience for u
 
 ### ~ Custom Map
 
-Polyplot is a masterpiece of digital cartography! The base map has the countries of the world coloured by a time series indicator and can be morphed between different projections. You can also build and add custom layers of geospatial data. This mixture of time series and geospatial data can be a powerful catalyst in the discovery process!
+Polyplot is a masterpiece of digital cartography! The base map has the countries of the world coloured by a time series indicator and can be morphed between different projections. You can also build and add custom layers of geospatial data. This mixture of time series and geospatial data can be a powerful catalyst in the discovery process! Under the hood Polyplots map features are powered by [d3.js](https://github.com/d3/d3), so if you're familiar with that library you can easily modify the map or add custom layers.
 
 ### ~ API
+
+Polyplot uses a document-oriented ([NoSQL](https://en.wikipedia.org/wiki/NoSQL)) database called [MongoDB](https://www.mongodb.com), all of Polyplots data is available in an API connected to this database. The APIs primary routes correlate with collections in the database and the nested secondary routes correlate with a single document in that collection. You can also add a custom query, filter, sort and limit to the API route. Read the [API documentation](https://github.com/jgphilpott/polyplot/blob/master/docs/api/README.md) for more detailed instructions.
+
 ### ~ Notebooks
 ### ~ Auto Updates
