@@ -20,4 +20,18 @@ You should see the message `Welcome to Polyplot! 😍` printed on the screen.
 
 # Aliases
 
+## Navigation
+
+**Most of the Flint aliases are for retrieving collections and documents however there are also a few simple navigation aids.** Try typing `cwd` and `lsa` to get your location on the file system and a list of all the local files and folders. Now type `cl` to clear the screen and `spark` to get a list of all the commands available to the CLI. To execute a specific common type `fire` and then a space and the name of the command.
+
+Command | Description
+--- | ---
+`cwd` | Displays the current working directory.
+`lsa` | Lists all the files and folders in the current working directory.
+`cl` | Clears the screen.
+`spark` | Displays a list of all the commands available to the CLI.
+`fire` | Executes a specific command.
+
+## Collections
+
 ...
