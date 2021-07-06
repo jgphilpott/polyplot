@@ -10,7 +10,7 @@ Assuming that [the Polyplot container is running](https://github.com/jgphilpott/
 docker exec -it polyplot bash
 ```
 
-This command alone will open access to the Polyplot container and if you wish you can begin your work from here. **The power of Flint however is the alias list that it comes with to help simplify workflows.** To load the Flint aliases enter the command:
+This command alone will grant access to the Polyplot container and if you wish you can begin your work from here. **The power of Flint however is the alias list that it comes with to help simplify workflows.** To load the Flint aliases enter the command:
 
 ```
 source /root/app/back/flint/aliases.sh
@@ -22,7 +22,7 @@ You should see the message `Welcome to Polyplot! 😍` printed on the screen.
 
 ## Navigation
 
-**Most of the Flint aliases are for retrieving documents and collections however there are also a few simple navigation aliases.** Try typing `cwd` and `lsa` to get your location on the file system and a list of all the local files and folders. Now type `cl` to clear the screen and `spark` to get a list of all the commands available to the CLI. To execute a specific common type `fire` and then a space and the name of the command.
+**Most of the Flint aliases are for retrieving documents and collections however there are also a few simple navigation aliases.** Try typing `cwd` and `lsa` to get your location on the file system and a list of all the local files and folders. Now type `cl` to clear the screen and `spark` to get a list of all the commands available to the CLI. To execute a specific command type `fire` and then a space and the name of the command.
 
 Alias | Description
 --- | ---
