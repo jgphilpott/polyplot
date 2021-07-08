@@ -10,6 +10,8 @@ def register_api_indicator_route(app):
         query = literal_eval(request.args.get("query")) if "query" in request.args else {"countries": {"$exists": True, "$ne": []}, "completeness": {"$gt": 0}}
         filter = literal_eval(request.args.get("filter")) if "filter" in request.args else {"_id": 0, "countries": 0}
 
+        if "_id" not in filter: filter["_id"] = 0
+
         data = find_indicator(query, filter)
 
         return jsonify(data)
