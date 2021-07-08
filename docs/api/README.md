@@ -4,4 +4,35 @@
 
 # Example
 
-Let's look at Airports as an example. To start, the root API path is `/api`, if you visit [`polyplot.app/api`](https://www.polyplot.app/api) or [`localhost:5000/api`](http://localhost:5000/api) you will be redirected to this page. Try visiting `/api/airport` to retrieve a single airport document.
+Let's look at Airports as an example. **To start, the root API path is `/api`, if you visit [polyplot.app/api](https://www.polyplot.app/api) or [localhost:5000/api](http://localhost:5000/api) you will be redirected to this page.**
+
+## Single Document
+
+The best way to get started with a collection is to retrieve a single document and examine its schema. Try visiting `/api/airport` to retrieve a single airport document. You should get a response that looks something like this:
+
+```
+{
+  "geometry": {
+    "coordinates": [
+      55.35779953, 
+      25.25
+    ], 
+    "type": "Point"
+  }, 
+  "properties": {
+    "code": "DXB", 
+    "country": "ARE", 
+    "flow": 55655669.13, 
+    "name": "Dubai International"
+  }, 
+  "type": "Feature"
+}
+```
+
+## Entire Collection
+
+...
+
+# Routes
+
+...
