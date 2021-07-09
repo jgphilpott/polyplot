@@ -35,7 +35,11 @@ The best way to get started with a collection is to retrieve a single document a
 
 **Adding a query allows you to find a document that matches a condition or set of conditions.** Select a field in the document **(for nested fields use a . to link fields)** and a condition. All queries come in the form of a dictionary where the key is the name of the field and the value is the condition you want met.
 
-Let's say we want to find an airport in Canada, in this example we will use this dictionary, `{"properties.country":"CAN"}`. **If multiple documents meet the condition the database will simply return the first one that it finds.** The full route will now look like this, `/api/airport?query={"properties.country":"CAN"}`
+Let's say we want to find an airport in Canada, in this example we will use this dictionary, `{"properties.country":"CAN"}`. **If multiple documents meet the condition the database will simply return the first one that it finds.** The full route will now look like this, `/api/airport?query={"properties.country":"CAN"}`.
+
+**If you don't have a specific value to match you can also use logical operators in your query.** For example let's look for an airport where flow is **less than** 100, for this we will use the **$lt** operator like so: `{"properties.flow":{"$lt":100}}`. For a full list of available operators see the [MongoDB documentation](https://docs.mongodb.com/manual/reference/operator/query).
+
+You can of course also combine these queries to look for an airport in Canada where flow is less than 100. The resulting API route will look like this: `/api/airport?query={"properties.country":"CAN","properties.flow":{"$lt":100}}`.
 
 ### Filter
 
