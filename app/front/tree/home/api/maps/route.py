@@ -13,7 +13,7 @@ def register_api_maps_route(app):
         limit = literal_eval(request.args.get("limit")) if "limit" in request.args else 0
         detail = literal_eval(request.args.get("detail")) if "detail" in request.args else "micro"
 
-        if "_id" not in filter: filter["_id"] = 0
+        filter["_id"] = 0
 
         data = find_maps(query, filter, sort, limit, detail)
 

@@ -12,7 +12,7 @@ def register_api_airports_route(app):
         sort = literal_eval(request.args.get("sort")) if "sort" in request.args else [("properties.flow", -1), ("properties.code", 1)]
         limit = literal_eval(request.args.get("limit")) if "limit" in request.args else 0
 
-        if "_id" not in filter: filter["_id"] = 0
+        filter["_id"] = 0
 
         data = find_airports(query, filter, sort, limit)
 
