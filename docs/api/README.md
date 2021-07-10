@@ -35,11 +35,11 @@
 
 Let's look at airports as an example. **To start, the root API path is `/api`, if you visit [polyplot.app/api](https://www.polyplot.app/api) or [localhost:5000/api](http://localhost:5000/api) you will be redirected to this page.**
 
-:warning: **The API path can not include spaces, they must be either removed or replaced with `%20`. Some browsers will do this automatically if you paste the path into the address bar but a direct request with spaces will return an error.**
+:warning: **The API path can not include spaces, they must be either removed or replaced with `%20`. Most browsers will do this automatically if you paste the path into the address bar but a direct request with spaces will return an error.**
 
 ## Single Document
 
-The best way to get started with a collection is to retrieve a single document and examine its schema. **Try visiting `/api/airport` to retrieve a single airport document.** You should get a response that looks something like this:
+The best way to get started with a collection is to retrieve a single document and examine it's schema. **Try visiting `/api/airport` to retrieve a single airport document.** You should get a response that looks something like this:
 
 ```
 {
@@ -108,15 +108,25 @@ Collection filters work the same as [document filters](https://github.com/jgphil
 
 ### Sort
 
-...
+**Adding a sort allows you to change the order in which data is returned.** Select a field in the document **(for nested fields use a . to link fields)** that you want to sort. All sorts come in the form of a list of tuples where the first value in the tuple is the field you want to sort by and the second is either a `-1` or `1` for descending and ascending order respectively.
+
+Let's say we want to sort airports by flow in descending order so that the largest airports are on the top of the list and the smallest are on the bottom. For this example we will use this list, `[("properties.flow",-1)]`. The route will now look like this, `/api/airports?sort=[("properties.flow",-1)]`.
+
+**You can add multiple tuples to the list to act as secondary or tertiary sort values to be used in the event of a tie in the primary sort value.** Let's sort the airports by code in ascending order as a secondary value. For this example we will use this list, `[("properties.flow",-1),("properties.code",1)]`. The route will now look like this, `/api/airports?sort=[("properties.flow",-1),("properties.code",1)]`. **See this [MongoDB documentation](https://docs.mongodb.com/manual/reference/method/cursor.sort) for more information.**
+
+**You can of course also combine sorts with queries and filters.**
 
 ### Limit
 
-...
+**Adding a limit allows you to restrict the number of documents that will be returned. The limit can be any positive integer, use 0 to set no limit.**
+
+Let's say we want to limit the number of airports returned to 10, for this example the route will look like this, `/api/airports?limit=10`. **See this [MongoDB documentation](https://docs.mongodb.com/manual/reference/method/cursor.limit) for more information.**
+
+**You can of course also combine limit with sorts, queries and filters.**
 
 # Routes
 
-**There are two API routes for each relevant collection in the database.** The primary routes correlate with a collection and will return a list of documents. The secondary routes correlate with a single document in that collection. As [explained above](https://github.com/jgphilpott/polyplot/tree/master/docs/api#example), you can also add a custom query, filter, sort and limit to the API routes. A list off all available API routes is available in the table below:
+**There are two API routes for each relevant collection in the database.** The primary routes correlate with a collection and will return a list of documents. The secondary routes correlate with a single document in that collection. As [explained above](https://github.com/jgphilpott/polyplot/tree/master/docs/api#example), you can also add a custom query, filter, sort and limit to the API routes. A list of all available API routes is available in the table below:
 
 Collection | Primary Route (List) | Secondary Route (Document) | Special Args | GeoJSON
 --- | --- | --- | --- | ---
