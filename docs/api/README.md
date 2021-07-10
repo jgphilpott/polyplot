@@ -43,7 +43,9 @@ You can of course also combine these queries to look for an airport in Canada wh
 
 ### Filter
 
-...
+**Adding a filter allows you to select certain fields to include or exclude in the return document.** Select a field in the document **(for nested fields use a . to link fields)** that you want to include or exclude. All filters come in the form of a dictionary where the key is the name of the field and the value is either a 0 or 1 for exclusion and inclusion respectively.
+
+Let's say we only want to return the name of the airport, in this example we will use this dictionary, `{"properties.name":1}`. The full route will now look like this, `/api/airport?filter={"properties.name":1}`. **You can add multiple fields to exclude or include in your filter but you can not mix exclusion and inclusion statements.** See this [MongoDB Tutorial](https://docs.mongodb.com/manual/tutorial/project-fields-from-query-results) for more information.
 
 ## List of Documents
 
