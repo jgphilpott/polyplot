@@ -126,7 +126,7 @@ Let's say we want to limit the number of airports returned to 10, for this examp
 
 # Routes
 
-**There are two API routes for each relevant collection in the database.** The primary routes correlate with a collection and will return a list of documents. The secondary routes correlate with a single document in that collection. As [explained above](https://github.com/jgphilpott/polyplot/tree/master/docs/api#example), you can also add a custom query, filter, sort and limit to the API routes. A list of all available API routes is available in the table below:
+**There are two API routes for each relevant collection in the database.** The primary routes correlate with a collection and will return a list of documents. The secondary routes correlate with a single document in that collection. As [explained above](https://github.com/jgphilpott/polyplot/tree/master/docs/api#example), you can also add a custom query, filter, sort and limit to the API routes. **A list of all available API routes is available in the table below:**
 
 Collection | Primary Route (List) | Secondary Route (Document) | Special Args | GeoJSON
 --- | --- | --- | --- | ---
