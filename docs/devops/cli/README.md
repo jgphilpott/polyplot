@@ -1,6 +1,6 @@
 # Intro
 
-The Polyplot CLI (Flint) was used in the early days of development for exploring database collections. Most of its functionality has been replaced by the [Jupyter Notebook](https://github.com/jgphilpott/polyplot/blob/master/docs/notes/README.md) service, however it does still work and **has the advantage of having root access to the Polyplot container.** You can for example explore the file system and start or end processes, which can’t be done with the Jupyter Notebook because it runs as a separate docker container.
+The Polyplot CLI (Flint) was used in the early days of development for exploring database collections. Most of it's functionality has been replaced by the [Jupyter Notebook](https://github.com/jgphilpott/polyplot/blob/master/docs/notes/README.md) service, however it does still work and **has the advantage of having root access to the Polyplot container.** You can for example explore the file system and start or end processes, which can’t be done with the Jupyter Notebook because it runs as a separate docker container.
 
 # Getting Started
 
@@ -32,97 +32,22 @@ Alias | Description
 `spark` | Displays a list of all the commands available to the CLI.
 `fire` | Executes a specific command.
 
-## Documents & Collections
+## Collections & Documents
 
-**To start, type `cols` to see a list of all the collections in the database.** For each collection there is an alias to retrieve a single document and to retrieve the entire collection. You can also add a custom query, filter, sort and limit to the commands, read the [API documentation](https://github.com/jgphilpott/polyplot/blob/master/docs/api/README.md) for more details about each of these optional arguments. You can view all of the aliases in the tables below.
+**To start, type `cols` to see a list of all the collections in the database.** For each collection there is an alias to retrieve the entire collection and to retrieve a single document. You can also add a custom query, filter, sort and limit to the commands, read the [API documentation](https://github.com/jgphilpott/polyplot/blob/master/docs/api/README.md) for more details about each of these optional arguments. **You can view all of the available aliases in the table below:**
 
-### Airports
-
-Alias | Description
---- | ---
-`air` | Retrieve a single document.
-`airs` | Retrieve the entire collection.
-
-### Cities
-
-Alias | Description
---- | ---
-`cit` | Retrieve a single document.
-`cits` | Retrieve the entire collection.
-
-### Clients
-
-Alias | Description
---- | ---
-`cent` | Retrieve a single document.
-`cents` | Retrieve the entire collection.
-
-### Countries
-
-Alias | Description
---- | ---
-`coun` | Retrieve a single document.
-`couns` | Retrieve the entire collection.
-
-### Graticules
-
-Alias | Description
---- | ---
-`grat` | Retrieve a single document.
-`grats` | Retrieve the entire collection.
-
-### Indicators
-
-Alias | Description
---- | ---
-`ind` | Retrieve a single document.
-`inds` | Retrieve the entire collection.
-
-### Lakes
-
-Alias | Description
---- | ---
-`lake` | Retrieve a single document.
-`lakes` | Retrieve the entire collection.
-
-### Maps
-
-Alias | Description
---- | ---
-`map` | Retrieve a single document.
-`maps` | Retrieve the entire collection.
-
-### Metas
-
-Alias | Description
---- | ---
-`meta` | Retrieve a single document.
-`metas` | Retrieve the entire collection.
-
-### Ports
-
-Alias | Description
---- | ---
-`port` | Retrieve a single document.
-`ports` | Retrieve the entire collection.
-
-### Railroads
-
-Alias | Description
---- | ---
-`rail` | Retrieve a single document.
-`rails` | Retrieve the entire collection.
-
-### Rivers
-
-Alias | Description
---- | ---
-`riv` | Retrieve a single document.
-`rivs` | Retrieve the entire collection.
-
-### Roads
-
-Alias | Description
---- | ---
-`road` | Retrieve a single document.
-`roads` | Retrieve the entire collection.
+Collection | Retrieve List | Retrieve Document
+--- | --- | ---
+Airports | `airs` | `air`
+Cities | `cits` | `cit`
+Clients | `cents` | `cent`
+Countries | `couns` | `coun`
+Graticules | `grats` | `grat`
+Indicators | `inds` | `ind`
+Lakes | `lakes` | `lake`
+Maps | `maps` | `map`
+Metas | `metas` | `meta`
+Ports | `ports` | `port`
+Railroads | `rails` | `rail`
+Rivers | `rivs` | `riv`
+Roads | `roads` | `road`
