@@ -81,4 +81,18 @@ Once you're familiar with the schema of the documents in a collection you can re
 
 # Routes
 
-...
+**There are two API routes for each relevant collection in the database.** The primary routes correlate with a collection and will return a list of documents. The secondary routes correlate with a single document in that collection. As explained above, you can also add a custom query, filter, sort and limit to the API routes. A list off all available API routes is available in the table below:
+
+Collection | Primary Route (List) | Secondary Route (Document) | Special Args | GeoJSON
+--- | --- | --- | --- | ---
+[Airports](https://github.com/jgphilpott/polyplot/blob/master/docs/api/airports/README.md) | [/api/airports](https://www.polyplot.app/api/airports) | [/api/airport](https://www.polyplot.app/api/airport) | :x: | :heavy_check_mark:
+[Cities](https://github.com/jgphilpott/polyplot/blob/master/docs/api/cities/README.md) | [/api/cities](https://www.polyplot.app/api/cities) | [/api/city](https://www.polyplot.app/api/city) | :x: | :heavy_check_mark:
+[Countries](https://github.com/jgphilpott/polyplot/blob/master/docs/api/countries/README.md) | [/api/countries](https://www.polyplot.app/api/countries) | [/api/country](https://www.polyplot.app/api/country) | :x: | :x:
+[Graticules](https://github.com/jgphilpott/polyplot/blob/master/docs/api/graticules/README.md) | [/api/graticules](https://www.polyplot.app/api/graticules) | [/api/graticule](https://www.polyplot.app/api/graticule) | :x: | :heavy_check_mark:
+[Indicators](https://github.com/jgphilpott/polyplot/blob/master/docs/api/indicators/README.md) | [/api/indicators](https://www.polyplot.app/api/indicators) | [/api/indicator](https://www.polyplot.app/api/indicator) | :x: | :x:
+[Lakes](https://github.com/jgphilpott/polyplot/blob/master/docs/api/lakes/README.md) | [/api/lakes](https://www.polyplot.app/api/lakes) | [/api/lake](https://www.polyplot.app/api/lake) | :heavy_check_mark: | :heavy_check_mark:
+[Maps](https://github.com/jgphilpott/polyplot/blob/master/docs/api/maps/README.md) | [/api/maps](https://www.polyplot.app/api/maps) | [/api/map](https://www.polyplot.app/api/map) | :heavy_check_mark: | :heavy_check_mark:
+[Ports](https://github.com/jgphilpott/polyplot/blob/master/docs/api/ports/README.md) | [/api/ports](https://www.polyplot.app/api/ports) | [/api/port](https://www.polyplot.app/api/port) | :x: | :heavy_check_mark:
+[Railroads](https://github.com/jgphilpott/polyplot/blob/master/docs/api/railroads/README.md) | [/api/railroads](https://www.polyplot.app/api/railroads) | [/api/railroad](https://www.polyplot.app/api/railroad) | :heavy_check_mark: | :heavy_check_mark:
+[Rivers](https://github.com/jgphilpott/polyplot/blob/master/docs/api/rivers/README.md) | [/api/rivers](https://www.polyplot.app/api/rivers) | [/api/river](https://www.polyplot.app/api/river) | :heavy_check_mark: | :heavy_check_mark:
+[Roads](https://github.com/jgphilpott/polyplot/blob/master/docs/api/roads/README.md) | [/api/roads](https://www.polyplot.app/api/roads) | [/api/road](https://www.polyplot.app/api/road) | :heavy_check_mark: | :heavy_check_mark:
