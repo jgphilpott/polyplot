@@ -22,7 +22,7 @@ You should see an output that looks something like this:
 http://0.0.0.0:8888/?token=<TOKEN>
 ```
 
-Copy the `<TOKEN>` and paste it into the password field in the browser page.
+Copy the `<TOKEN>` and paste it into the password field in the browser page or copy the entire URL into the address bar.
 
 # Notebooks
 
