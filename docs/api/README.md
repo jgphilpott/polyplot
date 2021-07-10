@@ -49,6 +49,26 @@ Let's say we only want to return the name of the airport, in this example we wil
 
 ## List of Documents
 
+Once you're familiar with the schema of the documents in a collection you can retrieve a list of documents. **Try visiting `/api/airports` to retrieve a list of all the airport documents in the collection.** You should get a response that looks something like this, except with complete airpot documents rather than placeholders:
+
+```
+[
+  {"Airport": 1},
+  {"Airport": 2},
+  {"Airport": 3},
+  ...
+  {"Airport": x}
+]
+```
+
+**All collection routes have four optional arguments that you can add; query, filter, sort and limit.** Some collections also have additional special arguments such as the level of detail that can be specified on map data for example. If special arguments are available it will be mentioned in the [collection specific documentation](https://github.com/jgphilpott/polyplot/blob/master/docs/api/README.md#routes). When no arguments are provided (as in the example above) the defaults are used, each collection's defaults will also be mentioned in it's own documentation. Let's look at each of these arguments and see how it applies to our airports example.
+
+### Query
+
+...
+
+### Filter
+
 ...
 
 ### Sort
