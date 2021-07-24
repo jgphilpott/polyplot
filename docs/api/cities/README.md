@@ -40,21 +40,21 @@ You should get a response that looks something like this:
 {
   "geometry": {
     "coordinates": [
-      139.74946157054467, 
+      139.74946157054467,
       35.686962764371174
-    ], 
+    ],
     "type": "Point"
-  }, 
+  },
   "properties": {
-    "country": "JPN", 
-    "name": "Tokyo", 
-    "pop_avg": 22006299.5, 
-    "pop_max": 35676000, 
-    "pop_min": 8336599, 
-    "rank": 1, 
-    "wiki": "Q1490", 
+    "country": "JPN",
+    "name": "Tokyo",
+    "pop_avg": 22006299.5,
+    "pop_max": 35676000,
+    "pop_min": 8336599,
+    "rank": 1,
+    "wiki": "Q1490",
     "zone": "Tokyo"
-  }, 
+  },
   "type": "Feature"
 }
 ```
