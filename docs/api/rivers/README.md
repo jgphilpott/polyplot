@@ -12,7 +12,7 @@ The primary rivers route is `/api/rivers` and will return a list of documents. Y
 
 **Filter:** `{}`
 
-**Sort:** `[("properties.id",1)]`
+**Sort:** `[("properties.name",1)]`
 
 **Limit:** `100`
 
@@ -45,16 +45,16 @@ You should get a response that looks something like this:
 ```
 {
   "geometry": {
-    "coordinates": [...], 
+    "coordinates": [...],
     "type": "LineString"
-  }, 
+  },
   "properties": {
-    "id": 1, 
-    "name": "Albert Nile", 
-    "number": 9, 
-    "rank": 1, 
+    "id": 1,
+    "name": "Albert Nile",
+    "number": 9,
+    "rank": 1,
     "wiki": "Q4814791"
-  }, 
+  },
   "type": "Feature"
 }
 ```
