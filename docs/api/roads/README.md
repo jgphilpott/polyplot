@@ -45,20 +45,20 @@ You should get a response that looks something like this:
 ```
 {
   "geometry": {
-    "coordinates": [...], 
+    "coordinates": [...],
     "type": "LineString"
-  }, 
+  },
   "properties": {
-    "category": "Major Highway", 
-    "country": "", 
-    "id": 1, 
-    "jurisdiction": "", 
-    "label": "", 
-    "length_km": 1378, 
-    "name": "", 
-    "rank": 3, 
+    "category": "Major Highway",
+    "country": "",
+    "id": 1,
+    "jurisdiction": "",
+    "label": "",
+    "length_km": 1378,
+    "name": "",
+    "rank": 3,
     "toll": 0
-  }, 
+  },
   "type": "Feature"
 }
 ```
