@@ -12,7 +12,7 @@ The primary lakes route is `/api/lakes` and will return a list of documents. You
 
 **Filter:** `{}`
 
-**Sort:** `[("properties.id",1)]`
+**Sort:** `[("properties.name",1)]`
 
 **Limit:** `100`
 
@@ -26,7 +26,7 @@ You should get a response that looks something like this, except with complete l
   {"Lake": 2},
   {"Lake": 3},
   ...
-  {"Map": 100}
+  {"Lake": 100}
 ]
 ```
 
@@ -45,17 +45,17 @@ You should get a response that looks something like this:
 ```
 {
   "geometry": {
-    "coordinates": [...], 
+    "coordinates": [...],
     "type": "Polygon"
-  }, 
+  },
   "properties": {
-    "category": "Alkaline Lake", 
-    "id": 1, 
-    "name": "Aral Sea", 
-    "rank": 1, 
-    "wiki": "Q35883", 
+    "category": "Alkaline Lake",
+    "id": 1,
+    "name": "Aral Sea",
+    "rank": 1,
+    "wiki": "Q35883",
     "year": null
-  }, 
+  },
   "type": "Feature"
 }
 ```
