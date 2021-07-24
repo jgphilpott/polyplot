@@ -14,7 +14,7 @@ The primary countries route is `/api/countries` and will return a list of docume
 
 **Limit:** `0`
 
-You should get a response that looks something like this, except with complete city documents rather than placeholders:
+You should get a response that looks something like this, except with complete country documents rather than placeholders:
 
 ```
 [
@@ -39,17 +39,17 @@ You should get a response that looks something like this:
 ```
 {
   "centroid": [
-    65.95985742187501, 
+    65.95985742187501,
     34.1834701171875
-  ], 
-  "code": "AFG", 
-  "factbook": "https://www.cia.gov/the-world-factbook/countries/afghanistan", 
-  "formal_name": "Islamic Republic of Afghanistan", 
-  "last_updated": "2021-04-02", 
-  "max_year": 2020, 
-  "min_year": 1960, 
-  "name": "Afghanistan", 
-  "region": "South Asia", 
+  ],
+  "code": "AFG",
+  "factbook": "https://www.cia.gov/the-world-factbook/countries/afghanistan",
+  "formal_name": "Islamic Republic of Afghanistan",
+  "last_updated": "2021-04-02",
+  "max_year": 2020,
+  "min_year": 1960,
+  "name": "Afghanistan",
+  "region": "South Asia",
   "wiki": "https://en.wikipedia.org/wiki/Afghanistan"
 }
 ```
