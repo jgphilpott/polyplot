@@ -84,7 +84,7 @@ Let's say we only want to return the name of the airport, in this example we wil
 
 ## List of Documents
 
-Once you're familiar with the schema of the documents in a collection you can retrieve a list of documents. **Try visiting `/api/airports` to retrieve a list of all the airport documents in the collection.** You should get a response that looks something like this, except with complete airpot documents rather than placeholders:
+Once you're familiar with the schema of the documents in a collection you can retrieve a list of documents. **Try visiting `/api/airports` to retrieve a list of airport documents.** You should get a response that looks something like this, except with complete airpot documents rather than placeholders:
 
 ```
 [
@@ -108,7 +108,7 @@ Collection filters work the same as [document filters](https://github.com/jgphil
 
 ### Sort
 
-**Adding a sort allows you to change the order in which data is returned.** Select a field in the document **(for nested fields use a . to link fields)** that you want to sort. All sorts come in the form of a list of tuples where the first value in the tuple is the field you want to sort by and the second is either a `-1` or `1` for descending and ascending order respectively.
+**Adding a sort allows you to change the order in which data is returned.** Select a field in the document **(for nested fields use a . to link fields)** that you want to sort. All sorts come in the form of a list of tuples where the first value in the tuple is the field you want to sort by and the second is either a -1 or 1 for descending and ascending order respectively.
 
 Let's say we want to sort airports by flow in descending order so that the largest airports are on the top of the list and the smallest are on the bottom. For this example we will use this list, `[("properties.flow",-1)]`. The route will now look like this, `/api/airports?sort=[("properties.flow",-1)]`.
 
