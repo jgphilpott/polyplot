@@ -8,8 +8,8 @@ def register_api_maps_route(app):
     def api_maps():
 
         query = literal_eval(request.args.get("query")) if "query" in request.args else {}
-        filter = literal_eval(request.args.get("filter")) if "filter" in request.args else {"_id": 0}
-        sort = literal_eval(request.args.get("sort")) if "sort" in request.args else [("properties.code", 1)]
+        filter = literal_eval(request.args.get("filter")) if "filter" in request.args else {}
+        sort = literal_eval(request.args.get("sort")) if "sort" in request.args else [("properties.name", 1)]
         limit = literal_eval(request.args.get("limit")) if "limit" in request.args else 0
         detail = literal_eval(request.args.get("detail")) if "detail" in request.args else "micro"
 

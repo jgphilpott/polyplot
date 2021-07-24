@@ -12,13 +12,13 @@ The primary maps route is `/api/maps` and will return a list of documents. You c
 
 **Filter:** `{}`
 
-**Sort:** `[("properties.code",1)]`
+**Sort:** `[("properties.name",1)]`
 
 **Limit:** `0`
 
 **Detail:** `micro`
 
-You should get a response that looks something like this, except with complete airpot documents rather than placeholders:
+You should get a response that looks something like this, except with complete map documents rather than placeholders:
 
 ```
 [
@@ -47,18 +47,18 @@ You should get a response that looks something like this:
   "geometry": {
     "coordinates": [...],
     "type": "Polygon"
-  }, 
+  },
   "properties": {
     "centroid": [
-      65.95985742187501, 
+      65.95985742187501,
       34.1834701171875
-    ], 
-    "code": "AFG", 
-    "formal_name": "Islamic Republic of Afghanistan", 
-    "name": "Afghanistan", 
-    "region": "South Asia", 
+    ],
+    "code": "AFG",
+    "formal_name": "Islamic Republic of Afghanistan",
+    "name": "Afghanistan",
+    "region": "South Asia",
     "wiki": "https://en.wikipedia.org/wiki/Afghanistan"
-  }, 
+  },
   "type": "Feature"
 }
 ```
