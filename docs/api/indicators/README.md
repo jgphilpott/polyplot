@@ -14,7 +14,7 @@ The primary indicators route is `/api/indicators` and will return a list of docu
 
 **Limit:** `100`
 
-You should get a response that looks something like this, except with complete airpot documents rather than placeholders:
+You should get a response that looks something like this, except with complete indicator documents rather than placeholders:
 
 ```
 [
@@ -40,20 +40,20 @@ You should get a response that looks something like this:
 {
   "categories": [
     "Agriculture & Rural Development"
-  ], 
-  "code": "SP.RUR.TOTL.ZS", 
-  "completeness": 98.29270364393102, 
-  "description": "...", 
-  "featured": true, 
-  "last_updated": "2021-02-27", 
-  "limitations": "...", 
-  "max_value": 97.923, 
-  "max_year": 2020, 
-  "methodology": "...", 
-  "min_value": 4.574, 
-  "min_year": 1960, 
-  "name": "Rural population (% of total population)", 
-  "relevance": "...", 
+  ],
+  "code": "SP.RUR.TOTL.ZS",
+  "completeness": 98.29270364393102,
+  "description": "...",
+  "featured": true,
+  "last_updated": "2021-02-27",
+  "limitations": "...",
+  "max_value": 97.923,
+  "max_year": 2020,
+  "methodology": "...",
+  "min_value": 4.574,
+  "min_year": 1960,
+  "name": "Rural population (% of total population)",
+  "relevance": "...",
   "size": 386341
 }
 ```

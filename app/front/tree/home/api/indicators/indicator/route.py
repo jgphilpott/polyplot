@@ -8,7 +8,7 @@ def register_api_indicator_route(app):
     def api_indicator():
 
         query = literal_eval(request.args.get("query")) if "query" in request.args else {"countries": {"$exists": True, "$ne": []}, "completeness": {"$gt": 0}}
-        filter = literal_eval(request.args.get("filter")) if "filter" in request.args else {"_id": 0, "countries": 0}
+        filter = literal_eval(request.args.get("filter")) if "filter" in request.args else {"countries": 0}
 
         filter["_id"] = 0
 
