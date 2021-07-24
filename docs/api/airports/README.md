@@ -10,7 +10,7 @@ The primary airports route is `/api/airports` and will return a list of document
 
 **Filter:** `{}`
 
-**Sort:** `[("properties.flow", -1), ("properties.code", 1)]`
+**Sort:** `[("properties.flow",-1),("properties.code",1)]`
 
 **Limit:** `100`
 
