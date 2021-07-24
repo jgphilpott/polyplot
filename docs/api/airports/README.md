@@ -14,7 +14,7 @@ The primary airports route is `/api/airports` and will return a list of document
 
 **Limit:** `100`
 
-You should get a response that looks something like this, except with complete airpot documents rather than placeholders:
+You should get a response that looks something like this, except with complete airport documents rather than placeholders:
 
 ```
 [
@@ -40,17 +40,17 @@ You should get a response that looks something like this:
 {
   "geometry": {
     "coordinates": [
-      55.35779953, 
+      55.35779953,
       25.25
-    ], 
+    ],
     "type": "Point"
-  }, 
+  },
   "properties": {
-    "code": "DXB", 
-    "country": "ARE", 
-    "flow": 55655669.13, 
+    "code": "DXB",
+    "country": "ARE",
+    "flow": 55655669.13,
     "name": "Dubai International"
-  }, 
+  },
   "type": "Feature"
 }
 ```

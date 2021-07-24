@@ -8,9 +8,9 @@ def register_api_airports_route(app):
     def api_airports():
 
         query = literal_eval(request.args.get("query")) if "query" in request.args else {}
-        filter = literal_eval(request.args.get("filter")) if "filter" in request.args else {"_id": 0}
+        filter = literal_eval(request.args.get("filter")) if "filter" in request.args else {}
         sort = literal_eval(request.args.get("sort")) if "sort" in request.args else [("properties.flow", -1), ("properties.code", 1)]
-        limit = literal_eval(request.args.get("limit")) if "limit" in request.args else 0
+        limit = literal_eval(request.args.get("limit")) if "limit" in request.args else 100
 
         filter["_id"] = 0
 

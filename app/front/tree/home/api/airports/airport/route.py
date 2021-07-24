@@ -8,7 +8,7 @@ def register_api_airport_route(app):
     def api_airport():
 
         query = literal_eval(request.args.get("query")) if "query" in request.args else {}
-        filter = literal_eval(request.args.get("filter")) if "filter" in request.args else {"_id": 0}
+        filter = literal_eval(request.args.get("filter")) if "filter" in request.args else {}
 
         filter["_id"] = 0
 
