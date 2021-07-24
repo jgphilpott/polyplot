@@ -14,7 +14,7 @@ The primary ports route is `/api/ports` and will return a list of documents. You
 
 **Limit:** `100`
 
-You should get a response that looks something like this, except with complete airpot documents rather than placeholders:
+You should get a response that looks something like this, except with complete port documents rather than placeholders:
 
 ```
 [
@@ -40,18 +40,18 @@ You should get a response that looks something like this:
 {
   "geometry": {
     "coordinates": [
-      103.85007, 
+      103.85007,
       1.28967
-    ], 
+    ],
     "type": "Point"
-  }, 
+  },
   "properties": {
-    "code": "SGSIN", 
-    "country": "SGP", 
-    "flow": 126673817.40886995, 
-    "name": "Singapore", 
+    "code": "SGSIN",
+    "country": "SGP",
+    "flow": 126673817.40886995,
+    "name": "Singapore",
     "status": "AI"
-  }, 
+  },
   "type": "Feature"
 }
 ```
