@@ -8,7 +8,7 @@ def register_api_graticule_route(app):
     def api_graticule():
 
         query = literal_eval(request.args.get("query")) if "query" in request.args else {"step": 15}
-        filter = literal_eval(request.args.get("filter")) if "filter" in request.args else {"_id": 0}
+        filter = literal_eval(request.args.get("filter")) if "filter" in request.args else {}
 
         filter["_id"] = 0
 

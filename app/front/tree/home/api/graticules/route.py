@@ -8,7 +8,7 @@ def register_api_graticules_route(app):
     def api_graticules():
 
         query = literal_eval(request.args.get("query")) if "query" in request.args else {"step": {"$in": [10, 20, 30]}}
-        filter = literal_eval(request.args.get("filter")) if "filter" in request.args else {"_id": 0}
+        filter = literal_eval(request.args.get("filter")) if "filter" in request.args else {}
         sort = literal_eval(request.args.get("sort")) if "sort" in request.args else [("step", -1)]
         limit = literal_eval(request.args.get("limit")) if "limit" in request.args else 0
 

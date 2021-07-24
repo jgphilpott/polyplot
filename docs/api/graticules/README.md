@@ -38,7 +38,7 @@ You should get a response that looks something like this:
 
 ```
 {
-  "grid": [...], 
+  "grid": [...],
   "step": 15
 }
 ```
