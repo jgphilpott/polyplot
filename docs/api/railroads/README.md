@@ -18,7 +18,7 @@ The primary railroads route is `/api/railroads` and will return a list of docume
 
 **Detail:** `micro`
 
-You should get a response that looks something like this, except with complete lake documents rather than placeholders:
+You should get a response that looks something like this, except with complete railroad documents rather than placeholders:
 
 ```
 [
@@ -45,15 +45,15 @@ You should get a response that looks something like this:
 ```
 {
   "geometry": {
-    "coordinates": [...], 
+    "coordinates": [...],
     "type": "LineString"
-  }, 
+  },
   "properties": {
-    "electric": 2, 
-    "id": 1, 
-    "mult_track": 2, 
+    "electric": 2,
+    "id": 1,
+    "mult_track": 2,
     "rank": 4
-  }, 
+  },
   "type": "Feature"
 }
 ```

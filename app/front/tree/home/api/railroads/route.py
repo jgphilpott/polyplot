@@ -8,9 +8,9 @@ def register_api_railroads_route(app):
     def api_railroads():
 
         query = literal_eval(request.args.get("query")) if "query" in request.args else {}
-        filter = literal_eval(request.args.get("filter")) if "filter" in request.args else {"_id": 0}
+        filter = literal_eval(request.args.get("filter")) if "filter" in request.args else {}
         sort = literal_eval(request.args.get("sort")) if "sort" in request.args else [("properties.id", 1)]
-        limit = literal_eval(request.args.get("limit")) if "limit" in request.args else 0
+        limit = literal_eval(request.args.get("limit")) if "limit" in request.args else 100
         detail = literal_eval(request.args.get("detail")) if "detail" in request.args else "micro"
 
         filter["_id"] = 0
