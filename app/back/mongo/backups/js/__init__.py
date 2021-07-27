@@ -27,13 +27,14 @@ def load_js(path):
         with open(path + "/math.js", "w") as file:
 
             numeric = get("https://raw.githubusercontent.com/sloisel/numeric/656fa1254be540f428710738ca9c1539625777f1/src/numeric.js").content.decode("utf-8")
-            calc = get("https://gist.githubusercontent.com/jgphilpott/4276345a5b7c96fc010afa28cc5d38b6/raw/521bc865a8f76dfc65e1fa7136493721fd8cce5b/calculus.js").content.decode("utf-8")
-            regr = get("https://gist.githubusercontent.com/jgphilpott/d38279e8fac9af31054e10b7363bf17e/raw/bd103657ae95e68e651703628dcdd5aff25c7e1b/regression.js").content.decode("utf-8")
+            calc = get("https://gist.githubusercontent.com/jgphilpott/4276345a5b7c96fc010afa28cc5d38b6/raw/26c8d0b1217c0e6dbf771fc80fd22dd3a35cb963/calculus.js").content.decode("utf-8")
+            regr = get("https://gist.githubusercontent.com/jgphilpott/d38279e8fac9af31054e10b7363bf17e/raw/3684fcc69634970a75b1fa454b1a0f7b3c2c1a03/regression.js").content.decode("utf-8")
             trig = get("https://gist.githubusercontent.com/jgphilpott/1378cc2cccde6d65c5fb2b6111b5a98f/raw/587408f905ba1da6fcc970cb095bdf129ffa308b/trigonometry.js").content.decode("utf-8")
             angles = get("https://gist.githubusercontent.com/jgphilpott/092c0f3e1bcfa75f543e8485b9b23e7d/raw/813b2b7ac4c3cbcfc5caec5eec3600bba3bf5edc/angleConverter.js").content.decode("utf-8")
             scaling = get("https://gist.githubusercontent.com/jgphilpott/6332dc7f5636db9ba455e1575407c496/raw/b72589532af0b7c63e321b15254acbb848248209/scaling.js").content.decode("utf-8")
+            roots = get("https://gist.githubusercontent.com/jgphilpott/e483b5fbe52a7233c292f35737e5a682/raw/a997832576c022c1dd6696d09842f40d240588df/roots.js").content.decode("utf-8")
 
-            math = numeric + "\n" + calc + "\n" + regr + "\n" + trig + "\n" + angles + "\n" + scaling
+            math = numeric + "\n" + calc + "\n" + regr + "\n" + trig + "\n" + angles + "\n" + scaling + "\n" + roots
 
             file.write(math)
 
