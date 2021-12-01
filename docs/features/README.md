@@ -8,7 +8,7 @@
 
 ### :bulb: 3D View
 
-**Polyplot raises the bar and takes data exploration to another dimension, literally!** In addition to 2D plots and a map view Polyplot also offers a 3D visualization environment. Countries can be plotted as spheres in 3D space and animated through time. Under the hood **Polyplots 3D graphics are powered by [three.js](https://github.com/mrdoob/three.js)**, so if you're familiar with that library you can easily modify the plot or add custom features.
+**Polyplot raises the bar and takes data exploration to another dimension, literally!** In addition to 2D plots and a map view Polyplot also offers a 3D exploration environment. Countries can be plotted as spheres in 3D space and animated through time. Under the hood **Polyplots 3D graphics are powered by [three.js](https://github.com/mrdoob/three.js)**, so if you're familiar with that library you can easily modify the plot or add custom features.
 
 ### :computer: Flexable UI
 
@@ -24,7 +24,7 @@
 
 ### :open_book: Notebooks
 
-Polyplot uses [docker compose](https://docs.docker.com/compose) to connect its services, if everything [deployed correctly](https://github.com/jgphilpott/polyplot/blob/master/docs/devops/deploy/README.md) then you should be able to view a [Jupyter Notebook](https://jupyter.org) container on port `8888`. **Notebooks can be used as a sandbox to develop and test new code or explore the database.** Polyplot comes preloaded with a [set of notes](https://github.com/jgphilpott/polyplot/tree/master/notes/collections) that correspond to the collections in the database and can be used as a starting point. **For more information on how to use the Jupyter Notebook service read [this documentation](https://github.com/jgphilpott/polyplot/blob/master/docs/notes/README.md).**
+Polyplot uses [docker compose](https://docs.docker.com/compose) to connect its services, if everything [deployed correctly](https://github.com/jgphilpott/polyplot/blob/master/docs/devops/deploy/README.md) then you should be able to view a [Jupyter Notebook](https://jupyter.org) container on port `8888`. **Notebooks can be used as a sandbox to develop and test new code or explore the database.** Polyplot comes preloaded with a [set of notes](https://github.com/jgphilpott/polyplot/tree/master/notes/collections) that correspond to the collections in the database and can be used as a starting point. **For more information on how to use the Jupyter Notebook service take a look [here](https://github.com/jgphilpott/polyplot/blob/master/docs/notes/README.md).**
 
 ### :alarm_clock: Auto Updates
 
