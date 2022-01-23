@@ -5,6 +5,7 @@ from back.mongo.backups.sass import load_sass
 
 def load_data(path):
 
-    Thread(target=load_js, args=(path,)).start()
+    load_js(path)
+    load_sass(path)
+
     Thread(target=load_json, args=(path,)).start()
-    Thread(target=load_sass, args=(path,)).start()
