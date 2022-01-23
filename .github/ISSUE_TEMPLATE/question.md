@@ -1,11 +1,11 @@
 ---
 name: Question
-about: I have a question about Polyplot
+about: Any question about Polyplot
 title: ''
 labels: 'question'
 assignees: jgphilpott
 ---
 
-**Description**
+### Description
 
 A brief description of your question...
