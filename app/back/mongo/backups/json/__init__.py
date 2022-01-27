@@ -1,8 +1,8 @@
 from json import load
 
 from back.mongo.data.collect.ions import find_collection, find_collections
-from back.mongo.data.collect.countries.mongo import Country, find_countries, update_country
-from back.mongo.data.collect.indicators.mongo import Indicator, find_indicators, update_indicator
+# from back.mongo.data.collect.countries.mongo import Country, find_countries, update_country
+# from back.mongo.data.collect.indicators.mongo import Indicator, find_indicators, update_indicator
 
 collections = find_collections()
 
@@ -28,14 +28,14 @@ def load_json(path):
 
                 collection.insert_many(load(list))
 
-    for indicator in find_indicators({}, {"_id": 0, "countries": 0}):
-
-        if "last_updated" not in indicator:
-
-            update_indicator(Indicator(indicator).update().__dict__)
-
-    for country in find_countries({}, {"_id": 0, "indicators": 0}):
-
-        if "last_updated" not in country:
-
-            update_country(Country(country).update().__dict__)
+    # for indicator in find_indicators({}, {"_id": 0, "countries": 0}):
+    #
+    #     if "last_updated" not in indicator:
+    #
+    #         update_indicator(Indicator(indicator).update().__dict__)
+    #
+    # for country in find_countries({}, {"_id": 0, "indicators": 0}):
+    #
+    #     if "last_updated" not in country:
+    #
+    #         update_country(Country(country).update().__dict__)
