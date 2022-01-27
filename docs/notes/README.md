@@ -13,7 +13,7 @@ docker exec -it notebook bash
 To see the token type:
 
 ```
-jupyter notebook list
+jupyter server list
 ```
 
 You should see an output that looks something like this:
