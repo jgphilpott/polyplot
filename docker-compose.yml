@@ -1,23 +1,29 @@
-app:
-  container_name: polyplot
-  build: .
-  volumes:
-   - .:/root
-  ports:
-   - 5000:5000
-  links:
-   - mongo
+version: "2"
+services:
 
-jupyter:
-  container_name: notebook
-  image: jupyter/minimal-notebook:latest
-  ports:
-   - 8888:8888
-  links:
-   - mongo
+  app:
+    container_name: polyplot
+    restart: always
+    build: .
+    volumes:
+     - .:/root
+    ports:
+     - 5000:5000
+    links:
+     - mongo
 
-mongo:
-  container_name: database
-  image: mongo:3.0.2
-  ports:
-   - 27017:27017
+  jupyter:
+    container_name: notebook
+    image: jupyter/minimal-notebook:latest
+    restart: always
+    ports:
+     - 8888:8888
+    links:
+     - mongo
+
+  mongo:
+    container_name: database
+    image: mongo:3.0.2
+    restart: always
+    ports:
+     - 27017:27017
