@@ -45,17 +45,17 @@ The best way to get started with a collection is to retrieve a single document a
 {
   "geometry": {
     "coordinates": [
-      55.35779953, 
+      55.35779953,
       25.25
-    ], 
+    ],
     "type": "Point"
-  }, 
+  },
   "properties": {
-    "code": "DXB", 
-    "country": "ARE", 
-    "flow": 55655669.13, 
+    "code": "DXB",
+    "country": "ARE",
+    "flow": 55655669.13,
     "name": "Dubai International"
-  }, 
+  },
   "type": "Feature"
 }
 ```
