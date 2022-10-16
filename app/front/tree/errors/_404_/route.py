@@ -11,4 +11,4 @@ def register_404_error_route(app):
 
         if "id" in request.cookies: data["client"] = valid_client(request.cookies.get("id"))
 
-        return render_template("tree/errors/_404_/page.html", data=data)
+        return render_template("tree/errors/_404_/page.jinja", data=data)

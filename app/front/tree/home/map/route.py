@@ -35,7 +35,7 @@ def register_map_route(app):
 
         data["plot"]["plots"] = countries
 
-        response = make_response(render_template("tree/home/map/page.html", data=data))
+        response = make_response(render_template("tree/home/map/page.jinja", data=data))
 
         response.set_cookie("x", x_code)
 

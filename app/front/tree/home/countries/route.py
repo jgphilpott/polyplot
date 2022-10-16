@@ -12,4 +12,4 @@ def register_countries_route(app):
 
         if "id" in request.cookies: data["client"] = valid_client(request.cookies.get("id"))
 
-        return render_template("tree/home/countries/page.html", data=data)
+        return render_template("tree/home/countries/page.jinja", data=data)

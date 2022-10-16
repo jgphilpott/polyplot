@@ -20,7 +20,7 @@ def register_country_route(app):
 
             data["plot"]["t"] = {"minCap": int(min_cap), "year": int(year), "maxCap": int(max_cap)}
 
-            response = make_response(render_template("tree/home/countries/country/page.html", data=data))
+            response = make_response(render_template("tree/home/countries/country/page.jinja", data=data))
 
             response.set_cookie("minCap", str(min_cap))
             response.set_cookie("year", str(year))

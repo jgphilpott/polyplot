@@ -17,7 +17,7 @@ def register_indicators_route(app):
         y_code = request.cookies.get("y") if "y" in request.cookies else "SP.DYN.TFRT.IN"
         z_code = request.cookies.get("z") if "z" in request.cookies else "NY.GDP.PCAP.KD.ZG"
 
-        response = make_response(render_template("tree/home/indicators/page.html", data=data))
+        response = make_response(render_template("tree/home/indicators/page.jinja", data=data))
 
         response.set_cookie("r", r_code)
         response.set_cookie("x", x_code)

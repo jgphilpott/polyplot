@@ -41,7 +41,7 @@ def register_poly2_route(app):
 
         data["plot"]["plots"] = countries
 
-        response = make_response(render_template("tree/home/poly2/page.html", data=data))
+        response = make_response(render_template("tree/home/poly2/page.jinja", data=data))
 
         response.set_cookie("r", r_code)
         response.set_cookie("x", x_code)

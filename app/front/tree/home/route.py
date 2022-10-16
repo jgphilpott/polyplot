@@ -11,4 +11,4 @@ def register_home_route(app):
 
         if "id" in request.cookies: data["client"] = valid_client(request.cookies.get("id"))
 
-        return render_template("tree/home/page.html", data=data)
+        return render_template("tree/home/page.jinja", data=data)

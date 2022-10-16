@@ -11,4 +11,4 @@ def register_500_error_route(app):
 
         if "id" in request.cookies: data["client"] = valid_client(request.cookies.get("id"))
 
-        return render_template("tree/errors/_500_/page.html", data=data)
+        return render_template("tree/errors/_500_/page.jinja", data=data)
