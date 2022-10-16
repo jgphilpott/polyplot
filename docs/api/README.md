@@ -33,7 +33,7 @@
 
 # Example
 
-Let's look at airports as an example. **To start, the root API path is `/api`, if you visit [polyplot.app/api](https://www.polyplot.app/api) or [localhost:5000/api](http://localhost:5000/api) you will be redirected to this page.**
+Let's look at airports as an example. **To start, the root API path is `/api`, if you visit [polyplot.app/api](https://www.polyplot.app/api) or [localhost:3000/api](http://localhost:3000/api) you will be redirected to this page.**
 
 :warning: **The API path can not include spaces, they must be either removed or replaced with `%20`. Most browsers will do this automatically if you paste the path into the address bar but a direct request with spaces will return an error.**
 

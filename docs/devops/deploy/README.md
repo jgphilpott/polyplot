@@ -22,7 +22,7 @@ cd polyplot
 docker-compose up --build
 ```
 
-The build will take some time but once it’s done you can view the application by visiting `localhost:5000` in a web browser. To end the deployment use:
+The build will take some time but once it’s done you can view the application by visiting `localhost:3000` in a web browser. To end the deployment use:
 
 ```
 Ctrl + Shift + C
@@ -44,7 +44,7 @@ docker-compose stop
 
 # Notes
 
-The docker compose commands mentioned above will launch three containers; a MongoDB container on port `27017`, a Jupyter Notebook container on port `8888` and the main Polyplot container on port `5000`. If you want to view the status of your containers use the command:
+The docker compose commands mentioned above will launch three containers; a MongoDB container on port `27017`, a Jupyter Notebook container on port `8888` and the main Polyplot container on port `3000`. If you want to view the status of your containers use the command:
 
 ```
 docker container ls

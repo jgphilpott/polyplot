@@ -14,7 +14,7 @@ Assuming you have [docker compose installed](https://docs.docker.com/compose/ins
 docker-compose up --build
 ```
 
-The build will take some time but once it’s done you can view the application by visiting `localhost:5000` in a web browser. **For more detailed deployment instructions take a look [here](https://github.com/jgphilpott/polyplot/blob/master/docs/devops/deploy/README.md).**
+The build will take some time but once it’s done you can view the application by visiting `localhost:3000` in a web browser. **For more detailed deployment instructions take a look [here](https://github.com/jgphilpott/polyplot/blob/master/docs/devops/deploy/README.md).**
 
 # Contribute
 

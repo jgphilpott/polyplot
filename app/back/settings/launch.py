@@ -5,4 +5,4 @@ def launch(app):
 
     start_tasks()
 
-    plugin(app).run(app, host="0.0.0.0", port=5000, debug=True)
+    plugin(app).run(app, host="0.0.0.0", port=3000, debug=True)
